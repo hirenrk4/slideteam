@@ -1,0 +1,44 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Account\AuthorizationLink $block */
+
+$dataPostParam = '';
+if ($block->isLoggedIn()) {
+    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+}
+
+$url = $block->getRequest()->getUriString();
+if(preg_match("/customer\/account\/logoutSuccess/",$url))
+{
+    $loginUrl = $block->getBaseUrl()."customer/account/login/";
+    $reset = 1;
+}
+else
+{
+    $loginUrl = $block->getLinkAttributes();
+    $reset = 0;
+}
+
+if($block->getRequest()->getFullActionName() == "cms_index_index")
+{
+    if ($block->isLoggedIn()) {
+        $loginUrl = $block->getLinkAttributes();
+        $reset = 0;
+    }else{
+        $loginUrl = $block->getBaseUrl()."customer/account/login/";
+        $reset = 1;
+    }
+}
+
+?>
+<li class="authorization-link" data-label="<?= $block->escapeHtmlAttr(__('or')) ?>">
+    <a <?php if($reset == 1){ echo "href='".$loginUrl."'"; } else { echo $loginUrl;echo $dataPostParam; } ?> >
+        <?= $block->escapeHtml($block->getLabel()) ?>
+    </a>
+</li>

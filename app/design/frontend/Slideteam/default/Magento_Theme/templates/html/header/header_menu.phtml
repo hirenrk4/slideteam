@@ -1,0 +1,104 @@
+<?php
+$helper = $this->helper('Tatva\Theme\Helper\Header');
+$blockObj= $block->getLayout()->createBlock('Mageplaza\SocialLogin\Block\Popup\Social');
+
+$LangageHelper = $this->helper('FishPig\WordPress\Helper\LangaugeSelect');
+$params = $this->getRequest()->getParams();
+$languageSelectedOption = $LangageHelper->getLangaugeSession($params);
+?>
+<nav class="nav is-fixed">
+    <div class="wrapper-flush">
+        <button class="nav-toggle">
+            <span class="icon-menu">
+                <span class="line line-1"></span>
+                <span class="line line-2"></span>
+                <span class="line line-3"></span>
+            </span>
+        </button>
+        <div class="nav-container clearfix">
+            <ul class="nav-menu menu clearfix">
+                
+                <li class="menu-item">
+                    <a class="menu-link" title="Pricing" href="<?php echo $helper->getStoreBaseUrl().'pricing'; ?>"><?php echo __("Pricing") ?></a>
+                </li>
+
+                <li class="menu-item has-sub-class">
+                    <a class="menu-link" title="Free Stuff" href="#"><?php echo __("Free Stuff") ?></a>
+                    <div class="sub-menu-header" style="display: none">
+                        <ul>
+                            <li class="sub-menu-item">
+                                <a class="menu-link" title="Free Samples" href="<?php echo $helper->getStoreBaseUrl().'share-and-download-products/'; ?>"><?php echo __("Free PPTs") ?></a>
+                            </li>
+
+                            <li class="sub-menu-item">
+                                <a class="menu-link" title="Free Business PPTs" href="<?php echo $helper->getStoreBaseUrl() .'free-business-powerpoint-templates/'; ?>"><?php echo __("Free Business PPTs") ?></a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="menu-item">
+                    <a class="menu-link" title="Most Downloaded" href="<?php echo $helper->getStoreBaseUrl().'professional-powerpoint-templates'; ?>"><?php echo __("Popular PPTs") ?></a>
+                </li>                               
+
+                <li class="menu-item">
+                    <a class="menu-link" title="eBooks" href="<?php echo $helper->getStoreBaseUrl().'powerpoint-ebooks-for-slide-template-design/'; ?>"><?php echo __("eBooks") ?></a>
+                </li>
+
+                <li class="menu-item">
+                    <?php
+                        if ($languageSelectedOption && $this->getRequest()->getFullActionName() == 'wordpress_post_view') {
+                         ?>
+                          <a class="menu-link" title="Blog" href="<?php  echo $helper->getStoreBaseUrl().'blog'; ?>?lang=<?php echo $languageSelectedOption;?>"><?php echo __("Blog") ?></a>  
+                       <?php } else{ ?>
+                        <a class="menu-link" title="Blog" href="<?php  echo $helper->getStoreBaseUrl().'blog'; ?>"><?php echo __("Blog") ?></a>  
+                       <?php } ?>
+                    
+                </li>
+
+                <li class="menu-item">
+                    <a class="menu-link" title="Business Slides " href="<?php echo $helper->getStoreBaseUrl() .'business_powerpoint_diagrams/'; ?>"><?php echo __("Template Finder") ?></a>
+                </li> 
+
+                <li class="menu-item">
+                    <a class="menu-link" title="Presentation Services" href="<?php echo $helper->getStoreBaseUrl().'powerpoint_presentation_design_services/'; ?>"><?php echo __("Presentation Services") ?>
+                    </a>
+                </li>
+
+                <li class="menu-item">
+                    <a class="menu-link" title="Research Services" href="<?php  echo $helper->getStoreBaseUrl().'powerpoint_presentation_design_services/business_research_services'; ?>"><?php echo __("Research Services") ?></a>
+                </li>
+
+                <!-- Currently unavailable in live-->
+                <!-- <li class="menu-item">
+                    <a class="menu-link" title="Complete Decks" href="<?php //echo $this->getUrl('complete_decks'); ?>"><?php //echo __("Complete Decks") ?></a>
+                </li> -->
+                
+                
+                <li class="menu-item">
+                    <?php $login = $helper->isCustomerLoggedIn();?>
+                    <?php if(!$login):?>
+                
+                        <?php $availableSocials = $blockObj->getAvailableSocials();
+                        if ($blockObj->canShow() && sizeof($availableSocials)):
+                        ?>
+                        <div class="block social-login-authentication-channel account-social-login">
+                            <div class="social-block">
+                                <?php foreach ($availableSocials as $key => $social): ?>
+                                    <div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
+                                        <a class="btn btn-block btn-social btn-<?= $blockObj->getBtnKey($key) ?>" rel="nofollow"
+                                            data-url='<?php echo $social['login_url'] ?>'>
+                                            <?php echo __('Sign in with %1', $social['label']) ?>
+                                        </a>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                        <?php endif; ?>
+                </li>
+                <?php endif;?>
+            </ul>
+        </div>
+    </div>
+</nav>

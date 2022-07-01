@@ -1,0 +1,2470 @@
+@import '../../source/_variablesm2.less';
+@import '../../source/_mixins.less';
+
+.design-service-default{
+	h1{font-size:45px;line-height: 49px;}
+	h2{font-size:48px;line-height: 52px;}
+	h3{font-size:45px;line-height: 49px;}
+	h4{font-size:42px;line-height: 57px;}
+	h5{font-size:30px;line-height: 34px;}
+	h6{font-size:22px;line-height: 28px;}
+}
+/*for popup of cancle or  delete upalod files*/
+.ui-dialog{
+	z-index: 101;
+}
+.ui-widget-overlay{
+	z-index: 100;
+}
+
+.custom-design-service{
+	/*common css for this page*/
+	.service-container{
+			max-width: 1600px;
+			width: 100%;
+			margin: 0 auto;
+			padding: 0 15px;
+			box-sizing: border-box;
+	}
+	.paralax{
+		background-attachment: fixed;
+	    background-position: 50% 50%;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    height: auto;
+	    position: relative;
+	}
+	.display-table{
+		display: table;
+	    width: 100%;
+	    height: 100%;
+	    vertical-align: middle;
+	}
+	.display-tablecell{
+		display: table-cell;
+	    width: 100%;
+	    height: 100%;
+	    vertical-align: middle;
+	}
+	.default-btn{
+		font-size: 22px;
+	    height: 60px;
+	    line-height: 56px;
+	    border: 2px solid @slideteam_blue1;
+	    display: inline-block;
+	    padding: 0 34px;
+	    box-sizing: border-box;
+	    font-weight: 600;
+	    .border-radius(50px);
+	    display: inline-block;
+	    &:hover{
+	    	color:@slideteam_blue1;
+	    	background:@white;
+	    }
+	}
+	.custom-price-content{
+    	padding: 30px 0 75px 0;
+	    max-width: 1290px;
+	    width: 100%;
+	    margin: 0 auto;
+	    ul{
+	    	margin: 0;
+	    	li{
+	    		margin: 0 0 40px 20px;
+	    		position: relative;
+	    		&:last-child{
+	    			margin-bottom:0;
+	    		}
+	    		i{
+	    			display: inline-block;
+				    position: absolute;
+				    top: 7px;
+				    left: -20px;
+				    width: 20px;
+				    height: 20px;
+				}
+	    		p{
+	    			font-size: 18px;
+				    line-height: 32px;
+				    color: @slideteam_white12;
+				    margin: 0;
+				    display: inline-block;
+				    padding-left: 20px;
+				    letter-spacing: 1.4px;
+	    		}
+	    	}
+	    }
+    }
+	/*block css*/
+	.service-banner{
+		background: url(../../../../Magento_Cms/images/design-services/custom-service-img.png) no-repeat 90% 25%;
+		.service-container{
+			max-width: 1390px;
+		}
+		.service-content{
+			max-width: 780px;
+    		padding: 90px 0 267px 0px;
+    		h1{
+			    color: @slideteam_black2;
+			    font-weight: 700;
+			    letter-spacing: 3px;
+			    margin: 0 0 40px;
+    		}
+    		p{
+    			&.tailor-text{
+    				font-size: 18px;
+				    line-height: 22px;
+				    color: @slideteam_gray98;
+				    margin: 0 0 30px;
+				    padding: 16px 0 0 5px;
+				    letter-spacing: 1.1px;
+				    border-top: 2px dashed @slideteam_gray99;
+    			}
+    		}
+    		.owl-carousel{
+    			position: relative;
+   				padding: 50px 0 40px 0;
+   				.item{
+   					p{
+   						margin: 0px;
+						padding: 2px 0 0 5px;
+						font-size: 15px;
+						line-height: 22px;
+   						&.testimonial-content{
+	   						color: @slideteam_gray100;
+   						}
+   						&.testimonial-author{
+	   						color: @slideteam_gray101;
+   						}
+   					}
+   				}
+   				.owl-dots{
+   					position: absolute;
+   					top: 0;
+   					left: 0;
+   					.owl-dot{
+   						display: inline-block;
+   						span{
+   							background-image: url(../../../../Magento_Cms/images/design-services/White_quote.png);
+						    width: 30px;
+						    height: 30px;
+						    background-size: 27px;
+						    display: block;
+						    background-repeat: no-repeat;
+   						}
+   						&.active{
+   							span{
+   								background-image: url(../../../../Magento_Cms/images/design-services/Blue_quote.png);
+   								background-repeat: no-repeat;
+   								background-size: 27px;
+   							}
+   						}
+   					}
+   				}
+    		}
+    		.service-listing{
+    			margin: 50px 0 20px;
+    			li{
+    				width: 25%;
+				    float: left;
+				    text-align: center;
+				    padding: 0 15px;
+				    box-sizing: border-box;
+				    margin: 0;
+				    i{
+				    	text-align: center;
+					    display: block;
+					    margin-bottom: 15px;
+					    min-height: 51px;
+				    }
+				    span{
+				    	font-size: 16px;
+					    line-height: 19px;
+					    color: @slideteam_gray98;
+					    display: block;
+					    padding: 9px 0;
+					    border-top: 2px solid @slideteam_gray102;
+					    border-bottom: 2px solid @slideteam_gray102;
+					    em{
+					    	display: block;
+					    	font-style: normal;
+					    }
+				    }
+    			}
+    		}
+		}
+	}
+	.how-work-block{
+		position: relative;
+		.service-work-block{
+			background-image: url(../../../../Magento_Cms/images/design-services/work-bg-img.jpg);
+		    padding-bottom: 160px;
+		    .service-container{
+		    	max-width: 1380px;
+		    }
+		    &:after{
+		    	content: "";
+			    background: @slideteam_black25;
+			    position: absolute;
+			    top: 0;
+			    bottom: 0;
+			    left: 0;
+			    right: 0;
+		    }
+		}
+		.work-content{
+		    padding: 0 0 60px 0;
+		    z-index: 9;
+		    background: @slideteam_white11;
+		    .box-shadow(0px 0px 10px rgba(0,0,0,0.5));
+		    position: relative;
+		    top: -85px;	
+		    .work-top-block{
+		    	margin-bottom: 85px;
+		    	h2{
+		    		letter-spacing: 2.4px;
+				    color: @black;
+				    font-weight: 700;
+				    text-align: center;
+				    margin: 0;
+				    background: @slideteam_white9;
+				    padding: 20px 15px 15px;
+		    	}
+		    	p{
+		    		font-size: 20px;
+				    line-height: 30px;
+				    color: @slideteam_gray41;
+				    text-align: center;
+				    width: 80%;
+				    margin: 20px auto 0;
+		    	}
+		    }
+		    .destination{
+		    	border-top: 2px dashed @slideteam_gray63;
+			    margin: 0 87px;
+			    position: relative;
+			    &:after,&:before{
+			    	content: "";
+				    width: 45px;
+				    height: 45px;
+				    position: absolute;
+			    }
+			    &:after{
+			    	background: url(../../../../Magento_Cms/images/design-services/location-img.png) no-repeat;
+				    top: -47px;
+				    left: -10px;
+				    background-size: 44px;
+			    }
+			     &:before{
+			    	background: url(../../../../Magento_Cms/images/design-services/flag-img.png) no-repeat;
+				    top: -41px;
+				    right: -40px;
+			    }
+			    span{
+			    	width: 15px;
+				    height: 15px;
+				    background: @black;
+				    .border-radius(100%);
+				    position: absolute;
+				    top: -10px;
+				    left: 0;
+				    right: 0;
+				    margin: 0 auto;
+			    }
+		    }
+		    .work-bottom-list{
+		    	padding: 70px 40px 0;
+		    	ul{
+		    		margin: 0;
+		    		li{
+		    			width: 33.33%;
+					    float: left;
+					    padding: 0 15px;
+					    box-sizing: border-box;
+					    margin: 0;
+    					text-align: center;
+    					.icon-block{
+    						i{
+    							display: block;
+    							min-height: 110px;
+    						}
+    						span{
+    							font-size: 25px;
+    							line-height: 29px;
+							    color: @black;
+							    font-weight: 700;
+							    display: block;
+							    margin-bottom: 30px;
+    						}
+    					}
+    					&.left-work-list{
+    						text-align:left;
+    						p{
+    							padding-left: 0;
+    						}
+    					}
+    					&.right-work-list{
+    						text-align:right;
+    						p{
+    							padding-right: 0;
+    						}
+    					}
+    					p{
+    						font-size: 15px;
+						    line-height: 27px;
+						    color: @slideteam_gray101;
+						    padding: 0 30px;
+    					}
+		    		}
+		    	}
+		    }
+		}
+		.work-button{
+			position: absolute;
+		    bottom: 64px;
+		    left: 0;
+		    right: 0;
+		    text-align: center;
+		    .orange-button{
+		    	font-size: 32px;
+			    line-height: 46px;
+			    height: 65px;
+			    border: 2px solid @slideteam_orange1;
+			    color: @white;
+			    font-weight: 700;
+			    padding: 5px 45px;
+			    display: inline-block;
+			    background: @slideteam_orange1;
+			    .border-radius(50px);
+			    box-sizing: border-box;
+			    &:hover{
+			    	background:@white;
+			    	color: @slideteam_orange1;
+			    }
+
+		    }
+		}
+	}
+	.service-tab-block{
+		padding: 80px 0;
+		ul{
+			&.tabs{
+				margin: 0 0 70px 0;
+				width: 100%;
+				text-align: center;
+				li{
+					display: inline-block;
+				    margin: 0 2px 0 0;
+				    cursor: pointer;
+				    padding: 14px 115px 10px;
+				    background-color: @slideteam_gray103;
+				    font-size: 18px;
+				    line-height: 22px;
+				    color: @slideteam_gray45;
+				    font-weight: 700;
+				    text-transform: uppercase;
+				    border-top: 6px solid transparent;
+    				border-bottom: 3px solid transparent;
+    				&.active{
+    					background-color: @white;
+					    color: @slideteam_blue1; 
+					    display: inline-block;
+					    border-color: @slideteam_blue1;
+					    i{
+					    	.active-img{
+					    		display: inline-block;
+					    	}
+					    	.normal-img{
+					    		display: none;
+					    	}
+					    }
+    				}
+    				i{
+    					display: block;
+    					margin-bottom: 6px;
+    					text-align: center;
+    					.active-img{
+    						display: none;
+    					}
+    				}
+				}
+			}
+		}
+		.tab_container{
+			.tab_drawer_heading{
+				display: none;
+			}
+			#our-testimonial-tab-content{
+				&.tab_content{
+					.column-top{
+						width: 33.33%;
+					}
+				}
+			}
+			.tab_content{
+				display: none;
+				.test-bottom-title{
+					text-align: center;
+					.view-link{
+						font-size: 22px;
+					    line-height: 26px;
+					    color: @slideteam_blue1;
+					    font-weight: 700;
+					    border-bottom: 2px solid @slideteam_blue33;
+					    display: inline-block;
+					    margin-bottom: 40px;
+					    &:hover{
+						    border-color: @slideteam_gray104;
+						    color: @slideteam_gray104;
+						}
+					}
+					.submit-design-req{
+						max-width: 288px;
+   						margin: 0px auto;
+   						display: block;
+					}
+				}
+				.column-top{
+				    width: 25%;
+				    float: left;
+				    padding: 0 15px;
+				    box-sizing: border-box;
+				}
+			}
+			.category-tab{
+				padding: 12px 6px;
+				.Category-row{
+					padding: 0 190px;
+					margin-bottom: 100px;
+					.category-column{
+				    	cursor: pointer;
+					    text-align: center;
+				    	.transition(0.3s);
+				    	i{
+				    		display: inline-block;
+				    		margin-bottom: 27px;
+				    		a{
+				    			display: block;
+				    		}
+				    	}
+				    	h6{
+				    		margin: 0 0 20px;
+						    font-weight: 700;
+						    min-height: 60px;
+						    letter-spacing: -0.5px;
+						    a{
+						    	color: @slideteam_gray104;
+						    	&:hover{
+						    		color:@black;
+						    	}
+						    }
+						    span{
+						    	display: block;
+						    }
+				    	}
+				    	p{
+				    		font-size: 16px;
+						    line-height: 27px;
+						    color: @slideteam_gray101;
+						    padding: 0 40px;
+						    margin: 0  0 15px;
+						    a{
+						   		color: @slideteam_gray101;
+						   		text-decoration: none;
+						    }
+				    	}
+				    	a{
+				    		&.learn-link{
+				    			display: none;
+				    		}
+				    	}
+				    	&.blue{
+				    		h6{
+				    			a{
+				    				color: @slideteam_blue1;
+				    				&:hover{
+							    		color:@black;
+							    	}
+				    			}
+				    		}
+				    	}
+				    	&:hover{
+				    		.transform(scale(1.05));
+				    	}
+					}
+					.column-bottom{
+						width: 25%;
+					    float: left;
+					    padding: 0 15px;
+					    box-sizing: border-box;
+					    .category-column{
+					    	p{
+					    		padding: 0 15px;
+					    	}
+					    }
+					}
+				}
+			}
+			.portfolio-tab{
+				.portfolio-top-block{
+					margin-bottom: 50px;
+				}
+				.slider-container{
+					.arrow-right{
+						right: 10px;
+					}
+				}
+			}
+			.testimonial-tab{
+				.Category-row{
+					padding: 0 112px;
+					.category-column{
+						.comma-block{
+							position: relative;
+							margin: 40px 0 40px;
+							span{
+								display: inline-block;
+							    position: absolute;
+							    top: -40px;
+							    z-index: 9;
+							    background: @white;
+							    right: 0;
+							    left: 0;
+							    width: 100px;
+							    height: 65px;
+							    margin: 0 auto;
+							    padding: 0 16px;
+							    box-sizing: border-box;
+							    i{
+								    display: block;
+								    border: 2px solid @slideteam_gray76;
+								    .border-radius(100%);
+								    padding: 15px 13px;
+								    box-sizing: border-box;
+							    }
+							}
+							&:before{
+								content: "";
+							    width: 100%;
+							    height: 1px;
+							    background: @slideteam_blue34;
+							    position: absolute;
+							    top: -6px;
+							    left: 0;
+							}
+						}
+						.test-content{
+							margin-bottom: 80px;
+							p{
+								text-align: left;
+							    padding: 0 15px;
+							    margin: 0;
+							    font-size: 18px;
+							    line-height: 34px;
+							    color: @slideteam_gray101;
+							}
+						}
+						.test-profile{
+							border-bottom: 2px solid @slideteam_gray87;
+							label{
+								font-size: 24px;
+							    line-height: 30px;
+							    display: block;
+							    color: @slideteam_black2;
+							    font-weight: 700;
+							    text-transform: none;
+							    margin-bottom: 20px;
+							    letter-spacing: 0.5px;
+							}
+							span{
+								font-size: 18px;
+							    line-height: 22px;
+							    color: @black;
+							    display: block;
+							    padding-bottom: 25px;
+							}
+						}
+						.test-bottom-title{
+							.submit-design-req{
+								
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.service-pricing{
+		background: @slideteam_blue35;
+	    padding: 65px 0 55px;
+	    .service-title{
+	    	text-align:center;
+	    	margin-bottom: 60px;
+	    	h3{
+	    		margin: 0 0 30px;
+	    		color: @white;
+	    		font-weight: 700;
+	    	}
+	    	ul{
+	    		margin: 0;
+	    		li{
+				    font-size: 24px;
+				    line-height: 28px;
+				    color: @white;
+				    display: inline-block;
+				    letter-spacing: -0.1px;
+				    border-right: 1px solid @white;
+				    padding: 0 24px;
+				    margin: 0;
+				    &:last-child{
+				    	border-right:0;
+				    }
+	    		}
+	    	}
+	    }
+	    .outer-pricing-col{
+	    	.custom-pricing{
+	    		margin-bottom: 75px;
+	    		.inner-custom-pricing{
+	    			max-width: 1220px;
+	    			width: 100%;
+	    			margin: 0 auto;
+	    		}
+	    		.left-inner{
+	    			float: left;
+				    max-width: 210px;
+				    margin-right: 120px;
+				    box-sizing: border-box;
+				    h4{
+				    	color: @white;
+    					font-weight: 700;
+    					text-align: right;
+    					margin: 0;
+				    }
+	    		}
+	    		.right-inner{
+	    			float: left;
+				    max-width: 750px;
+				    width: 100%;
+				    .start-price{
+				    	background: @slideteam_blue36;
+					    padding: 18px 0;
+					    border-bottom: 2px solid @white;
+					    h5{
+					    	color: @white;
+						    font-weight: 400;
+						    text-align: center;
+						    letter-spacing: 1.4px;
+						    margin: 0;
+					    }
+				    }
+				    .sliding-price{
+				    	background: @slideteam_blue1;
+    					padding: 17px 0;
+    					&.orange{
+    						background: @slideteam_orange26;
+    						.round-slide{
+    							background: @slideteam_orange27;
+    						}
+    					}
+    					.round-slide{
+    						background: @slideteam_blue37;
+						    border: 2px solid @white;
+						    .border-radius(100%);
+						    display:flex;
+						    align-items: center;
+						    margin: 0 auto;
+						    width: 210px;
+						    height: 210px;
+						    justify-content: center;
+						    span{
+						    	font-size: 34px;
+							    line-height: 40px;
+							    color: @white;
+							    font-weight: 700;
+							    text-align: center;
+							    em{
+							    	font-size: 27px;
+							    	line-height: 31px;
+								    color: @white;
+								    font-weight: 400;
+								    display: block;
+								    font-style: normal;
+							    }
+						    }
+    					}
+				    }
+	    		}
+	    	}
+		    .price-button{
+		    	text-align: center;
+		    }
+	    }
+	}
+	.dedicate-block{
+		background: @slideteam_green1;
+	    position: relative;
+	    margin: 90px 108px 90px 133px;
+	    .img-block{
+	    	position: absolute;
+		    top: -48px;
+		    left: 5px;
+		    width: 295px;
+	    }
+	    .need-content{
+	    	padding: 22px 0 22px 328px;
+	    	h6{
+	    		color: @white;
+			    font-weight: 700;
+			    margin:0 0 42px;
+			    letter-spacing: 1.7px;
+			    padding-right: 15px;
+	    	}
+	    	p{
+	    		font-size: 19px;
+			    color: @slideteam_green17;
+			    margin: 0  0 20px;
+			    padding-right: 27%;
+			    letter-spacing: 0.7px;
+			    line-height: 30px;
+			    &:last-child{
+			    	margin-bottom:0;
+			    }
+	    	}
+	    }
+	    .button-block{
+    		position: absolute;
+		    display: inline-block;
+		    right: 30px;
+		    top: 56%;
+		    .transform(translateY(-56%));
+		    .white-btn{
+		    	font-size: 29px;
+			    line-height: 50px;
+			    color: @slideteam_black2;
+			    display: inline-block;
+			    padding: 0 20px;
+			    letter-spacing: 0.3px;
+			    .border-radius(50px);
+			    height: 58px;
+			    font-weight: 400;
+			    box-sizing: border-box;
+			    &:hover{
+			    	background:transparent;
+			    	color: @white;
+			    }
+		    }
+	    }
+	}
+	.why-choose-block{
+		position: relative;
+	    margin-bottom: 120px;
+	    padding-top: 40px;
+	    h2{
+		    color: @slideteam_black2;
+		    font-weight: 700;
+		    text-align: center;
+		    margin:0 0 45px;
+	    }
+	    .choose-listing{
+	    	padding:0 40px;
+	    	li{
+	    		width: 25%;
+			    float: left;
+			    padding: 0 15px;
+			    position: relative;
+			    box-sizing: border-box;
+			    text-align: center;
+			    &.top-row{
+			    	margin-bottom: 115px;
+			    	&:after{
+			    		content: "";
+					    max-width: 130px;
+					    width: 100%;
+					    height: 1px;
+					    background: url(../../../../Magento_Cms/images/design-services/grey-line-s.png) no-repeat;
+					    position: absolute;
+					    bottom: -60px;
+					    left: 0;
+					    right: 0;
+					    margin: 0px auto;
+			    	}
+			    }
+			    &.mobile-row{
+			    	margin-bottom:0;
+			    }
+			    i{
+			    	display: block;
+			    	margin-bottom: 15px;
+			    }
+			    label{
+			    	font-size: 21px;
+			    	line-height: 25px;
+				    color: @slideteam_black2;
+				    font-weight: 700;
+				    display: block;
+			    	span{
+			    		display: block;
+			    	}
+			    }
+	    	}
+	    }
+	    &:after,&:before{
+	    	content: "";
+		    max-width: 1130px;
+		    width: 100%;
+		    background: url(../../../../Magento_Cms/images/design-services/grey-line-img.png) no-repeat center center;
+		    position: absolute;
+		    left: 0;
+		    right: 0;
+		    height: 1px;
+		    margin: 0 auto;
+	    }
+	    &:after{
+		    bottom: -72px;
+	    }
+	    &:before{
+		    top: -22px;
+	    }
+	}
+	.confidential-block{
+		margin-bottom: 100px;
+		h3{
+		    color: @slideteam_black2;
+		    text-align: center;
+		    font-weight: 700;
+    		margin: 0 0 65px;
+		}
+		.custom-price-content{
+			max-width: 1290px;
+			width: 100%;
+   			margin: 0 auto;
+   			padding: 0;
+   			ul{
+   				li{
+   					p{
+   						color: @slideteam_gray41;
+   					}
+   				}
+   			}
+		}
+	}
+	.outer-quick-request{
+		background-image: url(../../../../Magento_Cms/images/design-services/bg-form-img.jpg);
+		&:after{
+			content: "";
+		    background: @slideteam_black13;
+		    position: absolute;
+		    top: 0;
+		    bottom: 0;
+		    left: 0;
+		    right: 0;
+		}
+		.quick-request-form{
+			padding: 125px 0;
+			.request-column-block{
+				background: @slideteam_white13;
+			    text-align: center;
+			    position: relative;
+			    padding: 18px;
+			   	margin: 0 235px;
+			    z-index: 99;
+			    .inner-col-block{
+			    	border: 2px solid @slideteam_gray105;
+    				padding: 22px 0 28px 0;
+    				h4{
+					    color: @slideteam_black2;
+					    font-weight: 700;
+					    letter-spacing: 0;
+					    position: relative;
+					    margin: 0 0 45px;
+					    &:after{
+					    	content: "";
+						    height: 2px;
+						    background: @slideteam_white12;
+						    position: absolute;
+						    bottom: -20px;
+						    left: 25%;
+						    right: 25%;
+					    }
+    				}
+    				p{
+    					font-size: 22px;
+    					line-height: 26px;
+					    color: @slideteam_gray98;
+					    margin: 0 0 65px;
+					    letter-spacing: -0.6px;
+    				}
+    				.request-row-form{
+    					max-width: 770px;
+    					width: 100%;
+					    margin: 0px auto;
+					    padding: 0 15px;
+					    box-sizing: border-box;
+					    .form-group{
+					    	margin-bottom: 25px;
+					    	&:last-child{
+					    		margin-bottom:10px;
+					    	}
+					    	.form-control{
+					    		height: 50px;
+							    border: 1px solid @slideteam_gray106;
+							    .border-radius(2px);
+							    font-size: 22px;
+							    line-height: 33px;
+							    color: @slideteam_gray107;
+							    padding: 10px 15px;
+							    .placeholder(@slideteam_gray84);
+							    &:focus{
+							    	box-shadow:none;
+							    	border-color: @slideteam_blue1;
+							    }
+					    	}
+					    	/*input[type="text"]{
+					    		.placeholder(@slideteam_gray84);
+					    	}*/
+					    	textarea{
+					    		&.form-control{
+						    		height: 145px;
+						    		resize: none;
+						    		overflow-y: auto;
+						    	}
+					    	}
+					    	.custom-upload{
+					    		label{
+					    			img{
+					    				position: relative;
+					    				top: 4px;
+					    			}
+					    			span{
+					    				font-size: 22px;
+									    color: @slideteam_gray108;
+									    border-bottom: 1px solid @slideteam_gray108;
+									    font-weight: 400;
+									    display: inline-block;
+									    margin: 0 8px;
+					    			}
+					    		}
+					    	}
+					    	&.form-upload{
+					    		text-align: left;
+					    		position: relative;
+					    		.attach-block{
+					    			display: inline-block;
+					    			.ajax-file-upload-container{
+					    				padding-top: 35px;
+					    				.ajax-file-upload-statusbar{
+					    					border: 1px solid @slideteam_gray77;
+					    					.border-radius(4px);
+					    					padding: 5px;
+					    					margin-bottom: 10px;
+					    					.ajax-file-upload-filename{
+					    						 color: @gray27;
+					    						 text-align: center;
+					    						 padding: 0 10px;
+					    					}
+					    					.ajax-file-upload-progress{
+												margin: 5px 10px 5px 0px;
+											    position: relative;
+											    width: 250px;
+											    border: 1px solid @slideteam_gray79;
+											    padding: 1px;
+											    .border-radius(3px);
+											    display: inline-block;
+											    .ajax-file-upload-bar{
+											    	background: @slideteam_blue1;
+											    }
+					    					}
+					    					.ajax-file-upload-red{
+					    						padding: 6px 15px;
+					    					}
+					    				}
+					    			}
+					    			.ajax-file-upload-error{
+					    				margin: 0;
+					    				padding-top: 33px;
+					    				color: #d24031;
+					    				font-size: 13px;
+					    				line-height: 17px;
+					    			}
+					    		}
+					    		.tipso_style{
+					    			display: inline-block;
+					    			position: absolute;
+					    			top: -2px;
+					    			left: 165px;
+					    			border:0;
+					    			cursor: pointer;
+					    			a{
+					    				display: inline-block;
+					    			}
+					    		}
+					    	}
+					    	.action{
+					    		&.primary{
+					    			font-size: 24px;
+					    			line-height: 36px;
+					    			height: 45px; 
+					    			min-width: 160px;
+					    			font-weight: 700;
+					    			&:hover{
+					    				color:@slideteam_blue1;
+					    			}
+					    			&:focus,&:active{
+					    				background: @slideteam_blue1;
+									    border: 1px solid @slideteam_blue1;
+					    			}
+					    		}
+					    	}
+							.mage-error[generated]{
+								text-align: center;
+							}
+
+					    }
+    				}
+			    }
+			}
+		}
+	}
+}
+div#our-portfolio-tab-content {
+  /*width: 80%;*/
+  width: 1105px;
+  margin: 0 auto;
+}
+.banner-rotator{
+  width: 1115px;
+  height: 344px;
+}
+div#our-portfolio-tab-content .br-screen {
+  width: 100% !important;
+  height: 100% !important;
+}
+div#our-portfolio-tab-content .br-stage {
+  height: 100% !important;
+}
+div#our-portfolio-tab-content img.br-img {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 100% !important;
+  position: static !important;
+}
+/*.br-thumbnails {
+  width: 380px !important;
+}*/
+.portfolio-top-block .br-outer-next div {
+	background-image: url(../../../../Magento_Cms/images/design-services/arrows-slides.png);
+	background-position: right bottom;
+	width: 60px;
+	height: 47px;
+	right: 0px;
+}
+
+.portfolio-top-block .br-outer-prev div {
+	background-image: url(../../../../Magento_Cms/images/design-services/arrows-slides.png);
+	background-position: right top;
+	width: 60px;
+	height: 44px;
+	left: 0px;
+}
+/*.br-links {
+  box-shadow: 0 3px 9px 0 #202124;
+  -webkit-box-shadow: 0 3px 9px 0 #202124;
+  -moz-box-shadow: 0 3px 9px 0 #202124;
+}*/
+.br-3d-shadow{display: none;}
+.portfolio-top-block .br-outer-next div, .portfolio-top-block .br-outer-prev div{
+  margin-top: 0px;
+}
+.br-tooltip.br-tooltip-top img.tooltip {
+	width: 90px !important;
+	height: 90px !important;
+}
+.br-side-prev, .br-outer-prev, .br-side-next, .br-outer-next {
+	height: 60px !important;
+}
+.examples__slider__list {
+    display: inline-block;
+    width: 49%;
+}
+span.examples__slider__list__self__gray, span.examples__slider__list__self__green {
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 25px;
+    display: block;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 28px;
+    letter-spacing: .5px;
+    color: #9b9b9b;
+    text-transform: uppercase;
+}
+
+span.examples__slider__list__self__green {
+  color: #28a7fb;
+}
+li.examples__slider__list__self__container__li {
+    list-style-type: none;
+    margin-left: 5px;
+    font-size: 1.286em;
+    line-height: 40px;
+    /* padding-left: 30px; */
+}
+.examples__slider__list__self__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    text-align: left;
+    padding-bottom: 11px;
+}
+ul.examples__slider__list__self {
+    padding-left: 35px;
+    margin-bottom:0px;
+}
+.examples__slider__list.after-right {
+    float: right;
+    padding-left: 0;
+    width: 47%;
+}
+/*Media Query*/
+@media(max-width: 1680px){
+	.custom-design-service{
+		.service-banner{
+			background-position: 95% 25%;
+			.service-content{
+				max-width: 700px;
+			}
+		}
+		#our-portfolio-tab-content{
+			.slider-container{
+				.main-wrapper{
+					padding: 0 5%;
+				}
+				.arrow-left{
+					left: 0;
+				}
+				.arrow-right{
+					right: 0;
+				}
+			}
+		}
+		.dedicate-block{
+			.button-block{
+				.white-btn{
+					font-size: 22px;
+					padding: 0 22px;
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 1440px){
+	.design-service-default{
+		h1{font-size: 45px;line-height: 49px;}
+	}
+
+	.custom-design-service{
+		.service-banner{
+			background-position: 98% 25%;
+			.service-content{
+				h1{
+					margin: 0 0 17px;
+				}
+			}
+		}
+		#our-portfolio-tab-content{
+			.slider-container{
+				.swiper-container{
+					width: 95%;
+				}
+			}
+		}
+	}
+}
+@media(max-width: 1366px){
+	.design-service-default{
+		h2{font-size: 30px;line-height: 34px;}
+		h3{font-size: 32px;line-height: 36px;}
+		h4{font-size: 32px;line-height: 45px;}
+		h5{font-size: 20px;line-height: 24px;}
+	}
+
+	.custom-design-service{
+		.default-btn{
+			padding: 0 48px;
+			font-size: 22px;
+		}
+
+		.service-banner{
+			background: url(../../../../Magento_Cms/images/design-services/custom-service-img-m.png) no-repeat 99% 25%;
+			.service-content{
+				max-width: 760px;
+				padding: 80px 0 134px 25px;
+				p{
+					&.tailor-text{
+						margin-bottom: 76px;
+						padding-top: 20px;
+					}
+				}
+
+				.service-listing{
+					margin-bottom: 62px;
+				}
+			}
+		}
+
+		.how-work-block{
+			.service-work-block{
+				padding-bottom: 100px;
+			}
+			.work-content{
+				padding: 0 0 63px;
+    			margin: 0 95px;
+    			.work-top-block{
+    				margin-bottom: 60px;
+    				h2{
+    					line-height: 50px;
+    				}
+    				p{
+    					font-size: 16px;
+    					line-height: 30px;
+    				}
+    			}
+    			.destination{
+    				span{
+    					width: 10px;
+					    height: 10px;
+					    top: -6px;
+					    left: -10px;
+    				}
+    				&:before{
+    					background: url(../../../../Magento_Cms/images/design-services/flag-img-s.png) no-repeat;
+					    top: -28px;
+					    right: -47px;
+    				}
+    				&:after{
+    					background: url(../../../../Magento_Cms/images/design-services/location-img-s.png) no-repeat;
+					    top: -33px;
+    				}
+    			}
+    			.work-bottom-list{
+    				padding: 40px 15px 0;
+    			}
+			}
+			.work-button{
+				bottom: 47px;
+				.orange-button{
+					font-size: 22px;
+				    line-height: 33px;
+				    padding: 5px 35px;
+				    height: 48px;
+				}
+			}
+		}
+
+		.service-tab-block{
+			ul{
+				&.tabs{
+					li{
+						i{
+							max-width: 38px;
+						    margin: 0px auto 5px;
+						    width: 100%;
+						}
+					}
+				}
+			}
+			.tab_container{
+				.category-tab{
+					.Category-row{
+						margin-bottom: 80px;
+    					padding: 0 100px;
+    					.category-column{
+    						i{
+    							max-width: 110px;
+    							margin: 0px auto 15px;
+    							width: 100%;
+    							a{
+    								img{
+    									margin: 0 auto;
+    								}
+    							}
+    						}
+    						p{
+    							padding: 0 15px;
+    						}
+    					}
+					}
+				}
+				.tab_content{
+					.test-bottom-title{
+						.submit-design-req{
+							font-size: 30px;
+						    height: 66px;
+						    line-height: 60px;
+						}
+					}
+				}
+				.testimonial-tab{
+					.Category-row{
+						padding: 0 112px;
+						.category-column{
+							.test-content{
+								margin-bottom: 50px;
+							}
+							.test-profile{
+								label{
+									font-size: 20px;
+    								line-height: 24px;
+								}
+								span{
+									font-size: 15px;
+    								line-height: 19px;
+								}
+							}
+						}
+					}
+					.test-bottom-title{
+						.view-link{
+						    font-size: 15px;
+							line-height: 19px;
+						}
+					}
+				}
+			}
+		}
+
+		.service-pricing{
+			padding: 28px 0 39px 0;
+			.service-title{
+				margin-bottom: 40px;
+				h3{
+					margin: 0 0 20px;
+				}
+				ul{
+					li{
+						font-size: 17px;
+					    line-height: 21px;
+					    padding: 0 15px;
+					}
+				}
+			}
+			.outer-pricing-col{
+				.custom-pricing{
+					margin-bottom: 53px;
+					.inner-custom-pricing{
+						max-width: 960px;
+						.left-inner{
+							margin-right: 130px;
+						}
+						.right-inner{
+							max-width: 530px;
+							.start-price{
+								padding: 13px 0;
+							}
+							.sliding-price{
+								padding: 11px 0;
+								.round-slide{
+									width: 140px;
+									height: 140px;
+									span{
+										font-size: 24px;
+    									line-height: 28px;
+    									em{
+    										font-size: 19px;
+    									}
+									}
+								} 
+							}
+						}
+					}
+				}
+				.price-button{
+					.default-btn{
+						height: 45px;
+						font-size: 22px;
+    					line-height: 37px;
+    					min-width: 243px;
+					}
+				}
+			}
+		}
+		.custom-price-content{
+			padding: 25px 0 55px;
+			ul{
+				li{
+					margin-left: 6px;
+					i{
+						left: 44px;
+    					top: 6px;
+					}
+					p{
+						line-height: 27px;
+						padding-left: 94px;
+					}
+				}
+			}
+		}
+		.dedicate-block{
+			margin: 68px 108px 68px 133px;
+			.img-block{
+				max-width: 250px;
+			    width: 100%;
+			    top: -34px;
+			    left: 21px;
+			}
+			.need-content{
+				padding: 18px 0 18px 277px;
+				h6{
+					margin-bottom: 24px;
+					letter-spacing: 1.1px;
+				}
+				p{
+					font-size: 16px;
+    				margin-bottom: 13px;
+				}
+			}
+			.button-block{
+				right: 24px;
+			}
+		}
+		.why-choose-block{
+			margin-bottom: 113px;
+			h2{
+				margin: 0 0 34px;
+			}
+			&:before,&:after{
+				max-width:780px;
+			}
+			&:after{
+				bottom: -64px;
+			}
+			.choose-listing{
+				li{
+					&.top-row{
+						margin-bottom: 80px;
+						&:after{
+							bottom:-43px;
+						}
+					}
+					i{
+						max-width: 67px;
+					    margin: 0px auto 7px;
+					    width: 100%;
+					}
+				}
+			}
+		}
+		.confidential-block{
+			margin-bottom: 65px;
+			h3{
+				margin-bottom: 42px;
+			}
+		}
+		.outer-quick-request{
+			.quick-request-form{
+				padding: 82px 0;
+				.request-column-block{
+					margin: 0 183px;
+					padding: 13px;
+					.inner-col-block{
+						padding: 19px 0;
+						h4{
+							margin-bottom: 30px;
+							line-height: 64px;
+							&:after{
+								left: 30%;
+    							right: 30%;
+    							bottom: -10px;
+							}
+						}
+						p{
+							font-size: 19px;
+							line-height: 23px;
+							margin-bottom: 47px;
+						}
+						.request-row-form{
+							max-width: 645px;
+							.form-group{
+								margin-bottom: 15px;
+								.action{
+									&.primary{
+										min-width: 142px;
+										height: 40px;
+    									line-height: 29px;
+									}
+								}
+								.form-control{
+									font-size: 19px;
+								    line-height: 25px;
+								    height: 38px;
+								    padding: 7px 20px;
+								}
+								textarea{
+									&.form-control{
+										height: 123px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 1280px){
+	.custom-design-service{
+		.service-banner{
+			.service-content{
+				max-width: 715px;
+			}
+		}
+		.dedicate-block{
+			.button-block{
+				.white-btn{
+					font-size: 20px;
+					padding: 0 15px;
+				}
+			}
+		}
+	}
+}
+@media(max-width: 1199px){
+	.custom-design-service{
+		.default-btn{
+			padding: 0 30px;
+		    font-size: 17px;
+		}
+
+		.service-banner{
+			.service-content{
+				max-width: 560px;
+				padding: 60px 0 220px 15px;
+				p{
+					&.tailor-text{
+						margin: 0 0 50px;
+					}
+				}
+			}
+			.service-listing{
+				margin-bottom: 50px;
+			}
+		}
+		.how-work-block{
+			.work-content{
+				margin: 0;
+				.work-bottom-list{
+					ul{
+						li{
+							p{
+								padding: 0;
+							}
+						}
+					}
+				}
+			}
+		}
+		.service-tab-block{
+			ul{
+				&.tabs{
+					margin-bottom:40px;
+					li{
+						padding: 8px 80px;
+					}
+				}
+			}
+			.tab_container{
+				.category-tab{
+					.Category-row{
+						padding: 0;
+						margin-bottom: 70px;
+						.category-column{
+							p{
+								padding: 0;
+								line-height: 30px;
+							}
+						}
+						.column-bottom{
+							.category-column{
+								p{
+									padding: 0;
+								}
+							}
+						}
+					}
+				}
+				.tab_content{
+					.test-bottom-title{
+						.submit-design-req{
+							max-width: 265px;
+							font-size: 26px;
+						    height: 60px;
+						    line-height: 54px;
+						}
+					}
+				}
+				.testimonial-tab{
+					.Category-row{
+						padding: 0 100px;
+						.category-column{
+							.test-content{
+								p{
+									font-size: 16px;
+									line-height: 30px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.service-pricing{
+			padding: 28px 0 70px 0;
+			.outer-pricing-col{
+				.price-button{
+					.default-btn{
+						font-size: 17px;
+						min-width: 215px;
+					}
+				}
+			}
+		}
+		.custom-price-content{
+			ul{
+				li{
+					i{
+						left: 0;
+						top: 2px;
+					}
+					p{
+						padding-left: 54px;
+					    font-size: 16px;
+					    line-height: 24px;
+					}
+				}
+			}
+		}
+		.dedicate-block{
+			margin: 68px 0 68px 0;
+		}
+		.why-choose-block{
+			margin-bottom: 75px;
+			&:after{
+				bottom: -38px;
+			}
+		}
+		.confidential-block{
+			h3{
+				margin-bottom: 30px;
+			}
+			.custom-price-content{
+				ul{
+					li{
+						margin-bottom: 35px;
+					}
+				}
+			}
+		}
+		.outer-quick-request{
+			.quick-request-form{
+				.request-column-block{
+					margin: 0;
+					.inner-col-block{
+						padding: 19px 10px;
+						.request-row-form{
+							.form-group{
+								.action{
+									&.primary{
+										font-size: 17px;
+										min-width: 125px;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width:1140px) {
+	.banner-rotator {
+	    width: 1142px;
+	    height: 300px;
+	}
+}
+
+@media(max-width: 1023px){
+	.design-service-default{
+		h1{font-size: 20px;line-height: 24px;}
+	}
+
+	.custom-design-service{
+		.service-banner{
+			.service-content{
+				padding: 35px 0 160px 15px;
+			}
+		}
+		.service-tab-block{
+			.tab_container{
+				.tab_content{
+					.test-bottom-title{
+						.submit-design-req{
+							font-size: 21px;
+							line-height: 42px;
+							height: 50px;
+							max-width: 250px;
+						}
+					}
+				}
+			}
+		}
+		#our-portfolio-tab-content{
+			.slider-container{
+				.swiper-container{
+					width: 85%;
+				}
+			}
+		}
+		.outer-quick-request{
+			.quick-request-form{
+				.request-column-block{
+					.inner-col-block{
+						h4{
+							line-height: 30px;
+							&:after{
+								left:31%;
+								right: 31%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.banner-rotator {
+		width: 1142px;
+		height: 245px;
+	}
+}
+
+@media(max-width: 991px){
+	.design-service-default{
+		h3{font-size: 30px;line-height: 34px;}
+		h4{font-size: 26px;line-height: 40px;}
+		h6{font-size: 20px;line-height: 26px;}
+	}
+
+	.custom-design-service{
+		.service-banner{
+			background-position: 108% 33%;
+			.service-content{
+				max-width: 360px;
+				.service-listing{
+					margin: 40px 0;
+					li{
+						width: 50%;
+						margin-bottom: 20px;
+					}
+				}
+			}
+		}
+		.how-work-block{
+			.work-content{
+				.work-bottom-list{
+					ul{
+						li{
+							.icon-block{
+								span{
+									font-size: 19px;
+									line-height: 23px;
+									margin-bottom: 25px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.service-tab-block{
+			ul{
+				&.tabs{
+					li{
+						padding: 8px 70px;
+						font-size: 12px;
+					}
+				}
+			}
+			.tab_container{
+				.category-tab{
+					.Category-row{
+						margin-bottom: 60px;
+						.category-column{
+							i{
+								max-width: 80px;
+							}
+							p{
+								margin: 0;
+								font-size: 15px;
+								line-height: 27px;
+							}
+						}
+					}
+				}
+				.testimonial-tab{
+					.Category-row{
+						padding: 0;
+						.category-column{
+							.comma-block{
+								span{
+									width: 85px;
+									i{
+										padding: 13px;
+									}
+									&:before{
+										top: -12px;
+									}
+								}
+							}
+							.test-content{
+								p{
+									padding: 0;
+								}
+							}
+							.test-profile{
+								span{
+									padding-bottom: 15px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.service-pricing{
+			.outer-pricing-col{
+				.custom-pricing{
+					margin-bottom: 30px;
+					.inner-custom-pricing{
+						max-width: 750px;
+						.left-inner{
+							margin-right: 60px;
+						}
+						.right-inner{
+							max-width: 420px;
+						}
+					}
+				}
+			}
+		}
+		.custom-price-content{
+			padding: 25px 0 30px;
+			ul{
+				li{
+					margin-bottom: 30px;
+				}
+			}
+		}
+		.dedicate-block{
+			.img-block{
+				display: none;
+			}
+			.need-content{
+				padding: 15px;
+				h6{
+					padding-right: 0;
+				}
+			}
+		}
+		.why-choose-block{
+			padding-top: 15px;
+			.choose-listing{
+				padding: 0;
+			}
+		}
+		.outer-quick-request{
+			.quick-request-form{
+				.request-column-block{
+					.inner-col-block{
+						p{
+							margin-bottom: 30px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.banner-rotator {
+		width: 1142px;
+	    height: 218px;
+	}
+}
+
+@media(max-width: 767px){
+	.design-service-default{
+		h1{font-size: 24px;line-height: 28px;}
+		h2{font-size: 24px;line-height: 28px;}	
+		h3{font-size: 24px;line-height: 28px;}
+		h4{font-size: 20px;line-height: 30px;}
+	}
+
+	.custom-design-service{
+		.default-btn{
+		    font-size: 16px;
+		    padding: 0 15px;
+		    height: 50px;
+		    line-height: 48px;
+
+		}
+		.service-banner{
+			background-image: none;
+			.service-content{
+				max-width: 100%;
+				padding: 25px 0 60px 0;
+				p{
+					&.tailor-text{
+						font-size: 16px;
+						margin-bottom: 30px;
+					}
+				}
+				.design-button{
+					text-align: center;
+				}
+			}
+		}
+		.how-work-block{
+			.work-content{
+				padding: 0 0 10px;	
+				top: -42px;
+				.work-top-block{
+					h2{
+						line-height: 28px;
+						padding: 7px 0;
+					}
+					p{
+						padding: 0 10px 0;
+					    font-size: 14px;
+					    line-height: 24px;
+					}
+				}
+				.destination{
+					margin: 0 25px;
+					&:after{
+						width:20px;
+						left: 0;
+					}
+					&:before{
+						width:20px;
+						right: 0;
+					}
+				}
+				.work-bottom-list{
+					padding: 40px 10px 0;
+					ul{
+						li{
+							width: 100%;
+							margin-bottom: 20px;
+							&:first-child,&:last-child{
+								text-align:center;
+							}
+							p{
+								line-height: 25px;
+								padding: 0;
+							}
+						}
+					}
+				}
+			}
+			.work-button{
+				.orange-button{
+					font-size: 18px;
+				    line-height: 30px;
+				    margin: 0 15px;
+				    padding: 7px 15px;
+				}
+			}
+		}
+		.service-tab-block{
+			padding: 50px 0;
+			ul{
+				&.tabs{
+					display: none;
+				}
+			}
+			#our-portfolio-tab{
+				display: none;
+			}
+			.tab_container{
+				.our-service-group{
+					margin-bottom: 5px;
+				}
+				.tab_content{
+					.test-bottom-title{
+						margin-bottom: 15px;
+						.submit-design-req{
+							font-size: 18px;
+						    height: 50px;
+						    line-height: 45px;
+						}
+					}
+				}
+				.tab_drawer_heading{
+					display: inline-block;
+					margin: 0;
+				    cursor: pointer;
+				    padding: 8px 10px;
+				    background-color: @slideteam_gray109;
+				    font-size: 17px;
+				    line-height: 21px;
+				    color: @slideteam_gray45;
+				    font-weight: 700;
+				    text-transform: uppercase;
+				    border-top: 3px solid transparent;
+				    border-bottom: 3px solid transparent;
+				    width: 100%;
+				    text-align: center;
+				    box-sizing: border-box;
+				    &.d_active{
+				    	background-color: @white;
+					    color: @slideteam_blue1;
+					    display: inline-block;
+					    border-color: @slideteam_blue1;
+				    }
+				}
+				.category-tab{
+					.Category-row{
+						margin: 0;
+						.column-top,.column-bottom{
+							margin-bottom: 30px;
+							width: 100%;
+							padding: 0;
+						}
+					}
+				}
+				.testimonial-tab{
+					margin-top: 30px;
+					.Category-row{
+						.category-column{
+							.test-content{
+								margin-bottom: 30px;
+								p{
+									margin: 0 0 10px;
+								    line-height: 26px;
+								    font-size: 15px;
+								}
+							}
+							.comma-block{
+								&:before{
+									top:-14px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		.service-pricing{
+			padding: 20px 0 60px 0;
+			.outer-pricing-col{
+				.custom-pricing{
+					.inner-custom-pricing{
+						.left-inner{
+							float: none;
+						    margin-right: 0;
+						    max-width: 100%;
+						    margin-bottom: 10px;
+						    h4{
+						    	text-align: center;
+						    }
+						}
+						.right-inner{
+							max-width: 100%;
+						}
+					}
+				}
+				.price-button{
+					.default-btn{
+						min-width: 161px;
+					}
+				}
+			}
+		}
+		.custom-price-content{
+			padding: 25px 0 40px;
+			ul{
+				li{
+					margin-bottom: 20px;
+					p{
+						font-size: 14px;
+    					line-height: 20px;
+    					padding-left: 40px;
+					}
+				}
+			}
+		}
+		.dedicate-block{
+			margin: 30px 0 60px;
+			.need-content{
+				p{
+					padding-right: 0;
+				}
+			}
+			.button-block{
+				display: block;
+				position: static;
+				margin-top: 30px;
+				text-align: center;
+				.white-btn{
+					padding: 0 35px;
+				    font-size: 16px;
+				    height: 46px;
+				    line-height: 40px;
+				}
+			}
+		}
+		.why-choose-block{
+			padding-top: 0px;
+			margin-bottom: 40px;
+			&:after{
+				bottom:-10px;
+			}
+			.choose-listing{
+				ul{
+					li{
+						padding:10px 15px;
+						width: 50%;
+						margin-bottom: 40px;
+						label{
+							min-height: 77px;
+							font-size: 18px;
+							line-height: 22px;
+						}
+						&.top-row,&.mobile-row{
+							margin-bottom: 40px;
+						}
+						&.top-row{
+							&:after{
+								bottom: 4px;
+							}
+						}
+						&.mobile-row{
+							&:after{
+								content: "";
+							    max-width: 130px;
+							    width: 100%;
+							    height: 1px;
+							    background: url(../../../../Magento_Cms/images/design-services/grey-line-s.png) no-repeat;
+							    position: absolute;
+							    bottom: 4px;
+							    left: 0;
+							    right: 0;
+							    margin: 0px auto;
+							}
+						}
+					}
+				}
+				
+			}
+		}
+		.confidential-block{
+			margin-bottom: 40px;
+			h3{
+				margin-bottom: 20px;
+			}
+			.custom-price-content{
+				ul{
+					li{
+						margin-bottom: 20px;
+						p{
+							padding-left: 40px;
+						}
+						i{
+							top: 2px;
+						}
+					}
+				}
+			}
+		}
+		.outer-quick-request{
+			.quick-request-form{
+				.request-column-block{
+					.inner-col-block{
+						h4{
+							line-height: 30px;
+							margin-bottom: 20px;
+							padding-bottom: 5px;
+							&:after{
+								bottom:-6px;
+								left: 23%;
+								right: 23%
+							}
+						}
+						p{
+							font-size: 16px;
+							line-height: 20px;
+							margin-bottom: 20px;
+						}
+						.request-row-form{
+							.form-group{
+								.form-control{
+									font-size: 15px;
+									padding: 0 10px;
+								}
+								textarea{
+									&.form-control{
+										height: 90px;
+									}
+								}
+								&.form-upload{
+									.attach-block{
+										.ajax-file-upload-container{
+											.ajax-file-upload-statusbar{
+												.ajax-file-upload-progress{
+													width: 95%;
+													display: block;
+												}
+												.ajax-file-upload-filename{
+													text-align: left;
+    												padding: 0 10px 0 0;
+												}
+											}
+										}
+									}
+								}
+							}
+
+						}
+					}
+				}
+			}
+		}
+	}
+	.banner-rotator {
+		height: 190px
+	}
+}
+
+@media(max-width: 575px){
+
+	.custom-design-service{
+		.service-pricing{
+			.service-title{
+				margin-bottom: 20px;
+				ul{
+					li{
+						padding: 0;
+						border-right: 0;
+						display: block;
+						text-align: center;
+						font-size: 14px;
+						line-height: 21px;
+						margin-bottom: 7px;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*Captcha Css*/
+#design_services_form {
+	.captcha-wrapper{
+		text-align: left;
+		.control.captcha-image {
+			margin-top: 5px;
+		}
+		.nested {
+			display: inline;
+			float:left
+		}
+		.control.captcha {
+			display: inline;
+			float: left;
+			width: 32%;
+			margin-right: 15px;
+		}
+	}
+}
+@media(max-width: 1280px){
+	#design_services_form {
+		.captcha-wrapper {
+			.control.captcha {
+				width: 40%;
+			}
+		}
+	}
+	.banner-rotator {
+		width: 100%; 
+	}
+	div#our-portfolio-tab-content {
+	    width: 80%;
+	    margin: 0 auto;
+	}	
+}
+@media(max-width: 575px){
+	#design_services_form {
+		.captcha-wrapper {
+			.control.captcha {
+				display: block;
+				width: 100%;
+				float: left;
+				input{
+					&#captcha_custom_design_service_captcha {
+						width: 100%;
+						max-width: 100%;
+					}
+				}
+			}
+		}
+	}
+}
+/*1093 - Add 'Schedule a demo' button on Design service page*/
+.design-button {
+    float: left;
+}
+.default-btn.default-btn-custom2 {
+    background: #f88d22;
+    border: 2px solid #f88d22;
+    margin-left: 20px;
+}
+.default-btn.default-btn-custom2:hover {
+    color: #f88d22;
+    border: 2px solid #f88d22;
+    background: #fff;
+}
+.service-listing.clearfix {
+    display: inline-block;
+    width: 100%;
+}
+.design-button-wrapper1 {
+    width: 100%;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 64px;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.design-button-wrapper1 .design-button {
+    float: none;
+    display: inline-block;
+}
+.design-button-wrapper1 .design-button a:hover,
+.design-button-wrapper3 .design-button a:hover {
+    background: transparent;
+}
+.design-button-wrapper2 {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.design-button-wrapper2 .design-button {
+    float: none;
+    display: inline-block;
+}
+.design-button-wrapper3 .design-button {
+    float: none;
+    display: inline-block;
+}
+.design-button-wrapper3 {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+.default-btn-custom2:active, .default-btn-custom2:focus, .default-btn-custom2:focus-within, .default-btn-custom2:focus-visible {
+    border: 2px solid #f88d22 !important;
+    background: transparent !important;
+    color: #f88d22 !important;
+}
+.default-btn.default-btn-custom2 {
+    cursor: pointer;
+}
+@media (max-width: 991px) {
+	.default-btn.default-btn-custom2 {
+        margin-left: 10px;
+    }
+    .custom-design-service .default-btn {
+        height: 52px;
+        line-height: 49px;
+        padding: 0 20px;
+        font-size: 15px;
+    }
+}
+@media (max-width: 575px) {
+	.design-button {
+        float: none;
+        width: 100%;
+        margin: 8px 0px;
+    }
+    .design-button-wrapper1 {
+        bottom: 5px;
+    }
+    .default-btn.default-btn-custom2 {
+        margin-left: 0px;
+    }
+}
+/* End of 1093 - Add 'Schedule a demo' button on Design service page*/
+
+
+/*1107 - The alignment issue on design service page at portfolio section*/
+@media only screen and (min-width:1281px) and (max-width: 1366px) {
+	.custom-design-service .service-tab-block ul.tabs li {
+		padding: 8px 114px
+	}
+}
+
+@media only screen and (min-width:1200px) and (max-width: 1280px) {
+	.custom-design-service .service-tab-block ul.tabs li {
+		padding: 14px 96px 10px;
+	}
+}
+
+
+@media (max-width:768px) {
+	.custom-design-service .service-tab-block ul.tabs li {
+		padding: 8px 51px;
+		font-size: 12px;
+	}
+}
+
+@media only screen and (min-width:993px) and (max-width: 1199px) {
+	.custom-design-service .service-tab-block ul.tabs {
+		width: 80%;
+		margin: 0 auto 40px;
+	}
+	.custom-design-service .service-tab-block ul.tabs li {
+		padding: 8px 0px;
+		width: 33%;
+		margin-right: 0;
+	}
+}
+
+@media only screen and (min-width:1200px) and (max-width: 1280px) {
+	.custom-design-service .service-tab-block ul.tabs {
+		width: 80%;
+		margin: 0 auto 40px;
+	}
+	.custom-design-service .service-tab-block ul.tabs li {
+		padding: 8px 0px;
+		width: 33%;
+		margin-right: 0;
+	}
+}
+
+@media only screen and (min-width:768px) and (max-width: 992px) {
+	.custom-design-service .service-tab-block ul.tabs {
+		width: 80%;
+		margin: 0 auto 40px;
+	}
+	.custom-design-service .service-tab-block ul.tabs li {
+		padding: 8px 0px;
+		width: 32.8%;
+		margin-right: 0px;
+	}
+}
+/*End of 1107 - The alignment issue on design service page at portfolio section*/

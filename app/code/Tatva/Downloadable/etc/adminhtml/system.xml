@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tatvasoft" translate="label" sortOrder="10">
+            <label>TATVASOFT</label>
+        </tab>
+        <section id="button" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="download" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Download Restrict</label>
+                <field id="restrict" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Download Restrict Number</label>                    
+                    <comment>Free customer download only above number of products.</comment>
+                </field>
+                
+            </group>
+            <group id="cus_download" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Customer Download More Than 100 Products In single Day</label>                
+                <field id="to_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(To)</label>                   
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(cc)</label>
+                    <comment>enter comma separated emails</comment>
+                </field>
+                <field id="accesskey" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter AccessKey</label>
+                </field>
+            </group>
+        </section>
+        
+        <section id="animation" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Animation</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Animation::tatva_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Animation</label>
+                <field id="categoryId" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for Animation</label>
+                    <source_model>Tatva\Resume\Model\Config\Source\CategoryList</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

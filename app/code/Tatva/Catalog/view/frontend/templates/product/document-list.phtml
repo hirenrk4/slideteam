@@ -1,0 +1,121 @@
+<?php
+$_productCollection = $block->getLoadedProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+?>
+<?php //echo $block->getToolbarHtml() ?>
+<?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $image = 'resume_page_list';
+       
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $image = 'resume_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    $pos = $block->getPositioned();
+?>
+
+<?php if (!$_productCollection->getSize()): ?>
+
+    <section class="resume_section">
+        <div class="main-wrapper clearfix">           
+            <div class="container">
+                <div class="message-wrapper">
+                    <div class="message info empty">
+                        <div>
+                            <?= /* @escapeNotVerified */ __('We can\'t find products matching the selection.') ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<?php else : ?>
+    
+    <?php $iterator = 1; ?>
+    <?php $_collectionSize = $_productCollection->getSize() ?>
+    <?php $_columnCount = 4; ?>
+    <?php $i=0; $j=10; ?>
+    <div class="resume-toolbar">
+        <?php echo $block->getToolbarHtml() ?>
+    </div>
+    <section class="resume_section one_page">        
+        <div class="main-wrapper clearfix">         
+            <div class="conatiner">
+                <ul id="lightbox">
+                    <?php foreach ($_productCollection as $_product): ?>
+                        <li>
+                            <div class="resume_div ">
+                                <?php
+                                    $_product = $_product->load($_product->getId());
+                                    $productImage = $block->getImage($_product, $image);
+                                    if ($pos != null) {
+                                        $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                                            . 'top:' . $productImage->getHeight() . 'px;"';
+                                    }
+                                ?>
+                                <?php
+                                    $galary_images = array();
+                                    $image_noframe = "product_page_image_medium_no_frame";
+                                    $productImage2 = $block->getImage($_product, $image_noframe);                                   
+                                    $total_images = $_product->getMediaGalleryImages();
+                                    $small_image_biggersize1 = $productImage2->getImageUrl();
+
+                                    foreach($total_images as $val)
+                                    {
+                                        $galary_images[] = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'category_page_grid')->setImageFile($val->getFile())->getUrl();
+                                    }
+
+                                    $count_total_images = count($galary_images);
+                                    $remaining = $count_total_images - 1;
+                                    //$small_image_biggersize1 = $galary_images[0];
+                                    $small_image_biggersize2="";
+                                    $small_image_biggersize3="";
+                                    $small_image_biggersize4="";
+                                    $small_image_biggersize5="";
+                                    $small_image_biggersize6="";
+                                ?>
+                                <a href="<?= $_product->getProductUrl(); ?>" class="product photo product-item-photo" tabindex="-1">                                    
+                                    <?php $image_result = array('key'=>$j,'total_images'=>$count_total_images, 'remaining'=>$remaining, 'name'=>$_product->getName(),
+                            'id'=>$_product->getId(),'product_url'=>$block->getBaseUrl()."resume-template/".$_product->getUrlKey().".html",'zoomsrc'=>$small_image_biggersize1,
+                            'zoomsrc2'=>$small_image_biggersize2,'zoomsrc3'=>$small_image_biggersize3,
+                            'zoomsrc4'=>$small_image_biggersize4,'zoomsrc5'=>$small_image_biggersize5,'zoomsrc6'=>$small_image_biggersize6,"documentpage"=>1); ?>
+                            <?= $productImage->setData('image_result',$image_result)->toHtml() ?>
+                                </a>
+                                
+                            </div>
+                            <p class="detailres_link content-trim-popular">
+                                <a href="<?= $_product->getProductUrl(); ?>"  class="name-trim"  rel="imgtip[<?php echo $j;?>]">
+                                    <?= $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+                                </a>
+                            </p>
+                            <?php if ($showDescription): ?>
+                                <div class="product-description-parent">
+                                    <div class="product-description">
+                                        <p class="description-trim"><?= str_replace('</p>','',str_replace('<p>','',$_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'))) ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        </li>
+                        <?php $j++; ?>
+                    <?php endforeach; ?>                    
+                </ul>
+            </div>
+        </div>
+    </section>
+    <div class="resume-toolbar bottom">
+        <?php echo $block->getToolbarHtml() ?>
+    </div>
+
+<script type="text/javascript">
+    require(['jquery','Ddimgtooltip','domReady!'], function (jQuery){
+});
+</script>
+
+<?php endif; ?>

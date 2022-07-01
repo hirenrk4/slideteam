@@ -1,0 +1,100 @@
+<?php if($this->getEmarsysIntegrationStatus()):?>
+<div class="products wrapper products-slide">
+    <div id="couponcodes_emrarsys" class="recommended-product coupon_emarsys"></div>
+</div>
+
+<script type="text/html" id="personal-template">
+    <![CDATA[
+    {{ if (SC.page.products.length) { }}
+    <div class="recommended-title">
+        <h4>Recommended For You</h4>
+    </div>
+    <amfpc name="tatva_emarsys_product_widget_personal">
+        <div class="recommended-outer">
+            <div id="personal" class="recommended-list owl-carousel">
+                {{ for (var i=0; i < SC.page.products.length; i++) { }}
+                {{ 
+                var p = SC.page.products[i];
+                var remaining = p.c_number_of_slides-3;
+                var count_total_images = p.c_number_of_slides;
+                first_thumbnail = second_thumbnail = third_thumbnail = fourth_thumbnail = fifth_thumbnail = sixth_thumbnail = "NA";
+                first_thumbnail = p.c_thumbnail_1;
+                second_thumbnail = p.c_thumbnail_2;
+                third_thumbnail = p.c_thumbnail_3;
+                fourth_thumbnail = p.c_thumbnail_4;
+                fifth_thumbnail = p.c_thumbnail_5;
+                sixth_thumbnail = p.c_thumbnail_6;
+                }}
+                <div class="item" data-scarabitem="{{= p.id }}">
+                    <a class="product-image image-height" title="Lorum ipsum dolor sit amet" href="{{=p.link}}">
+                        <img class="small_image_hover lazyload" rel='imgtip[{{= p.id }}10000]' title ="{{= p.title }}" product_name ="{{= p.title }}" product_url = "{{= p.link }}" remaining = "{{=remaining}}" zoomsrc="{{= first_thumbnail }}" zoomsrc2="{{= second_thumbnail }}" zoomsrc3="{{= third_thumbnail }}" new_remaining = "{{=(count_total_images - 6)}}" total_images ={{= count_total_images}} zoomsrc4="{{= fourth_thumbnail }}" zoomsrc5="{{= fifth_thumbnail }}" zoomsrc6="{{= sixth_thumbnail}}" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="{{= p.image }}" >                    
+                        {{  if(p.category && p.category.indexOf('Animated>') !== -1) { }}
+                            <span class="badge-label">Animated</span>
+                        {{ } }}
+                    </a>
+                    <div class="product-info" rel='imgtip[{{= p.id }}10000]'>
+                        <p class="product-name product-name-trim-2"><a title="{{= p.title }}" href="{{=p.link}}">{{= p.title }}</a></p>
+                    </div>
+                </div>
+            {{ } }}
+            </div>
+        </div>
+    </amfpc>
+{{ } }}
+]]>
+</script>
+<script type="text/javascript">
+require(['jquery','EmarsysWidgetJs','owl_carausel','domReady!'], function (jQuery){
+    ScarabQueue.push(['recommend',
+    {
+        logic: 'PERSONAL',
+        containerId: 'couponcodes_emrarsys',
+        limit: 15,
+        templateId: "personal-template",
+        success: function(SC, render)
+        {
+            render(SC);
+            jQuery("#personal").owlCarousel({
+                navigation : true,
+                nav:true,
+                pagination:false,
+                items : 4,
+                itemsCustom : false,
+                rewindNav : false,
+                navRewind : false,
+                lazyLoad: false,
+                scrollPerPage : true,
+                navText : ["", ""],
+                dots : false,
+                slideBy:4,
+                responsiveClass:true,
+                responsive:{
+                    0:{
+                        items:1,
+                        slideBy:1,
+                        nav:true
+                    },
+                    576:{
+                        items:2,
+                        slideBy:2,
+                        nav:true
+                    },
+                    750:{
+                        items:3,
+                        slideBy:3,
+                        nav:true
+                    },                    
+                    1440:{
+                        items:4,
+                        slideBy:4,
+                        nav:true
+                    }
+                }
+            });
+            ddimgtooltip.init("*[rel^=imgtip]");
+        }
+    }]);
+    //ScarabQueue.push(['go']);
+});
+</script>
+<?php endif;?>

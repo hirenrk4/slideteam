@@ -1,0 +1,170 @@
+	<button name="back" id="backstep" class="back-sub-category">Back</button>
+	<div class="popup-title">
+		<h3><?php echo __("Submit Your Project") ?></h3>
+	</div>
+	<div class="general-timeline-progress">		
+		<img src="<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/step-2.png") ?>"/>
+	</div>
+	<div class="popup-content">
+		<form method="post" enctype="multipart/form-data" id="product-contact-form" name="product-contactus">
+			<div class="second-title">				
+				<p class="questionnarie-second-title">
+					<img src="<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-powerporint-design.png"); ?>"/>
+					<?php echo __("One last step.<br/>Please share your contact details and submit your project."); ?>
+				</p>
+			</div>
+			<ul class="popup-contact">
+				<li class="general-div">
+					<label class="">
+						<i>
+							<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/green-arrow-circle.png'); ?>"/>
+							<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/blue-tick.png'); ?>" class="ticked-img"/>
+						</i>
+						<?php echo __("Name") ?></label>
+					<div>
+						<input type="text" name="name" id="contact-name" class="required-entry" value=""/>
+						<span class="validation-option" id="option-required-entry-name" >This is a required field.</span>
+					</div>
+				</li>  
+				<li class="general-div">
+					<label class="">
+						<i>
+							<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/green-arrow-circle.png'); ?>"/>
+							<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/blue-tick.png'); ?>" class="ticked-img"/>
+						</i>
+						<?php echo __("Email ID") ?>
+					</label>
+					<div>
+						<input type="text" name="email" id="email" class="required-entry validate-email" value=""/>
+						<span class="validation-option" id="option-required-email" >Please enter valid email address.</span>
+					</div>
+				</li> 
+				<li class="contact-phoneno general-div">
+					<label class="">
+						<i>
+							<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/green-arrow-circle.png'); ?>"/>
+							<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/blue-tick.png'); ?>" class="ticked-img"/>
+						</i>
+						<?php echo __("Phone <b>(optional)</b>") ?>
+					</label>
+					<div class="wrap_isd_phoneno">
+						<div class="custom-dropdown country_code">
+							<select name="isd_code" data-type='custom-dropdown'>
+								<?php $isdcodelist = array_unique($block->getIsdcodelist());sort($isdcodelist) ?>
+								<?php foreach($isdcodelist as $val) : ?>
+									<option value="<?php echo __($val) ?>"><?php echo __($val) ?></option>
+								<?php endforeach; ?>											   
+							</select>
+						</div>
+						<input type="text" name="phone_no" id="phone_no" class="validate-digits maximum-length-15 special-text" value=""/>
+						<span class="validation-option" id="option-required-phone_no; ?>" >Please enter only digits.</span>
+					</div> 
+					<div class="contact-callme">
+						<div class="checkbox_outer <?php if(isset($formvalues['contactme']) && $formvalues['contactme'] == 1) : echo 'checked'; endif; ?>">
+							<label for="<?php echo __("Call me"); ?>">
+								<input type="radio" class="icheck validation-checkradio"   value="1" name="contactme" /><?php echo __("Call me"); ?>
+							</label>
+						</div>
+						<div class="checkbox_outer">
+							<label for="<?php echo __("Do not call me"); ?>">						   
+								<input type="radio" class="icheck validation-checkradio" value="0" name="contactme" /><?php echo __("Do not call me"); ?>
+							</label>						
+						</div>
+						<span class="validation-option" id="option-validate-one-required-by-" >Please select the valid options.</span>
+					</div>
+				</li>
+				<li class="captcha-div"> 
+				<?php
+					$blockPath = 'Magento\Captcha\Block\Captcha';
+                    $block = $this->getLayout()->createBlock($blockPath);
+                    $cap_data = array('form_id'=>'product-contact-cap','img_width'=>'50');
+                    $block->setData($cap_data);
+                    echo $block->toHtml();
+				?>
+				</li>
+				<li class="submit-project-li">
+					<button class="contactus-submit-popup">
+						<?php echo __("Submit Project"); ?>
+						<i>
+							<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/white_flag.png'); ?>"/>
+							<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/blue_flag.png'); ?>" class="blue-submit-img"/>
+						</i>
+					</button>
+				</li>
+			</ul>
+			
+		</form>
+	</div>
+	<div class="footer-text">
+		<img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/quote.png') ?>"/>
+		<p><?php echo __('"<b>...above and beyond expectations</b> " - Gabrielle Costigan, CEO Linfox'); ?></p>
+	</div>  
+	  <?php
+		 $blockObj= $block->getLayout()->createBlock('Tatva\Downloadable\Block\Reserch');
+		$sessionData =$blockObj->getSessionValue();
+		$formData=$sessionData->getData('products_data');
+
+		if(isset($formData) && !empty($formData))
+		{
+			echo "<form name='hiddenFormData' id='hiddenFormData'>";
+		  foreach($formData as $key=>$value){
+		  	if(is_array($value))
+		  		continue;
+		    echo '<input type="hidden" name="'.$key.'" id="'.$key.'" value="'.$value.'"/>';
+
+		  }
+		  echo "</form>";
+		}
+		?>
+
+<!-- 	<script type="text/javascript">
+		jQuery(document).ready(function(){
+			jQuery(document).find('.validation-option').hide();
+		});
+		
+		var formId = 'product-popup-form';
+	    var myForm = new VarienForm(formId, true);
+	    var postUrl = '<?php //echo $this->getUrl("projectsubmit/productpopup/contactus") ?>';
+		
+		function doAjaxContactus()
+		{
+			if (myForm.validator.validate()) {
+				jQuery.fancybox.showLoading();
+				jQuery.ajax({
+			        type: "POST",
+			        url: postUrl,
+			        data: jQuery('#product-popup-form').serialize(),
+					dataType : 'json',
+			        success: function (res) {	
+			        	jQuery.fancybox.hideLoading(); 
+						if(res.status == "CaptchaError")
+						{	 	
+							jQuery(document).find('.invalid-captcha').show();
+						}
+						else if(res.status == "Error")
+						{
+							var fields = res.fields_name;						
+							var fields_array = fields.split(",");
+							for (var i=0; i<fields_array.length;i++)
+							{
+								var fieldname = fields_array[i];							
+								jQuery(document).find("input[name='"+fieldname+"']").parent("div").find("span.validation-option").show();							
+								jQuery(document).find("input[name='"+fieldname+"']").parent().parent().parent("div.checkbox_outer").next("span.validation-option").show();
+							}
+						}
+						else
+						{ 	
+							jQuery('.fancybox-main-dv').replaceWith(res.nextHtml);
+							jQuery(document).find("#backstep").hide(); 	
+						}
+			        }
+				});	
+			}
+		}
+		
+		new Event.observe(formId, 'submit', function (e) {
+	        e.stop();
+	        doAjaxContactus();				
+	    });
+	</script>
+	<script src="<?php //echo $this->getViewFileUrl('Tatva_Downloadable::js/product-popup.js') ?>"></script>	 -->	

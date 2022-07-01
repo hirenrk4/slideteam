@@ -1,0 +1,198 @@
+<?php 
+$blockObj= $block->getLayout()->createBlock("Emarsys\Emarsys\Block\JavascriptTracking");
+$merchantId = $blockObj->getMerchantId(); ?>
+<?php $webExtendStatus = $blockObj->getJsEnableStatusForAllPages(); ?>
+<?php $catarray = $block->getCategoryList(); ?>
+
+<!-- This code will embeded on all pages -->
+<?php if ($webExtendStatus && !empty($merchantId)): ?>
+    <?php $helper = $this->helper('Emarsys\Emarsys\Helper\Data'); ?>
+    <!-- <script type="text/javascript">
+        var ScarabQueue = ScarabQueue || [];
+        (function (subdomain, id) {
+            if (document.getElementById(id)) return;
+            var js = document.createElement('script');
+            js.id = id;
+            js.src = subdomain + '.scarabresearch.com/js/<?php echo $merchantId; ?>/scarab-v2.js';
+            var fs = document.getElementsByTagName('script')[0];
+            fs.parentNode.insertBefore(js, fs);
+        })('https://cdn', 'scarab-js-api');
+    </script> -->
+    <?php
+  endif;
+      $arr = explode('/',trim($this->getRequest()->getPathInfo(), '/'));
+         $tag_id=$this->getRequest()->getParam('tagId');
+         if($tag_id!="" && $tag_id>0)
+         {
+          $tag=$this->tagTagFactory->create()->load($tag_id);
+          $search_name= $tag;
+         }
+        elseif($block->getRegistry()->registry('current_tag'))
+        {
+           $search_name= $block->getRegistry()->registry('current_tag');
+        }
+        elseif(count($arr)==1 && $arr[0]=='tag'){
+                $tag = $this->tagTagFactory->create()->load($arr[0],'name');
+            $block->getRegistry()->register('current_tag', $tag);     
+           $search_name= $block->getRegistry()->registry('current_tag');
+        }
+$search_name = str_replace('-',' ',$search_name->getName());
+?>
+
+<!-- <script type="text/html" id="listing-tmpl<?php //echo 1;?>"> -->
+ <script type="text/html" id="search-template">
+<![CDATA[
+{{ if (SC.page.products.length) { }}
+<amfpc name="tatva_emarsys_themes_widget_<?php echo 1;?>">
+    <div class="recommended-title-top tatva-theme-wrapper">
+      <h2> Recommended For You</h2>
+    </div>
+    <div class="products-grid-outer emarsys-products-list">
+        <ul class="products-grid products-grid--max-5-col pro-image category-list clearfix">
+            {{ for (var i=0; i < SC.page.products.length; i++) { }}
+                {{ var p = SC.page.products[i]; }}
+                {{
+                    var count_total_images = p.c_number_of_slides;
+                    var remaining = p.c_number_of_slides-3;
+                    first_thumbnail = second_thumbnail = third_thumbnail = fourth_thumbnail = fifth_thumbnail = sixth_thumbnail = "NA";
+                    first_thumbnail = p.c_thumbnail_1;
+                    second_thumbnail = p.c_thumbnail_2;
+                    third_thumbnail = p.c_thumbnail_3;                
+                    fourth_thumbnail = p.c_thumbnail_4;
+                    fifth_thumbnail = p.c_thumbnail_5;
+                    sixth_thumbnail = p.c_thumbnail_6;
+                    var category = p.category;
+                    var word = category.split(">");
+                    var catarray = <?php echo json_encode($catarray); ?>;
+                    var product_id = 'ppt-product';
+                }}
+                {{  if(p.category && catarray.includes(word[0]) == true) {
+                      var product_id = 'onepage-product';
+                      }
+                }}
+                <li data-scarabitem="{{= p.id }}" class="item {{= product_id }}">
+                    <a class="product-image image-height" title="{{= p.title }}" href="{{= p.link }}">   
+                        <img class="small_image_hover" rel='imgtip[{{= p.id }}110000]' title ="{{= p.title }}" product_name ="{{= p.title }}" product_url = "{{= p.link }}" remaining = "{{=remaining}}" zoomsrc="{{= first_thumbnail }}" zoomsrc2="{{= second_thumbnail }}" zoomsrc3="{{= third_thumbnail }}" new_remaining = "{{=(count_total_images - 6)}}" total_images ={{= count_total_images}} zoomsrc4="{{= fourth_thumbnail }}" zoomsrc5="{{= fifth_thumbnail }}" zoomsrc6="{{= sixth_thumbnail}}" src="{{= p.image }}"  >
+                        {{  if(p.category && p.category.indexOf('Animated>') !== -1) { }}
+                            <span class="badge-label">Animated</span>
+                        {{ } }}
+                    </a>
+                    <div class="product-info name-only">
+                        <span class="product-name name-content-trim"><a rel='imgtip[{{= p.id }}110000]' title="{{= p.title }}" href="{{= p.link }}">{{= p.title }}</a></span>
+                    </div>   
+                    {{ if (p.c_short_description !== null) { }}
+                        <p class="description-content-trim">{{= p.c_short_description }}</p>
+                    {{ } }}
+                </li>
+            {{ } }}
+        </ul>
+    </div>
+</amfpc>
+{{ } }}
+]]>
+</script>
+
+<script type="text/javascript">
+
+require(['jquery','EmarsysWidgetJs','domReady!'], function (jQuery){
+  ScarabQueue.push(['searchTerm', '<?php echo $search_name; ?>']);  
+  jQuery(".toolbar").eq(1).hide();
+  ScarabQueue.push(['recommend',
+  {
+    logic: 'SEARCH',
+    limit: 15,
+    containerId: 'search-resc',
+    templateId: 'search-template',
+    success: function(SC, render)
+    {
+      render(SC);
+      
+      var rowProduct = 0;
+      var resProducts = SC.page.products.length;
+      var widthwindow = screen.width;
+    
+      if(widthwindow >= 1200)
+      {
+        if(resProducts > 10 && resProducts < 15){
+          jQuery("div.emarsys-products-list ul li:nth-child(14)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(13)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(12)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(11)").remove();
+        }
+        else if(resProducts > 5 && resProducts < 10)
+        {
+          jQuery("div.emarsys-products-list ul li:nth-child(9)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(8)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(7)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(6)").remove();    
+        }
+      }else if(widthwindow >= 1024 && widthwindow < 1200)
+      {
+        if(resProducts > 12 && resProducts <= 15){
+          jQuery("div.emarsys-products-list ul li:nth-child(15)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(14)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(13)").remove();       
+        }
+        else if(resProducts > 8 && resProducts < 12)
+        {
+          jQuery("div.emarsys-products-list ul li:nth-child(11)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(10)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(9)").remove();
+        }
+        else if(resProducts > 4 && resProducts < 8)
+        {
+          jQuery("div.emarsys-products-list ul li:nth-child(7)").remove();  
+          jQuery("div.emarsys-products-list ul li:nth-child(6)").remove();  
+          jQuery("div.emarsys-products-list ul li:nth-child(5)").remove();  
+        }
+      }else if(widthwindow >= 576 && widthwindow < 1024)
+      {
+        if(resProducts > 12 && resProducts < 15){       
+          jQuery("div.emarsys-products-list ul li:nth-child(14)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(13)").remove();       
+        }
+        else if(resProducts > 9 && resProducts < 12)
+        {
+          jQuery("div.emarsys-products-list ul li:nth-child(11)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(10)").remove();
+        }
+        else if(resProducts > 6 && resProducts < 9)
+        {
+          jQuery("div.emarsys-products-list ul li:nth-child(8)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(7)").remove();  
+        }
+        else if(resProducts > 3 && resProducts < 6)
+        {
+          jQuery("div.emarsys-products-list ul li:nth-child(5)").remove();
+          jQuery("div.emarsys-products-list ul li:nth-child(4)").remove();  
+        }
+      }       
+    
+      ddimgtooltip.init("*[rel^=imgtip]");
+      
+      /*jQuery('.name-content-trim').dotdotdot({
+        callback: function (isTruncated) {},
+        ellipsis: "\u2026 ",
+        height: 45,
+        keep: null,
+        tolerance: 0,
+        truncate: "word",
+        watch: "window",
+      });
+      
+      jQuery('.description-content-trim').dotdotdot({
+        callback: function (isTruncated) {},
+        ellipsis: "\u2026 ",
+        height: 120,
+        keep: null,
+        tolerance: 0,
+        truncate: "word",
+        watch: "window",
+      });*/
+      jQuery(".tag-list").show();
+      jQuery(".toolbar").eq(1).show();
+    }
+  }]);
+  //ScarabQueue.push(['go']);
+});
+</script>

@@ -1,0 +1,50 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $posts = $this->getPosts() ?>
+<?php if (count($posts) > 0): ?>
+	<div class="post-list-wrapper">
+		<ol class="post-list">
+			<?php foreach($posts as $post): ?>
+				<?php if ($renderedPostHtml = $this->renderPost($post)): ?>
+					<li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> <?php echo $post->getPostFormat() ?>">
+						<?php echo $renderedPostHtml ?>
+					</li>
+				<?php endif; ?>
+			<?php endforeach; ?>
+		</ol>
+		<?php echo $this->getPagerHtml() ?>
+	</div>
+<?php endif; ?>
+<?php
+if($this->checkCustomerType())
+{
+  $popupData = $this->getPopupData()->getPopupContent('blog_detail_popup');
+  if($popupData && !empty($popupData))
+  {
+    	echo $popupData['popup_content'];
+    	if($popupData['popup_js'])
+    	{
+        	echo $popupData['popup_js'];
+    	}
+    	if($popupData['popup_css'])
+    	{
+       	?>
+       	<script type="text/javascript">
+            	require(['jquery'], function ($) {
+                	$(document).ready(function(){
+                    	var mb_popup_style = $('<style type="text/css">'+<?php echo json_encode($popupData['popup_css']); ?>+'</style>');
+                    	$('html > head').append(mb_popup_style);    
+                	})
+            	})
+        	</script>
+        	<?php
+    	}
+
+  }
+}
+?>

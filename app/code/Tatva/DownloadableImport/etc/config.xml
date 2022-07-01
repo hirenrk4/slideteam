@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+    <default>
+        <general>
+            <file>
+                <import_images_base_dir>pub/media/import</import_images_base_dir>
+            </file>
+        </general>
+    </default>
+</config>

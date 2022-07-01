@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<captcha translate="label">
+            <fonts>
+                <arial>
+                    <label>Arial</label>
+                    <path>GnuFreeFont/FreeSerifBold.ttf</path>
+                </arial>
+            </fonts>
+        </captcha>
+        <!-- <captcha translate="label">
+            <fonts>
+                <arial>
+                    <label>Arial</label>
+                    <path>LinLibertineFont/LinLibertine_Bd-2.8.1.ttf</path>
+                </arial>
+            </fonts>
+        </captcha> -->
+		<customer>
+			<captcha>
+				<shown_to_logged_in_user>
+					<resume_service_captcha1>1</resume_service_captcha1>
+				</shown_to_logged_in_user>
+				<always_for>
+					<resume_service_captcha1>1</resume_service_captcha1>
+				</always_for>
+			</captcha>
+		</customer>
+		<captcha translate="label">
+			<frontend>
+				<areas>
+					<resume_service_captcha1>
+						<label>Resume Service Form1</label>
+					</resume_service_captcha1>
+				</areas>
+			</frontend>
+		</captcha>
+		<customer>
+			<captcha>
+				<shown_to_logged_in_user>
+					<resume_service_captcha2>1</resume_service_captcha2>
+				</shown_to_logged_in_user>
+				<always_for>
+					<resume_service_captcha2>1</resume_service_captcha2>
+				</always_for>
+			</captcha>
+		</customer>
+		<captcha translate="label">
+			<frontend>
+				<areas>
+					<resume_service_captcha2>
+						<label>Resume Service Form2</label>
+					</resume_service_captcha2>
+				</areas>
+			</frontend>
+		</captcha>
+		<tatva>
+			<customresumeservice>
+				<email>tatva_customresumeservice_email</email> 
+				<customeremail>tatva_customresumeservice_customeremail</customeremail>
+			</customresumeservice>
+		</tatva>
+		<contact>
+        	<customemail>
+        		<email_customresumeservice>design@slideteam.net</email_customresumeservice>
+        		<bcc_email_customresumeservice>design@slideteam.net</bcc_email_customresumeservice>
+        	</customemail>
+        </contact>
+	</default>
+</config>

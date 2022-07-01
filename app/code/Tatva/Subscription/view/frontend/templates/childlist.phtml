@@ -1,0 +1,265 @@
+<?php
+$helper = $this->helper('Tatva\Subscription\Helper\Data');
+$customerId = $block->getLoginCustomerId();
+
+if (!($helper->isLoggedIn())) {
+
+  $this->redirectOnLoginPage();
+}
+?>
+<?php
+$subscription_history = "";
+$subscription_history = $block->getLastPaidSubscriptionhistory();
+//$sub_plan = $helper->getSubscriptionPlan($customerId);
+$subscription_plan = "";
+if (is_object($subscription_history)){
+    $subscription_plan = $subscription_history->getSubscriptionPeriod();
+}
+$showChildInvitation = 0;
+
+$teamHelper = $this->helper("\Tatva\Subscription\Helper\TeamPlans");
+$team_plan_array = $teamHelper->getTeamSubscriptionPlans();
+
+if(in_array($subscription_plan,$team_plan_array) && empty($subscription_history->getParentCustomerId()))
+{
+
+    //$childsubscriptions = $block->getChildCustomerOrder();
+    $child_invitation = $helper->getSubscription($customerId);  
+    $childSubscriptionCount = $helper->getSubscriptionRemaining($customerId);
+    $parent_id = $customerId;
+    $showChildInvitation = 1; 
+
+}
+
+$_subscriptions = $block->getCustomerSubscriptions();
+
+$customerIpnWait = $block->checkCustomerIpnWait();
+
+$nosubscription = 0;
+
+$userlimit = 1;
+$remaining_limit = 0;
+
+if (is_object($subscription_history) && $subscription_history !== "Unsubscribed" && $subscription_history->getAdminModified()!=1) 
+{
+    $lastorderData = $block->getLastCustomerOrder();
+}
+?>
+<p>Please use this section to invite users and add them to your subscription. They will have the same subscription and download capabilities as the one you have, and will get renewed automatically if your subscription is renewed.</p>
+<?php
+    if($showChildInvitation == 1) :
+        list($userlimit,$remaining_limit,$no_of_users) = $teamHelper->getPlanLimit($subscription_plan,$childSubscriptionCount,$parent_id);
+    endif;
+?>
+<?php
+if($_subscriptions == false)
+{
+    $subscriptions_count = 0;
+}
+else
+{
+    $subscriptions_count = $_subscriptions->getSize();
+    $lastorderData = $block->getLastCustomerOrder();
+
+}
+$is_subscription_valid = array();
+if ($subscriptions_count):
+    $previous_subscription = null;
+    $j = 0;
+    foreach ($_subscriptions as $key => $_subscription):
+        if ($j == 0) {
+
+            $subscription_period = $_subscription->getData("subscription_period");
+            $download_limit = $_subscription->getData("download_limit");
+            $admin_modified = $_subscription->getData("admin_modified");
+            $parent_id = $_subscription->getData("parent_customer_id");
+            
+            if ($download_limit <= 40):
+
+                $downloaded = $helper->checkDownloads($_subscription);
+               // $downloaded = $_subscription->checkDownloads($_subscription);
+                $downloaded = $downloaded <= 0 ? "0" : $downloaded;
+
+            else:
+
+                $download_limit = "Unlimited";
+
+            endif;
+           ?>
+           <?php
+            //break;
+            $previous_subscription = $_subscription;
+        }
+        if ($j > 0) {
+            $is_subscription_valid[$previous_subscription->getId()] = "1";
+            if ($previous_subscription->getRenewDate() == $_subscription->getRenewDate()) {
+                if ($previous_subscription->getStatus() != $_subscription->getStatus()) {
+                    if ($previous_subscription->getStatus() == "Proccessing") {
+                        $is_subscription_valid[$previous_subscription->getId()] = "0";
+                    } else {
+                        $is_subscription_valid[$_subscription->getId()] = "0";
+                    }
+                } else {
+                    $is_subscription_valid[$previous_subscription->getId()] = "0";
+                }
+            }
+        }
+        $j++;
+    endforeach;
+    ?>
+    
+    <?php if($showChildInvitation == 1) : ?>
+    <div class="user-limit" style="display: none;"><?= $userlimit ?></div>
+    <div class="remain-limit" style="display: none;"><?= $remaining_limit ?></div>
+    <?php if ($remaining_limit >= 1 && $showChildInvitation == 1): ?>
+        <div class="table-responsive customer_subscription">
+        <table class="table data-table" id="my-orders-table">
+            <thead>
+                <tr>
+                    <th>Invite User(s).</th>
+                    <th colspan="1"><span class="nobr"><?php echo __('Action') ?></span></th>
+                </tr>
+                <td>
+                    <p>You can currently invite <?= $remaining_limit ?> more user(s) based on your subscription. Contact support if you want to add more than that number</p>
+                </td>
+            </thead>
+            <tbody>
+                <?php $_odd = ''; ?>
+                <?php foreach ($_subscriptions as $_subscription): ?>
+                    <?php 
+                    $current_date = strtotime(date('Y-m-d H:i:s'));
+                    $from_date = $_subscription->getFromDate();
+                    $to_date = $_subscription->getToDate();
+                    $download_limit = $_subscription->getData("download_limit");
+                    $f = "";
+                    $t = "";
+
+                    if ($from_date && $to_date) {
+                        $t = $to_date;
+                        $f = $from_date;
+                    }
+
+                    if ($f != "" && $t != "") {
+
+                        $subscriptionTitle = $_subscription->getSubscriptionTitle();
+                        $subscriptionPeriod = $_subscription->getSubscriptionPeriod();
+                        if (!empty($subscriptionTitle)) {
+                            $subscriptionPeriod = $subscriptionTitle;
+                        }
+                        ?>
+                    <?php } ?>
+                    </tbody>
+                </table>
+                    <?php if ($remaining_limit > 0): ?>
+                        <form action="<?php echo $block->getUrl('subscription/index/Customerinvite'); ?>" class="customer_subscription" method="post" id="customer_subscription" data-mage-init='{"validation":{}}' enctype="multipart/form-data"> 
+                            <fieldset class="fieldset" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+                               <div class="field required" style="width:50%;">
+                                  <div class="customer_records control">
+                                    <label class="label" for="customer_email"><span>Email address</span></label>
+                                    <input name="customer_email[]" type="email" value="" data-validate="{required:true,'validate-email':true}" placeholder="Enter email address"><br>
+                                    <?php if ($remaining_limit > 1): ?>
+                                    <a class="extra-fields-customer" href="#">Invite Additional Users</a>
+                                    <?php endif; ?>
+                                  </div>
+                                  <div class="customer_records_dynamic"></div>
+                                </div>
+                            <input type="hidden" name="remaining_limit" value="<?= $remaining_limit; ?>">
+                            <input type="hidden" name="status_success" value="<?php echo $_subscription->getStatusSuccess() ?>">
+                            <span class="nobr"><input type="submit" class="btn btn-success action primary" name="submit" value="Submit"></span>
+                            </fieldset>
+                        </form>        
+                    <?php endif; ?>
+                <?php break; endforeach; ?>
+    </div>    
+    <?php endif; ?>
+    <div class="table-responsive child_subscription">
+        <?php if ($child_invitation->getSize()) { ?>
+            <table class="table data-table" id="my-orders-table">
+            <thead>
+                <tr>
+                    <th><?php echo __('Invited Users') ?></th>
+                    <th><span class="nobr"><?php echo __('Status') ?></span></th>
+                    <th><span class="nobr"><?php echo __('Action') ?></span></th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($child_invitation as $_subscription): ?>
+                <form action="<?php echo $block->getUrl('subscription/index/Deleteinvite'); ?>" class="child_subscription" method="post" id="child_subscription" >
+                    <tr>
+                        <td width="50%"><?php echo $_subscription->getCustomerEmail(); ?></td>
+                        <td><?= ($_subscription->getChildCustomerId()) ? ("success") : ("pending"); ?></td>
+                        <td>
+                            <input type="hidden" name="invitation_id" value="<?= $_subscription->getInvitationId() ?>">
+                             <input type="hidden" name="id" value="<?= $_subscription->getChildCustomerId() ?>">
+                            <input type="submit" class="btn btn-success action primary" onclick="return confirm('Are you sure you want to delete this user?')" name="delete" value="delete">
+                        </td>
+                    </tr>
+                    </form>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+        <?php } ?>
+    </div>    
+    <?php endif; ?>
+    
+    <?php elseif($nosubscription == 1):
+    ?>
+    
+    <?php 
+    else:
+    ?>
+    
+<?php endif ?>
+<?php if($showChildInvitation == 1) : ?>
+<script type="text/x-magento-init">
+    {
+        "#customer_subscription": {
+            "validation": {}
+        }
+    }
+</script>
+<script type="text/javascript">
+require(['jquery', 'domReady!'], function ($) {
+      
+      var numItems = <?= $childSubscriptionCount ?>;
+      var user = <?= $userlimit ?>;
+      var max_input = user-numItems;
+      var limit = $(".user-limit").text(max_input);
+      
+      var x = 1;
+      $('.extra-fields-customer').click(function() {
+        if (x < max_input) {
+            x++;
+          /*$('.customer_records').clone().appendTo('.customer_records_dynamic');
+          $('.customer_records_dynamic .customer_records').addClass('single remove');
+          $('.single .extra-fields-customer').remove();
+          $('.single').append('<a href="#" class="remove-field btn-remove-customer">Remove customer</a>');
+          $('.customer_records_dynamic > .single').attr("class", "remove");
+
+          $('.customer_records_dynamic input').each(function() {
+            var count = 0;
+            var fieldname = $(this).attr("name");
+            $(this).attr('name', fieldname + count);
+            $(this).val('');
+            count++;
+          });*/
+          let emailS = $('.customer_records_dynamic input').length+1;
+          let customerRecord =  $('.customer_records').clone();
+          customerRecord.children('input').attr("name","customer_email["+emailS+"]");
+          customerRecord.children('input').val('');
+          customerRecord.appendTo('.customer_records_dynamic');
+
+          $('.customer_records_dynamic .customer_records').addClass('single remove');
+          $('.single .extra-fields-customer').remove();
+          $('.single').append('<a href="#" class="remove-field btn-remove-customer">Remove customer</a>');
+          $('.customer_records_dynamic > .single').attr("class", "remove");
+        }
+    });
+
+    $(document).on('click', '.remove-field', function(e) {
+      $(this).parent('.remove').remove();
+      e.preventDefault();
+    });
+});
+</script>
+<?php endif; ?>

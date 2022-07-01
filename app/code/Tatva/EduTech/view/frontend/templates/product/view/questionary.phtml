@@ -1,0 +1,84 @@
+<?php
+$product = $block->getProduct();
+$faq = $product->getData('product_faq');
+if ($faq  != "" || $faq != null) {
+    $wholeContent = explode('#', $faq);
+
+    $mainContent = explode('|',  $wholeContent[0]);
+    $content = explode('|', $wholeContent[1]);
+?>
+    <div class="container">
+        <h2>FAQs</h2>
+        <div class="questionary_custom">
+
+            <?php
+            // echo $faq;
+            for ($i = 0; $i < count($mainContent); $i++) {
+                if ($i <= 2) {
+            ?>
+                    <div class="questionary_count">
+                        <button class="accordion"><?= $mainContent[$i] ?></button>
+                        <div class="edu panel">
+                            <?= $content[$i]; ?>
+                        </div>
+                    </div>
+                <?php } else {
+                ?>
+                    <div class="questionary_count more">
+                        <button class="accordion"><?= $mainContent[$i] ?></button>
+                        <div class="edu panel">
+                            <?= $content[$i]; ?>
+                        </div>
+                    </div>
+                <?php
+                }
+            }
+            if (count($mainContent) > 3) {
+                ?>
+
+                <div class="questionary_see_more">
+                    <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/edutech/arrow_btm.png'); ?>" alt="arrow">
+                    <button onclick="toggleText(this)" id="textButton">
+                        Show More 
+                    </button>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+        <script>
+            function toggleText(elem) {
+
+                control = jQuery(elem);
+
+                if (control.parent('.questionary_see_more').hasClass('more')) {
+                    control.parent('.questionary_see_more').removeClass('more');
+                    jQuery('.questionary_count.more').css('display', 'none');
+                    control.text("Show more");
+                } else {
+
+                    control.parent('.questionary_see_more').addClass('more');
+                    jQuery('.questionary_count.more').css('display', 'block');
+                    control.text("Show less");
+                }
+            }
+
+            jQuery(document).ready(function() {
+                var acc = document.getElementsByClassName("accordion");
+                var i;
+                for (i = 0; i < acc.length; i++) {
+                    acc[i].addEventListener("click", function() {
+                        this.classList.toggle("active");
+                        var panel = this.nextElementSibling;
+                        if (panel.style.maxHeight) {
+                            panel.style.maxHeight = null;
+                        } else {
+                            panel.style.maxHeight = panel.scrollHeight + "px";
+                        }
+                    });
+                }
+            }); //ready
+        </script>
+    <?php
+}
+    ?>

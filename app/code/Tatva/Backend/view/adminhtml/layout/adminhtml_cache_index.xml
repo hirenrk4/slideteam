@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!-- Image Flush Security -->
+        <referenceContainer name="content">
+            <block class="Magento\Backend\Block\Cache\Additional" name="cache.additional" template="Tatva_Backend::system/cache/additional.phtml">
+                <arguments>
+                    <argument name="permissions" xsi:type="object">Magento\Backend\Block\Cache\Permissions</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="customer_account"/>
+	<body>
+		<referenceBlock name="custom.page.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">MY DASHBOARD</argument>
+            </action>
+        </referenceBlock>
+        
+		<referenceBlock name="customer_account_dashboard_address" remove="true" />
+		<referenceBlock name="customer_account_dashboard_top" remove="true" />
+		<referenceBlock name="customer_account_dashboard_info1" remove="true" />
+		<move element="customer_account_dashboard_info" destination="custom.account.wrapper" />
+		<move element="customer_account_dashboard_address" destination="custom.account.wrapper"/>
+	</body>
+</page>

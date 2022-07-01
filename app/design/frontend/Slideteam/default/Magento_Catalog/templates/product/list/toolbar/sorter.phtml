@@ -1,0 +1,27 @@
+<div class="toolbar-sorter sorter">
+    <div class="filterbox">
+        <p><?= /* @escapeNotVerified */ __('Sort') ?></p>
+        <div class="filtercont">
+            <div class="custom-dropdown">
+                <select id="sorter" data-role="sorter" data-type ="custom-dropdown" class="custom-dropdown">
+                    <?php foreach ($block->getAvailableOrders() as $_key => $_order): ?>
+                        <option value="<?= /* @escapeNotVerified */ $_key ?>"
+                            <?php if ($block->isOrderCurrent($_key)): ?>
+                                selected="selected"
+                            <?php endif; ?>
+                            >
+                            <?= $block->escapeHtml(__($_order)) ?>
+                        </option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- task 1586 start -->
+<script>
+    require(['jquery','dropkick','domReady!'],function($) {
+        $("select.custom-dropdown").dropkick('reset');
+    });
+</script>
+<!-- task 1586 end -->

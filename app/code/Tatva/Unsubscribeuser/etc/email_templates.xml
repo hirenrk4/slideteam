@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="unsubscribeuser_email_template"
+              label="Unsubscribe Delay "
+              file="unsubscribeuser.html"
+              type="html"
+              module="Tatva_Unsubscribeuser"
+              area="frontend"
+    />
+    <template id="unsubscribeuser_email_template_delete"
+              label="Unsubscribe Delay delete"
+              file="unsubscribeuserdelete.html"
+              type="html"
+              module="Tatva_Unsubscribeuser"
+              area="frontend"
+    />
+    <template id="unsubscribeuser_email_template_reject"
+              label="Unsubscribe Delay reject"
+              file="unsubscribeuserreject.html"
+              type="html"
+              module="Tatva_Unsubscribeuser"
+              area="frontend"
+    />
+    <template id="unsubscribeuser_email_template_admin"
+              label="Unsubscribe Delay "
+              file="unsubscribeuseradmin.html"
+              type="html"
+              module="Tatva_Unsubscribeuser"
+              area="frontend"
+    />
+    <template id="unsubscribeuser_email_template_export"
+              label="Unsubscribe User Export"
+              file="unsubscribeuserexport.html"
+              type="html"
+              module="Tatva_Unsubscribeuser"
+              area="frontend"
+    />
+</config>

@@ -1,0 +1,62 @@
+<?php
+$searchTerm = $block->getSearchTerm();
+?>
+<div class="multiple_language">
+	<?php 
+		$lang = "0";
+		if (isset($_GET['lang'])) {
+	    	$lang = strtolower($_GET['lang']);
+	    	/*task 1586 start*/
+	    	?><script>
+	    	    require(['jquery','dropkick','domReady!'],function($) {
+	    	    	$("select.custom-dropdown").dropkick('reset');
+	    	    });
+	    	</script><?php
+	    	/*task 1586 end*/
+		}else{
+	    	$lang = 'english';
+		}
+	?>
+	<select class="custom-dropdown language-dropdown" name="language" id="select language">
+		<option value="">English</option>
+        <option value="Spanish" <?php if($lang == "spanish"){echo "selected=\"selected\"";} ?>>
+        	Spanish
+        </option>
+		<option value="German" <?php if($lang == "german"){echo "selected=\"selected\"";} ?>>
+			German
+		</option>
+		<option value="French" <?php if($lang == "french"){echo "selected=\"selected\"";} ?>>
+			French
+		</option>
+		<option value="Portuguese" <?php if($lang == "portuguese"){echo "selected=\"selected\"";} ?>>
+			Portuguese
+		</option>
+    </select>
+</div>
+<script type="text/javascript">
+require(['jquery'], function ($) {
+	$(document).ready(function(){
+		//Sorting Data
+		jQuery('.language-dropdown').on('change', function () {
+			var sortVal = $(this).val().toLowerCase();
+			if(sortVal == ''){
+				window.location = "<?php echo $this->getBaseUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]).'blog/search/'.$searchTerm; ?>";
+			} else {
+				window.location = "<?php echo $this->getBaseUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]).'blog/search/'.$searchTerm.'?lang='; ?>"+ sortVal;
+			}
+        });
+	});
+});
+</script>
+<script type="text/javascript">
+require(['jquery', 'dropkick', 'domReady!'], function(jQuery) {    
+    jQuery(".custom-dropdown").dropkick({
+        mobile: true
+    });
+    jQuery(document).ajaxComplete(function(){
+        jQuery(".custom-dropdown").dropkick({
+            mobile: true
+        });
+    });    
+});
+</script>

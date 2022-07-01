@@ -1,0 +1,85 @@
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_product = $this->getProduct(); 
+$languagestatus = $_helper->productAttribute($_product, $_product->getLanguagestatus(), 'languagestatus');
+$language = $this->getLangauges();
+$urlkey = $_product->getProductUrl();
+$languages = array("spanish","german","french","portuguese");
+//$lang = "0";
+?>
+<?php if (isset($_GET['lang']) && (in_array(strtolower($_GET['lang']), $languages))): 
+  $lang = $_GET['lang'];
+?>
+<script type="text/javascript">
+    require([
+    'jquery',
+    ], function ($) {
+    var langpara = ("<?php echo $lang;?>").toString();
+    var langstring = langpara.toLowerCase();
+    var lang = langstring.charAt(0).toUpperCase() + langstring.slice(1); 
+    var currlang = 'English';
+    if (currlang != lang) {
+      $("a#"+currlang).css("display","block");
+    }
+    $("#langSel").html(lang);  
+    $("a#"+lang).css("display","none");
+    currlang = lang;
+  });
+</script>
+<?php endif; ?>
+
+<?php if($languagestatus == 1): ?>
+<div class="btn-group dropright translate">
+      <button onclick="myLanguages()" id="langSel" type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?php if (isset($_GET['lang']) && (in_array(strtolower($_GET['lang']), $languages))){ $langsting = strtolower($_GET['lang']); echo ucfirst($langsting); } 
+              else { echo 'English'; }
+        ?> 
+      </button>
+      <div class="dropdown-menu translate-option" id="langlist">
+        <a class="dropdown-item" id="English" href="#" at="English">English</a>
+      <?php  foreach($language as $key => $lang): ?> 
+          <a class="dropdown-item" id="<?php echo $lang['laguage']; ?>" href="#" at="<?php echo $lang['laguage']; ?>"><?php echo $lang['laguage'];?></a> 
+      <?php endforeach?>
+      </div>
+</div>
+<?php endif; ?>
+<script type="text/javascript">
+  function myLanguages() {
+    document.getElementById("langlist").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(event) {
+    if (!event.target.matches('.dropdown-toggle')) {
+      var dropdowns = document.getElementsByClassName("translate-option");
+      var i;
+      for (i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+  }
+</script>
+<script type="text/javascript">
+require(['jquery'], function ($) {
+  //var currlang = 'English';
+  var currurl = ("<?php echo $urlkey;?>").toString();
+  
+  $(".dropdown-item").click(function(){
+    var lang = $(this).attr('at');
+    /*if (currlang != lang) {
+      $("a#"+currlang).css("display","block");
+    }*/
+    if ( lang != 'English') 
+    {
+        var crp = currurl+'?lang='+lang;
+        window.location = crp;
+    }
+    else{
+        window.location = currurl;      
+    }
+  });
+});
+</script>

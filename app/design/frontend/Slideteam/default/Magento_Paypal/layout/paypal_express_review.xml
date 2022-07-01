@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Theme::css/checkout/checkout-cart.css" media="all" order="202" />
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block name="custom.paypal.review.title" template="Magento_Paypal::title.phtml" before="-"/>
+        </referenceContainer>
+
+        <referenceContainer name="slideteam-sidenav-wrapper" remove="true"/>
+        <referenceContainer name="main.content" htmlTag="main" htmlId="maincontent" htmlClass="page-main">
+            <container name="custom.checkout.wrapper" htmlTag="div" htmlClass="place-order-wrapper container" />
+        </referenceContainer>
+
+        <move element="columns" destination="custom.checkout.wrapper" after="-" />
+    </body>
+</page>

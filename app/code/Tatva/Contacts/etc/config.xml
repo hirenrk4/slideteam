@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <contact>
+            <email>
+                <recipient_contacs_bcc>sumit.kumar@slidetech.in,uminfy@yahoo.com,ron@slideteam.net,geetika.gosain@slideteam.net</recipient_contacs_bcc>
+            </email>
+        </contact>
+        <tatva>
+        	<contacts>
+        		<email>tatva_contacts_email</email>
+        	</contacts>
+        </tatva>
+    </default>
+</config>

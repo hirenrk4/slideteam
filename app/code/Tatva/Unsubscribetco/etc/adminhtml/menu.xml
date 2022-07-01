@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>  
+		<add id="Tatva_Supportingextensions::managesubscriber" title="Manage Active Subscribers" module="Tatva_Unsubscribetco" sortOrder="72"  parent="Tatva_Supportingextensions::supportingextension" resource="Tatva_Supportingextensions::managesubscriber" />
+		<add id="Tatva_Supportingextensions::managecheckoutsubscriber" title="Manage 2Checkout Subscribers" module="Tatva_Unsubscribetco" sortOrder="72" parent="Tatva_Supportingextensions::managesubscriber"
+			action="unsubscribetco/index/index" resource="Tatva_Supportingextensions::managecheckoutsubscriber"/>
+		</menu>
+	</config>

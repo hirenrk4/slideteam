@@ -1,0 +1,13 @@
+<?php
+$blockObj = $block->getLayout()->createBlock('Tatva\Bestsellers\Block\ListProduct');
+?>
+<div class="product-info-block">
+    <div class="container">
+        <div class="main-wrapper list-detail-consistency clearfix">
+            <div class="page-title category-title">
+                <h1 class="custom-category-title"><?php echo $blockObj->getConfigration()->getValue('bestsellers_options/general/h1_title'); ?></h1>
+                <div class="category-description"><?php echo $blockObj->getConfigration()->getValue('bestsellers_options/general/descritption'); ?></div>
+            </div>
+        </div>
+    </div>
+</div>

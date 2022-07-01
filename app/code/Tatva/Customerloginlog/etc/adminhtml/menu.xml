@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tatva_Supportingextensions::customloginlog" title="Customer Login Log" module="Tatva_Customerloginlog" sortOrder="20" action="loginlog/index" resource="Tatva_Supportingextensions::customloginlog" parent="Tatva_Supportingextensions::customreports"/>
+        <add id="Tatva_Supportingextensions::customeriplog" title="Customers Ip Log" module="Tatva_Customerloginlog" sortOrder="21" action="loginlog/index/iplog" resource="Tatva_Supportingextensions::customeriplog" parent="Tatva_Supportingextensions::customreports"/>    
+    </menu>
+</config>

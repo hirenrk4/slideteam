@@ -1,0 +1,58 @@
+<modal name="loginpopup_modal">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="onCancel" xsi:type="string">actionCancel</item>
+            <item name="options" xsi:type="array">
+                <item name="buttons" xsi:type="array">
+                    <item name="0" xsi:type="array">
+                        <item name="text" xsi:type="string">Cancel</item>
+                        <item name="class" xsi:type="string">action-secondary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="string">actionCancel</item>
+                        </item>
+                    </item>
+                    <item name="1" xsi:type="array">
+                        <item name="text" xsi:type="string">Clear</item>
+                        <item name="class" xsi:type="string">action-secondary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="array">
+                                <item name="targetName" xsi:type="string">${ $.name }.testField</item>
+                                <item name="actionName" xsi:type="string">clear</item>
+                            </item>
+                        </item>
+                    </item>
+                    <item name="2" xsi:type="array">
+                        <item name="text" xsi:type="string">Done</item>
+                        <item name="class" xsi:type="string">action-primary</item>
+                        <item name="actions" xsi:type="array">
+                            <item name="0" xsi:type="string">actionDone</item>
+                        </item>
+                    </item>
+                </item>
+            </item>
+        </item>
+    </argument>
+    <field name="testField">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">test field</item>
+                <item name="formElement" xsi:type="string">input</item>
+                <item name="visible" xsi:type="boolean">true</item>
+            </item>
+        </argument>
+    </field>
+</modal>
+
+<button name="modal_button">
+    <argument name="data" xsi:type="array">
+        <item name="config" xsi:type="array">
+            <item name="title" xsi:type="string">Open modal</item>
+            <item name="actions" xsi:type="array">
+                <item name="0" xsi:type="array">
+                    <item name="targetName" xsi:type="string">${ $.parentName}.loginpopup_modal</item>
+                    <item name="actionName" xsi:type="string">openModal</item>
+                </item>
+            </item>
+        </item>
+    </argument>
+</button>

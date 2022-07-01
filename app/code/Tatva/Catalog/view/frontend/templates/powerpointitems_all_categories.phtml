@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="all-categories">
+    <?php
+          $categoryData = $block->getPowerpointCategories();
+    ?>
+        <div class="categories">
+            <ul class="category-grid">
+                <?php foreach ($categoryData['Allcategories'] as $category): ?>
+                    <?php if ($category->getLevel() == 2): ?>
+                        <?php $categories = $category->getChildrenCategories(); ?>
+                        <?php if (count($categories) > 0): ?>
+                        <li class="category-title">
+                            <h6>
+                                <a href="<?php echo (!empty($category->getSeoUrl()))? $block->getUrl($category->getSeoUrl()):$category->getUrl(); ?>">
+                                    <?php echo __($category->getName()).' :'; ?>
+                                </a>
+                            </h6>
+                        </li>
+                        <?php endif; ?>
+                        <?php $subcategories = $category->getChildrenCategories(); ?>
+                        <?php if (count($subcategories) > 0): ?>
+                            <ul class="subcategory-grid">
+                            <?php foreach ($subcategories as $key => $subcategory):?>
+                                <li class="subcategories">
+                                    <a href="<?php echo (!empty($subcategory->getSeoUrl()))? $block->getUrl($subcategory->getSeoUrl()):$subcategory->getUrl() ?>">
+                                        <?php echo $subcategory->getName(); ?> 
+                                    </a>
+                                </li>              
+                            <?php endforeach; ?>     
+                            </ul>   
+                        <?php endif; ?>     
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <li class="category-title">
+                    <h6><a href="<?php echo $block->getBaseUrl() ?>all-powerpoint-categories/" title="More Topics">
+                        More Topics
+                    </h6>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+     <settings>
+        <reloadItem>product-details.attribute_set_id:value</reloadItem>
+        <buttons>
+            <button name="productPreview" class="Tatva\EduTech\Block\Adminhtml\Product\Edit\Button\ProductPreview"/>
+        </buttons>
+        <deps>
+            <dep>product_form.product_form_data_source</dep>
+        </deps>
+    </settings>
+     <dataSource name="product_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <dataProvider class="Magento\Catalog\Ui\DataProvider\Product\Form\ProductDataProvider"
+                      name="product_form_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <fieldset name="edu-tech">
+        <settings>
+            <collapsible>true</collapsible>
+            <dataScope>data.product.edu-tech</dataScope>
+        </settings>
+        <!-- Complete Curriculum  -->
+        <dynamicRows name="complete_curriculum_row" sortOrder="110">
+            <settings>
+                <visible>true</visible>
+                <addButtonLabel translate="true">Add More</addButtonLabel>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <defaultRecord>true</defaultRecord>
+                <!-- <pageSize>5</pageSize> -->
+                <componentType>dynamicRows</componentType>
+                <elementTmpl>ui/dynamic-rows/templates/grid</elementTmpl>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                        <item name="'positionProvider'" xsi:type="string">container_option</item>
+                    </item>
+                </argument>
+                <field name="complete_curriculum" sortOrder="10" formElement="textarea">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">block</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Complete Curriculum</label>
+                        <dataScope>complete_curriculum</dataScope>
+                    </settings>
+                </field>
+                <field name="complete_curriculum_content" sortOrder="20" formElement="wysiwyg" >
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="wysiwygConfigData" xsi:type="array">
+                                <item name="hidden" xsi:type="boolean">false</item>
+                                <item name="settings" xsi:type="array">
+                                    <item name="theme_advanced_buttons1" xsi:type="string">bullist,numlist</item>
+                                    <item name="theme_advanced_buttons2" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_buttons3" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_buttons4" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_statusbar_location" xsi:type="boolean">false</item>
+                                </item>
+                                <item name="files_browser_window_url" xsi:type="boolean">false</item>
+                                <item name="height" xsi:type="string">100px</item>
+                                <item name="toggle_button" xsi:type="boolean">false</item>
+                                <item name="add_widgets" xsi:type="boolean">false</item>
+                                <item name="add_variables" xsi:type="boolean">false</item>
+                                <item name="add_images" xsi:type="boolean">false</item>
+                                <item name="dynamic_id" xsi:type="boolean">true</item>
+                            </item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/wysiwyg</item>
+                            <item name="source" xsi:type="string">block</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Content</label>
+                        <dataScope>complete_curriculum_content</dataScope>
+                    </settings>
+                    <formElements>
+                        <wysiwyg>
+                            <settings>
+                                <rows>8</rows>
+                                <wysiwyg>true</wysiwyg>
+                            </settings>
+                        </wysiwyg>
+                    </formElements>
+                </field>
+                <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">60</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete
+                            </item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+        <!-- Sample Instructor Notes -->
+        <dynamicRows name="sample_instructor_notes_rows" sortOrder="120">
+            <settings>
+                <visible>true</visible>
+                <addButtonLabel translate="true">Add More</addButtonLabel>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <defaultRecord>true</defaultRecord>
+                <!-- <pageSize>5</pageSize> -->
+                <componentType>dynamicRows</componentType>
+                <elementTmpl>ui/dynamic-rows/templates/grid</elementTmpl>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                        <item name="'positionProvider'" xsi:type="string">container_option</item>
+                    </item>
+                </argument>
+                <field name="sample_instructor_notes" sortOrder="10" formElement="textarea">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">block</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Sample Instructor Notes</label>
+                        <dataScope>sample_instructor_notes</dataScope>
+                    </settings>
+                </field>
+                <field name="sample_instructor_content" sortOrder="20" formElement="wysiwyg" >
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="wysiwygConfigData" xsi:type="array">
+                                <item name="hidden" xsi:type="boolean">false</item>
+                                <item name="settings" xsi:type="array">
+                                    <item name="theme_advanced_buttons1" xsi:type="string">italic,|,justifyleft,justifycenter,justifyright,|,fontselect,fontsizeselect,|,forecolor,backcolor,|,link,unlink,image,|,bullist,numlist,|,code</item>
+                                    <item name="theme_advanced_buttons2" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_buttons3" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_buttons4" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_statusbar_location" xsi:type="boolean">false</item>
+                                </item>
+                                <item name="files_browser_window_url" xsi:type="boolean">false</item>
+                                <item name="height" xsi:type="string">100px</item>
+                                <item name="toggle_button" xsi:type="boolean">false</item>
+                                <item name="add_widgets" xsi:type="boolean">false</item>
+                                <item name="add_variables" xsi:type="boolean">false</item>
+                                <item name="add_images" xsi:type="boolean">false</item>
+                                <item name="dynamic_id" xsi:type="boolean">true</item>
+                            </item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/wysiwyg</item>
+                            <item name="source" xsi:type="string">block</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Content</label>
+                        <dataScope>sample_instructor_content</dataScope>
+                    </settings>
+                    <formElements>
+                        <wysiwyg>
+                            <settings>
+                                <rows>8</rows>
+                                <wysiwyg>true</wysiwyg>
+                            </settings>
+                        </wysiwyg>
+                    </formElements>
+                </field>
+                <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">60</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete
+                            </item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+        <!-- FAQs -->
+        <dynamicRows name="product_faq_row" sortOrder="130">
+            <settings>
+                <visible>true</visible>
+                <addButtonLabel translate="true">Add More</addButtonLabel>
+                <additionalClasses>
+                    <class name="admin__field-wide">true</class>
+                </additionalClasses>
+                <defaultRecord>true</defaultRecord>
+                <!-- <pageSize>5</pageSize> -->
+                <componentType>dynamicRows</componentType>
+                <elementTmpl>ui/dynamic-rows/templates/grid</elementTmpl>
+            </settings>
+            <container name="record" component="Magento_Ui/js/dynamic-rows/record">
+                <argument name="data" xsi:type="array">
+                    <item name="config" xsi:type="array">
+                        <item name="isTemplate" xsi:type="boolean">true</item>
+                        <item name="is_collection" xsi:type="boolean">true</item>
+                        <item name="componentType" xsi:type="string">container</item>
+                        <item name="'positionProvider'" xsi:type="string">container_option</item>
+                    </item>
+                </argument>
+                <field name="product_faq" sortOrder="10" formElement="textarea">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">block</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">FAQs</label>
+                        <dataScope>product_faq</dataScope>
+                    </settings>
+                </field>
+                <field name="product_faq_content" sortOrder="20" formElement="wysiwyg" >
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="wysiwygConfigData" xsi:type="array">
+                                <item name="hidden" xsi:type="boolean">false</item>
+                                <item name="settings" xsi:type="array">
+                                    <item name="theme_advanced_buttons1" xsi:type="string">italic,|,justifyleft,justifycenter,justifyright,|,fontselect,fontsizeselect,|,forecolor,backcolor,|,link,unlink,image,|,bullist,numlist,|,code</item>
+                                    <item name="theme_advanced_buttons2" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_buttons3" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_buttons4" xsi:type="boolean">false</item>
+                                    <item name="theme_advanced_statusbar_location" xsi:type="boolean">false</item>
+                                </item>
+                                <item name="files_browser_window_url" xsi:type="boolean">false</item>
+                                <item name="height" xsi:type="string">100px</item>
+                                <item name="toggle_button" xsi:type="boolean">false</item>
+                                <item name="add_widgets" xsi:type="boolean">false</item>
+                                <item name="add_variables" xsi:type="boolean">false</item>
+                                <item name="add_images" xsi:type="boolean">false</item>
+                                <item name="dynamic_id" xsi:type="boolean">true</item>
+                            </item>
+                            <item name="elementTmpl" xsi:type="string">ui/form/element/wysiwyg</item>
+                            <item name="source" xsi:type="string">block</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <dataType>text</dataType>
+                        <label translate="true">Answer</label>
+                        <dataScope>product_faq_content</dataScope>
+                    </settings>
+                    <formElements>
+                        <wysiwyg>
+                            <settings>
+                                <rows>8</rows>
+                                <wysiwyg>true</wysiwyg>
+                            </settings>
+                        </wysiwyg>
+                    </formElements>
+                </field>
+                <actionDelete>
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="componentType" xsi:type="string">actionDelete</item>
+                            <item name="dataType" xsi:type="string">text</item>
+                            <item name="fit" xsi:type="boolean">false</item>
+                            <item name="label" xsi:type="string">Actions</item>
+                            <item name="sortOrder" xsi:type="string">60</item>
+                            <item name="additionalClasses" xsi:type="string">data-grid-actions-cell</item>
+                            <item name="template" xsi:type="string">Magento_Backend/dynamic-rows/cells/action-delete
+                            </item>
+                        </item>
+                    </argument>
+                </actionDelete>
+            </container>
+        </dynamicRows>
+    </fieldset>
+</form>

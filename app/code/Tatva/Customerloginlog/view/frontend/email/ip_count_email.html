@@ -1,0 +1,47 @@
+<!--@subject Customer Login Ip Details {{trans "%cname" cname=$CustomerName}}@-->
+
+{{template config_path="design/email/header_template"}}
+
+<table style='font-family: Open Sans, sans-serif;' border='0' cellpadding='4' cellspacing='0' width='100%'>
+    <tbody>
+        
+        <tr>
+            <td style='font-family: Open Sans, sans-serif;' align='left' width='40%'><b>Customer Id:</b></td>
+            <td style='font-family: Open Sans, sans-serif;' width='55%'>{{trans "%customer_id" customer_id=$CustomerId}}</td>
+        </tr>
+
+        <tr>
+            <td style='font-family: Open Sans, sans-serif;' align='left' width='40%'><b>Name:</b></td>
+            <td style='font-family: Open Sans, sans-serif;' width='55%'>{{trans "%customer_name" customer_name=$CustomerName}}</td>
+        </tr>
+
+        <tr>
+            <td style='font-family: Open Sans, sans-serif;' align='left' width='40%'><b>Email:</b></td>
+            <td style='font-family: Open Sans, sans-serif;' width='55%'>{{trans "%customer_email" customer_email=$CustomerEmail}}</td>
+        </tr>
+
+        <tr>
+            <td style='font-family: Open Sans, sans-serif;' align='left' width='40%'><b>Different Ips:</b></td>
+            <td style='font-family: Open Sans, sans-serif;' width='55%'>{{trans "%customer_ips" customer_ips=$CustomerIps}}</td>
+        </tr>
+
+        <tr>
+            <td style='font-family: Open Sans, sans-serif;' align='left' width='40%'><b>Ips Location:</b></td>
+            <td style='font-family: Open Sans, sans-serif;' width='55%'>{{trans "%ip_location" ip_location=$iplocation}}</td>
+        </tr>
+
+        <tr>
+            <td style='font-family: Open Sans, sans-serif;' align='left' width='40%'><b>Total Download:</b></td>
+            <td style='font-family: Open Sans, sans-serif;' width='55%'>{{trans "%download_items" download_items=$DownloadItems}}</td>
+        </tr>
+
+        <tr>
+            <td style='font-family: Open Sans, sans-serif;' align='left' width='40%'><b>Unique downloaded products:</b></td>
+            <td style='font-family: Open Sans, sans-serif;' width='55%'>{{trans "%download_products" download_products=$downloadProducts}}</td>
+        </tr>
+        
+    </tbody>
+</table>
+
+
+{{template config_path="design/email/footer_template"}}

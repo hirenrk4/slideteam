@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+   <group id="productdeletelog_cron">
+      <job instance="Tatva\Catalog\Cron\Productdelete" method="execute" name="tatva_productdelete_cron">
+      <schedule>0 1 * * *</schedule>
+      </job>
+   </group>  
+   <group id="special_product_downloadcount_cron">
+      <job instance="Tatva\Catalog\Cron\OnePageDownload" method="execute" name="tatva_onepagedownload_cron">
+      <schedule>0 2 * * 1</schedule>
+      </job>
+   </group>
+   <group id="newcategory_added_cron">
+      <job instance="Tatva\Catalog\Cron\Newcategoryadded" method="execute" name="tatva_newcategory_added_cron">
+      <schedule>30 21 * * *</schedule>
+      </job>
+   </group> 
+</config>

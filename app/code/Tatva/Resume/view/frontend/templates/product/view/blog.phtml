@@ -1,0 +1,30 @@
+<?php
+    $posts = $this->getSelectedListPost();
+    if(!empty($posts)) :
+?>
+<section class="blog_sectn">
+    <div class="container">          
+        <?php if (count($posts) > 0): ?>
+            <div class="product-info-block blog-content">
+                <div class="blog-header clearfix">
+                    <div class="page-title category-title">
+                        <h1>The SlideTeam Blog</h1>
+                    </div>
+                    <p class="page-sub-title">All About PowerPoint, Presentations &amp; Life</p>
+                </div>
+            </div>  
+            <div class="post-list-wrapper">
+                <ol class="post-list">
+                <?php foreach($posts as $post): ?>
+                    <?php if ($renderedPostHtml = $this->renderSelectedPost($post)): ?>
+                        <li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> <?php echo $post->getPostFormat() ?>">
+                            <?php echo $renderedPostHtml; ?>
+                        </li>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                </ol>
+            </div>
+        <?php endif; ?>
+    </div>
+</section>
+<?php endif; ?>

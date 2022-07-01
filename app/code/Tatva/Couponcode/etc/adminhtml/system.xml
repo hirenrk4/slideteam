@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tatvasoft" translate="label" sortOrder="10">
+            <label>TATVASOFT</label>
+        </tab>
+        <section id="couponcode" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Couponcode Configuration</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Couponcode::tatva_config</resource>
+            <group id="couponcode_email" type="text" sortOrder="1" showInDefault="2" showInWebsite="2" showInStore="1" translate="label">
+                <label>Couponcode Email Configuration</label>
+                <field id="template_id" translate="label" type="select" sortOrder="1" showInDefault="2" showInWebsite="2" showInStore="1">
+                    <label>Email Template Id</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="to_email" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Emails for Couponcode Expire date (To - Comma separated)</label>
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Emails Cc for Couponcode Expire date (Cc - Comma seprated)</label>
+                </field>
+                <field id="cron_schedule" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cron Schedule</label>
+                    <comment>Format: * * * * *</comment>
+                </field>
+                
+                <field id="last_weekly_orderid" translate="label" sortOrder="5" type="text" showInDefault="1">
+                    <label>Last Order Id For Weekly Report</label>
+                    <frontend_model>Tatva\Couponcode\Block\System\Config\Form\Field\Disable</frontend_model>
+                </field>
+                
+                <field id="cron_weekly_schedule" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Coupon Report Weekly Schedule</label>
+                    <comment>Format: * * * * *</comment>
+                </field>
+                <field id="cron_monthly_schedule" translate="label" type="text" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Coupon Report Monthly Schedule</label>
+                    <comment>Format: * * * * *</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

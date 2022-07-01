@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="\SLI\Feed\Block\Adminhtml\Form\Field\FeedAttributesBlock"  type="Tatva\SLIFeed\Block\Adminhtml\Form\Field\FeedAttributesBlock" />
+    <preference for="\SLI\Feed\Model\Generators\ProductGenerator"  type="Tatva\SLIFeed\Model\Generators\ProductGenerator" />
+    <type name="Tatva\SLIFeed\Helper\GeneratorHelper">
+        <arguments>
+            <argument name="feedUpdateFileTemplate" xsi:type="string">sli/feeds/delta-feed-%s%s.xml</argument>
+            <argument name="feedDeleteFileTemplate" xsi:type="string">sli/feeds/delete-feed-%s%s.xml</argument>
+        </arguments>
+    </type>
+    
+    <type name="SLI\Feed\Helper\GeneratorHelper">
+        <arguments>
+            <argument name="feedFileTemplate" xsi:type="string">sli/feeds/full-feed.xml</argument>
+        </arguments>
+    </type>
+
+    <preference for="\SLI\Feed\FeedManager" type="Tatva\SLIFeed\FeedManager"/>
+
+    <preference for="\SLI\Feed\Model\Generators\MetaGenerator"  type="Tatva\SLIFeed\Model\Generators\MetaGenerator" />
+    <preference for="\SLI\Feed\Model\Generators\AttributeGenerator"  type="Tatva\SLIFeed\Model\Generators\AttributeGenerator" />
+    <preference for="\SLI\Feed\Model\Generators\CategoryGenerator"  type="Tatva\SLIFeed\Model\Generators\CategoryGenerator" />
+    <preference for="\SLI\Feed\Model\Generators\PriceGenerator"  type="Tatva\SLIFeed\Model\Generators\PriceGenerator" />
+</config>

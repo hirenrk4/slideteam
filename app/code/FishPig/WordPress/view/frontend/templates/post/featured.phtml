@@ -1,0 +1,56 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<!-- Please call pinit.js only once per page -->
+<!--<script type="text/javascript" async defer  data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>-->
+<?php $post = $block->getFeaturedPost();  
+//$blockObj= $block->getLayout()->createBlock('FishPig\WordPress\Block\Sidebar\Widget\Posts');
+$frontend_identifies = $block->configData('wordpress/integration/route');?>
+<?php if ($post): ?>
+  <?php 
+
+    $publishedDate = date('Y-m-d', strtotime($post->getPostDate()));
+    $blogParamDate = $this->helper('Tatva\Generalconfiguration\Helper\Data')->getConfig('button/blog_config/start_date');
+
+    $lang = "";
+    if (isset($_GET['lang']) && $publishedDate > $blogParamDate) {
+        $lang = '?lang='.$_GET['lang'];
+    }
+
+  ?>
+  <?php $author = $post->getUser();?>
+    <div class="blog-section">
+            <?php if ($featuredImage = $post->getFeaturedImage()): ?>
+                <div class="blog-banner">
+                    <?php if($featuredImage->getData('post_mime_type') == 'image/gif' || !$featuredImage->getMediumImage()): ?>
+                      <a href="<?php echo rtrim($post->getUrl(), "/").$lang ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>"><img src="<?php echo $featuredImage->getFullSizeImage() ?>" alt="<?php echo $this->escapeHtml($post->getName()) ?>" loading="eager"/></a>
+                    <?php else: ?>  
+                      <a href="<?php echo rtrim($post->getPermalink(), "/").$lang ?>" title="Feature Image"><img class="lazyload"
+                      src="<?php echo $featuredImage->getMediumImage() ?>" data-src="<?php echo $featuredImage->getMediumImage() ?>" loading="eager" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" /></a>
+                    <?php endif; ?>
+                    <div class="feature-block">Featured Post</div>
+                </div>
+            <?php endif;?>
+            <div class="blog-content-inner">
+              <h2 class="product-name"><a class="css-content-trim-2-line" href="<?php echo rtrim($post->getPermalink(), "/").$lang ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?></a></h2>
+              <p class="css-content-trim-2-line"><?php echo $excerpt = $post->getExcerpt(400)  ?></p>
+                <div class="clearfix featued-bottom-more">
+                  <a class="button gray-border-btn" href="<?php echo rtrim($post->getPermalink(), "/").$lang ?>" title="Read More">Read More</a>
+                  <span class="blog-post-name">
+                    <img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/3d-men.png')?>" alt="Men Icon" loading="auto">
+                    <a href="<?php echo $this->getUrl().$lang.$frontend_identifies.'/author/'.str_replace('.','-',str_replace(' ','-',$author->getUserLogin())); ?>" title="<?php echo $this->escapeHtml($author->getDisplayName()) ?>"><?php echo $this->escapeHtml($author->getDisplayName()) ?></a>
+                    <em><?php echo $post->getPostDate()?></em>
+                  </span>
+                  <div class="comment-box">
+                    <img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/comment-icon.png')?>" alt="Comment Icon" loading="auto">
+                    <a href="<?php echo rtrim($post->getPermalink(), "/").$lang ?>" title="Comment"><?php echo $post->getCommentCount(); ?> <?php if($post->getCommentCount()>1) echo "Comments";else echo "Comment";?></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+<?php endif; ?>

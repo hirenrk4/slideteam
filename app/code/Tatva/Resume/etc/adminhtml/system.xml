@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tatvasoft" translate="label" sortOrder="10">
+            <label>TATVASOFT</label>
+        </tab>
+        <section id="resume" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Resume</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Resume::tatva_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Resume</label>
+                <field id="categoryName" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for Resume</label>
+                    <source_model>Tatva\Resume\Model\Config\Source\CategoryList</source_model>
+                </field>
+                <field id="resume_blog_ids" translate="label" type="text" sortOrder="1" showInDefault="1">
+                    <label>Enter Resume Blog Ids</label>                   
+                </field>
+                <field id="one_resume_blog_id" translate="label" type="text" sortOrder="1" showInDefault="1">
+                    <label>Enter Single Resume Blog Id</label>                   
+                </field>
+                <field id="to_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(To)</label>                   
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(cc)</label>
+                    <comment>enter comma separated emails</comment>
+                </field>
+                <field id="onepagecategoryName" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for One Page</label>
+                    <source_model>Tatva\Resume\Model\Config\Source\CategoryList</source_model>
+                </field>
+                <field id="one_page_blog_id" translate="label" type="text" sortOrder="1" showInDefault="1">
+                    <label>Enter Single One Page Blog Id</label>                   
+                </field>
+                <field id="document_report_category" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for Document Reports</label>
+                    <source_model>Tatva\Resume\Model\Config\Source\CategoryList</source_model>
+                </field>
+                <field id="letterhead_category" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for Letterhead</label>
+                    <source_model>Tatva\Resume\Model\Config\Source\CategoryList</source_model>
+                </field>
+                <field id="edutech_category" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for Edu Tech</label>
+                    <source_model>Tatva\Resume\Model\Config\Source\CategoryList</source_model>
+                </field>
+                <field id="ukrain_crisis_category" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for Ukrain Crisis</label>
+                    <source_model>Tatva\Resume\Model\Config\Source\CategoryList</source_model>
+                </field>
+                <field id="custom_category_manager" translate="label" type="multiselect" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for Category Manager</label>
+                    <source_model>Tatva\Resume\Model\Config\Source\CategoryList</source_model>
+                </field>
+                
+
+            </group>
+        </section>
+    </system>
+</config>

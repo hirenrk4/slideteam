@@ -1,0 +1,21 @@
+<?php 
+	$category = $this->getCurrentCategory();
+?>
+<?php if($category->getSeoDescription() || $category->getCategoryHeader()): ?>
+<div class="doc-list-header-wrapper">
+    <div class="main-wrapper clearfix">
+        <div class="conatiner">
+            <?php if($category->getCategoryHeader()): ?>
+            <h1 class="res-category-title">
+                <?php echo $category->getCategoryHeader(); ?>
+            </h1>
+            <?php endif; ?>
+            <?php if($category->getSeoDescription()): ?>
+            <div class="res-description">
+                <?php echo $category->getSeoDescription(); ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

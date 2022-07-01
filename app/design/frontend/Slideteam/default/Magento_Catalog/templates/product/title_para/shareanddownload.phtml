@@ -1,0 +1,14 @@
+<?php
+$blockObj = $block->getLayout()->createBlock('Tatva\Freesamples\Block\ListProduct');
+?>
+<div class="product-info-block">
+    <div class="container">
+        <div class="main-wrapper list-detail-consistency clearfix">
+            <div class="page-title category-title">
+                <h1 class="custom-category-title"><?php echo $blockObj->getconfigValue('shareanddownloadproducts/shareanddownloadproductsdisplay/shareanddownloaddisptitletxt'); ?></h1>
+                <div class="category-description"><?php echo $blockObj->getconfigValue('shareanddownloadproducts/shareanddownloadproductsdisplay/description'); ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>   
+        <add id="Tatva_Supportingextensions::projectimportdetails" title="Product import details" module="Tatva_ProductImport" sortOrder="90" action="productimport/index/index" resource="Tatva_Supportingextensions::projectimportdetails" parent="Tatva_Supportingextensions::supportingextension"/>    
+    </menu>
+</config>

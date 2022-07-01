@@ -1,0 +1,55 @@
+<?php
+/**
+ * @category   Emarsys
+ * @package    Emarsys_Emarsys
+ * @copyright  Copyright (c) 2017 Emarsys. (http://www.emarsys.net/)
+ */
+
+/** @var \Emarsys\Emarsys\Block\JavascriptTracking $block */
+?>
+
+<?php $merchantId = $block->getMerchantId(); ?>
+<?php $webExtendStatus = $block->getJsEnableStatusForAllPages(); ?>
+
+<!-- This code will embeded on all pages -->
+<?php if ($webExtendStatus && !empty($merchantId)): ?>
+    <?php $helper = $this->helper('Emarsys\Emarsys\Helper\Data'); ?>    
+
+    <?php if ($helper->isTestModeEnabled()):?>
+        
+        <script type="text/javascript">
+            require(['jquery','Emarsysjs','domReady!'], function (jQuery){
+                ScarabQueue.push(['testMode']);
+            });
+        </script>
+    <?php endif;?>
+
+    <?php if ($currentCategory = $block->getCurrentCategory()): ?>
+        
+        <script type="text/javascript">
+            require(['jquery','Emarsysjs','domReady!'], function (jQuery){
+                ScarabQueue.push(['category', '<?php echo $currentCategory; ?>']);
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if ($currentProduct = $block->getCurrentProductSku()): ?>
+        <script type="text/javascript">
+            require(['jquery','Emarsysjs','domReady!'], function (jQuery){
+                ScarabQueue.push(['view', '<?php echo $currentProduct; ?>']);
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php if ($searchResult = $block->getSearchResult()): ?>
+        <script type="text/javascript">
+            require(['jquery','Emarsysjs','domReady!'], function (jQuery){
+                ScarabQueue.push(['searchTerm', '<?php echo $searchResult; ?>']);
+            });
+        </script>
+    <?php endif; ?>
+
+    <?php /* Script for an Ajax to avoid caching Issues */ ?>
+    
+    <?php echo $this->getChildHtml('emarsys.javascripttracking'); ?>
+<?php endif; ?>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <title>Failure Page</title>
+    </head>
+    <body>
+    	<referenceContainer name="content">
+            <container name="custom.checkout.failure.wrapper" htmlTag="div" htmlClass="checkout-failure container">
+            </container>
+        </referenceContainer>
+        <referenceContainer name="slideteam-sidenav-wrapper" remove="false" /> 
+        <move element="checkout.failure" destination="custom.checkout.failure.wrapper" />
+    </body>
+</page>

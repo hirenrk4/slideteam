@@ -1,0 +1,48 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php /** @var $block \Magento\Catalog\Block\Product\Image */ ?>
+
+<img class="photo image small_image_hover lazyload" loading="lazy"
+    <?php foreach ($block->getCustomAttributes() as $name => $value): ?>
+        <?= $escaper->escapeHtmlAttr($name) ?>="<?= $escaper->escapeHtml($value) ?>"
+    <?php endforeach; ?>
+    rel="imgtip[<?= /* @escapeNotVerified */ $block->getImageResult('key') ?>]"
+    title ="<?= /* @escapeNotVerified */ $block->getImageResult('name') ? $block->getImageResult('name') : $block->getBrochureResult('name')  ?>"
+    product_name="<?= /* @escapeNotVerified */ $block->getImageResult('name') ?>"
+    product_id="<?= /* @escapeNotVerified */ $block->getImageResult('id') ?>"
+    product_url="<?= /* @escapeNotVerified */ $block->getImageResult('product_url') ?>"
+    total_images="<?= /* @escapeNotVerified */ $block->getImageResult('total_images')?>"
+    remaining="<?= /* @escapeNotVerified */ $block->getImageResult('remaining')?>"
+    zoomsrc="<?= /* @escapeNotVerified */ $block->getImageResult('zoomsrc')?>"
+    zoomsrc2="<?= /* @escapeNotVerified */ $block->getImageResult('zoomsrc2')?>"
+    zoomsrc3="<?php echo $block->getImageResult('zoomsrc3'); ?>"
+    <?php if ($block->getImageResult('a4productpage') == 1) { ?> 
+        a4productpage = "1"
+    <?php }elseif ($block->getImageResult('brochurepage') == 1) { ?>
+        brochurepage = "1"
+    <?php } elseif ($block->getImageResult('custompage') == 1) { ?>
+        custompage = "1"
+    <?php } elseif ($block->getImageResult('documentpage') == 1) { ?>
+       documentpage = "1"
+    <?php } elseif ($block->getImageResult('letterhead') == 1) { ?>
+       letterhead = "1"
+    <?php } elseif ( $block->getImageResult('remaining') > 3){ ?>
+        new_remaining="<?= /* @escapeNotVerified */ ($block->getImageResult('total_images')-6) ?>"
+        zoomsrc4="<?= /* @escapeNotVerified */ $block->getImageResult('zoomsrc4')?>"
+        zoomsrc5="<?= /* @escapeNotVerified */ $block->getImageResult('zoomsrc5')?>"
+        zoomsrc6="<?php echo $block->getImageResult('zoomsrc6'); ?>"
+    <?php } ?>
+    <?php if($block->getImageResult('home_page') == 1){ ?>
+        data-src="<?= /* @escapeNotVerified */ $block->getImageUrl() ?>"
+        src="<?= $this->getViewFileUrl('images/89.gif', array('_secure' => true))?>"
+    <?php } else { ?>
+        src="<?= /* @escapeNotVerified */ $block->getImageUrl() ?>"
+    <?php } ?>
+    video="<?= /* @escapeNotVerified */ $block->getImageResult('video_url')?>"
+    width="<?= /* @escapeNotVerified */ $block->getWidth() ?>"
+    height="<?= /* @escapeNotVerified */ $block->getHeight() ?>"    
+    alt="<?= /* @escapeNotVerified */ $block->stripTags($block->getLabel(), null, true) ?>" />

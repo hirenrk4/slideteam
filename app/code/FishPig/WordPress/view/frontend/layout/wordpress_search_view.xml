@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<remove src="Amasty_Stripe::css/source/mkcss/amstripe.css"/>
+		<remove src="Magento_Theme::css/theme/custom.css"/>
+		<remove src="Magento_Theme::css/magnific-popup/magnific-popup.css"/>
+		<remove src="Magento_Theme::css/theme/catalog-tooltip.css"/>
+	</head>
+	<body>
+		<referenceContainer name="page.top">
+			<block class="FishPig\WordPress\Block\Html\Breadcrumbs" name="wp.breadcrumbs" >
+				<block class="FishPig\WordPress\Block\Search\View" name="cat_lang" template="FishPig_WordPress::post/language_search.phtml" />
+			</block>
+		</referenceContainer>
+		<referenceContainer name="content">
+			<block class="FishPig\WordPress\Block\Search\View" name="wp.search.view" template="post/list/wrapper.phtml">
+				<block class="FishPig\WordPress\Block\Post\ListPost" name="wp.post.list" template="post/list.phtml">
+					<block class="FishPig\WordPress\Block\Post\PostList\Pager" name="wp.post_list.pager" as="pager" />
+				</block>
+			</block>
+		</referenceContainer>
+	</body>
+</page>

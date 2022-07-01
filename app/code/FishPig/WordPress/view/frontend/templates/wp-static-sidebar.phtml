@@ -1,0 +1,33 @@
+<?php 
+	$products = $this->getSidebarProducts();$j = 0;
+?>
+<div id="wordpress-sidebar-term" class="browse-template-block">
+	<div class="block-title">        
+		<strong><span>Most Popular Templates</span></strong>    
+	</div>
+	<div class="products-grid-outer">		
+		<div class="static-products">
+			<?php foreach($products as $key => $product) : ?>
+				<?php $productImage = $this->getBlockImage($product, "category_page_grid"); ?>
+			<div class="blog-sidebar-products">
+				<a href="<?php echo $block->getBaseUrl()."search/go?ts=custom&w=*&cnt=300"; ?>" title="<?php echo $product->getName(); ?>">
+					<?php $image_result = array('name'=>$product->getName(),
+                            'id'=>$product->getId()); ?>
+                            <?= $productImage->setData('brochure_result',$image_result)->toHtml() ?>
+					
+				</a>
+				<div class="product-info name-only content-trim-popular">        
+					<!-- <h2 class="product-name content-trim-popular"> -->
+					<h2 class="product-name">
+						<a class="css-content-trim-2-line" href="<?php echo $block->getBaseUrl()."search/go?ts=custom&w=*"; ?>" title="<?php echo $product->getName(); ?>">
+							<?php echo $product->getName(); ?>
+						</a>
+					</h2>
+				</div>
+			</div>
+			<?php $j++; ?>
+		<?php endforeach; ?>
+			
+		</div>		
+	</div>
+</div>

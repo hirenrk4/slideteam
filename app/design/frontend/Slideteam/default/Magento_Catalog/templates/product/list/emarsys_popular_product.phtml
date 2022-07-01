@@ -1,0 +1,209 @@
+<?php 
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_category  = $block->getCurrentCategory();
+?>
+<?php if($_category): ?>
+    <?php
+    $linkedSubCategoryId = $_helper->categoryAttribute($_category, $_category->getSubCategoryId(), 'sub_category_id');
+    $current_category_name = $_helper->categoryAttribute($_category, $_category->getName(), 'name');
+    $parent_category_name = $_helper->categoryAttribute($_category, $_category->getParentCategory()->getName(), 'name');
+
+    $tag_page = $this->getChild('first_product_in_tag_banner');
+    $catID_t = $block->getLayer()->getCurrentCategory()->getId();
+    ?>
+
+    <?php if($linkedSubCategoryId): ?>
+        <?php
+        $cpBlock = $this->getLayout()->createBlock('Tatva\Bestsellers\Block\ListProduct'); 
+        $cur_page = 1;
+        if($this->getRequest()->getParam('p'))
+        {
+            $cur_page = $this->getRequest()->getParam('p');
+        }
+        $_downloaded_products = $cpBlock->getMostPopularProductsOfCategory($linkedSubCategoryId,10,$cur_page);
+        ?>
+
+        <?php if(!empty($_downloaded_products) && ($_downloaded_products->getSize() > 0))
+        { ?>
+            <?php
+            $backendModel = $_downloaded_products->getResource()->getAttribute('media_gallery')->getBackend();
+            $exclude_categories_custom_str =  $cpBlock->getConfigration()->getValue('button/theme_custom_config/theme_custom_config_field1',\Magento\Store\Model\ScopeInterface::SCOPE_STORE);
+            $exclude_categories_custom_array = explode(',',$exclude_categories_custom_str);
+            $excluded_category = in_array($catID_t,$exclude_categories_custom_array);
+            ?>
+            <?php if(!$excluded_category): ?>
+                <div class="main-wrapper list-detail-consistency theme-wrapper clearfix">
+                    <!-- <div class="populartitle">
+                        <h4 class="clearfix">
+                            <strong><a href="<?php echo $cpBlock->getCatlogCategoryModel()->load($linkedSubCategoryId)->getUrl(); ?>"><?php echo "Our Most Popular ".$current_category_name." Products"; ?></a></strong>
+                            <a class="see-all" href="<?php echo $cpBlock->getCatlogCategoryModel()->load($linkedSubCategoryId)->getUrl(); ?>">See All</a>
+                        </h4>
+                    </div> -->
+                    <div class="products-grid-outer">
+                        <ul class="products-grid products-grid--max-5-col pro-image most-download-category products-grid clearfix">
+                            <?php $i = 0; $j=0; $k =0; ?>
+                            <?php foreach ($_downloaded_products as $_product): ?>
+                                <li class="item">
+                                    <?php
+                                    $backendModel->afterLoad($_product);
+                                    $image = 'category_page_list';
+                                    $productImage = $block->getImage($_product, $image);
+                                    $total_images = $_product->load($_product->getId())->getMediaGalleryImages();
+
+                                    $small_image = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'category_page_grid')->getUrl();   
+                                    $small_image_str = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->getUrl();
+
+                                    $count_total_images = count($total_images);
+                                    $remaining = count($total_images)-3;
+                                    if($remaining==-3)
+                                    {
+                                        $small_image_biggersize1 =  $_product->getImageUrl();
+                                    }
+                                    else
+                                    {
+                                        $id =0;
+                                        $galary_images = array();
+                                        $image_url='';                
+                                        $is_hero_img_different = 0;
+                                        foreach($total_images as $val)
+                                        {
+                                            $galary_images[] = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'product_page_image_medium')->setImageFile($val->getFile())->getUrl();
+                                            $id++;
+                                            if($id >5){break;}
+                                        }
+                                        $count = count($galary_images);
+
+                                        $small_image_biggersize2="";
+                                        $small_image_biggersize3="";
+                                        $small_image_biggersize4="";
+                                        $small_image_biggersize5="";
+                                        $small_image_biggersize6="";
+
+                                        if($remaining > 3) {
+                                            $small_image_biggersize1 =  $galary_images[0];
+                                        }else {
+                                            $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->setImageFile($total_images->getFirstItem()->getFile())->getUrl();
+                                        }
+
+                                        $hero_img_str = $galary_images[0];
+                                        $hero_img_name = substr($hero_img_str,(int)strrpos($hero_img_str,'/'));
+                                        $small_img_name = substr($small_image_str,(int)strrpos($small_image_str,'/'));  
+
+                                        if($hero_img_name != $small_img_name)
+                                        {
+                                            $is_hero_img_different = 1;
+                                            if($remaining > 3) {
+                                                $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'category_page_grid')->getUrl();
+                                            }else {
+                                                $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->getUrl();
+                                            }
+                                            if($count > 1)
+                                            {
+                                                $small_image_biggersize2 = $galary_images[0];
+                                            }
+                                            if($count > 2)
+                                            {
+                                                $flag = strpos($galary_images[1], $small_img_name);
+                                                if($flag !== false)
+                                                {
+                                                    $small_image_biggersize3 =  $galary_images[2];    
+                                                }
+                                                else
+                                                {
+                                                    $small_image_biggersize3 =  $galary_images[1];
+                                                }
+                                            }
+                                            if($count > 3)
+                                            {
+                                                $small_image_biggersize4 =  $galary_images[3];
+                                            }
+                                            if($count > 4)
+                                            {
+                                                $small_image_biggersize5 =  $galary_images[4];
+                                            }
+                                            if($count > 5)
+                                            {
+                                                $small_image_biggersize6 =  $galary_images[5];
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if($count > 1)
+                                            {
+                                                $small_image_biggersize2 = $galary_images[1];
+                                            }
+                                            if($count > 2)
+                                            {
+                                                $small_image_biggersize3 =  $galary_images[2];
+                                            }
+                                            if($count > 3)
+                                            {
+                                                $small_image_biggersize4 =  $galary_images[3];
+                                            }
+                                            if($count > 4)
+                                            {
+                                                $small_image_biggersize5 =  $galary_images[4];
+                                            }
+                                            if($count > 5)
+                                            {
+                                                $small_image_biggersize6 =  $galary_images[5];
+                                            }
+                                        }
+
+                                    }
+                                    ?>
+
+                                    <a href="<?= $_product->getProductUrl() ?>" class="product photo product-item-photo product-image" tabindex="-1"><?php $image_result = array('key'=>$j,'total_images'=>$count_total_images, 'remaining'=>$remaining, 'name'=>$_product->getName(),
+                                        'id'=>$_product->getId(),'product_url'=>$_product->getProductUrl(),'zoomsrc'=>$small_image_biggersize1,
+                                        'zoomsrc2'=>$small_image_biggersize2,'zoomsrc3'=>$small_image_biggersize3,
+                                        'zoomsrc4'=>$small_image_biggersize4,'zoomsrc5'=>$small_image_biggersize5,'zoomsrc6'=>$small_image_biggersize6); ?>
+                                        <?= $productImage->setData('image_result',$image_result)->toHtml() ?>
+                                    </a>
+
+                                    <div class="product-info product-item-details">
+                                        <?php $_productNameStripped = $this->stripTags($_product->getName(), null, true); ?>
+                                        <span class="product-name name-content-trim" rel="">
+                                            <a class="product-item-link name-trim" href="<?= $_product->getProductUrl() ?>" title="<?php echo $_productNameStripped; ?>">
+                                                <?php //echo substr($_product->getName(),0,50)."..."; ?>
+                                                <?php echo $_product->getName();?>
+                                            </a>
+                                        </span>
+                                        <p class="description-content-trim">
+                                            <?php
+                                            if(!$tag_page)
+                                            {
+                                                $sh_des = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description');
+                                                echo $sh_des;                        
+                                            }
+                                            else
+                                            {
+                                                echo $_product->getSentence1();
+                                            }
+                                            ?>                    
+                                            <br/>
+                                        </p>
+                                    </div>
+
+                                    <?php if ($i < 9){ ?>
+                                    <?php } $i++;$j++;$k++; ?>
+                                </li>
+                            <?php endforeach;?>
+                        </ul>
+                    </div>
+                </div>
+            <?php endif; ?>
+        <?php } ?>
+    <?php endif; ?>
+<?php endif; ?>
+
+<script type="text/javascript">
+    require(['jquery'], function ($)
+    {
+        $(document).ready(function(){
+            //Product Detail shown
+            $('.product-item-details').show();
+            
+        })
+       
+    })
+</script>

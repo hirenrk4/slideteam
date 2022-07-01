@@ -1,0 +1,39 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="form_post_listing_data_source" xsi:type="string">Tatva\Formbuild\Model\ResourceModel\Post\Post\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Tatva\Formbuild\Model\ResourceModel\Post\Post\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">form_data</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Formbuild\Model\ResourceModel\Post</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Tatva\Formbuild\ReferenceImageUpload" type="Tatva\Formbuild\Model\ImageUploader">
+    <arguments>
+        <argument name="baseTmpPath" xsi:type="string">tatva/tmp</argument>
+        <argument name="basePath" xsi:type="string">tatva</argument>
+        <argument name="allowedExtensions" xsi:type="array">
+            <item name="jpg" xsi:type="string">jpg</item>
+            <item name="jpeg" xsi:type="string">jpeg</item>
+            <item name="gif" xsi:type="string">gif</item>
+            <item name="png" xsi:type="string">png</item>
+        </argument>
+        <argument name="allowedMimeTypes" xsi:type="array">
+            <item name="jpg" xsi:type="string">image/jpg</item>
+            <item name="jpeg" xsi:type="string">image/jpeg</item>
+            <item name="gif" xsi:type="string">image/gif</item>
+            <item name="png" xsi:type="string">image/png</item>
+        </argument> 
+    </arguments>
+</virtualType>
+ 
+<type name="Tatva\Formbuild\Controller\Adminhtml\Index\Uploadimage">
+    <arguments>
+        <argument name="imageUploader" xsi:type="object">Tatva\Formbuild\ReferenceImageUpload</argument>
+    </arguments>
+</type>
+</config>

@@ -1,0 +1,50 @@
+<?php
+$product = $block->getProduct();
+$whatIsIt = $product->getData('edu_top1');
+$whoIsItFor = $product->getData('edu_top2');
+$whyEduDecks = $product->getData('edu_top3');
+if (!(($whatIsIt  == "" || $whatIsIt == null) && ($whoIsItFor  == "" || $whoIsItFor == null) && ($whyEduDecks  == "" || $whyEduDecks == null))) {
+
+?>
+    <div class="container">
+        <div class="why_edudecks">
+            <?php
+            if ($whatIsIt  != "" || $whatIsIt != null) {
+            ?>
+                <div class="why_edudecks_custom why_edudecks_left">
+                    <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/edutech/edu_icon1.png'); ?>" alt="icon">
+                    <h3>What is it</h3>
+                    <?php
+                    echo  $whatIsIt;
+                    ?>
+                </div>
+            <?php
+            }
+            if ($whoIsItFor  != "" || $whoIsItFor != null) {
+            ?>
+                <div class="why_edudecks_custom">
+                    <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/edutech/edu_icon2.png'); ?>" alt="icon">
+                    <h3>Who is it for?</h3>
+                    <?php
+                    echo  $whoIsItFor;
+                    ?>
+                </div>
+            <?php
+            }
+            if ($whyEduDecks  != "" || $whyEduDecks != null) {
+            ?>
+                <div class="why_edudecks_custom why_edudecks_right">
+                    <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/edutech/edu_icon3.png'); ?>" alt="icon">
+                    <h3>Why EduDecks?</h3>
+                    <?php
+                    echo $whyEduDecks;
+                    ?>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+    </div>
+<?php
+}
+?>

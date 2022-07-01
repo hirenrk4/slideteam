@@ -1,0 +1,54 @@
+<?php $fullUrl = $block->getRequest()->getUriString(); ?>
+<?php $urlArray = explode("?",$fullUrl); ?>
+<?php $langArray = explode("&", $fullUrl); ?>
+<?php 
+	$default = 0;
+	$newsort = 0;
+	$popularsort = 0;
+	$commentsort = 0;
+	$langsort = 0;
+	if(count($urlArray) >= 2)
+	{
+		$a = $urlArray[1];
+		if(preg_match("/lang/i", $a))
+		{
+			$langsort = 1;
+			if(count($langArray) == 1)
+			{
+				$default = 1;
+			}
+		}
+		$search = 'sort=newly';
+		$search1 = 'sort=popular';
+		$search2 = 'sort=comment';
+		if(preg_match("/{$search}/i", $a)) {
+			$newsort = 1;
+		}
+		elseif(preg_match("/{$search1}/i", $a))
+		{
+			$popularsort = 1;
+		}
+		elseif(preg_match("/{$search2}/i", $a))
+		{
+			$commentsort = 1;
+		}
+	}
+	else
+	{
+		$default = 1;
+	}
+?>
+<div class="sort_option">
+	<div class="sort_label">
+		<span class="first">Sort Blogs By: </span>
+		<span class="second">
+			<a href="<?php if($langsort == 1): echo $langArray[0]."&sort=newly"; else: echo $urlArray[0]."?sort=newly"; endif;?>" <?php if($newsort == 1): echo "class='sort_active'"; endif; ?> title="Newly Added" >Newly Added</a> 
+		| </span>
+		<span class="third">
+			<a href="<?php if($langsort == 1): echo $langArray[0]."&sort=popular"; else: echo $urlArray[0]."?sort=popular"; endif;?>" <?php if($default == 1): echo "class='sort_active'"; elseif($popularsort == 1): echo "class='sort_active'"; endif; ?> title="Most Popular" >Most Popular</a>
+		| </span>
+		<span class="forth">
+			<a href="<?php if($langsort == 1): echo $langArray[0]."&sort=comment"; else: echo $urlArray[0]."?sort=comment"; endif;?>" <?php if($commentsort == 1) : echo "class='sort_active'"; endif; ?> title="Most Comment" >Most Comment</a>
+		</span>
+	</div>
+</div>

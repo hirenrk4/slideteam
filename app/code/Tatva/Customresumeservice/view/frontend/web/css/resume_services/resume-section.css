@@ -1,0 +1,1691 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&display=swap');
+
+
+*
+{
+	
+	padding:0;
+	margin:0;
+	
+}
+strong.uploadcol {
+    padding-left: 0px;
+}
+
+section.perfect_steps, section.color_branding, section.resume_price, section.cookiez_cuteresume, section.unique-layout, section.resume_price {
+
+    background-size: cover !important;
+
+}
+
+
+section.resume_form.customresume_form1 {
+    padding-top: 0px;
+}
+
+
+section.color_branding .branding_img img {
+    width: 85%;
+}
+section.Flawless_formatting {
+    margin: 40px 0px;
+}
+input.input-text.required-entry.form-control.mage-error[name=name] {
+    margin-left: 10px;
+}
+input#captcha_resume_service_captcha2, input#captcha_resume_service_captcha1 {
+    margin-left: 10px;
+}
+.mainresume_section {
+    width: 100%;
+    float: left;
+	font-family: 'Montserrat', sans-serif !important;
+	font-weight: 600;
+}
+.main-wrapper.clearfix.footer-trustpilot {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.resume_request h4.custom-category-title {
+    margin-bottom: 15px;
+}
+div .mage-error[generated] {
+
+    width: 100%;
+    float: left;
+    padding-left: 24px;
+    margin-top: 10px;
+}
+.field.captcha.no-label img.captcha-img {
+    width: 100%;
+    margin: 0px;
+    height: 50px !important;
+}
+img#captcha-reload {
+    height: auto;
+    width: auto;
+    margin-top: 19px;
+    margin-right: 45px;
+}
+
+
+section#exp_professional {
+    background-image: url(../../images/resume_services/top_banner.png);
+    width: 100%;
+    float: left;
+	background-repeat: no-repeat;
+	height: 639px;
+    position: relative;
+	    background-size: 100%;
+		top:-3px
+}
+.resume_container {
+    max-width: 1370px;
+    margin: 0 auto;
+    padding: 0 188px;
+}
+#exp_professional p {
+
+    font-size: 32px;
+    color: #fff;
+    margin-top: 25px;
+}
+#exp_professional h2 {
+    color: #fff;
+    line-height: normal;
+	font-size: 66px;
+    padding-top: 50px;
+    font-weight: 700;
+	margin-top: 0px;
+}
+section#exp_professional img {
+       width: 50%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    z-index: 1;
+}
+section#exp_professional {
+    text-align: center;
+}
+section.cookiez_cuteresume {
+    width: 100%;
+    float: left;
+    background-image: url(../../images/resume_services/second_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+.custer_text {
+    width: 50%;
+    float: left;
+}
+.cookiez_rgtimg {
+    width: 50%;
+    float: right;
+}
+.custer_text h2 {
+    font-size: 38px;
+    line-height: 45px;
+    color: #121212;
+    font-weight: 800;
+}
+.custer_text p {
+    color: #121212;
+    font-size: 23px;
+    font-weight: 800;
+    margin-top: 25px;
+}
+section.cookiez_cuteresume .resume_container {
+    padding-top: 11%;
+}
+.custer_text {
+    width: 50%;
+    float: left;
+    padding-top: 56px;
+}
+button.btn-default.btn.hidden-xs {
+    background: #0091ec;
+    color: #fff;
+    border: 2px solid #0091ec;
+    padding: 0 30px;
+	border-radius: 50px;
+   line-height: 45px;
+    font-weight: 700;
+    height: 80px;
+    font-size: 24px;
+   text-transform: uppercase;
+    letter-spacing: 1.5px;
+	cursor: pointer;
+	margin-top: 30px;
+	font-family: 'Montserrat', sans-serif !important;
+}
+button.btn-default.btn.hidden-xs:hover {
+    border: 2px solid #0091ec;
+    background: 0 0;
+    color: #121212;
+}
+section.perfect_steps {
+    width: 100%;
+    float: left;
+    background-image: url(../../images/resume_services/third_bg.png);
+	background-repeat: no-repeat;
+	background-size: 100%;
+	padding: 70px 0px;
+	margin-top: 50px;
+}
+
+.steps_content.snd_step img {
+    width: 90%;
+}
+.steps_content.frst_step {
+    margin-right: 30px;
+}
+.steps_content p {
+    font-size: 25px;
+    color: #000;
+    font-weight: 700;
+    line-height: 35px;
+   margin-top: 13px;
+    margin-bottom: 5px;
+
+}
+.steps_content h2 {
+    font-size: 36px;
+    font-weight: 800;
+    color: #003058;
+}
+.numbers {
+    text-align: left;
+    float: left;
+    background: #0091ec;
+    color: #fff;
+    font-size: 30px;
+    padding: 25px 35px;
+    font-weight: 700;
+    border-bottom-right-radius: 75%;
+    border-bottom-left-radius: 4%;
+    border-top-right-radius: 0%;
+   
+    line-height: 32px;
+    text-align: center;
+}
+span.numbrstep {
+    line-height: 26px;
+    position: relative;
+    left: -9px;
+    top: -7px;
+}
+.steps_content.snd_step p {
+    color: #3e3e3e;
+}
+.steps_inercontent {
+    width: 100%;
+    float: left;
+}
+h2.steps_heading {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 40px;
+  
+    text-align: center;
+    font-weight: 700;
+}
+.resume_steps {
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin-bottom: 40px;
+	position: relative;
+}
+.steps_content {
+    width: 40%;
+    float: none;
+    background: #fff;
+    text-align: center;
+    padding: 0px;
+  
+    margin: 0 auto;
+    display: inline-block;
+    min-height: 575px;
+}
+.steps_content.frst_step img {
+     width: 38%;
+    margin-top: 26px;
+}
+.arrow {
+	border: solid #005bb1;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 8px;
+    top: 20px;
+    position: relative;
+    border-radius: 4px;
+    left: 0px;
+}
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+span.next_arrow {
+    width: 60px;
+    height: 60px;
+    border-radius: 100%;
+    background: #fff;
+    display: inline-block;
+    border: 25px solid #1e292f;
+    position: absolute;
+    top:  45%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    bottom: 0;
+}
+button.btn-default.btn.hidden-xs:focus {
+    /* border: 0px; */
+    outline: 0px;
+}
+
+h4.custom-category-title {
+    color: #275279;
+    font-size: 48px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 5px;
+} 
+span.blue_underline {
+    width: 150px;
+    height: 8px;
+    background: #005bb1;
+    display: inline-block;
+    border-radius: 20px;
+}
+.page-title.category-title {
+    text-align: center;
+}
+section.resume_form {
+    width: 100%;
+    float: left;
+}
+section.resume_form {
+    width: 100%;
+    float: left;
+    padding: 50px 0px;
+}
+.resume_request .col{
+    display: inline-block;
+    width: 50%;
+    line-height: 30px;
+    margin-bottom: 40px;
+    float: left;
+    min-height: 85px;
+}
+.customresumeservice-form .form-top-block label, .field.captcha.required label {
+    font-size: 18px;
+    color: #000;
+      padding: 0px 10px;
+    width: 100%;
+    float: left;
+    text-align: left;
+    margin-bottom: 15px;
+}
+.customresumeservice-form .form-top-block input {
+   padding: 0px 20px;
+    line-height: 22px;
+    width: 90%;
+    height: 80px;
+    border-radius: 50px;
+    border: 0px;
+    float: left;
+    font-size: 15px;
+  box-sizing: border-box !important;
+    background: #e7e7e7;
+    color: #537081;
+}
+::placeholder{
+	
+color:	rgba(83, 112, 129, 0.5);
+font-weight:500;
+font-size:16px;
+font-weight:600;
+}
+input, textarea, button{
+    outline: 0;
+}
+.customresumeservice-form {
+    margin-top: 50px;
+    width: 100%;
+    float: left;
+    font-weight: 600;
+}
+
+.submit_resume input[type="submit"] {
+    padding: 0px 20px;
+    line-height: 22px;
+    width: 90%;
+    height: 80px;
+    border-radius: 50px;
+    border: 0px;
+    float: left;
+    font-size: 25px;
+    background: #0091ec;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 600;
+	cursor: pointer;
+	 letter-spacing: 1.5px;
+	     box-sizing: border-box !important;
+}
+input#captcha_resume_service_captcha1 {
+    padding: 0px 20px;
+    line-height: 22px;
+    width: 82%;
+    height: 80px;
+    border-radius: 50px;
+    border: 0px;
+    float: left;
+    font-size: 15px;
+    background: #e7e7e7;
+    color: #537081;
+	    max-width: 100%;
+}
+input#captcha_resume_service_captcha2 {
+    padding: 0px 20px;
+    line-height: 22px;
+    border-radius: 50px;
+    border: 0px;
+    float: left;
+    font-size: 15px;
+    background: white;
+    color: #537081;
+    padding-left: 20px !important;
+    width: 90%;
+    height: 80px;
+	max-width: 100%;
+}
+.control.captcha-image {
+    display: inline-flex;
+    margin-top: 0px !important;
+    padding: 0px 20px;
+    line-height: 22px;
+    width: 65%;
+    height: 80px;
+    border-radius: 50px;
+    /* border: 0px; */
+    /* float: left; */
+    /* font-size: 15px; */
+    background: #e7e7e7;
+    /* color: #537081; */
+    text-align: center;
+    vertical-align: middle;
+}
+img.captcha-img {
+    float: left;
+    margin-top: 14px !important;
+    border: none !important;
+}
+img.spinner-img {
+    margin-top: 12px;
+	width: auto;
+    text-align: left;
+    float: left;
+}
+.col.submit_file {
+    margin-top: 44px;
+}
+.input-box a {
+    color: #0091ec;
+    text-decoration: unset;
+}
+.error_msg {
+    width: 100%;
+    float: left;
+    color: red;
+	padding-left: 15px;
+	margin-top: 5px;
+}
+.control.captcha.col, .nested.col {
+    margin-bottom: 0px;
+}
+.submit_resume input[type="submit"]:hover {
+    border: 2px solid #0091ec;
+    background: 0 0;
+    color: #121212;
+}
+/* task 1273 start*/
+input.inputfile.inputfile-6 {
+    visibility: hidden;
+    display: none;
+}
+/* task 1273 end*/
+.file_input label {
+    background: transparent;
+    max-width: 100%;
+    float: left;
+}
+.box.file_input label {
+    background: transparent;
+    border: none;
+	max-width: 100%;
+	    margin-bottom: 0px;
+} 
+.box.file_input {
+    width: 100%;
+    float: left;
+}
+.box.file_input .inputfile-6 + label strong.uploadcol:hover {
+    background: #0d4579;
+}
+.box.file_input .inputfile-6 + label span {
+  
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+    border: 3px dotted #7fadd8;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+       width: 350px;
+    text-align: center;
+    line-height: 58px;
+ display: inline-block;
+  border-left: 0px;
+    background: #f3f3f3;
+    color: rgba(83, 112, 129, 0.5);
+    font-weight: 600;
+    font-size: 16px;
+}
+.box.file_input .inputfile-6 + label strong.uploadcol {
+    background: #005bb1;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif !important;
+    width: 200px;
+    height: 65px;
+    text-align: center;
+    line-height: 65px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+	    display: inline-block;
+}
+.input-box {
+    width: 100%;
+    float: left;
+}
+.inner-attach {
+    width: 100%;
+    float: left;
+}
+.col.submit_file, .captcha-wrapper.col {
+    margin-bottom: 0px;
+}
+input#captcha_resume_service_captcha1 {
+    padding-left: 20px !important;
+}
+.unique_lyoutimg img {
+
+    float: right;
+}
+.unique_lyoutimg {
+    top: 0%;
+    transform: translateX(0%);
+    background-image: url(../../images/resume_services/forth_resumes.png);
+    position: absolute;
+    bottom: 0;
+    background-position: right;
+    background-size: 95%;
+    width: 60%;
+    /* height: 20%; */
+    float: left;
+    right: 0;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    padding-top: 30%;
+}
+section.unique-layout {
+    width: 100%;
+    float: left;
+    background-image: url(../../images/resume_services/fourth_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+	    position: relative;
+		overflow-x: hidden;
+    padding: 90px 0px 50px 0px;
+}
+.unque_lyout {
+    width: 40%;
+    float: left;
+}
+.unque_lyout h2 {
+    font-size: 48px;
+    color: #fff;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.unque_lyout p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 30px 0px;
+} 
+.content_listing li {
+    list-style: none;
+    color: #FFF;
+    font-size: 22px;
+    font-weight: 600;
+	    float: left;
+    margin-bottom: 15px;
+	width: 100%;
+    float: left;
+}
+.content_listing{
+	width:100%;
+	float:left;
+	padding-left:0px;
+	
+}
+.content_listing li img {
+    line-height: 25px;
+    position: relative;
+    left: 0;
+    top: 13px;
+    margin-right: 20px;
+}
+section.color_branding {
+    width: 100%;
+    float: left;
+    width: 100%;
+    float: left;
+    background-image: url(../../images/resume_services/sixth_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* position: relative; */
+    /* overflow-x: hidden; */
+    padding: 90px 0px 50px 0px;
+}
+ .branding_txt .unque_lyout {
+    width: 100%;
+    float: left;
+}
+.branding_txt {
+    width: 50%;
+    float: left;
+}
+.branding_img {
+    width: 50%;
+    float: left;
+}
+section.Flawless_formatting h2 {
+    color: #285179;
+}
+section.Flawless_formatting p {
+    color: #323131;
+    /* margin: 10px 0px; */
+    margin-bottom: 0px;
+}
+section.Flawless_formatting li {
+    color: #285179;
+    margin-bottom: 0px;
+}
+section.Flawless_formatting li img {
+  
+    top: 20px;
+    margin-right: 0px;
+}
+section.resume_price {
+    width: 100%;
+    float: left;
+    background-image: url(../../images/resume_services/price_bg.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    padding: 40px 0px;
+	
+    background-size: cover;
+}
+.price_content h2 {
+    color: #262e48;
+    font-size: 50px;
+      margin-top: 0px;
+    font-weight: 900;
+}
+.price_content {
+    width: 500px;
+    margin: 0 auto;
+    float: none;
+    background: #fff;
+    border-radius: 15px;
+    padding: 50px;
+    text-align: center;
+	    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.price_content sup {
+    font-size: 30px;
+}
+.price_content sub {
+    font-size: 22px;
+    font-weight: 600;
+}
+.price_content p {
+    color: #62646f;
+    margin-top: 30px;
+    font-size: 15px;
+	line-height: 25px;
+}
+.price_content h2 img {
+    position: relative;
+    top: 11px;
+    padding-right: 5px;
+}
+section.resume_price button.btn-default.btn.hidden-xs {
+    font-size: 18px;
+    height: 60px;
+}
+section.resume_form.customresume_form2 {
+    background: #ededed;
+}
+.customresume_form2 .customresumeservice-form .form-top-block input {
+    background: #fff;
+}
+.customresume_form2 input#captcha_resume_service_captcha1 {
+    background: #fff;
+}
+.customresume_form2 .control.captcha-image {
+    background: #fff;
+}
+.customresume_form2 .box.file_input .inputfile-6 + label strong.uploadcol {
+    background: #28a7fb;
+}
+.customresume_form2 .box.file_input .inputfile-6 + label strong.uploadcol:hover {
+    background: #005bb1;
+}
+img.reload_icon {
+    margin-top: 22px;
+   
+    float: right;
+}
+section.Flawless_formatting {
+
+    width: 100%;
+    float: left;
+}
+.cookiez_rgtimg img {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 1680px){
+	
+.steps_content {
+
+    min-height: 525px;
+}
+.steps_content.frst_step img {
+    width: 30%;
+    
+}
+.steps_content.snd_step img {
+    width: 80%;
+}
+section.perfect_steps {
+
+    padding: 34px 0px;
+}
+.content_listing li {
+
+    font-size: 20px;
+}
+section.unique-layout {
+  
+    padding: 80px 0px 50px 0px;
+}
+section.color_branding .branding_img img {
+    width: 77%;
+}
+section.Flawless_formatting {
+    margin-top: 50px;
+    width: 100%;
+    float: left;
+}
+section.resume_price {
+
+    padding: 40px 0px;
+}	
+	
+}
+
+
+@media (max-width: 1600px){
+.steps_content {
+    min-height: 510px;
+}
+.content_listing li img {
+  
+    left: 0;
+    top: 0px;
+
+    display: inline-block;
+    float: left;
+}
+section.Flawless_formatting li img {
+    top: 0px;
+    margin-right: 0px;
+}
+section.Flawless_formatting li {
+  
+    line-height: 60px;
+}
+
+.customresumeservice-form .form-top-block label, .field.captcha.required label {
+    font-size: 16px;
+
+    box-sizing: border-box !important;
+}
+.box.file_input .inputfile-6 + label span {
+
+    width: 288px;
+   
+}
+section.unique-layout {
+    padding: 70px 0px 60px 0px;
+}
+
+
+}
+
+
+@media (max-width: 1536px){
+.steps_content {
+    min-height: 496px;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 233px;
+}
+
+}
+
+
+
+
+@media (max-width: 1440px){
+	
+#exp_professional h2 {
+   
+    font-size: 52px;
+} 
+#exp_professional p {
+    font-size: 28px;
+
+}
+.custer_text h2 {
+    font-size: 31px;
+    line-height: 40px;
+    color: #121212;
+    font-weight: 800;
+}
+.steps_content {
+    min-height: 440px;
+}
+.steps_content p {
+    font-size: 22px;
+    color: #000;
+    font-weight: 700;
+    line-height: 30px;
+    margin-top: 13px;
+    margin-bottom: 5px;
+} 
+.steps_content h2 {
+    font-size: 30px;
+
+}
+.numbers {
+    text-align: left;
+    font-size: 25px;
+    padding: 15px 16px;
+    font-weight: 700;
+  line-height: 32px;
+    
+}
+h2.steps_heading {
+    font-size: 40px;
+   
+    margin-bottom: 30px;
+  
+}
+h4.custom-category-title {
+  
+    font-size: 40px;
+   
+}
+.box.file_input .inputfile-6 + label strong.uploadcol {
+ 
+    width: 175px;
+
+}
+.box.file_input .inputfile-6 + label span {
+    width: 207px;
+}
+.customresumeservice-form .form-top-block label, .field.captcha.required label {
+    font-size: 14px;
+  
+}
+section.unique-layout {
+    padding: 60px 0px 45px 0px;
+}
+.content_listing li {
+    font-size: 18px;
+    line-height: 27px;
+}
+section.color_branding {
+
+    padding: 35px 0px 0px 0px;
+}
+.price_content {
+
+    padding: 20px;
+  
+}
+.unque_lyout p {
+    color: #fff;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 14px 0px;
+}
+.unque_lyout h2 {
+    font-size: 40px;
+   
+    margin-bottom: 10px;
+}
+.unique_lyoutimg {
+    top: 0%;
+   background-size: 100%;
+    width: 54%;
+
+}
+section.Flawless_formatting ul.content_listing {
+    margin-top: 15px;
+}
+section.Flawless_formatting li {
+    line-height: 28px;
+}
+section.Flawless_formatting li img {
+    top: -9px;
+    margin-right: 0px;
+}
+.branding_img img {
+    width: 100%;
+    margin-top: 35px;
+}
+
+img.reload_icon {
+    margin-top: 18px;
+    float: right;
+}
+img.spinner-img {
+    margin-top: 7px;
+
+}
+.control.captcha-image {
+    padding: 0px 20px;
+    line-height: 22px;
+    width: 64%;
+
+}
+::placeholder{
+
+font-size:14px;
+
+}
+
+section.resume_form {
+    width: 100%;
+    float: left;
+    padding: 0px 0px;
+    margin-bottom: 40px;
+}
+section.resume_form.customresume_form2 {
+    padding-top: 40px;
+    padding-bottom: 30px;
+}
+section.resume_form.customresume_form2 {
+    margin-bottom: 0px;
+}
+.steps_content {
+    min-height: 440px;
+}
+section.cookiez_cuteresume .resume_container {
+    padding-top: 5%;
+}
+section.resume_form {
+    margin-top: 40px;
+}
+section.resume_form.customresume_form2 {
+    margin-top: 0px;
+}
+
+
+}
+
+
+
+@media (max-width: 1280px){
+
+.steps_content {
+    min-height: 400px;
+}
+.box.file_input .inputfile-6 + label strong.uploadcol {
+    width: 130px;
+}
+.control.captcha-image {
+  
+    width: 72%;
+}
+.customresumeservice-form .form-top-block label, .field.captcha.required label {
+    font-size: 13px;
+}
+
+section.unique-layout {
+    padding: 25px 0px 35px 0px;
+}
+section.Flawless_formatting {
+    margin-top: 10px;
+   
+    margin-bottom: 30px;
+}
+.price_content {
+    padding: 9px;
+}
+.price_content p {
+ 
+    line-height: 24px;
+}
+section.cookiez_cuteresume .resume_container {
+    padding-top: 0px;
+}
+button.btn-default.btn.hidden-xs {
+
+    height: 70px;
+    font-size: 20px;
+}
+.custer_text h2 {
+    font-size: 27px;
+
+  
+    line-height: 30px;
+}
+.custer_text p {
+    color: #121212;
+    font-size: 21px;
+    font-weight: 800;
+    margin-top: 16px;
+}
+
+
+}
+
+@media (max-width: 1200px){
+	
+	#exp_professional h2 {
+    font-size: 44px;
+}
+.cookiez_rgtimg img {
+    width: 100%;
+}
+.custer_text p {
+  
+    font-size: 18px;
+   
+    margin-top: 10px;
+}
+.custer_text h2 {
+    font-size: 24px;
+    line-height: 26px;
+}
+.steps_content p {
+    font-size: 18px;
+    color: #000;
+    font-weight: 700;
+    line-height: 24px;
+    margin-top: 9px;
+    margin-bottom: 0px;
+}
+span.next_arrow {
+    width: 50px;
+    height: 50px;
+
+}
+.arrow {
+
+    top: 14px;
+    position: relative;
+    border-radius: 4px;
+    left: 0px;
+}
+h2.steps_heading {
+    font-size: 37px;
+    margin-bottom: 21px;
+}
+.steps_content {
+    min-height: 365px;
+}
+.customresumeservice-form {
+    margin-top: 30px;
+    width: 100%;
+    float: left;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 165px;
+  
+}
+.customresumeservice-form .form-top-block label, .field.captcha.required label {
+    font-size: 15px;
+    line-height: 22px;
+}
+label[for=upload] {
+    min-height: 55px;
+}
+label[for=url] {
+    min-height: 55px;
+}
+img.reload_icon {
+    margin-top: 24px;
+    float: right;
+    width: 15%;
+}
+img.spinner-img {
+    margin-top: 7px;
+    width: 40%;
+}
+.unque_lyout h2 {
+    font-size: 36px;
+    margin-bottom: 3px;
+}
+.unque_lyout p {
+  
+    font-size: 12px;
+    line-height: 22px;
+   
+}
+.content_listing li img {
+    width: 30px;
+    display: inline-flex;
+    height: 30px;
+}
+.content_listing li {
+  
+    display: inline-flex;
+}
+section.Flawless_formatting li img {
+
+    height: auto;
+}
+section.Flawless_formatting li img {
+    top: -9px;
+    margin-right: 0px;
+    width: auto;
+}
+.price_content p {
+  
+    margin-top: 10px;
+}
+section.resume_price button.btn-default.btn.hidden-xs {
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+	
+	
+	
+}
+
+@media (max-width: 1080px){
+	
+#exp_professional h2 {
+    font-size: 38px;
+}
+#exp_professional p {
+    font-size: 24px;
+    margin-top: 14px;
+}
+section#exp_professional {
+
+    height: 500px;
+   
+}
+.custer_text {
+
+    padding-top: 25px;
+}
+button.btn-default.btn.hidden-xs {
+    height: 50px;
+    font-size: 17px;
+}
+section#exp_professional img {
+    width: 44%;
+
+}
+.steps_content h2 {
+    font-size: 25px;
+}
+
+.steps_content p {
+    font-size: 16px;
+   margin-top: 9px;
+   
+}
+.arrow {
+    top: 5px;
+    position: relative;
+    border-radius: 4px;
+    left: 0px;
+    padding: 5px;
+}
+.steps_content {
+    min-height: 345px;
+}
+.steps_content.frst_step img {
+    width: 35%;
+    margin-top: 10px;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 143px;
+    font-size: 14px;;
+}
+.box.file_input .inputfile-6 + label strong.uploadcol {
+    width: 95px;
+    font-size: 16px;
+}
+.unque_lyout {
+    width: 50%;
+    float: left;
+}
+.unique_lyoutimg {
+ 
+    width: 45%;
+}
+.unque_lyout h2 {
+    font-size: 30px;
+    margin-bottom: 3px;
+}
+.branding_img {
+    width: 43%;
+    float: left;
+}
+section.color_branding .branding_img img {
+    width: 100%;
+}
+.branding_img {
+    width: 43%;
+    float: left;
+}
+.branding_img img {
+    width: 100%;
+    margin-top: 70px;
+}
+section.resume_price {
+    padding: 15px 0px;
+}
+.branding_txt {
+    width: 56%;
+    float: left;
+}
+span.next_arrow {
+    width: 30px;
+    height: 30px;
+    border: 21px solid #1e292f;
+}
+
+}
+
+
+
+
+
+@media (max-width: 1050px){
+.resume_container {
+
+    padding: 0 50px;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 218px;
+ 
+}
+section.color_branding .branding_img img {
+    width: 100%;
+    margin-top: 0px;
+} 
+section.perfect_steps, section.color_branding, section.resume_price, section.cookiez_cuteresume, section.unique-layout {
+
+    background-size: cover;
+
+}
+.steps_content {
+    min-height: 386px;
+}
+section.color_branding {
+    padding: 35px 0px 10px 0px;
+    margin-bottom: 20px;
+}
+
+
+}
+
+@media (max-width: 1024px){
+.box.file_input .inputfile-6 + label span {
+    width: 250px;
+}
+}
+
+@media (max-width: 991px){
+
+button.btn-default.btn.hidden-xs {
+    display: block;
+}
+.price_content button.btn-default.btn.hidden-xs {
+    display: inline-block;
+}
+.price_content h2 {
+
+    margin-top: 0px;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 244px;
+}
+.box.file_input .inputfile-6 + label span {
+  
+    line-height: 55px;
+}
+.box.file_input .inputfile-6 + label strong.uploadcol {
+  
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+}
+img#captcha-reload {
+  
+    margin-right: 4px;
+}
+.resume_container {
+    padding: 0 20px;
+} 
+
+}
+
+
+
+
+@media (max-width: 900px){
+section#exp_professional {
+    height: 445px;
+}
+#exp_professional h2 {
+       font-size: 35px;
+    padding-top: 25px;
+    font-weight: 700;
+}
+#exp_professional p {
+    font-size: 20px;
+    margin-top: 14px;
+}
+h2.steps_heading {
+    font-size: 32px;
+    margin-bottom: 21px;
+}
+.steps_content {
+    min-height: 365px;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 188px;
+}
+section.unique-layout {
+    padding: 15px 0px 0px 0px;
+}
+
+}
+
+
+@media (max-width: 800px){
+	section#exp_professional {
+    height: 385px;
+}
+.cookiez_rgtimg {
+    width: 40%;
+    float: right;
+}
+.steps_content {
+    min-height: 345px;
+}
+.box.file_input .inputfile-6 + label strong.uploadcol {
+    width: 77px;
+    font-size: 16px;
+    display: inline-block;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 200px;
+    display: inline-block;
+}
+label[for=url], label[for=upload] {
+    min-height: auto;
+}
+.unque_lyout p {
+  
+    margin: 2px 0px;
+}
+	
+}
+
+
+@media (max-width: 768px){
+
+.box.file_input .inputfile-6 + label span {
+    width: 190px;
+    display: inline-block;
+}
+.control.captcha.col {
+    width: 100%;
+}
+.control.captcha-image {
+    width: 100%;
+}
+.unique_lyoutimg {
+    width: 95%;
+
+	top: 0%;
+    transform: translateX(0%);
+    background-image: url(../../images/resume_services/3.png);
+    position: relative;
+    bottom: 0;
+    background-position: right;
+  
+    float: left;
+    right: 0;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    padding-top: 30%;
+}
+.unque_lyout p {
+    font-size: 15px;
+    line-height: 19px;
+}
+.unque_lyout {
+    width: 100%;
+    float: left;
+}
+.content_listing {
+    width: 100%;
+    float: left;
+    padding-left: 0px;
+    margin-top: 15px;
+}
+.branding_txt {
+    width: 100%;
+    float: left;
+}
+.branding_img img {
+    width: 100%;
+    margin-top: 0px;
+}
+.branding_img {
+    width: 100%;
+    float: left;
+}
+section.Flawless_formatting {
+    margin-top: 10px;
+    margin-bottom: 0px;
+}
+section.color_branding .branding_img img {
+    width: 81%;
+    margin-top: 0px;
+}
+input#captcha_resume_service_captcha2, input#captcha_resume_service_captcha1 {
+    margin-left: 0px;
+}
+.custer_text h2 {
+  
+    margin-top: 0px;
+}
+
+}
+
+@media (max-width: 720px){
+input#captcha_resume_service_captcha2, input#captcha_resume_service_captcha1 {
+    margin-left: 0px;
+}
+.steps_content p {
+    font-size: 14px;
+    margin-top: 9px;
+}
+
+
+}
+
+
+@media (max-width: 667px){
+#exp_professional h2 {
+    font-size: 28px;
+    padding-top: 12px;
+    font-weight: 700;
+}
+section#exp_professional {
+    height: 328px;
+}
+h2.steps_heading {
+    font-size: 30px;
+    margin-bottom: 21px;
+}
+h4.custom-category-title {
+    font-size: 30px;
+}
+.resume_request .col {
+   
+    width: 100%;
+    
+    margin-bottom: 30px;
+    float: left;
+    min-height: 85px;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 440px;
+    display: inline-block;
+}
+.box.file_input .inputfile-6 + label strong.uploadcol {
+    width: 110px;
+    font-size: 16px;
+    display: inline-block;
+}
+.customresumeservice-form .form-top-block label, .field.captcha.required label {
+    font-size: 17px;
+    line-height: 23px;
+}
+.control.captcha-image {
+    width: 50%;
+}
+img.spinner-img {
+    margin-top: 7px;
+    width: auto;
+}
+img.reload_icon {
+    margin-top: 24px;
+    float: right;
+    width: auto;
+}
+input#captcha_resume_service_captcha1, .customresumeservice-form .form-top-block input {
+    width: 100%;
+    height: 70px;
+    box-sizing: border-box !important;
+}
+.control.captcha.col {
+    width: 100%;
+    float: left;
+}
+.col.submit_file {
+    margin: 0px;
+    min-height: auto;
+}
+.captcha-wrapper.col {
+    margin-bottom: 0px;
+}
+
+.cookiez_rgtimg {
+   
+    width: 80%;
+    float: left;
+    margin-top: 10px;
+}
+section#exp_professional img {
+    width: 55%;
+}
+.custer_text {
+    width: 100%;
+    float: left;
+ 
+    margin-top: 10px;
+}
+.nested.col {
+    margin-bottom: 0px;
+}
+
+
+
+}
+
+@media (max-width: 567px){
+
+.price_content {
+    width: 100%;
+    box-sizing: border-box !important;
+}
+.resume_container {
+    padding: 0 25px;
+    box-sizing: border-box !important;
+}
+section#exp_professional {
+    background: #28a7fb;
+}
+.steps_content {
+    width: 100%;
+}
+
+.steps_content.frst_step {
+    margin-bottom: 20px;
+}
+
+.steps_content.frst_step {
+    margin-bottom: 20px;
+	margin-right: 0px;
+
+}
+span.next_arrow {
+    display: none;
+}
+.box.file_input .inputfile-6 + label span {
+    width: 372px;
+    display: inline-block;
+}
+.box.file_input .inputfile-6 + label strong.uploadcol {
+    width: 75px;
+    font-size: 15px;
+    display: inline-block;
+}
+.customresumeservice-form .form-top-block label, .field.captcha.required label {
+  
+    padding: 0px;
+}
+.steps_content h2 {
+    font-size: 25px;
+    margin-top: 0px;
+}
+h2.steps_heading, .resume_request h4.custom-category-title {
+  
+    line-height: 35px;
+}
+
+}
+
+@media (max-width: 480px){
+.box.file_input .inputfile-6 + label span {
+    width: 290px;
+    display: inline-block;
+}
+#exp_professional h2 {
+    font-size: 24px;
+ 
+}
+ul.content_listing {
+    margin-bottom: 0px;
+}
+
+}
+
+
+
+@media (max-width: 411px){
+	.box.file_input .inputfile-6 + label span {
+     width: 215px; 
+     display: inline-block; 
+}
+.resume_container {
+    padding: 0 7px;
+    box-sizing: border-box !important;
+}
+#exp_professional p {
+    font-size: 16px;
+    margin-top: 7px;
+}
+#exp_professional h2 {
+    font-size: 24px;
+    padding-top: 12px;
+    font-weight: 700;
+}
+section#exp_professional img {
+    width: 75%;
+}
+h2.steps_heading {
+    font-size: 25px;
+    margin-bottom: 21px;
+}
+
+
+}
+
+
+
+@media (max-width: 340px){
+.box.file_input .inputfile-6 + label span {
+    width: 170px;
+    display: inline-block;
+}
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) { 
+
+/* Safari only override */
+::i-block-chrome,section.unique-layout{
+    padding: 45px 0px 35px 0px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

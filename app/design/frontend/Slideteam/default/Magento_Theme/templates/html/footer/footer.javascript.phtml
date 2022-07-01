@@ -1,0 +1,77 @@
+<?php
+$is_live_site = 0;
+$is_live_site = $this->getScopeConfig('button/google_config/google_config_field');
+if (isset($is_live_site) && ($is_live_site != "") && $is_live_site == 1) {
+    ?>
+    <script type="text/javascript">
+        /**
+         * Live Chat GA-integration
+         */
+        window.__lc = window.__lc || {};
+        window.__lc.license = "4624851";
+        window.__lc.ga_version = "gtm";
+
+        (function() {
+            var lc = document.createElement('script');
+            lc.type = 'text/javascript';
+            lc.async = true;
+            lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'cdn.livechatinc.com/tracking.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+        })();
+
+        /**
+         * Live Chat integration
+         */
+        function downloadJSAtOnload222() {
+            setTimeout(function(){ 
+                var element = document.createElement("script");
+                element.src = "<?php echo $this->getViewFileUrl('Tatva_Contacts::js/chat.js'); ?>";
+                document.body.appendChild(element);
+            }, 5000);
+        }
+        if (window.addEventListener)
+            window.addEventListener("load", downloadJSAtOnload222, false);
+        else if (window.attachEvent)
+            window.attachEvent("onload", downloadJSAtOnload222);
+        else
+            window.onload = downloadJSAtOnload222;
+    </script>
+    <?php
+}
+
+?>
+<?php
+    $ActionName = ['catalog_category_view','bestsellers_index_index','newproduct_index_index','shareanddownloads_index_index','freesamples_index_index','brochure_index_index','resume_index_index']; 
+    if(!in_array($this->getRequest()->getFullActionName(), $ActionName)) : ?>
+    <?php if($this->getRequest()->getFullActionName() != 'catalog_product_view') : ?>
+        <?php if($this->getRequest()->getFullActionName() == 'cms_index_index') : ?>
+            <script type="text/javascript">require(['jquery','Emarsysjs','domReady!'], function (jQuery){
+
+                    
+                    setTimeout(function() {ScarabQueue.push(['exclude', 'category', 'has', 'Subscriptions']);
+                    ScarabQueue.push(['go']);}, 1000);
+            });
+            </script>
+        <?php else : ?>
+            <script type="text/javascript">require(['jquery','Emarsysjs','domReady!'], function (jQuery){
+                ScarabQueue.push(['exclude', 'category', 'has', 'Subscriptions']);
+                ScarabQueue.push(['go']);
+            });
+            </script>
+        <?php endif; ?>
+    <?php else : ?>
+        <script type="text/javascript">require(['jquery','Emarsysjs','domReady!'], function (jQuery){
+            ScarabQueue.push(['exclude', 'category', 'has', 'Subscriptions']);
+            ScarabQueue.push(['go']);
+        });
+        </script>
+    <?php endif; ?>
+<?php endif; ?>
+
+<script type="text/javascript">
+    require(['jquery','domReady!'], function (jQuery){
+        if (window.location.hash == '#_=_') {
+            window.location.hash = '';
+        }
+    });
+</script>

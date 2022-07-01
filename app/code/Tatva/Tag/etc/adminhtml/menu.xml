@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+         <add id="Tatva_Tag::catalog_Tags" title="Tags" translate="title" module="Tatva_Tag" sortOrder="60" parent="Magento_Catalog::catalog"  resource="Tatva_Tag::catalog_Tags"/>
+         <add id="Tatva_Tag::All_Tags" title="All Tags" translate="title" module="Tatva_Tag" sortOrder="10" parent="Tatva_Tag::catalog_Tags" action="tag/index/index" resource="Tatva_Tag::All_Tags"/>
+         <add id="Tatva_Tag::Pending_Tags" title="Pending Tags" translate="title" module="Tatva_Tag" sortOrder="20" parent="Tatva_Tag::catalog_Tags" action="tag/index/pending" resource="Tatva_Tag::catalog_Tags"/>
+    </menu>
+</config>
+
+

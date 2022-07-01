@@ -1,0 +1,105 @@
+<!-- Emarsys by default pass data using files
+	1.app/code/Emarsys/Emarsys/view/frontend/templates/emarsys/webextend.phtml
+	2.app/code/Emarsys/Emarsys/view/frontend/templates/emarsys/javascripttracking.phtml
+	We have added the custom requirements here only
+ -->
+<script type="text/javascript">
+	requirejs(['Magento_Customer/js/customer-data','jquery'], function(customerData,$){
+	    base_url_substring = "slideteam.net";
+	});
+</script>
+<?php 
+	$base_url = $block->getBaseUrl();
+	$live_url_substr = "slideteam.net";
+	$is_live = strpos($base_url,$live_url_substr) !== false ? true : false;
+?>
+<?php if($block->getEmarsysIntegrationStatus()): ?>
+
+	<?php $page_type = $block->getRequest()->getRouteName();?>
+
+	<?php /*--Home page widget integration start--*/ ?>
+	<?php //if($page_type =="cms" && $block->getPageIdentifier() == 'home' && $block->getStoreManager()->getStore()->getStoreId() == "1"):?>
+	<?php //echo $this->getLayout()->createBlock('Tatva\Emarsys\Block\Emarsys')->setTemplate('Tatva_Emarsys::home_widget.phtml')->toHtml(); ?>
+	<?php //endif;?>
+	<?php /*--Home page widget integration end--*/ ?>
+
+
+	<?php /*--Category Listing Page Start--*/ ?>
+	<?php if ($page_type == "catalog" || $page_type == "allproducts")
+	{
+		if($page_type == "allproducts")
+		{
+			$categoryId = $this->getRequest()->getParam('c');
+			$categoryName = $block->getCategory()->create()->load($categoryId)->getName();
+			if($is_live){
+				echo "<script type='text/javascript'>require(['jquery','Emarsysjs'], function (jQuery){ScarabQueue.push(['category', '$categoryName']);});</script>";
+			}
+			else{
+				/* Testing */
+				echo "<script type='text/javascript'>require(['jquery','Emarsysjs'], function (jQuery){ScarabQueue.push(['category', '$categoryName']);});</script>";
+				/*echo "<script>console.log('Emarsys Call for category name ');</script>";	
+				echo "<script>console.log(['category', '$categoryName']);</script>";*/	
+			}
+		}
+		else
+		{
+			$currentCategory = $block->getRegistry()->registry('current_category');
+			
+			if($currentCategory)
+			{
+
+				$parent_category_name = $currentCategory->getParentCategory()->getName();
+				
+				$_helper = $this->helper('Magento\Catalog\Helper\Output');
+				$parent_category_name = $_helper->categoryAttribute($currentCategory, $currentCategory->getParentCategory()->getName(), 'name');
+				$pageAction = $this->getRequest()->getFullActionName();
+				/*if($parent_category_name == "Themes" && $pageAction != 'catalog_product_view')
+				{
+					echo $this->getLayout()->createBlock('Tatva\Emarsys\Block\Emarsys')->setTemplate('Tatva_Emarsys::custom_emarsys_widget_in_listing.phtml')->toHtml();
+				}*/
+			}
+		}
+	}
+	?>
+	<?php /*--Category Listing Page Ends--*/ ?>
+
+	<?php /*--Wordpress Emarsys Start--*/?>
+
+	<?php
+		$ActionName = ['wordpress_search_view','wordpress_homepage_view'];
+		if($page_type == "wordpress" && !in_array($block->getRequest()->getFullActionName(), $ActionName)): ?>
+		<?php echo $this->getLayout()->createBlock('Tatva\Emarsys\Block\Emarsys')->setTemplate('Tatva_Emarsys::wordpress_search_widget.phtml')->toHtml(); ?>
+		<?php echo $this->getLayout()->createBlock('Tatva\Emarsys\Block\Emarsys')->setTemplate('Tatva_Emarsys::popular_templates.phtml')->toHtml(); ?>
+	<?php endif; ?>
+	<?php /*--Wordpress Emarsys End--*/?>
+
+		<script type="text/x-magento-init">
+		    {
+		        "*": {
+		            "Magento_Ui/js/core/app": {
+		                "components": {
+		                    "tatva_customer_data": {
+		                        "component": "Tatva_Customer/js/view/tatva_customer_data"
+		                    }
+		                }
+		            }
+		        }
+		    }
+		</script>
+		
+		<script type="text/javascript">
+			requirejs(['Magento_Customer/js/customer-data','jquery'], function(customerData,$){
+			    /*base_url_substring = "slideteam.net";*/
+			    $(document).on('ajaxComplete', function (event, xhr, settings) {
+					/*customerData.reload(['tatva_customer_data']);*/
+			    	tatva_customer_data = customerData.get('tatva_customer_data')();
+			    	cart = customerData.get('cart');
+			    	cart_data = cart();
+			    	cart_products_count = cart_data.summary_count;
+			    	cart_items_ids = tatva_customer_data.cartItemsIds;
+			    	customerId = tatva_customer_data.customerId;
+			    });
+
+			});
+		</script>
+<?php endif; ?>

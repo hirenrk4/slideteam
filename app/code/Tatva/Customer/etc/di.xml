@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Customer\Block\Account\SortLink" type="Tatva\Customer\Block\Account\SortLink" />
+    <preference for="Magento\Customer\Controller\Account\EditPost" type="Tatva\Customer\Controller\Account\EditPost" />
+    <preference for="Magento\Customer\Block\Form\Login" type="Tatva\Customer\Block\Form\Login" />
+    <preference for="Magento\Customer\Block\Form\Register" type="Tatva\Customer\Block\Form\Register" />
+    <preference for="Magento\Customer\Block\Form\Edit" type="Tatva\Customer\Block\Form\Edit" />
+    <preference for="Magento\Captcha\Observer\CheckUserCreateObserver" type="Tatva\Customer\Observer\CheckUserCreateObserver" />
+    <preference for="Magento\Customer\Controller\Adminhtml\Index\MassDelete" type="Tatva\Customer\Controller\Adminhtml\Index\MassDelete" />
+	<preference for="Magento\Customer\Block\Account\Forgotpassword" type="Tatva\Customer\Block\Account\Forgotpassword" />
+   <preference for="Magento\Customer\Model\ResourceModel\Grid\Collection" type="Magento\Customer\Model\ResourceModel\Grid\Collection2" />
+	<virtualType name="Magento\Customer\Model\ResourceModel\Grid\Collection2" type="Tatva\Customer\Ui\Component\Listing\CustomerDataProvider">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">customer_grid_flat</argument>
+			<argument name="resourceModel" xsi:type="string">Magento\Customer\Model\ResourceModel\Customer</argument>
+		</arguments>
+	</virtualType>
+	<type name="Tatva\Customer\Block\Adminhtml\Edit\Tab\View\PersonalInfo">
+        <plugin name="custom-template" type="Tatva\Customer\Plugin\PersonalInfo" />
+    </type>
+    
+	<preference for="Magento\Customer\Block\Adminhtml\Edit\Tab\View\PersonalInfo" type="Tatva\Customer\Block\Adminhtml\Edit\Tab\View\PersonalInfo" />
+
+    <type name="Magento\Customer\Controller\Account\Login">
+        <plugin name="Tatva.Customer.Plugin.Controller.Account.Login" type="Tatva\Customer\Plugin\Controller\Account\Login" sortOrder="10"/>
+    </type>
+    <!-- <type name="Magento\Customer\Controller\Account\Create">
+        <plugin name="Tatva.Customer.Plugin.Controller.Account.Create" type="Tatva\Customer\Plugin\Controller\Account\Create" sortOrder="10"/>
+    </type> -->
+    <!-- <type name="Magento\Customer\Controller\Account\LoginPost">
+        <plugin name="Tatva.Customer.Plugin.Controller.Account.LoginPost.After" type="Tatva\Customer\Plugin\Controller\Account\LoginPostAfter" sortOrder="1"/>
+    </type> -->
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="customer_subscription_form_data_source" xsi:type="string">Tatva\Subscription\Model\ResourceModel\Subscription\Grid\AdminCustomerSubReport</item>
+				<item name="child_subscription_form_data_source" xsi:type="string">Tatva\Subscription\Model\ResourceModel\SubscriptionInvitation\Grid\AdminChildCustomerSubReport</item>
+				<item name="customer_download_form_data_source" xsi:type="string">Tatva\Catalog\Model\ResourceModel\Productdownloadhistorylog\Grid\CollectionAdminReport</item>
+				<item name="killedsessions_listing_data_source" xsi:type="string">Tatva\Customer\Model\ResourceModel\Killedsesssions\Grid\Collection</item>
+				<item name="killedsessions_form_data_source" xsi:type="string">Tatva\Customer\Model\ResourceModel\Killedsesssions\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Tatva\Subscription\Model\ResourceModel\Subscription\Grid\AdminCustomerSubReport">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">subscription_history</argument>
+			<argument name="eventPrefix" xsi:type="string">Tatva_Admin_Subscription_report_grid_collection</argument>
+			<argument name="eventObject" xsi:type="string">Tatva_Admin_report_grid_collection</argument>
+			<argument name="resourceModel" xsi:type="string">Tatva\Subscription\Model\ResourceModel\Subscription</argument>
+		</arguments>
+	</type>
+	<type name="Tatva\Subscription\Model\ResourceModel\SubscriptionInvitation\Grid\AdminChildCustomerSubReport">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">subscription_history</argument>
+			<argument name="eventPrefix" xsi:type="string">Tatva_Admin_ChildSubscription_report_grid_collection</argument>
+			<argument name="eventObject" xsi:type="string">Tatva_Admin_childreport_grid_collection</argument>
+			<argument name="resourceModel" xsi:type="string">Tatva\Subscription\Model\ResourceModel\Subscription</argument>
+		</arguments>
+	</type>
+	<type name="Tatva\Catalog\Model\ResourceModel\Productdownloadhistorylog\Grid\CollectionAdminReport">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">productdownload_history_log</argument>
+			<argument name="eventPrefix" xsi:type="string">Tatva_Admin_download_report_grid_collection</argument>
+			<argument name="eventObject" xsi:type="string">Tatva_Admin_download_grid_collection</argument>
+			<argument name="resourceModel" xsi:type="string">Tatva\Catalog\Model\ResourceModel\Productdownloadhistorylog</argument>
+		</arguments>
+	</type>
+	<type name="Magento\Customer\Model\Session">
+            <plugin name="Tatva.Customer.Plugin.Model.Session" type="Tatva\Customer\Plugin\Model\Session"/>
+        </type>
+    <type name="\Magento\Customer\Model\EmailNotification">
+      <plugin name="disable-email-notification" type="Tatva\Customer\Model\Plugin\EmailNotification" sortOrder="1"/>
+  </type>
+     <type name="Magento\Customer\Controller\Adminhtml\Index\Delete">
+        <plugin name="Tatva.Customer.Plugin.Controller.Account.Delete" type="Tatva\Customer\Plugin\Controller\Adminhtml\Index\Delete" sortOrder="40"/>
+    </type>
+    <type name="Tatva\Customer\Model\ResourceModel\Killedsesssions\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tatva_customer_killed_sessions</argument>
+			<argument name="eventPrefix" xsi:type="string">Tatva_customer_killed_sessions_grid_collection</argument>
+			<argument name="eventObject" xsi:type="string">Tatva_customer_killed_sessions_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Customer\Model\ResourceModel\Killedsesssions</argument>
+        </arguments>
+    </type>
+</config>

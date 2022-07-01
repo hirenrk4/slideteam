@@ -1,0 +1,56 @@
+<?php
+$flag = $this->productHasStageOptions();
+
+if($flag)
+{
+    $child_categories_sorted = $this->getChildCategoriesSorted_t();
+    ?>
+
+    <!-- <span class="stg-span">Looking for similar designs with different nodes/stages? </span> -->
+    <div class="stageoptions">
+        <div class="tolltip-wrapper">
+            <span class="cell-align stg-span">Looking for similar designs with different nodes/stages</span>
+            <span class="tip cell-align top-right tipso_style" data-tipso="Use this option to find similar designs but with different number of Stages. ’Stages’ here means the number of divisions or graphic elements in the slide. For example, if you see a 4 piece circular design here, but you want the same design in 5 pieces, just select 5 here, and it’ll show you all the options. This is a fast and convenient way to search for the right design in seconds."><a class="tooltips">?</a></span>                                
+        </div>
+        <div class="dropdown-wr">
+            <span>Select</span> 
+            <div class="custom-dropdown">
+                <select data-type='custom-dropdown' id="select" onchange="window.location.href=this.value" title="<?= $block->escapeHtml(__('Number of Components')) ?>
+                <option value="">Nodes</option>
+
+                <option value="<?php echo $this->getUrlForAll_stageoptions() ; ?>">All</option>
+                <!-- Child Category -->
+                <?php foreach ($child_categories_sorted as $key => $childCategory) :?>
+                    <option value="<?php echo $childCategory; ?>">
+                        <a href="<?php echo $childCategory ; ?>">
+                          <?php
+                          $child_category_name = $key;
+                                                  //$child_category_name = $childCategory;             
+                          if(strlen($child_category_name) > 35)
+                            echo substr($child_category_name, 0, 35)."...";
+                        else
+                            echo $child_category_name;
+                        ?>
+                    </a>
+                </option>
+            <?php endforeach; ?>
+            <!-- Child Category -->
+        </select> 
+    </div>
+    <span>here</span>
+</div>
+</div>
+<?php
+}?>    
+
+
+<script type="text/javascript">
+    require(['jquery','dropkick'], function ($)
+    {
+        $('.tip').tipso({position : 'right', width:350,});
+        $("select[data-type='custom-dropdown']").dropkick(
+        {
+            mobile: true
+        });
+    });
+</script>

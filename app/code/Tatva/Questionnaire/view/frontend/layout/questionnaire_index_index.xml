@@ -1,0 +1,38 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd" layout="1column">
+
+    <head>
+        <script src="Tatva_Questionnaire::js/jquery.uploadfile.js" />
+        <css src="Magento_Theme::css/questionnaire/questionnaire.css" media="all" order="102"/>
+        <css src="Magento_Theme::css/FileUpload/fileUpload.css" media="all" order="100"/>
+    </head>
+    <body>
+        <referenceContainer name="main" label="Main Content Container" htmlTag="div" htmlClass="column main no-leftnav"/>
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Questionnaire</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Questionnaire</item>
+                    <item name="label" xsi:type="string">Questionnaire</item>
+                </argument>
+            </action>
+        </referenceBlock>
+        
+        <referenceContainer name="page.messages">            
+            <block class="Magento\Framework\View\Element\Template" name="ajax.message.placeholder" template="Magento_Theme::html/messages.phtml"/>
+            <block class="Magento\Framework\View\Element\Messages" name="messages" as="messages" template="Magento_Theme::messages.phtml"/>
+        </referenceContainer>
+        
+        <referenceContainer name="content">
+            <block class="Tatva\Questionnaire\Block\Questionnaire" name="questionnaire" template="questionnaire.phtml" />
+        </referenceContainer>
+        <referenceContainer name="slideteam-sidenav-wrapper" remove="true" />
+    </body>
+</page>

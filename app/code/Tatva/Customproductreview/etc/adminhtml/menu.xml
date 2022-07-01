@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Tatva_Supportingextensions::productreview_integration" title="Product Review" module="Tatva_Customproductreview" sortOrder="110"  parent="Tatva_Supportingextensions::supportingextension" resource="Tatva_Supportingextensions::productreview_integration" />
+    	<add id="Tatva_Supportingextensions::productreview_post" title="Add Product Review" module="Tatva_Customproductreview" sortOrder="78" parent="Tatva_Supportingextensions::productreview_integration" action="customproductreview/index/index" resource="Tatva_Supportingextensions::productreview_post"/>
+    </menu>
+</config>

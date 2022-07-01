@@ -1,0 +1,130 @@
+<div class="sample-work-block currently-trending">
+
+    <h5>See Some Of Our Sample Work</h5>
+    <!-- Thumbnail -->
+    <div class="work-block-slider">
+        <div id="owl-demo" class="owl-carousel owl-theme">
+            <?php
+            for ($i = 1; $i <= 7; $i++) {
+                ?>
+                <div class="item">
+                    <a class="grouped_sample" rel="group<?php echo $i; ?>" href="<?php echo $this->getViewFileUrl('Magento_Cms::images/marketing_collaterals/brochures/brochure_' . $i . '/1.jpg'); ?>">
+                        <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/marketing_collaterals/brochures/brochure_' . $i . '/thumbnail.jpg'); ?>" alt=""/>
+                    </a>
+                </div>
+            <?php }
+            ?>
+        </div>
+    </div>
+
+    <!-- Brochure 1,2,3 -->
+
+    <?php
+    for ($i = 2; $i <= 4; $i++) {
+        for ($j = 1; $j <= 3; $j++) {
+            ?>
+            <div class="extra-item">
+                <a class="grouped_sample" rel="group<?php echo $j; ?>" href="<?php echo $this->getViewFileUrl('Magento_Cms::images/marketing_collaterals/brochures/brochure_' . $j . '/' . $i . '.jpg'); ?>"></a>
+            </div>
+            <?php
+        }
+    }
+    ?>
+
+    <!-- Brochure 4,5 -->
+
+    <?php
+    for ($i = 4; $i <= 5; $i++) {
+        for ($j = 2; $j <= 10; $j++) {
+            ?>
+            <div class="extra-item">
+                <a class="grouped_sample" rel="group<?php echo $i ?>" href="<?php echo $this->getViewFileUrl('Magento_Cms::images/marketing_collaterals/brochures/brochure_' . $i . '/' . $j . '.jpg'); ?>"></a>
+            </div>
+            <?php
+        }
+    }
+    ?>
+
+
+    <!-- Brochure 6,7 -->
+
+    <?php
+    for ($i = 6; $i <= 7; $i++) {
+        for ($j = 2; $j <= 5; $j++) {
+            ?>
+            <div class="extra-item">
+                <a class="grouped_sample" rel="group<?php echo $i; ?>" href="<?php echo $this->getViewFileUrl('Magento_Cms::images/marketing_collaterals/brochures/brochure_' . $i . '/' . $j . '.jpg'); ?>"></a>
+            </div>
+            <?php
+        }
+    }
+    ?>
+</div>
+<script type="text/javascript">
+<?php
+for ($i = 1; $i <= 7; $i++) {
+    ?>
+        require(['jquery', 'magnific_popup'], function ($) {
+            $(document).ready(function () {
+                $('[rel="group<?php echo $i ?>"]').magnificPopup({
+                    type: 'image',
+                    mainClass: 'mfp-img-mobile',
+                    tLoading: '',
+                    fixedContentPos: false,
+                    gallery: {
+                        enabled: true,
+                        tCounter: '%curr% / %total%',
+                        navigateByImgClick: true,
+                    },
+                    navigateByImgClick: true,
+                    callbacks: {
+                        buildControls: function () {
+                            // re-appends controls inside the main container
+                            this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
+                        },
+                        resize: changeImgSize,
+                        imageLoadComplete: changeImgSize,
+                        change: changeImgSize,
+                        open: function(){
+                            $("body").addClass("mfp-zoom-out-cur");
+                        },
+                        close: function () {
+                            $("body").removeClass("mfp-zoom-out-cur");
+                        },
+                    },
+                    image: {
+                        markup: '<div class="mfp-figure">' +
+                                '<div class="mfp-close"></div>' +
+                                '<div class="mfp-img"></div>' +
+                                '<div class="mfp-bottom-bar">' +
+                                '<div class="mfp-counter"></div>' +
+                                '</div>' +
+                                '</div>', // Popup HTML markup. `.mfp-img` div will be replaced with img tag, `.mfp-close` by close button
+
+                    },
+                    closeMarkup: '<button title="Close (Esc)" type="button" class="mfp-close"></button>',
+                });
+            });
+            function changeImgSize() {
+                var appVersion = navigator.appVersion;
+                var wrapper = $(".mfp-wrap");
+
+                var img = this.content.find('img');
+                var popupH;
+
+                if ((/iphone|ipad|ipod/gi).test(appVersion) || $(window).height() < 500) {
+                    wrapper.css("height","");
+                    popupH = $(window).height() * 0.65;
+                } else {
+                    popupH = $(window).height() * 0.80;
+                }
+                img.css("max-height", popupH);
+            }
+        })
+    <?php
+}
+?>
+    require(['jquery', 'marketing_collaterals'], function ($) {
+
+    });
+</script>

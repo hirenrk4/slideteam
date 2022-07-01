@@ -1,0 +1,45 @@
+<?php
+$product = $block->getProduct();
+$sampleInstructoreNotes = $product->getData('sample_instructor_notes');
+
+if ($sampleInstructoreNotes  != "" || $sampleInstructoreNotes != null) {
+    $wholeContent = explode('#', $sampleInstructoreNotes);
+
+    $mainContent = explode('|',  $wholeContent[0]);
+    $content = explode('|', $wholeContent[1]);
+?>
+    <div class="container">
+        <h2>Sample Instructor Notes</h2>
+        <?php
+        // echo $sampleInstructoreNotes;
+        for ($i = 0; $i < count($mainContent); $i++) {
+        ?>
+            <button class="accordion2"><?= $mainContent[$i] ?></button>
+            <div class="panel1">
+                <?= $content[$i]; ?>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion2");
+        var j;
+
+        for (j = 0; j < acc.length; j++) {
+            acc[j].addEventListener("click", function() {
+                // jQuery('.accordion2.active').removeClass('active');
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+<?php
+}
+?>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Tatva_Supportingextensions::supportingextension" title="Supporting Extensions" sortOrder="51">
+                    <resource id="Tatva_Supportingextensions::managesubscriber" title="Manage Active Subscribers" sortOrder="10">
+                        <resource id="Tatva_Supportingextensions::orderreport" title="Export Order Report" sortOrder="150"/>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

@@ -1,0 +1,17 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+
+/**
+ * @var \Magento\Paypal\Block\Checkout\Onepage\Success\BillingAgreement $block
+ */
+?>
+<p>
+    <?= $block->escapeHtml(__('If you have bought a package that includes Custom Design slides, you can upload your design request by visiting our')) ?>
+    <a href="<?= $block->getUrl('powerpoint_presentation_design_services') ?>">
+         "Design Services" 
+    </a> page.
+</p>

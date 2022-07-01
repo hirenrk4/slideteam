@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="1column-cms">
+    <head>
+        <css src="Magento_Theme::css/cms/cms-general.css" media="all" />
+        <title>Contact Us</title>
+    </head>
+    <body>
+        <referenceContainer name="custom.inner.wrapper">
+            <block class="Tatva\Contacts\Block\Contact" name="contactform" template="Tatva_Contacts::form.phtml" cacheable='false'/>
+        </referenceContainer>
+        <referenceContainer name="custom.inner.wrapper" htmlTag="div" htmlClass="cms-wrap contact-us-wrapper" />
+    </body>    
+</page>

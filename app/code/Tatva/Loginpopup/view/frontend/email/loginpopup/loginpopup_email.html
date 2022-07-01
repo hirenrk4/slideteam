@@ -1,0 +1,45 @@
+<!--@subject {{var emailSubject}}{{var customerName}}  @-->
+<html>
+<head>
+	<title>Customer Survey Data</title>
+</head>
+<body>
+	<table border='0' cellpadding='4' cellspacing='0' width='100%'>
+		<tbody>
+			<tr>
+				<td align='center' colspan='2' height='30' >Customer Survey Data of {{var customerName}}</td>
+			</tr>
+			<tr>
+				<td align='left' width='40%'><b>ID:</b></td>
+				<td width='55%'>{{var customerID}}</td>
+			</tr>
+			<tr>
+				<td align='left' width='40%'><b>Name:</b></td>
+				<td width='55%'>{{var customerName}}</td>
+			</tr>
+			<tr>
+				<td align='left' width='40%'><b>Email ID:</b></td>
+				<td width='55%'>{{var customerEmail}}</td>
+			</tr>       
+			<tr>
+				<td align='left' width='40%'><b>Customer Type:</b></td>
+				<td width='55%'>{{var customerType}}</td>
+			</tr>
+			{{if customerType == "Active"}}       
+			<tr>
+				<td align='left' width='40%'><b>Subscription Type:</b></td>
+				<td width='55%'>{{var subscriptionData}}</td>
+			</tr>   
+			{{/if}} 
+			<tr>
+				<td align='left' width='40%'><b>Industry:</b></td>
+				<td width='55%'>{{var industry}}</td>
+			</tr>       
+			<tr>
+				<td align='left' width='40%'><b>Job Profile:</b></td>
+				<td width='55%'>{{var job_profile}}</td>
+			</tr>       
+		</tbody>
+	</table>
+</body>
+</html>

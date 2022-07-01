@@ -1,0 +1,14 @@
+<?php
+$category = $this->getCurrentCategory(); //get current category
+?>
+
+<div class="page-title category-title">
+    <h1 class="custom-category-title">
+        <?php echo $block->getCategoryTitle(); ?>
+    </h1>
+</div>
+<?php if($category->getSeoDescription()):?>
+<div class="category-description">
+    <?php echo $category->getSeoDescription(); ?>
+</div>
+<?php endif;?>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tatvasoft" translate="label" sortOrder="10">
+            <label>TATVASOFT</label>
+        </tab>
+        <section id="notification" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Notification</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Notification::tatva_notification_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General Configuration</label>                
+                <!-- <field id="total_limit" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit for total notifications</label>
+                    <comment>Enter the number of days.</comment>
+                </field> -->            
+                <field id="ealier_limit" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit for notification page</label>
+                    <comment>Enter the number of notification show.</comment>
+                </field>
+                <field id="header_popup_limit" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Limit for popup notification</label>
+                    <comment>Enter the number of notification show.</comment>
+                </field>
+                <field id="productid" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Last Import Product</label>
+                </field>
+                <field id="blogid" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Last Publish Blog</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <settings>
+        <buttons>
+            <button name="include">
+                <url path="sales/order/included"/>
+                <class>primary</class>
+                <label translate="true">Include Test Orders</label>
+            </button>
+        </buttons>
+    </settings>
+    <columns name="sales_order_columns">
+        <column name="products" class="Tatva\Sales\Ui\Component\Listing\Column\Products">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string" translate="true">Products</item>
+                </item>
+            </argument>
+        </column>
+        <column name="customerfullname" class="Tatva\Sales\Ui\Component\Listing\Column\CustomerFullName">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Fullname</item>
+                    <item name="sortOrder" xsi:type="number">5</item>
+                </item>
+            </argument>
+        </column>
+        <column name="coupon_code">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="label" xsi:type="string" translate="true">Coupon Code</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

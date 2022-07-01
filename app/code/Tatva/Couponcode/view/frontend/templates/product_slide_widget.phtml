@@ -1,0 +1,95 @@
+<?php if($this->getEmarsysIntegrationStatus()):?>
+    <!-- <div id="related-recs" class="recommended-product"></div> -->
+    <!-- <div id="bought-recs" class="recommended-product"></div> -->
+<div class="custom-coupon-sidebar">
+    <div id="coupon-emarsys"  class='browse-template-block'></div>
+    <div class="wordpress-last-right-block" id="wodpress-sidebar-static-block">
+        <a href="https://www.slideteam.net/search/go?af=cat1%3Acompletedecks&isort=globalpop&lbc=slideteam&method=and&p=Q&ts=custom&uid=959406168&w=*&cnt=300&utm_source=slideteam%20website&utm_medium=sli%20category%20listing%20page&utm_campaign=Complete%20Decks" target="_blank">
+            <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/business-decks.png'); ?>" />
+        </a>
+    </div>
+</div>
+<?php endif;?>
+
+<script type="text/html" id="coupon-emarsys-template">    
+    <![CDATA[
+    {{ if (SC.page.products.length) { }}
+    <div class="recommended-title-top browse-post block-posts">
+        <h4>Browse Predesigned Templates</h4>
+    </div>
+
+    <div class="block-title">
+        <strong><span>Most Popular Templates</span></strong>
+    </div>
+
+    <div class="verticla-slider-content products-grid-outer blog-vertical-slider">                
+        <section class="vertical-center slider products-grid">
+            {{ for (var i=0; i < SC.page.products.length; i++) { }}
+            {{ var p = SC.page.products[i];
+            var remaining = p.c_number_of_slides-3;
+            var count_total_images = p.c_number_of_slides;
+            first_thumbnail = second_thumbnail = third_thumbnail = fourth_thumbnail = fifth_thumbnail = sixth_thumbnail = "NA";
+            first_thumbnail = p.c_thumbnail_1;
+            second_thumbnail = p.c_thumbnail_2;
+            third_thumbnail = p.c_thumbnail_3;
+            fourth_thumbnail = p.c_thumbnail_4;
+            fifth_thumbnail = p.c_thumbnail_5;
+            sixth_thumbnail = p.c_thumbnail_6;
+            }}
+
+            <div data-scarabitem="{{= p.id }}">
+                <a class="product-image image-height" title="{{= p.title }}" href="{{=p.link}}">
+                    <img class="lazyload small_image_hover" rel='imgtip[{{= p.id }}10000]' title ="{{= p.title }}" product_name ="{{= p.title }}" product_url = "{{= p.link }}" remaining = "{{=remaining}}" zoomsrc="{{= first_thumbnail }}" zoomsrc2="{{= second_thumbnail }}" zoomsrc3="{{= third_thumbnail }}" new_remaining = "{{=(count_total_images - 6)}}" total_images ={{= count_total_images}} zoomsrc4="{{= fourth_thumbnail }}" zoomsrc5="{{= fifth_thumbnail }}" zoomsrc6="{{= sixth_thumbnail}}" data-src="{{= p.image }}" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>">
+                    {{  if(p.category && p.category.indexOf('Animated>') !== -1) { }}
+                        <span class="badge-label">Animated</span>
+                    {{ } }}
+                </a>
+                <div class="product-info name-only">
+                    <p class="product-name content-trim-popular"><a rel='imgtip[{{= p.id }}10000]' title="{{= p.title }}" href="{{=p.link}}">{{= p.title }}</a></p>
+                </div>
+                <!-- <div class="actions wordpress-view">
+                    <a title="View" class="button view" href="{{= p.link}}" target="_blank">View</a>
+                </div>-->
+            </div>
+            {{ } }}
+        </section>
+    </div>
+    {{ } }}
+]]>
+</script>
+
+
+<script type="text/javascript">	
+    // var final_keyword = "slide";
+    var flag_ddimgtooltip = 0;
+
+    require(['jquery','EmarsysWidgetJs','Ddimgtooltip','slick_min','domReady!'], function ($)
+    {
+        var keyword_ids_len = $('.keywords').length;
+        
+        $(document).ready(function() 
+        {
+           // ScarabQueue.push(['searchTerm', final_keyword]);
+                ScarabQueue.push(['recommend',
+                {
+                    logic: 'PERSONAL',
+                    containerId: 'coupon-emarsys',
+                    limit: 15,
+                    templateId: "coupon-emarsys-template",
+                    success: function(SC, render)
+                    {
+                        render(SC);
+                        $(".vertical-center").slick({
+                            vertical: true,
+                            slidesToShow: 6,
+                            infinite : false,
+                            nextArrow: '<a><i class="fa fas fa-chevron-down"></i></a>',
+                            prevArrow: '<a><i class="fa fas fa-chevron-up"></i></a>',
+                        });
+                        ddimgtooltip.init("*[rel^=imgtip]");
+                    }
+                }]);
+                ScarabQueue.push(['go']);
+        });
+    });
+</script>

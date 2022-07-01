@@ -1,0 +1,232 @@
+.loading {
+    background: url(../../Tatva_Translate/images/loader-1.gif) no-repeat 50% 50%;
+    -webkit-transition: background-color 0;
+    transition: background-color 0;
+    opacity: 0.4;
+    -webkit-transition: opacity 0;
+    transition: opacity 0;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.translate {
+    /*margin-left: auto;
+      margin-top: 50px;
+      text-align: center;
+      font-weight: 100;*/
+    font-size: 16px;
+    /*width:50%;*/
+    float: right;
+    position: relative;
+    display: inline-block;
+}
+
+.translate-option {
+
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    box-shadow: 0 0px 7px 0 rgb(32 33 36 / 50%);
+    border-radius: 4px;
+    margin-top: 3px;
+    z-index: 99;
+}
+
+.translate-option a {
+    color: #111;
+    padding: 7px 5px 6px 50px;
+    text-decoration: none;
+    display: block;
+    border-bottom: 1px solid #ccc;
+    font-size: 13px;
+    box-sizing: border-box !important;
+    margin-bottom: 0px;
+    line-height: 25px;
+    font-weight: 600;
+}
+
+.translate-option a:hover {
+    color: #28a7fb;
+}
+
+a#English {
+    display: none;
+    background: url(../../Tatva_Translate/images/english.png);
+    background-repeat: no-repeat;
+    background-position: 7px 12px;
+}
+
+a#Spanish {
+    background: url(../../Tatva_Translate/images/spanish.png);
+    background-repeat: no-repeat;
+    background-position: 7px 12px;
+}
+
+a#German {
+    background: url(../../Tatva_Translate/images/german.png);
+    background-repeat: no-repeat;
+    background-position: 7px 12px;
+}
+
+a#French {
+
+    background: url(../../Tatva_Translate/images/french.png);
+    background-repeat: no-repeat;
+    background-position: 7px 12px;
+
+}
+
+a#Portuguese {
+
+    background: url(../../Tatva_Translate/images/portuguese.png);
+    background-repeat: no-repeat;
+    background-position: 7px 12px;
+
+}
+
+a#Italian {
+
+    background: url(../../Tatva_Translate/images/italian.png);
+    background-repeat: no-repeat;
+    background-position: 7px 12px;
+
+}
+
+.translate-option.show {
+    display: block;
+    width: 100%;
+}
+
+
+
+.btn-group.dropright.translate {
+    /* position: relative; */
+    /* background-color: white; */
+    /* border: 1px solid #CCCCCC; */
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1.5em;
+    width: 200px;
+    cursor: pointer;
+    top: 0px;
+}
+
+button#langSel:before {
+    content: "";
+    /* border-bottom: solid 2px #555; */
+    /* border-left: solid 2px #555; */
+    transform: rotate(-45deg);
+    transition: transform .2s;
+    /* border-width: 15px 15px 0; */
+    border-top-color: transparent;
+    margin: -9px 8px;
+    top: 50%;
+    border: solid transparent;
+    display: block;
+    position: absolute;
+    right: 0;
+    border-bottom: solid 5px #fff;
+    border-left: solid 5px #fff;
+    border-width: 8px 8px 0;
+    z-index: 1;
+}
+
+
+button#langSel:before {
+    content: "";
+    /* border-bottom: solid 2px #555; */
+    /* border-left: solid 2px #555; */
+    transform: rotate(-45deg);
+    transition: transform .2s;
+    /* border-width: 15px 15px 0; */
+    border-top-color: transparent;
+    margin: -9px 8px;
+    top: 50%;
+    border: solid transparent;
+    display: block;
+    position: absolute;
+    right: 0;
+    border-bottom: solid 5px #fff;
+    border-left: solid 5px #fff;
+    border-width: 8px 8px 0;
+    z-index: 1;
+}
+
+button#langSel::after {
+    /* content: ""; */
+    padding: 0px 20px;
+    top: 0;
+    height: 100%;
+    border-left: 1px solid #28a7fb;
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    background: #28a7fb;
+}
+
+button#langSel {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #28a7fb;
+    color: #000;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 4px;
+    text-align: left;
+    height: 35px;
+    line-height: 20px;
+    width: 100%;
+}
+
+.btn-group.dropright.translate:hover button#langSel:after {
+    background: #2095e2;
+}
+
+
+.product-gallery-sub-title {
+
+    margin-top: 10px !important;
+    width: 100%;
+    float: left;
+}
+
+
+
+@media (max-width: 1024px) {
+
+    .btn-group.dropright.translate {
+
+        width: 150px;
+
+    }
+
+}
+
+
+
+
+@media (max-width: 991px) {
+    .btn-group.dropright.translate {
+        width: 50%;
+        float: left;
+        margin-bottom: 15px;
+    }
+
+    .product-gallery-title {
+        width: 100%;
+        float: left;
+    }
+
+}
+
+@media (max-width: 560px) {
+    .btn-group.dropright.translate {
+        width: 50%;
+
+    }
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+    <group id="customdashboard_cron">
+        <job instance="Tatva\Customerdashboard\Cron\DeleteDashboard" method="execute" name="tatva_dashboard_cron">
+      	    <schedule>0 0 */2 * 2,4,6</schedule>
+      	</job>
+    </group>
+</config>

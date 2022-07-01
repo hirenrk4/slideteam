@@ -1,0 +1,331 @@
+<?php
+$_productCollection = $block->getPitchdeckCollection();
+$total = $block->getPitchdeckCollectionInitial();
+$half = ceil(count($total) / 40);
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$backendModel = $_productCollection->getResource()->getAttribute('media_gallery')->getBackend();
+?>
+<?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $image = 'category_page_grid';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $image = 'category_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+?>
+<div class="container pitch-deck">
+    <div class="all_deck_custom">
+        <h1>We’ve helped raise funds worth 100 Million USD with these decks</h1>
+        <div class="all_deck_inner">
+            <div class="all_deck_inner_new">
+            <?php foreach ($_productCollection as $_product):?>
+                <?php
+                    $productImage = $block->getImage($_product, $image);
+                    if ($pos != null) {
+                        $position = ' style="left:' . $productImage->getWidth() . 'px;'
+                        . 'top:' . $productImage->getHeight() . 'px;"';
+                    }
+                ?>
+                <?php
+                    $backendModel->afterLoad($_product);
+                    $block->addGallery($_product);
+                    $total_images = $_product->getMediaGalleryImages();
+
+                    $productUrl = $this->getBaseUrl().$_product->getUrlKey().'.html';
+
+                    $small_image_str = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->getUrl();    
+                    
+
+                    $count_total_images = count($total_images);
+                    $remaining = count($total_images)-3;
+                    if($remaining == -3)
+                    {
+                        $small_image_biggersize1 = $_product->getImageUrl();
+                    }else{
+                        $id = 0;
+                        $galary_images = array();
+                        $image_url='';           
+                        $is_hero_img_different = 0;
+                        foreach($total_images as $val)
+                        {
+                            $galary_images[] = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'category_page_grid')->setImageFile($val->getFile())->getUrl();
+                            
+                            $id++;
+                            if($id >5){break;}
+                        }
+                        $count = count($galary_images);
+                        
+                        $small_image_biggersize2="";
+                        $small_image_biggersize3="";
+                        $small_image_biggersize4="";
+                        $small_image_biggersize5="";
+                        $small_image_biggersize6="";
+
+                        if($remaining > 3) {
+                            $small_image_biggersize1 =  $galary_images[0];
+                        }else {
+
+                            $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->setImageFile($total_images->getFirstItem()->getFile())->getUrl();
+                            
+                        }
+
+                        $hero_img_str = $galary_images[0];
+                        $hero_img_name = substr($hero_img_str,(int)strrpos($hero_img_str,'/'));
+                        $small_img_name = substr($small_image_str,(int)strrpos($small_image_str,'/')); 
+                        
+                        if($hero_img_name != $small_img_name){
+                            $is_hero_img_different = 1;
+                            if($remaining > 3) {
+                                $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'category_page_grid')->getUrl();
+                                
+                            }else {
+                                $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->getUrl();
+                                
+                            }
+                            if($count > 1){
+                                $small_image_biggersize2 = $galary_images[0];
+                            }
+                            if($count > 2){
+                                $flag = strpos($galary_images[1], $small_img_name);
+                                if($flag !== false){
+                                    $small_image_biggersize3 =  $galary_images[2];    
+                                }
+                                else{
+                                    $small_image_biggersize3 =  $galary_images[1];
+                                }
+                            }
+                            if($count > 3){
+                                $small_image_biggersize4 =  $galary_images[3];
+                            }
+                            if($count > 4){
+                                $small_image_biggersize5 =  $galary_images[4];
+                            }
+                            if($count > 5){
+                                $small_image_biggersize6 =  $galary_images[5];
+                            }
+                        }
+                        else{
+                            if($count > 1){
+                                $small_image_biggersize2 = $galary_images[1];
+                            }
+                            if($count > 2){
+                                $small_image_biggersize3 =  $galary_images[2];
+                            }
+                            if($count > 3){
+                                $small_image_biggersize4 =  $galary_images[3];
+                            }    
+                            if($count > 4){
+                                $small_image_biggersize5 =  $galary_images[4];
+                            }
+                            if($count > 5){
+                                $small_image_biggersize6 =  $galary_images[5];
+                            }
+                        }
+                                
+                    }
+                ?>
+                <div class="all_deck_inner_outer">
+                    <div class="all_deck_content">
+                    <?php $small_image = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'category_page_grid')->getUrl(); ?>
+                    <a href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>">
+                        <!-- <img src="<?php echo $small_image; ?>" alt="<?php echo $_product->getName(); ?>"> -->
+                        <?php $productId = $_product->getId(); ?>
+                        <?php $image_result = array('key'=>$productId,'total_images'=>$count_total_images, 'remaining'=>$remaining, 'name'=>$_product->getName(),
+                            'id'=>$_product->getId(),'product_url'=>$productUrl,'zoomsrc'=>$small_image_biggersize1,
+                            'zoomsrc2'=>$small_image_biggersize2,'zoomsrc3'=>$small_image_biggersize3,
+                                'zoomsrc4'=>$small_image_biggersize4,'zoomsrc5'=>$small_image_biggersize5,'zoomsrc6'=>$small_image_biggersize6,'is_new'=>1,'mainsrc'=>$small_image);
+                        ?>
+                        <?= $productImage->setData('image_result',$image_result)->toHtml() ?>
+                        <p><?php echo $_product->getName(); ?></p>
+                    </a>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="deck_list_pagination">
+    <div class="container pitch-deck">
+        <div class="pagination_set">
+        </div>
+        <div class="pagination pagination_set">
+            <span class="page" id="page_prev">
+                <i class="fa fa-angle-left" aria-hidden="true"></i>
+            </span>
+            
+            <span class="counter" id="counter" current="1" total="<?php echo $half; ?>">1</span>
+            <span class="dots dots-start" style="display:none;" >...</span>
+            <?php for($i = 2 ;$i<$half;$i++ ){?>
+            <span class="counter" current="<?= $i ?>"> <?= $i ?> </span>
+            <?php }
+            if($half>4){?>
+                <span class="dots dots-end">...</span>
+            <?php }?>
+            <span class="counter" current="<?= $half ?>"><?= $half ?></span>
+            <span id="total_page" style="display: none;" total="<?php echo $half; ?>"></span>
+            <span class="page" id="page_next">
+                <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </span>
+        </div>
+        <div class="pagination_count pagination_set">
+            <span>Page <span id="current_page">1</span> of <span id="total"><?php echo $half; ?></span></span>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    require(['jquery','Ddimgtooltip'], function ($)
+    {
+       $(document).ready(function () {
+        
+        var page_count = parseInt($('#total_page').attr('total'));
+       
+        var current_index =  parseInt($('#counter').attr('current'));
+        /*page load remove query parameters in url*/
+        var uri = window.location.href.toString();
+        if (uri.indexOf("?") > 0) {
+            var clean_uri = uri.substring(0, uri.indexOf("?"));
+            window.history.replaceState({}, document.title, clean_uri);
+        }
+        /*page load remove query parameters in url*/
+        if(page_count<=7){
+            $('.dots-end').hide();
+        }else {
+            for(var i = 6 ; i< page_count ; i++){
+                $('span[current="'+i+'"]').hide();
+            }
+        }
+
+        if(current_index == 1){
+            $("#page_prev").css("pointer-events", "none");
+        } else if(current_index == page_count){
+            $("#page_next").css("pointer-events", "none");
+        }
+        
+
+            $(document).on('click', '#page_next', function () {
+                var page = parseInt(jQuery('#counter').attr('current'));
+                var total_pages = parseInt(jQuery('#total_page').attr('total'));
+
+                if( page == total_pages )
+                {
+                    $("#page_next").css("pointer-events", "none");
+                }
+                // else{
+                   $("#page_prev").css("pointer-events", "visible");
+                   $("#page_prev").css("cursor", "pointer"); 
+                // }
+                $.ajax({
+                    url: "professional-powerpoint-templates/index/PitchdeckPager",
+                    method: "POST",
+                    data: {page: page},
+                    dataType: "json",
+                    showLoader: true,
+                    success: function (data)
+                    {
+                        if (data != '')
+                        {
+                            $('.all_deck_inner_new').html(data);
+                            $('html, body').animate({
+                                scrollTop: $(".all_deck_list").offset().top
+                            });
+                            var pageUrl = '?p=' + page;
+                            history.pushState('','',pageUrl);
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '#page_prev', function () {
+                var page = parseInt(jQuery('#counter').attr('current'));
+            
+                if(page == 1 )
+                {
+                    $("#page_prev").css("pointer-events", "none");
+                }
+                // else{
+                   $("#page_next").css("pointer-events", "visible");
+                   $("#page_next").css("cursor", "pointer");
+                // }
+                $.ajax({
+                    url: "professional-powerpoint-templates/index/PitchdeckPager",
+                    method: "POST",
+                    data: {page: page},
+                    dataType: "json",
+                    showLoader: true,
+                    success: function (data)
+                    {
+                        if (data != '')
+                        {
+                            $('.all_deck_inner_new').html(data);
+                            $('html, body').animate({
+                                scrollTop: $(".all_deck_list").offset().top
+                            });
+                            var pageUrl = '?p=' + page;
+                            history.pushState('','',pageUrl);
+                        }
+                    }
+                });
+            });
+
+            $(document).on('click', '.counter', function () {
+                let prev_page = parseInt($("#counter").attr('current'));
+                var page = parseInt($(this).attr('current'));
+                var total_pages = parseInt(jQuery('#total_page').attr('total'));
+
+                if(prev_page == page){
+                    return;
+                }
+
+                $("#counter").attr('id','');
+
+                $(this).attr('id','counter');
+                $('#current_page').html(page);
+                
+                 if(page == 1){
+                    $("#page_prev").css("pointer-events", "none");
+                } else{
+                    $("#page_prev").css("pointer-events", "visible");
+                   $("#page_prev").css("cursor", "pointer"); 
+                }
+                if(page == total_pages){
+                    $("#page_next").css("pointer-events", "none");
+                } 
+                else{
+                    $("#page_next").css("pointer-events", "visible");
+                   $("#page_next").css("cursor", "pointer"); 
+                }
+
+                $.ajax({
+                    url: "professional-powerpoint-templates/index/PitchdeckPager",
+                    method: "POST",
+                    data: {page: page},
+                    dataType: "json",
+                    showLoader: true,
+                    success: function (data)
+                    {
+                        if (data != '')
+                        {
+                            $('.all_deck_inner_new').html(data);
+                            $('html, body').animate({
+                                scrollTop: $(".all_deck_list").offset().top
+                            });
+                            var pageUrl = '?p=' + page;
+                            history.pushState('','',pageUrl);
+                        }
+                    }
+                });
+            });
+        }); 
+    });
+ </script>

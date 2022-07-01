@@ -1,0 +1,19 @@
+<div class="infographic-slider-guide">Click the screen to view the sample</div>
+<div class="infographic-slider-wrapper">
+    <div id="infographic-slider" class="owl-carousel owl-theme">
+        <?php
+        for ($i = 1; $i <= 5; $i++) {
+            ?>
+            <div class="item">
+                <a class="grouped_sample_image" rel="group1" href="<?php echo $this->getViewFileUrl('Magento_Cms::images/infographic/sample/' . $i . '.jpg'); ?>">
+                    <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/infographic/thumbnail/Thumbnail_' . $i . '.jpg'); ?>" alt="" style="display: none"/>
+                </a>
+            </div>
+        <?php }
+        ?>
+    </div>
+</div>
+<script type="text/javascript">
+    require(['jquery', 'infographic'], function ($) {
+    });
+</script>

@@ -1,0 +1,19 @@
+<?php
+$_product = $this->getProduct(); 
+$banner_text = $_product->getResource()->getAttribute('banner_text')->getFrontend()->getValue($_product);
+$banner_url = $_product->getResource()->getAttribute('banner_url')->getFrontend()->getValue($_product);
+?>
+
+<?php if ($banner_text && $banner_url): ?>
+<div class="banner_strip">
+	<div class="container">
+		<div class="banner_strip_content">
+			<a href="<?php echo $banner_url; ?>" target="_blank" rel="noopener noreferrer">
+				<p>
+					<?php echo $banner_text; ?>
+				</p>
+			</a>		
+		</div>
+	</div>
+</div>
+<?php endif; ?>

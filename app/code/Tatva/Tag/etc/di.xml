@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Tatva\Tag\Model\ResourceModel\Tag\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tag</argument>
+            <argument name="eventPrefix" xsi:type="string">tatva_tag_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">all_tag_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Tag\Model\ResourceModel\Tag</argument>
+        </arguments>
+    </type>
+     <type name="Tatva\Tag\Model\ResourceModel\Tag\Grid\PendingTagCollection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tag</argument>
+            <argument name="eventPrefix" xsi:type="string">tatva_tag_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">all_tag_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Tag\Model\ResourceModel\Tag</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="tag_custom_form_data_source" xsi:type="string">Tatva\Tag\Model\ResourceModel\Tag\Grid\Collection</item>
+                 <item name="tag_pending_tag_list_data_source" xsi:type="string">Tatva\Tag\Model\ResourceModel\Tag\Grid\PendingTagCollection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
+

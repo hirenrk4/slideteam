@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_type_onepage_save_order">
+        <observer name="setCustomerSubscriptionOnepage" instance="Tatva\Subscription\Observer\setCustomerSubscription"/>
+    </event>
+
+    <event name="layout_generate_blocks_after">
+        <observer name="childsubscription_layout" instance="Tatva\Subscription\Observer\Removeblocks"/>
+    </event>
+
+	<!-- <event name="catalog_product_delete_after_done">
+        <observer name="tagdelete" instance="Tatva\Subscription\Observer\Tagdelete"/>
+    </event> -->
+</config>

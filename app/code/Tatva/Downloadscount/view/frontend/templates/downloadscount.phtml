@@ -1,0 +1,58 @@
+<?php
+$helper = $this->helper('Tatva\Subscription\Helper\Data'); 
+
+if(!($helper->isLoggedIn())) {
+   $block->getRedirectLoginUrl();
+}
+else{
+  $products_details = $block->getDownloadlist();
+
+  $count = count($products_details);
+
+  if($count > 0){
+
+    echo $block->getPagerHtml();
+    ?>
+<div class="table-responsive">
+    <table class="table data-table download-data" id="my-orders-table">
+      <thead>
+        <tr>
+          <th class="first-data"><?php echo __('Product Name') ?></th>
+          <th class="second-data"><span class="nobr"><?php echo __('Product Type') ?></span></th>
+          <th class="third-data"><span class="nobr"><?php echo __('#Downloads') ?></span></th>
+          <th class="fourth-data"><span class="nobr"><?php echo __('Download Date') ?></span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+
+        foreach ($products_details as $products_detail){
+         $product_id = $products_detail->getProductId();
+         $productData = $block->getProductData($product_id);
+             
+         $download_date = $products_detail->getRecentDownload();
+         $no_of_download = $products_detail->getNoOfDownload();
+         ?><tr>
+         <td><a href="<?php echo $productData['url']; ?>"><?php echo $productData['name'] ?></a></td>
+         <?php if($productData['free']) {
+          echo "<td> Free </td>";
+        }else{
+          echo "<td> Paid </td>";
+        }?>
+        <td><?php echo $no_of_download; ?></td>
+        <td><?php echo $download_date; ?></td>
+      </tr>
+      <?php
+    }
+    ?>
+  </tbody>
+</table>
+</div>
+<?php
+echo $this->getPagerHtml();
+}
+else{
+  echo "No Downloads.";
+}
+}
+?>

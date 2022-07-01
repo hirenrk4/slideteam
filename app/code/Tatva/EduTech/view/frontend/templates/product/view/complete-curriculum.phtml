@@ -1,0 +1,43 @@
+<?php
+$product = $block->getProduct();
+$completeCurriculum = $product->getData('complete_curriculum');
+if ($completeCurriculum  != "" || $completeCurriculum != null) {
+    $wholeContent = explode('#', $completeCurriculum);
+
+    $mainContent = explode('|',  $wholeContent[0]);
+    $content = explode('|', $wholeContent[1]);
+?>
+    <div class="container">
+        <h2>Complete Curriculum</h2>
+        <?php
+        // echo $completeCurriculum;
+        for ($i = 0; $i < count($mainContent); $i++) {
+        ?>
+            <button class="accordion1"><?= $mainContent[$i] ?></button>
+            <div class="edu panel">
+                <?= $content[$i]; ?>
+            </div>
+        <?php
+        }
+        ?>
+    </div>
+
+    <script>
+        var acc = document.getElementsByClassName("accordion1");
+        var j;
+
+        for (j = 0; j < acc.length; j++) {
+            acc[j].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
+    </script>
+<?php
+}
+?>

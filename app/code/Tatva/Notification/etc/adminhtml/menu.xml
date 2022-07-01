@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+         <add id="Tatva_Supportingextensions::notification_manager" title="Notification Configuration" module="Tatva_Notification" sortOrder="106"  parent="Tatva_Supportingextensions::supportingextension" resource="Tatva_Notification::menu" />
+    	<add id="Tatva_Supportingextensions::notification_post" title="Manage Notification" module="Tatva_Notification" sortOrder="72" parent="Tatva_Supportingextensions::notification_manager" action="notification/index/" resource="Tatva_Notification::menu"/>        
+    </menu>
+</config>

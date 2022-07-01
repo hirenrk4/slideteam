@@ -1,0 +1,125 @@
+<!--category toggle -->
+<a class="skip-link skip-nav category-toggle">
+    <span class="icon-menu">
+        <span class="line line-1"></span>
+        <span class="line line-2"></span>
+        <span class="line line-3"></span>
+    </span>
+    <span>Category</span>
+</a>
+
+<a class="skip-link skip-account ">
+    <span class="icon"></span>
+    <span><i></i></span>
+</a>
+<div class="notification_tab_mobile" style="display:none;">
+<?php
+echo $this->getLayout()
+          ->createBlock('Tatva\Notification\Block\Notification\Index')
+          ->setTemplate('Tatva_Notification::header_notification_mobile.phtml')
+          ->toHtml();
+?>
+</div>
+<a class="skip-link skip-search">
+    <span class="icon"></span>
+    <span><i></i></span>
+</a>
+<script>
+    require(['jquery'],function ($) {
+        var leftNavigation = $('#left-section'),
+            categoryToggle = $('.category-toggle');
+
+        var searchData = $('.block-search'),
+            searchToggle = $('.skip-search');
+
+        var accountLink = $('ul.links'),
+            accountToggle = $('.skip-account');
+
+        $(document).ready(function () {
+            updateLayout();
+
+            categoryToggle.on('click', function (e) {
+                leftNavigation.toggle();
+                searchData.hide();
+                accountLink.hide();
+            });
+
+            searchToggle.on('click', function (e) {
+                searchData.toggleClass('active');
+                searchData.toggle();
+                leftNavigation.hide();
+                accountLink.hide();
+            });
+
+            accountToggle.on('click', function (e) {
+                accountLink.toggle();
+                leftNavigation.hide();
+                searchData.hide();
+            });
+            
+
+        });
+
+        $(window).resize(function () {
+            updateLayout();
+            resizeLayout();
+
+        });
+
+        function resizeLayout()
+        {
+            var isMobile = false;
+            if (/iPhone|iPod|iPad|BlackBerry|BB10|Pre|Palm|Googlebot-Mobile|mobi|Safari Mobile|Windows Mobile|Android|Opera Mini|mobile/i.test(navigator.userAgent.toLowerCase())) {
+                isMobile = true;
+            }    
+
+            var screenWidth = screen.width;
+            if(screenWidth >= 1024){
+                isMobile = false;
+            }else{
+                isMobile = true;
+            }
+
+            if (isMobile == true) {
+                $('ul.links').hide();    
+                $('#left-section').hide();
+                $('.block-search').hide();
+                if($(".block-search" ).hasClass( "active" )){
+                    $('.block-search').show();
+                }
+            }
+            
+        }
+
+        function updateLayout() {
+            if($('.no-leftnav').length){
+                $('#left-section').hide();
+            }
+
+            var isMobile = false;
+            if (/iPhone|iPod|iPad|BlackBerry|BB10|Pre|Palm|Googlebot-Mobile|mobi|Safari Mobile|Windows Mobile|Android|Opera Mini|mobile/i.test(navigator.userAgent.toLowerCase())) {
+                isMobile = true;
+            }
+
+            var screenWidth = screen.width;
+            if(screenWidth >= 1024){
+                isMobile = false;
+            }else{
+                isMobile = true;
+            }
+
+            if (isMobile == false) {
+                $('#left-section').show();
+                $('.block-search').show();
+                $('ul.links').show();
+                if($('.page-layout-1column-design-services-cms').length){
+                    $('#left-section').hide();
+                }
+                if($('.no-leftnav').length){
+                    $('#left-section').hide();
+                }
+            }
+        }
+
+    });
+</script>

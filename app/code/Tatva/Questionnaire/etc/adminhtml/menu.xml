@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tatva_Supportingextensions::questionnairereport" title="Questionnaire Reports" module="Tatva_Questionnaire" sortOrder="10" action="questionnaire/index" resource="Tatva_Supportingextensions::questionnairereport" parent="Tatva_Supportingextensions::customreports"/>    
+    </menu>
+</config>

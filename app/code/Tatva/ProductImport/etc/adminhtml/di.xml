@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Tatva\DownloadableImport\Controller\Adminhtml\Import\Start">
+        <arguments>
+            <argument name="frontUrlModel" xsi:type="object" shared="false">Magento\Framework\Url</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Ui\Model\Export\MetadataProvider">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="productimport_index_listing" xsi:type="array">
+                    <item name="import_start_time" xsi:type="string">import_start_time</item>
+                    <item name="import_end_time" xsi:type="string">import_end_time</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="customer_data_object_login">
+        <observer name="customer_login_observer" instance="Tatva\Customer\Observer\LoginObserver" shared="false" />
+    </event>
+    <!-- Redirection from social login/register -->
+    <event name="social_manager_get_login_redirect">
+        <observer name="social_loginpost_observer" instance="Tatva\Customer\Observer\SocialLoginpostObserver" shared="false" />
+    </event>
+    <!-- These both observer for emarsys integration -->
+    <event name="adminhtml_customer_save_after">
+        <observer name="Customer_Save_After" instance="Tatva\Customer\Observer\Customersaveafter" />
+    </event>
+    <event name="customer_register_success">
+        <observer name="customer_register_success_after" instance="Tatva\Customer\Observer\CustomerRegisterafter" />
+    </event>
+     <event name="controller_action_predispatch_customer_account_loginPost">
+        <observer name="customer_login_after_observer" instance="Tatva\Customer\Observer\CustomerLogin" />
+    </event>
+    <event name="controller_action_predispatch_sociallogin_social_login">
+        <observer name="customer_social_login_after_observer" instance="Tatva\Customer\Observer\SocialCustomerLogin" />
+    </event>
+    <event name="customer_login">
+        <observer name="customer_login_observer" instance="Tatva\Customer\Observer\CustomerLoginafter" />
+    </event>
+</config>

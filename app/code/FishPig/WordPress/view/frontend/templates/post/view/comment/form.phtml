@@ -1,0 +1,125 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<form id="respond" onclick="return false;" method="post">
+	<input type="hidden" name="comment_post_ID" value="<?php echo $this->getPostId() ?>"/>
+	<input type="hidden" name="comment_parent" id="comment_parent" value="<?php echo (int)$this->getRequest()->getParam('replytocom', 0) ?>"/>
+	<fieldset class="fieldset">
+		<legend class="legend"><?php echo __('Leave a Comment') ?></legend>
+		<div class="comment-block">
+			<?php if ($this->customerMustLogin()): ?>	
+				<div class="field note no-label"><?php echo __('Sorry, you must be logged in to post a comment.') ?></div>
+				<div class="field note no-label"><button class="button btn-login" type="button" onclick="window.location.href=encodeURI('<?php echo $this->getLoginLink() ?>')"><span><span><?php echo __('Login') ?></span></span></button></div>
+			<?php else: ?>
+					<?php if (!$this->isCustomerLoggedIn()): ?>
+						<div class="field required">
+							<label class="label"><?php echo __('Name') ?></label>
+							<div class="control">
+								<input type="text" id="author" name="author" class="input-text required-entry" value=""/>
+							</div>
+						</div>
+						<div class="field required">
+							<label for="email" class="label"><?php echo __('Email') ?></label>
+							<div class="control">
+								<input type="text" id="email" name="email" class="input-text required-entry validate-email" value=""/>
+							</div>
+						</div>
+					<?php endif; ?>
+					<div class="field">
+						<label for="comment" class="label"><?php echo __('Comment') ?></label>
+						<div class="control">
+							<textarea id="comment" name="comment" rows="8" cols="45" class="required-entry" maxlength="2000"></textarea>
+							<div class="allforms-comment-msg"><?php echo __("Max length should be 2000 character."); ?></div>
+						</div>
+					</div>
+					<?php //echo $this->getChildHtml('before_form_end') ?>
+			<?php endif; ?>
+			<?php if (!$this->customerMustLogin()): ?>	
+			<div class="captcha-wrapper">
+				<?php
+			    	$blockPath = 'Magento\Captcha\Block\Captcha';
+			    	$block = $this->getLayout()->createBlock($blockPath);
+			        $cap_data = array('form_id'=> 'blog_captcha_form','img_width'=>'50');
+			        $block->setData($cap_data);
+			        echo $block->toHtml();
+			    ?>
+				<?php //echo $block->getChildHtml('form.additional.info'); ?>
+			</div>	
+			<div class="actions-toolbar">
+				<div class="primary">
+				<button type="submit" name="submit-comment"  class="action submit primary button" value="Post your comment" id="post-the-comment">
+					<span><?php echo __('Leave a comment') ?></span>
+				</button>
+				</div>
+				<span class="please-wait" id="respond-please-wait" style="display:none;">
+					<img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/opc-ajax-loader.gif') ?>" alt="<?php echo __('Loading next step...') ?>" title="<?php echo __('Please wait...') ?>" class="v-middle" /> <?php echo __('Please wait...') ?>
+				</span>
+			</div>
+    	</div>
+    </fieldset>
+</form>
+
+<script type="text/javascript">
+	require(['jquery','mage/mage'], function($)
+	{
+		$(document).ready(function ()
+		{
+			jQuery('#respond').removeAttr('onclick');
+			var AjaxUrl = '<?php echo $this->getCaptchValidationAction();?>';
+	       	$('#respond').mage('validation', {
+		        submitHandler: function (form) {
+		        	var param = $("#respond").serialize();
+		            jQuery.ajax({
+		                showLoader: true,
+		                url: AjaxUrl,
+		                data: param,
+		                type: "POST",
+		            }).done(function (data) {
+		               	if(data==0)
+		             	{
+		             	  jQuery('#respond .invalid-captcha').css("padding-top","10px");
+			             jQuery('#respond .invalid-captcha').css("color","red");
+			             jQuery('#respond .invalid-captcha').show();
+			             document.getElementById("respond").reset();
+						 return false;
+		             	}
+		             	else{
+		             		window.location.href = $.trim(data);
+		             	}
+		            });
+				}
+    		});
+    		// task 1344
+    		$("#comment").on("keyup",function() {
+    		  var maxLength = $(this).attr("maxlength");
+    		  if(maxLength == $(this).val().length) {
+    		  	$('#comment-error').hide();
+    		    $('.allforms-comment-msg').show();
+    		  }else{
+    		    $('.allforms-comment-msg').hide();
+    		  }
+    		});
+    		// task 1344 end
+		});
+	});
+</script>
+<?php endif; ?>
+<?php 
+    $error_flag = $block->getCaptchaError();
+    if($error_flag){
+	?>
+    <script type="text/javascript">
+        jQuery(document).ready(function(){
+            jQuery('#respond .invalid-captcha').css("padding-top","10px");
+            jQuery('#respond .invalid-captcha').css("color","red");
+            jQuery('#respond .invalid-captcha').show();
+        });
+    </script>
+	<?php
+        $block->setCaptchError();
+    }
+?>

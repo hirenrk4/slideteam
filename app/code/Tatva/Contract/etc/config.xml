@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <tatva>
+            <contract>
+                <email>tatva_contract_email</email> 
+            </contract>
+        </tatva>
+        <customer>
+        	<captcha>
+        		<shown_to_logged_in_user>
+        			<hire_a_designer_captcha>1</hire_a_designer_captcha>
+        		</shown_to_logged_in_user>
+        		<always_for>
+					<hire_a_designer_captcha>1</hire_a_designer_captcha>
+				</always_for>
+        	</captcha>
+        </customer>
+        <captcha translate="label">
+			<frontend>
+				<areas>
+					<hire_a_designer_captcha>
+						<label>Hire a Designer Captcha</label>
+					</hire_a_designer_captcha>
+				</areas>
+			</frontend>
+		</captcha>
+    </default>
+</config>

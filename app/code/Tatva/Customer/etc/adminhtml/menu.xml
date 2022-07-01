@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+         <add id="Tatva_Supportingextensions::customekilledsessions" title="Customers Killed Sessions" module="Tatva_Customer" sortOrder="22" action="tatvacustomer/killedsessions/index" resource="Tatva_Supportingextensions::customekilledsessions" parent="Tatva_Supportingextensions::customreports"/>    
+    </menu>
+</config>

@@ -1,0 +1,97 @@
+<script type="text/javascript">
+    require(['jquery','Magento_Customer/js/customer-data','JQForm','resumeuploadFileJS','mage/mage','Magento_Theme/js/lazyload/lazy'], function ($,customerData)
+    {
+        $(document).ready(function () 
+        {
+            $('.captcha-img').remove();
+            $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="spinner-img" height="50" width="50" src="<?= $block->getViewFileUrl('Magento_Cms::images/popup/spinner.gif') ?>"/>').insertBefore('.captcha-reload');
+            
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                    data:'formId=resume_service_captcha1',
+                    success:function(data) {
+                        $('.spinner-img').hide();
+                        $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('#captcha-container-resume_service_captcha1 .captcha-reload'); 
+                        return false;                 
+                    }
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                    data:'formId=resume_service_captcha2',
+                    success:function(data) {
+                        $('.spinner-img').hide();
+                        $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('#captcha-container-resume_service_captcha2 .captcha-reload'); 
+                        return false;                 
+                    }
+                });
+
+
+            var settings = 
+            {
+                url: "<?php echo $block->getUrl('customresumeservice/index/save'); ?>",
+                method: "POST",
+                allowedTypes: "pdf, doc, docx, ods, txt",
+                maxFileSize: 5242880,
+                sizeErrorStr: "Attachment(s) greater than 5 MB. Please reduce the size of it or use Dropbox/Google Drive or similar tool for the same. OR send it via to <a href='mailto:design@slideteam.net'>design@slideteam.net</a>",
+                fileName: "myfile",
+                uploadStr: jQuery(".box").html(),
+                multiple: true,
+                nestedForms:false,
+                dragDropStr:"",
+                onSuccess: function (files, data, xhr)
+                {
+                    var file_data = jQuery.parseJSON(data);                   
+                    $('<input>').attr({
+                        type: 'hidden',
+                        name: file_data.original + "[]",
+                        value: file_data.modified
+                    }).appendTo('form');
+
+                },
+                onError: function (files, status, errMsg)
+                {                    
+                    $("#status").html(errMsg);
+                },
+                onSelect:function(file)
+                {
+                    var filename = file[0].name;
+                    var ext = filename.split('.').pop().toLowerCase();
+                    if($.inArray(ext, ['pdf','doc','docx','ods','txt']) == -1 || file[0].size > 5242880) {
+                        $('.ajax-file-upload-container').addClass('custom-file-error');
+                    }else{
+                        $('.ajax-file-upload-container').removeClass('custom-file-error');
+                    }
+                    if(file[0].size > 5242880)
+                    {
+                        $('.submit_resume input').prop('disabled', true);
+                    } else {
+                        $('.submit_resume input').prop('disabled', false);
+                    }
+                }
+            };
+
+            $("#mulitplefileuploader1").uploadFile(settings);
+            $("#mulitplefileuploader2").uploadFile(settings);
+            var dataForm = $('#customresumeservice_form1');
+            var ignore = null;
+
+            dataForm.mage('validation', 
+            {
+                ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+            }).find('input:text').attr('autocomplete', 'off');
+
+            var dataForm2 = $('#customresumeservice_form2');
+            var ignore = null;
+
+            dataForm2.mage('validation', 
+            {
+                ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+            }).find('input:text').attr('autocomplete', 'off');
+            
+        });
+
+    }); 
+</script>
+    

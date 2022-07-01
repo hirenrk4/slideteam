@@ -1,0 +1,27 @@
+<div class="right-brand-block">
+    <a class="grouped_elements" href="<?php echo $this->getViewFileUrl('Magento_Cms::images/logo_and_brand/popup-image.jpg'); ?>" rel="group1"> 
+        <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/logo_and_brand/brand-guidelines-img1.jpg'); ?>" alt="" /> 
+        <span> Click to View </span>
+    </a>
+</div>
+<div id="logo-and-brand-slider">
+    <?php
+    for ($i = 1; $i <= 15; $i++) {
+        ?>
+        <div class="extra-item">
+            <a class="grouped_elements" rel="group1" href="<?php echo $this->getViewFileUrl('Magento_Cms::images/logo_and_brand/' . $i . '-min.png'); ?>">
+            </a>
+        </div>
+        <?php
+    }
+    ?>
+</div>
+<script type="text/javascript">
+require(['jquery', 'tipso', 'logo_and_branding'], function ($) {
+
+    $(window).load(function () {
+        $(".tip").tipso({position: 'left',size: 'large'});
+    });
+});
+
+</script>

@@ -1,0 +1,57 @@
+<?php
+/**
+ * @category FishPig
+ * @package FishPig_WordPress
+ * @notes This template is used when there post/list.phtml doesn't have a child block called 'renderer'
+ * @notes This happens when post/list.phtml is called in via PHP rather than via the default layout handles
+ */
+?>
+<?php if ($post = $this->getPost()): ?>
+	<?php
+	$blockObj= $block->getLayout()->createBlock('FishPig\WordPress\Block\Sidebar\Widget\Posts');
+  	$author = $post->getUser();
+	?>
+	<?php $frontend_identifies = $blockObj->configData('wordpress/integration/route');?>
+	<?php 
+		$blogParamDate = $this->helper('Tatva\Generalconfiguration\Helper\Data')->getConfig('button/blog_config/start_date');
+		$publishedDate = date('Y-m-d', strtotime($post->getPostDate()));
+		$lang = "";
+		if (isset($_GET['lang']) && $publishedDate > $blogParamDate) {
+	    	$lang = '?lang='.$_GET['lang'];
+		}
+	?>
+	<div class="post-list-item">
+		<div class="post-entry">
+			<?php if ($image = $post->getImage()): ?>
+				<div class="post-image">
+					<?php if($image->getData('post_mime_type') == 'image/gif'): ?>
+	                	<a href="<?php echo rtrim($post->getUrl(), "/").$lang ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>"><img src="<?php echo $image->getFullSizeImage() ?>" alt="<?php echo $this->escapeHtml($post->getName()) ?>" loading="lazy"/></a>
+	              	<?php else: ?>  
+		             	<a href="<?php echo rtrim($post->getUrl(), "/").$lang ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>"><img src="<?php echo $image->getThumbnailImage() ?>" alt="<?php echo $this->escapeHtml($post->getName()) ?>" loading="lazy"/></a>
+	              	<?php endif; ?>
+					
+				</div>
+			<?php endif; ?>
+			</div>
+		</div>
+		<div class="post-data">
+			<h2 class="customContentTrim">
+				<a class="css-content-trim-2-line" href="<?php echo rtrim($post->getUrl(), "/").$lang ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>">
+					<?php echo $this->escapeHtml($post->getName()) ?>
+				</a>
+		   	</h2>
+			<div class="post-excerpt css-content-trim-3-line"><?php echo $post->getExcerpt(50) ?>
+			</div>
+			<div class="post-block clearfix">
+               	<div class="blog-post-name">
+               		<img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/3d-men.png')?>" alt="<?php echo $this->escapeHtml($author->getDisplayName()) ?>" loading="lazy">
+             		<a href="<?php echo $this->getUrl().$frontend_identifies.'/author/'.str_replace('.','-',str_replace(' ','-',$author->getUserLogin())); ?>" title="<?php echo $this->escapeHtml($author->getDisplayName()) ?>"><?php echo $this->escapeHtml($author->getDisplayName()) ?></a>
+            		<em><?php echo $post->getPostDate()?></em>
+            	</div>
+
+		    <div class="actions">
+		        <a class="button gray-border-btn" href="<?php echo rtrim($post->getPermalink(), "/").$lang ?>" title="Read More">Read More</a>
+		    </div>
+  </div>
+</div>
+<?php endif; ?>

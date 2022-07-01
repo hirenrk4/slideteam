@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * This is the default layout for all post type view pages.
+ * All post types inherit this layout and have their own specific layout file
+ * Create any wordpress_posttype_view.xml files (where posttype is the actual post type) to target a specific post type
+ * To target the default posts, create wordpress_post_view.xml
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<link src="FishPig_WordPress::js/commentForm.js" order="505"/>
+		<script src="Magento_Theme::js/ddimgtooltip.js"/>
+		<css src="Magento_Theme::css/theme/catalog-tooltip.css" media="all" />
+		<css src="Magento_Cms::css/slick/slick.css" media="all" />
+		<css src="Magento_Cms::css/slick/slick-theme.css" media="all" />
+		<css src="Magento_Theme::css/ddimgtooltip.css" media="all"/>
+		<remove src="Magento_Theme::css/magnific-popup/magnific-popup.css"/>
+		<remove src="Amasty_Stripe::css/source/mkcss/amstripe.css"/>
+		<remove src="Magento_Theme::css/theme/custom.css"/>
+	</head>
+	<body>
+		<!-- Ebook Banner start-->
+		<referenceContainer name="page.top">
+			<block class="FishPig\WordPress\Block\Html\Breadcrumbs" name="wp.breadcrumbs" >
+				<block class="FishPig\WordPress\Block\Post\View\Language" name="cat_lang" template="FishPig_WordPress::post/view/language.phtml" />
+			</block>
+		</referenceContainer>
+		<!-- Ebook Banner end-->
+		<referenceContainer name="content">
+			<block class="Magento\Cms\Block\Block" name="Promo_de">
+				<arguments>
+					<argument name="block_id" xsi:type="string">blog-header-detail</argument>
+				</arguments>
+			</block>
+			<block class="FishPig\WordPress\Block\Post\View" name="wp.post.view">
+				<block class="FishPig\WordPress\Block\Post\View" name="wp.post.social.links" as="custom_social_links" template="post/view/social.phtml" />
+				<block class="FishPig\WordPress\Block\Post\View\Related" name="wp.post.related" as="related_posts" template="post/view/related.phtml" />
+				<block class="FishPig\WordPress\Block\Post\View\Comment\Wrapper" name="wp.post.view.comments" as="comments">
+					<block class="FishPig\WordPress\Block\Post\View\Comments" name="wp.post.view.comments.list" as="comment_list" template="post/view/comments.phtml" />
+					<block class="FishPig\WordPress\Block\Post\View\Comment\Pager" name="wp.post.view.comments.pager" as="pager"/>
+					<block class="FishPig\WordPress\Block\Post\View\Comment\Form" name="wp.post.view.comments.form" as="form">
+						<container name="form.additional.info">
+							<block class="Magento\Captcha\Block\Captcha" name="captcha" after="-" cacheable="false">
+								<action method="setFormId">
+									<argument name="formId" xsi:type="string">blog_captcha_form</argument>
+								</action>
+								<action method="setImgWidth">
+									<argument name="width" xsi:type="string">230</argument>
+								</action>
+								<action method="setImgHeight">
+									<argument name="width" xsi:type="string">50</argument>
+								</action>
+							</block>
+						</container>
+					</block>
+				</block>
+			</block>
+		</referenceContainer>
+	</body>
+</page>

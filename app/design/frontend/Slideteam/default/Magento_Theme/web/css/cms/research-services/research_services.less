@@ -1,0 +1,1426 @@
+@import '../../source/_variablesm2.less';
+@import '../../source/_mixins.less';
+
+/*Common h1,h2 for this page only*/
+.st-research-services{
+	h1{font-size: 52px;line-height: 56px;}
+	h2{font-size: 50px;line-height: 56px;}
+	h3{font-size: 36px;line-height: 40px;}
+	h4{font-size: 23px;line-height: 27px;}
+	h5{font-size: 16px;line-height: 20px;}
+}
+
+.business-research-banner{
+	position: relative;
+    height: 550px;
+    background: url(../../../../Magento_Cms/images/business_research_services/banner_background.png) no-repeat center left;
+    background-size: cover;
+    .banner-content{
+    	position: absolute;
+	    top: 20px;
+	    left: 68px;
+	    max-width: 600px;
+    	h1{
+		    font-weight: 700;
+		    color: @slideteam_black2;
+		    padding-right: 124px;
+		    margin: 0 0 30px;
+    	}
+    	p{
+    		font-size: 18px;
+		    color:@slideteam_gray52;
+		    font-weight: 500;
+		    padding-right: 40px;
+		    margin-bottom: 30px;
+    	}
+    	ul{
+    		display: block;
+    		max-width: 510px;
+    		margin: 0 0 0 -50px;
+    		li{
+    			display: inline-block;
+			    width: 31.33%;
+			    margin-bottom: 24px;
+			    position: relative;
+			    text-align: center;
+			    i{
+			    	width: 50px;
+				    height: 50px;
+				    display: block;
+				    margin: 0px auto 10px;
+				    img{
+				    	display: inline-block;
+					    position: inherit !important;
+					    width: auto !important;
+					    height: auto !important;
+				    }
+			    }
+			    span{
+			    	font-size: 14px;
+			    	line-height: 22px;
+				    color: @slideteam_gray52;
+				    display: block;
+				    em{
+				    	display: block;
+				    	font-style: normal;
+				    }
+				    &.more-link{
+					    font-style: italic;
+					    position: relative;
+					    top: -52px;
+				    }
+			    }
+			    &:before{
+				       content: "";
+					    border-right: 1px solid @gray80;
+					    position: absolute;
+					    top: 41px;
+					    right: 0;
+					    bottom: -11px;
+			    }
+			    &:nth-child(4),&:nth-child(5){
+			    	&:before{
+			    		top:-13px;
+			    		bottom: 38px;
+			    	}
+			    }
+			    &:after{
+				    content: "";
+				    border-bottom: 1px solid @gray80;
+				    position: absolute;
+				    bottom: -12px;
+				    left: 0;
+				    width: 100%;
+			    }
+			    &:first-child{
+			    	&:after{
+			    		left:77px;
+			    	}
+			    }
+			    &:nth-child(3),&:last-child{
+			    	&:after{
+			    		left:-5px;
+			    		width: 50%;
+			    	}
+			    }
+			    &:nth-child(3),&:last-child{
+			    	&:before{
+			    		border:0;
+			    	}
+			    }
+			    &.last{
+			    	&:after
+			    	{
+			    		border:0;
+			    	}
+			    }
+    		}
+    	}
+    }
+}
+
+.research-tab{
+	background: @slideteam_black2;
+    text-align: center;
+    .tablinks{
+    	color: @white;
+	    background: transparent;
+	    position: relative;
+	    display: inline-block;
+	    padding: 9px 4% 19px;
+	    border: 0;
+	    font-size: 18px;
+	    line-height: 22px;
+	    margin: 0 5%;
+	    border-radius: 0px;
+	    .transition(all 0.3s ease 0s);
+	    &:after{
+	    	position: absolute;
+		    max-width: 100%;
+		    margin: 0 auto;
+		    height: 2px;
+		    background: @white;
+		    content: "";
+		    display: block;
+		    left: 10px;
+		    right: 10px;
+		    bottom: 7px;
+		    .transition(all 0.3s ease 0s);
+	    }
+	    &:hover,&.active{
+	    	color:@slideteam_black2;
+	    	background-color:@white;
+	    	.transition(all 0.3s ease 0s);
+	    	&:after{
+	    		background: @slideteam_black2;
+	    		.transition(all 0.3s ease 0s);
+	    	}
+	    }
+    }
+}
+
+.tabcontent{
+	display: none;
+	padding: 0 12px;
+    .tab-heading{
+    		padding: 50px 0 15px 0;
+    		h2{
+			    color: @slideteam_black2;
+			    font-weight: 700;
+			    text-align: center;
+			    margin: 0 0 10px;
+    		}
+    		p{
+    			font-size: 18px;
+			    line-height: 24px;
+			    color: @slideteam_gray66;
+			    text-align: center;
+			    max-width: 42%;
+			    margin: 0 auto;
+			    letter-spacing: -0.3px;
+    		}
+    }
+    .parallax{
+    	background-attachment: fixed;
+	    background-position: 50% 50%;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    height: auto;
+	    position: relative;
+    	&.parallax-1{
+    		background-image: url(../../../../Magento_Cms/images/business_research_services/parallax-bg-1.jpg);
+   			opacity: 0.9;
+    	}
+    	&.parallax-2
+    	{
+    		background-image: url(../../../../Magento_Cms/images/business_research_services/parallax-bg-2.jpg);
+    		opacity: 0.8;
+    	}
+    	&:after{
+    		content: "";
+		    width: 100%;
+		    height: 3px;
+		    background: @white;
+		    position: absolute;
+		    top: 5px;
+    	}
+    	
+    }
+}
+
+.business-wrapper{
+	padding: 0 20px;
+	.research-analysis-block{
+		padding: 40px 0;
+		.inner-common{
+			width: 50%;
+		    float: left;
+		    box-sizing: border-box;
+			h3{
+				position: relative;
+				float: right;
+				color: @slideteam_black5;
+				font-weight: 700;
+				margin: 42px 0 15px 0;
+				&:after{
+					height: 2px;
+				    position: absolute;
+				    content: "";
+				    width: 100%;
+				    bottom: -12px;
+				    left: 0;
+				    background: rgb(255, 255, 255);
+				    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 13%, rgba(9, 173, 150, 1) 100%);
+				    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 13%, rgba(9, 173, 150, 1) 100%);
+				    background: linear-gradient(to right, rgba(255, 255, 255, 1) 13%, rgba(9, 173, 150, 1) 100%);
+				}
+			}
+			em{
+				float: right;
+				margin:0 65px 0 0 ;
+				display: block;
+			}
+			p{
+				font-size: 18px;
+			    line-height: 28px;
+			    color: @slideteam_black15;
+			    padding: 0;
+			    text-align: right;
+			    margin: 10px 0;
+			}
+		}
+		.competitor-analysis{
+			padding-left: 50px;
+			h3{
+				float: left;
+				&:after{
+					background: rgb(248, 147, 46);
+				    background: -moz-linear-gradient(left, rgba(248, 147, 46, 1) 0%, rgba(255, 255, 255, 1) 86%);
+				    background: -webkit-linear-gradient(left, rgba(248, 147, 46, 1) 0%, rgba(255, 255, 255, 1) 86%);
+				    background: linear-gradient(to right, rgba(248, 147, 46, 1) 0%, rgba(255, 255, 255, 1) 86%);
+				}
+			}
+			em{
+				float: left;
+				margin: 0 0 0 65px;
+			}
+			p{
+				text-align: left;
+			}
+		}
+	}
+	.market-analysis{
+		.inner-common{
+			h3,p{
+				color: @white;
+			}
+			h3{
+				&:after{
+					background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.77) 77%, rgba(255, 255, 255, 1) 100%);
+				    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.77) 77%, rgba(255, 255, 255, 1) 100%);
+				    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.77) 77%, rgba(255, 255, 255, 1) 100%);
+				}
+			}
+		}
+		.competitor-analysis{
+			h3{
+				&:after{
+					background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.77) 23%, rgba(255, 255, 255, 0) 100%);
+				    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.77) 23%, rgba(255, 255, 255, 0) 100%);
+				    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.77) 23%, rgba(255, 255, 255, 0) 100%);
+				}
+			}
+		}
+	}
+}
+
+.recent-work-tab-main{
+	.tabcontent{
+		padding: 0 0 75px;
+		.tab-heading{
+			p{
+				max-width: 910px;
+			}
+		}
+	}
+	.recent-work-items{
+		padding: 50px 40px 0;
+		.research-case-studies{
+			margin: 0px;
+			li{
+				width: 33.33%;
+				box-sizing: border-box;
+			    float: left;
+			    text-align: center;
+			    margin-bottom: 60px;
+			    padding: 0 15px;
+			    &.bottom-studies{
+			    	margin-bottom: 0px;
+			    }
+			    a{
+			    	&.fancy{
+					position: relative;
+				    border: 1px solid @gray80;
+				    display: inline-block;
+				    margin-bottom: 8px;
+				    .border-radius(3px);
+				    padding: 5px;
+			    	}
+			    	&:after{
+			    		content: "";
+					    background: url(../../../../Magento_Cms/images/business_research_services/shadow-img.png) no-repeat;
+					    position: absolute;
+					    bottom: -40px;
+					    width: 100%;
+					    height: 40px;
+					    left: 0;
+			    	}
+			    }
+			    p{
+				    color: @slideteam_gray52;
+				    max-width: 230px;
+				    margin: 0px auto;
+				    font-weight: 600;
+				    font-size: 14px;
+				    line-height: 18px;
+			    }
+			}
+		}
+		.hidden-container{
+			display:none;
+		}
+	}
+	.research-work-samples{
+		.research{ 
+			margin-top: 68px;
+			.research-sample-work{
+				width: 25%;
+				box-sizing: border-box;
+			    float: left;
+			    padding: 15px 15px 0;
+			    text-align: center;
+			    position: relative;
+			    &.last{
+			    	&:after{
+			    		border:none;
+			    	}
+			    }
+			    &:before{
+			    	content: "";
+				    width: 10px;
+				    height: 10px;
+				    background: @slideteam_blue25;
+				    border-radius: 100%;
+				    position: absolute;
+				    top: -5px;
+				    z-index: 9;
+				    left: 49%;
+			    }
+			    &:after{
+			    	content: "";
+				    border-top: 1px dashed @slideteam_blue26;
+				    position: absolute;
+				    top: 0;
+				    width: 100%;
+				    left: 50%;
+			    }
+			    &.first{
+			    	.img-col-con{
+				   		 left: 0px;
+				   	}
+			    }
+			    .img-col-con{
+			    	position: absolute;
+				    top: -36px;
+				    left: 9px;
+				    right: 0;
+				    text-align: center;
+				    display: inline-block;
+				    margin: 0 auto;
+				    width: 20px;
+			    }
+			    span{
+			    	&.number{
+					    text-align: center;
+					    background: @slideteam_blue26;
+					    color: @white;
+					    border: 2px solid @slideteam_blue25;
+					    font-size: 16px;
+					    width: 30px;
+					    height: 30px;
+					    line-height: 28px;
+					    .border-radius(100%);
+					    display: block;
+					    margin: 0 auto;
+			    	}
+			    }
+			    i{
+			    	width: 85px;
+				    height: 85px;
+				    display: block;
+				    text-align: center;
+				    margin: 8px auto 15px;
+
+			    }
+			    h5{
+				    color: @slideteam_blue26;
+				    display: inline-block;
+				    border-bottom: 2px solid @slideteam_green13;
+				    padding-bottom: 9px;
+				    margin: 0 0 30px;
+				    span{
+				    	display: block;
+				    }
+			    }
+			    p{
+				    color: @slideteam_gray52;
+				    margin-bottom: 10px;
+			    }
+			}
+		}
+	}
+	.pricing-tab{
+		.pricing-tab-content{
+			.pricing-main-content{
+				margin: 44px auto 0;
+			    max-width: 850px;
+			    width: 100%;
+			    h4{
+			    	color: @slideteam_black5;
+					text-align: center;
+					margin: 0 0 10px;
+			    }
+			    p{
+			    	color: @slideteam_gray67;
+    				line-height: 23px;
+			    	margin-bottom: 15px;
+			    }
+			    .price-wrapper{
+			    	.pricing-left{
+			    		float: left;
+					    width: 50%;
+					    box-sizing: border-box;
+					    padding-right: 30px;
+					    position: relative;
+					    &:after{
+					    	content: '';
+						    position: absolute;
+						    right: 0px;
+						    top: 80px;
+						    bottom: 0px;
+						    border-right:1px dotted @slideteam_gray69;
+						    width: 1px;
+					    }
+			    	}
+			    	.pricing-right{
+			    		float: right;
+					    width: 50%;
+					    box-sizing: border-box;
+					    padding-left: 30px;
+			    	}
+			    	.pricing-image-blog{
+			    		width: 100px;
+					    height: 100px;
+					    margin: 0 auto 13px;
+			    	}
+			    	
+			    	p{
+    					text-align: center;
+			    		&.pricing-text-left{
+			    			min-height: 73px;
+			    		}
+			    		&.pricing-ideal{
+			    			min-height: 37px;
+			    		}
+			    	}
+			    	.pricing-tab-pricing{
+					    min-height: 45px;
+					    padding-top: 14px;
+					    text-align: center;
+					    color: @slideteam_blue1;
+					    position: relative;
+					    font-size: 26px;
+					    line-height: 36px;
+					    font-weight: 700;
+					    &:after{
+					    	position: absolute;
+						    top: 10px;
+						    background: @slideteam_gray68;
+						    height: 1px;
+						    max-width: 180px;
+						    width: 100%;
+						    content: '';
+						    left: 0;
+						    right: 0;
+						    margin: 0 auto;
+					    }
+			    	}
+			    }
+			    .pricing-team{
+			    	margin-top: 8px;
+			    }
+			}
+		}
+	}
+}
+
+.business_research_services{
+	background: @slideteam_orange1;
+    padding: 50px 0 45px;
+    position: relative;
+    &:after{
+    	border-left: 15px solid @slideteam_white6;
+	    border-right: 15px solid @slideteam_white6;
+	    border-top: 15px solid @white;
+	    content: "";
+	    left: 50%;
+	    position: absolute;
+	    top: 0;
+    }
+   	.form-title{
+    	font-size: 40px;
+    	line-height: 44px;
+	    color: @white;
+	    font-weight: 700;
+	    text-align: center;
+	    margin:0 0 30px;
+	    display: block;
+    }
+    .business-research-span{
+    	color: @slideteam_black17;
+	    font-size: 24px;
+	    line-height: 28px;
+	    margin: 50px 0 40px;
+	    text-align: center;
+    }
+}
+
+/*Popup Css*/
+.mfp-zoom-out-cur{
+	overflow: hidden;
+}
+.mfp-img-mobile{
+	z-index: 99999;
+	&.mfp-bg{
+		opacity: 0.6;
+	}
+	&.mfp-wrap{
+		cursor: progress;
+		.mfp-container{
+			top: 46px;
+			height: initial;
+			&:before{
+				height:0px;
+			}
+		}
+		.mfp-content{
+			padding: 15px;
+			width: 81%;
+			.box-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
+        	background: @slideteam_black16;
+        	.border-radius(4px);
+        	border: 1px solid @transparent;
+			.mfp-close{ 
+				background: none;
+			    border: 1px solid @white;
+			    border-radius: 50%;
+			    width: 25px;
+			    height: 25px;
+			    top: 10px;
+			    right: 15px;
+			    opacity: 1;  
+			    cursor: pointer;
+			    padding: 0px;
+			    &:after,&:before{
+			    	content: '';
+				    position: absolute;
+				    top: 4px;
+				    bottom: 4px;
+				    right: 11px;
+				    left: 12px;
+				    background: @white;
+				    .trannsformrotate(-35deg, -125deg);
+			    }
+			    &:before{
+			    	.trannsformrotate(35deg, 125deg);
+			    }
+			    
+			    &:hover{
+			    	border-color: @slideteam_blue1;
+			    	&:after,&:before{
+			    		background-color:@slideteam_blue1;
+			    	}
+			    }
+			}
+			.work-wrapper{
+				color: @white;
+				margin:40px 0 30px;
+    			padding: 0 45px;
+    			overflow-y: auto;
+    			.content-top{
+    				margin-bottom: 25px;
+    				h1{
+    					font-weight: 700;
+					    border-bottom: 1px solid @slideteam_gray70;
+					    display: inline-block;
+					    padding-bottom: 10px;
+					    margin: 0 0 10px;
+    				}
+    				p{
+    					max-width: 740px;
+    					width: 100%;
+    					text-align: justify;
+    					color: @white
+    				}
+    			}
+    			.content-row-outer{
+    				.slider-block{
+    					width: 55%;
+					    float: left;
+					    padding: 15px;
+					    background: @white;
+					    box-sizing: border-box;
+					    .owl-carousel{
+					    	.owl-item{
+					    		img{
+					    			width: auto;
+					    		}
+					    	}
+					    	.owl-nav{
+					    		.owl-prev,.owl-next{
+								    text-indent: -999px;
+								    position: absolute;
+								    width: 22px;
+								    height: 40px;
+								    background-repeat: no-repeat;
+								    top: 35%;
+					    		}
+					    		.owl-prev{
+					    			background-image: url(../../../../Tatva_Downloadable/images/product-slides-left.png);
+					    			left: 0;
+					    		}
+					    		.owl-next{
+					    			right: 0;
+					    			background-image: url(../../../../Tatva_Downloadable/images/product-slides-right.png);
+					    		}
+					    	}
+					    	.owl-thumbs{
+					    		margin-top: 15px;
+					    		display: flex;
+					    		.owl-thumb-item{
+					    			margin: 0 15px 10px 0;
+					    			padding: 0px;
+					    			img{
+					    				max-width: 100%;
+					    				flex: 1;
+					    			}
+					    		}
+					    	}
+					    }
+    				}
+    				.content-side{
+    					    width: 45%;
+						    float: right;
+						    padding: 0 15px 0 40px;
+						    box-sizing: border-box;
+						    .right-content-inner{
+						    	margin-bottom: 50px;
+						    }
+						    h3{
+						    	font-size: 24px;
+						    	line-height: 28px;
+							    font-weight: 700;
+							    border-bottom: 1px solid @slideteam_gray70;
+							    margin: 0 0 10px 0;
+						    }
+						    p{
+						    	color: @slideteam_gray19;
+							    text-align: justify;
+							    margin: 0px;
+						    }
+						    ul{
+						    	li{
+						    		font-size: 16px ;
+						    		line-height: 20px;
+								    color: @slideteam_gray19;
+								    text-align: justify;
+								    padding-left: 20px;
+								    margin-bottom: 20px;
+								    position: relative;
+								    &:before{
+								    	content: "";
+									    width: 7px;
+									    height: 7px;
+									    background: @white;
+									    border-radius: 100%;
+									    position: absolute;
+									    top: 9px;
+									    left: 0;
+								    }
+						    	}
+						    }
+					}
+    			}
+			}
+		}
+	}
+}
+
+.business_demo {
+	text-align: center;
+	margin-top: 15px;
+}
+
+/*Media Query*/
+@media screen and (max-width: 800px) and (orientation: landscape), screen and (max-height: 300px){
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+				.mfp-close{
+					    background: none;
+					    border: 1px solid @white;
+					    border-radius: 50%;
+					    width: 25px;
+					    height: 25px;
+					    top: 10px;
+					    right: 15px;
+					    opacity: 1;
+					    cursor: pointer;
+					    padding: 0px;
+					    position: absolute;
+				}
+			}
+		}
+	}
+}
+@media (min-width: 1921px){
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+				.work-wrapper{
+					.content-row-outer{
+						.slider-block{
+							.owl-carousel{
+								.owl-item{
+									img{
+										width: 100%;
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	.business-research-banner{
+		background-size: 100%;
+	}
+}
+@media (max-width: 1680px){
+	.st-research-services{	
+		h3{font-size: 26px;line-height: 30px;}
+	}
+
+	.research-tab{
+		.tablinks{
+			margin: 0 3% 0;
+		}
+	}
+
+	.business-wrapper{
+		 .research-analysis-block{
+		 	.inner-common{
+		 		em{	
+		 			margin: 0px 35px 0 0;
+		 		}
+		 	}
+		 	.competitor-analysis{
+		 		em{
+		 			margin: 0 0 0 35px;
+		 		}
+		 	}
+		 }
+	}
+	
+}
+@media(max-width: 1440px){
+	.business-research-banner{
+		height: 520px;
+		.banner-content{
+			h1,p{
+				margin:0 0 20px;
+			}
+		}
+	}
+
+}
+@media(max-width: 1366px){
+	.st-research-services{	
+		h3{font-size: 22px;line-height: 26px;}
+		h4{font-size: 21px;line-height: 25px;}
+	}
+
+	.business-research-banner{
+		.banner-content{
+			max-width: 540px;
+			ul{
+				max-width: 480px;
+			}
+		}
+	}
+
+	.business-wrapper{
+		 .research-analysis-block{
+		 	padding: 30px 0;
+		 	.inner-common{
+		 		em{	
+		 			margin: 0px 15px 0 0;
+		 		}
+		 	}
+		 	.competitor-analysis{
+		 		em{
+		 			margin: 0 0 0 15px;
+		 		}
+		 	}
+		 }
+	}
+	.recent-work-tab-main{
+		.pricing-tab{
+			 .pricing-tab-content{
+			 	.pricing-main-content{
+			 		max-width: 730px;
+			 		p{
+			 			font-size: 14px;
+			 			line-height: 18px;
+			 		}
+			 		.price-wrapper{
+			 			.pricing-tab-pricing{
+			 				font-size: 22px;
+			 			}
+			 		}
+			 	}
+			 }
+		}
+	}
+	.business_research_services{
+		.customdesignservice-form{
+			max-width: 940px;
+		}
+	}
+
+	/*Popup css*/
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+				.work-wrapper{
+					.content-top{
+						p{
+							font-size: 14px;
+							line-height: 20px;
+						}
+					}
+					.content-row-outer{
+						.content-side{
+							p{
+								font-size: 14px;
+								line-height: 20px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 1199px){
+	.st-research-services{
+		h1{font-size: 44px;line-height: 48px;}
+	}
+
+	.business-research-banner{
+		.banner-content{
+			left: 30px;
+			p{
+				margin-bottom: 45px;
+			}
+			ul{
+				margin: 0 0 0 -40px;
+				max-width: 440px;
+			}
+		}
+	}
+	.tabcontent{
+		.tab-heading{
+			p{
+				max-width: 62%;
+			}
+		}
+	}
+	.recent-work-tab-main{
+		.tabcontent{
+			.tab-heading{
+				p{
+					max-width: 62%;
+				}
+				&.how-we-work-title{
+					p{
+						max-width: 910px;
+					}
+				}
+			}
+		}
+	}
+	.business_research_services{
+		.customdesignservice-form{
+			max-width: 846px;
+		}
+		.business-research-span{
+			    font-size: 18px;
+			    line-height: 22px;
+			    margin:40px 0 30px;
+		}
+		.form-title{
+			font-size: 36px;
+			line-height: 40px;
+		}
+	}
+
+	/*Popup css*/
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+				width: 90%;
+			}
+		}
+	}
+}
+
+@media(max-width: 991px){
+	.st-research-services{
+		h1{font-size: 36px;line-height: 40px;}
+		h2{font-size: 35px;line-height: 39px;}
+		h5{font-size: 13px;line-height: 17px;}
+	}
+
+	.business-research-banner{
+		.banner-content{
+			left: 20px;
+			p{
+				font-size: 16px;
+			}
+			ul{
+				margin: 0 0 0 -35px;
+			}
+		}
+	}
+	.research-tab{
+		.tablinks{
+			margin: 0 2% 0;
+			padding: 7px 3% 16px;
+		}
+	}
+	.tabcontent{
+		.tab-heading{
+			p{
+				max-width: 100%;
+			}
+		}
+	}
+	.business-wrapper{
+		 .research-analysis-block{ 
+		 	.inner-common{
+		 		width: 100%;
+		 		h3{
+		 			float: left;
+		 		}
+		 		em{	
+		 			float: left;
+		 			margin: 0 0 0 15px;
+		 		}
+		 		p{
+		 			text-align: left;
+		 			font-size: 16px;
+		 			line-height: 24px;
+		 		}
+
+		 	}
+		 	.industry-analysis{
+		 		h3{
+			 		&:after{
+						background: rgb(255, 255, 255);
+					    background: -moz-linear-gradient(left, rgba(9, 173, 150, 1) 0%, rgba(255, 255, 255, 1) 86%);
+					    background: -webkit-linear-gradient(left, rgba(9, 173, 150, 1) 0%, rgba(255, 255, 255, 1) 86%);
+					    background: linear-gradient(to right, rgba(9, 173, 150, 1) 0%, rgba(255, 255, 255, 1) 86%)
+			 		}		
+		 		}	
+		 	}
+		 	.competitor-analysis{
+		 		padding-left: 0px;
+		 	}
+		 }
+		 .market-analysis{
+		 	.inner-common{
+		 		h3{
+		 			&:after{
+		 				background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.77) 23%, rgba(255, 255, 255, 0) 100%);
+					    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.77) 23%, rgba(255, 255, 255, 0) 100%);
+					    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.77) 23%, rgba(255, 255, 255, 0) 100%);
+		 			}
+		 		}
+		 	}
+		 }
+	}
+	.recent-work-tab-main{
+		.tabcontent{
+			.tab-heading{
+				p{
+					max-width: 100%;
+				}
+				&.how-we-work-title{
+					p{
+						max-width: 100%;
+					}
+				}
+			}
+			.research-services{
+				&.tab-heading{
+					h2,p{
+						padding: 0 15px;
+					}
+				}
+			}
+		}
+		.research-work-samples{
+			.research{ 
+				.research-sample-work{
+
+					h5{
+						margin-bottom: 15px;
+					}
+					p{
+						font-size: 13px;
+						margin-bottom: 7px;
+					}
+					i{
+						width: 55px;
+						height: 55px;
+					}
+				}
+			}
+		}
+	}
+	.business_research_services{
+		padding: 50px 35px 45px;
+		.customdesignservice-form{
+			max-width: 100%;
+		}
+		.form-title{
+			font-size: 34px;
+			line-height: 38px;
+		}
+		.business-research-span{
+			font-size: 16px;
+			line-height: 20px;
+		}
+	}
+
+	/*Popup css*/
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+				.work-wrapper{
+					.content-row-outer{
+						.content-side{
+							width: 100%;
+							padding: 0px;
+							.right-content-inner{
+								margin-bottom: 30px;
+							}
+						}
+						.slider-block{
+							width: 100%;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 767px){
+	.st-research-services{
+		h1,h2{font-size: 26px;line-height: 30px;}
+		h4{font-size: 20px;line-height: 24px;}
+	}
+
+	.business-research-banner{
+		height: 465px;
+		.banner-content{
+			max-width: 370px;
+			h1{
+				padding-right: 10px;
+			}
+			p{
+				padding-right: 15px;
+				margin-bottom: 30px;
+			}
+			ul{
+				margin: 0 0 0 -30px;
+				max-width: 400px;
+			}
+		}
+	}
+	.research-tab{
+		.tablinks{
+			font-size: 16px;
+			line-height: 20px;
+			padding: 7px 2% 16px;
+		}
+	}
+	.tabcontent{
+		.tab-heading{
+			padding:30px 0 15px 0;
+			p{
+				font-size: 16px;
+				line-height: 20px;
+			}
+		}
+	}
+	.business-wrapper{
+		 .research-analysis-block{ 
+		 	.inner-common{	
+		 		p{
+		 			font-size: 14px;
+		 		}
+		 	}
+		 }
+	}
+	.recent-work-tab-main{
+		.tabcontent{
+			&.work-content{
+				padding: 0 0 85px;
+			}
+		}
+		 .recent-work-items{
+		 	padding: 20px 40px 0;
+		 	 .research-case-studies{
+		 	 	li{
+		 	 		width: 50%;
+		 	 		margin-bottom: 30px;
+		 	 		&.bottom-studies{		 	 			
+		 	 			margin-bottom: 30px;
+		 	 		}
+		 	 		&:nth-child(5),&:last-child{
+		 	 			margin-bottom: 0px;
+		 	 		}
+		 	 	}
+
+		 	 }
+		 }
+		 .research-work-samples{
+			.research{ 
+				margin-top: 10px;
+				.research-sample-work{
+					width: 100%;
+					&:after{
+						    left: 0;
+						    width: auto;
+						    height: 100%;
+						    border-top: 0;
+						    border-left: 1px dashed @slideteam_blue27;
+						    top: 47px;
+					}
+					&:before{
+						left: -4px;
+    					top: 45px;
+					}
+					&.last{
+				    	&:after{
+				    		border-left: 1px dashed @slideteam_blue27;
+				    	}
+				    	.img-col-con{
+							top: inherit;
+						    bottom: -75px;
+						    left: -5px;
+						    margin:0;
+						}
+			    	}
+					&.first{
+						.img-col-con{
+							margin: 0;
+							left: -8px;
+	    					top: 15px;
+						}
+					}
+					span{
+						&.number{
+								position: absolute;
+							    left: 12px;
+							    top: 35px;
+							    right: auto;
+						}
+					}
+					p{
+						font-size: 16px;
+					}
+				}
+			}
+		}
+		.pricing-tab{
+			 .pricing-tab-content{
+			 	.pricing-main-content{
+			 		max-width: 100%;
+			 		padding: 0 15px;
+			 		margin: 10px 0 0;
+			 		box-sizing: border-box;
+			 		h4{
+			 			&.pricing-title{
+			 				min-height: 50px;
+			 			}
+			 		}
+			 		.price-wrapper{
+				 		.pricing-tab-pricing{
+				 			font-size: 18px;
+				 			line-height:22px;
+				 		}
+			 		}
+			 	}
+			 }
+		}
+	}	
+	.business_research_services{
+		padding: 30px 15px 30px;
+		.form-title{
+			font-size: 24px;
+			line-height: 30px;
+			margin-bottom: 0px
+		}
+		.business-research-span{
+			margin: 25px 0 20px;
+		}
+	}
+
+	/*Popup css*/
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+			 	.work-wrapper{
+			 		padding: 0 15px;
+			 	}
+			 }
+		}
+	}
+}
+
+@media(max-width: 575px){
+	.st-research-services{
+		h3{font-size: 16px;line-height: 20px;}
+	}
+	.research-tab{
+		.tablinks{
+			width: 100%;
+			font-size: 15px;
+			line-height: 19px;
+			margin: 0;
+			padding: 8px 15px 18px;
+		}
+	}
+	.business-wrapper{
+		 .research-analysis-block{ 
+		 	.inner-common{
+		 	h3{
+		 		float: none;
+		 		margin: 20px 0 30px;	
+		 	}	
+		 		em{
+		 			display: block;
+		 			text-align: center;
+		 			float: none;
+		 			margin: 0;
+		 		}
+		 	}
+		 }
+	}
+	.recent-work-tab-main{
+		 .recent-work-items{
+		 	padding: 20px 0 0;
+		 	 .research-case-studies{
+		 	 	padding: 0 15px;
+		 	 	li{
+		 	 		width: 100%;
+		 	 		padding: 0px;
+		 	 		&:nth-child(5){
+		 	 			margin-bottom: 30px;
+		 	 		}
+		 	 		&:last-child{
+		 	 			margin-bottom: 0px;
+		 	 		}		 	
+		 	 	}
+
+		 	 }
+		 }
+		 .pricing-tab{
+			 .pricing-tab-content{
+			 	.pricing-main-content{
+			 		h4{
+			 			&.pricing-title{
+			 				min-height: auto;
+			 			}
+			 		}
+			 		.price-wrapper{
+						.pricing-left,.pricing-right{
+				 			width: 100%;
+				 		}
+				 		.pricing-left{
+				 			margin-bottom: 30px;
+				 			padding-bottom: 30px;
+				 			&:after{
+				 				border-bottom: 1px solid @slideteam_gray69;
+							    bottom: 0px;
+							    top: auto;
+							    left: 0;
+							    right: 0;
+							    margin: 0 auto;
+							    content: "";
+							    position: absolute;
+							    width: 80%;
+							    border-right: none;
+				 			}
+				 		}
+				 		p{
+				 			margin-bottom: 15px;
+				 			&.pricing-ideal,&.pricing-text-left,&.pricing-text-right{
+				 				min-height: auto;
+				 			}
+				 			&.pricing-ideal{
+				 				margin-bottom: 5px;
+				 			}
+			 			}
+			 		}
+			 	}
+			 }
+		}
+	}
+
+	/*Popup Css*/
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+			 	.work-wrapper{
+			 		.content-top{
+			 			h1{
+			 				font-size: 24px;
+			 				line-height: 28px;
+			 			}
+			 		}
+			 		.content-side{
+			 			h3{
+			 				font-size: 20px;
+			 				line-height: 24px;
+			 			}
+			 		}
+			 		.content-row-outer{
+			 			.slider-block{
+			 				 .owl-carousel{
+			 				 	.owl-thumbs{
+			 				 		.owl-thumb-item{
+			 				 			margin: 0 3px 10px 0;
+			 				 		}
+			 				 	}
+			 				 }
+			 			}
+			 		}
+			 	}
+			 }
+		}
+	}
+}
+
+
+@media(max-width: 374px){
+	.business-research-banner{
+		.banner-content{
+			ul{
+				margin: 0 0 0 -25px;
+				li{
+					span{
+						font-size: 12px;
+						line-height: 19px;
+					}
+					&:first-child{
+						&:after{
+							left: 45px;
+						}
+					}
+					&:nth-child(3){
+						&:after{
+							width:60%;
+						}
+					}
+				}
+			}
+		}
+	}
+}

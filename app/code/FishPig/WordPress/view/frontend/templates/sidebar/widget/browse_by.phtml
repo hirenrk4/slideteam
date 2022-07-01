@@ -1,0 +1,23 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+         <div class="tabbing blue-head">
+          <ul class="tabs" id="tabs1">
+            <li class="selected">
+                <a href="Javascript:void(0);" rel="#one" title=""><span><img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/down-arrow.png')?>" alt="" width="11px" height="6px"/></span>Authors</a>
+            </li>
+            <li><a href="Javascript:void(0);" rel="#two" title=""><span><img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/down-arrow.png')?>" alt="" width="11px" height="6px"/></span>Archives</a>
+            </li>
+        </ul>
+        </div>
+        <div class="block-content">
+            <?php echo $this->getChildHtml('author')?>
+            <?php echo $this->getChildHtml('wp.sidebar.right2')?>
+        </div>
+    </div>
+</div>

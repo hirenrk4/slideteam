@@ -1,0 +1,243 @@
+<?php 
+$downloadLink = $this->getDownloadLink();
+$downloadBtnText = $this->getDownloadBtnText();
+$showRecommandedPopup = $this->getShowRecommandedPopup();
+$showDownloadLimitExahustedPopup = $this->getshowDownloadLimitExahustedPopup();
+$customerDownloadCount = $this->getCustomerDownloadCount();
+$maxFreeDownload = $this->getSystemValue("button/download/restrict");
+$pricingUrl = $block->getBaseUrl()."pricing/";
+$_product = $block->getProduct();
+
+
+$customerIsLogedin = $this->getCustomerSessData()->isLoggedIn();
+?>
+
+<form id="downloadbtn-form">
+    <?php echo $block->getChildHtml('custom_section'); ?>
+    <div class="downloadbtn">
+        <button type="submit" id="clicking" class="btn btn-default get-button clicking"><?php echo __($downloadBtnText); ?></button>
+    </div>
+    <?php echo $this->getChildHtml('product.info.research') ?>
+</form>
+
+<div id="popup-data" class="mfp-hide white-popup-block">
+    <div class="dwdbtn-title"><p class="page__ui mfp-title">Enjoy This Product</p></div>
+    <div class="dwdbtn-content">
+        <p style="font-size: 12px,font-weight;">Please recommend us to your friends - thanks!</p>
+        <div class="popop-share product-info-main">
+            <div class="st-addthis-custom addthis_toolbox">
+                <ul class="sharing-links custom_images">
+                    <li>
+                        <a class="link-facebook" title="Share on Facebook" rel="noopener" target ="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($_product->getProductUrl());?>&picture=&title=<?php echo urlencode($_product->getName())?>">
+                        </a>
+                    </li>
+                    <li>
+                        <a class="link-twitter" title="Share on Twitter" rel="noopener" target ="_blank" href="https://twitter.com/intent/tweet?text=<?php echo urlencode($_product->getName())?>&url=<?php echo urlencode($_product->getProductUrl());?>&image-src=<?php echo urlencode($this->getUrl() . '/media/catalog/product/cache/960x720' . $this->getProduct()->getImage())?>">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php
+    $popupData = $this->getPopupContent('download_count_popup');
+    if($popupData && !empty($popupData))
+    {
+        if($popupData['download_count'] && $customerDownloadCount == $popupData['download_count'])
+        {
+            echo $popupData['popup_content'];
+            if($popupData['popup_js'])
+            {
+                echo $popupData['popup_js'];
+            }
+            if($popupData['popup_css'])
+            {
+            ?>
+            <script type="text/javascript">
+                require(['jquery'], function ($) {
+                    $(document).ready(function(){
+                        var mb_popup_style = $('<style type="text/css">'+<?php echo json_encode($popupData['popup_css']); ?>+'</style>');
+                        $('html > head').append(mb_popup_style);    
+                    })
+                })
+            </script>
+            <?php
+            }    
+        }            
+    }
+?>
+
+<?php
+if($showDownloadLimitExahustedPopup){
+    ?>
+    <div id="share-popup" data-lightbox="free-download" class="mfp-hide white-popup-block">
+        <div class="dwdbtn-title"><p class="page__ui mfp-title">Enjoy This Product</p></div>
+        <div class="subscription-content">
+            <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('pop-up-download-limit')->toHtml(); ?>
+            <button type="button" class="btn btn-default get-button small-button" title="continue" onclick="location.href='<?php echo $this->getUrl('subscription/index/list')?>'">
+                Continue to your Subscription List
+            </button>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+        require(['jquery', 'magnific_popup'], function ($) {
+            var addthis_product = 'mag-1.0.1';
+            var addthis_config  = {
+                pubid : 'unknown', data_track_addressbar : true
+            };
+            $(document).ready(function () {
+                $(".downloadbtn #clicking").magnificPopup({
+                    items:[
+                    {
+                        src:'#share-popup',
+                    }
+                    ],
+                    type: 'inline',
+                    callbacks: {
+                        open: function () {
+                                // add class to main container
+                                this.contentContainer.addClass('downloadbtn-popup');
+                            }
+                        },
+                        closeMarkup:'<a class="mfp-close roundlink">Close</a>',
+                    });
+            });
+        });
+    </script>
+    <?php    
+
+}
+
+if($showRecommandedPopup && ($customerDownloadCount != $popupData['download_count']) && ($customerDownloadCount < $maxFreeDownload)){
+    ?>
+    <div id="share-popup" style="display:none">
+        <!-- <p style="font-size: 12px,font-weight;">Please recommend us to your friends - thanks!</p> -->
+    </div>
+    <script type="text/javascript">
+        require(['jquery', 'magnific_popup'], function ($) {
+            var addthis_product = 'mag-1.0.1';
+            var download_url = "<?php echo $this->getUrl($downloadLink); ?>";
+            var addthis_config  = {
+                pubid : 'unknown', data_track_addressbar : true
+            };
+            //addthis.toolbox($(".addthis").get());
+            
+            $(document).ready(function () 
+            {
+                $(".downloadbtn #clicking").magnificPopup({
+                    items:[
+                    {
+                        src:'#popup-data',
+                    }
+                    ],
+                    type: 'inline',
+                    callbacks: {
+                        open: function () {
+                                // add class to main container
+                                this.contentContainer.addClass('downloadbtn-popup');
+                                /*$('#downloadbtn-form').submit(); */
+
+                            },
+                        },
+                        closeMarkup:'<a class="mfp-close roundlink">Close</a>',
+                    });
+            });
+        });
+        
+        
+    </script>
+    <?php    
+}
+?>
+<script type="text/javascript">
+    require(['jquery','Emarsysjs'], function ($) 
+    {
+        $(document).ready(function () 
+        {
+            
+            $('.clicking').on('click',function(){
+                $('#clicking').attr('disabled',true);
+                var cusdownload = "<?php echo $customerDownloadCount;  ?>";
+                var maxDownload = "<?php echo $maxFreeDownload; ?>";
+                if(cusdownload >= maxDownload)
+                {
+                    window.location.href = "<?php echo $pricingUrl; ?>";
+                    return false;
+                }
+            
+                var product_id = '<?php echo $this->getCurrentProduct()->getId();?>';
+                var paramcaptch = $('[name="captcha[downloadable_captcha]"]').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getURL('downloadable/index/free'); ?>',
+                    data: {
+                        product_id:product_id,
+                        captchapost:paramcaptch
+                    },
+                    showLoader: false ,
+                    success: function(data) {
+                        setTimeout(function()
+                        {
+                            window.location.href = "<?php echo $this->getURL('downloadable/index/download'); ?>";
+                        } ,300); 
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '<?php echo $this->getURL('downloadable/index/emarsys'); ?>',
+                            data: {
+                                product_id:product_id,
+                            },
+                            dataType: 'json',
+                            success:function(html){
+                                if(html.success_return == 5){
+                                    alert("There is a problem while downloading the file. Please try again after some time.");
+                                }else if(html.success_return == 6){
+                                    console.log('Customer not login !!!');
+                                }
+                                else
+                                {
+                                    ScarabQueue.push(['setCustomerId', html.detail.customer_id]);
+                                    ScarabQueue.push(['tag', 'customerDetails', {
+                                    content_type: html.detail.content_type,
+                                    content_title: html.detail.content_title,
+                                    paidCustomer: html.detail.paidCustomer,
+                                    freeProductsDownloaded: html.detail.freeProductsDownloaded,
+                                    lastFreeProductDownloadDate : html.detail.lastFreeProductDownloadDate,
+                                    paidProductsDownloaded: html.detail.paidProductsDownloaded,
+                                    lastPaidProductDownloadDate : html.detail.lastPaidProductDownloadDate
+                                    }]);
+                                    ScarabQueue.push(['go']);
+                                }
+                                
+                            }
+                        })
+                        setTimeout(function(){
+                            $('#clicking').attr('disabled',false);
+                        } ,3000);
+                    },
+                    error: function() {
+                        $('#clicking').attr('disabled',false);
+                        console.log("Error in downloading product");
+                    }
+                })
+                return false;
+            });
+        });
+    })
+</script>
+<?php /*endif;*/ ?>
+<script type="text/javascript">
+    require(['jquery','jquery/jquery.cookie'], function ($) 
+    {
+        $(document).ready(function () 
+        {
+             $(".pd-detail-captcha-wrapper label:contains('Please type captcha here')").remove();
+            $('#downloadbtn-form').find('input[name*="captcha"]').attr("placeholder", "Please type captcha here");
+        })
+    });
+</script>
+
+

@@ -1,0 +1,108 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Theme::css/edutech/style.css" media="all" order="271"/>
+        <css src="Magento_Theme::css/edutech/responsive.css" media="all" order="272"/>
+        <css src="Tatva_Downloadable::css/mCustomScrollbar.css" media="all" />
+        <css src="Magento_Theme::css/catalog/product/downloadable-product.css" media="all" order="270"/>
+        <css src="Magento_Theme::css/jquery.fancybox.min.css" media="all" order="500" />
+        <css src="Magento_Theme::css/owl.carousel.css" media="all" order="280"/>
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+        <css src="Magento_Theme::css/magnific-popup/magnific-popup.css" media="all"/>
+        <css src="Magento_Theme::css/edutech/slick.css" media="all"/>
+        <!-- <css src="Tatva_Downloadable::css/review-custom.css" media="all"/> -->
+        <script src="Magento_Theme::js/slick.js"/>
+        <script src="Magento_Theme::js/jquery.fancybox.js"/>
+        <script src="Magento_Theme::js/owl.carousel.js" />
+        <script src="Tatva_Downloadable::js/view-slider/jquery.mCustomScrollbar.js" />
+        <remove src="Magento_Theme::js/jquery.dotdotdot.js"/>
+        <remove src="Magento_Theme::js/theme-general.js"/>
+        <meta name="robots" content="max-image-preview:large"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    </head>
+    <body>
+        <attribute name="class" value="custom-downloadable-product"/>
+        <attribute name="itemtype" value=""/>
+        <attribute name="itemscope" value=""/>
+        <referenceContainer name="main">
+            <container name="custom.product.inner.wrapper"/>
+            <container name="prodct.training" htmlTag="section" htmlClass="training training_pdp" after="-">
+                <block name="product.view.training" template="Tatva_EduTech::product/view/edutech-training.phtml"/>
+            </container>
+            <container name="product.complete.curriculum" htmlTag="section" htmlClass="complete_curriculum" after="prodct.training">
+                <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.curriculum" template="Tatva_EduTech::product/view/complete-curriculum.phtml"/>
+            </container>
+            <container name="custom.media.slides" htmlTag="section" htmlClass="all_slides" after="product.complete.curriculum">
+                <block class="Magento\Catalog\Block\Product\View\Gallery" name="product-image-details" template="Tatva_EduTech::product/view/edutech_media_slides.phtml"/>
+            </container>
+            <container name="product.sample.instructor" htmlTag="section" htmlClass="sample_instructor" after="custom.media.slides">
+                <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.instructor" template="Tatva_EduTech::product/view/sample-instructor.phtml"/>
+            </container>
+            <container name="product.questionary" htmlTag="section" htmlClass="questionary" after="product.sample.instructor">
+                <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.questionary" template="Tatva_EduTech::product/view/questionary.phtml"/>
+            </container>
+            <container name="edutech.review" htmlTag="section" htmlClass="rating_review" after="product.questionary">
+                <block class="Tatva\Downloadable\Block\Product\View\ListView" name="product.info.product_additional_data" as="product_additional_data" template="Tatva_EduTech::product/view/list.phtml" after="-"/>
+                <block class="Magento\Theme\Block\Html\Pager" name="product_review_list.toolbar" after="-"/>
+            </container>
+            <container name="product.join.request" htmlTag="section" htmlClass="join_request" after="edutech.review">
+                <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.request" template="Tatva_EduTech::product/view/request.phtml"/>
+            </container>
+        </referenceContainer>
+        <move element="content" destination="custom.product.inner.wrapper" />
+        <referenceContainer name="page.top">
+            <block class="Tatva\Catalog\Block\Product\Breadcrumb" name="custom_breadcrumb" template="Magento_Catalog::product/breadcrumb.phtml" />
+        </referenceContainer>
+        <referenceContainer name="content">
+            <container name="edutech.product.name.container" htmlTag="div" htmlClass="container edutech_header" before="-">
+                <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.header" template="Tatva_EduTech::product/view/header_one_desc.phtml" before="-" />
+            </container>
+            <container name="product.info.top.section" htmlTag="section" htmlClass="why_edudecks" before="product.powerpoint.section">
+                <block name="product.view.top.sections" class="Tatva\Catalog\Block\Product\View\CustomDetails" template="Tatva_EduTech::product/view/why-edudecks.phtml" before="-" />
+            </container>
+            <container name="product.powerpoint.section" htmlTag="section" htmlClass="powerpoint_slides" after="product.view.top.sections">
+                <container name="product.info.edutech.container" htmlTag="div" htmlClass="container">
+                    <container name="product.info.media.edutech" htmlTag="div" htmlClass="powerpoint_slides_inner">
+                        <container name="product.info.media" htmlTag="div" htmlClass="product media powerpoint_slides_left" after="product.info.media.edutech">
+                            <block class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image"  as="media" template="Tatva_EduTech::product/view/gallery.phtml" />
+                        </container>
+                        <container name="product.info.main" htmlTag="div" htmlClass="product-info-main powerpoint_slides_right" after="product.info.media">
+                            <container name="product.info.download.favourite.wrapper" htmlTag="div" htmlClass="download-btnwrapper">
+                                <block class="Tatva\Catalog\Block\Product\View" name="product.view.downloadbtn" template="Tatva_Downloadable::product/view/downloadbtn.phtml" >
+                                    <container name="download_captcha" label="Captcha">
+                                        <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-" cacheable="false">
+                                            <action method="setFormId">
+                                                <argument name="formId" xsi:type="string">downloadable_captcha</argument>
+                                            </action>
+                                            <action method="setImgWidth">
+                                                <argument name="width" xsi:type="string">230</argument>
+                                            </action>
+                                            <action method="setImgHeight">
+                                                <argument name="width" xsi:type="string">50</argument>
+                                            </action>
+                                        </block>
+                                    </container>
+                                </block>
+                                <block class="Tatva\Catalog\Block\Product\View" name="product.view.favourite" template="Tatva_Downloadable::product/view/favourite.phtml" />
+                            </container>
+                            <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.trainers.teachers" template="Tatva_EduTech::product/view/trainers-teachers.phtml" />
+                            <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.trainers.teachers.list" template="Tatva_EduTech::product/view/trainers-teachers-list.phtml" />
+                            <block class="Tatva\Catalog\Block\Product\View" name="product.info.review" template="Magento_Catalog::product/view/review.phtml" after="product.view.trainers.teachers.list" />
+                        </container>
+                    </container>
+                    <block class="Tatva\Catalog\Block\Product\View" name="product.info.category" template="Tatva_Downloadable::product/view/product_categories.phtml" />
+                    <block class="Tatva\Tag\Block\Product\ListProduct" name="product.tag.list" template="Tatva_Tag::tag/list.phtml" />
+                </container>
+            </container>
+            <!-- task 1464 -->
+            <!-- <container name="product.loginforms" htmlTag="div" htmlClass="loginforms" after="-">
+                <block class="Tatva\Free\Block\Customer\Login" ifconfig="customer/ajaxlogin/enable" name="ajaxlogin.pdp" template="Tatva_Free::customer/newpopup/index.phtml">
+                    <block class="Magento\Customer\Block\Form\Register" name="customer.form.register.ajax.pdp" template="Tatva_Free::customer/newpopup/register.phtml" />
+                    <block class="Mageplaza\SocialLogin\Block\Popup\Social" name="customer.form.social.login.ajax.pdp" template="Tatva_Free::customer/newpopup/social.phtml" />
+                </block>
+            </container> -->
+            <!-- task 1464 end-->  
+        </referenceContainer>
+        
+        <referenceContainer name="custom.footer.widget.wrap" remove="true" />
+    </body>
+</page>

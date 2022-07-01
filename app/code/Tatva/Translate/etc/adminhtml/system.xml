@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Zealousweb. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tatvasoft" translate="label" sortOrder="10">
+            <label>TATVASOFT</label>
+        </tab>
+        <section id="button" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>General Configuration</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Generalconfiguration::button_config</resource>
+            <group id="laguage_config" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Google API Key Configuration for PDP Multilaguage</label>
+                <field id="google_key" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google API Key</label>
+                    <comment>enter API Key</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

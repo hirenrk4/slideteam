@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<remove src="Amasty_Stripe::css/source/mkcss/amstripe.css"/>
+		<remove src="Magento_Theme::css/theme/custom.css"/>
+		<remove src="Magento_Theme::css/magnific-popup/magnific-popup.css"/>
+		<remove src="Magento_Theme::css/theme/catalog-tooltip.css"/>
+	</head>
+	<body>
+		<!-- Ebook Banner start-->
+	<referenceContainer name="page.top">
+		<block class="FishPig\WordPress\Block\Sidebar" name="wp.banner" template="Tatva_Ebook::Ebook_blog_banner.phtml"  before="-" />
+		<block class="FishPig\WordPress\Block\Html\Breadcrumbs" name="wp.breadcrumbs" >
+			<block class="Magento\Framework\View\Element\Template" name="top_sort" as="top_sort" template="FishPig_WordPress::post/sort.phtml" />
+			<block class="Magento\Framework\View\Element\Template" name="cat_lang" template="FishPig_WordPress::post/language.phtml" />
+		</block>
+		
+	</referenceContainer>
+	<!-- Ebook Banner end-->
+
+		
+		<referenceContainer name="content">			
+			<block class="Magento\Cms\Block\Block" name="Promo_de">
+		        <arguments>
+		            <argument name="block_id" xsi:type="string">blog-header</argument>
+		        </arguments>
+      		</block>
+			<block class="FishPig\WordPress\Block\Homepage\View" name="wp.homepage.view" template="post/list/wrapper.phtml" cacheable="false">
+				<block class="FishPig\WordPress\Block\Post\Featured" name="wp.post.feature" template="post/featured.phtml" />
+				<block class="FishPig\WordPress\Block\Post\ListPost" name="wp.post.list" template="post/list.phtml">
+					<block class="FishPig\WordPress\Block\Post\PostList\Pager" name="wp.post_list.pager" as="pager" />
+				</block>
+			</block>
+		</referenceContainer>
+		<referenceBlock name="authentication-popup" remove ="true" />
+	</body>
+</page>

@@ -1,0 +1,134 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jul 2, 2018, 10:29:43 AM
+    Author     : PCQ20
+*/
+
+@import "../../source/_mixins.less";
+@import "../../source/_variablesm2.less"; 
+
+.item{
+	&.product{
+		&.product-item{
+		width:20%;
+		margin-left: 0px;
+		}	
+	}	
+}
+
+.product-info-block{
+	background: @slideteam_gray31;
+
+}
+.filterbox{
+	float: right;
+	margin: 15px 0;
+	p{
+		display: inline-block;
+		margin: 4px 15px 0;
+		font-size: 14px;
+	}
+	.filtercont{
+		display: inline-block;
+		width: 150px;
+		.custom-dropdown{
+		}
+		.dk-select{
+			width: 100%;
+		}
+		.dk-selected{
+			padding: 0 35px 0 10px;
+			color: @slideteam_gray72;
+			.border-radius(0px);
+			border:1px solid @slideteam_gray71;
+			height: 32px;
+			font-size: 15px;
+			line-height: 32px;
+			&:before{
+				border-top-color:@slideteam_gray71;
+				margin-top: -5px;
+				margin-right: 9px;
+			}
+			&:after{
+				top: 3px;
+				height: 77%;
+				right: 7px;
+			}
+			&:hover{
+				&:before{
+					border-top-color:@slideteam_gray71;
+				}
+				&:after{
+					border-color: @slideteam_gray71;
+				}
+			}
+			&:focus{
+				&:before{
+					border-top-color:@slideteam_gray71;
+				}
+				&:after{
+					border-color: @slideteam_gray71;
+				}
+			}
+			&:before{
+				border-width: 7px 6px 0;
+			}
+		}
+		.dk-select-open-down{
+			.dk-select-options{
+				.border-radius(0px);
+				position: absolute;
+				border: 1px solid @slideteam_gray19;
+				padding: 0;
+			}
+			.dk-selected{
+				&:after{
+					border-color:@slideteam_gray71;
+				}
+			}
+		} 
+		.dk-select-open-up{
+			.dk-selected{
+				&:after{
+					border-color:@slideteam_gray71;
+				}
+			}
+		}
+		.dk-option{
+			padding: 3px 8px;
+			margin-bottom: 0px;
+			border-bottom: 1px solid @slideteam_gray19;
+			color: @slideteam_gray13;
+			font-size: 13px;
+		}
+		.dk-select-options{
+			border-color: @slideteam_gray71;
+			.dk-option-highlight{
+				color: @white;
+				background: @slideteam_blue1;
+			}
+		} 
+		.dk-option-selected{
+			color: @slideteam_gray13;
+			background: @white;
+		}
+	}
+}
+
+@media (max-width:575px){
+	.filterbox{
+		.filtercont{
+			width: 140px;
+			.dk-selected{
+				height: 30px;
+				line-height: 30px;
+			}
+		}
+	}  
+}
+
+

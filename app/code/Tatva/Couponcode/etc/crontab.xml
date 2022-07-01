@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+   	<group id="customcoupon_cron">
+      	<job instance="Tatva\Couponcode\Cron\CouponStatus" method="execute" name="tatva_coupon_code">
+      		<config_path>couponcode/couponcode_email/cron_schedule</config_path>
+      	</job>
+      	<job instance="Tatva\Couponcode\Cron\ExportCoupon" method="execute" name="tatva_coupon_report_weekly">
+      		<config_path>couponcode/couponcode_email/cron_weekly_schedule</config_path>
+      	</job>
+      	<job instance="Tatva\Couponcode\Cron\ExportAllCoupon" method="execute" name="tatva_coupon_report_all">
+      		<config_path>couponcode/couponcode_email/cron_monthly_schedule</config_path>
+      	</job>
+   	</group>
+</config>

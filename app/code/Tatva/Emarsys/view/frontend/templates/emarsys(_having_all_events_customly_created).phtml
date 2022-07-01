@@ -1,0 +1,217 @@
+<!-- Here all events are created as previously we were not using the emarsys extention -->
+<script type="text/javascript">
+	requirejs(['Magento_Customer/js/customer-data','jquery'], function(customerData,$){
+	    base_url_substring = "slideteam.net";
+	});
+</script>
+<?php 
+	$base_url = $block->getBaseUrl();
+	$live_url_substr = "slideteam.net";
+	$is_live = strpos($base_url,$live_url_substr) !== false ? true : false;
+?>
+<?php if($block->getEmarsysIntegrationStatus()): ?>
+
+	<?php $page_type = $block->getRequest()->getRouteName();?>
+
+	<?php /*--Home page widget integration start--*/ ?>
+	<?php if($page_type =="cms" && $block->getPageIdentifier() == 'home' && $block->getStoreManager()->getStore()->getStoreId() == "1"):?>
+	<?php echo $this->getLayout()->createBlock('Tatva\Emarsys\Block\Emarsys')->setTemplate('Tatva_Emarsys::home_widget.phtml')->toHtml(); ?>
+	<?php endif;?>
+	<?php /*--Home page widget integration end--*/ ?>
+
+
+	<?php /*--Category Listing Page Start--*/ ?>
+	<?php if ($page_type == "catalog" || $page_type == "allproducts")
+	{
+		if($page_type == "allproducts")
+		{
+			$categoryId = $this->getRequest()->getParam('c');
+			$categoryName = $block->getCategory()->create()->load($categoryId)->getName();
+			if($is_live){
+				echo "<script>ScarabQueue.push(['category', '$categoryName']);</script>";
+			}
+			else{
+				/* Testing */
+				echo "<script>ScarabQueue.push(['category', '$categoryName']);</script>";
+				/*echo "<script>console.log('Emarsys Call for category name ');</script>";	
+				echo "<script>console.log(['category', '$categoryName']);</script>";*/	
+			}
+		}
+		else
+		{
+			$currentCategory = $block->getRegistry()->registry('current_category');
+			
+			if($currentCategory)
+			{
+				$categoryTree = $currentCategory->getPath();
+				$categoryIds = explode('/', $categoryTree);
+				$categoryIds = array_diff($categoryIds,array('1','2'));
+
+				foreach($categoryIds as $_categoryId)
+				{
+					$categoryName[] = $currentCategory->load($_categoryId)->getName();
+				}
+				
+
+				if($is_live){
+					switch(count($categoryName))
+					{
+						/* Already done in emarsys module's webextend.phtml */
+						/*case "1" : echo "<script>ScarabQueue.push(['category', '$categoryName[0]']);</script>";break;
+						case "2" : echo "<script>ScarabQueue.push(['category', '$categoryName[0] > $categoryName[1] ']);</script>";break;
+						case "3" : echo "<script>ScarabQueue.push(['category', '$categoryName[0] > $categoryName[1] > $categoryName[2]']);</script>";break;*/
+					}
+				}
+				else{
+					/*Testing*/
+					/* Already done in emarsys module's webextend.phtml */
+					switch(count($categoryName))
+					{
+						/*case "1" : echo "<script>ScarabQueue.push(['category', '$categoryName[0]']);</script>";break;
+						case "2" : echo "<script>ScarabQueue.push(['category', '$categoryName[0] > $categoryName[1] ']);</script>";break;
+						case "3" : echo "<script>ScarabQueue.push(['category', '$categoryName[0] > $categoryName[1] > $categoryName[2]']);</script>";break;*/
+					}
+					/*$categoryName_json = json_encode($categoryName);
+					echo "<script>console.log('Emarsys Call for multilevel category name ');</script>";	
+					echo "<script>console.log($categoryName_json);</script>";*/	
+				}
+
+				$parent_category_name = $currentCategory->getParentCategory()->getName();
+				
+				$_helper = $this->helper('Magento\Catalog\Helper\Output');
+				$parent_category_name = $_helper->categoryAttribute($currentCategory, $currentCategory->getParentCategory()->getName(), 'name');
+
+				if($parent_category_name == "Themes")
+				{
+					echo $this->getLayout()->createBlock('Tatva\Emarsys\Block\Emarsys')->setTemplate('Tatva_Emarsys::custom_emarsys_widget_in_listing.phtml')->toHtml();
+				}
+			}
+		}
+	}
+	?>
+	<?php /*--Category Listing Page Ends--*/ ?>
+
+	<?php /*--Wordpress Emarsys Start--*/?>
+	<?php if($page_type == "wordpress"): ?>
+		<?php echo $this->getLayout()->createBlock('Tatva\Emarsys\Block\Emarsys')->setTemplate('Tatva_Emarsys::wordpress_search_widget.phtml')->toHtml(); ?>
+		<?php echo $this->getLayout()->createBlock('Tatva\Emarsys\Block\Emarsys')->setTemplate('Tatva_Emarsys::popular_templates.phtml')->toHtml(); ?>
+	<?php endif; ?>
+	<?php /*--Wordpress Emarsys End--*/?>
+
+
+		<script type="text/x-magento-init">
+		    {
+		        "*": {
+		            "Magento_Ui/js/core/app": {
+		                "components": {
+		                    "tatva_customer_data": {
+		                        "component": "Tatva_Customer/js/view/tatva_customer_data"
+		                    }
+		                }
+		            }
+		        }
+		    }
+		</script>
+		
+		<script type="text/javascript">
+			requirejs(['Magento_Customer/js/customer-data','jquery'], function(customerData,$){
+			    /*base_url_substring = "slideteam.net";*/
+			    $(document).on('ajaxComplete', function (event, xhr, settings) {
+					/*customerData.reload(['tatva_customer_data']);*/
+			    	tatva_customer_data = customerData.get('tatva_customer_data');
+			    	cart = customerData.get('cart');
+			    	cart_data = cart();
+			    	cart_products_count = cart_data.summary_count;
+			    	cart_items_ids = tatva_customer_data().cartItemsIds;
+			    	customerId = tatva_customer_data().customerId; 
+
+			    	/*--Cart details start--*/
+			    	/* Already done in emarsys module's javascripttracking.phtml */
+				    if(typeof cart_products_count !== 'undefined' && cart_products_count > 0 && typeof cart_items_ids !== 'undefined' && cart_items_ids.length > 0){
+				    	var productId = cart_items_ids[0];
+			    		var productPrice = Number(cart_data.subtotalAmount);
+				    	if(BASE_URL.indexOf(base_url_substring) !== -1){
+				    		/*Live*/
+				    		
+				    		/*ScarabQueue.push(['cart', [{item: productId, price: productPrice, quantity: 1}]]);*/
+					    }
+					    else{
+					    	/*other than live*/
+					    	/*ScarabQueue.push(['cart', [{item: productId, price: productPrice, quantity: 1}]]);*/
+					    	/*console.log("Cart event called for Emarsys:[]");
+					    	console.log(['cart', [{item: productId, price: productPrice, quantity: 1}]]);*/
+					    }
+				    }
+				    else{
+				    	if(BASE_URL.indexOf(base_url_substring) !== -1){
+				    		/*Live*/
+				    		/*ScarabQueue.push(['cart', []]);*/
+					    }
+					    else{
+					    	/*other than live*/
+				    		/*ScarabQueue.push(['cart', []]);*/
+					    	/*console.log("Cart event called for Emarsys:[]");*/
+					    }
+				    }
+				    /*--Cart details end--*/
+				    /*<!-- Customer Login status to Emarsys Start -->*/
+				    /* Already done in emarsys module's javascripttracking.phtml */
+				    if(typeof customerId !== 'undefined' && customerId > 0){
+					    if(BASE_URL.indexOf(base_url_substring) !== -1){
+					    	/*Live site as per url
+						    console.log(customerId);*/
+						    /*ScarabQueue.push(['setCustomerId', customerId]);*/
+					    }
+					    else{
+					    	/*ScarabQueue.push(['setCustomerId', customerId]);*/
+					    	/*console.log("setCustomerId called for Emarsys : "+customerId);*/
+					    }
+				    }
+				    else{
+				    	if(BASE_URL.indexOf(base_url_substring) !== -1){
+				    		/*Live*/
+				    		/*console.log("User not logged in");*/
+					    }
+					    else{
+					    	/*other than live*/
+					    	/*console.log("User not logged in");*/
+					    }
+				    }
+					/*<!-- Customer Login status to Emarsys End   -->*/
+			    });
+
+
+			    /* Already done in emarsys module's webextend.phtml */
+			    $("#search_mini_form").submit(function(event) {
+					if($('#search').val())
+					{
+						searchTerm = $('#search').val();
+					   	if(BASE_URL.indexOf(base_url_substring) !== -1){
+				    		/*Live*/
+				    		/*ScarabQueue.push(['searchTerm', searchTerm]);
+					   		ScarabQueue.push(['go']);*/
+					    }
+					    else{
+					    	/*other than live*/
+					    	/*ScarabQueue.push(['searchTerm', searchTerm]);
+					   		ScarabQueue.push(['go']);*/
+					    	/*console.log("Search term pushed to emarsys "+searchTerm);*/
+					    }
+				  	}
+				});
+
+			    if(BASE_URL.indexOf(base_url_substring) !== -1){
+		    		/*Live*/
+					ScarabQueue.push(['exclude', 'category', 'has', 'Subscriptions']);
+	    			/*ScarabQueue.push(['go']);*/
+			    }
+			    else{
+			    	/*other than live*/
+			    	ScarabQueue.push(['exclude', 'category', 'has', 'Subscriptions']);
+			    	/*console.log("Categories excluded from emarsys");
+			    	console.log(['exclude', 'category', 'has', 'Subscriptions']);*/
+			    }
+
+			});
+		</script>
+<?php endif; ?>

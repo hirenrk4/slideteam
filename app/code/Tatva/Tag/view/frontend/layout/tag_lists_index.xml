@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+      <head>
+        <remove src="Magento_Theme::js/jquery.dotdotdot.js"/>
+        <remove src="Magento_Theme::js/theme-general.js"/>
+
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+        <css src="Magento_Theme::css/ddimgtooltip.css" media="all"/>
+        <script src="Magento_Theme::js/ddimgtooltip.js"/>
+        <css src="Magento_Theme::css/catalog/catalog-style.css" media="all" order="250" />
+        <css src="Magento_Theme::css/catalog/freesample/freesample.css" media="all"/>
+        <css src="Magento_Theme::css/theme/catalog-tooltip.css" media="all" order="400"/>
+    </head>
+    <body>
+         <attribute name="class" value="catalog-category-view"/>
+         <!-- <label>Tags List (All Available)</label> -->
+
+           <referenceBlock name="page_list">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">Tatva_Tag::page/listing.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Tatva\Tag\Block\Tag\AllTag" name="tags_all" template="Tatva_Tag::tag/cloud.phtml" cacheable="false">
+              <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                    <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                </block>
+                <action method="setToolbarBlockName">
+                    <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

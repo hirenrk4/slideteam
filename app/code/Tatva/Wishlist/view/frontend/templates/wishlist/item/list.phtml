@@ -1,0 +1,220 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/* @var $this Mage_Wishlist_Block_Customer_Wishlist_Items */
+?>
+<?php
+$customerDownloadCount = $this->getCustomerDownloadCount();
+$maxFreeDownload = $this->getSystemValue("button/download/restrict");
+$pricingUrl = $block->getBaseUrl()."pricing/";
+?>
+<?php $customerId = $block->getCustomerId();?>
+<?php echo $block->getToolbarHtml() ?>
+<div class="product-removeall-actions">
+    <a class="removeall-button" id="delete-all" title="Delete" customer-id="<?php echo $block->getCustomerId();?>">
+        <?= $block->escapeHtml(__('Remove all')) ?>
+    </a>    
+</div>
+<ul class="products-grid products-grid--max-4-col wishlist-product clearfix">
+
+    <?php foreach ($block->favourites() as $item): ?>
+        <li class="item">
+            <?php
+            $product_id = $item->getProductId();
+            $store_id = $item->getStoreId();
+            $product_data = $block->getLoadProduct($store_id, $product_id);
+            $url = $product_data->getProductUrl();
+            $name = $product_data->getName();
+
+            $name = $block->stripTags($name, null, true);
+
+            $item_id = $item->getWishlistItemId();
+
+            $blockObjx = $block->getWishlistItems($item);
+            ?> 
+            <a class="product-image" href="<?php echo $url; ?>">
+                <img class="small_image_hover" src="<?php echo $block->init($product_data, 'category_page_grid')->getUrl(); ?>" width="auto" height="auto" alt="<?php echo $block->escapeHtml($product_data->getName()) ?>" title="<?php echo $block->escapeHtml($product_data->getName()) ?>" />
+            </a>
+            <div class="product-info">
+                <h2 class="content-trim product-name" >
+                    <a href="<?php echo $url; ?>" title="<?php echo $name; ?>">
+                        <?php
+                        if (strlen($name) > 45):$name = substr($name, 0, 45) . "...";
+                        endif;
+                        echo $name;
+                        ?>
+                    </a>
+                </h2>
+                <div class="product-item-actions favourite">
+                    <a title="View" onclick="location.href = '<?php echo $url ?>'" class="button view" style="cursor: pointer;">View</a>
+                    <a href="#"  title="<?= $block->escapeHtmlAttr(__('Remove')) ?>" class="btn-remove action delete button view" data-item='<?php echo $blockObjx; ?>'>
+                        <?= $block->escapeHtml(__('Remove')) ?>
+                    </a>
+                    <div class="downloadbtn">
+                        <button type="submit" id="download-<?php echo $item->getProductId();?>" class="btn view btn-default get-button clicking" product-id="<?php echo $item->getProductId();?>"><?= $block->escapeHtml(__('Download')) ?></button>
+                    </div>
+                </div>
+                 
+            </div>
+        </li>
+    <?php endforeach; ?>
+</ul>
+<div id="confirm_id" class="mfp-hide white-popup">
+    <p class="title"  id="popupContent">Do you want to remove this product from your favourites?</p>
+    <input type="button" id ="confirm-remove" class="yes btn btn-default get-button small-button" value="Yes"/>
+    <input type="button" class="no btn btn-default get-button small-button" value="No" onclick="jQuery('.mfp-close').trigger('click');" id="confirm-no"/>
+    <img src="<?= $block->getViewFileUrl('Tatva_Wishlist::images/removing.gif') ?>" alt="gif" loading="eager" id="loaderImage" style="display:none">
+</div>
+<?php echo $this->getToolbarHtml() ?>
+<script>
+    require(['jquery','confirmpopup'], function ($) {
+
+        function eqHeightCol() {
+            $(".my-wishlist .product-info .product-name").css("height", "auto");
+            var HeightArray = 0;
+            var i = 0;
+            var max = 0;
+            $(".my-wishlist .product-info .product-name").each(function () {
+                HeightArray = $(this).height();
+                max = Math.max(max, HeightArray);
+            });
+            $(".my-wishlist .product-info .product-name").each(function () {
+                $(this).height(max);
+            });
+
+        }
+        
+        $(window).resize(function () {
+            eqHeightCol();
+        });
+
+        $(window).load(function () {
+            eqHeightCol();
+        });
+    });
+</script> 
+
+ <script type="text/javascript">
+require(['jquery',
+], function ($) {   
+    $(document).ready(function () {
+        $(document).on('click', '#delete-all', function () { 
+            var target = $(this);                       
+            var customerId = target.attr("customer-id");            
+            $.ajax({
+                url: <?php  echo "'".$block->getUrl("wishlist/index/removeall")."'"; ?>,
+                method: "POST",
+                data: {customerId:customerId},
+                dataType: "json",
+                showLoader: true,
+                success: function (data)
+                {
+                    if(data.success_return == 1)
+                    {
+                     location.reload();
+                    }
+                }
+            });
+        });
+    });
+});
+</script>
+<script type="text/javascript">
+    require(['jquery','domReady!'], function ($) 
+    {
+        $(document).ready(function () 
+        {
+            
+            $('.clicking').on('click',function(){
+                var target = $(this);  
+                var product_id = target.attr("product-id"); 
+                $('#download-'+product_id).attr('disabled',true);
+                var cusdownload = "<?php echo $customerDownloadCount;  ?>";
+                var maxDownload = "<?php echo $maxFreeDownload; ?>";
+                if(cusdownload >= maxDownload)
+                {
+                    window.parent.location.href = "<?php echo $pricingUrl; ?>";
+                    return false;
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getURL('downloadable/index/free'); ?>',
+                    data: {
+                        product_id:product_id,
+                        wishlist_status:1
+                    },
+                    showLoader: false ,
+                    success: function(data) {
+                        setTimeout(function()
+                        {
+                            window.parent.location.href = "<?php echo $this->getURL('downloadable/index/download'); ?>";
+                        } ,300); 
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '<?php echo $this->getURL('downloadable/index/emarsys'); ?>',
+                            data: {
+                                product_id:product_id,
+                            },
+                            dataType: 'json',
+                            success:function(html){
+                                if(html.success_return == 5){
+                                    alert("There is a problem while downloading the file. Please try again after some time.");
+                                }else if(html.success_return == 6){
+                                    console.log('Customer not login !!!');
+                                }
+                                else
+                                {
+                                    ScarabQueue.push(['setCustomerId', html.detail.customer_id]);
+                                    ScarabQueue.push(['tag', 'customerDetails', {
+                                    content_type: html.detail.content_type,
+                                    content_title: html.detail.content_title,
+                                    paidCustomer: html.detail.paidCustomer,
+                                    freeProductsDownloaded: html.detail.freeProductsDownloaded,
+                                    lastFreeProductDownloadDate : html.detail.lastFreeProductDownloadDate,
+                                    paidProductsDownloaded: html.detail.paidProductsDownloaded,
+                                    lastPaidProductDownloadDate : html.detail.lastPaidProductDownloadDate
+                                    }]);
+                                    ScarabQueue.push(['go']);
+                                }
+                                
+                            }
+                        })
+                        setTimeout(function(){
+                            $('#download-'+product_id).attr('disabled',false);
+                        } ,3000);
+                    },
+                    error: function() {
+                        $('#download-'+product_id).attr('disabled',false);
+                        console.log("Error in downloading product");
+                    }
+                })
+                return false;
+            });
+        });
+    })
+</script>

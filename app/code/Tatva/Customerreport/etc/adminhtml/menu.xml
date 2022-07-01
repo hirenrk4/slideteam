@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>
+		<add id="Tatva_Supportingextensions::customreports" title="Custom Reports" module="Tatva_Customerreport" sortOrder="109" resource="Tatva_Supportingextensions::customreports" parent="Tatva_Supportingextensions::supportingextension"/>
+		
+		<add id="Tatva_Supportingextensions::subscripitonreport" title="Subscription Details Report" module="Tatva_Customerreport" sortOrder="1" action="customerreport/customer/reports" resource="Tatva_Supportingextensions::subscripitonreport" parent="Tatva_Supportingextensions::customreports"/>
+		<add id="Tatva_Supportingextensions::renewcustomer" title="Renew Subscription Customer Report" module="Tatva_Customerreport"  parent="Tatva_Supportingextensions::customreports" action="customerreport/customer/renewsubscription" resource="Tatva_Supportingextensions::renewcustomer"/>
+		<add id="Tatva_Supportingextensions::freecustomerreport" title="Free Customer Report" module="Tatva_Customerreport"  parent="Tatva_Supportingextensions::customreports" action="customerreport/customer/reportsfree" resource="Tatva_Supportingextensions::freecustomerreport"/>
+	</menu>
+</config>

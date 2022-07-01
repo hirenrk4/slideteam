@@ -1,0 +1,131 @@
+<?php
+$getConfiguration = $block->getConfiguration();
+$displayType = $getConfiguration->getDisplayType();
+$topMenuLink = $getConfiguration->getTopMenuLink();
+?>
+<!--<div class="breadcrumbs padding0">
+    <ul class="items">
+        <li class="item Home">
+            <a href="<?php echo $block->getUrl(); ?>" title="Go to Home Page">Home</a>
+        </li>
+        <li class="item Testimonials">
+            <a href="<?php echo $block->getUrl('testimonial/testimonial/index/'); ?>" title="Go to Home Page">Testimonials</a>
+        </li>
+    </ul>
+</div>-->
+
+<!--<h2><?php echo $topMenuLink; ?></h2>-->
+<ul class="<?php echo $displayType; ?>-testimonials">
+    <?php
+    $helper = $block->getHelper();
+    $getTestimonialList = $block->getTestimonialList();
+
+    if ($getTestimonialList->count() == 0):
+        echo "No result found";
+    endif;
+
+    foreach ($getTestimonialList as $testimonial):
+        ?>
+        <li <?php
+        if (empty($testimonial->getResizeImage())): echo "class=noImg";
+        endif;
+        ?>>
+                <?php if (!empty($testimonial['resize_image'])): ?>
+                <div class="left">
+                    <p class="testimonialPhoto">
+                        <a title="<?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?>" href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>"><img src="<?php echo $helper->getBaseUrl() . $testimonial['resize_image']; ?>" /></a>
+                    </p>
+                </div>
+                <?php
+            else:
+                ?>
+                <div class="left">
+                    <p class="testimonialPhoto">
+                        <a title="<?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?>" href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>">
+                            <?php
+                            if (isset($testimonial['first_name'])):
+                                echo strtoupper(trim($testimonial['first_name'][0]));
+                            endif;
+                            ?></a>
+                    </p>
+                </div> 
+            <?php
+            endif;
+            ?>
+            <div class="right">
+                <div class="testimonialHead">
+                    <h4><a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>"><?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?></a></h4>
+                    <?php
+                    $ageGender = array();
+                    if (!empty($testimonial['age'])):
+                        $ageGender[] = " Age: " . $testimonial['age'];
+                    endif;
+                    if (!empty($testimonial['gender'])):
+                        $ageGender[] = " Gender: " . $testimonial['gender'];
+                    endif;
+
+                    if (count($ageGender) > 0):
+                        $ageGenderValue = @implode(",", $ageGender);
+                    endif;
+                    ?>
+
+                    <span><?php echo $testimonial['designation'] . " " . $testimonial['company']; ?></span> <?php if (isset($ageGenderValue)): ?>| <span><?php echo $ageGenderValue; ?></span> <?php endif; ?></div>
+                <p class="testimonialText"><?php echo substr($testimonial['testimonial'], 0, 200); ?>...
+
+                    <?php
+                    if (strlen($testimonial['testimonial']) > 200):
+                        ?>
+                        <a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>">Read More ></a>  
+                    <?php endif;
+                    ?>
+                </p></div>
+        </li>
+        <?php
+    endforeach;
+    ?>
+</ul> 
+<?php if ($block->getPagerHtml()): ?>
+    <div class="pager"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>
+
+
+
+<!--<ul class="grid-testimonials">
+<?php
+$helper = $block->getHelper();
+$getTestimonialList = $block->getTestimonialList();
+foreach ($getTestimonialList as $testimonial):
+    ?>
+                                                <li <?php
+    if (empty($testimonial->getImage())): echo "class=no-image";
+    endif;
+    ?>>
+    <?php if (!empty($testimonial['image'])): ?>
+                                                                                                <div class="left">
+                                                                                                    <p class="testimonialPhoto">
+                                                                                                        <a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>"><img src="<?php echo $helper->getBaseUrl() . $testimonial['image']; ?>" /></a>
+                                                                                                    </p>
+                                                                                                </div>
+        <?php
+    endif;
+    ?>
+                                                    <div class="right">
+                                                        <div class="testimonialHead">
+                                                            <h4><a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>"><?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?></a></h4>
+                                                            <span><?php echo $testimonial['designation'] . " " . $testimonial['company']; ?></span> | <span>Age: 63, Gender: Male</span></div>
+                                                        <p class="testimonialText"><?php echo substr($testimonial['testimonial'], 0, 200); ?>...
+
+    <?php
+    if (strlen($testimonial['testimonial']) > 200):
+        ?>
+                                                                                                        <a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>">Read More ></a>  
+    <?php endif;
+    ?>
+                                                        </p></div>
+                                                </li>
+    <?php
+endforeach;
+?>
+</ul> -->
+
+

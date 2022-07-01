@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+      <head>
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+        <css src="Magento_Theme::css/ddimgtooltip.css" media="all"/>
+        <script src="Magento_Theme::js/ddimgtooltip.js"/>
+        <css src="Magento_Theme::css/catalog/catalog-style.css" media="all" order="250" />
+        <css src="Magento_Theme::css/catalog/freesample/freesample.css" media="all"/>
+        <css src="Magento_Theme::css/theme/catalog-tooltip.css" media="all" order="400"/>
+        <remove src="Magento_Theme::js/theme-general.js"/>
+        <remove src="Magento_Theme::js/lazyload/lazy.js"/>
+    </head>
+    <body>
+         <attribute name="class" value="catalog-category-view"/>
+         <attribute name="class" value="wide-product-list"/>
+        <referenceContainer name="content">
+           <block  class="Tatva\Tag\Block\Product\Result" name="tag_products"  template="Tatva_Tag::catalogsearch/result.phtml">
+            <block class="Magento\Theme\Block\Html\Breadcrumbs" name="breadcrumbs" as="breadcrumbs"/>
+            <block class="Tatva\Emarsys\Block\Emarsys" name="search_result_emarsys" template="Tatva_Emarsys::custom_emarsys_widget_in_tag_listing.phtml" />
+                 <block class="Tatva\Tag\Block\Product\Result" name="search_result_list" template="Magento_Catalog::product/list.phtml">
+                    <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                        <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="setToolbarBlockName">
+                        <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                    </action>
+                </block>
+                <action method="setListOrders"/>
+                <action method="setListModes"/>
+                <action method="setListCollection"/>
+            </block>
+            
+        </referenceContainer>
+        <referenceContainer name="page.top">
+            <block class="Magento\Catalog\Block\Product\View\Gallery" name="category_banner_left" template="Magento_Catalog::category/category_banner.phtml" after="slideteam-sidenav-wrapper" />
+        </referenceContainer>
+    </body>
+</page>

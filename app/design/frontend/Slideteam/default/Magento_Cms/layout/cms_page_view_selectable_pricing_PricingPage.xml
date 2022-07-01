@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<!-- <update handle="customer_account_create" /> -->
+	<head>
+		<css src="Magento_Cms::css/pricing/tipso.css" media="all" />
+		<css src="Magento_Theme::css/cms/pricing/pricing.css" media="all" />
+		<css src="Magento_Theme::css/cms/pricing/pricing_new.css" media="all" />
+		<css src="Magento_Theme::css/dropkick.css" media="all"/>
+		<css src="Magento_Theme::css/owl.carousel.css" media="all" />
+		<link src="https://fonts.googleapis.com/css?family=Montserrat:500,600,700,800,900&amp;display=swap" src_type="url" rel="stylesheet" type="text/css" />
+		<css src="Magento_Theme::css/magnific-popup/magnific-popup.css" media="all"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	</head>
+	<body>
+		<referenceContainer name="content">
+			<block class="Magento\Cms\Block\Block" name="frequently-asked-questions-pricing-new" after="-">
+				<arguments>
+					<argument name="block_id" xsi:type="string">frequently-asked-questions-pricing-new</argument>
+				</arguments>
+			</block>
+			<!-- 1464 loginpopup -->
+			<!-- <container name="pricing.loginforms" htmlTag="div" htmlClass="loginforms" after="-">
+				<block class="Tatva\Free\Block\Customer\Login" ifconfig="customer/ajaxlogin/enable" name="ajaxlogin.pdp" template="Tatva_Free::customer/pricing/index.phtml">
+					<block class="Magento\Customer\Block\Form\Register" name="customer.form.register.ajax.pdp" template="Tatva_Free::customer/newpopup/register.phtml" />
+					<block class="Mageplaza\SocialLogin\Block\Popup\Social" name="customer.form.social.login.ajax.pdp" template="Tatva_Free::customer/pricing/social.phtml" />
+				</block>
+			</container> -->
+			<!-- 1464 loginpopup end -->
+		</referenceContainer>
+		<referenceContainer name="slideteam-sidenav-wrapper" remove="true" />
+		<referenceContainer name="before.body.end">
+			<block class="Magento\Framework\View\Element\Template" name="pricing_js" template="Magento_Cms::pricing_js.phtml"/>
+		</referenceContainer>
+	</body>
+</page>

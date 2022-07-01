@@ -1,0 +1,40 @@
+<form action="<?php echo $block->getBackendUrl(); ?>" name="categoryexportform" method="post" id="categoryexportform-1">
+	<?= $block->getBlockHtml('formkey') ?>
+	<div class="entry-edit form-inline">
+    	<?php $categories = $block->getCategories();ksort($categories); ?>
+    	<div class="admin__fieldset-wrapper-content">
+			<fieldset class="admin__fieldset">
+				<div class="admin__field">
+					<label class="admin__field-label">
+						<?php echo "Select Category For Products To Export"; ?>
+					</label>
+					<div class="admin__field-control">
+						<select name="category_products[]" multiple style="width:200px;height:200px;">
+							<?php foreach($categories as $key => $categoryname) : ?>
+								<?php
+									if($key == 2) :
+										continue;
+									endif;
+								?>
+								<option value="<?php echo $key ?>"><?php echo $categoryname ?></option>
+							<?php endforeach; ?>
+							
+						</select>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset class="admin__fieldset">
+				<div class="admin__field">
+					<label class="admin__field-label">
+						
+					</label>
+					<div class="admin__field-control">
+					 	<button type="submit" title="<?php echo __('Export') ?>" class="action submit primary button button--solid-dark button--wide">
+							<span><?php echo __('Export') ?></span>
+						</button>
+					</div>
+				</div>
+			</fieldset>
+		</div>   
+	</div>
+</form>

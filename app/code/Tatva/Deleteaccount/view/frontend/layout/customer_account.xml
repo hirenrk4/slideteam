@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Theme::css/magnific-popup/magnific-popup.css" media="all" order="300" />
+    </head>
+    <body>
+        <referenceContainer name="sidebar.main">
+            <block class="Tatva\Deleteaccount\Block\Deleteaccount" name="delete.account.sidebar" template="Tatva_Deleteaccount::deleteaccount.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="columns.top">
+            <block class="Tatva\Deleteaccount\Block\Deleteaccount" name="delete.account.coupon" template="Tatva_Deleteaccount::coupon.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,199 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Customer\Block\Form\Login $block */
+$blockObj=$block->getLayout()->createBlock('Mageplaza\SocialLogin\Block\Popup\Social');
+?>
+<div class="block block-customer-login">
+    <div class="block-title">
+        <strong id="block-customer-login-heading" role="heading" aria-level="2"><?= $block->escapeHtml(__('Registered Customers')) ?></strong>
+    </div>
+    <div class="block-content" aria-labelledby="block-customer-login-heading">
+        <form class="form form-login"
+              action="<?= $block->escapeUrl($block->getPostActionUrl()) ?>"
+              method="post"
+              id="login-form"
+              data-mage-init='{"validation":{}}'>
+                  <?= $block->getBlockHtml('formkey') ?>
+            <fieldset class="fieldset login">
+                <div class="field note"><p><?= $block->escapeHtml(__('If you have an account with us, please log in.')) ?></p></div>
+                <div class="field email required">
+                    <label class="label" for="email"><span><?= $block->escapeHtml(__('Email Address')) ?></span></label>
+                    <div class="control">
+                        <input name="login[username]" value="<?= $block->escapeHtmlAttr($block->getUsername()) ?>" <?php if ($block->isAutocompleteDisabled()): ?> autocomplete="off"<?php endif; ?> id="email" type="email" class="input-text" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-validate="{required:true, 'validate-email':true}">
+                    </div>
+                </div>
+                <div class="field password required">
+                    <label for="pass" class="label"><span><?= $block->escapeHtml(__('Password')) ?></span></label>
+                    <div class="control">
+                        <input name="login[password]" type="password" <?php if ($block->isAutocompleteDisabled()): ?> 
+                               autocomplete="off"<?php endif; ?> class="input-text" id="pass" title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
+                               data-validate="{required:true,'validate-customer-password':true}"
+                               data-msg-validate-customer-password="Please enter 6 or more characters. Leading or trailing spaces will be ignored."
+                               data-password-min-length="<?= $block->escapeHtmlAttr($block->getMinimumPasswordLength()) ?>" />
+                    </div>
+                </div>
+                <?= $block->getChildHtml('form_additional_info') ?>
+                <div class="actions-toolbar">
+                    <div class="secondary"><a class="action remind" href="<?= $block->escapeUrl($block->getForgotPasswordUrl()) ?>"><span><?= $block->escapeHtml(__('Forgot Your Password?')) ?></span></a></div>
+                    <div class="primary"><button type="submit" class="action login primary" name="send" id="send2"><span><?= $block->escapeHtml(__('Login')) ?></span></button></div>
+                </div>
+            </fieldset>
+        </form>
+        <div class="registered-customers register-inner">
+<h4><span>OR</span></h4>
+<p>Login using your existing Facebook or Google Account</p>
+<?php
+$availableSocials = $blockObj->getAvailableSocials();
+if ($blockObj->canShow() && sizeof($availableSocials)):
+    ?>
+    <div class="social-login-authentication-channel account-social-login">
+        <div class="social-block">
+            <?php foreach ($availableSocials as $key => $social): ?>
+                <div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
+                    <a class="btn btn-block btn-social btn-<?= $blockObj->getBtnKey($key) ?>" rel="nofollow"
+                       data-url='<?php echo $social['login_url'] ?>'>
+                        <?php echo __('Sign in with %1', $social['label']) ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+<?php endif; ?>
+ </div>
+    </div>
+</div>
+<div id="confirm_id" class="mfp-hide login-attempt-popup">
+   <p class="title"  id="popupContent">A user with these credentials is already logged. <br/> Do you want to abort that session and log in here?</p>
+    <input type="button" id ="confirm-approve" class="yes btn btn-default get-button small-button" value="Yes"/>
+    <input type="button" class="no btn btn-default get-button small-button" value="No" id="confirm-no"/>
+    <img src="<?= $block->getViewFileUrl('Tatva_Wishlist::images/removing.gif') ?>" id="loaderImage" style="display:none">
+</div>
+<div id="confirm_social_id" class="mfp-hide login-attempt-popup">
+    <p class="title"  id="popupContent">A user with these credentials is already logged. <br/> Do you want to abort that session and log in here?</p>
+    <input type="button" id ="confirm-approve" class="yes btn btn-default get-button small-button" value="Yes"/>
+    <input type="button" class="no btn btn-default get-button small-button" value="No" id="confirm-no"/>
+    <img src="<?= $block->getViewFileUrl('Tatva_Wishlist::images/removing.gif') ?>" id="loaderImage" style="display:none">
+</div>
+<?php
+if(!empty($block->getSession()->getSocialLogin())): ?>
+<script type="text/javascript">
+    require(['jquery','magnific_popup'],function($){
+        $(document).ready(function(){
+            var username = '<?php echo $block->getSession()->getUsername(); ?>';
+            var type = '<?php echo $block->getSession()->getLoginType(); ?>';
+            var url = '<?php echo $block->getSession()->getUrl(); ?>';
+            var productid = '<?php echo $block->getSession()->getProductId(); ?>';
+            
+            if(productid === null || productid === '' || productid === undefined || productid.length == 0){
+                var ajaxUrl = '<?php echo $this->getURL('sociallogin/social/login/'); ?>'+'type/'+type.toLowerCase();
+                
+            }else {
+                var ajaxUrl = '<?php echo $this->getURL('sociallogin/social/login/'); ?>'+'type/'+type.toLowerCase()+'/?productid='+productid;
+                url  = "<?php echo $this->getURL('checkout/cart/add/'); ?>"+"product/"+productid;
+            }
+
+            $.magnificPopup.open({
+                mainClass: 'login-attempt',
+                items: {
+                    src:'#confirm_social_id',
+                },
+                type: 'inline',
+                callbacks: 
+                {
+                    close: function() 
+                    {
+                        $.ajax({
+                            method:'POST',
+                            url: '<?php echo $this->getURL('free/ajax/cancelLogin'); ?>',
+                            data: {username:username},
+                            success:function(){
+                                $.magnificPopup.close();
+                            }
+                        })
+                    }
+                }
+            });
+            
+            $('body').on('click','#confirm-approve',function(){
+                $.ajax({
+                    method:'POST',
+                    url: ajaxUrl,
+                    data: {username:username,url:url},
+                    success:function(){
+                        $.magnificPopup.close();
+                        window.location.href = url;
+                    }
+                })
+            });
+            $('body').on('click','#confirm-no',function(){
+                $.ajax({
+                    method:'POST',
+                    url: '<?php echo $this->getURL('free/ajax/cancelLogin'); ?>',
+                    data: {username:username},
+                    success:function(){
+                        $.magnificPopup.close();
+                    }
+                })
+            });
+        })
+    })
+</script>
+<?php endif; ?>
+<?php if(!empty($block->getSession()->getLogin())): ?>
+<script type="text/javascript">
+    require(['jquery','magnific_popup'],function($){
+        $(document).ready(function(){
+            var username = '<?php echo $block->getSession()->getUsername(); ?>';
+            var password = '<?php echo $block->getSession()->getPassword(); ?>';
+            $.magnificPopup.open({
+                mainClass: 'login-attempt',
+                items: {
+                    src:'#confirm_id',
+                },
+                type: 'inline',
+                callbacks: 
+                {
+                    close: function() 
+                    {
+                        $.ajax({
+                            method:'POST',
+                            url: '<?php echo $this->getURL('free/ajax/cancelLogin'); ?>',
+                            data: {username:username},
+                            success:function(){
+                                $.magnificPopup.close();
+                            }
+                        })
+                    }
+                }
+            });
+
+            $('body').on('click','#confirm-approve',function(){
+                $.ajax({
+                    method:'POST',
+                    url: '<?php echo $this->getURL('free/ajax/login'); ?>',
+                    data: {username:username,password:password},
+                    success:function(response){
+                        $.magnificPopup.close();
+                        window.location.href = response.url;
+                    }
+                })
+            });
+            $('body').on('click','#confirm-no',function(){
+                $.ajax({
+                    method:'POST',
+                    url: '<?php echo $this->getURL('free/ajax/cancelLogin'); ?>',
+                    data: {username:username,password:password},
+                    success:function(){
+                        $.magnificPopup.close();
+                    }
+                })
+            });
+        })
+    })
+</script>
+<?php endif; ?>

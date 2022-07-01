@@ -1,0 +1,35 @@
+<?php
+$formActionUrl = $this->getUrl('loginpopup/index/save');
+$industry = "";
+$job_profile = "";
+
+$customerId = $this->getCustomerSession()->getCustomerId();
+$check = $this->check_user($customerId);
+
+foreach ($check->getData() as $customerValue) {
+	$industry = $customerValue['industry'];
+	$job_profile = $customerValue['job_profile'];
+}
+
+?>
+
+<script>
+	var final_url = "<?php echo $formActionUrl; ?>"
+</script>            
+<!-- <div class="mfp-hide white-popup-block loginform" id="loginpopup-form"> -->
+	<div class="popup-text-form">						
+		<h4><?= $block->escapeHtml(__('Please tell us a bit more about yourself')) ?></h4>
+		<p><?= $block->escapeHtml(__('This will help us recommend you better products and enhance your SlideTeam experience.')) ?></p>
+		<form name="additional_data" id="additional_data" method="post">
+			<input type="text" maxlength="40" placeholder="Your Industry e.g. Healthcare" name="industry" id="industry" value="<?php echo $industry; ?>">
+			<input type="text" maxlength="40" placeholder="Job Profile e.g. Marketing" name="job_profile" id="job_profile" value="<?php echo $job_profile; ?>">
+			<button type="button" id="submit-detail"><?= $block->escapeHtml(__('Submit')) ?></button>
+		</form>
+	</div>
+	<div class="popup-error"><?= $block->escapeHtml(__('Please enter all details.')) ?></div>
+	<div class="thanks-popup">
+		<span>
+			<img src="<?php echo $this->getViewFileUrl('Tatva_Loginpopup::images/success-icon.png'); ?>">
+		</span><?= $block->escapeHtml(__('Your data has been submitted successfully.')) ?>
+	</div>
+<!-- </div> -->

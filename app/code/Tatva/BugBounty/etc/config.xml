@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <tatva>
+            <bugbounty>
+                <email>tatva_bugbounty_email</email> 
+                <customeremail>tatva_bugbounty_customeremail</customeremail> 
+            </bugbounty>
+        </tatva>
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <bugbounty_form_captcha>1</bugbounty_form_captcha>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <bugbounty_form_captcha>1</bugbounty_form_captcha>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <bugbounty_form_captcha>
+                        <label>BugBounty Form Captcha</label>
+                    </bugbounty_form_captcha>
+                </areas>
+            </frontend>
+        </captcha>
+    </default>
+</config>

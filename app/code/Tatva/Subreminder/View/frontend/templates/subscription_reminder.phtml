@@ -1,0 +1,115 @@
+<?php $need_to_remind = $this->needToRemind(); ?>
+
+<?php if($need_to_remind): ?>
+
+    <?php 
+    $customer_name = $this->getCustomerName();
+    $renew_sub_url = $this->getRenewSubUrl();
+    ?>
+
+    <div id="sub-reminder-popup" class="mfp-with-anim mfp-hide">
+        <div id="sub_reminder" class="sub-reminder">
+            <div class="first-fold">
+                <i class="img-wrapper">
+                    <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/reminder_popup/message-notification.png'); ?>" alt="Message-Notification" title="Subscription Reminder">
+                </i>
+                <div>
+                    <h4><?= $block->escapeHtml(__("Your Subscription Has Expired!")) ?></h4>
+                </div>
+            </div>
+            <div class="second-fold">
+                <div class="desc">
+                    <p class="desc1"><?= $block->escapeHtml(__($customer_name." your SlideTeam subscription has expired. To continue downloading presentation, kindly renew your subscription.")) ?></p>
+                    <p class="desc2"><?= $block->escapeHtml(__("Renewing your subscription is easy, secure, and takes just 2 minutes.")) ?><br/></p>
+
+                    <form id="sub-rem-form" action="<?php echo $renew_sub_url ?>" method="POST">
+                        <div class="renew-btn-w">
+                            <button type="submit" class="btn btn-primary btn-submit"><?= $block->escapeHtml(__("Renew Now")) ?></button>
+                        </div>
+                        <div class="sub-reminder-close-w">
+                            <a title="No Thanks" href="javascript:;" class="sub-reminder-close"><?= $block->escapeHtml(__("No Thanks")) ?></a>
+                        </div>
+                    </form>
+
+                    <div class="end-img-w clearfix">
+                        <div class="ssl-img-w">
+                            <i class="ssl-img">
+                                <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/reminder_popup/secure-icon.png'); ?>" alt="Sucure SSL Transaction" title="Sucure SSL Transaction" />
+                            </i>
+                        </div>
+                        <div class="secure-txt-w">
+                            <span class="secure-txt">
+                                <?= $block->escapeHtml(__("HTTPS")) ?><br />
+                                <?= $block->escapeHtml(__("SSL SECURE")) ?>
+                            </span>
+                        </div>                    
+                        <div class="tco-img-w">
+                            <i class="tco-img">
+                                <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/reminder_popup/card.png'); ?>" alt="Payment by card with 2CO" title="Payment by card with 2CO" />
+                            </i>    
+                        </div>                    
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </div>
+
+    <script type="text/javascript">
+        require(['jquery','magnific_popup'], function ($)
+        {
+            $(document).ready(function ()
+            {
+                $.magnificPopup.close(); //if loginpop for industry and job_profile is open
+                $.magnificPopup.open(
+                {
+                    items: [{src:'#sub-reminder-popup',}],
+                    type: 'inline',
+                    mainClass: 'subscription-popup',
+                    closeOnBgClick: false,
+                    callbacks: 
+                    {
+                        open: function() 
+                        {
+                            var $content = $(this.content);
+                            
+                            $('body').addClass("subscription-popup-open");
+
+                            $content.on('click', '.btn-submit', function() 
+                            {
+                                $(document).off('keydown', keydownHandler);
+                            });
+
+                            $content.on('click', '.sub-reminder-close', function() 
+                            {
+                                $.magnificPopup.close();
+                                $(document).off('keydown', keydownHandler);
+                            });
+
+                            var keydownHandler = function (e) 
+                            {
+                                if (e.keyCode == 13) 
+                                {
+                                    $content.find('.btn-submit').click();
+                                    return false;
+                                } 
+                                else if (e.keyCode == 27) 
+                                {
+                                    $content.find('.sub-reminder-close').click();
+                                    return false;
+                                }
+                            };
+                            $(document).on('keydown', keydownHandler);
+                        },
+                        close:function()
+                        {
+                            $('body').removeClass("subscription-popup-open");
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+
+    <?php $this->resetCheckSubReminder(); ?>
+
+<?php endif; ?>

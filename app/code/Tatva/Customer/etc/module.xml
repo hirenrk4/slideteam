@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+    <module name="Tatva_Customer" setup_version="1.0.12">
+    	<sequence>
+            <module name="Magento_Customer"/>
+            <module name="Tatva_Subscription"/>
+            <module name="Tatva_Subreminder"/>
+            <module name="Tatva_Loginpopup"/>
+        </sequence>
+    </module>
+</config>

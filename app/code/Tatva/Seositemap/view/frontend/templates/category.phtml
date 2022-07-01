@@ -1,0 +1,37 @@
+<div class="page-sitemap">
+	<div class="main-wrapper clearfix">
+		<div class="page-title">
+			<h4 class="custom-category-title"><?php echo __('Categories'); ?></h4>
+		</div>
+	</div>	
+	<div id="sitemap_top_links">
+    	<div class="links">
+        	<ul>
+            	<li class="first last"><a href="<?php echo __($block->getProductSitemapUrl('catalog/seo_sitemap/product/')); ?>" title="Products Sitemap">Products Sitemap</a></li>
+            </ul>
+		</div>
+    </div>
+	<?php if ($block->getPagerHtml()): ?>
+	    <?php echo $block->getPagerHtml(); ?>
+	<?php endif ?>
+	<?php $categories = $block->getCategoriesCollection(); ?>
+	<?php if ($categories && count($categories)): ?>
+		<div class="container listing-container">
+			<div class="main-wrapper clearfix">
+		    	<ul class="sitemap ">
+					<?php foreach($categories as $category) : ?>
+						<li>
+							<a href="<?php echo $category->getUrl(); ?>" ><?php echo $category->getName(); ?></a>
+						</li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+		<?php if ($block->getPagerHtml()): ?>
+			<?php echo $block->getPagerHtml(); ?>
+		<?php endif ?>
+
+	<?php else: ?>
+	    <div class="message info empty"><span><?php echo __('No any record.'); ?></span></div>
+	<?php endif ?>
+</div>

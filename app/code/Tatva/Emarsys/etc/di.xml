@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Emarsys
+ * @package    Emarsys_Emarsys
+ * @copyright  Copyright (c) 2017 Emarsys. (http://www.emarsys.net/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="\Emarsys\Emarsys\Model\Product" type="Tatva\Emarsys\Model\Product"/>
+
+   <!--  <type name="Emarsys\Emarsys\Model\ResourceModel\Product">
+        <plugin name="Tatva_Emarsys::addCustomProductAttributes" type="Tatva\Emarsys\Plugin\Model\ResourceModel\Product" />
+    </type> -->
+
+    <preference for="\Emarsys\Emarsys\Model\ResourceModel\Product" type="Tatva\Emarsys\Model\ResourceModel\Product"/>
+    <preference for="\Emarsys\Emarsys\Model\Emarsysproductexport" type="Tatva\Emarsys\Model\Emarsysproductexport"/>
+</config>

@@ -1,0 +1,110 @@
+<div class="mfp-hide white-popup-block loginform" id="loginpopup-form">
+</div>
+<script type="text/javascript">
+	require(['jquery','magnific_popup'], function ($)
+	{
+		$(document).ready(function ()
+		{
+			testing();
+		}); // end read
+	    function testing() {
+    		$.ajax({
+    			url: '<?php echo $this->getUrl('loginpopup/index/index'); ?>',
+    			data: "",
+    			type: 'POST',
+    			success: function(response){
+    				if(response.length ==0 || response.status == "Error")
+    				{
+    					return false;
+    				}
+    				else if(response.content != "")
+    				{
+    					$('#loginpopup-form').html(response.content);
+	    				
+						$.magnificPopup.open({
+							items:[
+			                    {
+			                        src:'#loginpopup-form',
+			                    }
+			                ],
+			                type: 'inline',
+			                mainClass: 'additional_popup',
+			                callbacks: {
+				                resize: logoEqualheight,
+				                change: logoEqualheight,
+				                open: function(){
+				                	$('body').addClass("login_popup");
+				                },
+				                close: function(){
+				                	$('body').removeClass('login_popup');
+				                }
+		            		},
+						});
+				
+						$("button#submit-detail").on("click",function ()
+		        		{
+
+		        			var industry = $('.additional_popup #industry').val();
+				        	var job_profile = $('.additional_popup #job_profile').val();
+
+				        	var data = $('.additional_popup #additional_data input').serialize();
+
+				        	var url = final_url;
+
+				        	if ((industry !== null && industry !== '') || (job_profile !== null && job_profile !== ''))
+				        	{
+				        		$.ajax(
+				        		{
+				        			url: url,
+				        			dataType: 'json',
+				        			type: 'post',
+				        			data: data,
+				        			success: function ()
+				        			{
+				        				$(".popup-text-form").css("display", "none");
+				        				$(".popup-error").css("display", "none");
+				        				$(".thanks-popup").css("display", "block");
+				        				setTimeout(function () 
+				        				{
+				        					$.magnificPopup.close();
+				        				}, 2000);
+				        			}
+				        		});
+				        	} else
+				        	{
+				        		$.magnificPopup.close();
+				            }
+		        		});
+			
+						logoEqualheight();
+						 
+    				}
+    				else {
+    					return false;
+    				}
+
+    			},
+    			error : function(err) {
+                    return false;
+                }
+
+    		});
+    	}
+
+    	$(window).resize(function () {
+        	logoEqualheight();
+   	 	});
+
+    	function logoEqualheight() {
+			if ($(window).width() < 496) {
+				var wrapper = $(".additional_popup");
+				wrapper.css("top",$(window).height()/4);
+				wrapper.css("height","auto");
+
+				$(".mfp-content").css("max-width",($(window).width())-50);
+				wrapper.css("overflow-x","");
+				wrapper.css("overflow-y","");
+			}
+		}
+	});
+</script>

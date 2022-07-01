@@ -1,0 +1,28 @@
+<?php
+$_product = $this->getProduct(); 
+?>
+<?php 
+	if(!empty($this->getProduct()->getCustomAttribute('content_powerpoint'))): 
+			$languagestatus = $this->customProductAttribute($_product, $_product->getLanguagestatus(), 'languagestatus');
+			$languages = array("spanish","german","french","portuguese");
+?>
+
+		<div class="product-powerpoint-content">
+			<?php 	if (isset($_GET['lang']) && $languagestatus == 1 && in_array(strtolower($_GET['lang']), $languages)):
+			?>
+			  			<?php $lang_para = $this->getCurrentlangdata();
+						$data = $lang_para[169];
+						$comp = explode("<div>", $data); ?>
+				  		<h4><?php echo $comp[1]; ?></h4>
+						<div class="editor-text-product">
+							<?php echo $comp[0]; ?>
+						</div>
+			<?php 	else: ?>
+						<h4><?= $block->escapeHtml("Content of this Powerpoint Presentation") ?></h4>
+						<div class="editor-text-product">
+							<?php echo $this->getProduct()->getCustomAttribute('content_powerpoint')->getValue(); ?>
+						</div>
+			<?php endif; ?>
+		</div>
+
+<?php endif; ?>

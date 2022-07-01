@@ -1,0 +1,12 @@
+<?php
+/**
+ * @category   Tatva
+ * @package    Tatva_Gtm
+ */
+
+/** @var \Tatva\Gtm\Block\Gtminit $block */
+?>
+<?php $gtmStatus = $block->getGtmStatus(); ?>
+<?php if($gtmStatus): ?>
+	<?php echo $block->getGtmCode(); ?>
+<?php endif; ?>

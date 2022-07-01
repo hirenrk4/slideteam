@@ -1,0 +1,24 @@
+<?php
+	$customerID = $this->helper('Tatva\Subscription\Helper\Data')->getCustomerId();
+	$subscription = $this->getCustomerData($customerID);
+
+	if(is_array($subscription))
+    {
+        $customerType = $subscription['customerType'];
+    }
+    else
+    {
+        $customerType = $subscription;
+    }            
+
+	$coupon_code = $this->getSpecialCouponCode();
+	if(!is_null($coupon_code)) {
+		$special_coupon_code = $coupon_code['code'];
+	}
+?>
+<div class="cx-coupon-box-w">
+	<div class="cx-coupon-box cx-coupon-box--sticky" style="display: block;">
+		<span>Coupon code: <br><span class="discount-amount"><?php echo $special_coupon_code; ?></span></span>
+	</div>
+</div>
+

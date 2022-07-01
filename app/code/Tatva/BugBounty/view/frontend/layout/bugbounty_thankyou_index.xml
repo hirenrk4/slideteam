@@ -1,0 +1,37 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd" layout="1column">
+    <head>
+        <css src="Magento_Theme::css/questionnaire/questionnaire.css" media="all" order="100"/>
+    </head>
+    <body>
+        <referenceBlock name="breadcrumbs">
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Home</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Home</item>
+                    <item name="label" xsi:type="string">Home</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">BugBounty</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">BugBounty</item>
+                    <item name="label" xsi:type="string">BugBounty</item>
+                    <item name="link" xsi:type="string">{{baseUrl}}bug-bounty</item>
+                </argument>
+            </action>
+            <action method="addCrumb">
+                <argument name="crumbName" xsi:type="string">Thank you</argument>
+                <argument name="crumbInfo" xsi:type="array">
+                    <item name="title" xsi:type="string">Thank you</item>
+                    <item name="label" xsi:type="string">Thank you</item>
+                </argument>
+            </action>
+        </referenceBlock>        
+        <referenceContainer name="content">
+            <block class="Tatva\BugBounty\Block\Thankyou" name="thankyou" template="Tatva_BugBounty::thankyou.phtml" cacheable="false"/>
+        </referenceContainer>
+        <referenceContainer name="slideteam-sidenav-wrapper" remove="true" />
+    </body>
+    <referenceContainer name="main" label="Main Content Container" htmlTag="div" htmlClass="column main no-leftnav"/>
+</page>

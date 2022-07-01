@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Tatva\Subscription\Api\SubscriptionInterface" type="Tatva\Subscription\Model\SubscriptionRepository" />
+	<preference for="Tatva\Subscription\Api\Data\SubscriptionInterface" type="Tatva\Subscription\Model\Subscription" />
+	<type name="Magento\Newsletter\Model\Subscriber">
+		<plugin name="newsletterplugin" type="Tatva\Subscription\Model\Newsletter\Subscriber" sortOrder="1" disabled="false"/>
+	</type>
+	<type name="Magento\Framework\Console\CommandList">
+		<arguments>
+			<argument name="commands" xsi:type="array">
+				<item name="createSubscriptionProduct" xsi:type="object">Tatva\Subscription\Console\CreateSubscriptionProductCommand</item>
+			</argument>
+		</arguments>
+	</type>
+	<type name="Tatva\Subscription\Block\Subscription">
+	    <arguments>
+	        <argument name="orderCollectionpro" xsi:type="object">\Magento\Sales\Model\ResourceModel\Order\CollectionFactory\Proxy</argument>
+	    </arguments>
+	</type>
+
+</config>

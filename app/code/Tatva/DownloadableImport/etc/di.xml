@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\DownloadableImportExport\Model\Import\Product\Type\Downloadable" type="Tatva\DownloadableImport\Model\Import\Product\Type\Downloadable" />
+	<preference for="Magento\ImportExport\Controller\Adminhtml\Import\Start" type="Tatva\DownloadableImport\Controller\Adminhtml\Import\Start" />
+	<preference for="Magento\ImportExport\Controller\Adminhtml\Import\Validate" type="Tatva\DownloadableImport\Controller\Adminhtml\Import\Validate" />
+	<preference for="Magento\CatalogImportExport\Model\Import\Product" type="Tatva\DownloadableImport\Model\Import\Product" />
+	<preference for="Magento\ImportExport\Model\Import" type="Tatva\DownloadableImport\Model\Import" />
+	<preference for="Magento\ImportExport\Model\Import\Source\Csv" type="Tatva\DownloadableImport\Model\Import\Source\Csv" />
+	<preference for="Magento\CatalogImportExport\Model\Import\Product\CategoryProcessor" type="Tatva\DownloadableImport\Model\Import\Product\CategoryProcessor" />
+	<type name="Tatva\DownloadableImport\Controller\Adminhtml\Import\Start">
+        <plugin name="Import_Plugin" type="Tatva\DownloadableImport\Plugin\StartPlugin" sortOrder="10" disabled="false"  />
+    </type>
+    <preference for="Magento\ImportExport\Model\Import\ErrorProcessing\ProcessingErrorAggregator" type="Tatva\DownloadableImport\Model\Import\ErrorProcessing\ProcessingErrorAggregator" />
+</config>

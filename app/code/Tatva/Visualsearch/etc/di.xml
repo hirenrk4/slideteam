@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Block\Breadcrumbs" type="Tatva\Visualsearch\Block\Breadcrumbs" />
+    <type name="Magento\Customer\Block\Account\AuthorizationLink">
+    	<plugin name="Tatva_Visualsearch::addCustomeData" type="Tatva\Visualsearch\Plugin\Block\Account\AuthorizationLink" />
+    </type>
+    <type name="Magento\Framework\View\Element\Html\Link">
+    	<plugin name="Tatva_Visualsearch::changeUrl" type="Tatva\Visualsearch\Plugin\Framework\View\Element\Html\Link" />
+    </type>
+</config>

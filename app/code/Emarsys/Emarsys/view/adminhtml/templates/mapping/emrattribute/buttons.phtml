@@ -1,0 +1,16 @@
+<?php
+/**
+ * @category   Emarsys
+ * @package    Emarsys_Emarsys
+ * @copyright  Copyright (c) 2017 Emarsys. (http://www.emarsys.net/)
+ */
+
+$backEmarsysBtn = $block->getUrl('emarsys_emarsys/mapping_product/index', ["store" => $this->getStoreId()]);
+?>
+<div>
+    <span class="scalable">
+        <a href="<?php echo $backEmarsysBtn; ?>" class="action-default scalable customerSaveBtn">
+            <?php echo __('Back') ?>
+        </a>
+    </span>
+</div>

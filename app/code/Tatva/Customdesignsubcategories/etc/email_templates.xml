@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="tatva_customdesignsubcategories_email" label="Customdesignsubcategories Email" file="customdesignsubcategories\customdesignsubcategories_email.html" type="html" module="Tatva_Customdesignsubcategories" area="frontend"/>
+    <template id="tatva_customdesignsubcategories_customeremail" label="Customdesignsubcategories Customer Email" file="customdesignsubcategories\customdesignsubcategories_customeremail.html" type="html" module="Tatva_Customdesignsubcategories" area="frontend"/>
+</config>

@@ -1,0 +1,94 @@
+<?php $getTestimonialTitle = $block->getTestimonialConfiguration(); ?>
+<div class="testimonials widget">
+    <h3><?php echo $getTestimonialTitle; ?></h3>
+
+    <ul class="owl-carousel owl-testimonials owl-theme">
+        <?php
+        $getTestimonialList = $block->getTestimonialList();
+//        echo "<pre>";
+//        print_r($getTestimonialList);
+        if ($getTestimonialList['status'] == '0'):
+            echo "No result Found";
+        endif;
+        if ($getTestimonialList['status'] == '1'):
+            foreach ($getTestimonialList['testimonials'] as $testimonial):
+                ?>
+                <li <?php
+                if (empty($testimonial->getResizeImage())): echo "class='item noImg'";
+                endif;
+                ?>>
+                    <p class="testimonialPhoto">
+                        <?php
+                        if (!empty($testimonial['resize_image'])):
+                            ?>
+                            <a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>" title="<?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?>"><img src="<?php echo $block->getBaseUrl() . $testimonial['resize_image']; ?>" /></a>
+
+                        <?php else: ?>
+                            <a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>" title="<?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?>">
+                                <?php
+                                if (isset($testimonial['first_name'])):
+                                    echo strtoupper(trim($testimonial['first_name'][0]));
+                                endif;
+                                ?></a>
+
+                        <?php endif; ?>
+                    </p>
+                    <div class="testimonialHead">
+                        <h4><a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>"><?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?></a></h4>
+                        <span>
+                            <?php echo $testimonial['designation'] . ", " . $testimonial['company'] . "."; ?>
+                        </span>
+                    </div>
+                    <p class="testimonialText"><?php echo substr($testimonial['testimonial'], 0, 200); ?>
+                        <?php
+                        if (strlen($testimonial['testimonial']) > 200):
+                            ?>
+                            <a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>">   Read More>></a>  
+                        <?php endif;
+                        ?>
+                    </p>
+                </li>
+            <?php endforeach; ?>
+            <?php
+        endif;
+        ?>
+    </ul> 
+    <input type="hidden" id="auto_rotate" value="<?php echo $block->getWidgetAutoRotate(); ?>">
+    <script type="text/javascript" xml="space">// <![CDATA[
+// 
+// 
+        require([
+            'owlcarousel'
+        ], function () {
+            var owl = jQuery('.owl-testimonials');
+            var auto_rotate = document.getElementById('auto_rotate').value;
+            var autorotate = false;
+            if (auto_rotate == 0) {
+                var autorotate = false;
+            } else {
+                var autorotate = true;
+            }
+            owl.owlCarousel({
+                margin: 10,
+                nav: true,
+                dots: false,
+                loop: true,
+                autoplay: autorotate,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+        });
+        // 
+// 
+// ]]></script>
+    <a class="testimonialAll" href="<?php echo $block->getUrl('testimonial/testimonial/index'); ?>">See All &gt;</a>
+</div>

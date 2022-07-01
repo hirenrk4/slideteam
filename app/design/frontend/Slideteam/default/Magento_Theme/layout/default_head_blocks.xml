@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <head>
+        <css src="Magento_Theme::css/theme/style.css" media="all" order="180" rel="preload" as="style" />
+        <css src="Magento_Theme::css/theme/media.css" media="all" order="182" rel="preload" as="style" />
+        <css rel="preload" src="Magento_Theme::css/trustpilot/trustpilot-widget.css" as="style" media="all" />
+        <css rel="preload" src="Magento_Theme::css/theme/google-review.css" as="style" media="all" />
+        <css src="css/styles-m.css" rel="preload" as="style" />
+        <css src="css/styles-l.css" media="screen and (min-width: 768px)" rel="preload" as="style" />
+        <css src="Magento_Theme::css/font-awesome.min.css" media="all"/>
+        <remove src="mage/calendar.css"/>
+        <script src="//cdn.livechatinc.com/qb/qb-4624851-light-200.js" src_type="url"/>
+        <script src="jquery/jquery.min.js" />
+        <!-- <script src="jquery/jquery-ui-1.9.2.js"/> -->
+        <script src="Magento_Theme::js/lazyload/lazy.js" />     
+        <script src="Magento_Theme::js/theme-general.js"/>
+        
+        <link rel="preload" src="fonts/Blank-Theme-Icons/Blank-Theme-Icons.woff2" as="font" type="font/woff2" order="100"/>
+        <link rel="preload" src="fonts/opensans/regular/opensans-400.woff2" as="font" type="font/woff2" order="110"/>
+        <link rel="preload" src="fonts/opensans/semibold/opensans-600.woff2" as="font" type="font/woff2" order="120"/>
+        <link rel="preload" src="fonts/opensans/bold/opensans-700.woff2" as="font" type="font/woff2" order="130"/>
+        <meta name="p:domain_verify" content="cbe7790da153a2193ae198550d1d1907"/>
+    </head>
+</page>

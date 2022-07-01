@@ -1,0 +1,19 @@
+<?php 
+$customerSession = $block->getCustomerSession();
+?>
+<div class="container">
+    <div class="join_request_inner">
+        <div class="banner_button">
+        	<?php if ($customerSession->isLoggedIn() == false) : ?>
+            	<button type="button" id="join_free"  class="join_btn">Join for free</button>
+            <?php endif ?>
+            <button type="button" data-mage-init='{"popupWindow": {"windowURL":"https://app.greminders.com/t/d42867b4/slideteam","windowName":"orderitems","width":1500,"height":700,"top":0,"left":0,"resizable":1,"scrollbars":1}}' href="#" class="request_btn">Request a call back</button>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("join_free").onclick = function () {
+        window.open("<?php echo $this->getUrl("customer/account/login");?>", "_blank");
+    };
+</script>

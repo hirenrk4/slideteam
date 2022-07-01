@@ -1,0 +1,270 @@
+<form name="research_service_form" id="research_service_form" method="POST" enctype="multipart/form-data" data-mage-init='{"validation":{}}'>
+    <h2 class="connect_form_heading">Let’s Connect</h2>
+    <h3>Submit Your Business Research Requirements</h3>
+    <p>Fill in your research requirements and we will get back to you within 24 business hours</p>
+    <div class="contact-form-main">
+      <div class="contact-form-custom contact-form1-custom">
+          <label>Name <span class="required">*</span></label>
+          <input type="text" name="name" id="name" title="Name" class="required-entry field-divided" placeholder="Enter your name" data-validate="{required:true}"/> 
+      </div>
+      <div class="contact-form-custom contact-form2-custom">
+          <label>Email <span class="required">*</span></label>
+          <input type="email" name="form_email" id="form_email" title="Email" class="required-entry validate-email field-divided" placeholder="Enter your email" data-validate="{required:true, 'validate-email':true}"/>
+      </div>
+      <div class="contact-form-custom contact-form3-custom">
+          <label>Phone <span class="required">*</span></label>
+          <div>
+           <select name="country name" id="country" name="country" class="select_popup_form" required="">
+              <option value="">Select Country Code</option>
+              <?php foreach ($block->getCountryData() as $value): ?>
+                <option value="<?php echo $value['isd_code'] ?>" id="<?php echo $value['country_id'] ?>"><?php echo $value['country_name'].' (+'.$value['isd_code'].')'; ?></option>
+              <?php endforeach; ?>
+          </select>
+          <input type="hidden" name="country_id" id ="country_id" value="">
+          <div id="country-code-error" generated="true" style="color:#d24031;font-size: 13px;margin-bottom:10px;"></div>
+          </div>
+          <input type="text" name="telephone" id="telephone" maxlength="15" title="Telephone" class="required-entry field-divided phone_popup_form" placeholder="Enter your phone" data-validate="{required:true,'contactNumberValidation':true}" /> 
+      </div>
+      <div class="contact-form-custom contact-form4-custom">
+          <label>Message <span class="required">*</span></label>
+          <textarea name="comment" id="comment" title="Comment" class="required-entry field-long field-textarea" rows="2" placeholder="Enter your message" data-validate="{required:true}" maxlength="2000"></textarea>
+          <div class="allforms-comment-msg"><?php echo __("Max length should be 2000 character."); ?></div>
+      </div>
+
+      <div class="contact-form-custom contact-form3-custom">
+         <!-- <input name="captcha" type="text" class="form_captcha form_captcha1" placeholder="Please type captcha here" data-validate=""/> -->
+         <?php
+                        $blockPath = 'Magento\Captcha\Block\Captcha';
+                        $block = $this->getLayout()->createBlock($blockPath);
+                        $cap_data = array('form_id'=>'business_research_services_captcha','img_width'=>'50');
+                        $block->setData($cap_data);
+                        echo $block->toHtml();
+                    ?>
+          <!-- <input type="text" name="captcha" title="" class=" form_captcha form_captcha2" placeholder="" data-validate=""/> --> 
+      </div>
+      <div class="contact-form-custom contact-form3-custom attach_form_custom">
+          <div class="attach-block clearfix">
+            <div id="mulitplefileuploader" class="multibox">
+              <label for="upload" class="attach_fix"> <img class="attach_icon_form" src="<?php echo $this->getViewFileUrl('Magento_Cms::images/business_research_services/form_attachment.png'); ?>" alt="icon"> Attach a file</label>
+            </div> 
+            <div id="status"></div>
+            <input id ="filesToAttach" type ="hidden" name="filesToAttach" />
+          </div>
+          <span class="tip top-right tipso_style" data-tipso="Please upload any mockups, presentations, sketches, back of napkin designs etc.<br>NOTE: Please use dropbox or yousendit and send us the link if the attachment is greater than 25 MB, or mail them separately to design@slideteam.net">
+            <a class="tooltips">
+              <em>
+                <img class="info_form_icon" src="<?php echo $this->getViewFileUrl('Magento_Cms::images/business_research_services/form_info.png'); ?>" alt="icon">
+              </em>
+            </a>
+          </span>
+      </div>
+  </div>
+  <div class="contact_popup_form">
+    <button class="contact_form_submit" id="finalSubmit" type="submit">Submit</button>
+</div>
+</form>
+<?php $url = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]); ?>
+<script type="text/javascript">
+require(['jquery','jquery-ui-modules/core','jquery-ui-modules/widget','jquery/validate','mage/translate','mage/mage','JQForm','uploadFileJS','tipso','jquery/jquery-ui-1.9.2'], function ($) {
+    'use strict';
+
+    var url = "<?php echo $url; ?>";
+      if(url.indexOf('?id=pitch-deck') != -1) {
+        document.getElementById('modalOne').style.display = "block";
+      }
+      
+    $(document).ready(function ()
+    {
+      $.validator.addMethod(
+        "contactNumberValidation",
+        function (v) {
+            return $.mage.isEmptyNoTrim(v) || /^((\d+)(\-|\s){0,1})*\d+$/.test(v);
+        },
+        $.mage.__("Allowed digits[0-9] and -")
+    );
+
+    $("#country").change(function() {
+      var value = $(this).children(":selected").attr("value");
+      $("#country_id").val(value);
+    });
+    
+    $("label:contains('Please type captcha here')").html('&nbsp;');
+            $('#research_service_form').find('input[name*="captcha"]').css('padding-left', '12px');
+            $('#research_service_form').find('input[name*="captcha"]').attr("placeholder", "Please type captcha here");
+
+            $('.captcha-img').remove();
+            $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="spinner-img" height="50" width="50" src="<?= $block->getViewFileUrl('Magento_Cms::images/popup/spinner.gif') ?>"/>').insertBefore('.captcha-reload');
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                data:'formId=business_research_services_captcha',
+                success:function(data) {
+                    $('.spinner-img').hide();
+                    $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('.captcha-reload'); 
+                    return false;                 
+                }
+            });
+
+    var settings = 
+      {
+        url: "<?php echo $block->getUrl('customdesignsubcategories/index/save'); ?>",
+        method: "POST",
+        allowedTypes: "pdf, ppt, pptx,doc, docx, jpg, jpeg, png, gif, xlsx, xlsm, xlsb, xls, xltx, xltm, xlt, csv, xlam, xla, ods, zip, txt",
+        maxFileSize: 5242880,
+        sizeErrorStr: " is greater than 5 MB. Please reduce the size of the attachment(s) or use Dropbox/Google Drive or a similar tool to send us the attachment(s). OR Send the attachment directly via email to <a href='mailto:design@slideteam.net'>design@slideteam.net</a>",
+        fileName: "myfile",
+        uploadStr: jQuery(".multibox").html(),
+        multiple: true,
+        nestedForms:false,
+        dragDropStr:"",
+        onSuccess: function (files, data, xhr)
+        {
+          var file_data = jQuery.parseJSON(data);                   
+          $('<input>').attr({
+            class: 'file-research',
+            type: 'hidden',
+            name: file_data.original + "[]",
+            value: file_data.modified
+          }).appendTo('#research_service_form');
+
+        },
+        onError: function (files, status, errMsg)
+        {                    
+          $("#status").html(errMsg);
+        },
+        onSelect:function(file)
+        {
+          if(file[0].size > 5242880)
+          {
+            //$('#finalSubmit').hide();
+          } else {
+            $('#finalSubmit').show();
+          }
+        }
+      };
+
+      $("#mulitplefileuploader").uploadFile(settings);
+      var dataForm = $('#research_service_form');
+      var ignore = null;
+
+      dataForm.mage('validation', 
+      {
+        ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+      }).find('input:text').attr('autocomplete', 'off');
+
+      $('.close').click(function(){
+          $(".captcha-error").empty();
+          $('.file-research').remove();
+          $('.mage-error').empty();
+          $( ".ajax-file-upload-container").empty();
+          $('#country-code-error').hide();
+          $(".ajax-file-upload-error").empty();
+          $('.file-error').empty();
+          $("input[type=text], input[type=email],input[type=hidden] , textarea, select").val("");
+      });
+
+      $('#finalSubmit').click(function(){
+        var phonenumber = $('.phone_popup_form').val();
+        var countrycode = $('#country').val();
+        if(phonenumber != "" && countrycode == "")
+        {
+            $('#country-code-error').show();
+            $('#telephone-error').hide();
+            $('#country-code-error').html('Please select your country code to add phone number.');
+            return false;
+        } 
+        else if(phonenumber == "" && countrycode != "")
+        {
+            $('#country-code-error').hide();
+        }
+        else if(phonenumber == "" && countrycode == "")
+        {
+            $('#country-code-error').hide();
+        }
+        else
+        {
+            $('#country-code-error').hide();
+        }
+
+        $('.ajax-file-upload > form > input').unwrap(); 
+
+                if(dataForm.validation('isValid') === false)
+                {
+                  $("#mulitplefileuploader").uploadFile(settings);
+                  return false;
+                }
+
+        if(dataForm.validation('isValid')==true)  
+        {
+          $.ajax({
+            type:'POST',
+            url: '<?php echo $this->getUrl("customdesignsubcategories/research/sendEmail");?>',
+            data: dataForm.serialize(),
+            dataType:'json',
+            showLoader: true ,//use for display loader
+            success: function(data){
+
+              if(data.status == "CaptchaError")
+              {
+                $(".captcha-error").empty();
+                $('.file-research').remove();
+                $('.mage-error').empty();
+                $('.file-error').empty();
+                $( ".ajax-file-upload-container").empty();
+                $('#country-code-error').hide();
+                $(".ajax-file-upload-error").empty();
+                $("input[type=text], input[type=email],input[type=hidden] , textarea, select").val("");
+                //$('#research_service_form .invalid-captcha').show();
+                $( ".customer-captcha-wrapper" ).append( "<div class='captcha-error'><strong>Please enter valid captcha code.</strong></div>" );
+                $('#research_service_form').find('input[name*="captcha"]').focus();  
+                return false;
+              }
+              else if(data.status == "totalfileziseerror")
+              {
+                $('.file-error').empty();
+                $("input[type=text], input[type=email] , textarea, select").val("");
+                $( ".multibox" ).append( "<div class='file-error'><strong>Total file size should not be greater then 5MB.</strong></div>" );
+                return false;
+              }
+              else if(data.status == "extentionerror")
+              {
+                $('.file-error').empty();
+                $("input[type=text], input[type=email] , textarea, select").val("");
+                $( ".multibox" ).append( "<div class='file-error'><strong>Extension not allowed</strong></div>" );
+                return false;
+              }
+              else if(data.status == "mailerror")
+              {
+                alert('Unable to send mail')
+                return false;
+              }
+              else if(data.status == "Error")
+              {
+                alert('Please fill up reruired filed')
+                return false;
+              }
+              else if(data.status=="Success")
+              {
+                  window.location.href = data.url;
+              }
+            }
+          });
+          return false;
+        }
+    });
+
+      $(".tip").tipso({position: 'left',size: 'large'});
+      // task 1344
+      $("#comment").on("keyup",function() {
+        var maxLength = $(this).attr("maxlength");
+        if(maxLength == $(this).val().length) {
+          $('#comment-error').hide();
+          $('.allforms-comment-msg').show();
+        }else{
+          $('.allforms-comment-msg').hide();
+        }
+      });
+      // task 1344 end
+    });
+});
+</script>

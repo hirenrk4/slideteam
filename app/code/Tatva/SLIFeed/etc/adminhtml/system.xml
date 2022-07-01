@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <section id="sli_feed_generation">
+            <group id="feed">
+                <field id="new_generate" translate="label comment" type="button" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Update Feed</label>
+                     <frontend_model>Tatva\SLIFeed\Block\System\Config\Update</frontend_model>
+                </field>
+                <field id="date" translate="label" type="date" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Start sync from :</label>
+                    <frontend_model>Tatva\SLIFeed\Block\System\Config\Date</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+    

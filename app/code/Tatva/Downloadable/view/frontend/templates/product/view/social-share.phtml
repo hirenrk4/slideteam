@@ -1,0 +1,13 @@
+<?php $_product = $block->getProduct(); ?>
+<div class="st-addthis-custom addthis_toolbox">
+    <ul class="sharing-links custom_images">
+        <li>
+            <a class="link-facebook" title="Share on Facebook" rel=" nofollow noopener" target ="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($_product->getProductUrl());?>&picture=&title=<?php echo urlencode($_product->getName())?>">
+            </a>
+        </li>
+        <li>
+            <a class="link-twitter" title="Share on Twitter" rel="nofollow noopener" target ="_blank" href="https://twitter.com/intent/tweet?text=<?php echo urlencode($_product->getName())?>&url=<?php echo urlencode($_product->getProductUrl());?>&image-src=<?php echo urlencode($this->getUrl() . '/media/catalog/product/cache/960x720' . $_product->getImage())?>">
+            </a>
+        </li>
+    </ul>
+</div>

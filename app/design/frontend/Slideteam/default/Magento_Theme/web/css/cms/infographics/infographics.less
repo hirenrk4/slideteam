@@ -1,0 +1,1712 @@
+@import '../../source/_variablesm2.less';
+@import '../../source/_mixins.less';
+
+/*Common h1,h2 for this page only*/
+.st-infographics{
+	 h1{font-size: 50px;line-height: 54px;}
+	 h2{font-size: 40px;line-height: 44px;}
+	 h3{font-size: 34px;line-height: 38px;}
+	 h4{font-size: 30px;line-height: 34px;}
+}
+
+/*Common Css for this page*/
+.request-infographic-page{
+	.title-block{
+		span{
+	    		color: @slideteam_gray45;
+			    font-size: 32px;
+			    line-height: 36px;
+			    display: block;
+	    	}
+	    	h1{
+	    		color: @slideteam_blue1;
+			    text-transform: uppercase;
+			    font-weight: 700;
+			    display: inline-block;
+			    margin-bottom: 20px;
+	    	}
+	}
+	p{
+	    	color: @slideteam_gray45;
+		    font-size: 30px;
+		    line-height: 34px;		    		   
+	}
+}
+
+.request-infographic{
+	padding: 70px 110px 30px;
+	position: relative;	
+	.left-col{
+		width: 49%;
+	    float: left;
+	    padding: 86px 0;
+	    .title-block{
+			position: relative;
+			padding-bottom: 70px;   	
+	    	.horizontal{
+	    		position: absolute;
+			    left: 140px;
+			    width: 87%;
+			    height: 38px;
+			    bottom: 32px;
+			    .infographic-blue-horizontal{
+			    	background: url(../../../../Magento_Cms/images/infographic/infographic-blue-horizontal.png) repeat-x bottom;
+				    display: inline-block;
+				    width: 100%;
+				    height: 1px;
+				    position: relative;
+				    left: 10px;
+				    bottom: 36px;
+			    }
+	    	}
+	    }
+	    p{	    
+		    width: 76%;
+		    span{
+		    	color:@slideteam_blue1;
+		    	display:inline-block;
+		    }
+	    }
+	}
+	.vertical-bottom{
+		position: absolute;
+	    bottom: -65px;
+	    left: 250px;
+	    display: block;	
+	}
+	.right-col{
+		width: 49%;
+    	float: right;
+    	.infographic-slider-guide{
+    		font-size: 15px;
+		    line-height: 18px;
+		    color: @slideteam_gray4;
+		    text-align: center;
+		    max-width: 774px;
+		    width: 100%;
+		    margin: 0 auto;
+    	}
+    	.infographic-slider-wrapper{
+    		background-image: url(../../../../Magento_Cms/images/infographic/startup-infographic.png);
+		    background-repeat: no-repeat;
+		    height: 448px;
+		    width: 774px;
+		    background-size: 100%;
+		    display: block;
+		    margin: 0 auto;
+		    .owl-carousel{
+		    	width: 563px;
+    			margin-left: 105px;   			
+    			.owl-nav{
+    					.owl-prev,.owl-next{
+    						width: 18px;
+						    height: 32px;
+						    position: absolute;
+						    top: 51%;
+    					}
+    					.owl-prev{
+    						background: url(../../../../Magento_Cms/images/infographic/infographic-left.svg) no-repeat left top;
+						    left: -58px;
+    					}
+    					.owl-next{
+    						background: url(../../../../Magento_Cms/images/infographic/infographic-right.svg) no-repeat right top;						  
+						    right: -58px;
+    					}
+    			}	
+    			.owl-stage-outer{
+    				.owl-item{
+    					margin-top: 39px;
+    				}
+    			}	
+		    }
+    	}
+	}
+}
+
+.request-infographic-yellow{
+	background: @slideteam_orange1;
+    position: relative;
+    padding:44px 110px;
+    overflow: hidden;
+    .vertical-top{
+    	position: absolute;
+	    top: 0px;	
+	    left: 250px;
+	    display: inline-block;
+    }
+    .title-block{
+    	    padding: 0 0 0 250px;
+    	    span{
+    	    	color: @slideteam_gray54;
+    	    }
+    	    h1{
+    	    	color: @white;
+    	    	border-bottom: 1px solid @white;
+    	    }
+    	    p{
+    	    	color: @slideteam_yellow5;
+   				 width: 54%;
+    	    }
+    }
+    ul{
+    	margin: 70px 0 0 0 ;
+    	li{
+    		float: left;
+    		width: 20%;
+    		margin: 0px;
+    		.content{
+    			text-align: center;
+    			span{
+    				background: @slideteam_orange17;
+				    display: inline-block;
+				    padding: 10px;
+				    font-size: 24px;
+				    line-height: 28px;
+				    color: @white;
+				    font-weight: 700;
+				    margin-bottom: 30px;
+
+				    &.expression{
+				    	margin: 0px;
+				    	background: none;
+					    color: @slideteam_orange18;
+					    font-size: 50px;
+					    line-height: 34px;
+				    }
+    			}
+    			.thumb-img{
+    				margin-bottom: 40px;
+    			}
+    			em{
+    				font-style: normal;
+				    font-size: 24px;
+				    line-height: 28px;
+				    color: @slideteam_yellow6;
+				    font-weight: 400;
+				    display: block;
+    			}
+    		}
+    	}
+    }
+}
+
+.request-infographic-black{
+	background: @slideteam_gray55;
+    padding:50px 110px;
+    .title-block{
+    	text-align: right;
+    	position: relative;
+    	span{
+    		color: @white;	
+    		margin: 0 60px 10px 0;	
+    	}
+    	h1{
+    		display: block;
+    		margin-right: 60px;	
+    	}
+    	.reader-img{
+    		position: absolute;
+		    right: 245px;
+		    bottom: 64px;
+    	}
+    	.reader-review{
+    		background: @white;
+		    color: @black;
+		    font-size: 44px;
+		    line-height: 50px;
+		    font-weight: 700;
+		    font-style: normal;
+		    padding: 5px 10px;
+		    display: inline-block;
+		    margin-top: 56px;
+		    letter-spacing: 2px;
+		    img{
+		    	width: 38px;
+			    position: relative;
+			    top: 4px;
+			    right: 3px;
+		    }
+    	}
+    }
+    .percentage-block{
+    	margin-top: 35px;
+    	h4{
+    		color: @slideteam_gray40;
+		    text-align: center;
+		    font-weight: bold;
+		    margin:0px;
+    	}
+    	ul{
+    		margin: 40px 0 0 0;
+    		li{
+    			float: left;
+			    width: 25%;
+			    .percentage-content{
+			    	span{
+			    		display: block;
+			    		position: relative;
+			    		text-align: center;
+			    		margin-bottom: 35px;
+			    		&:after{
+			    			position: absolute;
+						    content: "";
+						    right: -41px;
+						    width: 74px;
+						    height: 2px;
+						    top: 50%;
+						    background: url(../../../../Magento_Cms/images/infographic/business-line.png) no-repeat;
+			    		}
+			    	}
+			    	p{
+			    		color: @slideteam_white8;
+    					font-weight: normal;
+    					text-align: center;
+					    font-size: 30px;
+					    line-height: 34px;
+					    max-width: 329px;
+					    width: 100%;
+    					margin: 0 auto;
+    					max-width: 290px;
+			    	}
+			    }
+			    &:last-child{
+			    	.percentage-content{
+				    	span{
+				    		&:after{
+				    			background:none;
+				    		}
+				    	}
+				    }
+			    }
+    		}
+    	}
+    }
+}
+
+.request-infographic-sky{
+	padding:50px 110px 20px;
+    background: rgba(40,167,251,1);
+    background: -moz-linear-gradient(-45deg, rgba(40,167,251,1) 0%, rgba(40,167,251,1) 6%, rgba(91,218,238,1) 89%, rgba(91,218,238,1) 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(40,167,251,1)), color-stop(6%, rgba(40,167,251,1)), color-stop(89%, rgba(91,218,238,1)), color-stop(100%, rgba(91,218,238,1)));
+    background: -webkit-linear-gradient(-45deg, rgba(40,167,251,1) 0%, rgba(40,167,251,1) 6%, rgba(91,218,238,1) 89%, rgba(91,218,238,1) 100%);
+    background: -o-linear-gradient(-45deg, rgba(40,167,251,1) 0%, rgba(40,167,251,1) 6%, rgba(91,218,238,1) 89%, rgba(91,218,238,1) 100%);
+    background: -ms-linear-gradient(-45deg, rgba(40,167,251,1) 0%, rgba(40,167,251,1) 6%, rgba(91,218,238,1) 89%, rgba(91,218,238,1) 100%);
+    background: linear-gradient(135deg, rgba(40,167,251,1) 0%, rgba(40,167,251,1) 6%, rgba(91,218,238,1) 89%, rgba(91,218,238,1) 100%);
+
+    h1{
+    	color: @white;
+    	text-transform: none;
+    	margin-bottom: 70px;
+    	text-align: center; 
+    	font-weight: 400;	
+    }
+    ul{
+    	margin:0px;
+    	li{
+    		float: left;
+			width: 20%;
+			.great-content{
+				padding: 0 50px;
+				text-align: center;
+				span{
+					display: block;
+				    margin-bottom: 70px;
+				    position: relative;
+				    &:after{
+				    	position: absolute;
+					    content: "";
+					    right: -105px;
+					    top: 50%;
+					    background: url(../../../../Magento_Cms/images/infographic/business-line.png) no-repeat;
+					    height: 2px;
+					    width: 100px;
+				    }
+				}
+				em{
+					font-style: normal;
+				    font-size: 28px;
+				    line-height: 34px;
+				    color: @white;
+				    font-weight: 700;
+				    display: block;
+				    margin-bottom: 40px;
+				    min-height: 139px;
+				    span{
+				    	font-size: 50px;
+					    line-height: 61px;
+					    margin-bottom: 4px;	
+					    &:after{
+				    		background: none;
+				   		}		    
+				    }
+
+				}
+				p{
+					font-size: 26px;
+				    line-height: 34px;
+				    color: @slideteam_blue21;
+				    margin: 0px;
+				    font-weight: 400;
+				}
+			}
+			&:last-child{
+			    	.great-content{
+				    	span{
+				    		&:after{
+				    			display:none;
+				    		}
+				    	}
+				    }
+			    }
+   		}
+    }
+}
+
+.infographic-design{
+	background: url(../../../../Magento_Cms/images/infographic/our_process.png) repeat center center @slideteam_gray23;
+    background-size: 100% auto;
+    padding: 0 110px;
+    .left-col{
+    	float: left;
+	    width: 49%;
+	    padding-top: 60px;
+	    h2{
+	    	color: @slideteam_gray56;
+		    font-weight: 700;
+		    position: relative;
+		    margin: 0 0 20px;
+		    span{
+		    	display: block;
+		    	em{
+		    		color: @slideteam_orange19;
+				    font-style: normal;
+				    display: inline-block;
+				    padding-left: 10px;
+		    	}
+		    }
+	    }
+	    p{
+	    	font-size: 30px;
+		    line-height: 45px;
+		    color: @slideteam_gray57;
+		    width: 60%;
+	    }
+    }
+    .right-col{
+    	float:right;
+    	width: 49%;
+    }
+}
+
+.infographic-pricing-block{
+	padding: 50px 0;
+	h3{
+		color: @slideteam_orange20;
+	    text-align: center;
+	    font-weight: 700;
+	    margin: 0 0 25px;
+	}
+	.fixed-width-block{
+		max-width: 968px;
+    	margin: 0 auto;
+    	.yellow-block{
+    		background: @slideteam_orange21;
+		    width: 40%;
+		    box-sizing: border-box;
+		    float: left;
+		    text-align: center;
+		    color: @white;
+		    padding: 30px 15px;
+		    h3{
+		    	font-weight: 400;
+		    	margin: 0 0 3px;
+		    	color: @white;
+		    }
+		    span{
+		    	display: block;
+			    font-size: 26px;
+			    line-height: 30px;
+			    font-weight: 400;
+			    padding-bottom: 20px;
+			    border-bottom: 2px dotted @white;
+		    }
+		    p{
+		    	font-size: 20px;
+			    line-height: 24px;
+			    padding-top: 20px;
+			    margin-bottom: 0;
+			    color: @white;
+		    }
+    	}
+    	.grey-block{
+    		background: @slideteam_gray58;
+		    width: 60%;
+		    box-sizing: border-box;
+		    float: right;
+		    padding: 30px 15px;
+		    p{
+		    	font-size: 20px;
+			    line-height: 24px;
+			    color: @slideteam_gray57;
+			    padding-bottom: 20px;
+			    &:last-child{
+			    	padding-bottom:0px;
+			    }
+		    }
+    	}
+	}
+}
+
+.infographics{
+	background: @slideteam_green10;
+    padding: 50px 0 45px;
+    position: relative;
+    &:after{
+    	border-left: 15px solid @slideteam_white6;
+	    border-right: 15px solid @slideteam_white6;
+	    border-top: 15px solid  @white;
+	    content: "";
+	    left: 50%;
+	    position: absolute;
+	    top: 0;
+    }
+    .form-title{
+    	font-size: 40px;
+    	line-height: 44px;
+	    color: @white;
+	    font-weight: 700;
+	    text-align: center;
+	    margin:0 0 30px;
+	    display: block;
+    }
+    .customdesignservice-form{
+    	.inner-attach{
+    		.tooltips{
+    			em{
+    				background: @slideteam_green11;
+    			}
+    		}
+    		.formbtn-wrap{
+    			button{
+					&.primary{
+						background: @slideteam_green11;
+    					border-color: @slideteam_green11;
+		    			&:hover{
+		    				border-color:@slideteam_green11;;
+		    				background-color: @transparent;
+		    			}
+					}
+				}
+    		}
+    	}
+    	.form-top-block{
+    		 .col{
+    		 	 .input-box{
+    		 	 	.form-control{
+    		 	 		border-color: @slideteam_gray41;
+    		 	 	}
+    		 	 }
+    		 }
+    	}
+    	.input-box{
+    		.form-control{
+    		 	border-color: @slideteam_gray41;
+    		}
+    	}
+    }
+}
+
+/*popup-box css*/
+.mfp-zoom-out-cur{
+	overflow: hidden;
+}
+.mfp-img-mobile{
+	z-index: 99999;
+	&.mfp-bg{
+		opacity: 0.7;
+	}
+	&.mfp-wrap{
+		.mfp-container{
+			height: initial;
+			top: 13%;
+			&:before{
+				height:0px;
+			}
+		}
+		cursor: progress;
+		.mfp-content{
+			.mfp-close{ 
+				position: absolute;
+			    top: 5px;
+			    right: 22px;
+			    cursor: pointer;
+			    padding: 0px;
+			    opacity: 1;
+			    width: 25px;
+		    	height: 25px;
+			    background:url(../../../../Magento_Cms/images/infographic/cross-arrow.svg) no-repeat;
+			    background-size: 100%;
+			    border-radius: 0px;
+			    &:hover{
+			    	border:none;
+			    }
+			}
+			.mfp-arrow{
+				width: 22px;
+				height: 33px;
+				opacity: 1;
+    			.scale(1); 
+    			margin: 0px;
+    			&:hover{
+			    	border:none;
+			    }
+				&.mfp-arrow-left{	
+					background: url(../../../../Magento_Cms/images/prev-icon.svg) no-repeat;
+					left: 25px;
+					&:before{
+						border:0;
+					}
+					&:after{
+						border:0;
+					}
+				}
+				&.mfp-arrow-right{
+					background: url(../../../../Magento_Cms/images/next-icon.svg) no-repeat;
+					right: 25px;
+					&:before{
+						border:0;
+					}
+					&:after{
+						border:0;
+					}
+				}
+			}
+			.mfp-figure{
+				width: 720px;
+				height: 600px;
+				overflow-y: scroll;
+				img{
+					width: 100%;
+					padding: 0px;
+				}
+				.fig-img{
+				}
+				&:after{
+					background: none;
+					box-shadow: none;
+				}
+			}
+		}
+	}
+}
+
+
+/*Media Query*/
+@media only screen and (max-height: 1080px) and (max-width: 1920px){
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+				.mfp-figure{
+					height: 750px;
+				}	
+			}
+			.mfp-preloader{
+				position: relative;
+				top: -350px;
+			}
+			
+		}
+	}
+}
+@media only screen and (max-height: 1079px) and (max-width: 1919px){
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-content{
+				.mfp-figure{
+					height: 600px;
+				}	
+			}
+			.mfp-preloader{
+				position: relative;
+				top: -300px;
+			}
+			
+		}
+	}
+}
+
+@media(max-width: 1680px){
+	.request-infographic{
+		.left-col{
+			padding: 38px 0;
+			.title-block{
+				.horizontal{
+					width: 78%;
+				}
+			}
+			p{
+				width: 85%;
+			}
+		}
+		.right-col{
+			.infographic-slider-wrapper{
+				width: 590px;
+				height: 360px;
+				.owl-carousel{
+					margin-left: 81px;
+					width: 428px;
+					.owl-stage-outer{
+						.owl-item{
+							margin-top:31px;
+						}
+					}
+				}
+			}
+			.infographic-slider-guide{
+				max-width: 590px;
+			}
+		}
+		.vertical-bottom{
+			bottom: -112px;
+		}
+	}
+	.request-infographic-yellow{
+		.title-block{
+			p{
+				width: 73%;
+			}
+		}
+	}
+	.request-infographic-black{
+		.percentage-block{
+			ul{
+				 li{
+				 	.percentage-content{
+				 		span{
+				 			width: 80%;
+    						margin: 0 auto 35px;
+    						&:after{
+    							right:-65px;
+    							width: 62px;
+    						}
+				 		}
+				 	}
+				 }
+			}
+		}
+	}
+	.request-infographic-sky{
+		ul{
+			li{
+				.great-content{
+					em{
+						font-size: 26px;
+						line-height: 28px;
+						min-height: 150px;
+						margin-bottom: 35px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 1440px){
+	.st-infographics{
+		h4{font-size: 28px;line-height: 32px;}
+		h2{font-size: 38px;line-height: 42px;}
+	}
+
+	.request-infographic-page{
+		.title-block{
+			span{
+				font-size: 26px;
+				line-height: 30px;
+			}
+		}
+	}
+	.request-infographic{
+		.left-col{
+			padding: 45px 0;
+			p{
+				font-size: 26px;
+				line-height: 30px;
+			}
+			.title-block{
+				.horizontal{
+					.infographic-blue-horizontal{
+						bottom: 30px;
+					}
+				}
+			}
+		}	
+	}
+	.request-infographic-yellow{
+		.title-block{
+			p{
+				font-size: 26px;
+				line-height: 40px;
+			}
+		}
+	}
+	.request-infographic-black{
+		.title-block{
+			.reader-review{
+				font-size: 42px;
+    			line-height: 46px;
+			}
+		}
+		.percentage-block{
+			ul{
+				 li{
+				 	.percentage-content{
+				 		span{
+				 			width: 75%;
+				 			margin-bottom: 0px;
+    						&:after{
+    							right:-76px;
+    							width: 77px;
+    						}
+				 		}
+				 		p{
+				 			font-size: 28px;
+				 			line-height: 32px;
+				 			max-width: 225px;
+				 		}
+				 	}
+				 }
+			}
+		}
+	}
+	.request-infographic-sky{
+		ul{
+			li{
+				.great-content{
+					padding: 0 40px;
+					
+				}
+			}
+		}
+	}
+	.infographic-design{
+		.left-col{
+			p{
+				font-size: 26px;
+			    line-height: 30px;
+			    width: 80%;
+			}
+		}
+	}
+
+}
+@media(max-width: 1366px){
+	.st-infographics{
+		h1{font-size: 42px;line-height: 46px;}
+		h2{font-size: 36px;line-height: 40px;}
+		h4{font-size: 26px;line-height: 30px;}
+	}
+
+	.request-infographic-page{
+		.title-block{
+			span{
+				font-size: 24px;
+				line-height: 30px;
+			}
+		}
+	}
+	.request-infographic{
+		padding: 70px 85px 30px;
+		.left-col{
+			width: 46%;
+			padding: 33px 0;
+			p{
+				font-size: 24px;
+				line-height: 30px;			
+			}
+			.title-block{
+				.horizontal{
+					width: 73%;
+				}
+			}
+		}
+		.right-col{
+			width: 54%;
+			.infographic-slider-wrapper{
+				width: 510px;
+				height: 300px;
+				.owl-carousel{
+					margin-left: 70px;
+					width: 371px;
+					.owl-stage-outer{
+						.owl-item{
+							margin-top:27px;
+						}
+					}
+				}
+			}
+			.infographic-slider-guide{
+				max-width: 510px;
+			}
+		}
+	}
+	.request-infographic-yellow{
+		.title-block{
+			p{
+				font-size: 24px;
+				line-height: 28px;
+			}
+		}
+		.percentage-block{
+			ul{
+				 li{
+				 	.percentage-content{			 		
+				 		p{
+				 			font-size: 24px;
+				 			line-height: 28px;
+				 		}
+				 	}
+				 }
+			}
+		}	
+	}
+	.request-infographic-black{
+		.title-block{
+			.reader-img{
+				right: 234px;
+			}
+		}
+		.percentage-block{
+			ul{
+				 li{
+				 	.percentage-content{
+				 		span{
+				 			width: 60%;
+    						&:after{
+    							right:-92px;
+    							width: 80px;
+    						}
+				 		}
+				 		p{
+				 			font-size: 26px;
+				 			line-height: 30px;
+				 			max-width: 235px;
+				 		}
+				 	}
+				 }
+			}
+		}
+	}
+	.request-infographic-sky{
+		h1{
+			margin-bottom: 50px;
+		}
+		ul{
+			li{
+				.great-content{
+					padding: 0 25px;
+					span{
+						margin-bottom: 50px;
+						&:after{
+							right:-101px;
+						}
+					}
+					em{
+						font-size: 24px;
+						line-height: 28px;
+						margin-bottom: 15px;
+						span{
+							font-size: 46px;
+						}
+					}
+					p{
+						font-size: 22px;
+						line-height: 26px;
+					}
+					
+				}
+			}
+		}
+	}
+	.infographic-design{
+		.left-col{
+			p{
+				font-size: 24px;
+			    line-height: 28px;
+			    width: 75%;
+			}
+		}
+		.right-col{
+			width: 45%;
+		}
+	}
+	.infographic-pricing-block{
+		.fixed-width-block{
+			background: @slideteam_gray58;
+			max-width: 940px;
+		}
+	}
+	.infographics{
+	    .form-title{
+	    	font-size: 36px;
+	    	line-height: 40px;
+	    }
+	}
+
+}
+@media(max-width: 1199px){
+	.st-infographics{
+		h4{font-size: 24px;line-height: 28px;}
+	}
+
+	.request-infographic{	
+		padding: 40px 50px 30px;
+		.left-col{
+			padding: 42px 0;			
+			.title-block{
+				.horizontal{
+					width: 62%;
+				}
+			}
+			p{
+				width: 93%;
+			}
+		}
+		.vertical-bottom{
+			left: 123px;
+		}		
+	}
+	.request-infographic-yellow{
+		padding: 30px 50px;
+		.vertical-top{
+			left: 123px;
+			top: -20px;
+		}
+		.title-block{
+			padding: 0 0 0 175px;
+			p{
+				font-size: 24px;
+				line-height: 28px;
+			}
+		}
+	}
+	.request-infographic-black{
+		padding: 40px 50px 30px;
+		.percentage-block{
+			ul{
+				 li{
+				 	.percentage-content{
+				 		span{
+				 			width: 60%;
+    						&:after{
+    							right:-95px;
+    							width: 80px;
+    						}
+				 		}
+				 		p{
+				 			font-size: 24px;
+				 			line-height: 28px;
+				 			max-width: 190px;
+				 		}
+				 	}
+				 }
+			}
+		}
+	}
+	.request-infographic-sky{
+		padding: 30px 50px;		
+		ul{
+			li{
+				.great-content{
+					em{
+						font-size: 21px;
+						line-height: 25px;
+						min-height: 140px;
+						span{
+							font-size: 43px;
+						}
+					}
+					p{
+						font-size: 21px;
+						line-height: 25px;
+					}
+					
+				}
+			}
+		}
+	}
+	.infographic-design{
+		padding: 0 50px;
+	}
+	.infographic-pricing-block{
+		h3{
+			margin: 0 0 15px;
+		}
+		.fixed-width-block{
+			max-width: 846px;
+			.grey-block{
+				width: 56.7%;
+			}
+		}
+	}
+}
+
+@media(max-width: 1024px){
+	.st-infographics{
+		h1{font-size: 36px;line-height: 40px;}	
+	 	h2{font-size: 32px;line-height: 36px;}
+	}
+
+	.request-infographic-yellow{
+		ul{
+			li
+			{
+				.content{
+					span,em{
+						font-size: 20px;
+						line-height: 24px;
+						&.expression{
+						    font-size: 40px;
+						    line-height: 24px;
+						}
+					}	
+				}
+			}
+		}
+	}
+	.request-infographic-black{
+		.title-block{
+			.reader-review{
+				font-size: 30px;
+				line-height: 34px;
+				img{
+					width: 30px;
+				}
+			}
+			.reader-img{
+				bottom: 52px;
+				right: 191px;
+			}
+		}
+		
+		.percentage-block{
+			ul{
+				 li{
+				 	.percentage-content{
+					 	span{
+	    						&:after{
+    							right:-88px;
+    						}
+				 		}			 		
+				 		p{
+				 			font-size: 22px;
+				 			line-height: 26px;
+				 		}
+				 	}
+				 }
+			}
+		}
+	}
+	.request-infographic-sky{
+		padding: 30px 45px;
+		ul{
+			li{
+				.great-content{
+					padding: 0 15px;
+					span{
+						margin-bottom: 40px;
+					}
+					em{
+						margin-bottom: 10px;
+						font-size: 20px;
+						line-height: 24px;
+					}
+					p{
+						font-size: 20px;
+						line-height: 24px;
+					}
+					
+				}
+			}
+		}
+	}
+	.infographic-design{
+		.left-col{
+			padding-top: 40px;	
+			p{
+				width: 90%;
+			}	
+		}
+	}
+	.infographic-pricing-block{
+		padding: 35px 50px 50px;
+		.main-wrapper{
+			max-width: 100%;
+		}
+		.fixed-width-block{
+			max-width: 100%;
+			.grey-block{
+				p{
+					font-size: 18px;
+				    line-height: 22px;
+				    padding-bottom: 15px;
+				}
+			}
+			.yellow-block{
+				span{
+					font-size: 24px;
+    				line-height: 28px;
+				}
+				p{
+					font-size: 18px;
+				    line-height: 22px;
+				    padding-top: 15px;
+				}
+			}
+		}
+	}
+}
+@media(max-width: 991px){
+	.st-infographics{
+		h4{font-size: 20px;line-height: 24px;}
+		h2{font-size: 28px;line-height: 32px;}
+	}
+
+	.request-infographic-page{
+		.title-block{
+			span{
+				font-size: 24px;
+				line-height: 28px;
+			}
+		}
+	}
+	.request-infographic{
+		padding: 30px 50px;
+			.left-col{
+				width: 100%;
+				padding: 30px 0;
+				.title-block{
+					padding-bottom: 20px;
+					h1{
+						margin: 0px;
+					}
+					.horizontal{
+						display: none;
+					}
+				}
+				p{
+					font-size: 24px;
+					line-height: 28px;
+				}
+			}
+			.right-col{
+				width: 100%;
+				.infographic-slider-wrapper{
+					width: 660px;
+					height: 395px;
+					.owl-carousel{
+						margin-left: 89px;
+						width: 482px;
+						.owl-stage-outer{
+							.owl-item{
+								margin-top:31px;
+							}
+						}
+					}
+				}
+				.infographic-slider-guide{
+					max-width: 660px;
+				}
+			}
+			.vertical-bottom{
+				display: none;
+			}
+	}
+	.request-infographic-yellow{
+		.vertical-top{
+			display: none;
+		}
+		.title-block{
+			padding: 0px;
+			p{
+				width: 100%;
+			}
+		}
+		ul{
+			margin: 30px 0 0;
+			li
+			{
+				.content{
+					span{
+						font-size: 18px;
+						line-height: 22px;
+						padding: 10px 6px;
+					}	
+				}
+			}
+		}
+	}
+	.request-infographic-black{
+
+		.title-block{		
+			.reader-img{
+				display: none;
+			}
+			span{
+				margin-right: 45px;
+			}
+			h1{
+				margin-right: 0px;
+			}
+			.reader-review{
+				margin-top: 10px;
+			}
+		}
+		
+		.percentage-block{
+			ul{
+				 li{
+				 	.percentage-content{
+					 	span{
+					 		margin-bottom: 15px;
+					 		&:after{
+					 			right:-63px;
+					 			width: 50px;
+					 		}
+					 	}	
+				 		p{
+				 			font-size: 20px;
+				 			line-height: 24px;
+				 			max-width: 140px;
+				 		}
+				 	}
+				 }
+			}
+		}
+	}
+	.request-infographic-sky{
+		h1{
+			margin-bottom: 30px;
+		}
+		ul{
+			li{
+				.great-content{		
+					padding: 0 10px;	
+					em{
+						font-size: 18px;
+						line-height: 22px;
+						min-height: 130px;
+						span{
+							font-size: 38px;
+							line-height: 49px;
+						}
+					}
+					p{
+						font-size: 18px;
+						line-height: 22px;
+					}
+					
+				}
+			}
+		}
+	}
+	.infographic-design{
+		.left-col{
+			width: 100%;
+			padding: 30px 0;
+		}
+		.right-col{
+			width: 100%;
+		}
+	}
+	.infographic-pricing-block{
+		.fixed-width-block{
+			.grey-block{
+				width: 55%;				
+			}
+		}			
+	}
+	.infographics{
+		padding: 45px 50px;
+	    .form-title{
+	    	font-size: 32px;
+	    	line-height: 36px;
+	    }
+	}
+}
+@media(max-width: 767px){
+	.st-infographics{
+		h1{font-size: 28px;line-height: 32px;}
+		h3{font-size: 28px;line-height: 32px;}
+		h4{font-size: 18px;line-height: 22px;}
+	}
+
+	.request-infographic-page{
+		.title-block{
+			span{
+				font-size: 18px;
+				line-height: 22px;
+			}
+		}
+	}
+	.request-infographic{
+		padding: 25px 15px;
+			.left-col{
+				padding: 15px 0 0 15px;
+				p{
+					font-size: 18px;
+					line-height: 22px;
+				}
+			}
+			.right-col{
+				.infographic-slider-wrapper{
+					width: 540px;
+					height: 325px;
+					.owl-carousel{
+						margin-left: 74px;
+						width: 393px;
+						.owl-stage-outer{
+							.owl-item{
+								margin-top:28px;
+							}
+						}
+					}
+				}
+				.infographic-slider-guide{
+					max-width: 540px;
+				}
+			}
+	}
+	.request-infographic-yellow{
+		padding: 25px 15px;	
+		.title-block{
+			p{
+				font-size: 18px;
+    			line-height: 22px;
+			}
+			h1{
+				margin-bottom: 15px;
+			}
+		}
+		ul{
+			margin: 30px 0 0;
+			li
+			{
+				float: none;
+				width: 100%;
+				margin-bottom: 20px;
+				.content{
+					span{
+						font-size: 14px;
+						line-height: 18px;
+						margin-bottom: 20px;
+						padding: 10px;
+					}
+					.thumb-img{
+						margin-bottom: 15px;
+					}	
+				}
+				&:last-child{
+					margin-bottom: 0px;
+				}
+			}
+		}
+	}
+	.request-infographic-black{
+		padding: 25px 15px;
+		.title-block{	
+			text-align: center;		
+			.reader-review{
+				margin-top: 10px;
+				font-size: 18px;
+				line-height: 22px;
+				img{
+					width: 18px;
+				}
+			}
+			span{
+				margin: 0px;
+			}
+		}
+		
+		.percentage-block{
+			margin-top: 25px;
+			ul{
+				margin:30px 0 0 0;
+				 li{
+				 	width: 100%;
+				 	margin-bottom: 15px;
+				 	.percentage-content{
+					 	span{
+					 		width: 50%;
+					 		margin: 0 auto;
+					 		img{
+					 			max-width: 100%;
+					 			width: 50%;
+					 		}
+					 		&:after{
+						 		display:none;
+					 		}
+					 	}	
+				 		p{
+				 			font-size: 18px;
+				 			line-height: 22px;
+				 			max-width: 100%;
+				 		}
+				 	}
+				 }
+			}
+		}
+	}
+	.request-infographic-sky{		
+		padding: 25px 15px;
+		h1{
+			margin-bottom: 40px;
+		}
+		ul{
+			li{
+				width: 100%;
+				margin-bottom: 25px;
+				.great-content{		
+					padding: 0px;
+					span{
+						width: 25%;
+						margin: 0 auto 20px;
+						&:after{
+							display:none;
+						}
+					}	
+					em{
+						min-height: inherit;
+					}
+				}
+			}
+		}
+	}
+	.infographic-design{
+		padding: 0 15px;
+		.left-col{
+			padding: 25px 0 0;
+			p{
+				font-size: 18px;
+				line-height: 22px;
+				width: 100%;
+			}
+		}
+	}
+	.infographic-pricing-block{
+		padding: 20px 15px 30px;
+
+		.fixed-width-block{
+			.grey-block{
+				width: 52%;
+				p{
+					font-size: 16px;
+				    line-height: 20	px;
+				    padding-bottom: 10px;
+				}
+			}
+			.yellow-block{
+				
+				p{
+					font-size: 16px;
+				    line-height: 20px;
+				}
+			}
+		}
+	}
+	.infographics{
+		padding: 25px 15px 40px;
+		.form-title{
+			font-size: 24px;
+			line-height: 28px;
+			margin-bottom: 30px;
+		}
+	}
+
+	/*popup css*/
+	.mfp-img-mobile{
+		&.mfp-wrap{
+			.mfp-container{
+				padding: 0 20px;
+			}
+			.mfp-content{
+				.mfp-figure{
+					width: auto;
+				}
+				.mfp-figure{
+					height: 440px;
+				}	
+			}			
+		}
+	}
+}
+@media(max-width: 575px){
+	
+	.st-infographics{
+		h2{font-size: 22px;line-height: 26px;}
+		h1{font-size: 24px;line-height: 28px;}
+	} 
+
+	.request-infographic-page{
+		.title-block{
+			span{
+				font-size: 16px;
+				line-height: 20px;
+			}
+		}
+	}
+	.request-infographic{
+			.left-col{
+				padding: 15px 0 0 15px;
+				p{
+					font-size: 16px;
+					line-height: 20px;
+				}
+				.title-block{
+					padding-bottom: 10px;
+				}
+			}
+			.right-col{
+				.infographic-slider-wrapper{
+					width: 340px;
+					height: 210px;
+					.owl-carousel{
+						margin-left: 47px;
+						width: 246px;
+						.owl-stage-outer{
+							.owl-item{
+								margin-top:18px;
+							}
+						}
+						.owl-nav{
+							.owl-prev{
+								left: -43px;
+							}
+							.owl-next{
+								right: -43px;
+							}
+						}
+					}
+				}
+				.infographic-slider-guide{
+					max-width: 340px;
+				}
+			}	
+	}
+	.request-infographic-yellow{
+		.title-block{
+			p{
+				font-size: 16px;
+    			line-height: 20px;
+			}
+		}
+		ul{
+			li
+			{
+				.content{
+					.thumb-img{
+						width: 60%;
+						margin: 0 auto 15px;
+					}	
+				}
+			}
+		}
+	}
+	.request-infographic-black{
+		.percentage-block{
+			ul{
+				 li{
+				 	.percentage-content{
+					 	span{
+					 		width: auto;
+					 	}
+				 	}
+				 }
+			}
+		}
+	}
+	.request-infographic-sky{
+		ul{
+			li{
+				margin-bottom: 30px;
+				.great-content{
+					span{
+						width:33%;
+					}	
+					p{
+						font-size: 16px;
+						line-height: 20px;
+					}
+				}
+			}
+		}
+	}
+	.infographic-design{		
+		.left-col{
+			h2{
+				margin: 0 0 10px;
+			}
+			p{
+				font-size: 16px;
+				line-height: 20px;
+			}
+		}
+	}
+	.infographic-pricing-block{
+		padding: 30px 15px;
+		.fixed-width-block{
+			background: none;
+			.grey-block{
+				width: 100%;
+				float: none;
+				box-sizing: border-box;
+			}
+			.yellow-block{
+				width: 100%;
+				float: none;
+				box-sizing: border-box;
+			}
+		}
+	}
+	.infographics{		
+		.form-title{
+			margin-bottom: 20px;
+		}
+	}
+}
+@media(max-width: 374px){
+	.request-infographic{
+			.left-col{
+				padding: 15px 0 0 0;
+			}			
+			.right-col{
+				.infographic-slider-wrapper{
+					width: 285px;
+					height: 175px;
+					.owl-carousel{
+						margin-left: 39px;
+						width: 207px;
+						.owl-stage-outer{
+							.owl-item{
+								margin-top:15px;
+							}
+						}
+						.owl-nav{
+							.owl-prev{
+								left: -43px;
+							}
+							.owl-next{
+								right: -43px;
+							}
+						}
+					}
+				}
+				.infographic-slider-guide{
+					max-width: 285px;
+				}
+			}
+	}
+}
+
+
+

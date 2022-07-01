@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="1column" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Theme::css/catalog/product/downloadable-product.css" media="all" order="270"/>
+    </head>
+    <body>
+        <referenceBlock name="root">
+            <action method="setTemplate">
+                <argument name="template" xsi:type="string">popup.phtml</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="header.container" remove="true"/>
+        <referenceContainer name="page.top" remove="true"/>
+        <referenceContainer name="footer-container" remove="true" />
+        <referenceBlock name="product.view.header" remove="true" />
+        <referenceContainer name="product.info.media" remove="true" />
+        <referenceContainer name="product.info.main" remove="true" />
+        <referenceContainer name="product.info.related" remove="true"/>
+        <referenceBlock name="resume_questions" remove="true" />
+        <referenceBlock name="product-image-details" remove="true" />
+        <referenceBlock name="documentreport_questions" remove="true" />
+        <referenceBlock name="onepage_questions" remove="true" />
+        <referenceBlock name="resume_blog" remove="true" />
+        <referenceContainer name="product.info.top.section" remove="true"/>
+        <referenceContainer name="product.powerpoint.section" remove="true"/>
+        <referenceContainer name="prodct.training" remove="true"/>
+        <referenceContainer name="product.complete.curriculum" remove="true"/>
+        <referenceContainer name="product.sample.instructor" remove="true"/>
+        <referenceContainer name="product.questionary" remove="true"/>
+        <referenceContainer name="edutech.review" remove="true"/>
+        <referenceContainer name="product.join.request" remove="true"/>
+        
+        <referenceContainer name="content">
+            <block class="Tatva\Catalog\Block\Product\Gallery" name="catalog_product_gallery" template="Magento_Catalog::product/gallery.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

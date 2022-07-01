@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="contact" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Contacts</label>
+            <tab>general</tab>
+            <resource>Magento_Contact::contact</resource>
+            <group id="customemail" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="enable_mail_ips" translate="label" type="select" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Send Email For Different Customer Ips</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="recipient_email_to_ips" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Email For Different Customer Ips (TO)</label>
+                    <depends><field id="enable_mail_ips">1</field></depends>
+                    <comment>Please enter emails (,) separated</comment>
+                </field>
+                <field id="recipient_email_cc_ips" translate="label" type="text" sortOrder="16" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Email For Different Customer Ips (CC)</label>
+                    <depends><field id="enable_mail_ips">1</field></depends>
+                    <comment>Please enter emails (,) separated</comment>
+                </field>
+                <field id="recipient_email_bcc_ips" translate="label" type="text" sortOrder="17" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Email For Different Customer Ips (BCC)</label>
+                    <depends><field id="enable_mail_ips">1</field></depends>
+                    <comment>Please enter emails (,) separated</comment>
+                </field>
+                
+                <field id="email_template" translate="label" type="select" sortOrder="18" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Select Template For Customer Login From Diff Ips</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

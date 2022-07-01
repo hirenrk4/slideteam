@@ -1,0 +1,18 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/* @var \Magento\Wishlist\Block\Link $block */
+?>
+<?php $login = $block->isCustomerLoggedIn(); 
+    if ($login){
+?>
+<li class="link wishlist" data-bind="scope: 'wishlist'">
+    <a <?= /* @noEscape */ $block->getLinkAttributes() ?>>
+        <?= $block->escapeHtml($block->getLabel()) ?>
+    </a>
+</li>
+<?php } ?>
+

@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="couponcode_couponcode_email_template_id" label="Couponcode Expire Email" file="Tatva_Subscription::paypal/paypal_order.html" type="html" module="Tatva_Couponcode" area="frontend"/>
+</config>

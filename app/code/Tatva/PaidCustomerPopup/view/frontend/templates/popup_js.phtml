@@ -1,0 +1,73 @@
+<?php
+$showPopup = $this->showPopup();
+$checkPDPPage = $this->checkPDPPage();
+if($showPopup){
+	if($checkPDPPage){
+?>
+	<link rel="stylesheet" type="text/css"  media="all" href="<?php echo $block->getViewFileUrl('Magento_Theme::css/magnific-popup/magnific-popup.css')?>">
+	<?php
+	}
+	?>
+<link rel="stylesheet" type="text/css"  media="all" href="<?php echo $block->getViewFileUrl('Tatva_PaidCustomerPopup::css/style.css')?>">
+<div class="mfp-hide white-popup-block loginform" id="loginpopup-form">
+	<div class="popup-text-form">						
+		<h4></h4>
+		<p><?= $block->escapeHtml(__('Please tell us a bit more about yourself.....')) ?></p>
+		<p><?= $block->escapeHtml(__('So we can recommend the right products to you...')) ?></p>
+		<form name="paidcustomer-form" id="paidcustomer-form" method="post" data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+			<input class="required-entry" type="text" maxlength="255" placeholder="Company Name" name="company" id="company" data-validate="{required:true}">
+			<input class="required-entry" type="text" maxlength="255" placeholder="Designation" name="designation" id="designation" data-validate="{required:true}">
+			<button type="submit" id="submit-detail"><?= $block->escapeHtml(__('Submit')) ?></button>
+		</form>
+	</div>
+	<div class="thanks-popup" style="display: none;">
+	</div>
+</div>
+<script type="text/javascript">
+	require(["jquery","magnific_popup","mage/mage","domReady!"],function ($) {
+		$(document).ready(function(){
+			openPopup();
+			var dataForm = $('#paidcustomer-form');
+				dataForm.mage('validation',{});
+			$("#submit-detail").click(function(e) {
+				e.preventDefault();
+				if(dataForm.validation('isValid')){
+					var url = "<?php echo $this->getUrl('paidcustomer/index/sendmail'); ?>";
+			        $.ajax({
+						url: url,
+						type: "post",
+						data: dataForm.serialize(),
+						showLoader: true,
+						cache: false,
+						success: function (response) {
+							if(response.status == 'Success'){
+								$('.thanks-popup').html('<span id="msg-success">Data send Successfully !!!!</span>');
+							}else{
+								$('.thanks-popup').html('<span id="msg-error">Something went wrong please send it again</span>');
+							}
+							$('.thanks-popup').show();
+							setTimeout(function(){
+								$.magnificPopup.close();
+							},1000);
+						},
+						error: function(xhr, status, error){
+							var errorMessage=xhr.status+':'+xhr.statusText;
+							console.log('Error - '+errorMessage);
+						}
+					});
+				}
+			});
+		});
+		function openPopup(){
+		  $.magnificPopup.open({
+		    items: {
+		      src: '#loginpopup-form',
+		    }, 
+		    mainClass: 'loginpopup-form'
+		  });
+		}
+	});
+</script>
+<?php
+}
+?>

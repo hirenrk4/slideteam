@@ -1,0 +1,375 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="tatvasoft" translate="label" sortOrder="10">
+            <label>TATVASOFT</label>
+        </tab>
+        <section id="button" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>General Configuration</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Generalconfiguration::button_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Product download report configuration</label>
+                <field id="to_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(To)</label>
+                    <comment>enter comma separated emails</comment>                   
+                </field>
+            </group>
+            <group id="schedule" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>schedule demo configuration</label>
+                <field id="demomail_to" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(To)</label>
+                    <comment>enter comma separated emails</comment>                   
+                </field>
+                <field id="demomail_cc" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(CC)</label>
+                    <comment>enter comma separated emails</comment>                   
+                </field>
+                <field id="demomail_bcc" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(BCC)</label>
+                    <comment>enter comma separated emails</comment>                   
+                </field>
+            </group>
+            <group id="config" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Visual Search Configuration</label>
+                <field id="text" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Visual Search URL key</label>
+                    <comment>enter url</comment>
+                </field>
+            </group>
+            <group id="google_config" translate="label" type="text" sortOrder="51" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Google Conversion and Analytics Configuration</label>
+                <field id="google_config_field" type="select" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Google Conversion and Analytics</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="google_remarketing_code" type="textarea" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Remarketing Code</label>
+                </field>
+                <field id="google_conversion_code" type="textarea" translate="label" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Conversion Code</label>
+                </field>
+            </group>
+            <group id="subscriptionmail_config" type="text" sortOrder="52" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Promotional Mail Configuration</label>
+                <field id="subscriptionmail_config_field" type="select" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Promotional Mail To End Users</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="subscriptionmail_config_field2" type="select" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Promotional Mail to Admin</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="subscriptionmail_config_field3" type="select" translate="label" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Subscription Email Template</label>
+                </field>
+            </group>
+            <group id="banner_for_categories_config" type="text" sortOrder="53" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Banner For Selected Categories Configuration</label>
+                <field id="banner_for_categories_config_field1" type="text" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Category Ids</label>
+                    <comment>Comma seperated values are allowed i.e 855,922</comment>
+                </field>
+                <field id="banner_for_categories_config_field2" type="textarea" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Heading</label>
+                </field>
+            </group>
+            <group id="search_config" type="text" sortOrder="54" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Custom Search Result Configuration</label>
+                <field id="search_config_bucket_name1" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 1</label>
+                </field>
+                <field id="search_config_bucket1" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 1</label>
+                </field>
+                <field id="search_config_bucket_name2" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 2</label>
+                </field>
+                <field id="search_config_bucket2" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 2</label>
+                </field>
+                <field id="search_config_bucket_name3" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 3</label>
+                </field>
+                <field id="search_config_bucket3" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 3</label>
+                </field>
+                <field id="search_config_bucket_name4" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 4</label>
+                </field>
+                <field id="search_config_bucket4" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1"> 
+                    <label>Bucket 4</label>
+                </field>
+                <field id="search_config_bucket_name5" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 5</label>
+                </field>
+                <field id="search_config_bucket5" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 5</label>
+                </field>
+                <field id="search_config_bucket_name6" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 6</label>
+                </field>
+                <field id="search_config_bucket6" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 6</label>
+                </field>
+                <field id="search_config_bucket_name7" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 7</label>
+                </field>
+                <field id="search_config_bucket7" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bucket 7</label>
+                </field>
+            </group>
+            <group id="social_sharing_config" type="text" sortOrder="55" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Social Networks Sharing Configuration</label>
+                <field id="text_field1" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Text to be share</label>
+                </field>
+                <field id="text_field2" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bitly Client ID</label>
+                </field>
+                <field id="text_field3" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>API Key</label>
+                </field>
+            </group>
+            <group id="stockphoto_category_config" type="text" sortOrder="56" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Stockphoto Category Configuration</label>
+                <field id="text_field1" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Stockphoto Category Id</label>
+                </field>
+                <field id="text_field2" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text below product detail page images </label>
+                </field>
+            </group>
+            <group id="dropbox_config" type="text" sortOrder="56" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Dropbox App Configuration</label>
+                <field id="text_field1" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label> App key</label>
+                </field>
+                <field id="text_field2" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label> App secret </label>
+                </field>
+            </group>
+            <group id="video_config" translate="label" type="text" sortOrder="57" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>How to create PPT in 4 steps Configuration</label>
+                <field id="field2" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter your text</label>
+                </field>
+                <field id="field1" translate="label" type="textarea" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Youtube video Link</label>
+                    <comment>enter url</comment>
+                </field>
+            </group>
+            <group id="contacts_config" type="textarea" sortOrder="58" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Contact Us page text configuration</label>
+                <field id="field1" translate="label" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter text for bottom</label>
+                </field>
+            </group>
+            <group id="google_search_config" type="textarea" sortOrder="59" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Google Search Page Configuration</label>
+                <field id="field1" translate="label" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Search Page HTML</label>
+                </field>
+            </group>
+            <group id="customer_login_config" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Customer registration page newsletter text </label>
+                <field id="field1" translate="label" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Please enter your text</label>
+                </field>
+            </group>
+            <group id="gtm_config" type="text" sortOrder="61" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Google Tag Manager Configuration</label>
+                <field id="field1" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Google Tag Manager</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="ga_id" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Analytics ID for Dev</label>
+                </field>
+                <field id="field2" translate="label" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Google Tag Manager Code</label>
+                </field>
+            </group>
+            <group id="emarsys_config" type="text" sortOrder="62" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Emarsys Configuration</label>
+                <field id="field1" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Emarsys integration</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="field2" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Create Products CSV</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="field3" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Emarsys API integration</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <!-- <field id="field4" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="4">
+                    <label>API url</label>
+                </field> -->
+                <field id="field5" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="4">
+                    <label>Username</label>
+                </field>
+                <field id="field6" translate="label" type="password" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="4">
+                    <label>Password</label>
+                </field>
+                <field id="field7" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="4">
+                    <label>New Api Url</label>
+                </field>
+            </group>
+            <group id="new_subscription_plans" type="text" sortOrder="63" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>New Subscription Plans Configuration</label>
+                <field id="monthly_with_custom_design_subscription_plan_enable" type="select" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Monthly with Custom Design Subscription Plan</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="semiannual_with_custom_design_subscription_plan_enable" type="select" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Semi-Annual with Custom Design Subscription Plan</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="seo_config" type="text" sortOrder="64" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>SEO Configuration</label>
+                <field id="phone" translate="label" type="textarea" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Text for phone field on registration page</label>
+                </field>
+                <field id="cat_ids" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Categories Id for which submenu will display</label>
+                </field>
+            </group>
+            <group id="stageoptions_config" type="text" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Stageoptions' Exceptional Categories</label>
+                <field id="stageoptions_config_field1" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Category Id which is exception for stageoptions</label>
+                </field>
+            </group>
+            <group id="theme_emarsys_config" type="text" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Theme Emarsys Exclusion</label>
+                <field id="theme_emarsys_config_field1" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Please enter theme's subcategory id(s) for which exclude Emarsys widgets</label>
+                    <comment>Comma seprated category id(s)</comment>
+                </field>
+            </group>
+            <group id="theme_custom_config" type="text" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Theme Custom Widget Exclusion</label>
+                <field id="theme_custom_config_field1" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Please enter theme's subcategory id(s) for which exclude Custom widgets</label>
+                    <comment>Comma seprated category id(s)</comment>
+                </field>
+            </group>
+            <group id="recommended_premium_templates" type="text" sortOrder="75" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Recommended Premium Templates Settings</label>
+                <field id="recommended_premium_templates_field1" type="select" sortOrder="1" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Recommended Premium Templates Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="recommended_premium_templates_field2" type="text" translate="label" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Please enter Category id(s)</label>
+                </field>
+                <field id="recommended_premium_templates_field3" type="text" translate="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Please enter No of products to display</label>
+                    <comment>Multiple of 5(Recommanded)</comment>
+                </field>
+                <field id="recommended_premium_templates_field4" type="text" sortOrder="2" translate="label" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Please enter Title for the Recommended template Block</label>
+                </field>
+                <field id="recommended_premium_templates_field5" type="text" translate="label" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Please enter Title for the Block below Recommended template Block</label>
+                </field>
+            </group>
+            <group id="payment_method_order" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Payment Method order for inline solution</label>
+                <field id="payment_methods" translate="label" type="select" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Available Payments</label>
+                    <comment>Select the method for first selection</comment>
+                </field>
+            </group>
+            <group id="review" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Review Configuration</label>
+                <field id="email_template" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter email template</label>
+                </field>
+                <field id="next_review_product" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Next product Id</label>
+                </field>
+            </group>
+            <group id="blog_config" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Blog Post URL Configuration</label>
+                <field id="start_date" translate="label comment" sortOrder="4" type="date" showInDefault="1" showInStore="1" >
+                    <label>Start Date for adding param in Blog URL</label>
+                    <frontend_model>Tatva\Generalconfiguration\Block\DatePicker</frontend_model>
+                </field>
+            </group>
+            <group id="A4_product"  type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>A4 Product Category Selection</label>
+                <field id="category_tree" translate="label" type="multiselect"
+                    sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Category for A4 Product</label>
+                    <source_model>Tatva\Generalconfiguration\Model\Config\Source\Category</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="contact" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Contacts</label>
+            <tab>general</tab>
+            <resource>Magento_Contact::contact</resource>
+            <group id="store_phone" type="text" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Phone Contact</label>
+                <field id="phone" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Contact Number</label>
+                    <comment>This will display in Header as well as FAQ page</comment>
+                </field>
+            </group>
+        </section>
+        <section id="A4" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>A4 Configuration</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Generalconfiguration::button_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>A4 Parent Category</label>
+                <field id="a4category" translate="label" type="multiselect"
+                    sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>A4 Parent Category Selection</label>
+                    <source_model>Tatva\Generalconfiguration\Model\Config\Source\A4Category</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="feed_count" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Emarsys And SLI</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Generalconfiguration::button_config</resource>
+            <group id="sli_feed" type="text" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>SLI Feed Count</label>
+                <field id="yesterday_count" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SLI Yesterday Feed Count</label>
+                </field>
+                <field id="today_count" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>SLI Today Feed Count</label>
+                </field>
+            </group>
+            <group id="emarsys_feed" type="text" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Emarsys Feed Count</label>
+                <field id="yesterday_count" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Emarsys Yesterday Feed Count</label>
+                </field>
+                <field id="today_count" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Emarsys Today Feed Count</label>
+                </field>
+            </group>
+            <group id="feed_email" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Email for Feed Count Less </label>
+                <field id="to_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(To)</label>
+                    <comment>enter comma separated emails</comment>                   
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(CC)</label>
+                    <comment>enter comma separated emails</comment>                   
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Tatva_Supportingextensions::supportingextension" title="Supporting Extensions" sortOrder="51">
+                    <resource id="Tatva_Notification::menu" title="Tatva Notification" sortOrder="51">
+                        <resource id="Tatva_Notification::view" title="View" sortOrder="10" />
+                        <resource id="Tatva_Notification::create" title="Create" sortOrder="20" />
+                        <resource id="Tatva_Notification::edit" title="Edit" sortOrder="30" />
+                        <resource id="Tatva_Notification::delete" title="Delete" sortOrder="40" />
+                        <resource id="Tatva_Notification::massDelete" title="Mass Delete" sortOrder="50" />
+                        <resource id="Tatva_Notification::massDisable" title="Mass Disable" sortOrder="60" />
+                        <resource id="Tatva_Notification::massEnable" title="Mass Enable" sortOrder="70" />
+                    </resource>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Tatva_Notification::tatva_notification_config" title="Tatva Notification"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+        </resources>
+    </acl>
+</config>

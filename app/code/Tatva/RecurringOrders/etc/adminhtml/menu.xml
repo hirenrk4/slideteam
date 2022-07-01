@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magento_Sales::recurringorder" resource="Tatva_RecurringOrders::index" title="Recurring Orders" action="recurringorder/index/index" module="Tatva_RecurringOrders" sortOrder="100" parent="Magento_Sales::sales_operation" />
+    </menu>
+</config>

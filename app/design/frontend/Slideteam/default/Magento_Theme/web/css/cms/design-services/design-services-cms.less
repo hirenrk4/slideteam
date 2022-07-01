@@ -1,0 +1,214 @@
+@import '../../source/_variablesm2.less';
+@import '../../source/_mixins.less';
+
+/*Common css for form of all cms pages*/
+.customdesignservice-form{
+	margin: 0 auto;
+    max-width: 960px;
+    .input-box{
+    	.mage-error{
+			color: @slideteam_red6;
+			font-size: 13px;
+			line-height: 17px;
+			margin: 5px 0 0;
+		}
+    }
+	.form-top-block{
+		margin: 0 -15px 30px;
+		.col{
+			width: 33.3333%;
+		    float: left;
+		    padding: 0 15px;
+		    box-sizing: border-box;
+		    .input-box{
+		    	.form-control{
+		    		border: 1px solid @slideteam_gray50;
+				    border-radius: 5px;
+				    box-shadow: none;
+				    outline: 0 none;
+				    padding-left: 8px;
+				    width: 100%;
+				    height: 52px;
+				    font-size: 13px;
+				    line-height: 17px;
+				    color: @gray27;
+				    .placeholder(@slideteam_gray84);
+		    	}
+		    }
+		}
+	}
+	.field{
+		.input-box{
+			textarea{
+				border: 1px solid @slideteam_gray50;
+			    border-radius: 5px;
+			    outline: 0 none;
+			    padding-left: 12px;
+			    width: 100%;
+			    font-size: 13px;
+				line-height: 17px;
+				color: @gray27;
+				overflow-y: auto;
+				.placeholder(@slideteam_gray84);
+				&:focus{
+					box-shadow:none;
+				}
+			}
+		}
+	}
+	.inner-attach{
+		margin-top: 10px;
+		position: relative;
+		.attach-block{
+			width: 100%;
+			float: left;
+			box-sizing: border-box;
+			.ajax-upload-dragdrop{
+				display: inline-block;
+				.custom-upload{
+					display: inline-block;
+				}
+			}
+		}
+		.tooltips{
+			display: inline-block;
+			em{
+				float: left;
+			    cursor: pointer;
+			    background: @slideteam_orange15;
+			    border-radius: 100%;
+			    height: 30px;
+			    text-align: center;
+			    width: 30px;
+			    img{
+			    	margin:0 auto;
+			    	position: relative;
+			    	top: 4px;
+			    }
+			}
+		}
+		.tipso_style{
+			display: inline-block;
+			position: absolute;
+     		left: 150px; 
+     		border-bottom: none;
+     		cursor: pointer;
+     		top:0px;
+		}	
+		.formbtn-wrap{
+			width: 100%;
+			display: inline-block;
+			text-align: right;
+			button{
+				&.primary{
+					border: 2px solid  @slideteam_orange15;
+					background:@slideteam_orange15;
+					color: @white;
+					padding: 0 20px;
+					font-weight: 700;
+					min-width: 136px;
+					font-size: 16px;
+					line-height: 20px;
+					&:hover{
+						border: 2px solid  @slideteam_orange15;
+						background-color:transparent;
+						color: @white;
+					}
+				}
+			}
+		}		
+	}	
+}
+/*Css of tooltip*/
+.tipso_bubble{
+	text-align: left;
+	font-size: 12px;
+	line-height: 16px;
+}
+
+/*Common Loader CSS for cms pages*/
+.mfp-wrap{
+	.mfp-preloader{
+		background: url(../../../../Magento_Cms/images/popup/fancybox_loading.gif) no-repeat;
+		width: 36px;
+		height: 36px;
+		margin: 0 auto;
+		z-index: 9999;
+	}
+}
+
+/*Media Query*/
+@media(max-width: 1366px){
+	.customdesignservice-form{
+		max-width: 846px;
+	}
+}
+
+@media(max-width: 991px){
+	.customdesignservice-form{
+		max-width: 100%;
+	}
+
+}
+
+@media(max-width: 767px){
+	.customdesignservice-form {
+		.form-top-block{
+			.col {
+				.input-box {
+					.form-control{
+						font-size: 12px;
+						line-height: 16px;
+						height: 45px;
+					}
+					
+				}
+			}
+		} 
+		.inner-attach{
+			.formbtn-wrap{
+				 button{
+				 	&.primary{
+				 		height: 35px;	
+					 	font-size: 15px;
+					 	line-height: 19px;
+				 	}
+				 }
+			}
+		}
+	}
+}
+
+@media(max-width: 575px){
+	.customdesignservice-form {
+		.form-top-block{
+			margin-bottom: 7px;
+			.col {
+				width: 100%;
+				margin-bottom: 7px;
+				.input-box {
+					.form-control{
+						height: 35px;
+					}
+				}
+			}
+			.field{
+				.input-box{
+					textarea{
+						font-size: 12px;
+						line-height: 16px;
+					}
+				}
+			}
+		} 
+		.inner-attach{
+			.attach-block{
+				width: 100%;
+			}
+			.formbtn-wrap{
+				text-align: left;
+			}
+			
+		}
+	}
+}

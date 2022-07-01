@@ -1,0 +1,30 @@
+<?php
+/**
+ * @see Tatva_Subscription_Block_Catalog_Product_View
+ * @todo product view detail page's header >> 1.Product Name and one line description
+ */
+$_product = $this->getProduct(); 
+$languages = array("spanish","german","french","portuguese");
+$languagestatus = $this->customProductAttribute($_product, $_product->getLanguagestatus(), 'languagestatus');
+?>
+
+<div class="no-display">
+	<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" id="get-Product" />
+	<input type="hidden" name="related_product" id="related-products-field" value="" />
+</div>
+
+<?php if($languagestatus == 1): ?>
+<?php echo $this->getLayout()->createBlock("\Tatva\Catalog\Block\Product\View")->setTemplate("Tatva_Translate::select.phtml")->toHtml() ?>
+<?php endif; ?>
+
+<?php if (isset($_GET['lang']) && $languagestatus == 1 && in_array(strtolower($_GET['lang']), $languages)):
+?>
+	<?php $lang_para = $this->getCurrentlangdata();
+	$title = $lang_para[63];
+	$subtitle = $lang_para[142]; ?>
+	<h1 class="product-gallery-title"><?php echo $title ?></h1>
+	<p class="product-gallery-sub-title"><?php echo $subtitle ?></p>
+<?php else: ?> 
+	<h1 class="product-gallery-title"><?php echo $this->customProductAttribute($_product, $_product->getName(), 'name') ?></h1>
+	<p class="product-gallery-sub-title"><?php echo $_product->getResource()->getAttribute('sentence1')->getFrontend()->getValue($_product)?></p>
+<?php endif; ?>

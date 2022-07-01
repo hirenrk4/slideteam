@@ -1,0 +1,78 @@
+<?php
+$helper = $block->getHelper();
+$getTestimonialDetails = $block->getTestimonialDetails();
+
+    if ($getTestimonialDetails->count() == 0):
+        echo "<br><br><br>Testimonial is no longer exist";
+    endif;
+foreach ($getTestimonialDetails as $testimonial):
+    ?>
+<!--    <div class="breadcrumbs padding0">
+        <ul class="items">
+            <li class="item Home">
+                <a href="<?php echo $block->getUrl();?>" title="Go to Home Page">Home</a>
+            </li>
+            <li class="item Testimonials">
+                <a href="<?php echo $block->getUrl('testimonial/testimonial/index/');?>" title="Testimonials">Testimonials</a>
+            </li>
+            <li class="item detail">
+                <a href="<?php echo $block->getUrl('testimonial/description/index', array('testimonial' => $testimonial['testimonial_id'])); ?>" title="<?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?>">
+                <strong><?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?></strong></a>
+            </li>
+        </ul>
+    </div>-->
+
+
+    <div class="testimonialDetail">
+        <p class="testimonialPhoto">
+            <?php if (!empty($testimonial['image'])):
+                ?>
+                <img src="<?php echo $helper->getBaseUrl() . $testimonial['image']; ?>" />
+                <?php
+            endif;
+            ?>
+        </p>
+        <div class="testimonialHead">
+            <h4><?php echo $testimonial['first_name'] . " " . $testimonial['last_name']; ?></h4>
+            <?php
+            $ageGender = array();
+            if (!empty($testimonial['age'])):
+                $ageGender[] = " Age: " . $testimonial['age'];
+            endif;
+            if (!empty($testimonial['gender'])):
+                $ageGender[] = " Gender: " . $testimonial['gender'];
+            endif;
+
+            if (count($ageGender) > 0):
+                $ageGenderValue = @implode(",", $ageGender);
+            endif;
+            ?>
+            <span><?php echo $testimonial['designation'] . ", " . $testimonial['company'] . "."; ?></span>  | <span><?php echo $ageGenderValue; ?></span> </div>
+        <p><?php echo $testimonial['testimonial'] . "."; ?></p>
+
+        <?php
+        $addCity = array();
+        if (!empty($testimonial['address'])):
+            $addCity[] = $testimonial['address'];
+        endif;
+        if (!empty($testimonial['city'])):
+            $addCity[] = $testimonial['city'];
+        endif;
+        if (!empty($testimonial['state'])):
+            $addCity[] = $testimonial['state'];
+        endif;
+
+        if (count($ageGender) > 0):
+            $addCityValue = @implode(",", $addCity);
+        endif;
+        ?>
+        <p><?php echo $addCityValue; ?> <br />
+            <a href="<?php echo $testimonial['website']; ?>" target="_blank"><?php echo $testimonial['website']; ?></a> </p> 
+
+    </div>       
+    <?php
+    break;
+endforeach;
+?>
+   
+

@@ -1,0 +1,10 @@
+<?php
+	$helper = $this->helper('Tatva\Theme\Helper\Header');
+?>
+<div class="product-view-popup-btn">
+	<picture>
+		<source srcset="<?php echo $block->getViewFileUrl('Tatva_Downloadable::images/product-popup/Flag_blue.webp') ?>" type="image/webp">
+	    <img class="popup-img" src="<?php echo $block->getViewFileUrl('Tatva_Downloadable::images/product-popup/Flag_blue.png') ?>" loading="auto" alt="Flag blue" width="20px" height="20px"/>
+	</picture>
+    <a href="<?php echo $helper->getStoreBaseUrl().'powerpoint_presentation_design_services/'; ?>" title="Custom Presentation Design Services" class="popup-product">Want a Custom Designed Slide or PPT? Check our Presentation Design Services</a>
+</div>

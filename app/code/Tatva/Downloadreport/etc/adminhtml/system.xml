@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="downloadreport" translate="label" sortOrder="10">
+            <label>download report</label>
+        </tab>
+        <section id="downloadreport" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Customer Download Report</label>
+            <tab>downloadreport</tab>
+            <resource>Tatva_Downloadedreport::downloadreport</resource>
+            <group id="max_size" translate="label" type="text" sortOrder="111" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Customer Download Report</label>
+                <field id="min_limit" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customers minimum download are</label>
+                </field>
+            </group>
+            <group id="email_config" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Customer Download Report Mail Configurations</label>
+                <field id="to_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(To)</label>                   
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(cc)</label>
+                    <comment>enter comma separated emails</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="contact" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Contacts</label>
+            <tab>general</tab>
+            <resource>Magento_Contact::contact</resource>
+            <group id="email" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Options</label>
+                <field id="enable_email_loginpopup_to" type="select" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Survey Email(To)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="recipient_email_loginpopup" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Survey Recipient(To)</label>
+                </field>
+                <field id="enable_email_loginpopup_bcc" type="select" translate="label" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Customer Survey Email(Bcc)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="recipient_email_loginpopup_bcc" translate="label" type="text" sortOrder="13" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Customer Survey Recipient(BCC)</label>
+                    <comment>Please enter emails (,) separated</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

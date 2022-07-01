@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="paid_customer_additional_data_listing_data_source" xsi:type="string">Tatva\PaidCustomerPopup\Model\ResourceModel\CustomerAdditionlData\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Tatva\PaidCustomerPopup\Model\ResourceModel\CustomerAdditionlData\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">paid_customer_additional_data</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\PaidCustomerPopup\Model\ResourceModel\CustomerAdditionlData</argument>
+        </arguments>
+    </type>
+</config>

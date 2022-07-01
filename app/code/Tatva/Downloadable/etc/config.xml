@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <downloadable_captcha>1</downloadable_captcha>
+                    <product-contact-cap>1</product-contact-cap>
+                    <downloadable_ajax_loginform>1</downloadable_ajax_loginform>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <downloadable_captcha>1</downloadable_captcha>
+                    <product-contact-cap>1</product-contact-cap>
+                    <downloadable_ajax_loginform>1</downloadable_ajax_loginform>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <downloadable_captcha>
+                        <label>Downloadable Captcha Form</label>
+                    </downloadable_captcha>
+                    <product-contact-cap>
+                        <label>Product Popup Contact Cap</label>
+                    </product-contact-cap>
+                    <downloadable_ajax_loginform>
+                        <label>Downloadable ajax loginform</label>
+                    </downloadable_ajax_loginform>
+                </areas>
+            </frontend>
+        </captcha>
+        <button>
+            <review>
+                <email_template>review_email_template</email_template>
+                <next_review_product>1</next_review_product>
+            </review>
+        </button>
+    </default>
+</config>

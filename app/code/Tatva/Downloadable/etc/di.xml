@@ -1,0 +1,10 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+<preference for="Magento\Review\Block\Adminhtml\Edit\Form" type="Tatva\Downloadable\Block\Adminhtml\Edit\Form" />
+<preference for="Magento\Review\Controller\Product\Post" type="Tatva\Downloadable\Controller\Product\Post" />
+<preference for="Magento\Review\Model\ResourceModel\Review" type="Tatva\Downloadable\Model\ResourceModel\Review" />
+<preference for="Magento\Review\Block\Adminhtml\Grid" type="Tatva\Downloadable\Block\Adminhtml\Grid" />
+<preference for="Magento\Review\Controller\Adminhtml\Product\Save" type="Tatva\Downloadable\Controller\Adminhtml\Product\Save" />
+<preference for="Magento\Review\Model\ResourceModel\Review\Product\Collection" type="Tatva\Downloadable\Model\Reviews\Collection" />
+
+<preference for="Magento\Review\Model\ResourceModel\Review\Summary" type="Tatva\Downloadable\Model\ResourceModel\Review\Summary" />
+</config>

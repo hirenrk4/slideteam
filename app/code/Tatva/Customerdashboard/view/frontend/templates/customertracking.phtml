@@ -1,0 +1,54 @@
+<?php
+$page_type = $block->getRequest()->getFullActionName();
+$routename = $block->getRequest()->getRouteName();
+$storecode = $block->getStore();
+$pageUri = $block->getRequest()->getRequestUri();
+?>
+
+<?php if($page_type == 'catalog_product_view'): ?>
+<script type="text/javascript">
+require(['jquery'],function($) {
+	$(document).ready(function(){
+        $('#clicking').on('click',function(){
+            var event = 'Product Download Button Clicked';
+            $.ajax({
+	            type: 'POST',
+	            url: '<?php echo $this->getURL('customerdashboard/index/customeractivity'); ?>',
+	            data: {
+	                event:event,
+	                pageUri: '<?php echo $this->getRequest()->getRequestUri()?>'
+	            },
+	            dataType: 'json',
+	            success:function(data) {}
+	        });
+        });
+    });
+})
+</script>
+<?php endif; ?>
+
+<script type="text/javascript">
+require(['jquery'],function($) {
+	$(document).ready(function() {
+		$('#search_mini_form').on('submit',function() {
+			var keyword = $('#search').val();
+			if(keyword)
+			{
+				var event = 'Search Button Clicked with keyword = '+keyword;
+			} else {
+				var event = 'Search Button Clicked without input';
+			}
+			$.ajax({
+	            type: 'POST',
+	            url: '<?php echo $this->getURL('customerdashboard/index/customeractivity'); ?>',
+	            data: {
+	                event:event,
+	                pageUri: '<?php echo $this->getRequest()->getRequestUri()?>'
+	            },
+	            dataType: 'json',
+	            success:function(data) {}
+	        });
+		})
+	});
+});
+</script>

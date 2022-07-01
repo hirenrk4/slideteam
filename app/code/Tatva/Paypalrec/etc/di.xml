@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\Paypal\Model\Ipn">
+        <plugin name="Tatva_Paypalrec_AfterProcessIpnRequest" type="Tatva\Paypalrec\Plugin\Model\Ipn" sortOrder="1" />
+    </type>
+    <type name="Magento\PayPalRecurringPayment\Model\Ipn">
+        <plugin name="Tatva_Paypalrec_AfterProcessIpnRequest" type="Tatva\Paypalrec\Plugin\Model\Ipn" sortOrder="1" />
+    </type>
+    <type name="Tatva\Paypalrec\Model\Paypal\Ipn">
+        <plugin name="Tatva_Paypalrec_AfterProcessIpnRequest" type="Tatva\Paypalrec\Plugin\Model\Ipn" sortOrder="1" />
+    </type>
+    <preference for="Magento\Paypal\Model\Ipn" type="Tatva\Paypalrec\Model\Paypal\Ipn" />
+    <preference for="Magento\Paypal\Model\Info" type="Tatva\Paypalrec\Model\Info" />
+    <preference for="Magento\Paypal\Controller\Ipn\Index" type="Tatva\Paypalrec\Controller\CustomIpn\Index" />
+    <type name="Magento\Paypal\Controller\Express\AbstractExpress\Cancel">
+        <plugin name="paypalcancel_redirectcheckout"
+        type="Tatva\Paypalrec\Plugin\Express\AbstractExpress\Cancel"/>
+    </type>
+</config>

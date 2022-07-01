@@ -1,0 +1,17 @@
+{
+    "name": "vgroup65/testimonial",
+    "description": "A module that creates a testimonial in the Magento admin area and diaplay testimonial on front end",
+    "type": "magento2-module",
+    "version": "0.0.1",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": ["registration.php"],
+        "psr-4": {
+            "Vgroup65\\Testimonial\\": ""
+        }
+    }
+}
+   

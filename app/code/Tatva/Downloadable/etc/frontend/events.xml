@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="downloadable_before_download">
+		<observer name="tatva_downloadable_before_download" instance="Tatva\Downloadable\Observer\beforeDownload"/>
+	</event>
+	<event name="downloadable_after_download">
+		<observer name="tatva_downloadable_after_download" instance="Tatva\Downloadable\Observer\afterDownload"/>
+	</event>
+	<event name="catalog_controller_product_view">
+        <observer name="reports" disabled="true" />
+    </event>
+</config>

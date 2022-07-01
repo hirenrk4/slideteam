@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Tatva_Categoryreport::categoryreport" title="Category Products Export" module="Tatva_Categoryreport" sortOrder="15" action="categoryreport/report/category" resource="Tatva_Categoryreport::categoryreport" parent="Tatva_Supportingextensions::customreports" />
+    </menu>
+</config>

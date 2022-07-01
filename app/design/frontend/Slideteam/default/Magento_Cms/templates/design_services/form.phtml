@@ -1,0 +1,146 @@
+
+<h4>Submit a Quick Request</h4>
+<p>Send us a quick message and we will get back to you within 24 business hours</p>
+<form class="request-row-form" name="design_services_form" id="design_services_form" action="<?php echo $this->getUrl('customdesignservice/index/sendEmail'); ?>" method="POST" class="customdesignservice-form" enctype="multipart/form-data">
+	<div class="form-group">
+		<input class="form-control required-entry" type="text" placeholder="Name" name="name" id="name" />
+	</div>
+	<div class="form-group">
+		<input class="form-control required-entry validate-email" type="text" placeholder="Email ID" name="email" id="email"/>
+	</div>
+	<div class="form-group">
+		<textarea class="form-control required-entry" name="comment" id="comment" placeholder="Description about the project. Be as detailed as you can."  maxlength="2000" ></textarea>
+		<div class="allforms-comment-msg"><?php echo __("Max length should be 2000 character."); ?></div>
+	</div>	
+	<div class="form-group form-upload clearfix">
+		<div class="attach-block clearfix">
+	        <div id="mulitplefileuploader" class="box">
+				<label>	
+					<img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/design-services/file-img1.png'); ?>" alt="">
+					<span class="design-service-attachtext">Attach a file</span>				
+				</label>
+			</div>
+			<div id="status"></div>
+			<input id ="filesToAttach" type ="hidden" name="filesToAttach" />
+		</div>
+		<span class="tip top-right tipso_style" data-tipso="Please upload any mockups, presentations, sketches, back of napkin designs etc.
+	       <br>NOTE: Please use dropbox or yousendit and send us the link if the attachment is greater than 25 MB, or mail them separately to design@slideteam.net">
+			<a class="tooltips">				
+				<em>
+					<img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/design-services/file-img2.png'); ?>" alt="" class="normal-img">
+				</em>				
+			</a>
+		</span>		
+    </div>
+    <div class="form-group">
+    	<div class="captcha-wrapper">
+			<?php
+		    	$blockPath = 'Magento\Captcha\Block\Captcha';
+		    	$block = $this->getLayout()->createBlock($blockPath);
+		        $cap_data = array('form_id'=>'custom_design_service_captcha','img_width'=>'50');
+		        $block->setData($cap_data);
+		        echo $block->toHtml();
+		    ?>
+		</div>
+    </div>
+	<div class="form-group">
+	 	<button type="submit" title="Submit" name="submit" id="finalSubmit" class="action submit primary default-btn btn"><span>Submit</span></button>	
+	</div>
+</form>
+
+<script type="text/javascript">
+	require(['jquery','JQForm','uploadFileJS','tipso','mage/mage','jquery/jquery-ui-1.9.2'], function($) {
+		$(document).ready(function ()
+		{
+			$("label:contains('Please type captcha here')").remove();
+			$('#design_services_form').find('input[name*="captcha"]').attr("placeholder", "PLEASE TYPE CAPTCHA HERE");
+			$('#design_services_form').find('input[name*="captcha"]').css('padding-left', '12px');
+
+			$('.captcha-img').remove();
+			$('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="spinner-img" height="50" width="50" src="<?= $block->getViewFileUrl('Magento_Cms::images/popup/spinner.gif') ?>"/>').insertBefore('.captcha-reload');
+			$.ajax({
+        		type: 'POST',
+		        url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+		        data:'formId=custom_design_service_captcha',
+		        success:function(data) {
+		        	$('.spinner-img').hide();
+		        	$('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('.captcha-reload'); 
+		        	return false;                 
+                }
+            });
+
+			var settings = 
+			{
+				url: "<?php echo $block->getUrl('customdesignservice/index/save'); ?>",
+				method: "POST",
+				allowedTypes: "pdf, ppt, pptx,doc, docx, jpg, jpeg, png, gif, xlsx, xlsm, xlsb, xls, xltx, xltm, xlt, csv, xlam, xla, ods, zip, txt",
+				maxFileSize: 5242880,
+				sizeErrorStr: " is greater than 5 MB. Please reduce the size of the attachment(s) or use Dropbox/Google Drive or a similar tool to send us the attachment(s). OR Send the attachment directly via email to <a href='mailto:design@slideteam.net'>design@slideteam.net</a>",
+				fileName: "myfile",
+				uploadStr: jQuery(".box").html(),
+				multiple: true,
+				nestedForms:false,
+				dragDropStr:"",
+				onSuccess: function (files, data, xhr)
+				{
+					var file_data = jQuery.parseJSON(data);                   
+					$('<input>').attr({
+						type: 'hidden',
+						name: file_data.original + "[]",
+						value: file_data.modified
+					}).appendTo('form');
+
+				},
+				onError: function (files, status, errMsg)
+				{                    
+					$("#status").html(errMsg);
+				},
+				onSelect:function(file)
+				{
+					if(file[0].size > 5242880)
+					{
+						//$('#finalSubmit').hide();
+					} else {
+						$('#finalSubmit').show();
+					}
+				}
+			};
+
+			$("#mulitplefileuploader").uploadFile(settings);
+
+			var dataForm = $('#design_services_form');
+			var ignore = null;
+
+			dataForm.mage('validation', 
+			{
+				ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+			}).find('input:text').attr('autocomplete', 'off');
+
+			$('#finalSubmit').click( function() 
+            { //can be replaced with any event
+                //dataForm.validation('isValid'); //validates form and returns boolean
+                $('.ajax-file-upload > form > input').unwrap(); 
+
+                if(dataForm.validation('isValid') === false)
+                {
+                	$("#mulitplefileuploader").uploadFile(settings);
+                	return false;
+                }
+            });
+			$(".tip").tipso({position: 'left',size: 'large'});
+
+			// task 1344
+			$("#comment").on("keyup",function() {
+			  var maxLength = $(this).attr("maxlength");
+			  if(maxLength == $(this).val().length) {
+			  	$('#comment-error').hide();
+			    $('.allforms-comment-msg').show();
+			  }else{
+			    $('.allforms-comment-msg').hide();
+			  }
+			});
+			// task 1344 end
+		});
+	})
+</script>
+

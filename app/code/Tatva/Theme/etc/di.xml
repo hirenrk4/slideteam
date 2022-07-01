@@ -1,0 +1,4 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+	<preference type="Tatva\Theme\Block\Html\Links" for="Magento\Framework\View\Element\Html\Links" />
+	<preference type="Tatva\Theme\Block\Html\Pager" for="Magento\Theme\Block\Html\Pager" />
+</config>

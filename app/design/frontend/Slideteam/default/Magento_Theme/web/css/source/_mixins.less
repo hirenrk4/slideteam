@@ -1,0 +1,91 @@
+/* Mixins */
+.border-radius(@radius) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	-ms-border-radius: @radius;
+	-o-border-radius: @radius;
+	border-radius: @radius;
+}
+
+.box-shadow(@shadow) {
+	-webkit-box-shadow: @shadow;
+	-moz-box-shadow: @shadow;
+	-ms-box-shadow: @shadow;
+	-o-box-shadow: @shadow;
+	box-shadow: @shadow;
+}
+
+.transition(@transition) {
+	-webkit-transition: @transition;
+	-moz-transition: @transition;
+	-ms-transition: @transition;
+	transition: @transition;
+}
+
+.transform(@transform) {
+	-webkit-transform: @transform;
+	-moz-transform: @transform;
+	-ms-transform: @transform;
+	transform: @transform;
+}
+
+.transition-timing-function(@transition-timing-function){
+	-webkit-transition-timing-function: @transition-timing-function;
+	-moz-transition-timing-function: @transition-timing-function;
+	-ms-transition-timing-function: @transition-timing-function;
+	transition-timing-function: @transition-timing-function;	
+}
+
+.skew(@skew) {
+	-webkit-transform: skew(@skew);
+    -moz-transform: skew(@skew);
+    -o-transform: skew(@skew);
+    transform: skew(@skew);
+}
+.rotate(@rotate) {
+    -ms-transform: rotate(@rotate);
+    -moz-transform: rotate(@rotate);
+    -webkit-transform: rotate(@rotate);
+    -o-transform: rotate(@rotate);
+    transform: rotate(@rotate);
+}
+.text-shadow(@shadow) {
+	-webkit-text-shadow: @shadow;
+	-moz-text-shadow: @shadow;
+	-ms-text-shadow: @shadow;
+	text-shadow: @shadow;
+}
+
+.trannsformrotate(@rotate,@skew) {
+	-webkit-transform:rotate(@rotate) skewY(@skew);
+	-moz-transform: rotate(@rotate) skewY(@skew);
+	-ms-transform: rotate(@rotate) skewY(@skew);
+	transform: rotate(@rotate) skewY(@skew);
+}
+.scale(@scale) {
+    -ms-transform: scale(@scale);
+    -moz-transform: scale(@scale);
+    -webkit-transform: scale(@scale);
+    -o-transform: scale(@scale);
+    transform: scale(@scale);
+}
+.placeholder(@color) {
+
+    &::-webkit-input-placeholder {
+        color:@color;
+        opacity: 1;
+    }
+    &:-moz-placeholder {
+        color:@color;
+        opacity: 1;
+    }
+    &::-moz-placeholder {
+       color:@color;
+       opacity: 1;
+    }
+    &:-ms-input-placeholder {
+        color:@color;
+        opacity: 1;
+    }
+}
+

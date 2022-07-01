@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+	<customer>
+			<captcha>
+				<shown_to_logged_in_user>
+					<blog_captcha_form>1</blog_captcha_form>
+				</shown_to_logged_in_user>
+				<always_for>
+					<blog_captcha_form>1</blog_captcha_form>
+				</always_for>
+			</captcha>
+		</customer>
+		<wordpress>
+			<setup>
+				<enabled>1</enabled>
+				<path>wp</path>
+				<theme_integration>1</theme_integration>
+				<ignore_store_code>0</ignore_store_code>
+			</setup>
+			<xmlsitemap>
+  			<enabled>1</enabled>
+			</xmlsitemap>
+		</wordpress>
+		<captcha translate="label">
+            <frontend>
+                <areas>
+                    <blog_captcha_form>
+                        <label>Blog Captcha Form</label>
+                    </blog_captcha_form>
+                </areas>
+            </frontend>
+        </captcha>
+	</default>
+</config>

@@ -1,0 +1,141 @@
+<fieldset class="fieldset create info">
+	<div class="fieldtext email">
+		<div class="control">
+			<input type="email" placeholder="<?php echo __('Email Address') ?>" name="email" title="<?php echo __('Email Address') ?>" class="input-text" data-validate="{required:true,'validate-email':true}">
+		</div>
+	</div>
+	<div class="fieldtext col-div  firstname">
+		<div class="control">
+			<input type="text" placeholder="<?php echo __('First Name') ?>" id="firstname" name="firstname" title="<?php echo __('First Name') ?>" class="input-text" data-validate="{required:true,SpecialCharValidation:true}">
+		</div>
+		<div class="control">
+			<input type="text" placeholder="<?php echo __('Last Name') ?>" id="lastname" name="lastname" title="<?php echo __('Last Name') ?>" class="input-text" data-validate="{required:true,SpecialCharValidation:true}">
+		</div>
+	</div>
+	<div class="fieldtext password">
+		<div class="control">
+			<input type="password" placeholder="<?php echo __('Password') ?>" name="password" id="password" title="<?= $block->escapeHtmlAttr(__('Password')) ?>" class="input-text popupform-pass" data-password-min-length="6" data-password-min-character-sets="1" data-validate="{required:true, 'validate-customer-password':true}" autocomplete="off">
+		</div>
+	</div>
+	<div class="fieldtext confirm-password">
+		<div class="control">
+			<input type="hidden" placeholder="<?php echo __('Confirm Password') ?>" name="password_confirmation" title="<?= $block->escapeHtmlAttr(__('Confirm Password')) ?>" id="password-confirmation" class="input-text popupform-pass-confirm" data-validate="{required:true, equalTo:'#password'}" autocomplete="off" data-msg-equalTo="password and confirm password do not match.">
+		</div>
+	</div>
+
+
+	<div class="captcha-wrapper">
+		<?php
+		$blockPath = 'Magento\Captcha\Block\Captcha';
+		$blockCaptcha = $this->getLayout()->createBlock($blockPath);
+		$cap_data = array('form_id' => 'downloadable_ajax_loginform', 'img_width' => '50');
+		$blockCaptcha->setData($cap_data);
+		echo $blockCaptcha->toHtml();
+
+		?>
+		<?php //echo $block->getChildHtml('form.additional.info'); 
+		?>
+	</div>
+
+	<p class="custom-optional-text">(Optional) Please enter your phone number if you'd like us to call you to explain our products and services.</p>
+	<div class="fieldtext col-div  firstname">
+		<div class="control">
+			<select id="country-isd-code" class="phonecode-dropdown" name="isd-code" data-validate="{required:true}">
+				<option value=""><span>Select Country Code</span></option>
+			</select>
+			<div id="country-code-error" generated="true" style="color:#d24031;font-size: 13px;margin-bottom:10px;"></div>
+		</div>
+		<div class="control">
+			<input type="text" placeholder="<?php echo __('Phone Number') ?>" id="contact_number" name="contact_number" data-validate="{'contactNumberValidation':true}" value="" title="Phone Number" class="input-text" autocomplete="off" style="padding-left: 135px;">
+		</div>
+		<input type="hidden" name="country_id" id="country_id" value="">
+	</div>
+
+
+	<?php if ($block->isNewsletterEnabled()) : ?>
+		<div class="fieldtext newsletter">
+			<div class="control">
+				<input type="checkbox" name="is_subscribed" title="<?= $block->escapeHtmlAttr(__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed" <?php if ($block->getFormData()->getIsSubscribed()) : ?> checked="checked" <?php endif; ?> class="checkbox">
+			</div>
+			<span><?= $block->escapeHtml(__("I'd like to receive email about product updates, personalized recommendations, offers, and PowerPoint and presentation tips and tricks.")) ?></span>
+		</div>
+	<?php endif ?>
+	<div class="actions-toolbar">
+		<div class="primary">
+			<button type="submit" class="action submit primary sign-up-button" title="<?= $block->escapeHtmlAttr(__('Sign UP')) ?>"><span><?= $block->escapeHtml(__('Sign Up')) ?></span></button>
+		</div>
+	</div>
+</fieldset>
+
+<script type="text/javascript">
+	require(['jquery',
+				'jquery/validate',
+				'mage/translate',
+				'dropkick'
+			], function($) {
+				$(document).ready(function() {
+						var $passwordins = $('.popupform-pass, .popupform-pass-confirm').keyup(function() {
+							$passwordins.not(this).val(this.value);
+						});
+						$('.customer-login-box #ajaxlogin-create-form').find('input[name*="captcha"]').attr("placeholder", "Please type captcha here");
+
+
+						$.validator.addMethod(
+							"contactNumberValidation",
+							function(v) {
+								return $.mage.isEmptyNoTrim(v) || /^((\d+)(\-|\s){0,1})*\d+$/.test(v);
+							},
+							$.mage.__("Allowed digits[0-9] and -")
+						);
+
+						$.validator.addMethod(
+					        "SpecialCharValidation",
+					        function (v) {
+					            return $.mage.isEmptyNoTrim(v) || /^[a-zA-Z0-9_]+$/.test(v);
+					        },
+					        $.mage.__("Special characters not Allowed")
+					    );
+
+						$("#country-isd-code").change(function() {
+							var value = $(this).children(":selected").attr("id");
+							$("#country_id").val(value);
+							$('#country-code-error').hide();
+						});
+
+						$(".pdpajax-login-btnclick, .join-now.btn-login-popup").click(function() {
+							$.ajax({
+								type: "GET",
+								url: '<?php echo $block->getUrl('free/ajax/countrydata') ?>', 
+								success: function(result) {
+									
+									var formOption = '<option value=""><span>Select Country Code</span></option>';
+
+									$("#country-isd-code").find('option').remove();
+                					
+									$.each(result,function(key, value)
+									{
+										formOption += "<option value='"+value.isd_code+"' id='"+value.country_id+"'>"+value.country_name +' (+' +value.isd_code+')'+"</option>";
+
+									});
+
+									$("#country-isd-code").append(formOption);
+									$('#country-isd-code').dropkick();
+								}
+							});
+						});
+
+						$(".sign-up-button").click(function() {
+								var phonenumber = $('#contact_number').val();
+        						var countrycode = $('#country-isd-code').val();
+								if(phonenumber != "" && countrycode == ""){
+									$('#country-code-error').show();
+									$('#country-code-error').html('Please select your country code to add phone number.');
+									return false;
+								} else {
+									$('#country-code-error').hide();
+								}
+						});
+				});
+
+			});
+</script>

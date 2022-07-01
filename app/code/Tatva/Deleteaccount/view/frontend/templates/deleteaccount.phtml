@@ -1,0 +1,316 @@
+<?php
+$customerId = $this->getCustomerId();
+$baseurl = $block->getBaseUrl();
+$pricingUrl = $block->getBaseUrl()."pricing/";
+
+if(isset($_COOKIE['customer_delete']))
+{
+    $cusDelete = $_COOKIE['customer_delete']; 
+}
+else
+{
+    $cusDelete = 0;
+}
+
+$lastorderData = $this->getLastCustomerOrder();
+
+if(isset($lastorderData[0]))
+{
+    $currentDate = strtotime($this->getCurrentGmtDate());
+    $orderDate = strtotime($lastorderData[0]['created_at']);
+}
+
+if($cusDelete != $customerId) :
+?>
+<div class="block account-nav">
+  <div class="title account-nav-title">
+    <strong><span><?= $block->escapeHtml(__('Delete Account')) ?></span></strong>
+  </div>
+  <div class="content account-nav-content">
+    <ul class="nav items">
+      <li class="delete_account nav item">
+        <?php
+                if(isset($lastorderData[0]) && ($currentDate-$orderDate)/60 >= 30 )
+                { 
+                ?>
+        <a id="clicking"><?= $block->escapeHtml(__('Delete Account')) ?></a>
+        <?php 
+                } elseif(isset($lastorderData[0]) && ($currentDate-$orderDate)/60 < 30)
+                {
+                ?>
+        <p>Delete Account link will be available after <?php echo 30 - (floor(($currentDate-$orderDate)/60)); ?>
+          minutes.</p>
+        <?php } else
+                {
+                ?>
+        <a id="clicking"><?= $block->escapeHtml(__('Delete Account')) ?></a>
+        <?php 
+                }
+                ?>
+      </li>
+    </ul>
+  </div>
+</div>
+<?php endif; ?>
+
+<div id="deleteaccount-popup" class="mfp-with-anim mfp-hide">
+  <div class="modal fade" id="delete_acc" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close btn-cancel">&times;</button>
+          <h4 class="modal-title">DELETE PROFILE</h4>
+        </div>
+        <div class="modal-body delete_content">
+          <h2>Close Account Reason</h2>
+          <h3>Warning!! Your account will be permanently deleted from our system, and you will not be able to log in. If
+            you are a PAID subscriber, you will not be able to download any product or log in. If you just want to stop
+            billing, please use the UNSUBSCRIBE functionality.</h3>
+          <form id="deleteaccount-form" action="#" method="POST"
+            data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+            data-mage-init='{"validation":{}}'>
+            <div class="delete_innercontent">
+              <h3 class="slideclose_text">Why would you like to close your slideteam account?</h3>
+              <ul>
+                <li>
+                  <input class="form-check-input required-entry" type="radio" name="feedback" id="exampleRadios1"
+                    value="option1">
+                  <label class="form-check-label" for="exampleRadios1">
+                    I just wanted to download free products.
+                  </label>
+                </li>
+                <li id="more_option2">
+                  <input class="form-check-input required-entry" type="radio" name="feedback" id="exampleRadios2"
+                    value="option2">
+                  <label class="form-check-label" for="exampleRadios2">
+                    I need more industry specific design.
+                  </label>
+                  <div class="divShowHide2" style="display: none;">
+                    <input type="text" name="industry" placeholder="Industry name">
+                  </div>
+                </li>
+                <li>
+                  <input class="form-check-input required-entry" type="radio" name="feedback" id="exampleRadios3"
+                    value="option3">
+                  <label class="form-check-label" for="exampleRadios3">
+                    You don't have the designs I am looking for.
+                  </label>
+                </li>
+                <li>
+                  <input class="form-check-input required-entry" type="radio" name="feedback" id="exampleRadios4"
+                    value="option4">
+                  <label class="form-check-label" for="exampleRadios4">
+                    Price is too high.
+                  </label>
+                </li>
+
+                <li id="more_option">
+                  <input class="form-check-input required-entry" data-validate="{'validate-one-required-by-name':true}"
+                    type="radio" name="feedback" id="exampleRadios5" value="option5">
+                  <label class="form-check-label" for="exampleRadios5">
+                    Others
+                  </label>
+                  <div class="divShowHide" style="display: none;">
+                    <textarea name="comment" placeholder="Any feedback is appreciated"></textarea>
+                  </div>
+                </li>
+              </ul>
+              <div id="feedback-error" generated="true" style="color:#d24031;font-size: 13px;margin-bottom:10px;"></div>
+            </div>
+            <div class="modal-footer">
+
+            <button type="button" class="btn btn-default btn-cancel">Cancel</button>          
+            <button type="button" class="btn btn-default delete_prfile btn-submit" id="delete-final"> Delete Profile</button>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+function myFunctionCopy() {
+    var copyText = document.getElementById("copy-code");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    document.execCommand("copy");
+    //alert("Copied the text: " + copyText.value);
+}
+require(['jquery'], function ($) {
+  var modal = document.getElementById("flipModal");
+
+  var btn = document.getElementById("delete-final");
+
+  var feedbackpopup = document.getElementById("deleteaccount-popup");
+
+  btn.onclick = function () {
+    var radioValue = $("input[name='feedback']:checked").val();
+
+    if (radioValue == null) {
+      $('#feedback-error').show();
+      $('#feedback-error').html('Please select any one option.');
+      return false;
+    }
+    var loginCustomerid = "<?php echo $customerId; ?>";
+    $.magnificPopup.close();
+    $.ajax({
+      context: '.coupon_code',
+      url: "<?php echo $baseurl.'deleteaccount/Index/Updatecoupon' ?>",
+      type: "post",
+      data: {
+        customer_id: loginCustomerid
+      },
+      showLoader: true,
+      cache: false,
+      success: function (data) {
+        modal.style.display = "block";
+        $('.coupon_code').html(data.output);
+      }
+    });
+    localStorage.setItem("radioValue", radioValue);
+    var formdata = $('#deleteaccount-form').serialize();
+    localStorage.setItem("formdata", formdata);
+  }
+
+  var close = document.getElementById("close-btn");
+  close.onclick = function () {
+    modal.style.display = "none";
+  }
+
+  var loginCustomerid = "<?php echo $customerId; ?>";
+
+    $(document).ready(function ($) {
+      $('.button_2').click(function () {
+        var formdata = localStorage.getItem("formdata");
+        var radioValue = localStorage.getItem("radioValue");
+        if (radioValue) {
+          var expDate = new Date();
+          expDate.setTime(expDate.getTime() + (30 * 60 * 1000));
+          $.cookie('customer_delete', loginCustomerid, {
+            expires: expDate
+          });
+        }
+        
+        modal.style.display = "none";
+        var url = "<?php echo $this->getUrl('deleteaccount'); ?>";
+        $.ajax({
+          url: url,
+          type: "post",
+          data: formdata,
+          showLoader: true,
+          cache: false,
+          success: function (response) {
+            window.location.reload();
+          }
+        });
+        return false;
+      });
+
+      $('.button_1').click(function () {
+        modal.style.display = "none";
+        window.location.href = "<?php echo $baseurl.'pricing/' ?>";
+        return false;
+      });
+    });
+});
+</script>
+
+<script type="text/javascript">
+  require(['jquery', 'magnific_popup', "mage/mage"], function ($) {
+    var dataForm = $('#deleteaccount-form');
+    dataForm.mage('validation', {
+      errorPlacement: function (error, element) {
+        error.appendTo('#more_option');
+      }
+    });
+    $(document).ready(function () {
+      $("#more_option").click(function () {
+        console.log('#more_option');
+        $(".divShowHide").addClass("intro");
+      });
+      $("#more_option2").click(function () {
+        $(".divShowHide2").addClass("intro2");
+      });
+      $('li').on("click", function (event) {
+        if ($(this).index() == '4') {
+          $(".divShowHide2").removeClass("intro2");
+        }
+        if ($(this).index() == '1') {
+          $(".divShowHide").removeClass("intro");
+        }
+        if ($(this).index() != '1' && $(this).index() != '4') {
+          $(".divShowHide").removeClass("intro");
+          $(".divShowHide2").removeClass("intro2");
+        }
+      });
+
+      $('#clicking').click(function () {
+
+        var loginCustomerid = "<?php echo $customerId; ?>";
+        $.ajax({
+          url: "<?php echo $baseurl.'deleteaccount/Index/Generatecoupon' ?>",
+          type: "post",
+          data: {
+            data: loginCustomerid
+          },
+          showLoader: false,
+          cache: false,
+          success: function (response) {
+            console.log('success');
+          }
+        });
+        return false;
+      });
+      $(".delete_account #clicking").magnificPopup({
+        modal: true,
+        items: [{
+          src: '#deleteaccount-popup',
+        }],
+        type: 'inline',
+        mainClass: 'delete-account-popup',
+        callbacks: {
+          open: function () {
+            var $content = $(this.content);
+            var loginCustomerid = "<?php echo $customerId; ?>";
+            $('body').addClass("account-popup-open");
+
+            /*$content.on('click', '.btn-submit', function()
+            {
+              modal.style.display = "block";
+              var radioValue = $("input[name='feedback']:checked").val();
+              if(radioValue){
+                var expDate = new Date();
+                expDate.setTime(expDate.getTime() + (30 * 60 * 1000)); 
+                jQuery.cookie('customer_delete', loginCustomerid, { expires: expDate});
+                $(document).off('keydown', keydownHandler);
+              }
+            });*/
+
+            $content.on('click', '.btn-cancel', function () {
+              $.magnificPopup.close();
+              $(document).off('keydown', keydownHandler);
+            });
+
+            var keydownHandler = function (e) {
+              if (e.keyCode == 13) {
+                $content.find('.btn-submit').click();
+                return false;
+              } else if (e.keyCode == 27) {
+                $content.find('.btn-cancel').click();
+                return false;
+              }
+            };
+            $(document).on('keydown', keydownHandler);
+          },
+          close: function () {
+            $('body').removeClass("account-popup-open");
+            $(".divShowHide").removeClass("intro");
+            $(".divShowHide2").removeClass("intro2");
+          }
+        }
+      });
+    });
+  });
+</script>

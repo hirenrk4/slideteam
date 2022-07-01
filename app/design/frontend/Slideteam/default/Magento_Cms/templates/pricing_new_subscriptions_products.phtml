@@ -1,0 +1,579 @@
+<?php 
+const PARAM_NAME_BASE64_URL = 'r64';
+const PARAM_NAME_URL_ENCODED = 'uenc';
+use Magento\Framework\App\Action\Action; 
+$individualCollection = $block->getIndividualSubscriptionProducts();
+$educationCollection = $block->getEducationSubscriptionProducts();
+$businessCollection = $block->getBusinessSubscriptionProducts();
+?>
+<div class="pricing-new-block clearfix pricing-new-table">
+    <div class="top_tabbutons">
+        <div class="main-wrapper clearfix">
+            <h4>Pricing</h4>
+            <div class="tab pricing_tabs">
+                <span class="lft_content left_arrow">A great place to start 
+                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                </span>
+                <button class="tablinks active" data-content="#Individual"><i class="fa fa-user" aria-hidden="true"></i>
+                Individual</button>
+                <button class="tablinks" data-content="#Business"><i class="fa fa-briefcase" aria-hidden="true"></i>
+                Business Teams</button>
+                <button class="tablinks" data-content="#Education"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                Education</button>
+                <span class="lft_content rght_arrow"><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                A perfect place for teams</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="pricing_inercontent">
+        <div class="main-wrapper clearfix">
+            <div id="Individual" class="tabcontent" style="display: block">
+
+              <div class="table-inner clearfix">
+                <div class="col-box first">
+                    <div class="col title-text col1 col-bg1"><span class="cell-align price-text"> Risk Free 7 days money back guarantee* </span></div>
+                    <div class="col col2"></div>
+                    <div class="col col3 label-text highlight"><span class="cell-align">Number of products that can be downloaded<span class="tip cell-align top-right tipso_style" data-tipso="A 'Product' is something you download from a single URL using the 'Download this Presentation' button on our site. It does not matter how many slides or images a product has. Anything downloaded from a single URL counts as one product. For example, our themes have 3 slides each while some of our Complete Decks have over 90 slides each. Each of these items counts as one Product."><a class="tooltips">?</a></span></span></div>
+
+                    <div class="col col4 label-text"><span class="cell-align"> Number of users that have access <span class="tip cell-align top-right tipso_style" data-tipso="This is the number of users that can log in and download our content within a subscription period. Please see our FAQs for more details."><a class="tooltips">?</a></span></span></div>
+                    <div class="col col4 label-text highlight"><span class="cell-align "> Free access to our <a class="cat-link" href="https://www.slideteam.net/powerpoint-ebooks-for-slide-template-design/" target="_blank">ebooks</a>, <a class="cat-link" href="https://www.slideteam.net/one-page-summary-documents.html" target="_blank">one pagers</a>, <a class="cat-link" href="https://www.slideteam.net/resume-template/" target="_blank">resumes</a> and <a class="cat-link" href="https://www.slideteam.net/brochure-templates/" target="_blank">brochures</a> <span class="tip cell-align top-right tipso_style" data-tipso="In addition to Powerpoint Templates, we have a huge collection of Brochure Templates, Resume Templates and Business focused One Pager Templates that you can also download with a paid subscription. And for people looking to improve their design skills and become Powerpoint experts, we have a large collection of highly popular eBooks on Powerpoint design."><a class="tooltips">?</a></span></span></div>
+                    <div class="col col3 label-text"><span class="cell-align"> Immediate download <span class="tip cell-align top-right tipso_style" data-tipso="You will be able to immediately download content after purchasing a subscription. Any downloaded product, once unzipped, will have slides in PPTX format and will open in Powerpoint itself."><a class="tooltips">?</a></span></span></div>
+                    <div class="col col4 label-text highlight"><span class="cell-align"> Cancel anytime with no binding contracts <span class="tip cell-align top-right tipso_style" data-tipso="You can cancel your subscription yourself by logging into your account, going to the 'My Subscriptions' link and clicking on Unsubscribe. You will still be able to download content until the billing cycle that you've paid for is over."><a class="tooltips">?</a></span></span></div>
+                    <div class="col col3 label-text"><span class="cell-align"> All downloads belong to you <span class="tip cell-align top-right tipso_style" data-tipso="All downloaded content is yours to keep, edit and build upon, even after your subscription expires."><a class="tooltips">?</a></span></span></div>
+                    <div class="col col4 label-text highlight"><span class="cell-align"> Risk Free 7 days money back guarantee <span class="tip cell-align top-right tipso_style" data-tipso="We have a 'No Questions Asked' return policy and we immediately issue a refund. Our goal is to delight you with our products, but also give you the peace of mind that you can get your money back if things don't work out. Please see our FAQs for more details."><a class="tooltips">?</a></span></span></div>
+                    <div class="col col3 label-text"><span class="cell-align "> Access weekly new content <span class="tip cell-align top-right tipso_style" data-tipso="We add about 1000 - 10,000 new products every day. Please see the 'Newly Added' link at the bottom to see the new products."><a class="tooltips">?</a></span></span></div>
+                    <div class="col col4 label-text highlight"><span class="cell-align"> Guaranteed best pricing on the web </span></div>
+                    <div class="col col5 label-text custom-link highlight1"><span class="cell-align "> <a href="<?php echo $block->getStoreBaseUrl() .'powerpoint_presentation_design_services'?>" target="_blank">Customized slides designed from scratch by SlideTeam</a> <span class="tip cell-align top-right tipso_style" data-tipso="We have a dedicated team to make customized presentations from scratch for customers. We organize your text &amp; data, and present it as meaningful, valuable information visually to make sure your message is reinforced and retained by your audience. Check out our Design Services page for more details."><a class="tooltips">?</a></span></span></div>
+                </div>
+                <!--Start of Owl Carousel--> 
+                <div class="slide-product"> 
+                <?php $counter = 0; foreach ($individualCollection as $individual):?>
+                    <?php 
+                        $counter++;
+                        $cost = $individual->getCost();
+                        $finalPrice = $individual->getFinalPrice();
+                        $name = $individual->getName();
+                        $sku = $individual->getSku();
+                        if($name == "Daily") :
+                            continue;
+                        endif;
+                        $download_limit = $individual->getDownloadLimit();
+                        $last_class = ($name == 'Annual + Custom Design') ? "last" : "";
+                        $custom_last_class = ($name == 'Annual + Custom Design') ? "custom_last" : "";
+                        $new_pricing_class = (substr($sku, -2) == '-v') ? "variation" : "control";
+                    ?>
+                    <?php if($finalPrice>0): ?>
+                      
+                    <div class="col-box table-col item <?php echo $last_class; ?> <?php echo $new_pricing_class; ?>" data-pricingtype="<?php echo $new_pricing_class; ?>">
+                        <?php $postParams = $block->getAddToCartPostParams($individual); ?>
+                        <div class="col col1 col-bg1">
+                            <?php if($name == 'Annual + Custom Design') { ?>
+                            <span class="mostpopular">
+                                <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/most_popular.png'); ?>">
+                            </span>
+                            <?php } ?>
+                            <span class="cell-align">
+                                <span class="month">
+                                    <em><?php echo $name; ?></em>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="col col1 ">
+                            <span class="cell-align">
+                                <?php if($cost) { ?>
+                                <span class="cancel-price">
+                                    <del>$<?php echo sprintf('%0.2f', $cost);?></del>
+                                </span>
+                                <?php } ?>
+                                <span class="price">
+                                    <?php if(!$cost) { ?>
+                                        <span class="empty_span">&nbsp;</span>
+                                    <?php } ?>
+                                    <em>$<?php echo $finalPrice;?></em>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="col col2 col-bg2">
+                            <span class="cell-align">
+
+                                <form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+                                    <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+                                    <input type="hidden" name="subscribe" value="subscribe">
+                                    <input type="hidden" name="am_rec_subscription_plan_id" value="<?php /* @escapeNotVerified */ echo $block->getStripeSubscriptionPlanId($individual); ?>">
+                                    <input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                                    <?php echo $block->getBlockHtml('formkey')?>
+                                    <!-- 1464 --> 
+                                        <button type="submit"
+                                                title="<?php echo $block->escapeHtml(__('Join now')); ?>"
+                                                class="action tocart btn btn-primary join-now">
+                                            <span><?php /* @escapeNotVerified */ echo __('Join now') ?></span>
+                                        </button>
+                                    <!-- 1464 -->
+                                </form>
+                            </span>
+                        </div>
+                        <div class="col col3 highlight table-text">
+                            <span class="cell-align">
+                                <?php 
+                                    if($download_limit == 9 || $download_limit == 31)
+                                        echo "Unlimited";
+                                    else if($download_limit == 8)
+                                        echo "10";
+                                    else
+                                        echo "40";
+                                ?>
+                            </span>
+                        </div>
+
+                        <div class="col col4"><span class="cell-align  ">
+                        1 </span></div>
+                        <div class="col col4 table-text highlight"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                        <div class="col col3 table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                        <div class="col col4 highlight table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                        <div class="col col3 table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                        <div class="col col4 highlight table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                        <div class="col col3 table-text "><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                        <div class="col col4 table-text highlight"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                        <div class="col col5 highlight1 custom-link table-text">
+                            <span class="cell-align pricing-link <?php echo $custom_last_class; ?>">
+                                <a href="<?php echo $block->getStoreBaseUrl() .'powerpoint_presentation_design_services'?>" target="_blank">
+                                    <?php 
+                                    if($name == 'Annual + Custom Design') 
+                                        echo " 10 Custom Slides included <br>  ($299.99 value) " ;
+                                    else if($name == 'Team License')
+                                        echo " 15 Custom Slides per Team included <br>  ($225 value) ";
+                                    else if($name == 'Monthly')
+                                        echo "Starts From <br> $24.99 per slide";
+                                    else if($name == 'Semi Annual')
+                                        echo "Starts From <br> $19.99 per slide";
+                                    else
+                                        echo "Starts From <br> $14.99 per slide"; 
+                                    ?> 
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                    <div class="customer_love item">
+                        <div class="col col1 col-bg1">
+                        </div>
+
+                        <ul>
+                            <h3>Why Customers Love Us?</h3>
+                            <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon1.png'); ?>"></span>
+                                <span class="rght_text">World’s Largest Collection of Powerpoint Templates, One Pagers, Brochures, Resumes 
+                                and more…</span>
+                            </li>
+                            <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon2.png'); ?>"></span>
+                                <span class="rght_text">Simple pricing providing unlimited access to our entire collection</span>
+
+                            </li>
+                            <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon3.png'); ?>"></span>
+                                <span class="rght_text">24/7 Customer support over chat, phone and email</span>
+
+                            </li>
+                            <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon4.png'); ?>"></span>
+                                <span class="rght_text">No questions asked refund policy</span>
+
+                            </li>
+                            <li class="user_count"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon5.png'); ?>"> 150,000+ <span class="cont_text">customers use our products
+                            </span></li>
+
+
+                        </ul>
+                    </div>
+                </div>
+                <!--End of Owl Carousel -->
+                    
+
+                </div>
+            </div>
+
+            <!----------------------------BUSINESS TAB CONTENT_--------------------------------->               
+
+            <div id="Business" class="tabcontent">
+                <div class="table-inner clearfix">
+                    <div class="col-box first">
+                        <div class="col title-text col1 col-bg1"><span class="cell-align price-text"> Risk Free 7 days money back guarantee* </span></div>
+                        <div class="col col2"></div>
+                        <div class="col col3 label-text highlight"><span class="cell-align">Number of products that can be downloaded<span class="tip cell-align top-right tipso_style" data-tipso="A 'Product' is something you download from a single URL using the 'Download this Presentation' button on our site. It does not matter how many slides or images a product has. Anything downloaded from a single URL counts as one product. For example, our themes have 3 slides each while some of our Complete Decks have over 90 slides each. Each of these items counts as one Product."><a class="tooltips">?</a></span></span></div>
+
+                        <div class="col col4 label-text"><span class="cell-align"> Number of users that have access <span class="tip cell-align top-right tipso_style" data-tipso="This is the number of users that can download our content. You can add and remove users to this subscription anytime. Please see FAQs for more details."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col4 label-text highlight"><span class="cell-align "> Free access to our <a class="cat-link" href="https://www.slideteam.net/powerpoint-ebooks-for-slide-template-design/" target="_blank">ebooks</a>, <a class="cat-link" href="https://www.slideteam.net/one-page-summary-documents.html" target="_blank">one pagers</a>, <a class="cat-link" href="https://www.slideteam.net/resume-template/" target="_blank">resumes</a> and <a class="cat-link" href="https://www.slideteam.net/brochure-templates/" target="_blank">brochures</a> <span class="tip cell-align top-right tipso_style" data-tipso="In addition to Powerpoint Templates, we have a huge collection of Brochure Templates, Resume Templates and Business focused One Pager Templates that you can also download with a paid subscription. And for people looking to improve their design skills and become Powerpoint experts, we have a large collection of highly popular eBooks on Powerpoint design."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col3 label-text"><span class="cell-align"> Immediate download <span class="tip cell-align top-right tipso_style" data-tipso="You will be able to immediately download content after purchasing a subscription. Any downloaded product, once unzipped, will have slides in PPTX format and will open in Powerpoint itself."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col4 label-text highlight"><span class="cell-align"> Cancel anytime with no binding contracts <span class="tip cell-align top-right tipso_style" data-tipso="You can cancel your subscription yourself by logging into your account, going to the 'My Subscriptions' link and clicking on Unsubscribe. You will still be able to download content until the billing cycle that you've paid for is over."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col3 label-text"><span class="cell-align"> All downloads belong to you <span class="tip cell-align top-right tipso_style" data-tipso="All downloaded content is yours to keep, edit and build upon, even after your subscription expires."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col4 label-text highlight"><span class="cell-align"> Risk Free 7 days money back guarantee <span class="tip cell-align top-right tipso_style" data-tipso="We have a 'No Questions Asked' return policy and we immediately issue a refund. Our goal is to delight you with our products, but also give you the peace of mind that you can get your money back if things don't work out. Please see our FAQs for more details."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col3 label-text"><span class="cell-align "> Access weekly new content <span class="tip cell-align top-right tipso_style" data-tipso="We add about 1000 - 10,000 new products every day. Please see the 'Newly Added' link at the bottom to see the new products."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col4 label-text highlight"><span class="cell-align"> Guaranteed best pricing on the web </span></div>
+                        <div class="col col5 label-text custom-link highlight1"><span class="cell-align "> <a href="<?php echo $block->getStoreBaseUrl() .'powerpoint_presentation_design_services'?>" target="_blank">Customized slides designed from scratch by SlideTeam</a> <span class="tip cell-align top-right tipso_style" data-tipso="We have a dedicated team to make customized presentations from scratch for customers. We organize your text &amp; data, and present it as meaningful, valuable information visually to make sure your message is reinforced and retained by your audience. Check out our Design Services page for more details."><a class="tooltips">?</a></span></span></div>
+                    </div>
+                    <!--Start of Owl Carousel-->
+                    <div class="slide-product">
+                    <?php $counter = 0; foreach ($businessCollection as $business):?>
+                        <?php 
+                            $counter++;
+                            $cost = $business->getCost();
+                            $finalPrice = $business->getFinalPrice();
+                            $name = $business->getName();
+                            $sku = $business->getSku();
+                            if($name == "Daily") :
+                                continue;
+                            endif;
+                            $download_limit = $business->getDownloadLimit();
+                            $last_class = ($name == 'Annual Company Wide Unlimited User License') ? "last" : ""; 
+                            $new_pricing_class = (substr($sku, -2) == '-v') ? "variation" : "control";
+
+                        ?>
+                        <?php if($finalPrice>0): ?>
+                            <div class="col-box table-col item business_call education_call <?php echo $last_class; ?> <?php echo $new_pricing_class; ?>" data-pricingtype="<?php echo $new_pricing_class; ?>">
+                                <?php $postParams = $block->getAddToCartPostParams($business); ?>
+                                <div class="col col1 col-bg1">
+                                    <?php if($name == 'Annual Company Wide Unlimited User License') { ?>
+                                    <span class="mostpopular">
+                                        <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/most_popular.png'); ?>">
+                                    </span>
+                                    <?php } ?>
+                                    <span class="cell-align">
+                                        <span class="month">
+                                            <em><?php echo $name; ?></em>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="col col1 ">
+                                    <span class="cell-align">
+                                        <?php if($cost) { ?>
+                                        <span class="cancel-price">
+                                            <del>$<?php echo sprintf('%0.2f', $cost);?></del>
+                                        </span>
+                                        <?php } ?>
+                                        <span class="price">
+                                            <?php if(!$cost) { ?>
+                                                <span class="empty_span">&nbsp;</span>
+                                            <?php } ?>
+                                            <em>$<?php echo $finalPrice;?></em>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="col col2 col-bg2">
+                                    <span class="cell-align">
+
+                                        <form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+                                            <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+                                            <input type="hidden" name="subscribe" value="subscribe">
+                                            <input type="hidden" name="am_rec_subscription_plan_id" value="<?php /* @escapeNotVerified */ echo $block->getStripeSubscriptionPlanId($business); ?>">
+                                            <input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                                            <?php echo $block->getBlockHtml('formkey')?>
+
+                                            <!-- 1464 --> 
+                                                <button type="submit"
+                                                        title="<?php echo $block->escapeHtml(__('Join now')); ?>"
+                                                        class="action tocart btn btn-primary join-now">
+                                                    <span><?php /* @escapeNotVerified */ echo __('Join now') ?></span>
+                                                </button>
+                                            <!-- 1464 -->
+
+                                        </form>
+                                    </span>
+                                </div>
+                                <div class="col col3 highlight table-text">
+                                   <span class="cell-align">
+                                        <?php 
+                                            if($download_limit == 9 || $download_limit == 31)
+                                                echo "Unlimited";
+                                            else if($download_limit == 8)
+                                                echo "10";
+                                            else
+                                                echo "40";
+                                        ?>
+                                    </span>
+                                </div>
+
+                                <div class="col col4"><span class="cell-align  ">
+                                <?php if($name == 'Annual 4 User License') {  echo "Up to 4";?>
+                                    <?php } elseif ($name == 'Annual 20 User License') {
+                                        echo "20";
+                                    } else echo "Unlimited"; ?>
+                                </span></div>
+                                <div class="col col4 table-text highlight"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col3 table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col4 highlight table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col3 table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col4 highlight table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col3 table-text "><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col4 table-text highlight"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col5 highlight1 custom-link table-text">
+                                    <span class="cell-align pricing-link">
+                                        <a href="https://www.slideteam.net/powerpoint_presentation_design_services" target="_blank">
+                                        <?php 
+                                        if($name == 'Annual 20 User License') 
+                                            echo "20 Custom Slides per Subscription <br>included ($300 value)";
+                                        else if($name == 'Annual Company Wide Unlimited User License')
+                                            echo "25 Custom Slides per Subscription <br>included ($375 value)";
+                                        else
+                                            echo "15 Custom Slides per Team <br>included($225 value)"; 
+                                        ?> 
+                                        </a>
+                                    </span>
+                                </div>
+
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                        <div class="customer_love item">
+                            <div class="col col1 col-bg1">
+                            </div>
+
+                            <ul>
+                                <h3>Why Businesses Love Us?</h3>
+                                <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon10.png'); ?>"></span>
+                                    <span class="rght_text">Businesses save money by making their teams 10x more productive
+
+                                    </span>
+                                </li>
+                                <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon11.png'); ?>"></span>
+                                    <span class="rght_text">100,000s of Templates for every department e.g. Onboarding Process templates for HR, Financial Planning templates for Finance, Launch Planning for Marketing etc
+
+                                    </span>
+
+                                </li>
+                                <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon12.png'); ?>"></span>
+                                    <span class="rght_text">Give every employee the power to make visually appealing Presentations and Documents
+
+                                    </span>
+
+                                </li>
+
+                                <li class="user_count"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon5.png'); ?>"> 20,000+ <span class="cont_text">Business Teams use our products</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End of Owl Carousel-->
+                    
+                    
+                </div>
+            </div>
+
+            <!---------------------EDUCATION TAB CONTENT---------------------------->               
+
+            <div id="Education" class="tabcontent">
+                <div class="table-inner clearfix">
+                    <div class="col-box first">
+                        <div class="col title-text col1 col-bg1"><span class="cell-align price-text"> Risk Free 7 days money back guarantee* </span></div>
+                        <div class="col col2"></div>
+                        <div class="col col3 label-text highlight"><span class="cell-align">Number of products that can be downloaded<span class="tip cell-align top-right tipso_style" data-tipso="A 'Product' is something you download from a single URL using the 'Download this Presentation' button on our site. It does not matter how many slides or images a product has. Anything downloaded from a single URL counts as one product. For example, our themes have 3 slides each while some of our maps have over 60 slides each. Each of these items counts as one Product."><a class="tooltips">?</a></span></span></div>
+
+                        <div class="col col4 label-text"><span class="cell-align"> Number of users (with institute domain email ID) that have access <span class="tip cell-align top-right tipso_style" data-tipso="This is the number of users that can download our content. Users must have an Institute official email address to be able to download. You can add and remove users to this subscription anytime. Please see FAQs for more details."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col4 label-text highlight"><span class="cell-align "> Free access to our <a class="cat-link" href="https://www.slideteam.net/powerpoint-ebooks-for-slide-template-design/" target="_blank">ebooks</a>, <a class="cat-link" href="https://www.slideteam.net/one-page-summary-documents.html" target="_blank">one pagers</a>, <a class="cat-link" href="https://www.slideteam.net/resume-template/" target="_blank">resumes</a> and <a class="cat-link" href="https://www.slideteam.net/brochure-templates/" target="_blank">brochures</a> <span class="tip cell-align top-right tipso_style" data-tipso="In addition to Powerpoint Templates, we have a huge collection of Brochure Templates, Resume Templates and Business focused One Pager Templates that you can also download with a paid subscription. And for people looking to improve their design skills and become Powerpoint experts, we have a large collection of highly popular eBooks on Powerpoint design."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col3 label-text"><span class="cell-align"> Immediate download <span class="tip cell-align top-right tipso_style" data-tipso="You will be able to immediately download content after purchasing a subscription. Any downloaded product, once unzipped, will have slides in PPTX format and will open in Powerpoint itself."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col4 label-text highlight"><span class="cell-align"> Cancel anytime with no binding contracts <span class="tip cell-align top-right tipso_style" data-tipso="You can cancel your subscription yourself by logging into your account, going to the 'My Subscriptions' link and clicking on Unsubscribe. You will still be able to download content until the billing cycle that you've paid for is over."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col3 label-text"><span class="cell-align"> All downloads belong to you <span class="tip cell-align top-right tipso_style" data-tipso="All downloaded content is yours to keep, edit and build upon, even after your subscription expires."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col4 label-text highlight"><span class="cell-align"> Risk Free 7 days money back guarantee <span class="tip cell-align top-right tipso_style" data-tipso="We have a 'No Questions Asked' return policy and we immediately issue a refund. Our goal is to delight you with our products, but also give you the peace of mind that you can get your money back if things don't work out. Please see our FAQs for more details."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col3 label-text"><span class="cell-align "> Access weekly new content <span class="tip cell-align top-right tipso_style" data-tipso="We add about 1000 - 10,000 new products every day. Please see the 'Newly Added' link at the bottom to see the new products."><a class="tooltips">?</a></span></span></div>
+                        <div class="col col4 label-text highlight"><span class="cell-align"> Guaranteed best pricing on the web </span></div>
+                        <div class="col col5 label-text custom-link highlight1"><span class="cell-align "> <a href="<?php echo $block->getStoreBaseUrl() .'powerpoint_presentation_design_services'?>" target="_blank">Customized slides designed from scratch by SlideTeam</a> <span class="tip cell-align top-right tipso_style" data-tipso="We have a dedicated team to make customized presentations from scratch for customers. We organize your text &amp; data, and present it as meaningful, valuable information visually to make sure your message is reinforced and retained by your audience. Check out our Design Services page for more details."><a class="tooltips">?</a></span></span></div>
+                    </div>
+                    <!--Start of Owl Carousel-->
+                    <div class="slide-product">
+                    <?php $counter=0; foreach ($educationCollection as $education):?>
+                        <?php 
+                            $counter++;
+                            $cost = $education->getCost();
+                            $finalPrice = $education->getFinalPrice();
+                            $name = $education->getName();
+                            $sku = $education->getSku();
+                            if($name == "Daily") :
+                                continue;
+                            endif;
+                            $download_limit = $education->getDownloadLimit();
+                            $last_class = ($name == 'Annual UNLIMITED User Institute Wide License') ? "last" : "";
+                            $new_pricing_class = (substr($sku, -2) == '-v') ? "variation" : "control";
+                        ?>
+                        <?php if($finalPrice>0): ?>
+                            <div class="col-box table-col item education_call <?php echo $last_class; ?> <?php echo $new_pricing_class;?>" data-pricingtype="<?php echo $new_pricing_class; ?>">
+                                <?php $postParams = $block->getAddToCartPostParams($education); ?>
+                                <div class="col col1 col-bg1">
+                                    <?php if($name == 'Annual UNLIMITED User Institute Wide License') { ?>
+                                    <span class="mostpopular">
+                                        <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/most_popular.png'); ?>">
+                                    </span>
+                                    <?php } ?>
+                                    <span class="cell-align">
+                                        <span class="month">
+                                            <em><?php echo $name; ?></em>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="col col1 ">
+                                    <span class="cell-align">
+                                        <?php if($cost) { ?>
+                                        <span class="cancel-price">
+                                            <del>$<?php echo sprintf('%0.2f', $cost);?></del>
+                                        </span>
+                                        <?php } ?>
+                                        <span class="price">
+                                            <?php if(!$cost) { ?>
+                                                <span class="empty_span">&nbsp;</span>
+                                            <?php } ?>
+                                            <em>$<?php echo $finalPrice;?></em>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="col col2 col-bg2">
+                                    <span class="cell-align">
+
+                                        <form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+                                            <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+                                            <input type="hidden" name="subscribe" value="subscribe">
+                                            <input type="hidden" name="am_rec_subscription_plan_id" value="<?php /* @escapeNotVerified */ echo $block->getStripeSubscriptionPlanId($education); ?>">
+                                            <input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                                            <?php echo $block->getBlockHtml('formkey')?>
+
+                                            <!-- 1464 -->
+                                            
+                                                <button type="submit"
+                                                        title="<?php echo $block->escapeHtml(__('Join now')); ?>"
+                                                        class="action tocart btn btn-primary join-now">
+                                                    <span><?php /* @escapeNotVerified */ echo __('Join now') ?></span>
+                                                </button>
+                                         
+                                            <!-- 1464 -->
+                                        </form>
+                                    </span>
+                                </div>
+                                <div class="col col3 highlight table-text">
+                                    <span class="cell-align">
+                                        <?php 
+                                            if($download_limit == 9 || $download_limit == 31)
+                                                echo "Unlimited";
+                                            else if($download_limit == 8)
+                                                echo "10";
+                                            else
+                                                echo "40";
+                                        ?>
+                                    </span>
+                                </div>
+
+                                <div class="col col4"><span class="cell-align  ">
+                                    <?php if($name == 'Annual 15 User Education License') {  echo "15";?>
+                                    <?php } else echo "Unlimited"; ?>
+                                </span></div>
+                                <div class="col col4 table-text highlight"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col3 table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col4 highlight table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col3 table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col4 highlight table-text"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col3 table-text "><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col4 table-text highlight"><span class="cell-align  "> <i class="fa fa-check" aria-hidden="true"></i> </span></div>
+                                <div class="col col5 highlight1 custom-link table-text">
+                                    <span class="cell-align pricing-link">
+                                        <a href="<?php echo $block->getStoreBaseUrl() .'powerpoint_presentation_design_services'?>" target="_blank">
+                                            15 Custom Slides per Team included($225 value) 
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                        <div class="customer_love item">
+                            <div class="col col1 col-bg1">
+                            </div>
+
+                            <ul>
+                                <h3>Why Academicians Love us?</h3>
+                                <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon6.png'); ?>"></span>
+                                    <span class="rght_text">Teachers and students can create visually stunning slides incredibly fast to get their point across
+                                    </span>
+                                </li>
+                                <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon7.png'); ?>"></span>
+                                    <span class="rght_text">Users can focus on learning rather than spending hours trying to make their slides look beautiful
+                                    </span>
+
+                                </li>
+                                <li><span class="icon"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon8.png'); ?>"></span>
+                                    <span class="rght_text">Unlimited flexibility to add and remove students and professors to the license anytime with no restrictions
+
+                                    </span>
+
+                                </li>
+
+                                <li class="user_count"><img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/icon9.png'); ?>">5,000+<span class="cont_text">School Districts and Institutes worldwide use our products
+                                </span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--End of Owl Carousel-->
+                    
+                </div>
+            </div>
+            
+        </div>
+
+    </div>          
+
+</div>
+<script type="text/javascript">
+require(['jquery', 'owl_carausel'], function ($) {
+    $(document).ready(function(){
+        owlInitialize();
+
+        $('#Individual').show();
+
+        $('.tablinks').on('click', function(event){
+          event.preventDefault();
+          $('.tablinks').removeClass('active');
+          $(this).addClass('active');
+          $('.tabcontent').hide();
+          $($(this).data('content')).show();
+        });
+    });
+    $(window).resize(function() {
+        owlInitialize();
+    });
+    function owlInitialize() {
+        if ($('.slide-product .variation').css('display') == 'none')
+        {
+            $('.slide-product .variation').remove();
+        } else if($('.slide-product .control').css('display') == 'none') {
+            $('.slide-product .control').remove();
+        }
+        if ($(window).width() <= 890) {
+            $('.slide-product').addClass("owl-carousel");
+            $('.pricing-new-block').addClass('Mobile_viewcontent');
+            $('.pricing-new-block').removeClass('Desktop_viewcontent');
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                navText: ['<button type="button" role="presentation" class="owl-prev"><span aria-label="Previous">‹</span></button>','<button type="button" role="presentation" class="owl-next"><span aria-label="Next">›</span></button>'],
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 3,
+                        nav: true
+                        
+                    }
+                }
+            });
+
+        $(".owl-item").each(function(index, value) {
+            var ptype = $(this).children(".col-box.item").attr("data-pricingtype");
+            $(this).addClass(ptype);
+        });
+
+        }else{
+            $('.owl-carousel').owlCarousel('destroy');
+            $('.slide-product').removeClass("owl-carousel");
+            $('.pricing-new-block').removeClass('Mobile_viewcontent');
+            $('.pricing-new-block').addClass('Desktop_viewcontent');
+        }
+    }
+    
+});
+</script>

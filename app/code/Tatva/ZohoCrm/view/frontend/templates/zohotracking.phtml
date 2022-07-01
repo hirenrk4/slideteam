@@ -1,0 +1,23 @@
+<?php if($block->check15MinDifference()): ?>
+<script type="text/javascript">
+require(['jquery'],function($) {
+	$(document).ready(function(){
+		$.ajax({
+            type: 'POST',
+            url: '<?php echo $this->getURL('zohocrm/index/sendcustomeractivity'); ?>',
+            data: {
+                pageUri: '<?php echo $this->getRequest()->getRequestUri()?>'
+            },
+            dataType: 'json',
+            success:function(data) {
+            	if(data.message == 'success'){
+                    //$.cookie("zoho_customer_data", null, { path: '/' });
+            	}else{
+            		console.log(data.message);
+            	}
+            }
+        });
+    });
+});
+</script>
+<?php endif; ?>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">     
+    <event name="catalog_product_save_before">
+        <observer name="prodcut_content_save_before" instance="Tatva\EduTech\Observer\SerializedContent" />
+    </event>
+    <event name="catalog_product_gallery_prepare_layout">
+        <observer name="change_template_images" instance="Tatva\EduTech\Observer\ChangeTemplateObserver" />
+    </event>
+</config>

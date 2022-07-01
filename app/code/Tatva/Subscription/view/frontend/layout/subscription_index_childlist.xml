@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+        <css src="Magento_Theme::css/customer/subscription/subscription.css" media="all" order="204"/>
+    </head>
+    <body>
+        <referenceBlock name="page.main.title"> 
+            <action method="setPageTitle"> 
+                <argument translate="true" name="title" xsi:type="string">Child Subscription</argument> 
+            </action> 
+        </referenceBlock> 
+        <referenceContainer name="content">
+            <block class="Tatva\Subscription\Block\Subscription" name="Tatva_Subscriptionchild" template="Tatva_Subscription::childlist.phtml" cacheable="false"/>
+        </referenceContainer>
+        <referenceContainer name="sidebar.additional">
+            <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+            <referenceBlock name="wishlist_sidebar" remove="true"/>
+            <referenceBlock name="customer.wishlist.buttons" remove="true"/>
+        </referenceContainer>
+        <move element="Tatva_Subscriptionchild" destination="custom.account.wrapper" /> 
+    </body>
+</page>

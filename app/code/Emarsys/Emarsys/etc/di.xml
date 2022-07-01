@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category   Emarsys
+ * @package    Emarsys_Emarsys
+ * @copyright  Copyright (c) 2017 Emarsys. (http://www.emarsys.net/)
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="emarsys-save-in-quote" type="Emarsys\Emarsys\Model\Checkout\ShippingInformationManagement"
+                sortOrder="9"/>
+    </type>
+    <type name="Emarsys\Emarsys\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Emarsys\Emarsys\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">emarsysLogger</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Emarsys\Emarsys\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- <preference for="\Magento\Framework\Mail\TransportInterface" type="Emarsys\Emarsys\Model\Transport"/>
+    <preference for="\Magento\Framework\Mail\Message" type="Emarsys\Emarsys\Model\Message"/>
+    <preference for="\Magento\Framework\Mail\Template\TransportBuilder"
+                type="Emarsys\Emarsys\Model\Template\TransportBuilder"/> -->
+    <preference for="\Magento\Email\Model\Template\Filter"
+                type="Emarsys\Emarsys\Model\Template\Filter"/>
+    <preference for="Magento\Email\Model\Template" type="Emarsys\Emarsys\Model\Template"/>
+    <preference for="Magento\Newsletter\Model\Subscriber" type="Emarsys\Emarsys\Model\Subscriber"/>
+</config>

@@ -1,0 +1,47 @@
+<?php $captcha_status = $this->getCaptchaCodeStatus(); ?>
+<?php if($captcha_status == 1):?>
+<div class="captcha-customsection">    
+    <div class="pd-detail-captcha-wrapper" style="display:block;">
+        <?php echo $block->getChildHtml('download_captcha'); ?>
+        <script type="text/javascript">
+            require(['jquery'],function($){
+                $(document).ready(function(){
+                    $.ajax({
+                        type: 'POST',
+                        url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                        data:'formId=downloadable_captcha',
+                        success:function(data) {
+                            $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('.pd-detail-captcha-wrapper .captcha-reload');                       
+                        }
+                    }); 
+                })
+            })
+        </script>
+    </div>     
+</div>
+<?php endif; ?>
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        
+        $(document).ready(function () {
+            
+            $(document).on("click",".pd-detail-captcha-wrapper .captcha-reload",function(){
+                downloadRefreshCaptcha();
+            });
+
+            function downloadRefreshCaptcha(){
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                    data:'formId=downloadable_captcha',
+                    success:function(data) {
+                        $('.pd-detail-captcha-wrapper .captcha-img').hide();
+                        $('.pd-detail-captcha-wrapper #captcha_downloadable_captcha').val("");
+                        $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('.pd-detail-captcha-wrapper .captcha-reload');                 
+                    }
+                });
+            }
+
+        });
+    });
+</script>

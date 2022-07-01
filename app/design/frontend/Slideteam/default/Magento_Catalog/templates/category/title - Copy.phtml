@@ -1,0 +1,59 @@
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$category_helper = $this->helper('Magento\Catalog\Helper\Category');
+
+$category = $this->getCurrentCategory(); //get current category
+
+$_imgHtml = '';
+$tag_page = $this->getChild('first_product_in_tag_banner');
+?>
+
+<div class="page-title category-title">
+    <h4 class="custom-category-title">
+        <?php
+        $current_category_name = $_helper->categoryAttribute($category, $category->getName(), 'name');
+        $parent_category_name = $_helper->categoryAttribute($category, $category->getParentCategory()->getName(), 'name');
+
+        $catID_t = $category->getId();
+
+        $category_t = $this->getCategoryCollectionById($catID_t);
+
+        $data_t = $category_t->getData();
+
+        if ($data_t) {
+            $categoryHeader_t = $data_t[0]['category_header'];
+            if ($categoryHeader_t == null || $categoryHeader_t == '') {
+                if ($category->getLevel() > 2) {
+                    if ($parent_category_name == "Data Driven" || $parent_category_name == "Hand Drawn" || $parent_category_name == "Essentials")
+                        echo "All $current_category_name PowerPoint Templates and Slides";
+                    else if ($parent_category_name == "Themes")
+                        echo "All $current_category_name PowerPoint $parent_category_name, Templates and Slides";
+                    else if ($parent_category_name == "Medical")
+                        echo "All $current_category_name PowerPoint Images, Illustrations and Diagram slides";
+                    else if ($parent_category_name == "Technology")
+                        echo "All $current_category_name PowerPoint $parent_category_name Templates, Presentations and Slides";
+                    else if ($parent_category_name == "Flat Designs" && $current_category_name == "Bullet and Text Slides")
+                        echo "$current_category_name PowerPoint presentation slide templates";
+                    else if ($parent_category_name == "Excel Linked" && $current_category_name == "Bubble Chart Graph")
+                        echo "All $current_category_name PowerPoint Presentation Templates and Slides";
+                    else
+                        echo "All $current_category_name PowerPoint $parent_category_name and Slides";
+                }
+                else {
+                    if ($current_category_name == "Themes")
+                        echo "All PowerPoint $current_category_name and Templates";
+                    else if ($current_category_name == "Medical")
+                        echo "All $current_category_name PowerPoint Images, Illustrations and Diagram slides";
+                    else
+                        echo "All PowerPoint $current_category_name";
+                }
+            }else {
+                echo $categoryHeader_t;
+            }
+        }
+        ?>
+    </h4>
+</div>
+<div class="category-description">
+    <?php echo $category->getSeoDescription(); ?>
+</div>

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Helper\Product" type="Tatva\EduTech\Helper\Product" />
+    <preference for="Magento\Catalog\Model\Product\Attribute\Backend\Sku" type="Tatva\EduTech\Model\Product\Attribute\Backend\Sku" />
+    <type name="Magento\Review\Block\Product\ReviewRenderer">
+       <plugin name="custom_review_template" sortOrder="20" disabled="false" type="Tatva\EduTech\Plugin\CustomReviewRender"/>
+    </type>
+</config>

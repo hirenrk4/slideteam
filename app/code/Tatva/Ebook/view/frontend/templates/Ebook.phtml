@@ -1,0 +1,672 @@
+<?php
+//Detect special conditions devices
+$iPod    = stripos($_SERVER['HTTP_USER_AGENT'],"iPod");
+$iPhone  = stripos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+$iPad    = stripos($_SERVER['HTTP_USER_AGENT'],"iPad");
+$iPadOS  = stripos($_SERVER['HTTP_USER_AGENT'],"Macintosh");
+?>
+<?php
+	$productCollection = $block->getEbookProductList();
+	$productCount = count($productCollection);
+	$helper = $this->helper('Tatva\Theme\Helper\Header');
+	$_helper = $this->helper('Magento\Catalog\Helper\Output');
+	$imageUrl = $helper->getBase(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'catalog/product';
+	$pdfUrl = $helper->getBase(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA) . 'ebook/previews/';
+	$base_url = $this->getURL();
+	$login = $helper->isCustomerLoggedIn();
+	$ebook_helper = $this->helper('Tatva\Ebook\Helper\Ebook');
+	if(count($productCollection) > 0) {
+		$allProductsArePurchased = $ebook_helper->allProductsArePurchased($productCollection);
+	}
+	$isCustomerSubscribed = $ebook_helper->isCustomerSubscribed();
+	$groupEbook = $ebook_helper->getGroupEbook();	
+	$AllEbookPrice = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($groupEbook->getPrice(),true,false);
+	$AllEbookId = $groupEbook->getEntityId();
+	$AllpostParams = $ebook_helper->getPostParam($groupEbook);
+	$AllEbookAction = $AllpostParams['action'];
+	$AllEbookUenc = $AllpostParams['data']['uenc'];
+	$orderedProducts = $block->OrderedProductList();
+	$isCustomerPurchasedAll = $ebook_helper->isCustomerPurchased($groupEbook->getEntityId());
+
+	$alreadysubscribed = 0;
+	if($isCustomerSubscribed != null){
+		$current_date = strtotime(date('Y-m-d'));
+	    $from_date = strtotime($isCustomerSubscribed->getFromDate());
+	    $to_date = strtotime($isCustomerSubscribed->getToDate());
+	    $subscription_status = $isCustomerSubscribed->getStatusSuccess();
+
+	    if ($current_date >= $from_date && $current_date <= $to_date && $subscription_status != "Failed") {
+	    	$alreadysubscribed = 1;
+	    }
+	}
+?>
+
+<!-- Banner start-->
+<div class="ebook-banner-wrapper" style="background-image: url(<?php echo $this->getViewFileUrl('Tatva_Ebook::images/left_bannerimg.png'); ?>)">	
+	<div class="container">
+		<div class="ebook-banner-inner">			
+			<div class="banner-left-content">			
+				<h1><span class="heading-text">THE #1 POWERPOINT</span>
+				EBOOK STORE</h1>
+				<h2>One-Stop-Shop for Mastering PowerPoint Presentation Design</h2>
+				<div class="bottom-para">				
+					<p>
+						<i class="thumb-icon">
+							<?php $thumbImage = $this->getViewFileUrl("Tatva_Ebook::images/thumbs-up.svg"); ?>
+							<img src="<?php echo $thumbImage; ?>">
+						</i>
+						Discover the Tricks to Create Powerful PowerPoint Presentations
+					</p>
+					<p>
+						<i class="thumb-icon">
+							<?php $thumbImage = $this->getViewFileUrl("Tatva_Ebook::images/thumbs-up.svg"); ?>
+							<img src="<?php echo $thumbImage; ?>">
+						</i>
+						Knowledge & Experience of 500+ PowerPoint Experts Shared in eBooks
+					</p>			
+				</div>
+			</div>
+			<div class="banner-middle-content">				
+				<div class="middle-contentoffer">				
+					<?php if($alreadysubscribed == 0){ 
+						if($isCustomerPurchasedAll == false && $allProductsArePurchased != true) { ?>
+							<p class="offer-text">Inaugural Offer</p>
+							<p class="buy-text">Buy a pack of all <?php echo $productCount; ?> for <span><?php echo $AllEbookPrice; ?></span></p>	
+						<?php } ?>				
+					<?php } ?>							
+					<form data-role="tocart-form" id="addToCartForm-<?php /* @escapeNotVerified */ echo $AllpostParams['data']['product']; ?>-top" class="addToCartForm" action="<?php /* @escapeNotVerified */ echo $AllpostParams['action']; ?>" method="post">
+						<?php echo $block->getBlockHtml('formkey')?>
+						<input type="hidden" name="product" class="product" id="product-<?php /* @escapeNotVerified */ echo $AllpostParams['data']['product']; ?>-top" value="<?php /* @escapeNotVerified */ echo $AllpostParams['data']['product']; ?>">		
+						<input type="hidden" name="uenc" class="uenc" id="uenc-<?php echo $AllpostParams['data']['product']; ?>-top" value="<?php /* @escapeNotVerified */ echo $AllpostParams['data']['uenc']; ?>">
+						
+						<?php
+							$cartImage = $this->getViewFileUrl("Tatva_Ebook::images/shopping-cart.svg");
+							$cartImageHover = $this->getViewFileUrl("Tatva_Ebook::images/shopping-cart-h.svg");
+							$AllEbookcount = 0;
+							if(!empty($orderedProducts)) {
+								foreach ($orderedProducts as $value) {
+									if($value == $AllEbookId) {
+										$AllEbookcount = $AllEbookcount + 1;
+									}
+								}
+							} 
+						?>
+
+						<?php if($login == '1' && $alreadysubscribed == 0) { 
+							if($AllEbookcount >= 1 || $allProductsArePurchased == TRUE) { ?>
+								<button type="button"
+					                    title="<?php echo $block->escapeHtml(__('Download All')); ?>"
+					                    class="buy-now-btn upper-downloadClick">
+					                <span><?php /* @escapeNotVerified */ echo __('Download All') ?></span>
+					            </button>
+							<?php } else { ?>
+								<div class="buy-all-btn">
+									<?php $BuyBtnAll = $this->getViewFileUrl("Tatva_Ebook::images/buy_now.png"); ?>				
+									<input name="Buy" class="buy_all_normal" type="image" src="<?php echo $BuyBtnAll; ?>"/>
+									<?php $BuyBtnAllHover = $this->getViewFileUrl("Tatva_Ebook::images/buy_nowhover.png"); ?>				
+									<input name="Buy" class="buy_all_hover" type="image" src="<?php echo $BuyBtnAllHover; ?>"/>
+								</div>
+							<?php } ?>
+						<?php } else if($login == '1' && $alreadysubscribed == 1) { ?>
+							<button type="button"
+				                    title="<?php echo $block->escapeHtml(__('Download All')); ?>"
+				                    class="buy-now-btn upper-downloadClick">
+				                <span><?php /* @escapeNotVerified */ echo __('Download All') ?></span>
+				            </button>
+						<?php } else { ?>
+							<div class="buy-all-btn">
+								<?php $BuyBtnAll = $this->getViewFileUrl("Tatva_Ebook::images/buy_now.png"); ?>				
+								<input name="Buy" class="login-box buy_all_normal" type="image" src="<?php echo $BuyBtnAll; ?>"/>
+								<?php $BuyBtnAllHover = $this->getViewFileUrl("Tatva_Ebook::images/buy_nowhover.png"); ?>				
+								<input name="Buy" class="login-box buy_all_hover" type="image" src="<?php echo $BuyBtnAllHover; ?>"/>
+							</div>
+						<?php } ?>
+					</form>
+					<?php $leftbannerImage = $this->getViewFileUrl("Tatva_Ebook::images/left_bannerimg.png"); ?>				
+					<!-- <img src="<?php echo $leftbannerImage; ?>"> -->
+				</div>	
+			</div>
+			<div class="banner-right-content">
+				<i class="tap-img">	
+					<?php $tabIconImage = $this->getViewFileUrl("Tatva_Ebook::images/tab_icon.png"); ?>			
+					<img src="<?php echo $tabIconImage; ?>">
+				</i>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Banner End -->
+
+
+<?php if(count($productCollection) > 0) { ?>
+<div class="book-collection-container container">
+	<div class="book-collection-top">
+		<p><b>eBook Collection</b></p>
+		<p class="book-collection-text"> Master Simple Design Tips & Tricks to Create Awesome Slides! </p>
+		<div class="sort-book-category">
+			<?php 
+				$sort = "0";
+				if (isset($_GET['sort'])) {
+			    	$sort = $_GET['sort'];
+				}
+			?>
+			<div class="filterbox">
+		        <p>Sort By</p>
+				<div class="filtercont">
+	                <select data-type ="custom-dropdown" class="custom-dropdown sorting-dropdown">
+	                    <option value="" <?php if($sort == "0"){echo "selected=\"selected\"";} ?>>----- Select -----</option>
+	                    <option value="1" <?php if($sort == "1"){echo "selected=\"selected\"";} ?>>New & Popular</option>
+	                    <option value="2" <?php if($sort == "2"){echo "selected=\"selected\"";} ?>>Name</option>
+	                </select>
+		        </div>
+		    </div>
+        </div>
+	</div>
+	<ul class="book-collection-division">
+		<?php $i=1; ?>
+		<?php foreach ($productCollection as $product) { ?>	
+			<li>
+				<div class="book-collection-inner">
+					<p class="book-name">
+						<!-- <b><a href="<?php echo $product->getProductUrl(); ?>" class="book-name-color"><?= $product->getName() ?></a></b> -->
+						<b><a href="<?php echo $base_url.'powerpoint-ebooks-for-slide-template-design/'.$product->getUrlKey().'.html'; ?>" class="book-name-color"><?= $product->getName() ?></a></b>
+					</p>
+					<?php 
+						if($product->getImage() && $product->getImage() != 'no_selection') { ?>
+							<!-- <i><a href="<?php echo $product->getProductUrl(); ?>"><img src="<?= $imageUrl.$product->getImage() ?>"></a></i> -->
+							<i><a href="<?php echo $base_url.'powerpoint-ebooks-for-slide-template-design/'.$product->getUrlKey().'.html'; ?>"><img src="<?= $imageUrl.$product->getImage() ?>"></a></i>
+					<?php } else {
+							$product_default_image = $this->getViewFileUrl("Tatva_Ebook::images/product_default_image.jpg"); ?>		
+							<i><a href="<?php echo $base_url.'powerpoint-ebooks-for-slide-template-design/'.$product->getUrlKey().'.html'; ?>"><img src="<?= $product_default_image ?>" class="default-img"></a></i>
+							<!-- <i><a href="<?php echo $product->getProductUrl(); ?>"><img src="<?= $product_default_image ?>" class="default-img"></a></i> -->
+					<?php } ?>
+					<p class="book-description"><?= $product->getShortDescription() ?></p>
+					<div class="book-price">						
+						<?php 
+							$productPrice = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($product->getPrice(),true,false);
+							$countProduct1 = 0;
+							if($login == '1') {
+								if(!empty($orderedProducts)) {
+									foreach ($orderedProducts as $value) {
+										if($value == $product->getEntityId() || $value == $AllEbookId) {
+											$countProduct1 = $countProduct1 + 1;
+										}
+									}
+								}								
+							}
+						?>
+
+						<span class="single" <?php if($countProduct1 >= 1 || $alreadysubscribed == 1) {?> style="display: none;" <?php } ?> >Buy 1 for <?= $productPrice; ?></span>
+						<span class="all" <?php if($countProduct1 >= 1 || $alreadysubscribed == 1) {?> style="display: none;" <?php } ?>>Buy all for <?= $AllEbookPrice; ?></span>
+						<?php if($alreadysubscribed == 0){ 
+							if($isCustomerPurchasedAll == false && $allProductsArePurchased != true && $countProduct1 == 0) { ?>
+								<a href="#" class="free-preview-link <?php if($countProduct1 >= 1 || $alreadysubscribed == 1) { echo 'purchased-preview'; } ?>" id="free-preview-link-<?php echo $product->getEntityId(); ?>" name="<?php echo $product->getName(); ?>">Free Preview</a>
+							<?php } ?>
+						<?php } ?>
+					</div>
+					<?php $sample_file = explode("/",$product->getSampleFile()); ?>
+					<div id="popup-modal-<?php echo $product->getEntityId(); ?>" class="popup-modal" style="display:none;">
+						<?php if($iPod || $iPad || $iPhone || $iPadOS) { ?>
+						<?php 
+						$sampleFile = $product->getSampleFile();
+						$str2 = substr($sampleFile, 5); ?>
+						<div class="pdf-content">
+							<div class="pdf-cnt">
+								<p><?php echo $str2; ?></p>
+								<a class="pdf-link" href="<?php echo $pdfUrl.$sampleFile; ?>">
+									<button class="pdf-btn">Open</button>
+	        					</a>
+        					</div>
+        				</div>
+						<?php  } else { ?>
+						<iframe id="myiframe-<?php echo $product->getEntityId(); ?>" data-src="<?php echo $pdfUrl.$product->getSampleFile(); ?>#toolbar=0&scrollbar=0&navpanes=0&embedded=true&statusbar=0&view=Fit;readonly=true;disableprint=true;"></iframe>
+						<?php } ?>
+					</div>
+					<?php
+						$postParams = $ebook_helper->getPostParam($product);
+					?>
+					<form data-role="tocart-form" class="addToCartForm" id="addToCartForm-<?php echo $product->getEntityId(); ?>" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+						<?php echo $block->getBlockHtml('formkey')?>
+
+						<input type="hidden" name="productId" value="<?php echo $product->getEntityId(); ?>">
+						<input type="hidden" name="productAction" value="<?php echo $postParams['action']; ?>">
+						<input type="hidden" name="ProductUenc" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+
+						<input type="hidden" name="product" class="product" id="product-<?php echo $product->getEntityId(); ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">		
+						<input type="hidden" name="uenc" class="uenc" id="uenc-<?php echo $product->getEntityId(); ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data']['uenc']; ?>">
+						<input id='price-<?php echo $product->getEntityId(); ?>; ?>' class='price' name='price' type='hidden' value='single'>
+
+						
+						<div class="book-count">
+							<?php 
+								$countProduct = 0;
+								if($login == '1') {
+									if(!empty($orderedProducts)) {
+										foreach ($orderedProducts as $value) {
+											if($value == $product->getEntityId() || $value == $AllEbookId) {
+												$countProduct = $countProduct + 1;
+											}
+										}
+									}								
+								}
+							?>
+							<div class="filterbox" <?php if($countProduct >=1 || $alreadysubscribed == 1) :?>  style="display: none;" <?php endif;?>>
+								<div class="filtercont">
+									<select data-type ="custom-dropdown" class="custom-dropdown book_type">
+									<!-- <select class="book_type" <?php if($countProduct >=1 || $alreadysubscribed == 1) {?>  style="display: none;" <?php }?> -->>
+										<?php 
+											$countType = 0;
+											foreach ($orderedProducts as $value) {
+												if($value == $AllEbookId){
+													$countType = $countType + 1;
+												}
+											}
+										?>
+									  <option value="single">Single eBook</option>
+									  <option value="all" <?php if($countType == "1"){echo "selected=\"selected\"";} ?>>All eBooks</option>
+									</select>
+								</div>
+							</div>
+
+							<?php if($login == '1' && $alreadysubscribed == 0) { ?>
+								<?php 
+									if(!empty($orderedProducts)) {
+										$count = 0;
+										foreach ($orderedProducts as $value) {
+											if($value == $product->getEntityId() || $value == $AllEbookId) {
+												$count = $count + 1;
+											}
+										}
+										if($count >= 1) { ?>
+											<button type="button"
+								                    title="<?php echo $block->escapeHtml(__('Download')); ?>"
+								                    class="buy-now-btn downloadClick" style="width: 326px">
+								                <span><?php /* @escapeNotVerified */ echo __('Download') ?></span>
+								            </button>
+										<?php } else { ?>
+											<button type="submit"
+							                    title="<?php echo $block->escapeHtml(__('Buy Now')); ?>"
+							                    class="buy-now-btn">
+							                	<span><?php /* @escapeNotVerified */ echo __('Buy Now') ?></span>
+							            	</button>
+										<?php }
+									} else { ?>
+										<button type="submit"
+						                    title="<?php echo $block->escapeHtml(__('Buy Now')); ?>"
+						                    class="buy-now-btn">
+						                	<span><?php /* @escapeNotVerified */ echo __('Buy Now') ?></span>
+						            	</button>
+								<?php } ?>
+
+							<?php } else if($login == '1' && $alreadysubscribed == 1) { ?>
+								<button type="button"
+					                    title="<?php echo $block->escapeHtml(__('Download')); ?>"
+					                    class="buy-now-btn downloadClick" style="width: 326px">
+					                <span><?php /* @escapeNotVerified */ echo __('Download') ?></span>
+					            </button>
+							<?php } else { ?>
+								<input type="button" name="Buy" value="Buy Now" class="buy-now-btn login-box">
+							<?php } ?>
+						</div>
+					</form>
+					<?php if($alreadysubscribed == 0){ 
+						if($isCustomerPurchasedAll == false && $allProductsArePurchased != true && $countProduct1 == 0) { ?>
+							<a href="<?= $base_url ."pricing" ?>" class="get-link">Get this for Free with any paid subscription</a>
+						<?php } ?>
+					<?php } ?>
+				</div>
+			</li>
+			<?php $i++; ?>
+		<?php } ?>
+	</ul>
+</div>
+
+<?php } else { ?>
+	<div>
+		<b><h1 align="center" style="margin-top: 25px">No Ebooks Available</h1></b>
+	</div>
+<?php } ?>
+<!-- For bottom banner -->
+<div class="ebook-purchase-block">
+	<div class="container">
+		<div class="ebook-purchase-inner">
+			<div class="ebook-purchase-left">
+				<img src="<?= $imageUrl.$groupEbook->getImage(); ?>">
+			</div>
+			<div class="ebook-purchase-right">
+				<?php $groupProductPrice = $this->helper('Magento\Framework\Pricing\Helper\Data')->currency($groupEbook->getPrice(),true,false);?>
+				<p class="ebook-purchase-title">Discover PowerPoint Secrets 
+					<?php if($alreadysubscribed == 0){ 
+						if($isCustomerPurchasedAll == false && $allProductsArePurchased != true) { ?>
+							- <b>Buy All For Just <?= $groupProductPrice; ?></b>
+						<?php } ?>
+			 		<?php } ?>
+				</p>
+				<p><?php echo $_helper->productAttribute($groupEbook, $groupEbook->getDescription(), 'description') ?></p>
+
+				<form data-role="tocart-form" class="addToCartForm" id="addToCartForm-<?php /* @escapeNotVerified */ echo $AllpostParams['data']['product']; ?>-bottom" action="<?php /* @escapeNotVerified */ echo $AllpostParams['action']; ?>" method="post">
+					<?php echo $block->getBlockHtml('formkey')?>
+					<input type="hidden" name="product" class="product" id="product-<?php /* @escapeNotVerified */ echo $AllpostParams['data']['product']; ?>-bottom" value="<?php /* @escapeNotVerified */ echo $AllpostParams['data']['product']; ?>">		
+					<input type="hidden" name="uenc" class="uenc" id="uenc-<?php echo $AllpostParams['data']['product']; ?>-bottom" value="<?php /* @escapeNotVerified */ echo $AllpostParams['data']['uenc']; ?>">
+
+					<?php $cartImage = $this->getViewFileUrl("Tatva_Ebook::images/shopping-cart.svg"); ?>
+					<?php $cartImageHover = $this->getViewFileUrl("Tatva_Ebook::images/shopping-cart-h.svg"); ?>
+					<?php if($login == '1' && $alreadysubscribed == 0) { ?>
+						<?php if($isCustomerPurchasedAll == TRUE || $allProductsArePurchased == TRUE) { ?>
+							<button type="submit" title="<?php echo $block->escapeHtml(__("DOWNLOAD ALL")); ?>" class="download-now-btn all-downloadClick">
+						    	<span><?php /* @escapeNotVerified */ echo __("DOWNLOAD ALL") ?></span>
+							</button>
+						<?php } else { ?>
+							
+							<div class="buy-all-btn">
+								<?php $BuyBtnAll = $this->getViewFileUrl("Tatva_Ebook::images/buy_all.png"); ?>				
+								<input name="Buy" class="buy_all_normal" type="image" src="<?php echo $BuyBtnAll; ?>"/>
+								<?php $BuyBtnAllHover = $this->getViewFileUrl("Tatva_Ebook::images/buy_all_hover.png"); ?>				
+								<input name="Buy" class="buy_all_hover" type="image" src="<?php echo $BuyBtnAllHover; ?>"/>
+							</div>
+						<?php } ?>							
+					<?php } else if($login == '1' && $alreadysubscribed = 1) { ?>
+						<button type="submit" title="<?php echo $block->escapeHtml(__("DOWNLOAD ALL")); ?>" class="download-now-btn all-downloadClick">
+					    	<span><?php /* @escapeNotVerified */ echo __("DOWNLOAD ALL") ?></span>
+						</button>
+					<?php } else { ?>
+							<div class="buy-all-btn">
+								<?php $BuyBtnAll = $this->getViewFileUrl("Tatva_Ebook::images/buy_all.png"); ?>				
+								<input name="Buy" class="buy_all_normal login-box" type="image" src="<?php echo $BuyBtnAll; ?>"/>
+								<?php $BuyBtnAllHover = $this->getViewFileUrl("Tatva_Ebook::images/buy_all_hover.png"); ?>				
+								<input name="Buy" class="buy_all_hover login-box" type="image" src="<?php echo $BuyBtnAllHover; ?>"/>
+							</div>
+					<?php } ?>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- For bottom banner end-->
+
+<script type="text/javascript">
+	require(['jquery'], function ($) {
+		$(document).ready(function () {
+
+			$('.book_type').each(function() {
+				var selectedVal = $(this).val();
+				
+				var product_id = $(this).parents().children('[name="productId"]').val();
+				var productAction = $(this).parents().children('[name="productAction"]').val();
+		 	    var productUenc = $(this).parents().children('[name="ProductUenc"]').val();
+		 	    var AllEbookId = "<?php echo $AllEbookId; ?>";
+		 	    var AllEbookUenc = "<?php echo $AllEbookUenc; ?>";
+		 	    var AllEbookAction = "<?php echo $AllEbookAction; ?>";
+
+		 	    $(this).parent().siblings('.price').val(selectedVal);
+
+		 	    if (selectedVal == 'single' ) {
+		 	    	$(this).parents().siblings('.product').val(product_id);
+		 	    	$(this).parents().siblings('.uenc').val(productUenc);
+			 	    $(this).parents().siblings('.product').attr('id','product-'+product_id);
+		 	    	$(this).parents().siblings('.uenc').attr('id','uenc-'+product_id);
+		 	    	$(this).parents().siblings('.price').attr('id','price-'+product_id);
+		 	    	$(this).parents().parent(".addToCartForm").attr('id','addToCartForm-'+product_id);
+		 	    	$(this).parents().parent(".addToCartForm").attr('action',productAction);
+		 	    } else if (selectedVal == 'all') {
+		 	    	$(this).parents().siblings('.product').val(AllEbookId);
+		 	    	$(this).parents().siblings('.uenc').val(AllEbookUenc);
+		 	    	$(this).parents().siblings('.product').attr('id','product-'+AllEbookId);
+	 	    		$(this).parents().siblings('.uenc').attr('id','uenc-'+AllEbookId);
+	 	    		$(this).parents().siblings('.price').attr('id','price-'+AllEbookId);
+	 	    		$(this).parents().parent(".addToCartForm").attr('id','addToCartForm-'+AllEbookId);
+		 	    	$(this).parents().parent(".addToCartForm").attr('action',AllEbookAction);
+		 	    }
+
+			})
+
+			$('.all').hide() 
+		});
+
+		$(".downloadClick").click(function () {			
+            var product_id = $(this).parent().parent().children('[name="product"]').val();
+            
+            $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getURL('downloadable/index/free'); ?>',
+                    data: {
+                        product_id:product_id
+                    },
+                    /*dataType: 'json',*/
+                    showLoader: false ,
+                    success: function(data) {
+                        window.location.href = "<?php echo $this->getURL('downloadable/index/download'); ?>";
+                    },
+                    error: function() {
+                        console.log("Error in downloading product");
+                    }
+                })
+                return false;
+		});
+
+		$(".upper-downloadClick").click(function () {			
+            var product_id = $(this).siblings('[name="product"]').val();
+            
+            $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getURL('downloadable/index/free'); ?>',
+                    data: {
+                        product_id:product_id
+                    },
+                    /*dataType: 'json',*/
+                    showLoader: false ,
+                    success: function(data) {
+                        window.location.href = "<?php echo $this->getURL('downloadable/index/download'); ?>";
+                    },
+                    error: function() {
+                        console.log("Error in downloading product");
+                    }
+                })
+                return false;
+		});
+
+		$(".all-downloadClick").click(function () {			
+			var product_id = $(this).siblings('[name="product"]').val();
+            
+            $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getURL('downloadable/index/free'); ?>',
+                    data: {
+                        product_id:product_id
+                    },
+                    /*dataType: 'json',*/
+                    showLoader: false ,
+                    success: function(data) {
+                        window.location.href = "<?php echo $this->getURL('downloadable/index/download'); ?>";
+                    },
+                    error: function() {
+                        console.log("Error in downloading product");
+                    }
+                })
+                return false;
+		});
+
+		$(".book_type").change(function () {
+	 	    var selectedVal = $(this).val();
+	 	    var product_id = $(this).parents().children('[name="productId"]').val();
+	 	    var productAction = $(this).parents().children('[name="productAction"]').val();
+	 	    var productUenc = $(this).parents().children('[name="ProductUenc"]').val();
+	 	    var AllEbookId = "<?php echo $AllEbookId; ?>";
+	 	    var AllEbookUenc = "<?php echo $AllEbookUenc; ?>";
+	 	    var AllEbookAction = "<?php echo $AllEbookAction; ?>";
+
+	 	    $(this).parents().siblings('.price').val(selectedVal);
+
+	 	    if (selectedVal == 'single' ) {
+	 	    	$(this).parents().siblings().children('.single').show(); 
+	 	    	$(this).parents().siblings().children('.all').hide() 
+	 	    	$(this).parents().siblings('.product').val(product_id);
+	 	    	$(this).parents().siblings('.product').attr('id','product-'+product_id);
+	 	    	$(this).parents().siblings('.uenc').val(productUenc);
+	 	    	$(this).parents().siblings('.uenc').attr('id','uenc-'+product_id);
+	 	    	$(this).parents().siblings('.price').attr('id','price-'+product_id);
+	 	    	$(this).parents().parent(".addToCartForm").attr('id','addToCartForm-'+product_id);
+	 	    	$(this).parents().parent(".addToCartForm").attr('action',productAction);
+	 	    } else if (selectedVal == 'all') {
+	 	    	$(this).parents().siblings().children('.single').hide(); 
+	 	    	$(this).parents().siblings().children('.all').show();
+	 	    	$(this).parents().siblings('.product').val(AllEbookId);
+	 	    	$(this).parents().siblings('.product').attr('id','product-'+AllEbookId);
+	 	    	$(this).parents().siblings('.uenc').val(AllEbookUenc);
+	 	    	$(this).parents().siblings('.uenc').attr('id','uenc-'+AllEbookId);
+	 	    	$(this).parents().siblings('.price').attr('id','price-'+AllEbookId);
+	 	    	$(this).parents().parent(".addToCartForm").attr('id','addToCartForm-'+AllEbookId);
+	 	    	$(this).parents().parent(".addToCartForm").attr('action',AllEbookAction);
+	 	    }
+		});
+
+		//Sorting Data
+		jQuery('.sorting-dropdown').on('change', function () {
+			var sortVal = $(this).val();
+			if(sortVal == ''){
+				window.location = "<?php echo $this->getBaseUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]).'powerpoint-ebooks-for-slide-template-design'; ?>";
+			} else {
+				window.location = "<?php echo $this->getBaseUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]).'powerpoint-ebooks-for-slide-template-design/?sort='; ?>"+ sortVal;
+			}
+        });
+        
+	});
+</script>
+	
+
+<script type="text/javascript">
+	require(['jquery', 'magnific_popup'], function ($) {
+			var addthis_product = 'mag-1.0.1';
+			var addthis_config  = {
+				pubid : 'unknown', data_track_addressbar : true
+			};
+			$(document).ready(function () {
+				var crossImg = '<?php echo $this->getViewFileUrl('Tatva_Free::images/cancel_round.png');?>';
+
+				$(document).on('click', '.login-box', function(e){
+					var product_id = $(this).parents().children('[name="product"]').val();
+					$(".ajax-productId").val(product_id);
+			        $.magnificPopup.close(); // Close existing popup
+
+			        // Open new popup
+			        $.magnificPopup.open({
+			        	mainClass: 'ajaxlogin-main-popup',
+				        items: {
+				            src: '#ajaxlogin-create-window',
+				            type: 'inline'
+				        },
+				        callbacks: {
+                    		open: function () {
+                        		this.contentContainer.addClass('ajax-register-popup');
+                        		$('body').addClass('ajax-popup-open');
+                        		var jQuerythis = $(".captcha-wrapper .field");
+								jQuerythis.find(".input-text").css({"padding-left": jQuerythis.find("> label").innerWidth() + 12});
+                    		},
+                    		close:function() {
+                    			$('body').removeClass('ajax-popup-open');
+                    		}
+               			},
+			          	closeMarkup:'<a class="roundlink"><img src="'+crossImg+'"class="mfp-close"></a>',
+			        });
+			        e.preventDefault();
+				});
+
+				$(document).on('click', '.ajaxlogin-login', function(e){
+					var productId = $('.ajax-productId').val();
+					$(".ajax-login-productId").val(productId);
+			        $.magnificPopup.close(); // Close existing popup
+
+			        // Open new popup
+			        $.magnificPopup.open({
+			        	mainClass: 'ajaxlogin-main-popup',
+				        items: {
+				            src: '#ajaxlogin-login-window',
+				            type: 'inline'
+				        },
+				        callbacks: {
+                    		open: function () {
+                        		this.contentContainer.addClass('ajax-login-popup');
+                        		$('body').addClass('ajax-popup-open');
+                    		},
+                    		close:function() {
+                    			$('body').removeClass('ajax-popup-open');
+                    		}
+               			},
+			          	closeMarkup:'<a class="roundlink"><img src="'+crossImg+'"class="mfp-close"></a>',
+			        });
+			        e.preventDefault();
+				});
+
+				$(document).on('click', '.ajaxlogin-forgot', function(e){
+			        $.magnificPopup.close(); // Close existing popup
+
+			        // Open new popup
+			        $.magnificPopup.open({
+			        	mainClass: 'ajaxlogin-main-popup',
+				        items: {
+				            src: '#ajaxlogin-forgot-window',
+				            type: 'inline'
+				        },
+				        callbacks: {
+                    		open: function () {
+                        		this.contentContainer.addClass('ajax-forgot-password-popup');
+                        		$('body').addClass('ajax-popup-open');
+                    		},
+                    		close:function() {
+                    			$('body').removeClass('ajax-popup-open');
+                    		}
+               			},
+			          	closeMarkup:'<a class="roundlink"><img src="'+crossImg+'"class="mfp-close"></a>',
+			        });
+			        e.preventDefault();
+				});
+			});
+		});
+</script>
+
+<script>
+    require(
+        [
+            'jquery',
+            'Magento_Ui/js/modal/modal'
+        ],
+        function(
+            $,
+            modal
+        ) {
+            var options = {
+                type: 'popup',
+                responsive: true,
+                innerScroll: true,
+                title: 'popup modal title',
+                buttons: [{
+                    text: $.mage.__('Close'),
+                    class: '',
+                    click: function () {
+                        this.closeModal();
+                    }
+                }]
+            };
+
+            var popup = modal(options, $('.popup-modal'));
+            $(document).on('click', '.free-preview-link', function(){
+            	var product_id = jQuery(this).attr('id').split('free-preview-link-')[1];
+            	var product_name = jQuery(this).attr('name');
+				var iframe = $("#myiframe-"+product_id);
+    			iframe.attr("src", iframe.data("src"));
+            	$("#popup-modal-"+product_id).modal(options).modal('openModal');
+                jQuery('.modal-title').html(product_name);
+                return false;
+            });
+
+        }
+    );
+</script>
+
+<!-- task 1586 start -->
+<script>
+    require(['jquery','dropkick','domReady!'],function($) {
+    	$("select.custom-dropdown").dropkick('reset');
+    });
+</script>
+<!-- task 1586 end -->

@@ -1,0 +1,56 @@
+<div id="modal-content" style="display: none;">
+</div>
+<script>
+   require([
+       "jquery",
+       "Magento_Ui/js/modal/modal",
+       'mage/backend/notification',
+       "prototype"
+   ], function(jQuery, modal, notification) {
+
+//<![CDATA[
+       Window.keepMultiModalWindow = true;
+       var notificationView = {
+           overlayShowEffectOptions : null,
+           overlayHideEffectOptions : null,
+           modal: null,
+           open : function(viewUrl, elementId) {
+                if (viewUrl && elementId) {
+                   jQuery.ajax({
+                       url: viewUrl,
+                       data: {
+                           id: elementId
+                       },
+                       showLoader: true,
+                       dataType: 'json',
+                       success: function(data, textStatus, transport) {
+                          jQuery('#modal-content').html(data.output);
+                           this.openDialogWindow();
+                       }.bind(this)
+                   });
+                }               
+           },
+           openDialogWindow : function() {
+              var options = {
+                    type: 'popup',
+                    responsive: true,
+                    title: 'Notification Preview',
+                    modalClass: 'custom-modal',
+                      buttons: [{
+                          text: 'Close',
+                          class: 'modal-close',
+                          click: function () {
+                                this.closeModal();
+                          }
+                    }]
+              };
+                var popup = modal(options, jQuery('#modal-content'));
+                jQuery('#modal-content').modal('openModal');              
+              
+           }
+       };
+
+       window.notificationView = notificationView;
+//]]>
+   });
+</script>

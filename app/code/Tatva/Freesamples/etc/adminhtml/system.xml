@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="slideteams_configuration" translate="label" sortOrder="10">
+            <label>SLIDETEAM'S CONFIGURATION</label>
+        </tab>
+        <section id="freesamples_options" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Free Samples Products Config</label>
+            <tab>slideteams_configuration</tab>
+            <resource>Tatva_Freesamples::freesamples_config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <field id="h1_title" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>H1 Title</label>
+                </field>
+                <field id="title" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Title</label>
+                </field>
+                <field id="descritption" translate="label" type="textarea" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Description</label>
+                </field>
+                <field id="meta_description" translate="label" type="textarea" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Meta Description</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

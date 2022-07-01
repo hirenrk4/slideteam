@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="subscription_options_paypal_order_email_template_id" label="Incomplete Paypal Order Email" file="paypal/paypal_order.html" type="html" module="Tatva_Subscription" area="frontend"/>
+    <template id="subscription_options_paypal_order_email_not_completed_template" label="Order Detail Not Exist" file="paypal/paypal_order_notcompleted.html" type="html" module="Tatva_Subscription" area="frontend"/>
+    <template id="subscription_newcustomer_register" label="Subscription Newcustomer Register" file="subscription_newcustomer_register.html" type="html" module="Tatva_Subscription" area="frontend"/>
+    <template id="subscription_confirmation" label="Subscription confirmation" file="subscription_confirmation.html" type="html" module="Tatva_Subscription" area="frontend"/>
+</config>

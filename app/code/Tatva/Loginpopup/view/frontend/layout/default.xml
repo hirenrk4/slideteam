@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd" layout="1column">
+	<head>
+<!-- 		<css src="Tatva_Loginpopup::css/jquery.fancybox.css"/> -->
+		<!-- <css src="Magento_Theme::css/magnific-popup/magnific-popup.css" media="all"/> --><!-- 
+		<css src="Tatva_Loginpopup::css/style.css"/> -->
+	</head>
+	<body>
+		<!-- <referenceContainer name="before.body.end">
+			<block class="Tatva\Loginpopup\Block\Loginpopup" name="loginpopup" template="Tatva_Loginpopup::loginpopup_js.phtml" />
+		</referenceContainer> -->
+    </body>
+</page>

@@ -1,0 +1,44 @@
+<?php
+$helper = $this->helper('Tatva\Notification\Helper\Data');
+$popupNotifications =$block->getPopupNotifications();
+$count = $popupNotifications->count();
+
+$notification_page_url=$this->getUrl('notification');
+
+?>
+<?php
+        if(!$block->generalHelper->isMobileDevice()) {
+?>
+<div class="dropdown notification_tab">
+	<div class="pulse"></div>
+	<span class="notifctn_count"><?= $count;?></span>
+  	<button class="dropnitifctnbtn"><i class="fa fa-bell-o" aria-hidden="true"></i>
+	</button>
+</div>
+<div class="dropdown-content notiftionDropdown">
+	<div class="notif_heding">Notifications <span class="totl_notifiction"><?= $count;?></span></div>
+	<ul>	
+		<?php
+       		foreach ($popupNotifications as $value) {
+       			$imageUrl=$this->getViewFileUrl('Tatva_Notification::'.$helper->getImageUrl($value->getType()));
+       	?>
+       		<li>
+       			<div>
+	       			<span class="icons"><img src="<?php echo $imageUrl;?>" loading="auto" alt="Notification Icon"></span>
+	       			<span class="notifctn_text">
+	       				<?php echo $value->getContent();?>	       				
+					</span>
+					<span class="notifctn_time"><?php echo $helper->getDateDifference($value->getPublisheAt()); ?></span>
+				</div>
+       		</li>
+	    <?php
+	       	}
+		?>
+	</ul>
+	<?php if($popupNotifications->count()){?>
+	<div class="notif_heding all_notifctn">
+		<a href="<?php echo $notification_page_url;?>" rel="nofollow" title="View All Notifications">View All Notifications <i class="fa fa-arrow-right" aria-hidden="true"></a></i>
+	</div>
+	<?php } ?>
+</div>
+<?php } ?>

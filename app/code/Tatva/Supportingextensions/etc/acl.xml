@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <acl>
+        <resources>
+            <resource id="Magento_Backend::admin">
+                <resource id="Tatva_Supportingextensions::supportingextension" title="Supporting Extensions" sortOrder="51">
+                    <resource id="Tatva_Supportingextensions::sentence" title="Sentence" sortOrder="9"/>
+
+                    <resource id="Tatva_Supportingextensions::managesubscriber" title="Manage Active Subscribers" sortOrder="10">
+                        <resource id="Tatva_Supportingextensions::managepaypalsubscriber" title="Manage Paypal Subscribers" sortOrder="1"/>
+                        <resource id="Tatva_Supportingextensions::managecheckoutsubscriber" title="Manage 2Checkout Subscribers" sortOrder="2"/>
+                    </resource>
+
+                    <resource id="Tatva_Supportingextensions::popup_manager" title="Popup Configuration" sortOrder="16">
+                        <resource id="Tatva_Supportingextensions::post" title="Manage Popup" sortOrder="1"/>
+                    </resource>
+                    
+                    <resource id="Tatva_Supportingextensions::review_integration" title="Customer Review" sortOrder="17">
+                        <resource id="Tatva_Supportingextensions::review_post" title="Post Customer Review" sortOrder="1"/>
+                    </resource>
+
+                    <resource id="Tatva_Supportingextensions::metatitle" title="Meta title" sortOrder="11" />
+                    <resource id="Tatva_Supportingextensions::metadescription" title="Meta Descripiton" sortOrder="12" />
+                    <resource id="Tatva_Supportingextensions::projectimportdetails" title="Project Import Details" sortOrder="13" />
+                    <resource id="Tatva_Supportingextensions::submitproject" title="Submit Project" sortOrder="14" />
+
+                    <resource id="Tatva_Supportingextensions::customreports" title="Custom Reports" sortOrder="15">
+                        <resource id="Tatva_Supportingextensions::renewcustomer" title="Renew Subscription Customer Report" sortOrder="1"/>
+                        <resource id="Tatva_Supportingextensions::subscripitonreport" title="Subscription Details Report" sortOrder="2"/>
+                        <resource id="Tatva_Supportingextensions::freecustomerreport" title="Free Customer Report" sortOrder="3"/>
+                        <resource id="Tatva_Supportingextensions::questionnairereport" title="Questionnaire Reports" sortOrder="4"/>
+                        
+                    </resource>
+                </resource>
+
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Tatva_Supportingextensions::supportingextension_config" title="Supporting Extensions"/>
+                        </resource>
+                    </resource>
+                </resource>
+            </resource>
+
+        </resources>
+    </acl>
+</config>

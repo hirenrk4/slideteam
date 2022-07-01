@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Ui\Model\Export\MetadataProvider">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="customerreport_customer_renewsubscription_view" xsi:type="array">
+                    <item name="from_date" xsi:type="string">from_date</item>
+                    <item name="to_date" xsi:type="string">to_date</item>
+                    <item name="renew_date" xsi:type="string">renew_date</item>
+                    <item name="update_time" xsi:type="string">update_time</item>
+                </item>
+                <item name="customerreport_customer_reports" xsi:type="array">
+                    <item name="from_date" xsi:type="string">from_date</item>
+                    <item name="to_date" xsi:type="string">to_date</item>
+                    <item name="renew_date" xsi:type="string">renew_date</item>
+                </item>
+                <item name="customerreport_customer_reportsfree" xsi:type="array">
+                    <item name="created_at" xsi:type="string">created_at</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+</config>

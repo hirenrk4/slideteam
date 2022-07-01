@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../Backend/etc/menu.xsd">
+    <menu>
+        <add id="Vgroup65_Testimonial::main_menu" title="Testimonial" 
+            module="Vgroup65_Testimonial" sortOrder="20" 
+            resource="Vgroup65_Testimonial::testimonial" /> 
+        <add id="Vgroup65_Testimonial::manage_testimonial" title="Testimonial" 
+            module="Vgroup65_Testimonial" sortOrder="1" parent="Vgroup65_Testimonial::main_menu" 
+            action="testimonials/testimonial" resource="Vgroup65_Testimonial::manage_testimonial" />
+<!--        <add id="Vgroup65_Testimonial::manage_configuration" title="Configuration" 
+            module="Vgroup65_Testimonial" sortOrder="2" parent="Vgroup65_Testimonial::main_menu" 
+            action="testimonials/configuration" resource="Vgroup65_Testimonial::manage_configuration" />-->
+    </menu>
+</config>

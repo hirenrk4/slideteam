@@ -1,0 +1,140 @@
+<?php 
+const PARAM_NAME_BASE64_URL = 'r64';
+const PARAM_NAME_URL_ENCODED = 'uenc';
+use Magento\Framework\App\Action\Action; 
+$_productCollection = $block->getSubscriptionProducts();
+$product_count = $_productCollection->getSize();
+$counter = 0;
+$helper = $this->helper('Tatva\Theme\Helper\Header');
+?>
+<div class="pricing-table clearfix">
+    <div class="table-inner clearfix">
+        <div class="col-box first">
+            <div class="col title-text col1 col-bg1"><span class="cell-align price-text"> Risk Free 7 days money back guarantee* </span></div>
+            <div class="col col2"></div>
+            <div class="col col3 label-text highlight"><span class="cell-align">Number of products that can be downloaded<span class="tip cell-align top-right tipso_style" data-tipso="A 'Product' is something you download from a single URL using the 'Download this Presentation' button on our site. It does not matter how many slides or images a product has. Anything downloaded from a single URL counts as one product. For example, our themes have 3 slides each while some of our maps have over 60 slides each. Each of these items counts as one Product."><a class="tooltips">?</a></span></span></div>
+            <!--<div class="col col4 label-text pricing-link"><span class="cell-align"> <a href="{{store url='powerpoint_presentation_design_services'}}" target="_blank">Free trial of our Custom Design Services </a><span class="tip cell-align top-right tipso_style" data-tipso="We have one of the world's most qualified teams of Powerpoint designers to make customized slides for you. Each subscription includes a number of slides that we will re-design for you for free. Upon subscription renewal, unused custom slides roll over to the next period, and can be redeemed anytime. Just submit your slides and we will re-design them to make your message jump out. Please see our Design Services link in the upper right hand side for more details."><a class="tooltips">?</a></span></span></div>-->
+            <div class="col col4 label-text"><span class="cell-align"> Number of users that have access <span class="tip cell-align top-right tipso_style" data-tipso="This is the number of users that can log in and download our content within a subscription period. Please see our FAQs for more details."><a class="tooltips">?</a></span></span></div>
+            <div class="col col4 label-text highlight"><span class="cell-align "> Free access to our <a class="cat-link" href="<?php echo $this->getBaseUrl()?>powerpoint-ebooks-for-slide-template-design/" target="_blank">ebooks</a>, <a class="cat-link" href="<?php echo $this->getBaseUrl() ?>one-page-summary-documents.html" target="_blank">one pagers</a>, <a class="cat-link" href="<?php echo $this->getBaseUrl() ?>resume-template/" target="_blank">resumes</a> and <a class="cat-link" href="<?php echo $this->getBaseUrl() ?>brochure-templates/" target="_blank">brochures</a> <span class="tip cell-align top-right tipso_style" data-tipso="In addition to Powerpoint Templates, we have a huge collection of Brochure Templates, Resume Templates and Business focused One Pager Templates that you can also download with a paid subscription. And for people looking to improve their design skills and become Powerpoint experts, we have a large collection of highly popular eBooks on Powerpoint design."><a class="tooltips">?</a></span></span></div>
+            <div class="col col3 label-text"><span class="cell-align"> Immediate download <span class="tip cell-align top-right tipso_style" data-tipso="You will be able to immediately download content after purchasing a subscription. Any downloaded product, once unzipped, will have slides in PPTX format and will open in Powerpoint itself."><a class="tooltips">?</a></span></span></div>
+            <div class="col col4 label-text highlight"><span class="cell-align"> Cancel anytime with no binding contracts <span class="tip cell-align top-right tipso_style" data-tipso="You can cancel your subscription yourself by logging into your account, going to the 'My Subscriptions' link and clicking on Unsubscribe. You will still be able to download content until the billing cycle that you've paid for is over."><a class="tooltips">?</a></span></span></div>
+            <div class="col col3 label-text"><span class="cell-align"> All downloads belong to you <span class="tip cell-align top-right tipso_style" data-tipso="All downloaded content is yours to keep, edit and build upon, even after your subscription expires."><a class="tooltips">?</a></span></span></div>
+            <div class="col col4 label-text highlight"><span class="cell-align"> Risk Free 7 days money back guarantee <span class="tip cell-align top-right tipso_style" data-tipso="We have a 'No Questions Asked' return policy and we immediately issue a refund. Our goal is to delight you with our products, but also give you the peace of mind that you can get your money back if things don't work out. Please see our FAQs for more details."><a class="tooltips">?</a></span></span></div>
+            <div class="col col3 label-text"><span class="cell-align "> Access weekly new content <span class="tip cell-align top-right tipso_style" data-tipso="We add about 100 - 1000 new products every day. Please see the 'Newly Added' link on top to see the new products."><a class="tooltips">?</a></span></span></div>
+            <div class="col col4 label-text highlight"><span class="cell-align"> Guaranteed best pricing on the web </span></div>
+            <div class="col col5 label-text custom-link highlight1"><span class="cell-align "> <a href="<?php echo $helper->getStoreBaseUrl() .'powerpoint_presentation_design_services'?>" target="_blank">Customized slides designed from scratch by SlideTeam</a> <span class="tip cell-align top-right tipso_style" data-tipso="We have a dedicated team to make customized presentations from scratch for customers. We organize your text &amp; data, and present it as meaningful, valuable information visually to make sure your message is reinforced and retained by your audience. Check out our Design Services page for more details."><a class="tooltips">?</a></span></span></div>
+        </div>
+        <?php foreach ($_productCollection as $_product): ?>
+            <?php 
+                $counter++;
+                $cost = $_product->getCost();
+                $finalPrice = $_product->getFinalPrice();
+                $name = $_product->getName();
+                if($name == "Daily") :
+                    continue;
+                endif;
+                $download_limit = $_product->getDownloadLimit();
+                $last_class = (($product_count == $counter) || $counter == 5) ? "last" : ""; 
+             ?>
+            <?php if($finalPrice>0):?>
+            <div class="col-box table-col <?php echo $last_class;?>">
+                <?php $postParams = $block->getAddToCartPostParams($_product); ?>
+                <div class="col col1 col-bg1">
+                    <?php if($name == 'Annual + Custom Design') { ?>
+                    <span class="mostpopular">
+                        <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/mostpopuler_tag.png'); ?>">
+                    </span>
+                    <?php } ?>
+                    <span class="cell-align">
+                        <span class="month">
+                            <em><?php echo $name;?></em>
+                        </span>
+                    </span>
+                </div>
+
+                <div class="col col1 <?php if($cost) echo "discount-block";?>">
+                    <?php if($cost) { ?>
+                    <span class="popular-text">
+                        <em class="price-discount">Save</em>
+                        <em>$<?php echo ($cost-$finalPrice); ?></em>
+                    </span>
+                    <?php } ?>
+                    <span class="cell-align">
+                        <?php if($cost) { ?>
+                        <span class="cancel-price">
+                            <del>$<?php echo sprintf('%0.2f', $cost);?></del>
+                        </span>
+                        <?php } ?>
+                        <span class="price">
+                            <em>$<?php echo $finalPrice;?></em>
+                        </span>
+                    </span>
+                </div>
+                <div class="col col2 col-bg2">
+                    <span class="cell-align">
+                        <!-- <a class="btn btn-primary join-now" href="{{config path='web/secure/base_url'}}index.php/checkout/cart/add/months/1/"> Join now </a>  -->
+                        <form data-role="tocart-form" action="<?php /* @escapeNotVerified */ echo $postParams['action']; ?>" method="post">
+                            <input type="hidden" name="product" value="<?php /* @escapeNotVerified */ echo $postParams['data']['product']; ?>">
+                            <input type="hidden" name="<?php /* @escapeNotVerified */ echo Action::PARAM_NAME_URL_ENCODED; ?>" value="<?php /* @escapeNotVerified */ echo $postParams['data'][Action::PARAM_NAME_URL_ENCODED]; ?>">
+                            <?php echo $block->getBlockHtml('formkey')?>
+                            <?php $storeManager = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Store\Model\StoreManagerInterface'); ?>
+                                <button type="submit"
+                                        title="<?php echo $block->escapeHtml(__('Join now')); ?>"
+                                        class="action tocart btn btn-primary join-now">
+                                    <span><?php /* @escapeNotVerified */ echo __('Join now') ?></span>
+                                </button>
+                        </form>
+                    </span>
+                </div>
+                <div class="col col3 highlight table-text">
+                    <span class="cell-align">
+                        <?php 
+                            if($download_limit == 9 || $download_limit == 31)
+                                echo "Unlimited";
+                            else if($download_limit == 8)
+                                echo "10";
+                            else
+                                echo "40";
+                        ?> 
+                    </span>
+                </div>
+                <!--<div class="col col4 custom-link"><span class="cell-align"> <a href="{{store url='powerpoint_presentation_design_services'}}">2 Custom Slides included  ($20 value) </a></span></div>-->
+                <div class="col col4"><span class="cell-align  "> 
+                    <?php if($name == 'Team License') {  echo "Up to 4";?>
+                        <span class="tip cell-align top-right tipso_style" data-tipso="We can create logins for these additional users. Just send a mail to <a href='mailto:support@slideteam.net'>support@slideteam.net</a>
+                                        with their email addresses, and we’ll send you the login details for these additional users. Please see our FAQs for more details."><a class="tooltips">?</a></span>
+                    <?php } else echo "1"; ?>
+                 </span></div>
+                <div class="col col4 table-text highlight"><span class="cell-align  "> <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/right-icon.png'); ?>" alt="" /> </span></div>
+                <div class="col col3 table-text"><span class="cell-align  "> <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/right-icon.png'); ?>" alt="" /> </span></div>
+                <div class="col col4 highlight table-text"><span class="cell-align  "> <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/right-icon.png'); ?>" alt="" /> </span></div>
+                <div class="col col3 table-text"><span class="cell-align  "> <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/right-icon.png'); ?>" alt="" /> </span></div>
+                <div class="col col4 highlight table-text"><span class="cell-align  "> <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/right-icon.png'); ?>" alt="" /> </span></div>
+                <div class="col col3 table-text "><span class="cell-align  "> <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/right-icon.png'); ?>" alt="" /> </span></div>
+                <div class="col col4 table-text highlight"><span class="cell-align  "> <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/pricing/right-icon.png'); ?>" alt="" /> </span></div>
+                <div class="col col5 highlight1 custom-link table-text">
+                    <span class="cell-align pricing-link">
+                        <a href="<?php echo $helper->getStoreBaseUrl() .'powerpoint_presentation_design_services'?>">
+                            <?php 
+                                if($name == 'Annual + Custom Design') 
+                                    echo " 10 Custom Slides included <br>  ($150 value) " ;
+                                else if($name == 'Team License')
+                                    echo " 15 Custom Slides per Team included <br>  ($225 value) ";
+                                else if($name == 'Monthly')
+                                    echo "Starting at <br> $24.99 per slide";
+                                else if($name == 'Semi Annual')
+                                    echo "Starting at <br> $19.99 per slide";
+                                else
+                                    echo "Starting at <br> $14.99 per slide"; 
+                            ?>
+                        </a> 
+                    </span>
+                </div>
+                <!--<div class="col col6"><span class="cell-align"> <a class="btn btn-black join-now" href="{{config path='web/secure/base_url'}}index.php/checkout/cart/add/months/1/"> Join now </a> </span></div>-->
+            
+            </div>
+            <?php endif; ?>
+        <?php endforeach;?>
+    </div>
+    <p class="slideteam-questions">Got questions? See <a href="#faq"> Frequently Asked Questions </a>or call us at +1-408-659-4170, or email at <a href="mailto:sales@slideteam.net">sales@slideteam.net</a></p>
+</div>

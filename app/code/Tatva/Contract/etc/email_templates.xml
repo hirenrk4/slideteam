@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="tatva_contract_email" label="Contract Email" file="contract\contract_email.html" type="html" module="Tatva_Contract" area="frontend"/>
+</config>

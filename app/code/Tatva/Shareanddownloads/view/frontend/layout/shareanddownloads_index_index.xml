@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="1column">
+	<head>
+		<remove src="Emarsys_Emarsys::js/emarsys.js"/>
+		<remove src="Magento_Theme::js/jquery.dotdotdot.js"/>
+        <remove src="Magento_Theme::js/theme-general.js"/>
+        <remove src="Amasty_Stripe::css/source/mkcss/amstripe.css"/>
+        <script src="Magento_Theme::js/ddimgtooltip.js" />
+		<css src="Magento_Theme::css/dropkick.css" media="all"/>
+		<css src="Magento_Theme::css/ddimgtooltip.css" media="all"/>
+		<css src="Magento_Theme::css/catalog/catalog-style.css" media="all" order="250" />
+		<css src="Magento_Theme::css/catalog/freesample/freesample.css" media="all"/>
+		<css src="Magento_Theme::css/theme/catalog-tooltip.css" media="all" order="400"/>
+	</head>
+	<body>
+		<attribute name="class" value="catalog-category-view"/>
+		<attribute name="class" value="wide-product-list"/>
+		<referenceBlock name="catalog.compare.sidebar" remove="true"/>
+		<referenceContainer name="sidebar.additional" remove="true" />
+		<referenceContainer name="content">
+			<block class="Magento\Framework\View\Element\Template" name="title_para" as="title_para" template="Magento_Catalog::product/title_para/shareanddownload.phtml" />
+			<block class="Magento\Framework\View\Element\Template" name="filter_by_category" as="filter_by_category" template="Magento_Catalog::product/filterbycategory.phtml">
+				<arguments>
+					<argument name="url_key_path" xsi:type="string">share-and-download-products</argument>
+				</arguments>
+			</block>
+		  	<block class="Tatva\Shareanddownloads\Block\ListProduct" name="product_share_and_download_list" template="Magento_Catalog::product/customlist.phtml">
+				<block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+					<block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+				</block>
+				<action method="setToolbarBlockName">
+					<argument name="name" xsi:type="string">product_list_toolbar</argument>
+				</action>
+			</block>
+		</referenceContainer>
+		<referenceContainer name="page.top">
+			<block class="Magento\Catalog\Block\Product\View\Gallery" name="category_banner_left" template="Magento_Catalog::category/category_banner.phtml" after="slideteam-sidenav-wrapper" />
+		</referenceContainer>
+        <referenceBlock name ="webextend" remove="true" />
+		<referenceBlock name="authentication-popup" remove ="true" />
+	</body>    
+</page>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <customer>
+        	<captcha>
+        		<shown_to_logged_in_user>
+        			<page_landing_form_captcha>1</page_landing_form_captcha>
+        		</shown_to_logged_in_user>
+        		<always_for>
+					<page_landing_form_captcha>1</page_landing_form_captcha>
+				</always_for>
+        	</captcha>
+        </customer>
+    	<captcha translate="label">
+			<frontend>
+				<areas>
+					<page_landing_form_captcha>
+						<label>Page Landing Form Captcha</label>
+					</page_landing_form_captcha>
+				</areas>
+			</frontend>
+		</captcha>
+        <tatva>
+            <formbuild>
+                <!-- <email>tatva_customresumeservice_email</email> --> 
+                <customeremail>tatva_formbuild_customeremail</customeremail>
+            </formbuild>
+        </tatva>
+    </default>
+</config>

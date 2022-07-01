@@ -1,0 +1,34 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var \Magento\Theme\Block\Html\Header\Logo $block
+ */
+ $result= $block->getLayout()->createBlock('Tatva\Catalog\Block\Logolink')->GetCustomData();
+
+$storeCode=$result['storeCode'];
+$homePageUrl=$result['homePageUrl'];
+
+?>
+<?php $storeName = $block->getThemeName() ? $block->getThemeName() : $block->getLogoAlt();?>
+<span data-action="toggle-nav" class="action nav-toggle"><span><?= /* @escapeNotVerified */ __('Toggle Nav') ?></span></span>
+<?php if ($block->isHomePage() && ($storeCode=='default')):?>
+    <strong class="logo">
+<?php else: ?>
+    <a class="logo" href="<?= $homePageUrl; ?>" title="<?= /* @escapeNotVerified */ $storeName ?>">
+<?php endif ?>
+        <img src="<?= /* @escapeNotVerified */ $block->getLogoSrc() ?>"
+             alt="<?= /* @escapeNotVerified */ $block->getLogoAlt() ?>"
+             <?= $block->getLogoWidth() ? 'width="' . $block->getLogoWidth() . '"' : 'width="100%"' ?>
+             <?= $block->getLogoHeight() ? 'height="' . $block->getLogoHeight() . '"' : 'height="100%"' ?>
+        />
+<?php if ($block->isHomePage() && ($storeCode=='default')):?>
+    </strong>
+<?php else:?>
+    </a>
+<?php endif?>

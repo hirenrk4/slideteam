@@ -1,0 +1,63 @@
+<?php
+$language_url = $block->getLanguageURL();
+?>
+<div class="multiple_language">
+	<?php 
+		$lang = "0";
+		if (isset($_GET['lang'])) {
+	    	$lang = strtolower($_GET['lang']);
+		}
+		if(!empty($language_url)){
+			$lang = ($lang == '0')?'english':$lang;
+	?>
+	<select class="custom-dropdown language-dropdown" name="language" id="select language">
+		<option value="0" selected="selected" url=""><?php echo ucfirst($lang);?></option>
+		<?php
+			foreach ($language_url as $key => $value) {
+				echo '<option value="'.ucfirst($key).'" url="'.$value.'">'.ucfirst($key).'</option>';
+			}
+		?>
+    </select>
+	<?php }?>
+</div>
+<script type="text/javascript">
+require(['jquery'], function ($) {
+	$(document).ready(function(){
+		//Sorting Data
+		// $.removeCookie("lang_param");
+		<?php if(!empty($language_url)){ ?>
+			$("li.item.post").addClass("custom-dropdown");
+		<?php } ?>
+		jQuery('.language-dropdown').on('change', function () {
+			var sortVal = $(this).val().toLowerCase();
+			var url = $('option:selected', this).attr('url');
+			if(sortVal == '' || url == ''){
+				window.location.reload();
+			} else {
+				url = (sortVal == 'english')?url:(url+'?lang='+sortVal);
+				// url = (sortVal == 'english')?url:(url);
+				window.location="<?php echo $this->getBaseUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]).'blog/'; ?>"+url;
+			}
+        });
+	});
+});
+</script>
+<script type="text/javascript">
+require(['jquery', 'dropkick', 'domReady!'], function(jQuery) {    
+    jQuery(".custom-dropdown").dropkick({
+        mobile: true
+    });
+    jQuery(document).ajaxComplete(function(){
+        jQuery(".custom-dropdown").dropkick({
+            mobile: true
+        });
+    });    
+});
+</script>
+<!-- task 1586 start  -->
+	<script>
+	    require(['jquery','dropkick','domReady!'],function($) {
+	    	$("select.custom-dropdown").dropkick('reset');
+	    });
+	</script>
+<!-- task 1586 end  -->

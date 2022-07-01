@@ -1,0 +1,775 @@
+<script type="text/javascript">
+        require(['jquery','productPopup', 'magnific_popup','JQForm','uploadFileJS','spectrum','mage/mage','customScrollbar','mousewheel','icheck'], function ($) {
+            
+
+            $(document).ready(function () 
+            {
+                function submitProject(e,obj)
+                {
+                    var KeyWordsVar = defineFormFields();
+                    var parentCatVar=$('#parent-cat-selcted').val();
+                    var subcategory = obj.prev('input[name=popup-name]').val();
+
+                    if(typeof(subcategory)!=='undefined')
+                    {
+                        $("#subCategory").val(subcategory);
+                    }
+                    else{
+                        subcategory=$("#subCategory").val();
+                    }
+
+                    var subclassVar =KeyWordsVar[parentCatVar][subcategory]['firsttitle'];
+
+
+                    if(jQuery.inArray(subcategory,['5','6','7']) != -1)
+                    {
+                        var imageVar = '<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-powerporint-design.png");?>';
+                    }
+                    else if(jQuery.inArray(subcategory,['8','9','10','11','12','13','14','15']) !=  -1)
+                    {
+                        var imageVar = '<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-graphic-design.png");?>';
+                    }
+                    else if(jQuery.inArray(subcategory,['16','17','18','19','20','21','22','23']) !=  -1) 
+                    {
+                        var imageVar = '<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-content-writing.png");?>';
+                    } 
+                    else if(jQuery.inArray(subcategory,['24','25','26','27','28','29']) != -1)
+                    {
+                        var imageVar = '<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-business-research.png");?>';
+                    }   
+
+                    if(subclassVar !== '' && subclassVar!== 'undefined')
+                    {
+                        $('#sub-cats-reserch .popup-title h3').text(subclassVar);
+                        $('#sub-cats-reserch .questionnarie-second-title').html('<img src="'+ imageVar+'"/>' + KeyWordsVar[parentCatVar][subcategory]['secondtitle']);
+                    }  
+
+                    var greenImagePath= '<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/green-arrow-circle.png'); ?>';
+                    var tickedImagePath= '<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/blue-tick.png'); ?>';
+                    var cloudImagePath='<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/cloud1.png'); ?>';
+                    var whiteImagePath='<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/white-arrow-circle.png'); ?>';
+                    var blueImagePath='<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/blue-arrow-circle.png'); ?>';
+                    var htmlContent='';
+                    var dataarray=[];
+
+                    for(var i=0; i<(KeyWordsVar[parentCatVar][subcategory]).length;i++)
+                    {
+                        var sourcekey=KeyWordsVar[parentCatVar][subcategory][i]['key'];
+                        var sourcelabel=KeyWordsVar[parentCatVar][subcategory][i]['label'];
+                        var sourcevalue=KeyWordsVar[parentCatVar][subcategory][i]['type'];
+                        var sourceextrakey=KeyWordsVar[parentCatVar][subcategory][i]['extrakey'];
+                        var count =(KeyWordsVar[parentCatVar][subcategory]).length;
+
+                        e.stopPropagation();
+
+                        var formContent = getformHtmlContent(sourcekey,sourcelabel,sourcevalue,greenImagePath,tickedImagePath,sourceextrakey,cloudImagePath,subcategory,i,count,whiteImagePath,blueImagePath);
+
+                        if(htmlContent!='')
+                        {
+                            htmlContent = htmlContent+formContent;
+                        }
+                        else{
+                            htmlContent = formContent;
+                        } 
+                        if(typeof sourcekey != 'undefined')
+                            dataarray[sourcekey]=sourcevalue;
+
+                    }   
+
+                    $('.questionnarie-ul').html(htmlContent); 
+
+                    $(document).find('.questionnarie-ul').mCustomScrollbar('init');
+
+                    var hiddenFormData=$(document).find("#hiddenFormData").serialize();
+                    if(hiddenFormData!="" && typeof hiddenFormData!='undefined')
+                    {
+                        var data=hiddenFormData.split('&');
+                        if(data!="" && typeof data!='undefined')
+                        {
+                            $(data).each(function(index,element){
+                                var Finaldata = element.split('=');
+                                var nameForData = Finaldata[0];
+                                var valueForData=Finaldata[1];
+
+                                if(valueForData!="" && typeof valueForData!='undefined')
+                                {
+                                    if(nameForData=='main_category' || nameForData=="child_category")
+                                    {
+                                        return true;
+                                    }
+
+                                    var typeForData=dataarray[nameForData]
+                                    // if(keyForData==nameForData)
+                                    // {
+                                    if(typeForData=="text")
+                                    {
+                                        $(document).find("input[name="+nameForData+"]").val(valueForData);
+                                        $(document).find("input[name="+nameForData+"]").parent('div').prev('label').addClass('active');
+                                    }
+                                    else if(typeForData=="textarea")
+                                    {
+                                        $(document).find('textarea[name="'+nameForData+'"]').text(valueForData);
+                                        $(document).find('textarea[name="'+nameForData+'"]').prev('label').addClass('active');
+                                    }
+                                    else if(typeForData=="radio")
+                                    { 
+                                        $(document).find("input[name="+nameForData+"][value=" + valueForData + "]").attr('checked', 'checked');
+                                        jQuery("input[name="+nameForData+"][value=" + valueForData + "]").closest("li").find("> label").addClass("active");
+                                        jQuery("input[name="+nameForData+"][value=" + valueForData + "]").closest(".checkbox_outer").addClass("checked");
+                                    }
+                                    if(nameForData=='color_1')
+                                    {
+                                        var colorCode1 =valueForData.split('%23');
+                                        console.log(colorCode1);
+                                        $(document).find("#color_picker_1").css('background-color',"#"+colorCode1[1]);
+                                        $(document).find("#color_picker_1").css('border-color',"#"+colorCode1[1]);
+                                        $(document).find("#color_picker_1").addClass('color-change');
+                                    }
+                                    if(nameForData=='color_2')
+                                    {
+                                        var colorCode2 =valueForData.split('%23');
+                                        $(document).find("#color_picker_2").css('background-color',"#"+colorCode2[1]);
+                                        $(document).find("#color_picker_2").css('border-color',"#"+colorCode2[1]);
+                                        $(document).find("#color_picker_2").addClass('color-change');
+                                    }
+                                    if(nameForData=='color_3')
+                                    {
+                                        var colorCode3 =valueForData.split('%23');
+                                        $(document).find("#color_picker_3").css('background-color',"#"+colorCode3[1]);
+                                        $(document).find("#color_picker_3").css('border-color',"#"+colorCode3[1]);
+                                        $(document).find("#color_picker_3").addClass('color-change');
+                                    }
+                                }
+                            });
+                        }
+                        $.magnificPopup.instance.close = function() {
+                            $(document).find("#hiddenFormData input[type=hidden]").val("");
+                            jQuery("#product-popup-form").find("input[type=text], textarea").val("");
+                            jQuery("#product-popup-form").find("input[type=radio]").closest(".iradio_minimal").removeClass("checked");
+                            jQuery("#product-popup-form").find("input[type=radio]").closest(".checkbox_outer").removeClass("checked");
+                        
+                            // Call the original close method to close the popup
+                            $.magnificPopup.proto.close.call(this);
+                            $(document).on('click','.back-img-sub-cat',function(){
+                                $(document).find("#hiddenFormData input[type=hidden]").val("");
+                                jQuery("#product-popup-form").find("input[type=text], textarea").val("");
+                                jQuery("#product-popup-form").find("input[type=radio]").closest(".iradio_minimal").removeClass("checked");
+                                jQuery("#product-popup-form").find("input[type=radio]").closest(".checkbox_outer").removeClass("checked");
+                            })
+
+                        }
+                    }
+                    $(document).find('.popup-content ul li input, .popup-content ul li textarea').on("change paste keyup",function (event) { 
+                        var $this = jQuery(this);
+                        var val = $this.val();
+                        if(val.length > 0) {
+                            $this.closest("li").find("> label").addClass("active");
+                        }
+                        else {
+                            $this.closest("li").find("> label").removeClass("active");
+                        }
+                    });
+
+
+                    var settingsGen = {
+                        url: "<?php echo $block->getUrl('projectsubmits/index/fileuploadsave'); ?>",
+                        method: "POST",
+                        allowedTypes: "pdf, ppt, pptx,doc, docx, jpg, jpeg, png, gif, xlsx, xlsm, xlsb, xls, xltx, xltm, xlt, csv, xlam, xla, ods, zip, txt",
+                        maxFileSize: 5242880,
+                        sizeErrorStr: " is greater than 5 MB. Please reduce the size of the attachment(s) or use Dropbox/Google Drive or a similar tool to send us the attachment(s). OR Send the attachment directly via email to <a href='mailto:design@slideteam.net'>design@slideteam.net</a>",
+                        fileName: "myfile",
+                        multiple: true,
+                        dragDropStr:'',
+                        uploadStr: '<img src="'+cloudImagePath+'" alt="" height="50" width="50">',
+                        nestedForms:false,
+                        onSuccess: function (files, data, xhr)
+                        {
+                            var file_data = jQuery.parseJSON(data);                   
+                            $('<input>').attr({
+                                type: 'hidden',
+                                name: file_data.original + "[]",
+                                value: file_data.modified
+                            }).appendTo('form');
+                            var existingFiles = jQuery(document).find("#filesToAttach1").val();
+                            if(existingFiles == '')
+                            {
+                                existingFiles = file_data.modified+",";
+                            }
+                            else
+                            {
+                                existingFiles += file_data.modified;
+                            }
+                            jQuery(document).find("#filesToAttach1").val(existingFiles);
+                            jQuery(document).find("div.general-attach").prev().addClass("active");
+
+                        },
+                        onError: function (files, status, errMsg)
+                        {                    
+                            $("#status").html(errMsg);
+                        }
+                    };
+                    $('#mulitplefileuploader').uploadFile(settingsGen);
+
+                    if (typeof $uploadbrand === "undefined") {
+                        $uploadbrand=1;
+                    }
+
+                    if($uploadbrand==1)
+                    {
+                        var settingsBrand = {
+                            url: "<?php echo $block->getUrl('projectsubmits/index/brandfileuploadsave');?>",
+                            method: "POST",
+                            allowedTypes:"pdf, ppt, pptx,doc, docx, jpg, jpeg, png, gif, xlsx, xlsm, xlsb, xls, xltx, xltm, xlt, csv, xlam, xla, ods, zip, txt",
+                            maxFileSize: 5242880,
+                            sizeErrorStr: " is greater than 5 MB. Please reduce the size of the attachment(s) or use Dropbox/Google Drive or a similar tool to send us the attachment(s). OR Send the attachment directly via email to <a href='mailto:design@slideteam.net'>design@slideteam.net</a>",
+                            fileName: "myfile",
+                            uploadStr: '<img src="'+cloudImagePath+'" alt="" height="50" width="50">',
+                            multiple: true,
+                            dragDropStr:"",
+                            nestedForms:false,
+                            onSuccess:function(files,data,xhr)
+                            {                           
+                                var file_data = jQuery.parseJSON(data);
+                                jQuery('<input>').attr({
+                                    type: 'hidden',
+                                    name: file_data.original+"[]",
+                                    value: file_data.modified
+                                }).appendTo('form');
+                                var existingFiles = jQuery(document).find("#filesToAttach2").val();
+                                if(existingFiles == '')
+                                {
+                                    existingFiles = file_data.modified+",";
+                                }
+                                else
+                                {
+                                    existingFiles += file_data.modified;
+                                }
+                                jQuery(document).find("#filesToAttach2").val(existingFiles);
+                                jQuery(document).find("div.brand-attach").prev().addClass("active");
+                                /*jQuery(document).find("#mulitplefileuploader2").css("margin-top","9px");*/
+                            },
+                            onError: function(files,status,errMsg)
+                            {
+                                jQuery("#status2").html(errMsg);
+                            },
+                            deleteCallback: function(data,pd)
+                            {           
+                                var remainFiles = jQuery(document).find("#filesToAttach2").val();
+                                remainFiles = remainFiles.split(","); 
+                                remainFiles.splice(0,1);        
+                                remainFiles.join(",");    
+                                jQuery(document).find("#filesToAttach2").val(remainFiles);
+                                if(remainFiles == '')
+                                {
+                                    jQuery(document).find("div.brand-attach").prev().removeClass("active"); 
+                                } 
+                            }
+                        }
+                        $('#mulitplefileuploader2').uploadFile(settingsBrand);
+
+                    }
+
+
+                    $(document).find('.icheck').iCheck({
+                        radioClass: 'iradio_minimal',
+                    });
+
+
+                    $(document).on('ifChecked','.icheck', function (event) { 
+                        jQuery(this).closest("li").find("> label").addClass("active");
+                        jQuery(this).closest(".checkbox_outer").addClass("checked");
+                    });
+                    $(document).on('ifUnchecked','.icheck', function (event) { 
+                        jQuery(this).closest(".checkbox_outer").removeClass("checked");
+                    });
+
+
+                    function changecolorOnSelect(hexColor,colorpickerid,addremoveclass,colorid)
+                    {
+                        if(hexColor == "transparent")
+                        {
+                            var is_class_color_change = jQuery(colorpickerid).hasClass(addremoveclass);
+                            if(is_class_color_change)
+                            {
+                                jQuery(colorpickerid).removeClass(addremoveclass);
+                                jQuery(colorid).val('');
+                            }       
+                            jQuery(colorpickerid).css("background",'none');
+                            jQuery(colorpickerid).css("border-color",'#a6a6a6');
+
+                            if((jQuery(document).find("#color_1").val() == '') && (jQuery(document).find("#color_2").val() == '') && (jQuery(document).find("#color_3").val() == ''))
+                            {
+                                jQuery(".color-li-wrap label").removeClass("active");
+                            }
+                        }
+                        else
+                        {
+                            var colorselected = jQuery(".color-li-wrap label").hasClass("active");
+                            var is_class_color_change = jQuery(colorpickerid).hasClass(addremoveclass);
+
+                            if(!colorselected)
+                            {
+                                jQuery(".color-li-wrap label").addClass("active");  
+                            }               
+
+                            if(!is_class_color_change)
+                            {
+                                jQuery(colorpickerid).addClass(addremoveclass);                     
+                            }
+                            jQuery(colorid).val(hexColor);
+                            jQuery(colorpickerid).css("background",hexColor);
+                            jQuery(colorpickerid).css("border-color","#a6a6a6");
+                        }   
+                    }
+                    function updateBorders1(color) {
+                        var hexColor = "transparent";
+                        if(color) {
+                            hexColor = color.toHexString();
+                        } 
+                        changecolorOnSelect(hexColor,"#color_picker_1","color-change","#color_1");
+
+                    }   
+                    function updateBorders2(color) {
+                        var hexColor = "transparent";
+                        if(color) {
+                            hexColor = color.toHexString();
+                        }   
+                        changecolorOnSelect(hexColor,"#color_picker_2","color-change","#color_2");
+                    }
+                    function updateBorders3(color) {
+                        var hexColor = "transparent";
+                        if(color) {
+                            hexColor = color.toHexString();
+                        }   
+                        changecolorOnSelect(hexColor,"#color_picker_3","color-change","#color_3");
+                    } 
+                    // color picker
+                    var colorchange1  = "#dd33dd";
+                    var colorchange2 = "#dd33dd";
+                    var colorchange3 = "#dd33dd";
+
+                    var $color1=$(document).find("#color_1").val();
+                    var $color2=$(document).find("#color_2").val();
+                    var $color3=$(document).find("#color_3").val();
+
+                    if(jQuery.type($color1) != "undefined" && ($color1.length > 0))
+                    {
+                        colorchange1 = $color1;
+                    }
+
+                    if(jQuery.type($color2) != "undefined" && ($color2.length > 0))
+                    {
+                        colorchange2  = $color2;
+                    }
+
+                    if(jQuery.type($color3) != "undefined" && ($color3.length > 0))
+                    {
+                        colorchange3 = $color3;
+                    }
+
+                    jQuery(document).find("#color_picker_1").spectrum({
+                        color: colorchange1,
+                        showInput: true,
+                        showInitial: true,
+                        allowEmpty:true,
+                        change: updateBorders1,
+                        preferredFormat:"hex",
+                        show: function() {
+
+                        },
+                        hide:function(){
+
+                        }
+                    });
+
+                    jQuery(document).find("#color_picker_2").spectrum({
+                        color: colorchange2,
+                        showInput: true,
+                        showInitial: true,
+                        allowEmpty:true,
+                        change: updateBorders2,
+                        preferredFormat:"hex",
+                        show: function() {
+
+                        },
+                        hide:function(){
+
+                        }
+                    });
+                    jQuery(document).find("#color_picker_3").spectrum({
+                        color: colorchange3,
+                        showInput: true,
+                        showInitial: true,
+                        allowEmpty:true,
+                        change: updateBorders3,
+                        preferredFormat:"hex",
+                        show: function() {
+
+                        },
+                        hide:function(){
+
+                        }
+                    });
+
+                    obj.magnificPopup({
+                        items:[
+                            {
+                                src:'#sub-cats-reserch',
+                            }
+                        ],
+                        type: 'inline',
+                        callbacks: {
+                            open: function () {
+
+                                // add class to main container
+                            },
+                        },
+                    closeMarkup:'<a class="mfp-close roundlink"> X </a>',
+                    }).magnificPopup('open');
+
+                }
+
+
+                var crossImg='<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/cross.png');?>';
+
+               $(".popup-product,.back-img").magnificPopup({
+                    items:[
+                    {
+                        src:'#research-popup-data',
+                    }
+                    ],
+                    type: 'inline',
+                    callbacks: {
+                        open: function () {
+                                // add class to main container
+                                this.bgOverlay.addClass('presentation-design-popup');
+                                this.wrap.addClass('presentation-design-popup');
+                                $('body').addClass('presentation-popup-open');
+                              },
+                        },
+                        closeMarkup:'<a class="roundlink"><img src="'+crossImg+'"class="mfp-close"></a>',
+                    });
+                    $.magnificPopup.instance.close = function() {
+                     $('body').removeClass('presentation-popup-open');
+                   $.magnificPopup.proto.close.call(this);
+                   
+                 }
+
+                  var classVar = '';
+                   jQuery('.back-img').click(function(){ 
+                    jQuery('.sub-cat-popup-content').mCustomScrollbar('destroy');
+                  });
+                  jQuery('.back-sub-category').click(function(){ 
+                    jQuery('.questionnarie-ul').mCustomScrollbar('destroy');
+                  })
+                $('.main-categories-list i').on("click", function (event) { 
+
+                    var classVar = $(this).attr('class');
+                    var textVar='';
+                    $("#parent-cat-selcted").val($(this).prev('input[name=popup-name]').val());
+
+                    imgVar5='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/existing-presentation.png"); ?>';
+                    imgVar6='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/template-design.png"); ?>';
+                    imgVar7='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/need-bit-both.png"); ?>';
+                    imgVar8='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/infographics.png"); ?>';
+                    imgVar9='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/brochures.png"); ?>';
+                    imgVar10='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/ad-banners.png"); ?>';
+                    imgVar11='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/business-cards.png"); ?>';
+                    imgVar12='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/corporate-branding.png"); ?>';
+                    imgVar13='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/photo-retouching.png"); ?>';
+                    imgVar14='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/print-ad-design.png"); ?>';
+                    imgVar15='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/need-bit-everything.png"); ?>';
+                    imgVar16='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/article-ariting.png"); ?>';
+                    imgVar17='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/blog-writing.png"); ?>';
+                    imgVar18='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/copy-writing.png"); ?>';
+                    imgVar19='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/proofreading.png"); ?>';
+                    imgVar20='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/transcript-writing.png"); ?>';
+                    imgVar21='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/website-content-writing.png"); ?>';
+                    imgVar22='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/white-paper-writing.png"); ?>';
+                    imgVar23='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/need-bit-everything-2.png"); ?>';
+                    imgVar24='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/market-sizing.png"); ?>';
+                    imgVar25='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/product-research.png"); ?>';
+                    imgVar26='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/online-internet-research.png"); ?>';
+                    imgVar27='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/competitor-analysis.png"); ?>';
+                    imgVar28='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/business-report-support.png"); ?>';
+                    imgVar29='<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/need-bit-everything-3.png"); ?>';
+                    
+                    var fillPopupContent = getPopupContent();
+
+                    if(classVar=='reserch-first')
+                    {
+                      $("#mainCategory").val('1');
+                       var imageVara = '<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-powerporint-design.png");?>';
+                       var textVar='<?php echo __('How can we help you with <b>PowerPoint Design</b>?'); ?>';
+                    }
+                    else if(classVar=='reserch-second')
+                    {
+                      $("#mainCategory").val('2');
+                       var imageVara = '<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-graphic-design.png");?>';
+                       var textVar='<?php echo __('How can we help you with <b>Graphic Design</b>?'); ?>';
+                    }
+                    else if(classVar=='reserch-third')
+                    {
+                      $("#mainCategory").val('3');
+                       var imageVara = '<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-content-writing.png");?>';
+                       var textVar=' <?php echo __('How can we help you with <b>Content Writing</b>?'); ?>';
+                    } 
+                    else if(classVar=='reserch-fourth')
+                    {
+                      $("#mainCategory").val('4');
+                       var imageVara = '<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/small-business-research.png");?>';
+                       var textVar='<?php echo __('How can we help you with <b>Business Research</b>?'); ?>';
+                    }   
+
+                    
+                    event.stopPropagation();
+                      
+                    $('.main-categories-list i,.back-img-sub-cat').magnificPopup({
+
+                        items:[
+                        {
+                            src:'#sub-cat-reserch',
+                        }
+                        ],
+                        type: 'inline',
+                        preloader: true,
+                        fixedContentPos: true,
+                        fixedBgPos: true,
+                        overflowY: 'auto',
+                        callbacks: {
+                            open: function () {
+                                    // add class to main container
+                                 
+                                },
+                            },
+                        closeMarkup:'<a class="mfp-close roundlink"> X </a>',
+                    }).magnificPopup('open');
+                    
+                    if(classVar !== '' && classVar!== 'undefined')
+                    {
+                        $('#sub-cat-reserch .second-title p').html('<img src="'+ imageVara+'"/>' + textVar);
+                        $('#sub-cat-reserch .sub-cat-popup-content').html(fillPopupContent[classVar]);
+                    }
+
+                    jQuery('.sub-cat-popup-content').mCustomScrollbar('init'); 
+
+                    $("#sub-cat-reserch .sub-cat-popup-content i").on("click",function (e) {
+                        submitProject(e,$(this));
+                    })
+                        
+                
+                }); 
+                      
+
+                    $(document).on("click","#backstep",function (e) {
+                        submitProject(e,$(this));
+                    });
+
+
+               var dataForm = $('#product-popup-form');
+                var ignore = null;
+
+               dataForm.mage('validation', 
+              {
+                ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+              })
+               .find('input:text').attr('autocomplete', 'off');
+               var customurl='<?php echo $this->getUrl("projectsubmits/index/popupdata");?>';
+            $(document).on("click",'.productpopup-form-submit',function() { 
+               jQuery('input:radio').parents('div.wrap_radio').find('span').css('display','none');
+            //can be replaced with any event
+                if(dataForm.validation('isValid')==true)
+                {
+                   jQuery.ajax({
+                    async:true,
+                    type : 'POST',
+                    url : customurl,
+                    data : dataForm.serialize(),
+                    dataType:'json',
+                    showLoader: true ,//use for display loader
+                    success: function(data){
+                       jQuery('.questionnarie-ul').mCustomScrollbar('destroy');
+                        if(data.status == "Error")
+                          {
+                            var fields = data.fields_name;
+                            var fields_array = fields.split(",") ;
+                            for (var i=0; i<fields_array.length;i++)
+                            {
+                              var fieldname = fields_array[i];              
+                              jQuery(document).find("input[name='"+fieldname+"']").parent("div").find("span.validation-option").show();             
+                              jQuery(document).find("textarea[name='"+fieldname+"']").parent("li.questionnarie-textarea").find("span.validation-option").show();              
+                              jQuery(document).find("input[name='"+fieldname+"']").parent().parent().parent("div.checkbox_outer").next("span.validation-option").show();
+                            } 
+                            return false;
+                          }
+                          else if(data.status == "ExtError")
+                          {
+                            alert(data.extesions+" extension files are not allowed.");
+                             return false;
+                          }
+                          else if(data.status == "SizeError")
+                          {
+                            alert(data.sizemsg);
+                             return false;
+                          }
+                         else
+                          {
+                      
+                            $(document).find("#subs-cats-reserch").html(data.content);
+                             getRefreshCaptcha();
+                             $(document).find("select[data-type='custom-dropdown']").dropkick(
+                              {
+                                  mobile: true
+                              });
+
+                             $(document).find('#product-contact-form').mage('validation', 
+                              {
+                                ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+                              })
+                             .find('input:text').attr('autocomplete', 'off');
+                               
+
+                               $(document).find(".popup-contact input,textarea").on('change paste keyup', function(e) {
+                                 var $this = jQuery(this);
+                                  var val = $this.val()
+                                  if(val.length > 0) {
+                                    $this.closest("li").find("> label").addClass("active");
+                                  }
+                                  else {
+                                    $this.closest("li").find("> label").removeClass("active");
+                                  }
+                                
+                            });
+                               $(document).find('#captcha_product-contact-cap').on("change paste keyup",function (event) { 
+                                var $this = jQuery(this);
+                                  var val = $this.val();
+                                 if(val.length > 0) {
+                                  $('.captcha_product-contact-cap i .ticked-img').css("display",'');
+                                  $('.captcha_product-contact-cap i .unticked-img').css("display",'none');
+                                }
+                                else {
+                                   $('.captcha_product-contact-cap i .ticked-img').css("display",'none');
+                                  $('.captcha_product-contact-cap i .unticked-img').css("display",'');
+                                }
+                              });
+
+                            $(document).find('.icheck').iCheck({
+                                radioClass: 'iradio_minimal',
+                            });
+                            jQuery(document).find('.validation-option').hide();
+                            $.magnificPopup.open({
+                              type: 'inline',
+                              items: {
+                                  src: '#subs-cats-reserch',
+                              }
+                           })
+                          }
+                    },
+                    error : function(err) {
+                        console.log("Error : "+JSON.stringify(err));
+                    }
+                    });
+                   return false;
+                } //validates form and returns boolean
+                else{
+                  var names = []
+                      jQuery('.iradio_minimal .mage-error').each(function () {
+                          var rname = jQuery(this).attr('name');
+
+                          if (jQuery.inArray(rname, names) == -1) names.push(rname);
+                      });
+
+                      jQuery.each(names, function (i, name) {
+                          jQuery('input[name="' + name + '"]').parents('div.wrap_radio').find('span').css('display',''); {
+                             
+                          }
+                      });
+                }
+          
+          });
+
+                function getRefreshCaptcha(){
+                  $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                    data:'formId=product-contact-cap',
+                    success:function(data) {
+                      if($('.captcha-image-popup').children().hasClass('captcha-img-researchpopup'))
+                      {
+                        $(".captcha-img-researchpopup").attr("src",data.imgSrc);
+                      }
+                      else{
+                         $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img captcha-img-researchpopup" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('.captcha-image-popup .captcha-reload'); 
+                      }                        
+                      
+                    }
+                  });
+                }
+                $(document).on("click","#captcha-reload",function(){
+                    getRefreshCaptcha(); 
+                })
+                $(document).on("click",'.contactus-submit-popup',function() {
+                   
+
+                var dataForm = jQuery('#product-contact-form');
+                var ignore = null;
+                var customurlVar='<?php echo $this->getUrl("projectsubmits/index/popupdatasave");?>';
+                //can be replaced with any event
+
+              if((jQuery('#product-contact-form').validation('isValid'))===true)
+                {
+                   jQuery.ajax({
+                    async:true,
+                    type : 'POST',
+                    url : customurlVar,
+                    data : dataForm.serialize(),
+                    dataType:'json',
+                    showLoader: true ,//use for display loader
+                    success: function(data){
+                       if(data.captchaerror !="" && (typeof data.captchaerror!='undefined')){
+                         $('.invalid-captcha').css('display',''); 
+                          return false;
+                         }
+                        else if(data.status == "Error")
+                          {
+                            var fields = data.fields_name;
+                            var fields_array = fields.split(",") ;
+                            for (var i=0; i<fields_array.length;i++)
+                            {
+                              var fieldname = fields_array[i];              
+                                jQuery(document).find("input[name='"+fieldname+"']").parent("div").find("span.validation-option").show();             
+                              jQuery(document).find("input[name='"+fieldname+"']").parent().parent().parent("div.checkbox_outer").next("span.validation-option").show();
+                            } 
+                             return false;
+                          }
+                        else if(data.content !="")
+                        {
+                          $(document).find("#thanks-popup").html(data.content);
+                          console.log($("#thanks-popup"));
+                            $.magnificPopup.open({
+                              type: 'inline',
+                              items: {
+                                  src: '#thanks-popup',
+                              }
+                           })
+                         }
+                    },
+                    error : function(err) {
+                        console.log("Error : "+JSON.stringify(err));
+                    }
+                    });
+                   return false;
+                } //validates form and returns boolean
+                else{
+                 jQuery(document).find(":input").parent("div").find("span.validation-option").hide();   
+                 return false;
+                }
+          
+          });
+                  
+        });
+ });
+
+
+</script>
+

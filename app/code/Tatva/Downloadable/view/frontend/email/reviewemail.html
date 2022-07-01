@@ -1,0 +1,16 @@
+<!--@subject {{trans "New Review for Product SlideTeam"}}  @-->
+{{template config_path="design/email/header_template"}}
+<table class="message-details">
+   <td><p><b>Dear Moderator,</b></p>
+   <p>A new review has been added to the Product
+      <a href='{{var data.productlink|raw}}' >{{var data.name|raw}}</a>
+      To approve/disapprove the review,
+      <a href="{{var data.siteurl|raw}}/review/product/edit/id/{{var data.reviewid|raw}}/">click here</a> 
+      Please find below user rating & review.</p>
+   <p><b>Rating : </b>{{var data.rating|raw}}</p>
+   <p><b>Review : </b>{{var data.review|raw}}</p>
+   <p style='margin:0px;'>Regards,</p>
+   <span>SlideTeam Admin</span>
+</td>
+</table>
+{{template config_path="design/email/footer_template"}}

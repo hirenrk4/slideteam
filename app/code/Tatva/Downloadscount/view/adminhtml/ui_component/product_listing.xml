@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <columns name="product_columns" class="Magento\Catalog\Ui\Component\Listing\Columns">
+        <column name="number_of_downloads">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="add_field" xsi:type="boolean">true</item>
+                    <item name="label" translate="true" xsi:type="string">Number of Downloads</item>
+                    <item name="sortOrder" xsi:type="number">110</item>                    
+                    <item name="source" xsi:type="string">number_of_downloads</item>
+                </item>
+            </argument>
+        </column>
+        <column name="todays_number_of_downloads">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="add_field" xsi:type="boolean">true</item>
+                    <item name="label" translate="true" xsi:type="string">Todays Number of Downloads</item>
+                    <item name="sortOrder" xsi:type="number">120</item>                    
+                    <item name="source" xsi:type="string">todays_number_of_downloads</item>
+                </item>
+            </argument>
+        </column>
+    </columns>
+</listing>

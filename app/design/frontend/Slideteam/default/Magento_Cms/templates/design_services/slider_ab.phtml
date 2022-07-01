@@ -1,0 +1,19 @@
+<div id="myRotator" class="banner-rotator shadow">
+	<ul class="slides">
+		<?php for($i=1;$i<=12;$i++):?>
+		<li>
+                <img src="<?= $this->getViewFileUrl('Magento_Cms::images/design-services/spacer.png')?>" data-src="<?php echo $this->getViewFileUrl('Magento_Cms::images/design-services/large/Slide'.$i.'.png'); ?>" data-thumb="<?php echo $this->getViewFileUrl('Magento_Cms::images/design-services/large/Slide'.$i.'.png'); ?>" title="architecture" alt=""/>
+        </li>
+        <?php endfor;?>
+	</ul>
+</div>
+<div>
+	<div class="examples__slider__list">
+		<div class="examples__slider__list__self"><span class="examples__slider__list__self__gray">Before</span>
+		</div>
+	</div>
+	<div class="examples__slider__list after-right">
+		<div class="examples__slider__list__self"><span class="examples__slider__list__self__green">After</span>
+		</div>
+	</div>
+</div>

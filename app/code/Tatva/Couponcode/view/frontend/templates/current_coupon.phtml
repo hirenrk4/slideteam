@@ -1,0 +1,215 @@
+<div class="coupon-code-wrapper"> 
+    <div class="coupon-content-main">
+        <section id="coupon_content">
+            <div class="main-wrapper clearfix">
+                <!-- Active Coupon -->
+                <div class="left_couponblk">
+                    <h3>Current Coupons</h3>
+                    <?php 
+                        $activeCoupons = $block->getActiveCoupons();
+                        $i = 1;
+                        foreach($activeCoupons as $item):
+                            $code = $item->getCode();
+                    ?>
+                            <div class="copen_codes <?php if($item->getDealOfTheDay() == 1) { echo 'coupon_deals'; } ?>">
+                                <div class="coupon_percent <?php if($i%2 == 0) { echo 'darkblue_color'; } else { echo 'lightblue_color'; } ?>">
+                                    <h4><strong><?php echo round($item->getDiscountAmount(),0)?>%</strong>CASHBACK</h4>
+                                </div>
+                                <?php $i++; ?>
+                                <div class="coupon_descrption">
+                                    <p class="descrptn">PROMO CODE</p>
+                                    <p class="off_prsnt"><?php echo $code;?></p>
+                                    <p class="coupen_allownance"><?php echo $item->getDescription()?></p>
+
+                                    <div class="couponcodebtn">
+                                        <button type="submit" id="promo-<?php echo $code; ?>" class="btn btn-default get-button clicking clicking-code" value="<?php echo $code; ?>" >Copy The Coupon Code</button>
+                                    </div>
+
+                                </div>
+                                <!-- <div class="custmer_reviews">
+                                    <ul>
+                                        <li>
+                                            <div class="product-reviews-summary no-rating">
+                                                <div class="rating-summary">                                               
+                                                    <i
+                                                        <?php if($block->isCustomerLogin() == 1){ 
+                                                            if(count($block->getCustomerCouponData($item->getRuleId(),'like')) > 0){ ?>
+                                                                class="fa fa-thumbs-up like-btn"
+                                                            <?php } else { ?>                                
+                                                                class="fa fa-thumbs-o-up like-btn"
+                                                            <?php } ?>  
+                                                        <?php } else { ?>
+                                                            class="fa fa-thumbs-o-up logout-rating" onclick="window.location.href='<?php echo $block->getUrl('customer/account/login/'); ?>'"
+                                                        <?php } ?>
+                                                        data-id="<?php echo $item->getRuleId(); ?>">
+                                                    </i>
+                                                    <span class="reviewCount like-count"><?php echo count($block->getCouponData($item->getRuleId(),'like')); ?></span>
+                                                   
+                                                    <i 
+                                                        <?php if($block->isCustomerLogin() == 1){ 
+                                                            if(count($block->getCustomerCouponData($item->getRuleId(),'dislike')) > 0){ ?>
+                                                                class="fa fa-thumbs-down dislike-btn"
+                                                            <?php } else { ?>                                
+                                                                class="fa fa-thumbs-o-down dislike-btn"
+                                                            <?php } ?>  
+                                                        <?php } else { ?>
+                                                            class="fa fa-thumbs-o-down logout-rating" onclick="window.location.href='<?php echo $block->getUrl('customer/account/login/'); ?>'"
+                                                        <?php } ?>
+                                                        data-id="<?php echo $item->getRuleId(); ?>">
+                                                    </i>
+                                                    <span class="reviewCount dislike-count"><?php echo count($block->getCouponData($item->getRuleId(),'dislike')); ?></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>                                    
+                                </div> -->                     
+                            </div>
+                    <?php endforeach;?>
+                   
+                        <?php echo $block->getChildHtml('product.info.related');?>
+                    
+                    <section id="coupon_content">
+                        <div class="main-wrapper clearfix">
+
+                            <!-- Expired Coupon -->
+                            <div class="left_expired_couponblk">
+                                <?php $expiredCoupons = $block->getExpiredCoupons()?>
+                                <?php $i = 1; ?>
+                                <?php foreach($expiredCoupons as $item):?>
+                                        <div class="copen_codes">
+                                        <?php $i++; ?>
+                                            <div class="coupon_percent <?php if($i%2 == 0) { echo 'lightblue_color'; } else { echo 'darkblue_color'; } ?>">
+                                                <h4><strong><?php echo round($item->getDiscountAmount(),0)?>%</strong>CASHBACK</h4>
+                                            </div>
+                                            <div class="coupon_descrption">
+                                                <p class="descrptn">PROMO CODE</p>
+                                                <p class="off_prsnt"><?php echo $item->getCode()?></p>
+                                                <p class="coupen_allownance"><?php echo $item->getDescription()?></p>
+                                                <p class="coupen_expired">Expired Coupon</p>
+                                            </div>
+                                        </div>
+                                <?php endforeach;?>
+                            </div>
+                               
+                        </div>
+                    </section>
+                    
+                        <?php echo $block->getChildHtml('product.info.related.second');?>
+                    
+                </div>
+                <div class="coupon-slick-slider">
+                    <?php echo $block->getChildHtml('product.info.slide');?>
+                </div>
+            </div>
+        </section>
+        
+    </div>  
+
+</div>
+
+<script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function(){
+            $(".clicking-code").click(function(){         
+                $('.clicking-code').removeClass('active').html('Copy The Coupon Code').attr("disabled", false);
+                $(this).addClass('active').html('Copied').attr("disabled", true);
+                var myCode = this.value;
+                var fullLink = document.createElement('input');
+                document.body.appendChild(fullLink);
+                fullLink.value = myCode;
+                fullLink.select();
+                document.execCommand("copy", false);
+                fullLink.remove();
+            });
+        });   
+    });
+</script>
+
+
+
+
+<!-- <script type="text/javascript">
+    require(['jquery'], function ($) {
+        $(document).ready(function(){
+
+            // if the user clicks on the like button ...
+            $('.like-btn').on('click', function(){
+                var coupon_id = $(this).data('id');
+                $clicked_btn = $(this);
+                if ($clicked_btn.hasClass('fa-thumbs-o-up')) {
+                    action = 'like';
+                } else if($clicked_btn.hasClass('fa-thumbs-up')){
+                    action = 'unlike';
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getURL('couponcode/index/coupon'); ?>',
+                    data: {
+                        'action': action,
+                        'coupon_id': coupon_id
+                    },
+                    showLoader: true,
+                    success: function(data){
+                        if (action == "like") {
+                            $clicked_btn.removeClass('fa-thumbs-o-up');
+                            $clicked_btn.addClass('fa-thumbs-up');
+                        } else if(action == "unlike") {
+                            $clicked_btn.removeClass('fa-thumbs-up');
+                            $clicked_btn.addClass('fa-thumbs-o-up');
+                        }
+
+                        // display the number of likes and dislikes
+                        $clicked_btn.siblings('span.like-count').text(data.likes);
+                        $clicked_btn.siblings('span.dislike-count').text(data.dislikes);
+
+                        // change button styling of the other button if user is reacting the second time to post
+                        $clicked_btn.siblings('i.fa-thumbs-down').removeClass('fa-thumbs-down').addClass('fa-thumbs-o-down');
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                    }
+                });
+            });
+            
+            // if the user clicks on the dislike button ...
+            $('.dislike-btn').on('click', function(){
+                var coupon_id = $(this).data('id');
+                $clicked_btn = $(this);
+                if ($clicked_btn.hasClass('fa-thumbs-o-down')) {
+                    action = 'dislike';
+                } else if($clicked_btn.hasClass('fa-thumbs-down')){
+                    action = 'undislike';
+                }
+                $.ajax({
+                    type: 'POST',
+                    url: '<?php echo $this->getURL('couponcode/index/coupon'); ?>',
+                    data: {
+                        'action': action,
+                        'coupon_id': coupon_id
+                    },
+                    showLoader: true,
+                    success: function(data){
+                        if (action == "dislike") {
+                            $clicked_btn.removeClass('fa-thumbs-o-down');
+                            $clicked_btn.addClass('fa-thumbs-down');
+                        } else if(action == "undislike") {
+                            $clicked_btn.removeClass('fa-thumbs-down');
+                            $clicked_btn.addClass('fa-thumbs-o-down');
+                        }
+
+                        // display the number of likes and dislikes
+                        $clicked_btn.siblings('span.like-count').text(data.likes);
+                        $clicked_btn.siblings('span.dislike-count').text(data.dislikes);
+                
+                        // change button styling of the other button if user is reacting the second time to post
+                        $clicked_btn.siblings('i.fa-thumbs-up').removeClass('fa-thumbs-up').addClass('fa-thumbs-o-up');
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) { 
+                        alert("Status: " + textStatus); alert("Error: " + errorThrown); 
+                    }
+                });
+            });
+
+        });
+    });
+</script> -->

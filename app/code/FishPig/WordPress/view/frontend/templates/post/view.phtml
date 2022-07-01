@@ -1,0 +1,114 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $post = $this->getPost();
+//$blockObj= $block->getLayout()->createBlock('FishPig\WordPress\Block\Sidebar\Widget\Posts');
+$frontend_identifies = $block->configData('wordpress/integration/route');
+$categories = $post->getParentCategories();
+?>
+<?php if ($post): ?>
+<?php $language_keywords = $post->getMetaValue('language_blog_keyword');endif;?>
+  <?php if($language_keywords){?>
+    <div class="language_keywords" style="display: none;">
+        <?php echo $language_keywords;?>
+    </div>
+  <?php } ?>
+<?php if ($post): ?>
+	<?php $keywords = $this->getKeywords($post->getId());endif;?>
+	<?php if($keywords){?>
+    <div class="keywords" id="wordpress-sidebar-widget">
+        <?php echo $keywords;?>
+    </div>
+    <?php } ?>
+    <?php		
+		$author = $post->getUser();
+    	if($author->getMetaValue('userphoto_image_file')):$authorImage = $this->getUrl().'wp/wp-content/uploads/userphoto/' .$author->getMetaValue('userphoto_image_file');else : $authorImage = $this->getViewFileUrl('FishPig_WordPress/images/blog/default-user-big.jpg');endif;
+    ?>
+    <?php if ($post = $this->getPost()): ?>
+	<div class="post-view other-blogdetail blog-section">
+		<div class="blog-banner">
+	        <?php if ($featuredImage = $post->getFeaturedImage()): ?>
+              <?php if($featuredImage->getData('post_mime_type') == 'image/gif' || !$featuredImage->getMediumImage()): ?>
+                <img class="lazyload" src="<?php echo $featuredImage->getFullSizeImage() ?>" data-src="<?php echo $featuredImage->getFullSizeImage() ?>" alt="<?php echo $block->escapeHtml($post->getPostTitle()) ?>" width="100%" />
+              <?php else: ?>  
+	             <img class="" src="<?php echo $featuredImage->getMediumImage() ?>" alt="<?php echo $block->escapeHtml($post->getPostTitle()) ?>" width="100%" loading="auto" />
+              <?php endif; ?>
+	        <?php endif; ?>
+        </div>
+         <div class="blog-content-inner">
+            <h1 class="post-title-blog">
+            	<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><?php echo $this->escapeHtml($post->getPostTitle()) ?>
+              	</a>
+            </h1>
+            <div class="author-name clearfix">
+                <div class="img-block"><img src="<?php echo $authorImage;?>" alt="<?php echo $this->escapeHtml($author->getDisplayName()) ?>" loading="lazy"></div>
+                <div class="author-detail">
+                  	<div class="button-column clearfix">
+                   		<h3><span><a href="<?php echo $this->getUrl().$frontend_identifies.'/author/'.str_replace('.','-',str_replace(' ','-',$author->getUserLogin())); ?>" title="<?php echo $this->escapeHtml($author->getDisplayName()) ?>"><?php echo $this->escapeHtml($author->getDisplayName()) ?></a></span></h3>
+                   		<div class="author-user">
+                    		<img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/calander-icon.png')?>" alt="author-user" loading="lazy">
+                    		<div class="author-text"><span><?php echo $post->getPostDate()?></span></div>
+                  		</div>
+                  		<div class="comment-box">
+		                    <img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/comment-icon.png')?>" alt="author-user" loading="lazy">
+		                    <span><a href="<?php echo $post->getPermalink() ?>"><?php echo $post->getCommentCount(); ?> <?php if($post->getCommentCount()>1) echo "Comments";else echo "Comment";?></a></span>
+                  		</div>
+                    <?php /* ?>
+                 		<div class="comment-box last">
+                    		<img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/category.png')?>" alt="">
+                    		Blog Category:
+                     		<?php
+                      			$i=0;
+                      			$numberOfCategories = sizeof($categories);
+                      		
+                       			foreach($categories as $_category)
+                       			{
+                       		?>
+                      		<span style="float:none;"><a href="<?php echo $this->getUrl().$frontend_identifies.'/'.$_category->getSlug();?>"><?php echo $_category->getName();?></a>
+                      		<?php if( ++$i != $numberOfCategories): ?>, <?php endif;?></span>
+                    		<?php } ?>
+                  		</div> 
+                    <?php */ ?>
+                	</div>
+              	</div>
+            </div>
+            <?php echo $post->getPostContent() ?>
+        </div>
+        <?php echo $this->getChildHtml('custom_social_links'); ?>
+        <?php $this->displayRelatedPosts($post->getId());?>
+		<?php echo $this->getChildHtml('comments') ?>
+	</div>
+<?php endif; ?>
+<?php
+if($this->checkCustomerType())
+{
+  $popupData = $this->getPopupData()->getPopupContent('blog_detail_popup');
+  if($popupData && !empty($popupData))
+  {
+      echo $popupData['popup_content'];
+    if($popupData['popup_js'])
+    {
+        echo $popupData['popup_js'];
+    }
+    if($popupData['popup_css'])
+    {
+        ?>
+        <script type="text/javascript">
+            require(['jquery'], function ($) {
+                $(document).ready(function(){
+                    var mb_popup_style = $('<style type="text/css">'+<?php echo json_encode($popupData['popup_css']); ?>+'</style>');
+                    $('html > head').append(mb_popup_style);    
+                })
+            })
+        </script>
+        <?php
+    }
+
+  }
+}
+?>
+<script type="text/javascript" async defer  data-pin-hover="true" src="//assets.pinterest.com/js/pinit.js"></script>

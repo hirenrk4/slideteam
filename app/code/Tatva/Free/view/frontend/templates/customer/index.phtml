@@ -1,0 +1,297 @@
+<?php
+
+	$_helper = $this->helper('Tatva\Free\Helper\Data');
+	$login = $this->getCustomerSession();
+	if(!$login) {
+		?>
+		<!-- Login Form -->
+		<div id="ajaxlogin-login-window" class="popup-login mfp-hide white-popup-block">
+			<div class="page-title">
+				<span><?php echo __('Sign in to your Account') ?></span>
+			</div>
+			<div class="response-msg"></div>
+			<form class="form form-login" method="post" id="ajaxlogin-login-form" data-mage-init='{"validation":{}}'>
+				<input type="hidden" class="ajax-login-productId" name="loginProductId" value="" />
+				<?= $block->getBlockHtml('formkey') ?>
+				<fieldset class="fieldset login" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+					<div class="fieldtext email required">
+						<i><img src="<?php echo $this->getViewFileUrl('Magento_Customer::images/customer/black-envelope.svg'); ?>" /></i>
+						<div class="control">
+							<input name="username" placeholder="<?= $block->escapeHtmlAttr(__('Email Address')) ?>" value="<?php echo $block->escapeHtml($_helper->getCookieloginName()) ?>" id="email" type="email" class="input-text" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" data-validate="{required:true, 'validate-email':true}" autocomplete="username">
+						</div>
+					</div>
+					<div class="fieldtext password required">
+						<i><img src="<?php echo $this->getViewFileUrl('Magento_Customer::images/customer/lock.svg'); ?>" /></i>
+						<div class="control">
+							<input name="password" placeholder="<?= $block->escapeHtmlAttr(__('Password')) ?>" type="password" class="input-text" id="pass" title="<?= $block->escapeHtmlAttr(__('Password')) ?>" value="<?php echo $block->escapeHtml($_helper->getCookieloginPwd()) ?>" data-validate="{required:true}" autocomplete="current-password">
+						</div>
+					</div>
+					<div class="fieldtext remember-me">
+						<div class="control">
+							<input type="checkbox" name="remember_me" title="<?= $block->escapeHtmlAttr(__('Remember Me')) ?>" class="checkbox">
+			            </div>
+			            <span><?= $block->escapeHtml(__("Remember Me")) ?></span>
+					</div>
+					<?= $block->getChildHtml('form_additional_info') ?>
+					<div class="actions-toolbar">
+						<div class="primary">
+							<button type="submit" class="action login primary loginform" name="send" id="send2">
+								<span><?= $block->escapeHtml(__('Login')) ?></span>
+							</button>
+						</div>
+						<div class="secondary"><a class="action remind ajaxlogin-forgot" href="<?= $block->escapeUrl($block->getForgotPasswordUrl()) ?>"><span><?= $block->escapeHtml(__('Forgot Your Password?')) ?></span></a></div>
+					</div>
+				</fieldset>
+			</form>
+			<div class="social-login-icon">
+				<?= $block->getChildHtml('customer.form.social.login.ajax') ?>
+			</div>
+		</div>
+
+		<!-- Forgot Password Form -->
+		<div id="ajaxlogin-forgot-window" class="ajaxlogin-forgot-password mfp-hide white-popup-block">
+			<div class="page-title">
+				<span><?php echo __('Forgot Your Password?') ?></span>
+			</div>
+			<div class="response-msg"></div>
+			<form action="" class="form-forgot-password" method="post" id="ajaxlogin-forgot-password-form" data-mage-init='{"validation":{}}'>
+				<fieldset class="fieldset" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+					<div class="field note"><?= $block->escapeHtml(__('Please enter your email address below to receive a password reset link.')) ?></div>
+					<div class="fieldtext email required">
+						<i><img src="<?php echo $this->getViewFileUrl('Magento_Customer::images/customer/black-envelope.svg'); ?>" /></i>
+						<div class="control">
+							<input type="email" placeholder="<?= $block->escapeHtml(__('Email Address')) ?>" name="email" alt="email" id="forgotemail" class="input-text" value="<?= $block->escapeHtmlAttr($block->getEmailValue()) ?>" data-validate="{required:true, 'validate-email':true}">
+						</div>
+					</div>
+					<?= $block->getChildHtml('form_additional_info') ?>
+				</fieldset>
+				<div class="actions-toolbar">
+					<div class="primary">
+						<button type="submit" class="action submit primary"><span><?= $block->escapeHtml(__('Submit')) ?></span></button>
+					</div>
+					<div class="secondary">
+						<a class="action back ajaxlogin-login"><span><?= $block->escapeHtml(__('Back to Login')) ?></span></a>
+					</div>
+				</div>
+			</form>
+		</div>
+
+		<!-- Register Form -->
+		<div id="ajaxlogin-create-window" class="popup-register mfp-hide white-popup-block">
+			<div class="regitser-form">
+				<div class="response-msg"></div>
+				<form method="post" id="ajaxlogin-create-form" data-mage-init='{"validation":{}}'>
+					<input type="hidden" class="ajax-productId" name="productId" value="" />
+					<?= $block->getBlockHtml('formkey') ?>
+					<div class="page-title">
+						<span><?= $block->escapeHtml(__('Create an Account')) ?></span>
+					</div>
+					<?= $block->getChildHtml('customer.form.register.ajax') ?>
+				</form>
+			</div>
+			<?= $block->getChildHtml('customer.form.social.login.ajax') ?>
+		</div>
+		<?php
+	}
+?>
+
+<script type="text/javascript">
+	require(['jquery','mage/mage','magnific_popup'], function ($) {
+			var addthis_product = 'mag-1.0.1';
+			var addthis_config  = {
+				pubid : 'unknown', data_track_addressbar : true
+			};
+			var dataForm = $('#ajaxlogin-create-form');
+			var ignore = null;
+			dataForm.mage('validation', 
+            {
+                ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+            })
+               .find('input:text').attr('autocomplete', 'off');
+			$(document).ready(function () {
+				var crossImg = '<?php echo $this->getViewFileUrl('Tatva_Free::images/cancel_round.png');?>';
+
+				$(document).on('click', '.noaccount', function(e){
+			        $.magnificPopup.close(); // Close existing popup
+
+			        // Open new popup
+			        $.magnificPopup.open({
+			        	mainClass: 'ajaxlogin-main-popup',
+				        items: {
+				            src: '#ajaxlogin-create-window',
+				            type: 'inline'
+				        },
+				        callbacks: {
+                    		open: function () {
+                        		this.contentContainer.addClass('ajax-register-popup');
+                        		$('body').addClass('ajax-popup-open');
+                    		},
+                    		close:function() {
+                    			$('body').removeClass('ajax-popup-open');
+                    		}
+               			},
+			          	closeMarkup:'<a class="roundlink"><img src="'+crossImg+'"class="mfp-close"></a>',
+			        });
+			        e.preventDefault();
+				});
+
+				$(document).on('click', '.ajaxlogin-login', function(e){
+			        $.magnificPopup.close(); // Close existing popup
+
+			        // Open new popup
+			        $.magnificPopup.open({
+			        	mainClass: 'ajaxlogin-main-popup',
+				        items: {
+				            src: '#ajaxlogin-login-window',
+				            type: 'inline'
+				        },
+				        callbacks: {
+                    		open: function () {
+                        		this.contentContainer.addClass('ajax-login-popup');
+                        		$('body').addClass('ajax-popup-open');
+                    		},
+                    		close:function() {
+                    			$('body').removeClass('ajax-popup-open');
+                    		}
+               			},
+			          	closeMarkup:'<a class="roundlink"><img src="'+crossImg+'"class="mfp-close"></a>',
+			        });
+			        e.preventDefault();
+				});
+
+				$(document).on('click', '.ajaxlogin-forgot', function(e){
+			        $.magnificPopup.close(); // Close existing popup
+
+			        // Open new popup
+			        $.magnificPopup.open({
+			        	mainClass: 'ajaxlogin-main-popup',
+				        items: {
+				            src: '#ajaxlogin-forgot-window',
+				            type: 'inline'
+				        },
+				        callbacks: {
+                    		open: function () {
+                        		this.contentContainer.addClass('ajax-forgot-password-popup');
+                        		$('body').addClass('ajax-popup-open');
+                    		},
+                    		close:function() {
+                    			$('body').removeClass('ajax-popup-open');
+                    		}
+               			},
+			          	closeMarkup:'<a class="roundlink"><img src="'+crossImg+'"class="mfp-close"></a>',
+			        });
+			        e.preventDefault();
+				});
+
+
+				var loginButton = $('#ajaxlogin-login-form').find('button[type=submit]');
+				var registerButton = $('#ajaxlogin-create-form').find('button[type=submit]');
+				// Texts
+				var loginText = "<?php echo __('Login') ?>";
+				var loggingText = "<?php echo __('Please Wait...') ?>";
+
+				var registerText = "<?php echo __('Sign Up') ?>";
+				var registeringText = "<?php echo __('Please Wait...') ?>";
+
+				$('#ajaxlogin-login-form').submit(function(){
+					loginButton.text(loggingText);
+					loginButton.attr("disabled", "disabled");
+					var formData = getFormData($(this));
+					$.ajax({
+						type: "POST",
+						url: '<?php echo $block->getUrl('free/ajax/login') ?>',
+						data: formData,
+						dataType: "json",
+						success: function(data) {
+							showResponse(data);
+							if(data.errors) {
+								loginButton.text(loginText);
+								loginButton.removeAttr('disabled');
+							} else {
+								if(formData.loginProductId == null || formData.loginProductId == "" || formData.loginProductId == "undefined"){
+								 	location.reload();									
+								} else {
+									var ProductId = formData.loginProductId;
+							   		var url  = "<?php echo $this->getURL('checkout/cart/add/'); ?>"+"product/"+ProductId;
+							   		window.location.href = url;
+								}
+							}
+						}
+					})
+					return false;
+				})
+
+				$('#ajaxlogin-create-form').submit(function(){
+					registerButton.text(registeringText);
+					registerButton.attr("disabled", "disabled");
+					var formData = getFormData($(this));
+					if(dataForm.validation('isValid')!=true)
+                	{
+                		registerButton.text(registerText);
+                		registerButton.removeAttr('disabled');
+                		return false;
+                	}
+					$.ajax({
+						type: "POST",
+						url: '<?php echo $block->getUrl('free/ajax/register') ?>',
+						data: formData,
+						dataType: "json",
+						success: function(data) {
+							showResponse(data);
+							if(data.errors) {
+								registerButton.text(registerText);
+								registerButton.removeAttr('disabled');
+							} else {
+								if(formData.productId == null || formData.productId == "" || formData.productId == "undefined"){
+								 	location.reload();									
+								} else {
+									var ProductId = formData.productId;
+							   		var url  = "<?php echo $this->getURL('checkout/cart/add/'); ?>"+"product/"+ProductId;
+							   		window.location.href = url;
+								}
+							}
+						}
+					});
+					return false;
+				})
+
+				$('#ajaxlogin-forgot-password-form').submit(function(){
+					var formData = getFormData($(this));
+					$.ajax({
+						type: "POST",
+						url: '<?php echo $block->getUrl('free/ajax/forgotpassword') ?>',
+						data: formData,
+						dataType: "json",
+						success: function(data) {
+							$('.ajaxlogin-login').magnificPopup({
+								items: {
+									src: '#ajaxlogin-login-window',
+									type: 'inline'
+								}
+							}).magnificPopup('open');
+							setTimeout(function(){ showResponse(data); }, 1000);
+						}
+					});
+					return false;
+				})
+
+				function getFormData(formElem){
+					var unindexed_array = formElem.serializeArray();
+					var indexed_array = {};
+					jQuery.map(unindexed_array, function(n, i){
+						indexed_array[n['name']] = n['value'];
+					});
+					return indexed_array;
+				}
+				function showResponse(data) {
+					if(data.errors) {
+						$('.response-msg').html("<div class='error'>"+data.message+"</div>");
+					} else {
+						$('.response-msg').html("<div class='success'>"+data.message+"</div>");
+					}
+					setTimeout(function(){ $('.response-msg').html(null); }, 5000);
+				}
+
+			});
+		});
+</script>

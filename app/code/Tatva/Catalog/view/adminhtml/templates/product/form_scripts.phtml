@@ -1,0 +1,15 @@
+<script>
+    require([
+       'jquery',
+       'Tatva_Catalog/js/form',
+       'domReady!'
+    ], function ($, form) {
+        $(document).ready(function () {
+            setTimeout(function () {
+                $(document).on('change','[name="product[pricing_type]"]',function(){
+                    form.showHideAttr();                
+                })
+            },7000);
+        });
+   });
+</script>

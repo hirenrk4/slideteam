@@ -1,0 +1,14 @@
+{
+    "zoho_customer_tracking": {
+        "column": {
+            "id": true,
+            "customer_id": true,
+            "page_uri": true,
+            "created_at": true,
+            "isSend": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

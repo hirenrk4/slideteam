@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+* @category   Tatva
+* @package    Tatva_Gtm
+*/
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="root">
+            <block class="Tatva\Gtm\Block\Gtm" template="Tatva_Gtm::gtm/gtminit.phtml" name="tatva.gtm.init" before="-" />
+        </referenceContainer>
+        <referenceContainer name="before.body.end">
+            <container name="gtm.wrapper" before="-">
+                <block class="Tatva\Gtm\Block\Gtm" template="Tatva_Gtm::gtm/gtm_data_push.phtml" name="tatva.gtm.data.push" before="-" ifconfig="button/gtm_config/field1"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

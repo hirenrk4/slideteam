@@ -1,0 +1,222 @@
+<?php
+$customer_type = '0';
+
+$login = $this->isLoggedIn();
+if($login=='1' || $login==1) { 
+	$customer_id = $this->getCustomerId(); 
+	$success_return = $this->getSubscriptionModel()->productCanBeDownloaded($customer_id);
+	if($success_return == '2') {
+		$customer_type = '1';
+	}
+}
+$subscription_download = $this->getURL('downloadable/index/download');
+$f=0;$f1=0;
+
+
+$small_image_biggersize1 = "";
+$cat_List=$this->getCategoryIds();
+$_productCollection = $this->getLoadedProductCollection();
+$_categoryProductCollection =$this->getCategoryProductCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+?>
+<?php if (!$_productCollection->count()): ?>
+    <div class="message info empty"><div><?= /* @escapeNotVerified */ __('We can\'t find products matching the selection.') ?></div></div>
+<?php else: ?>
+	<div class="category-products">
+		<div class="main-wrapper list-detail-consistency ab-category-list clearfix"> 
+			<div class="free-diagrams">    
+				<ul>
+					<?php foreach ($_productCollection as $_product): 
+						$sample_url = '';
+						if($_product->getTypeId() == "downloadable" && $_product->getFree())
+						{
+							$_links=$this->get_link($_product->getId()); 
+			                foreach($_links as $_link)
+			                {
+			                	if($_link->getSampleFile() != '')
+			                   	{
+			                        $check_downloadable_link=true;
+			                        $sample_url = $this->getUrl('downloadable/download/linkSample', array('link_id' => $_link->getId()));
+			                    }
+			                }
+						}
+						
+						if($f1=='0') { 
+							$f1=1; 
+						?>
+							<h4 class="free-diagrams-title">Collection of Free PowerPoint Templates and PPT Themes</h4>
+						<?php }
+					?>
+					<?php $product_url =  $_product->getProductUrl();?>
+					<?php $short_description =  $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
+					<li class="item">
+						<?php 
+							$small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'product_page_image_medium')->getUrl(); 
+							$small_image = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'category_page_grid')->getUrl();
+						?>
+						<div class="product-info">
+							<?php $productName = $this->stripTags($_product->getName(), null, true);?>
+							<?php if($login=='1') {?>
+							<a class="product-name" href="<?php echo $product_url ?>"><?php echo $productName; ?></a>
+                            <?php } else{ ?>
+                            <h6 class="product-name"><?php echo $productName; ?></h6>
+                           <?php } ?>
+                           <p><?php echo $short_description;?></p>
+                           <div class="product_img_block">
+                           		<?php
+                           		if($login == '1') {
+                           			$product_download = $this->getProductDownloadcount($customer_id,$_product->getId());
+                           			if($product_download=='2' && $customer_type=='1'){ ?>
+                           				<a href="<?php echo $product_url ?>" class="product-image">
+                           					<img class="lazyload" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="<?php echo $small_image_biggersize1; ?>" /> 
+                           				</a>
+                           				<label class="product-link">
+                           					<a href="<?php echo $product_url ?>">Download Free <?php echo $productName; ?></a>
+                           				</label>
+                           			<?php }
+                           			else if($product_download=='1' && $customer_type=='1'){ ?>
+                           				<a class="product-image" href="<?php echo $this->getURL('free/index/redirect'); ?>">
+                           					<img class="lazyload" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="<?php echo $small_image_biggersize1; ?>" />
+                           				</a>
+                           				<label class="product-link">
+                           					<a href="<?php echo $this->getURL('free/index/redirect'); ?>">Download Free <?php echo $productName; ?></a>
+                           				</label>
+                           			<?php }
+                           			else {
+                           			?>
+                           			<a href="" class="product-image clicking" data-id="<?php echo $_product->getId() ?>" title="<?php echo $productName; ?>">
+                           				<img class="lazyload" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="<?php echo $small_image_biggersize1; ?>" />
+                           			</a>
+                           			<label class="product-link">
+	                           			<a href="" class="clicking" data-id="<?php echo $_product->getId() ?>">Download Free <?php echo $productName; ?></a>
+	                           		</label>
+                           			<?php
+                           			}
+                           		} else { ?>
+                           			<a href="#" title="<?php echo $productName; ?>" class="noaccount">
+                           				<img class="lazyload" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="<?php echo $small_image_biggersize1; ?>" />
+                           			</a>
+                           			<label class="product-link">
+                           				<a href="#" class="noaccount">Download Free <?php echo $productName; ?></a>
+                           			</label>
+                           		<?php }
+                           		?>
+                           </div>
+						</div>
+					</li>
+					<?php endforeach; ?>
+
+                    <!-- Icons Category Product Collection -->
+                    <?php foreach ($_categoryProductCollection as $_product): 
+                        $sample_url = '';
+                        if($_product->getTypeId() == "downloadable" && $_product->getFree())
+                        {
+                            $_links=$this->get_link($_product->getId()); 
+                            foreach($_links as $_link)
+                            {
+                                if($_link->getSampleFile() != '')
+                                {
+                                    $check_downloadable_link=true;
+                                    $sample_url = $this->getUrl('downloadable/download/linkSample', array('link_id' => $_link->getId()));
+                                }
+                            }
+                        }
+                        
+                        if($f=='0') { 
+                            $f=1; 
+                        ?>
+                            <h4 class="free-diagrams-title">Collection of Free PowerPoint Templates and PPT Diagrams</h4>
+                        <?php }
+                    ?>
+                    <?php $product_url =  $_product->getProductUrl();?>
+                    <?php $short_description =  $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description'); ?>
+                    <li class="item">
+                        <?php 
+                            $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'product_page_image_medium')->getUrl(); 
+                            $small_image = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'category_page_grid')->getUrl();
+                        ?>
+                        <div class="product-info">
+                            <?php $productName = $this->stripTags($_product->getName(), null, true);?>
+                            <?php if($login=='1') {?>
+                            <a class="product-name" href="<?php echo $product_url ?>"><?php echo $productName; ?></a>
+                            <?php } else{ ?>
+                            <h6 class="product-name"><?php echo $productName; ?></h6>
+                           <?php } ?>
+                           <p><?php echo $short_description;?></p>
+                           <div class="product_img_block">
+                                <?php
+                                if($login == '1') {
+                                    $product_download = $this->getProductDownloadcount($customer_id,$_product->getId());
+                                    if($product_download=='2' && $customer_type=='1'){ ?>
+                                        <a href="<?php echo $product_url ?>" class="product-image">
+                                            <img class="lazyload" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="<?php echo $small_image_biggersize1; ?>" /> 
+                                        </a>
+                                        <label class="product-link">
+                                            <a href="<?php echo $product_url ?>">Download Free <?php echo $productName; ?></a>
+                                        </label>
+                                    <?php }
+                                    else if($product_download=='1' && $customer_type=='1'){ ?>
+                                        <a class="product-image" href="<?php echo $this->getURL('free/index/redirect'); ?>">
+                                            <img class="lazyload" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="<?php echo $small_image_biggersize1; ?>" />
+                                        </a>
+                                        <label class="product-link">
+                                            <a href="<?php echo $this->getURL('free/index/redirect'); ?>">Download Free <?php echo $productName; ?></a>
+                                        </label>
+                                    <?php }
+                                    else {
+                                    ?>
+                                    <a href="" class="product-image clicking" data-id="<?php echo $_product->getId() ?>" title="<?php echo $productName; ?>">
+                                        <img class="lazyload" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="<?php echo $small_image_biggersize1; ?>" />
+                                    </a>
+                                    <label class="product-link">
+                                        <a href="" class="clicking" data-id="<?php echo $_product->getId() ?>">Download Free <?php echo $productName; ?></a>
+                                    </label>
+                                    <?php
+                                    }
+                                } else { ?>
+                                    <a href="#" title="<?php echo $productName; ?>" class="noaccount">
+                                        <img class="lazyload" src="<?php echo $this->getViewFileUrl('images/89.gif'); ?>" data-src="<?php echo $small_image_biggersize1; ?>" />
+                                    </a>
+                                    <label class="product-link">
+                                        <a href="#" class="noaccount">Download Free <?php echo $productName; ?></a>
+                                    </label>
+                                <?php }
+                                ?>
+                           </div>
+                        </div>
+                    </li>
+                    <?php endforeach; ?>
+				</ul>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>
+
+<script type="text/javascript">
+	require(['jquery'], function ($) 
+    {
+        $(document).ready(function () 
+        {
+        	$('.clicking').on('click',function(){
+        		var product_id = $(this).data('id');
+        		$.ajax({
+        			type: 'POST',
+        			url: '<?php echo $this->getURL('downloadable/index/free'); ?>',
+        			data: {
+        				product_id:product_id,
+        			},
+        			dataType: 'json',
+        			showLoader: false ,
+        			success: function(data) {
+        				window.location.href = "<?php echo $this->getURL('downloadable/index/download'); ?>";
+        				setTimeout(function(){ location.reload(); }, 2000);
+        			},
+        			error: function() {
+        				console.log("Error in downloading product");
+        			}
+         		})
+        		return false;
+        	});
+        });
+    })
+</script>

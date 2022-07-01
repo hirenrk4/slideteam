@@ -1,0 +1,42 @@
+<?php /*
+<div class="previous-next-block clearfix">
+    <?php $testpre = $block->previousPage(); ?>
+    <?php $testnext = $block->NextPage();?>
+    <?php if ($testpre != "true") {
+    ?>
+        <a name ="previous" id="previous" href="<?php echo $testpre;?>" class="previous-project" title="Previous Project">
+            <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/create_powerpoint_presentation/previous.png'); ?>" height="24" width="24" />
+            <span>Previous Project</span>
+        </a>
+    <?php } ?>
+    <?php if ($testnext != "true") {
+        ?>
+            <a name ="next" href="<?php echo $testnext;?>" class="next-project" title="Next Project">
+                <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/create_powerpoint_presentation/next-port.png'); ?>" height="24" width="24" />
+                <span>Next Project</span>
+            </a>
+   <?php }
+   ?>
+</div>
+*/ ?>
+
+<div class="portfolio_main_wrapper next_prev">
+  <div class="container clearfix">
+    <?php $testpre = $block->previousPage(); ?>
+    <?php $testnext = $block->NextPage();?>
+    <div class="next_prev_custom clearfix">
+      <?php if ($testpre != "true") { ?>
+      <div class="left_arrow_custom">
+        <a href="<?php echo $testpre;?>" title="Previous Project">
+         <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/design_services_pages/portfolio/left_arrow.png'); ?>" alt="arrow"> Previous Project
+        </a>
+      </div>
+      <?php } ?>
+      <?php if ($testnext != "true") { ?>
+      <div class="right_arrow_custom">
+        <a href="<?php echo $testnext;?>" title="Next Project"> Next Project <img src="<?php echo $this->getViewFileUrl('Magento_Cms::images/design_services_pages/portfolio/right_arrow.png'); ?>" alt="arrow"> </a>
+      </div>
+      <?php } ?>
+    </div>
+  </div>
+</div>

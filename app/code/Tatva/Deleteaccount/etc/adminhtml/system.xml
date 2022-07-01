@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="contact" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Contacts</label>
+            <tab>general</tab>
+            <resource>Magento_Contact::contact</resource>
+            <group id="email" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Email Options</label>
+                <field id="recipient_delete_account_to" translate="label" type="text" sortOrder="11" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Emails To Delete Account (TO)</label>
+                </field>
+                <field id="recipient_delete_account_cc" translate="label" type="text" sortOrder="12" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Emails To Delete Account (CC)</label>
+                    <comment>Please eneter emails(,) seperated</comment>
+                </field>
+            </group>
+        </section>
+        <tab id="tatvasoft" translate="label" sortOrder="10">
+            <label>TATVASOFT</label>
+        </tab>
+        <section id="button" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <!-- <label>Delete account Feedback Count Csv</label>
+            <tab>tatvasoft</tab> -->
+            <group id="feedback" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Delete Account Feedback Count Csv</label>
+                <field id="to_email" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(To)</label>  
+                    <comment>enter comma separated emails</comment>                 
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enter Email(cc)</label>
+                    <comment>enter comma separated emails</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

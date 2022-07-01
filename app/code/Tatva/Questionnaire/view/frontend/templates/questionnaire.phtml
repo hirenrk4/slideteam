@@ -1,0 +1,307 @@
+<?php
+$session_var = $this->getCustomerSession()->getData('data');
+$call_flag = null;
+$email = null;
+$phone = null;
+$name = null;
+$do_not_call_me = null;
+$call_me = null;
+$number_of_slides = null;
+$style_option = null;
+$template_or_diagram_details = null;
+$description = null;
+$id = null;
+if ($session_var && is_array($session_var))
+{
+    foreach ($session_var as $form)
+    {
+        $name = $form['name'];
+        $email = $form['email'];
+        $phone = $form['phone'];
+        $call_flag = $form['call_flag'];
+        if ($call_flag == 'Call me')
+        {
+            $call_me = "checked";
+        }
+        if ($call_flag == 'Do Not Call me')
+        {
+            $do_not_call_me = "checked";
+        }
+        $number_of_slides = $form['number_of_slides'];
+        $style_option = $form['style_option'];
+        $template_or_diagram_details = $form['template_or_diagram_details'];
+        $description = $form['description'];
+    }
+}
+if ($call_flag == '')
+{
+    $call_me = "checked";
+}
+$this->getCustomerSession()->unsetData('data');
+?>
+<?php
+if ($this->getCustomerSession()->isLoggedIn())
+{
+    $customerData = $this->getCustomerSession()->getCustomer();
+    $id = $customerData->getId();
+}
+?>
+
+<div class="container ques-container">
+    <form  name="questionnaire_form" id="questionnaire_form" action="<?php echo $this->getBaseUrl() . 'questionnaire/index/sendEmail'; ?>" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <div class="std">
+            <div class="questionnaire-content">
+                <h4><?= $block->escapeHtml(__('Custom Design Services FORM')) ?></h4>
+                <p>                
+                    <?= $block->escapeHtml(__('Help us understand your requirements better. Fill in this short form, or just email your details to')) ?>
+                    <a href="mailto:<?php echo $block->getEmail(); ?>"><?php echo $block->getEmail(); ?></a>
+                    <?= $block->escapeHtml(__(', and let us know if we can call you to ask clarifying questions.')) ?>
+                </p>
+                <div class="user-detail">
+                    <ul>
+                        <li>
+                            <label><?= $block->escapeHtml(__('First and Last Name')) ?><em>*</em></label>
+                            <input name="name" value="<?php if ($name) { echo $name; } ?>" type="text" class="input-text" tabindex="1" data-validate='{"required":true}'>
+                        </li>
+                        <li>
+                            <label><?= $block->escapeHtml(__('User ID / Email')) ?><em>*</em></label>
+                            <input name="email" value="<?php if ($email) { echo $email; } ?>" type="text" class="input-text" tabindex="2" data-validate="{required:true, 'validate-email':true}">
+                        </li>
+                        <li>
+                            <label><?= $block->escapeHtml(__('Phone (optional)')) ?></label>
+                            <input name="phone" id="telephone" maxlength="15" value="<?php if ($phone) { echo $phone; } ?>" type="text" class="input-text maximum-length-15" data-validate="{'no-whitespace':true,'telephoneValidation':true,'validate-length':true}" tabindex="3">
+                            <div class="mage-error" id="tel-error" generated="true"></div>
+                        </li>
+                        <li>
+                            <ul class="radio-listing">
+                                <li tabindex="4">
+                                    <input type="radio" class="icheck" value="<?= $block->escapeHtml(__('Call me')) ?>" name="call_flag" checked="">
+                                    <span><?= $block->escapeHtml(__('Call me')) ?></span>
+                                </li>
+                                <li tabindex="5">
+                                    <input type="radio" class="icheck" value="<?= $block->escapeHtml(__('Do not call me')) ?>" name="call_flag">
+                                    <span><?= $block->escapeHtml(__('Do not call me')) ?></span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="user-detail">
+                    <h4><?= $block->escapeHtml(__('Fill to the best of your knowledge - no field is mandatory')) ?></h4>
+                    <ul>
+                        <li>
+                            <label><?= $block->escapeHtml(__('Number of Slides to be designed')) ?></label>
+                            <input name="number_of_slides" value="<?php if ($number_of_slides) { echo $number_of_slides; } ?>" type="text" class="input-text" tabindex="6">
+                        </li>
+                        <li>
+                            <label><?= $block->escapeHtml(__('Describe Your Style Requirement')) ?> 
+                            <span><?= $block->escapeHtml(__('1. Stylish and Graphical ')) ?>
+                            <em>
+                                <a href="#" class="tooltips" tabindex="-1">?
+                                    <span>
+                                        <ul class="style-list ">
+                                            <li><?= $block->escapeHtml(__('Consistent 3-5 Colors throughout')) ?></li>
+                                            <li><?= $block->escapeHtml(__('Text in text boxes with shadows/layers etc')) ?></li>
+                                            <li><?= $block->escapeHtml(__('Greater graphical content')) ?></li>
+                                            <li><?= $block->escapeHtml(__('Example Audience - Company Employees, Team Members,Professors and Students, Prospective Customers')) ?></li>
+                                        </ul>
+                                    </span>
+                                </a>
+                            </em>
+                        </span>
+                        <span><?= $block->escapeHtml(__('2. Elegant and Simple ')) ?>
+                        <em>
+                            <a href="#" class="tooltips" tabindex="-1">?
+                                <span>
+                                    <ul class="style-list ">
+                                        <li><?= $block->escapeHtml(__('Consistent 2-3 Colors throughout')) ?></li>
+                                        <li><?= $block->escapeHtml(__('Corporate Style')) ?></li>
+                                        <li><?= $block->escapeHtml(__('Convey ideas graphically but to a degree')) ?></li>
+                                        <li><?= $block->escapeHtml(__('Example Audience - Board of Directors, CEOs, CFOs, Investors, Investment Banking, Highly Business Oriented Audience')) ?></li>
+                                    </ul>
+                                </span>
+                            </a>
+                        </em>
+                    </span>
+                    <span><?= $block->escapeHtml(__('3. Informal and Playful ')) ?>
+                    <em>
+                        <a href="#" class="tooltips" tabindex="-1">?
+                            <span>
+                                <ul class="style-list ">
+                                    <li><?= $block->escapeHtml(__('Colorful but consistent themes/shades')) ?></li>
+                                    <li><?= $block->escapeHtml(__('Fancy Graphics - visually appealing')) ?></li>
+                                    <li><?= $block->escapeHtml(__('Example Audience - Community gatherings, Schools, Family gatherings and Parties, Churches and Religious gatherings')) ?></li>
+                                </ul>
+                            </span>
+                        </a>
+                    </em>
+                </span>
+                <span><?= $block->escapeHtml(__('4. Combination of the above')) ?> </span>
+            </label>
+            <textarea name="style_option"  id="comment1" class="input-text" tabindex="7" maxlength="2000"><?php if ($style_option) { echo $style_option; } ?></textarea>
+            <div class="allforms-comment-msg msg1"><?php echo __("Max length should be 2000 character."); ?></div>
+        </li>
+        <li>
+            <label><?= $block->escapeHtml(__('URLs or Names of any preferred SlideTeam')) ?> 
+            <a href="https://www.slideteam.net/search/go?isort=globalpop&lbc=slideteam&method=and&p=Q&ts=custom&uid=516718103&w=*&cnt=300"><u><?= $block->escapeHtml(__('Templates')) ?></u></a> <?= $block->escapeHtml(__('or')) ?> <a href="<?php echo $this->getBaseUrl() . 'powerpoint-presentation-slides.html'; ?>"><u><?= $block->escapeHtml(__('Diagrams')) ?></u></a><span><a style="color: #393939" href="https://www.slideteam.net/search/go?isort=globalpop&lbc=slideteam&method=and&p=Q&ts=custom&uid=516718103&w=*&cnt=300"><?= $block->escapeHtml(__('Templates are')) ?></a> <?= $block->escapeHtml(__('slide backgrounds')) ?><br><a style="color: #393939" href="<?php echo $this->getBaseUrl() . 'powerpoint-presentation-slides.html'; ?>"><?= $block->escapeHtml(__('Diagrams are')) ?></a> <?= $block->escapeHtml(__('actual slides')) ?></span>
+        </label>
+        <textarea name="template_or_diagram_details" id="comment2"  class="input-text" tabindex="8" maxlength="2000"><?php if ($template_or_diagram_details) { echo $template_or_diagram_details; } ?></textarea>
+        <div class="allforms-comment-msg msg2"><?php echo __("Max length should be 2000 character."); ?></div>
+    </li>
+    <li>
+        <label><?= $block->escapeHtml(__('Description and Flow')) ?><span><?= $block->escapeHtml(__('Notes to the designer. Be as complete and detailed as you can.')) ?></span></label>
+        <textarea class="input-text" name="description" id="description"  tabindex="9" maxlength="2000"><?php if ($description) { echo $description; } ?></textarea>
+        <div class="allforms-comment-msg dis"><?php echo __("Max length should be 2000 character."); ?></div>
+    </li>
+
+    <li>
+      <div class="custom_row clearfix">
+        <label><?= $block->escapeHtml(__('Upload Files')) ?><span><?= $block->escapeHtml(__('Please upload any mockups, presentations, sketches, back of napkin designs etc.')) ?><br><?= $block->escapeHtml(__('NOTE: Please use Dropbox/Google Drive and send us the link if the attachment is greater than')) ?> <strong><?= $block->escapeHtml(__('5 MB')) ?></strong><?= $block->escapeHtml(__(', or mail them separately to ')) ?><a href='mailto:design@slideteam.net' class="questionnaire-email">design@slideteam.net</a></span></label>
+         <div class="custom_textfield">
+           <div id="mulitplefileuploader">Upload</div>
+           <div id="status"></div>
+           <input id ="filesToAttach" type ="hidden" name="filesToAttach" />
+           <!--<input id ="uploadedfiles" type ="hidden" name="uploadedfiles" />-->
+       </div>
+   </div>
+</li>
+<li>
+    <div class="captcha-wrapper">
+        <?php
+            $blockPath = 'Magento\Captcha\Block\Captcha';
+            $block = $this->getLayout()->createBlock($blockPath);
+            $cap_data = array('form_id'=>'questionnaire_captcha','img_width'=>'50');
+            $block->setData($cap_data);
+            echo $block->toHtml();
+        ?>
+    </div>
+</li>
+<li>
+    <input type="hidden" name="client_id" value="<?php echo $id; ?>" />
+    <button id="finalSubmit" title="Submit" class="action submit primary">
+     <span>Submit</span>
+ </button>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</form>
+</div>
+<script type="text/javascript">
+    require(['jquery','JQForm','mage/mage','jquery/jquery-ui-1.9.2'], function ($)
+    {
+        $(document).ready(function ()
+        {
+            $("label:contains('Please type captcha here')").html('&nbsp;');
+            $('#questionnaire_form').find('input[name*="captcha"]').css('padding-left', '12px');
+            $('#questionnaire_form').find('input[name*="captcha"]').attr("placeholder", "Please type Captcha Here");
+
+            $('.captcha-img').remove();
+            $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="spinner-img" height="50" width="50" src="<?= $block->getViewFileUrl('Magento_Cms::images/popup/spinner.gif') ?>"/>').insertBefore('.captcha-reload');
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                data:'formId=questionnaire_captcha',
+                success:function(data) {
+                    $('.spinner-img').hide();
+                    $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('.captcha-reload'); 
+                    return false;                 
+                }
+            });
+
+            var telval = jQuery('#telephone').val();
+            jQuery('#telephone').on('keydown',function(){
+                var tellength  = jQuery('#telephone').val().length;
+                if((tellength+1) == 16)
+                {
+                    jQuery('#tel-error').show();
+                    jQuery('#tel-error').html('Allowed only 15 characters');
+                    jQuery('#telephone-error').hide();
+                }
+            })
+
+            var settings = {
+                url: "<?php echo $block->getUrl('questionnaire/index/save'); ?>",
+                method: "POST",
+                allowedTypes: "pdf, ppt, pptx,doc, docx, jpg, jpeg, png, gif, xlsx, xlsm, xlsb, xls, xltx, xltm, xlt, csv, xlam, xla, ods, zip, txt",
+                maxFileSize: 5242880,
+                sizeErrorStr: " is greater than 5 MB. Please reduce the size of the attachment(s) or use Dropbox/Google Drive or a similar tool to send us the attachment(s). OR Send the attachment directly via email to <a href='mailto:design@slideteam.net'>design@slideteam.net</a>",
+                fileName: "myfile",
+                multiple: true,
+                onSuccess: function (files, data, xhr)
+                {
+                    var file_data = jQuery.parseJSON(data);                   
+                    $('<input>').attr({
+                        type: 'hidden',
+                        name: file_data.original + "[]",
+                        value: file_data.modified
+                    }).appendTo('form');
+
+                },
+                onError: function (files, status, errMsg)
+                {                    
+                    $("#status").html(errMsg);
+                },
+                onSelect:function(file)
+                {
+                    if(file[0].size > 5242880)
+                    {
+                        //$('#finalSubmit').hide();
+                    } else {
+                        $('#finalSubmit').show();
+                    }
+                }
+            };
+            $("#mulitplefileuploader").uploadFile(settings);
+            var dataForm = $('#questionnaire_form');
+            var ignore = null;
+
+            dataForm.mage('validation', {
+              ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+          }).find('input:text').attr('autocomplete', 'off');
+
+            $('#finalSubmit').click( function() { //can be replaced with any event
+                //dataForm.validation('isValid'); //validates form and returns boolean
+                $('.ajax-file-upload > form > input').unwrap(); 
+
+                if(dataForm.validation('isValid') === false){
+                  $("#mulitplefileuploader").uploadFile(settings);
+                  return false;
+              }
+          });
+
+            // task 1344
+            // task 1344
+            $("#comment1").on("keyup",function() {
+              var maxLength = $(this).attr("maxlength");
+              if(maxLength == $(this).val().length) {
+                $('.allforms-comment-msg.msg1').show();
+              }else{
+                $('.allforms-comment-msg.msg1').hide();
+              }
+            });
+
+            // task 1344
+            $("#comment2").on("keyup",function() {
+              var maxLength1 = $(this).attr("maxlength");
+              if(maxLength1 == $(this).val().length) {
+                $('.allforms-comment-msg.msg2').show();
+              }else{
+                $('.allforms-comment-msg.msg2').hide();
+              }
+            });
+
+            $("#description").on("keyup",function() {
+              var maxLengthD = $(this).attr("maxlength");
+              if(maxLengthD == $(this).val().length) {
+                $('.allforms-comment-msg.dis').show();
+              }else{
+                $('.allforms-comment-msg.dis').hide();
+              }
+            });
+            
+            // task 1344 end
+        });
+    }); 
+</script>

@@ -1,0 +1,27 @@
+<div class="social-buttons">
+    <div class="inner-title"><span><?php echo __('Login with'); ?></span></div>
+	<?php 
+	$availableSocials = $block->getAvailableSocials(); 
+	if ($block->canShow() && sizeof($availableSocials)):
+	?>
+	<div class="social-login-authentication-channel account-social-login">
+        <div class="social-block">
+            <?php $i=1; ?>
+            <?php foreach ($availableSocials as $key => $social): ?>
+                <?php
+                $url = $social['login_url'].'?loginfromtype=pricing_sociallogin&redirect_urllink='.$this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+                ?>
+                <div  class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
+                    <a id="socialbtnlink-<?php echo $social['label'];?>" rel="nofollow" class="btn btn-block btn-social btn-<?= $block->getBtnKey($key) ?> social-btn"
+                        href="<?php echo $url; ?>">
+                    </a>
+                </div>
+                
+                <?php if($i=='1'){ ?> <span><?php echo __('or'); ?></span> <?php } ?>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+	<?php endif; ?>
+	
+</div>

@@ -1,0 +1,160 @@
+.breadcrumbs .items {
+    padding-left: 20px;
+}
+.category-title h6
+{
+	margin-bottom: 12px;
+}
+.category-title a
+{
+    color: #333;
+}
+ul.subcategory-grid{
+	display: flex;
+	flex-wrap: wrap;
+}
+li.subcategories{
+	width: 25%;
+	padding-left: 15px;
+  margin-bottom: 2px;
+	box-sizing: border-box;
+	text-align: left;
+  position: relative;
+  background: url("../../../../Magento_Catalog/images/category/arrow.png") no-repeat left 7px;
+}
+li.subcategories a{
+	color: #232323;
+    font-size: 15px;
+    display: block;
+}
+
+@media (max-width: 1800px)
+	{
+	.breadcrumbs .items {
+	    padding-left: 20px;
+	}
+	.all-categories {
+	    padding-left: 20px;
+	}
+}
+
+@media (max-width: 1023px)
+{
+	.breadcrumbs .items {
+	    padding-left: 0;
+	    max-width: 100%;
+	}
+	.all-categories {
+	   padding-left: 0;
+	   max-width: 100%;
+	}
+}
+
+@media (max-width: 1680px)
+{
+	.breadcrumbs .items {
+	    box-sizing: border-box;
+	}
+}
+
+@media (min-width: 1920px) and (max-width: 2560px)  
+{
+    .breadcrumbs .items {
+	   padding-left: 0;
+	   max-width: 100%;
+	}
+	.all-categories {
+	   padding-left: 0;
+	   max-width: 100%;
+	}
+}
+
+@media (max-width: 820px) 
+{
+	li.subcategories{
+	width: 33.33%;
+	padding-left: 15px;
+  margin-bottom: 2px;
+	box-sizing: border-box;
+	text-align: left;
+  position: relative;
+  background: url("../../../../Magento_Catalog/images/category/arrow.png") no-repeat left 7px;
+}
+}
+
+@media (max-width: 800px) 
+{
+	li.subcategories{
+	width: 33.33%;
+	padding-left: 15px;
+  margin-bottom: 2px;
+	box-sizing: border-box;
+	text-align: left;
+  position: relative;
+  background: url("../../../../Magento_Catalog/images/category/arrow.png") no-repeat left 7px;
+}
+}
+
+@media (max-width: 768px) 
+{
+	li.subcategories{
+	width: 33.33%;
+	padding-left: 15px;
+  margin-bottom: 2px;
+	box-sizing: border-box;
+	text-align: left;
+  position: relative;
+  background: url("../../../../Magento_Catalog/images/category/arrow.png") no-repeat left 7px;
+}  
+}
+
+@media (max-width: 767px)
+{  
+	li.subcategories{
+	width: 33.33%;
+	padding-left: 15px;
+  margin-bottom: 2px;
+	box-sizing: border-box;
+	text-align: left;
+  position: relative;
+  background: url("../../../../Magento_Catalog/images/category/arrow.png") no-repeat left 7px;
+}
+}
+
+@media (max-width: 753px) 
+{
+	li.subcategories{
+	width: 33.33%;
+	padding-left: 15px;
+  margin-bottom: 2px;
+	box-sizing: border-box;
+	text-align: left;
+  position: relative;
+  background: url("../../../../Magento_Catalog/images/category/arrow.png") no-repeat left 7px;
+}
+}
+
+@media (max-width: 715px) 
+{
+	li.subcategories{
+	width: 33.33%;
+	padding-left: 15px;
+  margin-bottom: 2px;
+	box-sizing: border-box;
+	text-align: left;
+  position: relative;
+  background: url("../../../../Magento_Catalog/images/category/arrow.png") no-repeat left 7px;
+}
+}
+@media (max-width: 575px) 
+{
+	li.subcategories{
+	width: 50%;
+	padding-left: 15px;
+  margin-bottom: 2px;
+	box-sizing: border-box;
+	text-align: left;
+  position: relative;
+  background: url("../../../../Magento_Catalog/images/category/arrow.png") no-repeat left 7px;
+}
+}

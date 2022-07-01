@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/theme.xsd">
+    <title>Visual Search</title> <!-- your theme's name -->
+    <parent>Slideteam/default</parent> <!-- the parent theme, in case your theme inherits from an existing theme -->
+    <media>
+        <preview_image>media/preview.jpg</preview_image> <!-- the path to your theme's preview image -->
+    </media>
+</theme>

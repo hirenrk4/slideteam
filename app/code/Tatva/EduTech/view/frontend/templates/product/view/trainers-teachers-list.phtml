@@ -1,0 +1,13 @@
+<?php
+    $product = $block->getProduct();
+    $trainers_teachers_list = $product->getData('trainers_teachers_list');
+    if($trainers_teachers_list  != "" || $trainers_teachers_list != null ) :
+?>
+<div class="trainers_teachers trainers_teachers_list">
+    <div class="tabcontent_new">
+        <h3>What you will get</h3>
+            <?php echo $trainers_teachers_list; ?>
+    </div>
+</div>
+<?php endif; ?>
+                    

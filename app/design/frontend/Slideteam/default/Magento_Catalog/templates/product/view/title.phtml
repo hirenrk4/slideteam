@@ -1,0 +1,12 @@
+<?php
+/**
+ * Copyright Â© Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+?>
+<div class="page-title-wrapper">
+    <h1 class="page-title">
+        <?= /* @escapeNotVerified */ $this->helper('Magento\Catalog\Helper\Output')->productAttribute($block->getProduct(), $block->getProduct()->getName(), 'ProductName') ?>
+    </h1>
+</div>

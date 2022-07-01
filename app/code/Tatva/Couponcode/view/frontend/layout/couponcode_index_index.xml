@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd"  layout="1column">
+    <head>
+        <css src="Magento_Theme::css/catalog/product/downloadable-product.css"/>
+        <css src="Tatva_Couponcode::css/coupon_style.css"/>        
+        <css src="Magento_Theme::css/owl.carousel.css" media="all"/>        
+        <css src="Magento_Cms::css/slick/slick.css" media="all" />
+        <css src="Magento_Theme::css/ddimgtooltip.css" media="all" />     
+        <css src="Magento_Theme::css/theme/catalog-tooltip.css" media="all" /> 
+        <remove src="Magento_Theme::js/jquery.dotdotdot.js"/>
+        <script src="Magento_Theme::js/ddimgtooltip.js"/>
+        <script src="Magento_Theme::js/owl.carousel.js"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block  name="coupon_top" template="Tatva_Couponcode::coupon_header.phtml" cacheable="false"/>
+            <block class="Tatva\Couponcode\Block\Coupon\Lists" name="current-coupon" template="Tatva_Couponcode::current_coupon.phtml" >
+                <block class="Tatva\Emarsys\Block\Emarsys" name="product.info.related" template="Tatva_Couponcode::product_widget.phtml" />
+                <block class="Tatva\Emarsys\Block\Emarsys" name="product.info.related.second" template="Tatva_Couponcode::product_widget_second.phtml" />
+                <block class="Tatva\Emarsys\Block\Emarsys" name="product.info.slide" template="Tatva_Couponcode::product_slide_widget.phtml" />
+            </block>
+        </referenceContainer>
+        <referenceBlock name="authentication-popup" remove ="true" />
+    </body>    
+</page>

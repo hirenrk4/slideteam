@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <ebook>
+            <general>
+                <sku>All-ebooks</sku>
+            </general>
+        </ebook>
+
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <ebook_login_form>1</ebook_login_form>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <ebook_login_form>1</ebook_login_form>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <ebook_login_form>
+                        <label>Ebook Login Form</label>
+                    </ebook_login_form>
+                </areas>
+            </frontend>
+        </captcha>
+    </default>
+</config>

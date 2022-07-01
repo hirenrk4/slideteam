@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Tatva\Sentence\Api\Data\SentenceInterface" type="Tatva\Sentence\Model\show" />
+    
+    <virtualType name="Tatva\Sentence\Model\ResourceModel\Sentence\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sentence</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Sentence\Model\ResourceModel\Sentence</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="sentence_custom_form_data_source" xsi:type="string">Tatva\Sentence\Model\ResourceModel\Sentence\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

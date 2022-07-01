@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+	<router id="standard">
+		<route id="subscription" frontName="subscription">
+			<module name="Tatva_Subscription" before="Tatva_Subscription"/>
+		</route>
+		<route id="checkout" frontName="checkout">
+			<module name="Tatva_Subscription_Checkout" before="Tatva_Subscription_Checkout"/>
+		</route>
+		<route id="allitems" frontName="all-items">
+            <module name="Tatva_Catalog" />
+        </route>
+		<route id="powerpointitems" frontName="all-powerpoint-template-items">
+            <module name="Tatva_Catalog" />
+        </route>
+	</router>
+</config>

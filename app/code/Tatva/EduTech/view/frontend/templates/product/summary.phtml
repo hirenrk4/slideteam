@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Review\Block\Product\ReviewRenderer $block */
+
+$url = $block->getReviewsUrl() . '#customer-reviews';
+$urlForm = $block->getReviewsUrl() . '#review-form';
+?>
+<?php $rating = $block->getRatingSummary(); ?>
+<div class="product-reviews-summary<?= !$rating ? ' no-rating' : '' ?> review_custom" >
+   <div class="rating-summary review_inner">
+      <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/edutech/review.png'); ?>" alt="caht icon">
+      <span>Customer Reviews
+         <a href="<?= $block->escapeUrl($url) ?>">
+            <span itemprop="reviewCount">(<?= $block->escapeHtml(($block->getReviewsCount() == NULL ? 0 : $block->getReviewsCount())) ?>)</span>
+         </a>
+         <a class="comment_here" href="#review-form">Leave Your Comment <img src="<?php echo $this->getViewFileUrl('Magento_Theme::images/edutech/arrow_down.png'); ?>"> </a>
+      </span>
+      <!-- <span class="label"><span><?= $block->escapeHtml(__('Rating')) ?>:</span></span> -->
+      <?php if ($rating) : ?>
+         <div class="rating-result star_review" title="<?= $block->escapeHtmlAttr($rating); ?>%">
+            <span style="width:<?= $block->escapeHtmlAttr($rating); ?>%">
+               <span>
+                  <span itemprop="ratingValue"><?= $block->escapeHtml($rating); ?></span>% of <span itemprop="bestRating">100</span>
+               </span>
+            </span>
+         </div>
+      <?php else : ?>
+         <div class="rating-result">
+            <span style="width:0%">
+               <span>
+                  <span itemprop="ratingValue">0</span>% of <span itemprop="bestRating">100</span>
+               </span>
+            </span>
+         </div>
+      <?php endif; ?>
+   </div>
+</div>

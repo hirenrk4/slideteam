@@ -1,0 +1,41 @@
+<?php
+$Data = $block->getData();
+$viewNotifications =$Data['data'];
+$helper = $this->helper('Tatva\Notification\Helper\Data');
+if(sizeof($viewNotifications)){
+?>
+<section class="notification-wrapper">
+	<div class="notifctn_container">
+		<div class="all_notfctn_content">
+		<ul class="today-notification">
+<?php	
+	foreach ($viewNotifications as $value) {
+		$imageUrl=$this->getViewFileUrl('Tatva_Notification::'.$helper->getImageUrl($value->getType()));
+		?>			
+				<li>
+	       			<div>
+		       			<span class="icons"><img src="<?php echo $imageUrl;?>"></span>
+		       			<span class="notifctn_text">
+		       				<?php echo $value->getContent();?>
+		       				<span class="notifctn_time"><?php echo $helper->getDateDifference($value->getPublisheAt()); ?></span>
+						</span>					
+						<a class="trash_item" id="delete-notification" title="Delete">
+							<i class="fa fa-trash-o" aria-hidden="true"></i>
+						</a>
+					</div>
+	       		</li>
+		<?php
+	}
+	?>
+
+		</ul>
+		</div>
+	</div>
+</section>
+	<?php
+}else{
+	?>
+		<P>Not Found</P>
+	<?php
+}
+?>

@@ -1,0 +1,113 @@
+<script type="text/javascript">
+    require(['jquery', 'domReady!'], function(jQuery) {
+
+        var page_width;
+
+        jQuery(document).ready(function() {
+            jQuery('.all_deck_inner').width(jQuery('.container.pitch-deck').width());
+            page_width = parseInt(jQuery('.all_deck_custom').width());
+        });
+
+        window.onresize = function() {
+            jQuery('.all_deck_inner').width(jQuery('.container.pitch-deck').width());
+            page_width = parseInt(jQuery('.all_deck_custom').width());
+        }
+
+        jQuery(document).ready(function() {
+                jQuery('#page_next').on('click', function() {
+
+                    var page = parseInt(jQuery('#counter').attr('current'));
+                    var total_pages = parseInt(jQuery('#total_page').attr('total'));
+
+                    if (page < total_pages) {
+                        page = page + 1;
+                        left = (page - 1) * page_width;
+
+                        jQuery("#counter").attr('id', '');
+                        jQuery('span[current="' + page + '"]').attr('id', 'counter');
+                        jQuery('#current_page').html(page);
+                        jQuery('.all_deck_main').css('left', '-' + left + 'px');
+
+                    }
+                    if (total_pages > 7) {
+                        pagination(page);
+                    }
+
+                });
+                jQuery('#page_prev').on('click', function() {
+
+                    var page = parseInt(jQuery('#counter').attr('current'));
+                    var total_pages = parseInt(jQuery('#total_page').attr('total'));
+
+                    if (page > 1) {
+                        page = page - 1;
+                        left = (page - 1) * page_width;
+                        jQuery("#counter").attr('id', '');
+                        jQuery('span[current="' + page + '"]').attr('id', 'counter');
+                        jQuery('#current_page').html(page);
+                        jQuery('.all_deck_main').css('left', '-' + left + 'px');
+
+                    }
+                    if (total_pages > 7) {
+                        pagination(page);
+                    }
+                });
+                jQuery(document).on('click', '.counter', function() {
+
+                    var page = parseInt(jQuery(this).attr('current'));
+                    var total_pages = parseInt(jQuery('#total_page').attr('total'));
+
+                    if (total_pages > 7) {
+                        pagination(page);
+                    }
+                });
+
+                function pagination(page) {
+                   
+                    let total_pages = parseInt(jQuery('#total_page').attr('total'));
+
+                    if (page > 4) {
+                        jQuery('.counter').hide();
+                        jQuery('.dots').hide();
+                        jQuery('span[current="1"]').show();
+                        jQuery('span[current="' + total_pages + '"]').show();
+                        let pre = page - 1;
+                        let next = page + 1;
+                        if (next > total_pages || page >= total_pages - 3) {
+                            next = total_pages;
+                            pre = total_pages - 4
+                        }
+                        
+                        if (pre >= 3) {
+                            jQuery('.dots-start').show();
+                        } else {
+                            jQuery('span[current="2"]').show();
+                        }
+                        if (next < total_pages - 2 && next != total_pages) {
+                            jQuery('.dots-end').show();
+                        } else {
+                            jQuery('span[current="' + (next + 1) + '"]').show();
+                        }
+                        for (var i = pre; i <= next; i++) {
+                            jQuery('span[current="' + i + '"]').show();
+                        }
+                        
+                    } else {
+                       
+                        jQuery('.dots-end').show();
+                        jQuery('.dots-start').hide();
+
+                        for (let i = 6; i < total_pages; i++) {
+                            jQuery('span[current="' + i + '"]').hide();
+                        }
+
+                        for (let i = 1; i <= 5; i++) {
+                            jQuery('span[current="' + i + '"]').show();
+                        }
+                    }
+                }
+            
+        });
+
+    });
+</script>

@@ -1,0 +1,44 @@
+<?php
+$getConfiguration = $block->getConfiguration();
+$displayType = $getConfiguration->getDisplayType();
+?>
+
+<div class="testimonial-title">
+	<div class="container testim-container">
+		<div class="page-title category-title">
+			<h4><?= $block->escapeHtml(__('Customer Testimonials')) ?></h4>
+			<a class="get-started btn btn-default" title="Back" href="<?php echo $this->getUrl('powerpoint_presentation_design_services'); ?>">Back</a>
+		</div>
+	</div>
+</div>
+
+<?php if ($block->getPagerHtml()): ?>
+	<div class="pager testim-pager"><?php echo $block->getPagerHtml(); ?></div>
+<?php endif ?>
+
+<div class="container list-testimonials-wrapper testim-container">
+	<ul class="<?php echo $displayType; ?>-testimonials">
+		<?php
+		$getTestimonialList = $block->getTestimonialList();
+
+		if ($getTestimonialList->count() == 0):
+			echo "No result found";
+		endif;
+		?>
+		<?php foreach ($getTestimonialList as $testimonial): ?>
+			<li> 
+				<?php
+				if(empty($testimonial->getLastName()))
+					$name = $testimonial->getFirstName();
+				else
+					$name = $testimonial->getFirstName() . " " . $testimonial->getLastName();	
+				?>
+				
+				<p class="testimonialText"><?php echo $testimonial->getTestimonial(); ?></p>
+				<span class="author-desg"><?php echo $name . ", " . $testimonial->getDesignation(); ?></span>
+				<span class="author-name"><?php echo  $testimonial->getCompany(); ?></span>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+	<a class="get-started btn btn-default" title="Back" href="<?php echo $this->getUrl('powerpoint_presentation_design_services'); ?>">Back</a>
+</div>

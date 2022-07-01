@@ -1,0 +1,19 @@
+<?php
+foreach ($block->getCurrentCategory()->getParentCategories() as $parent) 
+{
+    $title[] = $parent->getName();
+}
+
+if(count($title) == 3)
+    $final_title = " ".$title[0]." ".$title[1]." ".$title[2]." Stages";
+else if(count($title) == 2)
+    $final_title = " ".$title[0]." ".$title[1];
+else
+    $final_title = " ".$title[0];
+?>
+
+<div class="page-title category-title">
+    <h1 class="custom-category-title">
+        <?= $block->escapeHtml(__("All".$final_title." Powerpoint Diagram Slide")) ?>
+    </h1>
+</div>

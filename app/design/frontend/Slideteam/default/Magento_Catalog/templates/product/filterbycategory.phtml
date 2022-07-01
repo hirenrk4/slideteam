@@ -1,0 +1,47 @@
+<?php
+
+$blockObj = $block->getLayout()->createBlock('Tatva\Freesamples\Block\ListProduct');
+
+?>
+<?php
+$urlkey = $block->getData('url_key_path');
+?>
+<div class="container">
+    <div class="main-wrapper list-detail-consistency clearfix">
+        <div class="filterbox">
+            <p><?php
+echo __('Filter By Category');
+$_categories = $blockObj->getAllCategory();
+?></p>
+            <div class="filtercont">
+                <div class="custom-dropdown">
+                    <select data-type ="custom-dropdown" class="custom-dropdown" onchange="if (this.value)
+                        window.location.href = this.value">
+                        <?php $_categories = $blockObj->getAllCategory(); ?>
+                        <?php if ($_categories->count() > 0): ?>
+                            <option value="<?php echo $block->getUrl($urlkey) ?>">
+                            <?php echo __('All'); ?>
+                            </option>
+                                <?php foreach ($_categories as $_category): ?>
+                                <option value="<?php echo $block->getUrl($urlkey) . "?" . "c=" . $_category->getId() ?>" 
+                                    <?php if (!empty($blockObj->getRequest()->getParam('c')) && $blockObj->getRequest()->getParam('c') == $_category->getId()): ?> selected="selected"<?php endif ?>><?php echo $_category->getName() ?></option>
+                            <?php endforeach; ?>
+
+                            <?php else: ?>
+                            <option value="<?php echo $block->getUrl($urlkey) ?>">
+                            <?php echo __('All'); ?>
+                            </option>
+                        <?php endif; ?>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- task 1586 start -->
+<script>
+    require(['jquery','dropkick','domReady!'],function($) {
+        $("select.custom-dropdown").dropkick('reset');
+    });
+</script>
+<!-- task 1586 end -->

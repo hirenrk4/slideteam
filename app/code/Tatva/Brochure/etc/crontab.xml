@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+   <group id="special_product_downloadcount_cron">
+      <job instance="Tatva\Brochure\Cron\BrochureDownload" method="execute" name="tatva_brochuredownload_cron">
+      <schedule>0 2 * * 1</schedule>
+      </job>
+   </group>  
+</config>

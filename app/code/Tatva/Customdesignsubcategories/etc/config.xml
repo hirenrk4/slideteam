@@ -1,0 +1,88 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+	<default>
+		<contact>
+			<customemail>
+				<email_customdesignsubcategories_diagram>design@slideteam.net</email_customdesignsubcategories_diagram>
+				<email_customdesignsubcategories_design>design@slideteam.net</email_customdesignsubcategories_design>
+				<email_customdesignsubcategories_slide>design@slideteam.net</email_customdesignsubcategories_slide>
+				<email_customdesignsubcategories_theme>design@slideteam.net</email_customdesignsubcategories_theme>
+				<email_customdesignsubcategories_formattingservice>design@slideteam.net</email_customdesignsubcategories_formattingservice>
+				<recipient_email_branding>design@slideteam.net</recipient_email_branding>
+				<recipient_email_businessresearch>design@slideteam.net</recipient_email_businessresearch>
+				<recipient_email_infographic>design@slideteam.net</recipient_email_infographic>
+				<recipient_email_marketing>design@slideteam.net</recipient_email_marketing>
+				<recipient_email_businessresearch>design@slideteam.net</recipient_email_businessresearch>
+				<bcc_recipient_email_businessresearch>krunal.vakharia@tatvasoft.com,tatvasoft186@gmail.com</bcc_recipient_email_businessresearch>
+			</customemail>
+		</contact>
+		<customer>
+			<captcha>
+				<shown_to_logged_in_user>
+					<custom_powerpoint_diagrams_captcha>1</custom_powerpoint_diagrams_captcha>
+					<flat_powerpoint_designs_captcha>1</flat_powerpoint_designs_captcha>
+					<custom_business_slides_captcha>1</custom_business_slides_captcha>
+					<custom_powerpoint_themes_captcha>1</custom_powerpoint_themes_captcha>
+					<professional_word_formatting_services_captcha>1</professional_word_formatting_services_captcha>
+					<logo_design_and_branding_captcha>1</logo_design_and_branding_captcha>
+					<infographics_captcha>1</infographics_captcha>
+					<marketing_collaterals_captcha>1</marketing_collaterals_captcha>
+					<business_research_services_captcha>1</business_research_services_captcha>
+					<review-form>1</review-form>
+				</shown_to_logged_in_user>
+				<always_for>
+					<custom_powerpoint_diagrams_captcha>1</custom_powerpoint_diagrams_captcha>
+					<flat_powerpoint_designs_captcha>1</flat_powerpoint_designs_captcha>
+					<custom_business_slides_captcha>1</custom_business_slides_captcha>
+					<custom_powerpoint_themes_captcha>1</custom_powerpoint_themes_captcha>
+					<professional_word_formatting_services_captcha>1</professional_word_formatting_services_captcha>
+					<logo_design_and_branding_captcha>1</logo_design_and_branding_captcha>
+					<infographics_captcha>1</infographics_captcha>
+					<marketing_collaterals_captcha>1</marketing_collaterals_captcha>
+					<business_research_services_captcha>1</business_research_services_captcha>
+					<review-form>1</review-form>
+				</always_for>
+			</captcha>
+		</customer>
+		<captcha translate="label">
+			<frontend>
+				<areas>
+					<custom_powerpoint_diagrams_captcha>
+						<label>Custom Powerpoint Diagrams Form</label>
+					</custom_powerpoint_diagrams_captcha>
+					<flat_powerpoint_designs_captcha>
+						<label>Flat Powerpoint Designs Form</label>
+					</flat_powerpoint_designs_captcha>
+					<custom_business_slides_captcha>
+						<label>Custom Business Slides Form</label>
+					</custom_business_slides_captcha>
+					<custom_powerpoint_themes_captcha>
+						<label>Custom powerpoint themes Form</label>
+					</custom_powerpoint_themes_captcha>
+					<professional_word_formatting_services_captcha>
+						<label>Professional word formatting services Form</label>
+					</professional_word_formatting_services_captcha>
+					<logo_design_and_branding_captcha>
+						<label>Logo Design and branding Form</label>
+					</logo_design_and_branding_captcha>
+					<infographics_captcha>
+						<label>Infographics Form</label>
+					</infographics_captcha>
+					<marketing_collaterals_captcha>
+						<label>Marketing Collaterals Form</label>
+					</marketing_collaterals_captcha>
+					<business_research_services_captcha>
+						<label>Business Research Services Form</label>
+					</business_research_services_captcha>
+					<review-form><label>Review Form</label></review-form>
+				</areas>
+			</frontend>
+		</captcha>
+		<tatva>
+			<customdesignsubcategories>
+				<email>tatva_customdesignsubcategories_email</email>
+				<customeremail>tatva_customdesignsubcategories_customeremail</customeremail> 
+			</customdesignsubcategories>
+		</tatva>
+	</default>
+</config>

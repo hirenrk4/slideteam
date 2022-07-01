@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="contact" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Contacts</label>
+            <tab>general</tab>
+            <resource>Magento_Contact::contact</resource>
+            <group id="customemail" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="recipient_email_businessresearch" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Business Research Recipient(To)</label>
+                    <comment>Please eneter emails(,) seperated</comment>
+                </field>
+                <field id="cc_recipient_email_businessresearch" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Business Research Recipient(Cc)</label>
+                    <comment>Please eneter emails(,) seperated</comment>
+                </field>
+                <field id="bcc_recipient_email_businessresearch" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Business Research Recipient(Bcc)</label>
+                    <comment>Please eneter emails(,) seperated</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

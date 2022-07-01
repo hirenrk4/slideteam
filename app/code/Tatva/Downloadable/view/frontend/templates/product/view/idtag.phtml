@@ -1,0 +1,37 @@
+<?php
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$_product = $this->getProduct(); 
+?>
+<?php 
+// if(isset($_product->getRatingSummary()['reviews_count']) && round($_product->getRatingSummary()['rating_summary']/20,1) > 0) :
+   if($_product->getReviewsCount() && round($_product->getRatingSummary()/20,1) > 0) :
+?>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>",
+    "image" : "<?php echo $this->getUrl() . '/media/catalog/product/cache/1280x720' . $this->getProduct()->getImage(); ?>",
+    "description": "<?php echo str_replace('"', '', $_product->getDescription()) ?>",
+    "url" : "<?php echo $_product->getProductUrl()?>",
+    "sku":"<?php echo $_product->getSku()?>",    
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "<?php echo round($_product->getRatingSummary()/20,1); ?>",
+        "reviewCount": "<?php echo $_product->getReviewsCount(); ?>"
+    }
+ }
+</script>
+<?php /* else : ?>
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>",
+    "image" : "<?php echo $this->getUrl() . '/media/catalog/product/cache/960x720' . $this->getProduct()->getImage(); ?>",
+    "description": "<?php echo $_product->getDescription()?>",
+    "url" : "<?php echo $_product->getProductUrl()?>",
+    "sku":"<?php echo $_product->getSku()?>"    
+ }
+</script>
+<?php */ endif; ?>

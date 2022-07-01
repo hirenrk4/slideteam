@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Tatva\Downloadscount\Block\Downloadscount" name="Tatva_Downloadscount" template="Tatva_Downloadscount::downloadscount.phtml" cacheable="false"/>
+        </referenceContainer>
+        <referenceContainer name="sidebar.additional">
+            <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+            <referenceBlock name="wishlist_sidebar" remove="true"/>
+        </referenceContainer>
+        <move element="Tatva_Downloadscount" destination="custom.account.wrapper" /> 
+    </body>
+</page>

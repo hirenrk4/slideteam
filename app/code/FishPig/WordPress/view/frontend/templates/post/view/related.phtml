@@ -1,0 +1,32 @@
+<?php
+/* * *
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+    /*Use this class in h2 tag of post's title to be trim and use "..." content-trim*/
+
+?>
+<?php $posts = $this->getPosts(); ?>
+<?php if ($posts && count($posts) > 0): ?>
+    <div class="blog-home related-post-wrapper">
+        <div class="title-box"><?php echo __("Related posts:") ?></div>
+        <div class="category-products clearfix">
+            <div class="products-grid-outer related-post-grid blog-grid">
+                <ul id="post-list" class="products-grid products-grid--max-5-col first">
+                    <?php foreach ($posts as $post): ?>
+                        <li class="item<?php if ($post->isSticky()): ?> featured is-sticky<?php endif; ?> <?php echo $post->getPostFormat() ?>">                            
+                            <?php if ($featuredImage = $post->getFeaturedImage()): ?>
+                                <a class="product-image" href="<?php echo $post->getPermalink() ?>" title="<?php echo $post->getPostTitle() ?>"><img src="<?php echo $featuredImage->getAvailableImage() ?>" alt="<?php echo $post->getPostTitle() ?>"/></a>
+                            <?php endif; ?>
+                            <div class="wordpress-product-info related-post-innerbox clearfix">
+                                <h2 class="product-name"><a class="css-content-trim-2-line" href="<?php echo $post->getPermalink() ?>" title="<?php echo $post->getPostTitle() ?>"><?php echo $post->getPostTitle() ?></a></h2>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

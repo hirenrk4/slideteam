@@ -1,0 +1,33 @@
+<!--@subject Account Deleted - {{var firstname}} {{var lastname}} @-->
+<html>
+<head>
+	<title >Account Deleted - {{var firstname}} {{var lastname}}</title>
+</head>
+<body>
+	<h2>Customer Details</h2>
+	<table class='tbl customer_tbl' style='border: 1px solid black;' >
+		<tr>
+			<th style='padding: 15px;text-align: center;'>Customer Id</th>
+			<th style='padding: 15px;text-align: center;'>Name</th>
+			<th style='padding: 15px;text-align: center;'>Email</th>
+			<th style='padding: 15px;text-align: center;'>Account Created Date</th>
+			<th style='padding: 15px;text-align: center;'>Account Deleted Date</th>
+		</tr>
+		<tr>
+			<td style='padding: 15px;text-align: center;'>{{var entity_id}}</td>
+			<td style='padding: 15px;text-align: center;'>{{var firstname}} {{var lastname}}</td>
+			<td style='padding: 15px;text-align: center;'>{{var email}}</td>
+			<td style='padding: 15px;text-align: center;'>{{var created_at}}</td>
+			<td style='padding: 15px;text-align: center;'>{{var deletetime}}</td>
+		</tr>
+	</table>
+	<br/><br/>
+	<h2>Customer's Subscription Details</h2>
+	{{layout handle="email_subscriptions_list" items=$subscription_details area="frontend"}}
+
+	<h2>Customer's Downloaded Products Details</h2>
+	{{layout handle="email_downloaded_product_list" items=$download_data area="frontend"}}
+	<h2>Customer's Feedback</h2>
+	<p>{{var feedback}}</p>
+</body>
+</html>

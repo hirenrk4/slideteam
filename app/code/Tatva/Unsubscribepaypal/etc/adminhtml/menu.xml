@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+	<menu>  
+		<add id="Tatva_Supportingextensions::managepaypalsubscriber" title="Manage Paypal Subscribers" module="Tatva_Unsubscribepaypal" sortOrder="72" parent="Tatva_Supportingextensions::managesubscriber"
+			action="unsubscribepaypal/index/index" resource="Tatva_Supportingextensions::managepaypalsubscriber"/>
+		</menu>
+	</config>

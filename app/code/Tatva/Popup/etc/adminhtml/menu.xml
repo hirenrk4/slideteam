@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+    	<add id="Tatva_Supportingextensions::popup_manager" title="Popup Configuration" module="Tatva_Popup" sortOrder="105"  parent="Tatva_Supportingextensions::supportingextension" resource="Tatva_Supportingextensions::popup_manager" />
+    	<add id="Tatva_Supportingextensions::post" title="Manage Popup" module="Tatva_Popup" sortOrder="72" parent="Tatva_Supportingextensions::popup_manager" action="tatva_popup/index/" resource="Tatva_Supportingextensions::post"/>
+    </menu>
+</config>

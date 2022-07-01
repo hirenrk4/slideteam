@@ -1,0 +1,136 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Theme::css/magnific-popup/magnific-popup.css" media="all"/>
+        <css src="Tatva_Downloadable::css/mCustomScrollbar.css" media="all" />
+        <css src="Magento_Theme::css/catalog/product/downloadable-product.css" media="all" order="270" rel="preload" as="style"/>
+        <css src="Magento_Theme::css/owl.carousel.css" media="all" order="280"/>
+        <!-- <css src="Magento_Theme::css/FileUpload/fileUpload.css" media="all" order="100"/> -->
+        <css src="Magento_Theme::css/theme/catalog-tooltip.css" media="all" />
+        <css src="Magento_Theme::css/ddimgtooltip.css" media="all"/>
+        <!-- <css src="Tatva_Downloadable::css/product-questionnaire.css" media="all"/> -->
+        <!-- <css src="Tatva_Downloadable::css/spectrum.css" media="all"/> -->
+        <css src="Magento_Theme::css/jquery.fancybox.min.css" media="all" order="500" />
+        <css src="Tatva_Downloadable::css/review-custom.css" media="all"/>
+        <css src="Tatva_Translate::css/gtranslator.css" />
+        <!-- <css src="Magento_Theme::css/catalog/ebookLogin.css" media="all"/> -->
+        <css src="Magento_Theme::css/trustpilot/trustpilot-widget.css" media="all"/>
+        <script src="Magento_Theme::js/ddimgtooltip.js" defer="defer"/>
+        <script src="Tatva_Downloadable::js/view-slider/jquery.mCustomScrollbar.js" /> 
+        <script src="Magento_Theme::js/jquery.fancybox.js"/>
+        <remove src="Magento_Theme::js/jquery.dotdotdot.js"/>
+        <remove src="Magento_Theme::js/theme-general.js"/>
+        <remove src="mage/gallery/gallery.css"/>
+        <meta name="robots" content="max-image-preview:large"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+    </head>
+    <body>
+        <attribute name="class" value="custom-downloadable-product"/>
+        <attribute name="class" value="wide-product-list"/>
+        <attribute name="itemtype" value=""/>
+        <attribute name="itemscope" value=""/>
+
+        
+        <referenceContainer name="product.info.addtocart.additional" remove="true" />
+        <referenceContainer name="product.price.final.copy" remove="true" />
+        <referenceContainer name="product.price.final" remove="true" />
+        <referenceContainer name="product.price.tier" remove="true" />
+        <referenceBlock name="product.info.stock.sku" remove="true"/>
+        <referenceBlock name="page.main.title" remove="true"/>
+        <referenceBlock name="product.info.overview" remove="true" />
+        <referenceBlock name="product.info.options.wrapper" remove="true" />
+        <referenceBlock name="view.addto.compare" remove="true" />
+        <referenceBlock name="product.info.mailto" remove="true" />
+        <referenceBlock name="product.info.details" remove="true" />
+        <referenceBlock name="product.info.options.wrapper.bottom" remove="true"/>
+        <referenceBlock name="product.info.downloadable.samples" remove="true"/>
+        <referenceBlock name="product.info.upsell" remove="true"/>
+        <referenceBlock name="catalog.product.related" remove="true"/>
+
+        <referenceContainer name="page.top">
+            <block class="Tatva\Catalog\Block\Product\Breadcrumb" name="custom_breadcrumb" template="Magento_Catalog::product/breadcrumb.phtml" />
+        </referenceContainer>
+
+        <referenceContainer name="main">
+            <container name="custom.product.inner.wrapper" htmlTag="div" htmlClass="container"/>
+        </referenceContainer>
+        
+        <move element="content" destination="custom.product.inner.wrapper" />
+        
+        <referenceContainer name="content">
+            <!-- <block class="Tatva\Free\Block\Customer\Login" ifconfig="customer/ajaxlogin/enable" name="ajaxlogin" template="Tatva_Free::customer/index.phtml">
+                <block class="Magento\Customer\Block\Form\Register" name="customer.form.register.ajax" template="Tatva_Free::customer/register.phtml" />
+                <block class="Mageplaza\SocialLogin\Block\Popup\Social" name="customer.form.social.login.ajax" template="Tatva_Free::customer/social.phtml" />
+            </block> --> 
+            <block before="-" class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.header" template="Tatva_Downloadable::product/view/header_one_desc.phtml" />
+            <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.banner" template="Tatva_Downloadable::product/view/banner.phtml" after="product.view.header" />      
+            <block class="Magento\Framework\View\Element\Template" name="product.info.related" template="Tatva_Emarsys::regular_related_widget.phtml" />
+            <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="content.of.powerpoint" template="Tatva_Downloadable::product/view/powerpoint-content.phtml" after="-" />       
+            <block class="Magento\Catalog\Block\Product\View\Gallery" name="product-image-details" template="Tatva_Downloadable::product/view/media_slides.phtml" after="-" />
+            <block  class="Magento\Framework\View\Element\Template" name="product.info.media.slides"  as="media" template="Tatva_Downloadable::product/view/popup.phtml"  />
+            <block class="Tatva\Catalog\Block\Product\View" name="product.info.idtag" template="Tatva_Downloadable::product/view/idtag.phtml" after="-"/>
+            <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.google.slide" template="Tatva_Downloadable::product/view/google_slides.phtml" after="product-image-details"/>
+            <block class="Tatva\Downloadable\Block\Product\View\ListView" name="product.info.product_additional_data" as="product_additional_data" template="Magento_Review::product/view/list.phtml" after="-"/>
+            <block class="Magento\Theme\Block\Html\Pager" name="product_review_list.toolbar" after="-"/>
+
+            <!-- task 1464 -->
+            <!-- <container name="product.loginforms" htmlTag="div" htmlClass="loginforms" after="-">
+                <block class="Tatva\Free\Block\Customer\Login" ifconfig="customer/ajaxlogin/enable" name="ajaxlogin.pdp" template="Tatva_Free::customer/newpopup/index.phtml">
+                    <block class="Magento\Customer\Block\Form\Register" name="customer.form.register.ajax.pdp" template="Tatva_Free::customer/newpopup/register.phtml" />
+                    <block class="Mageplaza\SocialLogin\Block\Popup\Social" name="customer.form.social.login.ajax.pdp" template="Tatva_Free::customer/newpopup/social.phtml" />
+                </block>
+            </container> -->
+            <!-- task 1464 end-->
+        </referenceContainer>
+        
+        <referenceContainer name="product.info.media">
+            <block  class="Magento\Catalog\Block\Product\View\Gallery" name="product.info.media.image"  as="media" template="Tatva_Downloadable::product/view/gallery.phtml" />
+            <block  class="Tatva\Generalconfiguration\Block\GeneralBlock" name="product.info.media.widget" template="Tatva_Downloadable::product/view/trustpilot-widget.phtml" after="-"  />
+        </referenceContainer>
+
+        <referenceContainer name="product.info.main">
+            <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.view.addthis.custom.social-share" template="Tatva_Downloadable::product/view/social-share.phtml" before="-" /> 
+            <container name="product.info.mian.top" htmlTag="div" htmlClass="product-info-top" >
+                <block class="Tatva\Catalog\Block\Product\View\CustomDetails" template="Tatva_Downloadable::product/view/description.phtml"/>
+            </container>   
+            <container name="product.info.download.favourite.wrapper" htmlTag="div" htmlClass="download-btnwrapper">
+                <block class="Tatva\Catalog\Block\Product\View" name="product.view.downloadbtn" template="Tatva_Downloadable::product/view/downloadbtn.phtml" >
+                    <block class="Tatva\Catalog\Block\Product\View"  name="custom_section" template="Tatva_Downloadable::customsection.phtml">
+                        <container name="download_captcha" label="Captcha">
+                            <block class="Magento\Captcha\Block\Captcha" name="captcha" after="-" cacheable="false">
+                                <action method="setFormId">
+                                    <argument name="formId" xsi:type="string">downloadable_captcha</argument>
+                                </action>
+                                <action method="setImgWidth">
+                                    <argument name="width" xsi:type="string">230</argument>
+                                </action>
+                                <action method="setImgHeight">
+                                    <argument name="width" xsi:type="string">50</argument>
+                                </action>
+                            </block>
+                        </container>
+                    </block>
+                    <block class="Magento\Framework\View\Element\Template" name="product.info.research" template="Tatva_Downloadable::product/view/research.phtml"/>
+                </block>
+                <block class="Tatva\Catalog\Block\Product\View" name="product.view.favourite" template="Tatva_Downloadable::product/view/favourite.phtml" />
+            </container>               
+            <block class="Tatva\Catalog\Block\Product\View" name="product.info.review" template="Magento_Catalog::product/view/review.phtml" after="product.info.download.favourite.wrapper" />
+            <block class="Tatva\Catalog\Block\Product\View\CustomDetails" name="product.info.overview"  as="media" template="Tatva_Downloadable::product/view/description.phtml" />   
+            <block class="Tatva\Catalog\Block\Product\View" name="product.info.category" template="Tatva_Downloadable::product/view/product_categories.phtml" />
+            <block class="Tatva\Tag\Block\Product\ListProduct" name="product.tag.list" template="Tatva_Tag::tag/list.phtml" />
+
+            
+        </referenceContainer>
+
+        <referenceContainer name="page.top">
+            <block class="Tatva\Generalconfiguration\Block\GeneralBlock" name="category_banner_left" template="Magento_Catalog::category/category_banner.phtml" after="slideteam-sidenav-wrapper" />
+        </referenceContainer>
+
+        <move element="product.info.media.slides" destination="product.info.media" after="product.info.media.image"/>
+        <move element="product.info.media" destination="content" before="product.info.main" />
+
+        <referenceBlock name="breadcrumbs" remove="true" />
+        <referenceBlock name="product.info" remove="true" />
+    </body>
+</page>
+
+

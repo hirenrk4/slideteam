@@ -1,0 +1,122 @@
+@import '../source/_mixins.less';
+@import '../source/_variablesm2.less';
+.wide-product-list {
+	.ddimgtooltip {
+		width: 580px;
+		img {
+			box-shadow: none;
+			border: 0;
+		}
+	}
+	.small_bottom_imgblog.no-margin {
+		margin-right: 0px;
+		float: right;
+	}
+	.small_bottom_imgblog {
+		display: inline-block;
+		width: 45%;
+		float: left;
+		margin-right: 22px;
+		margin-bottom: 17px;
+		height: 142px;
+		img.lazyloaded {
+			border: 0;
+			box-sizing: border-box;
+			box-shadow: none;
+		}
+	}
+	.top_bigimage {
+		height: 312px;
+		box-shadow: 1px 1px 2px #999;
+		border: 1px solid #c8c8c8;
+		box-sizing: border-box;
+		img.lazyload {
+			width: auto !important;
+			height: 100%;
+		}
+		img.lazyloaded {
+			border: 0;
+			box-sizing: border-box;
+			box-shadow: none;
+		}
+	}
+}
+.ddimgtooltip {
+	z-index: 9999999 !important;
+	box-sizing: border-box;
+	img {
+		box-sizing: border-box;
+		height: 100%;
+		width: auto;
+	}
+	.popup_diarams_column {
+		.main_area.popup_middlecolumn {
+			h2 {
+				margin: 0 0 20px;
+				line-height: 22px;
+				padding: 0;
+			}
+		}
+		.bottom_gryrow {
+			box-sizing: border-box;
+		}
+	}
+}
+
+.normal-a4-listing {
+	.top_bigimage {
+		height: auto;
+		box-shadow: none !important;
+		border: 0 !important;
+	}
+	.ddimgtooltip {
+		img {
+			width: 100%;
+			box-shadow: 1px 1px 2px #999;
+			border: 1px solid #c8c8c8;
+		}
+	}
+}
+.wide-product-list.normal-a4-listing {
+	.ddimgtooltip {
+		img {
+			width: 100%;
+			box-shadow: 1px 1px 2px #999;
+			border: 1px solid #c8c8c8;
+		}
+	}
+}
+.cms-home {
+	.ddimgtooltip {
+		.small_bottom_imgblog {
+			img {
+				border: 0;
+				box-shadow: none;
+			}
+		}
+	}
+}
+.a4-product-popup {
+	.top_bigimage {
+		height: auto;
+		box-shadow: none !important;
+		border: 0 !important;
+	}
+	img {
+		width: 100%;
+		box-shadow: 1px 1px 2px #999;
+		border: 1px solid #c8c8c8;
+	}
+	.bottom_poupimg_blog {
+		display: none;
+	}
+}
+.wide-product-list {
+	.ddimgtooltip.a4-product-popup {
+		img {
+			width: 100%;
+			box-shadow: 1px 1px 2px #999;
+			border: 1px solid #c8c8c8;
+		}
+	}
+}

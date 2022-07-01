@@ -1,0 +1,42 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Tatva\Deleteaccount\Model\ResourceModel\Deletedcustomerbkp\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tatva_delacc_customer_bkp</argument>
+            <argument name="eventPrefix" xsi:type="string">tatva_delacc_customer_bkp_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">tatva_delacc_customer_bkp_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Deleteaccount\Model\ResourceModel\Deletedcustomerbkp</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="deleteaccount_listing_data_source" xsi:type="string">Tatva\Deleteaccount\Model\ResourceModel\Deletedcustomerbkp\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Tatva\Deleteaccount\Model\ResourceModel\Subscriptionbkp\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">tatva_delacc_subscription_bkp</argument>
+            <argument name="eventPrefix" xsi:type="string">tatva_delacc_subscription_bkp_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">tatva_delacc_subscription_bkp_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Deleteaccount\Model\ResourceModel\Subscriptionbkp</argument>
+        </arguments>
+    </type>
+    <type name="Tatva\Catalog\Model\ResourceModel\Productdownloadhistorylog\Grid\CustomerDownloadsCollectionAdminReport">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">productdownload_history_log</argument>
+            <argument name="eventPrefix" xsi:type="string">Tatva_Admin_download_report_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">Tatva_Admin_download_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Catalog\Model\ResourceModel\Productdownloadhistorylog</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="deleteaccount_subscription_listing_data_source" xsi:type="string">Tatva\Deleteaccount\Model\ResourceModel\Subscriptionbkp\Grid\Collection</item>
+                <item name="deleteaccount_downloads_listing_data_source" xsi:type="string">Tatva\Catalog\Model\ResourceModel\Productdownloadhistorylog\Grid\CustomerDownloadsCollectionAdminReport</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Theme::css/checkout/checkout-cart.css" media="all" order="202" />
+    </head>
+    <body>
+    	<referenceContainer name="content">
+    		<container name="custom.checkout.container" htmlTag="div" htmlClass="container cart-wrapper">
+    			
+    		</container>
+    	</referenceContainer>
+    	<referenceContainer name="checkout.cart.container">
+    		<block name="custom.checkout.page.title" template="Magento_Checkout::cart/title.phtml" before="-" />
+    	</referenceContainer>
+
+        <referenceContainer name="slideteam-sidenav-wrapper" remove="true" />
+        <referenceBlock name="checkout.cart.summary.title" remove="true" />
+        <referenceBlock name="checkout.cart.coupon" remove="true" /> 
+
+        <move element="checkout.cart" destination="custom.checkout.container" after="-" />
+        <move element="checkout.cart.form" destination="checkout.cart.container" before="cart.summary" />
+    </body>
+</page>

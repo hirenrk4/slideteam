@@ -1,0 +1,67 @@
+<?php
+/**
+ * @category FishPig
+ * @package FishPig_WordPress
+ * @notes This template is used when there post/list.phtml doesn't have a child block called 'renderer'
+ * @notes This happens when post/list.phtml is called in via PHP rather than via the default layout handles
+ */
+?>
+<?php if ($post = $this->getPost()): ?>
+	<?php
+	$blockObj= $block->getLayout()->createBlock('FishPig\WordPress\Block\Sidebar\Widget\Posts');
+  	$author = $post->getUser();
+	?>
+	<?php $frontend_identifies = $blockObj->configData('wordpress/integration/route');?>
+
+	<div class="post-list-item">
+		<div class="post-entry">
+			<?php if ($featuredImage = $post->getFeaturedImage()): ?>
+				<div class="post-image">
+					<a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>"><img src="<?php echo $featuredImage->getMediumImage() ?>" alt="<?php echo $this->escapeHtml($post->getName()) ?>"/></a>
+				</div>	
+			<?php elseif ($image = $post->getImage()): ?>
+				<div class="post-image">
+					<a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>"><img src="<?php echo $image->getAvailableImage() ?>" alt="<?php echo $this->escapeHtml($post->getName()) ?>"/></a>
+				</div>
+			<?php endif; ?>
+		</div>
+	</div>
+	<div class="post-data">
+		<h2 class="customContentTrim">
+			<a href="<?php echo $post->getUrl() ?>" title="<?php echo $this->escapeHtml($post->getName()) ?>">
+				<?php echo $this->escapeHtml($post->getName()) ?>
+			</a>
+	   	</h2>
+		<div class="post-excerpt content-trim"><?php echo $post->getExcerpt(50) ?></div>
+		<div class="post-block clearfix">
+          	<div class="blog-post-name">
+          		<img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/3d-men.png')?>" alt="">
+	       		<a href="<?php echo $this->getUrl().$frontend_identifies.'/author/'.str_replace('.','-',str_replace(' ','-',$author->getUserLogin())); ?>" title="<?php echo $this->escapeHtml($author->getDisplayName()) ?>"><?php echo $this->escapeHtml($author->getDisplayName()) ?></a>
+        		<em><?php echo $post->getPostDate()?></em>
+           	</div>
+			<div class="actions">
+			    <a class="button gray-border-btn" href="<?php echo $post->getPermalink() ?>">Read More</a>
+			</div>
+  		</div>
+	  	<script>
+		    require(['jquery','jQdotdot'], function ($) {
+
+			    $(document).ready(function () {
+			      customContentTrim();
+			    });
+
+			    function customContentTrim() {
+			        jQuery('.customContentTrim').dotdotdot({
+			            callback: function (isTruncated) {},
+			            ellipsis: "\u2026 ",
+			            height: 45,
+			            keep: null,
+			            tolerance: 0,
+			            truncate: "word",
+			            watch: "window",
+			        })
+		   		}  
+			});	       
+		</script> 
+	</div>
+<?php endif; ?>

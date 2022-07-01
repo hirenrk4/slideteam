@@ -1,0 +1,79 @@
+<script type="text/javascript">
+    require(['jquery'], function($) {
+        var str1 = window.location.href;
+        var str2 = "/search/go?";
+
+        if (str1.indexOf(str2) == -1) {
+            $('.header_panel_wrapper ul.header').removeClass("def-hidden");
+        }
+    });
+</script>
+<?php
+$helper = $this->helper('Tatva\Theme\Helper\Header');
+$blockObj = $block->getLayout()->createBlock('Mageplaza\SocialLogin\Block\Popup\Social');
+$homeBlock = $block->getLayout()->createBlock('\Magento\Theme\Block\Html\Header\Logo');
+?>
+<div class="contact-search clearfix">
+    <span class="contact-number">
+        <i></i>
+        <a href="tel:<?php echo $helper->getConfig('contact/store_phone/phone'); ?>"><?php echo $helper->getConfig('contact/store_phone/phone'); ?></a>
+    </span>
+
+</div>
+
+<?php $login = $helper->isCustomerLoggedIn(); ?>
+<?php if (!$login) { ?>
+    <?php $availableSocials = $blockObj->getAvailableSocials();
+    if ($blockObj->canShow() && sizeof($availableSocials)) :
+    ?>
+        <div class="social-login-authentication-channel account-social-login">
+            <div class="social-block">
+                <?php foreach ($availableSocials as $key => $social) : ?>
+                    <div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
+                        <a class="btn btn-block btn-social btn-<?= $blockObj->getBtnKey($key) ?> social-btn" rel="nofollow" <?php if ($homeBlock->isHomePage()) : echo 'href="' . $social['login_url'] . '"';
+                                                                                                                            else : echo 'data-url="' . $social['login_url'] . '"';
+                                                                                                                            endif; ?>>
+                            <?php echo __('Sign in with %1', $social['label']) ?>
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php } else { ?>
+    <script type="text/javascript">
+        requirejs(['Magento_Customer/js/customer-data', 'jquery'], function(customerData, $) {
+            var localcustomerData = JSON.parse(window.localStorage.getItem("mage-cache-storage"));
+            if (typeof localcustomerData == "undefined" || localcustomerData == null) {
+                customerData.reload('*');
+            } else {
+                localcustomerData = localcustomerData.customer;
+                if (typeof localcustomerData == "undefined" || localcustomerData == null) {
+                    customerData.reload('*');
+                } else if (typeof localcustomerData.fullname == "undefined" || localcustomerData.fullname == null) {
+                    customerData.reload('*');
+                }
+            }
+        });
+    </script>
+<?php } ?>
+<script type="text/javascript">
+    require(['jquery', 'socialProvider'], function($) {
+        $(document).ready(function() {
+            $('.btn-social').on('click', function() {
+                var url = $(this).data('url');
+                if ((jQuery('[name="productId"]').val() != '' &&
+                        jQuery('[name="productId"]').val() != 'undefined' &&
+                        jQuery('[name="productId"]').val() != null)) {
+                    window.location.href = url + '?productid=' + jQuery('[name="productId"]').val();
+                } else if ((jQuery('[name="product"]').val() != '' &&
+                        jQuery('[name="product"]').val() != 'undefined' &&
+                        jQuery('[name="product"]').val() != null)) {
+                    window.location.href = url + '?urlredirect=' + document.URL;
+                } else {
+                    window.location.href = url;
+                }
+            })
+        });
+    });
+</script>

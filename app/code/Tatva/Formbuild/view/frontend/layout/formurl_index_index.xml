@@ -1,0 +1,16 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd" layout="1column">
+	<head>
+		<css src="Tatva_Formbuild::css/form.css" media="all"/>
+	</head>
+	<body>
+        <referenceContainer name="content">
+            <block class="Tatva\Formbuild\Block\Form" name="formurl" template="form.phtml" />
+        </referenceContainer>
+        <referenceContainer name="slideteam-sidenav-wrapper" remove="true" />
+        <referenceContainer name="footer-container" remove="true" />
+        <referenceContainer name="header-wrapper" remove="true" />
+        <referenceContainer name="custom.footer.widget.wrap" remove="true" />
+        <referenceContainer name="header.container" remove="true" />
+        <move element="page.messages" destination="formurl" />
+    </body>
+</page>

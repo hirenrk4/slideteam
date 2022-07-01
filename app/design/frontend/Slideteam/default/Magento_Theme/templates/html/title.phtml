@@ -1,0 +1,36 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/**
+ * @var $block \Magento\Theme\Block\Html\Title
+ */
+$cssClass = $block->getCssClass() ? ' ' . $block->getCssClass() : '';
+$title = '';
+$pos="";
+$pos = strpos((string)$block->getPageHeading(), "Order #");
+
+if($pos== "")
+{
+    if (trim($block->getPageHeading())) {
+        $title = '<h3 class="base" data-ui-id="page-title-wrapper" ' .  $block->getAddBaseAttribute() . '>'
+            . $block->escapeHtml($block->getPageHeading()) . '</h3>';
+    }
+}
+?>
+<?php if ($title): ?>
+<div class="page-title-wrapper dashboard<?= /* @escapeNotVerified */ $cssClass ?>">
+    <div class="page-title"
+        <?php if ($block->getId()): ?> id="<?= /* @escapeNotVerified */ $block->getId() ?>" <?php endif; ?>
+        <?php if ($block->getAddBaseAttributeAria()): ?>
+            aria-labelledby="<?= /* @escapeNotVerified */ $block->getAddBaseAttributeAria() ?>"
+        <?php endif; ?>>
+        <?= /* @escapeNotVerified */ $title ?>
+    </div>
+    <?= $block->getChildHtml() ?>
+</div>
+<?php endif; ?>

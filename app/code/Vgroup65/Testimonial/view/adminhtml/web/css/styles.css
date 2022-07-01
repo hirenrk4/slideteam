@@ -1,0 +1,14 @@
+/* you may have to adjust the selector a bit*/
+.admin__menu #menu-vgroup65-testimonial-main-menu > a:before {
+    background: url("../images/testimonial.png") center center no-repeat;
+    content: "";
+    background-size: auto 95%;
+}
+.admin__menu #menu-vgroup65-testimonial-main-menu > a:hover:before{
+    background: url("../images/testimonial_hover.png") center center no-repeat;
+    content: "";
+    background-size: auto 95%;
+}
+.admin__data-grid-wrap .data-grid .data-grid-draggable .data-row .data-grid-thumbnail-cell .admin__control-thumbnail > img:before {
+    border:none;
+}

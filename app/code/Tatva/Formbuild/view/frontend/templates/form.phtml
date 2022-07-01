@@ -1,0 +1,115 @@
+<?php $collection = $this->getForm(); ?>
+<?php foreach ($collection->getData() as $data): ?> 
+        <?php $img = $data['image']; ?>
+        <?php $content = $data['post_content']; ?>
+        <?php $form_name = $data['form_name']; ?>
+        <?php $path = $this->getMediaUrl().'tatva/'.$img; ?>
+<?php endforeach; ?>
+
+<div class="emarsys_campaign_content">
+<header>
+	<div class="logo_img"><a href="https://www.slideteam.net/"><img src="<?php echo $this->getViewFileUrl('Tatva_Formbuild::images/logo.png'); ?>"></a>
+	</div>
+<?php echo $block->getChildHtml('page.messages');?>
+</header>
+<section <?php if($img == null):?> style="background-image: url('<?php echo $this->getViewFileUrl('Tatva_Formbuild::images/bg_img.jpg'); ?>');" <?php endif; ?> <?php if($img != null):?> style="background-image: url('<?php echo $path?>');" <?php endif; ?> >
+	<div class="emarsys_campaign">
+		<div class="campaign_lftcontent">   
+			<?php echo $content ?>
+		</div>
+
+		<div class="campaign_rghtform">
+			<h3><span> SIGN UP </span> FOR</h3>
+			<h2><?php echo $form_name ?></h2>
+			<form name="custom_form" class="sign_upform" id="custom-form" method="post" action="#">
+
+			<ul>
+				<?php $form_id = $this->getFormId(); ?>
+				<input type="hidden" name="form_id" value="<?php echo $form_id;?>">
+				<?php $objectManager = \Magento\Framework\App\ObjectManager::getInstance(); ?>
+				<?php $customerSession = $objectManager->create('Magento\Customer\Model\Session'); ?>
+				<?php if ($customerSession->isLoggedIn() == true) : ?>
+					<?php $name = $customerSession->getCustomer()->getName(); ?>
+			   		<?php $email = $customerSession->getCustomer()->getEmail(); ?>
+			   		<li>
+							<label for="name">Name</label> 
+							<input type="text" name="name" id="name" value="<?php echo $name ?>" required="true">
+					</li>
+
+					<li>
+							<label for="email">Email</label>
+							<input type="email" id="email" name="email" value="<?php echo $email ?>" required="true">
+					</li>
+				<?php endif ?>
+
+				<?php if ($customerSession->isLoggedIn() == false) : ?>
+					<li>
+							<label for="name">Name</label> 
+							<input type="text" id="name" name="name" value="" required="true">
+					</li>
+					
+					<li>
+						<label for="email">Email</label>
+						<input type="email" id="email" name="email" value="" required="true">
+					</li>
+				<?php endif ?>
+
+					<li>
+						<label for="phnumber">Phone Number (Optional)</label>
+						<input type="number" name="phone" id="phnumber">
+					</li>
+
+				    <li class="sign_btn">
+						<button name="submit" value="submit" type="submit" id="sendmail" class="registerbtn">SUBMIT</button>
+					</li>
+					<input type="hidden" id="search" name="seach" value="">
+				</ul>
+			</form>
+		</div>
+	</div>
+</section>
+
+<footer>
+	<div class="footer-trustpilot">
+		<div class="trustpilot-product-page-widget">
+			<?php echo $this->getLayout()->createBlock("Tatva\Generalconfiguration\Block\GeneralBlock")->setTemplate("Tatva_Downloadable::product/view/trustpilot-widget.phtml")->toHtml(); ?>
+		</div>
+		<div class="custom-google-review">
+			<?php echo $this->getLayout()->createBlock("Magento\Framework\View\Element\Template")->setTemplate("Magento_Theme::html/google-review.phtml")->toHtml(); ?>
+		</div>
+	</div>
+	<small class="copyright">
+	<span><?php echo $this->getLayout()->createBlock("Magento\Theme\Block\Html\Footer")->setTemplate("Magento_Theme::html/copyright.phtml")->toHtml(); ?></span>
+	</small>
+</footer>
+</div>
+
+
+<?php $url = $this->getLinkUrl(); ?>
+<script type="text/javascript">
+require(['jquery'], function($) {
+
+	$(document).ready(function($) {
+		jQuery('#custom-form').submit(function() {
+
+			var data = $('#custom-form').serialize();
+			var url = "<?php echo $url.'formurl/index/sendmail' ?>";
+			jQuery.ajax({
+				url: url,
+				type: "post",
+				//data: {form_id:form_id,name:form_name,email:email,phone:phone,captcha:captcha},
+				data: data,
+				showLoader: true,
+	            cache: false,
+				success: function(response)
+				{
+				//alert('success');
+				document.getElementById("custom-form").reset();
+				}
+			});	
+			return false;
+		});
+
+	});
+});
+</script>

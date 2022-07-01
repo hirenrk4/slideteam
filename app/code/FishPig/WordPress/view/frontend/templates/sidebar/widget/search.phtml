@@ -1,0 +1,90 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+$blocksubscibe= $block->getLayout()->createBlock('FishPig\WordPress\Block\Sidebar\Widget\Subscribe');
+$blockObj= $block->getLayout()->createBlock('Magento\Newsletter\Block\Subscribe');
+$search_param = $this->getRequest()->getParam("s");
+$lang_param = $this->getRequest()->getParam("lang");
+
+$lang = "";
+if (isset($lang_param)) {
+	$lang = $lang_param;
+}
+?>
+<script type="text/javascript">
+setTimeout(function(){ 
+    var element = document.createElement("script");
+    element.src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5723060d638ae671";
+    document.body.appendChild(element);
+}, 4000);
+</script>
+<!-- <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5723060d638ae671"></script> -->
+
+<form method="post" action="<?php echo $blockObj->getFormActionUrl() ?>" id="blog-subscribe-form" data-mage-init='{"validation": {}}'>	
+	<input type="text" name="email" id="newsletter" class="input-text validate-email subscribe-blog-newsletter" placeholder="Enter your e-mail address" data-validate="{required:true, 'validate-email':true}" />
+	<button class="button btn" title="<?php echo __('Subscribe') ?>" type="submit" id="subscribeSubmit"><span><span><?php echo __('Subscribe') ?></span></span></button>	
+</form>
+<form method="get" action="<?php echo $this->getFormActionUrl() ?>" id="blog-search-form" data-mage-init='{"validation": {}}'>	
+	<?php if ($this->getPostType()): ?>
+		<div class="no-display">
+			<input type="hidden" name="post_type" value="<?php echo $this->getPostType() ?>" />
+		</div>
+	<?php endif; ?>
+	<input type="text" name="s" class="input-text" title="<?php echo __('Search Posts') ?>" value="<?php if(!empty($search_param)) : echo $this->escapeHtml($search_param); endif; ?>" placeholder="Search our blogs..." data-validate="{required:true}"/>
+	<input type="hidden" name="lang" value="<?php echo $lang; ?>" />
+	<button class="button btn" title="<?php echo __('Search') ?>" type="submit"><span><span><?php echo __('Search') ?></span></span></button>
+</form>
+<script type="text/javascript">
+	require(['jquery'], function ($) {
+		
+		if($("#blog-subscribe-form").find("div#newsletter-error").hasClass("mage-error"))
+		{
+		 	//$("#blog-subscribe-form").css("padding-bottom","39px");
+		}else
+		{
+			//$("#blog-subscribe-form").css("padding-bottom","10px");
+		}
+
+		function buttonsubscribeClick()
+		{
+			var scrwidth = screen.width;
+			if(scrwidth == 1024)
+			{
+				$("#blog-subscribe-form div#newsletter-error").css("font-size","11px");
+			}
+			if($("#blog-subscribe-form #newsletter").val() != '')
+			{
+				if($("#blog-subscribe-form").find("div#newsletter-error").hasClass("mage-error"))
+				{
+				 	//$("#blog-subscribe-form").css("padding-bottom","39px");
+				}else
+				{
+					//$("#blog-subscribe-form").css("padding-bottom","10px");
+				}
+			}
+			else
+			{
+				if($("#blog-subscribe-form").find("div#newsletter-error").hasClass("mage-error"))
+				{
+				 	//$("#blog-subscribe-form").css("padding-bottom","20px");
+				}else
+				{
+					//$("#blog-subscribe-form").css("padding-bottom","10px");
+				}	
+			}
+			
+				
+		} 
+		
+		$("#subscribeSubmit").click(function(){
+			setTimeout(buttonsubscribeClick,30);			
+		});
+		
+	});
+</script>
+<script type="text/javascript">
+	require(['jquery', 'customGeneral']);
+</script>

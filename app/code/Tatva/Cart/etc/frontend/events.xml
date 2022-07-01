@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="controller_action_predispatch_checkout_cart_add">
+        <observer name="tatva_cart" instance="Tatva\Cart\Observer\beforeAddToCart" />
+    </event>
+    <!-- <event name="controller_action_postdispatch_checkout_cart_add">
+        <observer name="tatva_cart_after_add" instance="Tatva\Cart\Observer\afterAddToCart" />
+    </event> -->
+    <event name="checkout_cart_add_product_complete">
+        <observer name="tatva_cart_product_add_complete" instance="Tatva\Cart\Observer\productAddToCartComplete" />
+    </event>
+</config>

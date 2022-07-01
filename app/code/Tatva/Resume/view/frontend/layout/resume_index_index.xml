@@ -1,0 +1,36 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <remove src="Emarsys_Emarsys::js/emarsys.js"/>
+        <remove src="Magento_Theme::js/jquery.dotdotdot.js"/>
+        <remove src="Magento_Theme::js/theme-general.js"/>
+        <remove src="Amasty_Stripe::css/source/mkcss/amstripe.css"/>
+        
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+        <css src="Magento_Theme::css/ddimgtooltip.css" media="screen and (min-width: 1024px)"/>
+        <script src="Magento_Theme::js/ddimgtooltip.js"/>  
+        <script src="Magento_Theme::js/dropkick.min.js"/>        
+        <css src="Magento_Theme::css/theme/catalog-tooltip.css" media="screen and (min-width: 1024px)" order="400"/>
+        <css src="Tatva_Resume::css/resume-list.css" media="all" />
+        <script src="Tatva_Resume::js/jQuery.lightninBox.js"/>        
+    </head>
+  <body>
+    <attribute name="class" value="catalog-category-view"/>
+    <attribute name="class" value="normal-a4-listing"/>
+    <referenceContainer name="slideteam-sidenav-wrapper" remove="true"/>
+    <referenceBlock name="catalog.compare.sidebar" remove="true"/>
+    <referenceContainer name="sidebar.additional" remove="true" />
+    <referenceContainer name="content">    	
+      	<block class="Tatva\Resume\Block\ListProduct" name="resume" template="Tatva_Resume::resume-list.phtml" cacheable="false">
+            <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="Magento_Catalog::product/list/toolbar.phtml">
+                <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+            </block>
+            <action method="setToolbarBlockName">
+                <argument name="name" xsi:type="string">product_list_toolbar</argument>
+            </action>
+        </block>
+    </referenceContainer>
+    <referenceBlock name ="webextend" remove="true" />
+    <referenceBlock name="category_banner_left" remove="true"/>  
+    <referenceBlock name="authentication-popup" remove ="true" />  
+  </body>
+</page>

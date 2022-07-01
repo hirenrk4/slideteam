@@ -1,0 +1,34 @@
+<?php
+
+$helper = $this->helper('Magento\Wishlist\Helper\Data');
+      
+if ($helper->isAllow()) {
+    $_product = $this->getProduct();
+    $_wishlistSubmitParams = $helper->getAddParams($_product);
+                     
+        ?>
+        
+         <input type="hidden" value="<?= $_product->getId();?>" class="currentProduct">
+         <input type="hidden" value="<?php echo $block->getLoginUrl(1, 1, $_product->getId()); ?>" class="LoginUrl">
+         <input type="hidden" value='<?= $_wishlistSubmitParams ?>' class="addParam">
+         
+         <a href="javascript:void(0);" class="action towishlist favourite" data-action="add-to-wishlist"  data-post= '<?= $_wishlistSubmitParams ?>'>
+            <img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/wishlist-fill.svg'); ?>" alt="Favourites" class="normal-img" >
+             <img src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/wishlist-fill-red.svg'); ?>" alt="Favourites" class="hover-img delete">
+             <img src="<?php echo $this->getViewFileUrl('Tatva_Wishlist::images/loader-img.gif'); ?>"  alt="Loader" class="loader-img" style="display:none">
+          </a>
+          <div id="confirm_id" class="mfp-hide white-popup">
+            <p class="title"  id="popupContent">Do you want to remove this product from your favourites?</p>
+            <input type="button" id ="confirm-remove" class="yes btn btn-default get-button small-button" value="Yes"/>
+            <input type="button" class="no btn btn-default get-button small-button" value="No" onclick="jQuery('.mfp-close').trigger('click');" id="confirm-no"/>
+            <img src="<?= $this->getViewFileUrl('Tatva_Wishlist::images/removing.gif') ?>" alt="gif" loading="eager" id="loaderImage" style="display:none">
+         </div>
+         
+        <?php
+}
+?>
+
+<script type="text/javascript">
+require(['jquery','wishlist'],function($){
+});
+</script>

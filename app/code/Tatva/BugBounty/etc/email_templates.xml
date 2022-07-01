@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="tatva_bugbounty_email" label="BugBounty Email" file="bugbounty_adminemail.html" type="html" module="Tatva_BugBounty" area="frontend"/>
+    <template id="tatva_bugbounty_customeremail" label="BugBounty Customer Email" file="bugbounty_customeremail.html" type="html" module="Tatva_BugBounty" area="frontend"/>
+</config>

@@ -1,0 +1,19 @@
+<?php
+
+$posts = $this->getOneBlogPost();
+if(!empty($posts)) :
+?>
+    <section class="blog_sectn_view">
+        <div class="container-blog">          
+            <?php if (count($posts) > 0): ?>
+                <div class="resume-post-view-wrapper">                
+                    <?php foreach($posts as $post): ?>
+                        <?php if ($renderedPostHtml = $this->renderOnePost($post)): ?>                        
+                            <?php echo $renderedPostHtml; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>                
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+<?php endif; ?>

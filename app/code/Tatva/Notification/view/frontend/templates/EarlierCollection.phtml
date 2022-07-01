@@ -1,0 +1,30 @@
+<?php
+$helper = $this->helper('Tatva\Notification\Helper\Data');
+$Data = $block->getData();
+$pageNumber = $Data['data']['pageNumber'];
+$earlierNotifications = $helper->earlierCollection($pageNumber);
+
+if(sizeof($earlierNotifications)){
+	foreach ($earlierNotifications as $value) {
+		$imageUrl=$this->getViewFileUrl('Tatva_Notification::'.$helper->getImageUrl($value->getType()));
+	?>
+		<li>
+			<div>
+	   			<span class="icons"><img src="<?php echo $imageUrl;?>"></span>
+	   			<span class="notifctn_text">
+	   				<?php echo $value->getContent();?>
+	   				<span class="notifctn_time"><?php echo $helper->getDateDifference($value->getPublisheAt()); ?></span>
+				</span>
+				<?php if($helper->isLoggedIn()){?>
+				<a class="trash_item" id="delete-notification" title="Delete"
+					notification-id="<?php echo $value->getNotificationId();?>"
+					customer-id="<?php echo $helper->customerId();?>"> 
+					<i class="fa fa-trash-o" aria-hidden="true"></i>
+				</a>	
+				<?php } ?>
+			</div>
+		</li>
+<?php
+   	}
+ }
+?>

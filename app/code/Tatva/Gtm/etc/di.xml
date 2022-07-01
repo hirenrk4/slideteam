@@ -1,0 +1,11 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<type name="Tatva\Gtm\Block\Gtm">
+	    <arguments>
+	        <argument name="gtmcategory" xsi:type="object">Magento\Catalog\Model\CategoryRepository\Proxy</argument>
+	        <argument name="gtmresourceConnection" xsi:type="object">\Magento\Framework\App\ResourceConnection\Proxy</argument>
+	        <argument name="gtmcmsPage" xsi:type="object">\Magento\Cms\Model\Page\Proxy</argument>
+	    </arguments>
+	</type>
+	
+</config>

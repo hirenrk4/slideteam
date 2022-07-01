@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/*
+ * This is the default layout for all WordPress content
+ */
+-->
+<page layout="2columns-right" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+		<!-- Ebook Banner css -->
+		<css src="Tatva_Ebook::css/ebook_blog_banner.css"/>
+		
+		<css src="FishPig_WordPress/css/wordpress.css"/>
+		<css src="Magento_Theme/css/fishpig/fishpig.css" order="350"/>
+		<css src="Magento_Theme::css/dropkick.css" media="all"/>
+		<css src="Magento_Theme::css/trustpilot/trustpilot-widget.css" media="all"/>
+		<script src="Magento_Theme::js/dropkick.min.js"/>
+		<script src="FishPig_WordPress::js/lightbox.js"/>
+		<script src="FishPig_WordPress::js/general.js"/>
+        <!-- TrustBox script -->
+        <script src="Trustpilot_Reviews::js/trustpilot.widget.js"/>
+	</head>
+  <body>
+
+  	<!-- Ebook Banner start-->
+	<referenceContainer name="page.top">
+		<block class="FishPig\WordPress\Block\Sidebar" name="wp.banner" template="Tatva_Ebook::Ebook_blog_banner.phtml"  before="-" />
+		<block class="Magento\Theme\Block\Html\Breadcrumbs" name="wp.breadcrumbs"/>
+	</referenceContainer>
+	<!-- Ebook Banner end-->
+
+    <referenceContainer name="sidebar.main">
+			<block class="FishPig\WordPress\Block\Sidebar" name="wp.sidebar" before="-">
+				<action method="setWidgetArea">
+					<argument name="widgetArea" xsi:type="string">sidebar-main</argument>
+				</action>
+			</block>
+			<block class="FishPig\WordPress\Block\Sidebar\Widget\SidebarProducts" name="wp-static-sidebar" after="wp.sidebar" template="FishPig_WordPress::wp-static-sidebar.phtml"></block>
+    </referenceContainer>
+
+    <referenceContainer name="sidebar.additional" remove="true"/>
+    <referenceContainer name="main" label="Main Content Container" htmlTag="div" htmlClass="no-leftnav blog-left"/>
+
+    <referenceContainer name="columns" htmlTag="div" htmlClass="container blog-container clearfix">
+	</referenceContainer>
+	<referenceContainer name="main.content" htmlTag="div" htmlClass="page-main blog-pages">
+	</referenceContainer>
+	<referenceContainer name="div.sidebar.main" htmlTag="div" htmlClass="sidebar sidebar-main blog-right">
+	</referenceContainer>
+	<move element="emarsys.init" destination="div.sidebar.main" as="wp.emarsys"/>
+
+  </body>
+</page>

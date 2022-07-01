@@ -1,0 +1,38 @@
+28/10/2019 - 2.0.0.21
+- Fixed og:image tag so original image is used rather than the 150x150 thumbnail
+
+25/10/2019 - 2.0.0.19
+- Fixed issue when using %category% in permalink structure
+
+14/10/2019 - 2.0.0.17
+- Changed og:image to full size image rather than smallest image
+
+02/10/2019 - 2.0.0.16
+- Fixed issue with Factory
+
+31/05/2019 - 2.0.0.14
+- Added fix for Yoast variables displaying instead of rendered page title.
+
+28/05/2019 - 2.0.0.12
+- Added support for the Yoast breadcrumbs enable/disable flag
+
+08/04/2019 - 2.0.0.10
+- Added support for the Yoast Primary category feature. Calling $post->getParentTerm('category') returns the primary category set via Yoast.
+
+06/03/2019 - 2.0.0.8
+Fixed warning regarding invalid argument for foreach.
+
+22/01/2019 - 2.0.0.5
+- Fixed issue with posts page title and custom post type archive meta data.
+
+21/01/2019 - 2.0.0.4
+- Fixed issue where breadcrumb settings in Yoast were used even when the Yoast config had breadcrumbs disabled.
+
+21/01/2019 - 2.0.0.3
+Removed 'Page 1 of 1' from page titles.
+
+03/10/2018 - 2.0.0.1
+- Fixed issue with fatal error when calling getFactory() method.
+
+11/05/2018 - 1.0.0.20
+- Added support for custom fields. You can use custom fields like so: %%cf_custom_field%% where custom_field is the custom field name. If the custom field was 'meta_description' the token would be %%cf_meta_description%%.

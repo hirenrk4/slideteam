@@ -1,0 +1,104 @@
+
+<div class="container clearfix tags-list-custom">
+            <div class="page-title category-title">
+                <h1 class="custom-category-title all-products-title ">All Powerpoint Categories for Templates, Diagrams and Slides</h1>
+            </div>
+        </div>
+<?php $_columnCount = 4;
+	
+	//$urlInterface = \Magento\Framework\App\ObjectManager::getInstance()->get('Magento\Framework\UrlInterface');
+	//$currentUrl =  $urlInterface->getCurrentUrl();
+	/*Find if the URL already contains any querystring variable or not */
+	//$currentUrl=$this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);	
+	$currentUrl = $this->getPageCurrentUrl();
+	$currentUrl = $this->UrlProcessCustom($currentUrl);	
+	
+	if (strstr( $currentUrl, "&" ))
+	{
+		$separator = '&'; 
+	}
+	else
+	{
+	    $separator = '?';
+	}	
+	
+	$query = $this->getRequest()->getParam('t');
+	
+ ?>
+<?php echo $this->getPagerHtml(); ?>
+	<div class="container tags-list-az clearfix">
+		<ul>
+			<?php
+				
+				$search_array = array('0-9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z');
+				foreach ($search_array as $search_array_value) {
+					/*Clean the URL*/
+					if($separator == "&")
+					{
+						$new_Url = str_replace("?t=".trim($query),'',str_replace($separator."t=".trim($query),'',$currentUrl));		
+						$filteredURL = explode('?', $new_Url);
+						$qURL = $filteredURL[0].'?t='.$search_array_value;
+					}
+					else
+					{						
+				   		$params = $this->getRequest()->getParams();		
+						if(count($params))		
+						{		
+						 	if(array_key_exists("t",$params))
+							{
+								$new_Url = str_replace("?t=".trim($query),"?t=".trim($search_array_value),$currentUrl);
+								$qURL = $new_Url;	
+							}
+							else
+							{
+							 	$parmas = "&t=".$search_array_value;
+								$qURL = $currentUrl.$parmas;		
+							}
+						}
+						else
+						{
+							$parmas = "?t=".$search_array_value;
+							$qURL = $currentUrl.$parmas;			
+						}						
+					}				
+				?>			
+					<li>
+						<a href="<?php echo $qURL; ?>" title="<?php echo $search_array_value ?>" class=" search-keys <?php if($search_array_value == $query){ echo 'current'; } ?>"><?php echo $search_array_value; ?></a>   
+					</li>
+					<?php 
+				}?>
+		</ul>
+		<?php
+			if(is_null($query)){
+				echo $this->getLayout()->createBlock('\Magento\Cms\Block\Block')->setBlockId('popular_categories_sli')->toHtml();
+			}					
+		?>	
+	</div>
+
+	<?php
+	
+	if(!is_null($query)){
+		$tags = $this->getTags($query);
+		?>
+
+		<div class="container tags-list-az  clearfix">
+			<div class="products-grid-outer">
+				<?php if( sizeof($tags->getData()) > 0 ): ?>
+				    <ul class=" products-grid clearfix  products-grid--max-<?php echo $_columnCount; ?>-col">
+				        <?php foreach ($tags as $_tag): ?>
+				            <li class="item "><a title="<?php echo $this->escapeHtml($_tag->getName()) ?>" class="tag-name" href="<?php echo $_tag->getCustomTaggedProductsUrl() ?>"><?php echo $this->escapeHtml($_tag->getName()) ?></a></li>
+				        <?php endforeach; ?>
+				    </ul>
+				<?php else: ?>
+			    <p class="note-msg container"><?php echo __('There is no category available.') ?></p>
+				<?php endif; ?>
+			</div>
+		</div>
+		
+		<?php
+	}
+	
+	?>
+	<div class="toolbar-bottom">
+	    <?php echo $this->getPagerHtml() ?>
+	</div>

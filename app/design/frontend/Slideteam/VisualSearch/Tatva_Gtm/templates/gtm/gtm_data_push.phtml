@@ -1,0 +1,116 @@
+<?php
+/**
+ * @category   Tatva
+ * @package    Tatva_Gtm
+ */
+
+/** @var \Tatva\Gtm\Block\Gtm $block */
+$page_type = $block->getRequest()->getFullActionName();
+$routename = $block->getRequest()->getRouteName();
+$storecode = $block->getStore();
+$login = $block->isCustomerLoggedIn();
+?>
+<script type="text/javascript">
+	requirejs(['jquery'], function(jQuery){		
+		jQuery(".social-icon .button-icon .icon-facebook img").click(function(){
+			var actionName = "Footer Facebook Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');			
+		   	dataLayer.push({'SocialName': actionName});
+			
+		});
+		jQuery(".social-icon .button-icon .icon-linkedin img").click(function(){
+			var actionName = "Footer Linkedin Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');
+		   	dataLayer.push({'SocialName': actionName});
+		});
+		jQuery(".social-icon .button-icon .icon-pinterest img").click(function(){
+			var actionName = "Footer Pinterest Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');
+		   	dataLayer.push({'SocialName': actionName});
+		});
+		jQuery(".social-icon .button-icon .icon-twitter img").click(function(){
+			var actionName = "Footer Twitter Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');
+		   	dataLayer.push({'SocialName': actionName});
+		});
+		jQuery(".social-icon .button-icon .icon-youtube img").click(function(){
+			var actionName = "Footer Youtube Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');
+		   	dataLayer.push({'SocialName': actionName});
+		});
+	});
+</script>
+<?php if ($storecode == "business_powerpoint_diagrams") : ?>
+	<script type="text/javascript">		
+		dataLayer.push({'storeName': 'Template Finder Store'});
+	</script>
+<?php endif; ?>
+
+<?php if ($login) : ?>
+	<script type="text/x-magento-init">
+	    {
+	        "*": {
+	            "Magento_Ui/js/core/app": {
+	                "components": {
+	                    "tatva_customer_data": {
+	                        "component": "Tatva_Customer/js/view/tatva_customer_data"
+	                    }
+	                }
+	            }
+	        }
+	    }
+	</script>
+	<script type="text/javascript">
+		requirejs(['Magento_Customer/js/customer-data','jquery'], function(customerData,$){
+			return function (){
+
+			$(document).on('ajaxComplete', function (event, xhr, settings) {
+				
+				tatva_customer_data = customerData.get('tatva_customer_data')();
+				customerId = tatva_customer_data.customerId;
+				cusCreate = tatva_customer_data.cusCreate;
+				joinFrom = tatva_customer_data.accountCreationType;
+				
+				if (typeof customerId !== "undefined") {					
+					dataLayer.push({						
+						'customerId':tatva_customer_data.customerId,
+						'customerEmail': tatva_customer_data.customerEmail,
+						'registrationDate': tatva_customer_data.registrationDate,
+						'customerName': tatva_customer_data.customerName,
+						'customerSubscription': tatva_customer_data.customerSubscription,
+						'lifeTimeValue': tatva_customer_data.lifeTimeValue,
+						'numberOfProductsDownloaded': tatva_customer_data.numberOfProductsDownloaded,
+						'visitorLoginState': "Logged In",
+						'firstPurchaseDate' : tatva_customer_data.firstPurchaseDate
+					});
+				}
+				var sections = ['tatva_customer_data'];
+				customerData.invalidate(sections);
+			});
+		}
+		});
+	</script>
+<?php endif; ?>
+
+<?php if($page_type == "catalog_product_view") : ?>
+	<script type="text/javascript">
+		var product_layer_data = <?php echo json_encode($block->getProductLayerData());?>;
+		dataLayer.push(product_layer_data);
+		console.log(product_layer_data);
+	</script>
+<?php endif; ?>
+<?php if($page_type == "catalog_category_view") : ?>
+	<script type="text/javascript">
+		var category_layer_data = <?php echo json_encode($block->getCategoryLayerData());?>;
+		dataLayer.push(category_layer_data);
+		console.log(category_layer_data);
+	</script>
+<?php endif; ?>
+
+
+<?php if ($routename == "cms") : ?>
+	<script type="text/javascript">
+		dataLayer.push({'pageType': '<?php echo "cms" ?>', 'pageName': '<?php echo "Template Finder Home Page"; ?>'});
+	</script>
+<?php endif; ?>
+

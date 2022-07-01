@@ -1,0 +1,49 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Captcha\Block\Captcha\DefaultCaptcha $block */
+
+/** @var \Magento\Captcha\Model\DefaultModel $captcha */
+
+$captcha = $block->getCaptchaModel();
+?>
+<div class="field captcha required captchli-contact" role="<?= $block->escapeHtmlAttr($block->getFormId()) ?>">
+    <label for="captcha_<?= $block->escapeHtmlAttr($block->getFormId()) ?>" class="label captcha_<?= $block->escapeHtmlAttr($block->getFormId()) ?>">
+         <i>
+            <img src="<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/green-arrow-circle.png"); ?>" class="unticked-img">
+            <img src="<?php echo $this->getViewFileUrl("Tatva_Downloadable::images/product-popup/blue-tick.png"); ?>" class="ticked-img" style="display:none">
+        </i>
+        <?= $block->escapeHtml(__('Enter Captcha Code')) ?></label>
+    <div class="customer-captcha-wrapper clearfix">
+        <div class="control captcha">
+            <input name="<?= $block->escapeHtmlAttr(\Magento\Captcha\Helper\Data::INPUT_NAME_FIELD_VALUE) ?>[<?= $block->escapeHtmlAttr($block->getFormId()) ?>]" type="text" class="required-entry" data-validate="{required:true}" id="captcha_<?= $block->escapeHtmlAttr($block->getFormId()) ?>" />
+        </div>
+        <div class="nested">
+            <div class="field captcha no-label"
+                 data-captcha="<?= $block->escapeHtmlAttr($block->getFormId()) ?>"
+                 id="captcha-container-<?= $block->escapeHtmlAttr($block->getFormId()) ?>"
+                 data-mage-init='{"captcha":{"url": "<?= $block->escapeUrl($block->getRefreshUrl()) ?>",
+                                            "imageLoader": "<?= $block->escapeUrl($block->getViewFileUrl('images/89.gif')) ?>",
+                                             "type": "<?= $block->escapeHtmlAttr($block->getFormId()) ?>"}}'>
+                <div class="control captcha-image captcha-image-popup">
+                    <img id="captcha-reload" class="captcha-reload" title="<?= $block->escapeHtmlAttr(__('Reload captcha'))?>" src="<?php echo $this->getViewFileUrl('Tatva_Downloadable::images/product-popup/process.png'); ?>" alt="Reload captcha">
+                </div>
+            </div>
+            <?php if ($captcha->isCaseSensitive()) :?>
+                <div class="captcha-note note">
+                    <?= $block->escapeHtml(__('<strong>Attention</strong>: Captcha is case sensitive.'), ['strong']) ?>
+                </div>
+            <?php endif; ?>
+            <div class="invalid-captcha" style="display: none">
+                <?= $block->escapeHtml(__('<strong>Please enter valid captcha code.</strong>'),['strong']) ?>
+            </div>
+        </div>
+    </div>
+</div>
+
+

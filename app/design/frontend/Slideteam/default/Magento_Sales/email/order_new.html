@@ -1,0 +1,140 @@
+<!--@subject {{var store.getFrontendName()}}: New Order # {{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Store Url",
+"var logo_url":"Email Logo Image Url",
+"var logo_alt":"Email Logo Image Alt",
+"var store.getFrontendName()":"Store Name",
+"store url=\"customer/account/\"":"Customer Account Url",
+"var order.increment_id":"Order Id",
+"var payment_html":"Payment Details",
+"layout handle=\"sales_email_order_items\" order=$order":"Order Items Grid",
+"var order.getEmailCustomerNote()":"Email Order Note"}
+@-->
+<!--@styles
+@-->
+
+{{template config_path="design/email/header_template"}}
+{{inlinecss file="css/email-inline.css"}}
+
+<table style="border-collapse:collapse;padding:0;margin:0" cellpadding="0" cellspacing="0" border="0" >
+   <tbody>
+      <tr>
+         <td>
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+         <td>
+      <tr>
+         <td style="font-family:Verdana,Arial;font-weight:normal;border-collapse:collapse;vertical-align:top;padding:0 0%;margin:0">
+            <h1 style="font-family:Verdana,Arial;font-weight:700;font-size:16px;margin:1em 0;line-height:20px;margin-top:25px">
+               Hello, {{trans "%customer_name," customer_name=$order.getCustomerName()}}
+            <h1>
+         </td>
+      </tr>
+      <tr>
+         <td style="font-family:Verdana,Arial;font-weight:normal;line-height:20px;margin:1em 0">
+            Thank you for your order from {{var store.getFrontendName()}}. Please <a href="{{store url="customer/account/"}}" style="text-decoration: underline;color: #3696c2;"> log into your account </a> and start using our services. If you have any questions
+            about your order please contact us at
+            <a href="mailto:{{config path='trans_email/ident_support/email'}}"
+               style="text-decoration: underline;color: #3696c2;">support@slideteam.net</a>.
+         </td>
+      </tr>
+      <tr>
+         <td height="11"></td>
+      </tr>
+      <tr>
+         <td style="font-family:Verdana,Arial;font-weight:normal;line-height:20px;margin:1em 0">
+            If you have purchased any of our Team Licenses, you will be able to add/remove/manage users by <a href="{{store url="customer/account/"}}" style="text-decoration: underline;color: #3696c2;">logging into your account </a>, and going to the ‘Add Users’ section.
+
+         </td>
+      </tr>
+      <tr>
+         <td height="11"></td>
+      </tr>
+      <tr>
+         <td style="font-family:Verdana,Arial;font-weight:normal;line-height:20px;margin:1em 0">
+            As part of your subscription, we offer Customized Services from our Design Services and Research Services teams. Our team of expert designers can re-design your presentations, or even create it from scratch. We craft high-impact custom designed PowerPoint slides to make sure your message gets the attention it deserves and is remembered by your audience. Any changes to downloaded template designs can be requested here. You can upload your design request by visiting our <a href="{{store _direct='powerpoint_presentation_design_services'}}"
+               style="text-decoration: underline;color: #3696c2;">"Design Services"</a> or <a href="{{store _direct='powerpoint_presentation_design_services/business_research_services'}}"
+               style="text-decoration: underline;color: #3696c2;">"Research Services"</a> page.
+         </td>
+      </tr>
+      <tr>
+         <td height="11"></td>
+      </tr>
+      <tr>
+         <td style="font-family:Verdana,Arial;font-weight:normal;line-height:20px;margin:1em 0">
+            Thank you for being a customer.
+         </td>
+      </tr>
+      <tr>
+         <td style="font-family:Verdana,Arial;font-weight:normal;line-height:20px;margin:1em 0">
+            Please don't forget to Like Us on Facebook and Tweet about Us.
+         </td>
+      </tr>
+      <tr>
+         <td height="20"></td>
+      </tr>
+      <tr>
+         <td align="center">
+            <a href="https://www.facebook.com/slideteam.net" style="display: inline-block;width: 30px;height: 30px;"><img src="{{view  url="images/facebook.png" _area='frontend'}}" alt="Facebook"
+                  border="0"></a>
+            <a href="https://twitter.com/Slideteam_net" style="display: inline-block;width: 30px;height: 30px;padding-left: 30px;"><img src="{{view  url="images/twitter.png" _area='frontend'}}" alt="Twitter"
+                  border="0"></a>
+         </td>
+      </tr>
+      <tr>
+         <td height="25"></td>
+      </tr>
+      <tr>
+         <td class="order-details" style="font-family:Verdana,Arial;font-weight:normal;border-collapse:collapse;vertical-align:top;padding:5px 15px;margin:0;text-align:center">
+            <h3 style="font-family:Verdana,Arial;font-weight:normal;font-size:17px;margin-bottom:10px;margin-top:15px">Your order
+                <span class="no-link">#{{var order.increment_id}}
+            </h3>
+            <p style="font-family:Verdana,Arial;font-weight:normal;font-size:11px;margin:1em 0 15px">
+            {{trans 'Placed on <span class="no-link">%created_at</span>' created_at=$order.getCreatedAtFormatted(2) |raw}}
+            </p>
+         </td>
+      </tr>
+      <tr>
+         <td height="30"></td>
+      </tr>
+      <tr>
+         <td style="font-family:Verdana,Arial;font-weight:normal;border-collapse:collapse;vertical-align:top;padding:0;margin:0">
+            <table style="border-collapse:collapse;padding:10px 15px;margin:0;width:100%" cellspacing="0" cellpadding="0" border="0">
+               <thead>
+                  <tr>
+                     <th
+                        style="font-family:Verdana,Arial;font-weight:700;padding:10px 15px;background:#f1f1f1;text-transform:uppercase;text-align:left;font-size:11px">
+                        Payment
+                        Method: </th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td
+                        style="font-family:Verdana,Arial;font-weight:normal !important;border-collapse:collapse;vertical-align:top;padding:10px 15px;margin:0;border-top:1px solid #ebebeb;text-align:left">
+                        <p class="subtitle" style="font-family:Verdana,Arial;font-weight:normal">
+                           <strong style="font-family:Verdana,Arial;font-weight:normal !important">
+                              {{var payment_html|raw}}
+                           </strong>
+                        </p>
+                     </td>
+                  </tr>
+               </tbody>
+            </table>
+         </td>
+      </tr>
+      <tr>
+      {{if order.getEmailCustomerNote()}}
+         <table cellspacing="0" cellpadding="0" class="message-container">
+            <tr>
+               <td>{{var order.getEmailCustomerNote()}}</td>
+            </tr>
+         </table>
+         {{/if}}
+      </tr>
+      {{layout handle="sales_email_order_items" order=$order}}
+
+   </td>
+</tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

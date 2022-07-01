@@ -1,0 +1,1819 @@
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+div,
+button,
+input,
+label,
+textarea {
+    font-family: open sans
+}
+
+.container,
+.main-wrapper {
+    max-width: 1370px;
+    margin: 0 auto
+}
+
+body {
+    margin: 0
+}
+
+button {
+    cursor: pointer
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+.edu_tech_main {
+    width: 100%;
+    background: #0464c5;
+    margin: 0 auto;
+    height: 80px
+}
+
+.edu_tech_inner div {
+    display: inline-block
+}
+
+.header_left,
+.header_right {
+    display: inline !important
+}
+
+.edu_tech_inner {
+    padding-top: 12px
+}
+
+.edutech_logo {
+    vertical-align: middle;
+    padding-top: 5px
+}
+
+.edutech_search {
+    padding-left: 3%;
+    padding-top: 7px
+}
+
+.header_right {
+    float: right
+}
+
+.edutech_search input {
+    width: 300px;
+    height: 45px;
+    border: 1px solid #fff;
+    background-color: #0d6ecf;
+    border-radius: 60px;
+    color: #fff !important;
+    font-size: 14px;
+    background-image: url('../../images/edutech/search.png');
+    background-repeat: no-repeat;
+    background-position: 93% 50%;
+    padding: 0 50px 0 24px
+}
+
+.edutech_search input:focus {
+    outline: none
+}
+
+.edutech_search input:-internal-autofill-selected {
+    background-color: -internal-light-dark(rgba(232, 240, 254, 0), rgba(70, 90, 126, 0)) !important
+}
+
+.edutech_search input::placeholder {
+    color: #fff !important;
+    opacity: 1
+}
+
+.edutech_nav ul {
+    list-style: none
+}
+
+.edutech_nav li {
+    display: inline-block;
+    padding: 0 10px
+}
+
+.edutech_nav a {
+    color: #fff;
+    text-decoration: #ffdead;
+    font-size: 14px
+}
+
+.edutech_nav a:hover {
+    color: #f9c00f
+}
+
+.edu_tech_inner button {
+    background: #f9c00f;
+    border: 1px solid transparent;
+    padding: 10px 35px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all .5s
+}
+
+.edu_tech_inner button:hover {
+    background: 0 0;
+    border: 1px solid #f9c00f;
+    color: #f9c00f;
+    transition: all .5s
+}
+
+.social_icn_inner {
+    background: #fff;
+    border-radius: 40px;
+    padding: 0 13px;
+    font-size: 14px;
+    height: 35px;
+    transition: all .3s;
+    cursor: pointer
+}
+
+.social_icn_inner:hover {
+    box-shadow: 0px 0px 16px 0px #013e7b;
+    transition: all .3s
+}
+
+.social_icn_inner img {
+    position: relative;
+    top: -7px;
+    left: -2px
+}
+
+.social_hr {
+    background: #0464c5;
+    width: 1px;
+    height: 35px;
+    margin-right: 5px
+}
+
+.social_icn_inner span {
+    position: relative;
+    top: -12px
+}
+
+.social_icn {
+    position: relative;
+    top: 14px
+}
+
+.edu_banner {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 25px
+}
+
+.product.media.powerpoint_slides_left .main-slider p {
+    float: left;
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 0;
+    margin-top: 10px;
+    text-align: left;
+    line-height: 18px
+}
+
+.banner_content {
+    display: inline-block;
+    text-align: center;
+    width: 49%;
+    margin: 0 auto
+}
+
+.banner_content img {
+    display: block;
+    margin: 0 auto
+}
+
+.banner_content h1 {
+    font-size: 46px;
+    font-weight: 600;
+    margin-bottom: 5px
+}
+
+.banner_content p {
+    font-size: 21px;
+    font-weight: 300;
+    margin-top: 0
+}
+
+.banner_button button {
+    width: 200px;
+    border-radius: 30px;
+    display: inline-block;
+    margin: 40px 3px 20px;
+    border: #ffdead;
+    padding: 10px 0;
+    font-size: 15px;
+    font-weight: 600
+}
+
+.join_btn {
+    background: #29a7fb !important;
+    color: #fff !important;
+    border: 2px solid transparent !important;
+    transition: all .4s
+}
+
+.join_btn:hover {
+    background: 0 0 !important;
+    border: 2px solid #29a7fb !important;
+    color: #29a7fb !important;
+    transition: all .4s
+}
+
+.request_btn {
+    background: 0 0;
+    border: 2px solid #29a7fb !important;
+    color: #29a7fb;
+    transition: all .4s
+}
+
+.request_btn:hover {
+    background: #29a7fb;
+    color: #fff;
+    transition: all .4s
+}
+
+.training {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 1px;
+    clear: both;
+    text-align: center;
+    background: #0464c5;
+    padding-bottom: 30px
+}
+
+.training h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+    font-weight: 400;
+    color: #fff
+}
+
+.training_custom {
+    width: 85%;
+    margin: 0 auto
+}
+
+.training_set {
+    width: 24%;
+    display: inline-flex;
+    /*display: inline-block*/
+}
+
+.training_set_inner {
+    background: #fff;
+    border-radius: 6px;
+    height: 130px;
+    width: 95%;
+    margin: 0 auto 18px;
+    padding-top: 20px
+}
+
+.training_set h5 {
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    margin-top: 10px
+}
+
+.training_set_inner img {
+    max-height: 42px;
+    max-width: 42px;
+    width: auto;
+    height: 40px
+}
+
+.training_img {
+    background: #e5f5ff;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    margin: 0 auto 0;
+    line-height: 100px;
+    transition: all .3s
+}
+
+.training_img:hover {
+    transition: all .3s;
+    transform: scale(.8)
+}
+
+#London {
+    display: block
+}
+
+.questionary {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 5px;
+    padding-bottom: 40px
+}
+
+.questionary h2 {
+    text-align: center;
+    font-size: 40px;
+    margin-top: 20px;
+    font-weight: 400;
+    margin-bottom: 10px
+}
+
+.questionary .accordion {
+    background-color: transparent;
+    color: #000;
+    cursor: pointer;
+    padding: 4px 2px 20px 0;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    transition: .4s;
+    font-weight: 600
+}
+
+.questionary .edu.panel p {
+    color: #888;
+    font-size: 14px;
+    margin-top: 0;
+    padding-left: 10px
+}
+
+.questionary .accordion:after {
+    content: '\002B';
+    color: #000;
+    font-weight: 700;
+    float: right;
+    margin-left: 5px
+}
+
+.questionary .active:after {
+    content: "\2212"
+}
+
+.questionary .edu.panel {
+    padding: 0 18px;
+    background-color: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-out;
+    border-bottom: 1px solid #dfe1e3
+}
+
+.questionary_count.more {
+    display: none
+}
+
+.questionary_see_more.more img {
+    transform: rotate(180deg)
+}
+
+.questionary_see_more button {
+    background: 0 0;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0 0 0 4px;
+    margin-top: -1px;
+    color: #000
+}
+
+.questionary_see_more button img {
+    margin-right: 5px
+}
+
+section.join_request {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center
+}
+
+.join_request_inner button {
+    margin: 20px 3px 0px !important
+}
+
+.Footer {
+    width: 100%;
+    margin: 10px auto 0;
+    background: #0464c5;
+    padding: 40px 0 1px
+}
+
+.bottom {
+    width: 24%;
+    display: table-cell;
+    vertical-align: middle
+}
+
+.footer_content {
+    display: table;
+    width: 100%
+}
+
+.bottom ul {
+    padding: 0;
+    margin: 0
+}
+
+.bottom.bottom_left {
+    text-align: center;
+    transition: all .3s
+}
+
+.bottom.bottom_left ul li:nth-child(1) img:hover {
+    background: #395693;
+    border-radius: 50%;
+    transition: all .3s
+}
+
+.bottom.bottom_left ul li:nth-child(2) img:hover {
+    background: #e34133;
+    border-radius: 50%;
+    transition: all .3s
+}
+
+.bottom.bottom_left ul li:nth-child(3) img:hover {
+    background: #1c9cea;
+    border-radius: 50%;
+    transition: all .3s
+}
+
+.bottom.bottom_left ul li:nth-child(4) img:hover {
+    background: #a5348a;
+    border-radius: 50%;
+    transition: all .3s
+}
+
+.bottom.bottom_left ul li img {
+    border-radius: 50%;
+    transition: all .3s
+}
+
+.bottom.bottom_left ul li {
+    display: inline-block;
+    padding: 0 4px
+}
+
+.Footer ul {
+    list-style: none
+}
+
+.bottom ul li {
+    text-align: center;
+    line-height: 34px
+}
+
+.bottom ul a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all .3s
+}
+
+.bottom ul a:hover {
+    color: #f9c00f;
+    transition: all .3s
+}
+
+.bottom.bottom_left ul {
+    padding-top: 20px
+}
+
+.bottom.bottom_right input {
+    width: 96%;
+    border: 1px solid #fff;
+    padding: 14px 0 14px 4%;
+    border-radius: 40px;
+    background: 0 0;
+    color: #fff;
+    position: relative
+}
+
+.bottom.bottom_right input::placeholder {
+    color: #c1c1c1
+}
+
+.bottom.bottom_right button {
+    background: #f9c00f;
+    border: 1px solid transparent;
+    padding: 12px 20px;
+    border-radius: 40px;
+    float: right;
+    margin-top: 10px;
+    font-weight: 600;
+    transition: all .5s
+}
+
+.bottom.bottom_right button:hover {
+    background: 0 0;
+    border: 1px solid #f9c00f;
+    color: #f9c00f;
+    transition: all .5s
+}
+
+.footer_copy_right {
+    border-top: 1px solid #fff;
+    margin-top: 30px
+}
+
+.footer_copy_right p {
+    text-align: center;
+    color: #fff;
+    font-size: 14px;
+    font-style: italic
+}
+
+.why_edudecks {
+    width: 100%;
+    margin: 0 auto;
+    background: #f8f8f8;
+    padding: 10px 0;
+    text-align: center;
+    float: left
+}
+
+.why_edudecks_custom {
+    width: 31%;
+    background: #fff;
+    display: inline-block;
+    text-align: left;
+    height: 190px
+}
+
+.why_edudecks_left {
+    float: left
+}
+
+.why_edudecks_right {
+    float: right
+}
+
+.why_edudecks_custom h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 6px
+}
+
+.why_edudecks_custom ul li:before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    margin-left: -12px;
+    height: 7px;
+    background: #1e292f;
+    border-radius: 12px
+}
+
+/*.why_edudecks_custom ol li:before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    margin-left: -12px;
+    height: 7px;
+    background: #1e292f;
+    border-radius: 12px
+}*/
+
+.why_edudecks_custom ul,ol {
+    padding-left: 25px;
+    padding-right: 10px
+}
+
+.why_edudecks_custom ul li {
+    list-style: none;
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 0
+}
+
+.why_edudecks_custom ol li {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 0
+}
+
+.why_edudecks_custom img {
+    float: left;
+    padding: 7px 20px 0 25px
+}
+
+.powerpoint_slides {
+    width: 100%;
+    margin: 0 auto;
+    float: left;
+    background: #fff;
+    padding-top: 20px;
+}
+
+.flex-viewport {
+    width: 100%
+}
+
+.powerpoint_slides_left {
+    width: 65%;
+    float: left
+}
+
+.powerpoint_slides_left .flexslider {
+    margin: 0 0 10px !important
+}
+
+.powerpoint_slides_right {
+    float: right;
+    width: 34%;
+    padding-top: 10px
+}
+
+#downloadbtn-form .downloadbtn button {
+    min-width: 362px !important;
+    padding: 12px 30px 12px 60px !important;
+    line-height: 20px;
+    text-shadow: 3px 2px 2px #1893e5;
+    font-size: 20px !important;
+    font-weight: 600;
+    transition: all .3s;
+    background-image: url(../../images/edutech/download.png);
+    background-repeat: no-repeat;
+    background-position: 25% 50%
+}
+
+#downloadbtn-form .downloadbtn button:hover {
+    transform: scale(1.03);
+    transition: all .3s;
+    box-shadow: 0px 0px 22px -4px #28a7fb;
+    background: #28a7fb;
+    color: #fff;
+    background-image: url(../../images/edutech/download.png);
+    background-repeat: no-repeat;
+    background-position: 25% 50%
+}
+
+.product-info-main .download-btnwrapper .favourite {
+    left: 372px !important
+}
+
+.edu.panel ul,ol {
+    margin: 10px;
+    padding-left: 25px
+}
+.edu.panel p {
+    margin: 10px;
+}
+.powerpoint_slides_inner h1 {
+    font-size: 28px;
+    font-weight: 500;
+    margin-top: 20px;
+    margin-bottom: 10px
+}
+
+.flex-direction-nav a.flex-prev:before {
+    content: url('../../images/edutech/left_arrow.png') !important;
+    opacity: 1
+}
+
+.flex-direction-nav a.flex-next:before {
+    content: url('../../images/edutech/right_arrow.png') !important;
+    opacity: 1
+}
+
+#carousel .slides li {
+    border: 1px solid #d9d9d9
+}
+
+#carousel .slides li.flex-active-slide {
+    border: 1px solid #28a7fb !important
+}
+
+#carousel .flex-viewport {
+    overflow-x: scroll !important;
+    padding-bottom: 10px;
+    display: flex
+}
+
+#carousel .slides {
+    zoom: 1;
+    display: flex
+}
+
+.powerpoint_slides_left .flexslider:hover .flex-direction-nav .flex-prev {
+    opacity: .7;
+    left: -15px !important
+}
+
+.powerpoint_slides_left .flexslider:hover .flex-direction-nav .flex-next {
+    opacity: .7;
+    right: -15px !important
+}
+
+.powerpoint_slides_left #carousel .slides li {
+    width: 115px !important;
+    margin-right: 10px !important
+}
+
+#slider .flex-viewport {
+    box-shadow: 0px 0px 12px 1px #dedede
+}
+
+.powerpoint_slides_left #carousel .flex-nav-next {
+    display: none
+}
+
+.powerpoint_slides_left #carousel .flex-nav-prev {
+    display: none
+}
+
+#slider .flex-direction-nav .flex-prev {
+    opacity: 1;
+    left: -10px
+}
+
+#slider .flex-direction-nav .flex-next {
+    opacity: 1;
+    right: -10px
+}
+
+.custom-downloadable-product .product.media {
+    width: 65% !important
+}
+
+.custom-downloadable-product .product-info-main {
+    width: 34% !important
+}
+
+.downloadable-product .main-slider {
+    height: auto !important
+}
+
+.downloadable-product .main-slider .item {
+    height: 500px !important
+}
+
+.download_btn button {
+    background: #28a7fb;
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 12px 60px;
+    border-radius: 50px;
+    text-shadow: 3px 2px 2px #1893e5;
+    border: 1px solid transparent;
+    transition: all .2s
+}
+
+.download_btn button:hover {
+    transform: scale(1.03);
+    transition: all .2s;
+    box-shadow: 0px 0px 22px -4px #28a7fb
+}
+
+.download_btn img {
+    padding-right: 10px;
+    position: relative;
+    top: 2px
+}
+
+.download_btn i {
+    font-size: 40px;
+    margin-left: 10px;
+    position: relative;
+    top: 6px;
+    color: #dedede;
+    transition: all .6s
+}
+
+.download_btn i:hover {
+    color: #f44336;
+    transition: all .6s
+}
+
+.training_pdp {
+    background: #fff !important
+}
+
+.training_pdp .training_set_inner {
+    box-shadow: 4px 4px 13px -2px #ddd
+}
+
+.training_pdp h2 {
+    color: #000
+}
+
+.trainers_teachers {
+    margin-top: 20px;
+    box-shadow: 1px 1px 9px -2px #ddd;
+    border-radius: 4px
+}
+
+.edu_tab {
+    overflow: hidden;
+    background-color: #f1f1f1
+}
+
+.edu_tab>button {
+    width: 50%;
+    background: #fff
+}
+
+.edu_tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: .3s;
+    color: #000;
+    font-weight: 600;
+    font-size: 17px
+}
+
+.tabcontent {
+    display: none;
+    padding: 6px 12px 6px 20px;
+    border-top: none
+}
+
+.edu_tab>button {
+    width: 50%;
+    background: #fff;
+    border-bottom: 2px solid #eee;
+    border-right: 1px solid #eee
+}
+
+.edu_tab button:nth-last-child(1) {
+    border-right: none
+}
+
+.edu_tab button.active {
+    background-color: #fff;
+    border-bottom: 2px solid #28a7fb;
+    color: #28a7fb
+}
+
+.tabcontent h3 {
+    font-size: 15px;
+    color: #121e30;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 5px
+}
+
+.tabcontent ul li {
+    color: #555;
+    font-size: 13px;
+    list-style: none;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 0
+}
+
+.tabcontent ul {
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 15px
+}
+
+.tabcontent ul li:before {
+    content: url('../../images/edutech/bullet_arrow.png');
+    padding-right: 8px;
+    margin-bottom: 10px
+}
+
+.tabcontent_new {
+    padding: 1px 12px 1px 20px
+}
+
+.tabcontent_new h3 {
+    font-size: 15px;
+    color: #121e30;
+    font-weight: 600;
+    margin-bottom: 0;
+    margin-top: 10px
+}
+
+.tabcontent_new ul li {
+    color: #555;
+    font-size: 13px;
+    list-style: none;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 0
+}
+
+.tabcontent_new ul {
+    padding: 0;
+    margin-top: 0
+}
+
+.tabcontent_new ul li:before {
+    content: url('../../images/edutech/bullet_arrow.png');
+    padding-right: 8px;
+    margin-bottom: 18px
+}
+
+.rating-summary .rating-result>span:before {
+    color: #fec200
+}
+
+.rating-summary.review_inner span a span {
+    color: #19a4fd;
+    font-size: 13px;
+    font-weight: 600
+}
+
+.rating-result.star_review {
+    display: block
+}
+
+.review_inner span {
+    font-size: 12px;
+    color: #4f647a;
+    font-weight: 400
+}
+
+.review_inner a {
+    font-size: 12px;
+    font-weight: 600;
+    color: #19a4fd;
+    text-decoration: none
+}
+
+.comment_here {
+    font-size: 10px !important;
+    text-transform: uppercase;
+    margin-left: 10px
+}
+
+.review_inner i {
+    font-size: 14px
+}
+
+.star_review .star_yellow {
+    color: #fec200
+}
+
+.star_review .star_grey {
+    color: #cbcbcb
+}
+
+.review_custom {
+    background: #f9fafc;
+    padding: 7px 0 10px 20px;
+    margin-top: 17px;
+    margin-bottom: 0;
+    width: 96% !important
+}
+
+.product-info-bottom {
+    width: 65%;
+    float: left
+}
+
+.product-img-box.new-slider .owl-prev {
+    background-image: url('../../images/edutech/left_arrow.png') !important;
+    background-size: 35px !important;
+    left: -15px !important;
+    width: 35px !important
+}
+
+.product-img-box.new-slider .owl-next {
+    background-image: url('../../images/edutech/right_arrow.png') !important;
+    background-size: 35px !important;
+    right: -15px !important;
+    width: 35px !important
+}
+
+.product-info-bottom ul.product-tags li a,
+.product-info-bottom ul.product-tags li span {
+    color: #555;
+    font-size: 14px;
+    font-weight: 400
+}
+
+.product-info-bottom p {
+    color: #4f4f4f;
+    font-weight: 600;
+    margin-bottom: 4px
+}
+
+.product-info-bottom ul.product-tags {
+    margin-bottom: 2px
+}
+
+.product-info-bottom .product-tags li.tags {
+    float: left;
+    padding: 0 5px 0 0
+}
+
+.complete_curriculum {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 1px;
+    clear: both;
+    background: #28a7fb;
+    padding-bottom: 30px
+}
+
+.complete_curriculum h2 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+.complete_curriculum .accordion1:hover {
+    background: #dff2ff;
+    border: 1px solid #dff2ff;
+    color: #555
+}
+
+.accordion1,
+.accordion1:active,
+.accordion1:focus {
+    color: #000;
+    cursor: pointer;
+    padding: 18px 38px 18px 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    transition: .4s;
+    border-radius: 5px;
+    position: relative;
+    z-index: 999;
+    background-color: #dff2ff;
+    font-weight: 600;
+    border: 1px solid #dff2ff
+}
+
+.edu.panel ul li {
+    list-style: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    margin-bottom: 0
+}
+
+.edu.panel ul li:before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    margin-left: -12px;
+    height: 7px;
+    background: #28a7fb;
+    border-radius: 12px;
+    position: relative;
+    left: -15px;
+    top: -1px
+}
+
+.accordion1:after {
+    content: url('../../images/edutech/blue_arrow_down.png');
+    color: #777;
+    font-weight: 700;
+    float: right;
+    margin-left: 5px;
+    position: absolute;
+    top: 38%;
+    right: 15px;
+    border: 0
+}
+
+.accordion1.active:after {
+    content: url('../../images/edutech/blue_arrow_up.png')
+}
+
+.edu.panel {
+    padding: 0 18px;
+    background-color: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-out;
+    margin-bottom: 10px;
+    position: relative;
+    top: -6px;
+    border-radius: 5px
+}
+
+.all_slides {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center
+}
+
+.all_slides_custom {
+    /*width: 94%;*/
+    float: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: inline-block;
+    margin-bottom: 5px
+}
+
+.all_slides_inner {
+    margin: 15px 0 20px
+}
+
+.all_slides_inner h2 {
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    text-align: left
+}
+
+.all_slides_custom img {
+    width: 100% !important;
+    box-shadow: 0px 0px 7px 1px #ddd
+}
+
+.sample_instructor {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 1px;
+    clear: both;
+    padding-bottom: 30px;
+    background-image: linear-gradient(#03aa94, #03aa94)
+}
+
+.sample_instructor h2 {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    margin-top: 10px
+}
+
+.main-slider img.lazyloaded {
+    height: auto !important
+}
+
+.main-slider img.lazyloaded.mCS_img_loaded {
+    height: 100% !important
+}
+
+.accordion2,
+.accordion2:active,
+.accordion2:focus {
+    color: #000;
+    cursor: pointer;
+    padding: 18px 38px 18px 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 14px;
+    transition: .4s;
+    border-radius: 5px;
+    position: relative;
+    z-index: 999;
+    background-color: #eaeaea;
+    font-weight: 600;
+    border: 1px solid #eaeaea
+}
+
+.sample_instructor .panel1 ul,ol {
+    margin: 10px;
+    padding-left: 25px
+}
+
+.sample_instructor .panel1 p {
+    margin: 10px;
+}
+
+.panel1 ul li {
+    list-style: none;
+    color: #555;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25px;
+    margin-bottom: 0
+}
+
+.panel1 ul li:before {
+    content: "";
+    display: inline-block;
+    width: 7px;
+    margin-left: -12px;
+    height: 7px;
+    background: #03aa94;
+    border-radius: 12px;
+    position: relative;
+    left: -15px;
+    top: -1px
+}
+
+.accordion2:after {
+    content: url('../../images/edutech/yellow_arrow_down.png');
+    color: #777;
+    font-weight: 700;
+    float: right;
+    margin-left: 5px;
+    position: absolute;
+    top: 38%;
+    right: 15px;
+    border: 0
+}
+
+.accordion2.active:after {
+    content: url('../../images/edutech/yellow_arrow_up.png')
+}
+
+.panel1 {
+    padding: 0 18px;
+    background-color: #fff;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-out;
+    margin-bottom: 10px;
+    position: relative;
+    top: -6px;
+    border-radius: 5px
+}
+
+.rating_review {
+    width: 100%;
+    margin: 0 auto;
+    background: #f9fafc;
+    padding: 1px 0 30px;
+    clear: both;
+    display: inline-block
+}
+
+.rating_review_inner h1 {
+    color: #1e292f;
+    font-weight: 700;
+    font-size: 26px;
+    float: left
+}
+
+.rating_review_inner .write_review {
+    background: #29a7fb;
+    border: none;
+    padding: 13px 34px;
+    border-radius: 40px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: -5px;
+    float: right;
+    margin-bottom: 11px;
+    transition: all .4s
+}
+
+.rating_review_inner .write_review:hover {
+    background: #0464c5;
+    transition: all .4s
+}
+
+.rating_review_inner .write_review img {
+    position: relative;
+    top: 3px;
+    padding-right: 10px
+}
+
+.write_review span {
+    position: relative;
+    top: -4px
+}
+
+.rating_hr {
+    clear: both;
+    background-color: #e7e8e9;
+    border: none;
+    height: 1px
+}
+
+.rating_progress .w3-border {
+    border: none;
+    background: #a4bbc4;
+    width: 120px;
+    display: inline-block;
+    padding: 0;
+    margin: 0 10px;
+    position: relative;
+    top: 7px;
+    height: 4px
+}
+
+.powerpoint_slides_right {
+    padding-top: 0 !important
+}
+
+.rating_progress .w3-grey,
+.rating_progress .w3-hover-grey:hover,
+.rating_progress .w3-gray,
+.rating_progress .w3-hover-gray:hover {
+    color: #000!important;
+    background-color: #29a7fb!important
+}
+
+.rating_top span {
+    color: #29a7fb;
+    font-size: 42px;
+    font-weight: 600;
+    border: 1px solid #ccc;
+    border-radius: 130px;
+    padding: 8px;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    display: block
+}
+
+.all_rating_list {
+    margin-top: 15px;
+    margin-bottom: 10px
+}
+
+.rating-summary.review_inner .rating-result {
+    display: block
+}
+
+.rating_top {
+    float: left;
+    padding-top: 22px
+}
+
+.rating_progress {
+    width: 220px;
+    margin-left: 40px;
+    display: inline-block
+}
+
+.rating_progress_inner {
+    display: flex;
+    margin-bottom: 2px
+}
+
+.rating_progress_inner i {
+    color: #a4bbc4;
+    margin-right: 8px;
+    position: relative;
+    top: 3px;
+    font-size: 14px
+}
+
+.rating_progress_inner span {
+    color: #4f585b;
+    font-size: 14px;
+    font-weight: 600
+}
+
+.product-info-main .download-btnwrapper .favourite {
+    width: 25px !important;
+    height: 25px !important;
+    padding: 0 !important;
+    top: 12px !important
+}
+
+.product-info-main .download-btnwrapper .favourite .normal-img {
+    opacity: .7 !important
+}
+
+.written_review_content .written_view {
+    color: #92a3be;
+    font-style: italic;
+    font-size: 14px;
+    margin-right: 6px
+}
+
+.written_review_content i {
+    color: #fec200;
+    font-size: 14px
+}
+
+.written_review_content p {
+    color: #4b4b4b;
+    font-size: 14px
+}
+
+.written_review_date {
+    color: #92a3be;
+    font-style: italic;
+    font-size: 12px;
+    text-align: right
+}
+
+.written_review_content {
+    background: #fff;
+    padding: 20px 25px
+}
+
+.written_review_content {
+    background: #fff;
+    padding: 20px 25px;
+    box-shadow: 3px 4px 13px -4px #ddd
+}
+
+.written_review_inner h3 {
+    color: #1e292f;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 13px
+}
+
+.written_review_inner {
+    margin-bottom: 35px;
+    position: relative
+}
+
+.triangle-left {
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-right: 20px solid #fff;
+    border-bottom: 12px solid transparent;
+    position: absolute;
+    left: -18px;
+    top: 60px
+}
+
+.view_page form {
+    margin-top: 20px
+}
+
+.view_page select {
+    color: #000 !important;
+    background-color: #fff !important;
+    border: 1px solid #d9e0e4 !important;
+    padding: 6px 20px 6px 5px;
+    appearance: none;
+    background-image: url('../../images/edutech/review_arrow.png');
+    background-repeat: no-repeat;
+    background-position: 90% 57%;
+    font-size: 14px;
+    font-weight: 600
+}
+
+.view_page label {
+    color: #141414;
+    font-size: 14px;
+    font-weight: 400;
+    padding-right: 5px
+}
+
+.reviews-header {
+    width: 50% !important;
+    float: left !important;
+    padding-bottom: 7px;
+    border-bottom: none;
+    border-bottom: none !important
+}
+
+.reviews-header h3 {
+    color: #1e292f;
+    font-weight: 700;
+    font-size: 26px;
+    float: left
+}
+
+.rating_review_inner div#rating_review_container {
+    margin-top: 0;
+    border: none;
+    padding: 17px 0 9px !important
+}
+
+.data.item.content.relevant_reviews {
+    width: 100%;
+    float: left
+}
+
+.rating_review_inner li.item.review-item.written_review_inner {
+    padding-top: 0;
+    border-bottom: none;
+    padding-bottom: 10px
+}
+
+.rating_review ol.items.review-items {
+    border-bottom: 1px solid #e7e8e9;
+    margin-bottom: 30px;
+    padding-bottom: 20px
+}
+
+.rating_review_inner .toolbar.toolbar-products {
+    background-color: transparent
+}
+
+.rating_review_inner .toolbar.toolbar-products .toolbar-amount {
+    display: none
+}
+
+.rating_review_inner .review-toolbar {
+    border-top: none
+}
+
+.rating_review_inner .toolbar .limiter:before {
+    display: none
+}
+
+.rating_review_inner .toolbar.toolbar-products .field.limiter {
+    float: left;
+    padding-left: 0
+}
+
+.rating_review_inner .toolbar.toolbar-products .container {
+    padding: 0
+}
+
+.rating_review_inner .toolbar .limiter .dk-select {
+    width: 52px;
+    border: 1px solid #d9e0e4 !important;
+    padding: 0 5px;
+    background: #fff
+}
+
+.rating_review_inner .toolbar .limiter .dk-select.custom-dropdown .dk-selected:before {
+    border-top-color: #29a7fb;
+    width: 10px;
+    height: 7px;
+    border-width: 7px 6px 0;
+    border-radius: 5px
+}
+
+.rating_review_inner .toolbar .limiter .dk-select.custom-dropdown .dk-selected {
+    font-weight: 700
+}
+
+.rating_review_inner .toolbar .limiter .dk-select.custom-dropdown .dk-select-options {
+    font-weight: 700
+}
+
+.rating_review_inner .toolbar .limiter .dk-select.custom-dropdown .dk-select-options li {
+    text-align: left;
+    margin-bottom: 0
+}
+
+.rating_review_inner .toolbar .limiter .dk-select.custom-dropdown .dk-select-options {
+    width: 52px;
+    margin-left: -1px
+}
+
+#customer-reviews .toolbar-products {
+    margin-bottom: 10px
+}
+
+#customer-reviews .review-toolbar {
+    margin: 0
+}
+
+fieldset.review-fieldset {
+    border: 2px solid transparent
+}
+
+fieldset.field.required.review-field-ratings .label span {
+    font-size: 16px;
+    font-weight: 600
+}
+
+form#review-form {
+    width: 100%;
+    float: left;
+    max-width: 100%
+}
+
+fieldset.review-fieldset {
+    width: auto;
+    float: none;
+    padding: 20px
+}
+
+form#review-form {
+    width: 100%;
+    float: left;
+    max-width: 100%;
+    border: 1px solid #eee;
+    border-radius: 7px
+}
+
+.control.rating-div {
+    margin-bottom: 30px
+}
+
+.review-field-rating .control {
+    margin-bottom: 20px !important
+}
+
+.review-field-ratings .review-field-rating .label,
+.review-field-ratings .review-field-rating .control {
+    padding-bottom: 0 !important;
+    margin-top: 0
+}
+
+.actions-toolbar.review-form-actions {
+    clear: both;
+    padding-bottom: 20px
+}
+
+fieldset.field.required.review-field-ratings legend.label span {
+    font-weight: 600;
+    font-size: 22px
+}
+
+.control.rating-div .mage-error {
+    padding-left: 16%
+}
+
+.review-field-ratings .review-field-rating .label {
+    padding-right: 0
+}
+
+.control input {
+    border: none;
+    box-shadow: 0px 0px 6px #eee;
+    height: 46px;
+    padding: 15px 18px;
+    border-radius: 5px;
+    padding-left: 10px !important
+}
+
+.control textarea {
+    border: none;
+    box-shadow: 0px 0px 6px #eee;
+    border-radius: 5px
+}
+
+label.label.nikcname-label,
+label.label.summary-field-label,
+.field label#Rating_rating_label,
+label.label.captcha_review-form {
+    width: 16%;
+    float: left
+}
+
+.control.nickname-text,
+.control.summary-text,
+.control.review-control-vote,
+.customer-captcha-wrapper {
+    width: 83%;
+    float: left
+}
+
+.field.review-field-nickname.required.clearfix {
+    width: 100%;
+    margin-bottom: 20px
+}
+
+.control.rating-div div#product-review-table {
+    width: 100%
+}
+
+.review-fieldset label span {
+    font-size: 16px;
+    font-weight: 600
+}
+
+.review-control-vote label:before {
+    color: #fec200 !important
+}
+
+.field.review-field-text.required.summary-field.clearfix {
+    margin-bottom: 15px
+}
+
+.actions-toolbar button.action.submit.primary {
+    background: #29a7fb !important;
+    color: #fff !important;
+    border: 1px solid transparent !important;
+    transition: all .4s
+}
+
+.actions-toolbar button.action.submit.primary:hover {
+    background: 0 0 !important;
+    border: 1px solid #29a7fb !important;
+    color: #29a7fb !important;
+    transition: all .4s
+}
+
+.primary.actions-primary {
+    text-align: center;
+    margin: 0 auto;
+    float: none
+}
+
+.actions-toolbar.review-form-actions {
+    margin: 0 auto !important;
+    text-align: center
+}
+
+.slick-wrapper_upper {
+    display: flex;
+    justify-content: center
+}
+
+.slick-wrapper {
+    width: 100%
+}
+
+.slide-item {
+    /* display: flex !important; */
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: auto;
+    border: 1px solid #fff;
+    /*width: 93% !important;*/
+    margin-bottom: 10px
+}
+
+.media_loader {
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.media_loader img {
+    /*width: 30px;
+    height: 30px;*/
+    max-width: unset;
+}
+#slick1 {
+    display: none;
+}
+
+.slick-slider {
+    height: 100%;
+    width: 96%;
+    margin: 0 auto
+}
+
+.slide-item h3 {
+    font-family: Lato, sans-serif;
+    font-size: 40px
+}
+
+.slide-item img {
+    width: 100%;
+    box-shadow: 0px 0px 7px 1px #ddd
+}
+
+.slick-prev.slick-arrow {
+    width: 30px;
+    height: 96%;
+    background-color: #f2f2f2;
+    border: none;
+    position: absolute;
+    left: -33px;
+    float: left;
+    clear: both;
+    color: transparent;
+    background-image: url('../../images/edutech/slider_arrow_left.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    transition: all .3s
+}
+
+.slick-prev.slick-arrow:hover {
+    background-color: #d7d7d7;
+    transition: all .3s
+}
+
+.slick-next.slick-arrow {
+    width: 30px;
+    height: 96%;
+    background-color: #f2f2f2;
+    border: none;
+    position: absolute;
+    right: -33px;
+    float: right;
+    clear: both;
+    top: 0;
+    color: transparent;
+    background-image: url('../../images/edutech/slider_arrow_right.png');
+    background-repeat: no-repeat;
+    background-position: 50% 50%
+}
+
+.slick-next.slick-arrow:hover {
+    background-color: #d7d7d7;
+    transition: all .3s
+}

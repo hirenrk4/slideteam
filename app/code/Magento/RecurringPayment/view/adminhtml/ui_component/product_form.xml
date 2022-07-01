@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+   <fieldset name="recurring-payment">
+	   	<settings>
+	        <label translate="true">Recurring_Payment</label>
+	    </settings>
+        <fieldset name="schedule_fieldset" sortOrder="10">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true"/>
+            </settings>
+            <container>
+                <field name="start_date_is_editable" sortOrder="10" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="rawOptions" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Customer Can Define Start Date</label>
+                        <notice translate="true">Select whether buyer can define the date when billing for the payment begins.</notice>
+                        <dataScope>recurring_payment.start_date_is_editable</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <field name="schedule_description" sortOrder="20" formElement="input">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Schedule Description</label>
+                        <notice translate="true">Enter a short description of the recurring payment.By default, this description will match the product name.</notice>
+                        <dataScope>recurring_payment.schedule_description</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                </field>
+                <field name="suspension_threshold" sortOrder="30" formElement="input">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Maximum Payment Failures</label>
+                        <notice translate="true">This is the number of scheduled payments that can fail before the payment is automatically suspended.</notice>
+                        <dataScope>recurring_payment.suspension_threshold</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                </field>
+                <field name="bill_failed_later" sortOrder="40" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="rawOptions" xsi:type="boolean">true</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Auto Bill on Next Cycle</label>
+                        <notice translate="true">Use this to automatically bill the outstanding balance amount in the next billing cycle (if there were failed payments).</notice>
+                        <dataScope>recurring_payment.bill_failed_later</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+            </container>
+        </fieldset>
+        <fieldset name="billing_fieldset" sortOrder="20">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true"/>
+            </settings>
+            <container>
+                <field name="period_unit" sortOrder="10" formElement="select">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Billing Period Unit</label>
+                        <notice translate="true">This is the unit for billing during the subscription period.</notice>
+                        <dataScope>recurring_payment.period_unit</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magento\RecurringPayment\Model\PeriodUnits"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <field name="period_frequency" sortOrder="20" formElement="input">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Billing Frequency</label>
+                        <notice translate="true">This is the number of billing periods that make up one billing cycle.</notice>
+                        <dataScope>recurring_payment.period_frequency</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                </field>
+                <field name="period_max_cycles" sortOrder="30" formElement="input">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Maximum Billing Cycles</label>
+                        <notice translate="true">This is the number of billing cycles for the payment period.</notice>
+                        <dataScope>recurring_payment.period_max_cycles</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                </field>
+            </container>
+        </fieldset>
+        <fieldset name="trial_fieldset" sortOrder="30">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true"/>
+            </settings>
+            <container>
+                <field name="is_trial_available" sortOrder="5" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="rawOptions" xsi:type="boolean">false</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Is Trial Available</label>
+                        <notice translate="true">Is trial subscription available for this product.</notice>
+                        <dataScope>recurring_payment.is_trial_available</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <field name="trial_period_unit" sortOrder="10" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="source" xsi:type="string">product_attribute</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Trial Billing Period Unit</label>
+                        <dataScope>recurring_payment.trial_period_unit</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magento\RecurringPayment\Model\PeriodUnits"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+                <field name="trial_period_frequency" sortOrder="20" formElement="input">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Trial Billing Frequency</label>
+                        <dataScope>recurring_payment.trial_period_frequency</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                </field>
+                <field name="trial_period_max_cycles" sortOrder="30" formElement="input">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Maximum Trial Billing Cycles</label>
+                        <dataScope>recurring_payment.trial_period_max_cycles</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                </field>
+                <field name="trial_billing_amount" sortOrder="30" formElement="input">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Trial Billing Amount</label>
+                        <dataScope>recurring_payment.trial_billing_amount</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                </field>
+            </container>
+        </fieldset>
+        <fieldset name="initial_fieldset" sortOrder="40">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="scopeLabel" xsi:type="string">[GLOBAL]</item>
+                </item>
+            </argument>
+            <settings>
+                <label translate="true"/>
+            </settings>
+            <container>
+                <field name="init_amount" sortOrder="20" formElement="input">
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Initial Fee</label>
+                        <notice translate="true">The initial, non-recurring payment amount is due immediately when the payment is created.</notice>
+                        <dataScope>recurring_payment.init_amount</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                </field>
+                <field name="init_may_fail" sortOrder="40" formElement="select">
+                    <argument name="data" xsi:type="array">
+                        <item name="config" xsi:type="array">
+                            <item name="rawOptions" xsi:type="boolean">false</item>
+                        </item>
+                    </argument>
+                    <settings>
+                        <scopeLabel>[GLOBAL]</scopeLabel>
+                        <label translate="true">Allow Initial Fee Failure</label>
+                        <notice translate="true">This sets whether to suspend the payment if the initial fee fails or, instead, add it to the outstanding balance.</notice>
+                        <dataScope>recurring_payment.init_may_fail</dataScope>
+                        <imports>
+                            <link name="visible">${$.provider}:data.product.is_recurring</link>
+                        </imports>
+                    </settings>
+                    <formElements>
+                        <select>
+                            <settings>
+                                <options class="Magento\Config\Model\Config\Source\Yesno"/>
+                            </settings>
+                        </select>
+                    </formElements>
+                </field>
+            </container>
+        </fieldset>
+    </fieldset>
+</form>

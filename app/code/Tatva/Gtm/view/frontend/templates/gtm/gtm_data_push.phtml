@@ -1,0 +1,131 @@
+<?php
+/**
+ * @category   Tatva
+ * @package    Tatva_Gtm
+ */
+
+/** @var \Tatva\Gtm\Block\Gtm $block */
+$page_type = $block->getRequest()->getFullActionName();
+$routename = $block->getRequest()->getRouteName();
+$storecode = $block->getStore();
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$objDate = $objectManager->create('Magento\Framework\Stdlib\DateTime\DateTime');
+$current_date = $objDate->gmtDate('Y-m-d');
+?>
+<script type="text/javascript">
+	requirejs(['jquery'], function(jQuery){		
+		jQuery(".icon-facebook img").click(function(){
+			var actionName = "Footer Facebook Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');			
+		   	dataLayer.push({'SocialName': actionName});
+			
+		});
+		jQuery(".icon-linkedin img").click(function(){
+			var actionName = "Footer Linkedin Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');
+		   	dataLayer.push({'SocialName': actionName});
+		});
+		jQuery(".icon-pinterest img").click(function(){
+			var actionName = "Footer Pinterest Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');
+		   	dataLayer.push({'SocialName': actionName});
+		});
+		jQuery(".icon-twitter img").click(function(){
+			var actionName = "Footer Twitter Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');
+		   	dataLayer.push({'SocialName': actionName});
+		});
+		jQuery(".icon-youtube img").click(function(){
+			var actionName = "Footer Youtube Click";
+			//var clickUrl = jQuery(this).parents(".button-icon").attr('href');
+		   	dataLayer.push({'SocialName': actionName});
+		});
+	});
+</script>
+<?php if ($storecode == "default") : ?>
+	<script type="text/javascript">		
+		dataLayer.push({'storeName': 'Main Store'});
+	</script>
+<?php endif; ?>
+<?php if ($page_type == "contacts_index_index") : ?>
+	<script type="text/javascript">
+		dataLayer.push({'pageType': 'contacts', 'pageName': '<?php echo "Contact Us"; ?>'});		
+	</script>
+<?php endif; ?>
+
+<?php if ($routename == "customer") : ?>
+	<?php if ($page_type == "customer_account_index") : ?>
+		<script type="text/javascript">
+			dataLayer.push({'pageType': 'customer','pageName': 'Customer Dashboard'});
+		</script>
+	<?php elseif($page_type == "customer_account_edit") : ?>
+		<script type="text/javascript">
+			dataLayer.push({'pageType': 'customer','pageName': 'Customer Profile'});			
+		</script>
+	<?php else : ?>
+		<script type="text/javascript">dataLayer.push({'pageType': 'customer', 'pageName': 'Customer Login'});</script>
+	<?php endif; ?>
+<?php endif; ?>
+
+<?php if($page_type == "checkout_onepage_success") : ?>
+	<script type="text/javascript">
+		var order_success_data = <?php echo json_encode($block->getOrderSuccessData());?>;
+		dataLayer.push(order_success_data);
+	</script>
+	<?php
+		$writer = new \Zend\Log\Writer\Stream(BP . '/var/log/order_success_gtm'.$current_date.'.log');
+		$logger = new \Zend\Log\Logger();
+		$logger->addWriter($writer);
+		$logger->info(json_encode($block->getOrderSuccessData()));
+	?>
+<?php endif; ?>
+<?php if($page_type == "catalog_product_view") : ?>
+	<script type="text/javascript">
+		var product_layer_data = <?php echo json_encode($block->getProductLayerData());?>;
+		dataLayer.push(product_layer_data);
+	</script>
+<?php endif; ?>
+<?php if($page_type == "catalog_category_view") : ?>
+	<script type="text/javascript">
+		var category_layer_data = <?php echo json_encode($block->getCategoryLayerData());?>;
+		dataLayer.push(category_layer_data);
+	</script>
+<?php endif; ?>
+<?php if ($page_type == "bestsellers_index_index") : ?>
+	<script type="text/javascript">
+		var bestseller_layer_data = <?php echo json_encode($block->getgtmLayerData("bestseller"));?>;
+		dataLayer.push(bestseller_layer_data);
+	</script>
+<?php endif; ?>
+<?php if ($page_type == "newproduct_index_index") : ?>
+	<script type="text/javascript">
+		var newproducts_layer_data = <?php echo json_encode($block->getgtmLayerData("newadded"));?>;
+		dataLayer.push(newproducts_layer_data);
+	</script>
+<?php endif; ?>
+<?php if ($routename == "cms") : ?>
+	<script type="text/javascript">
+		var cms_layer_data = <?php echo json_encode($block->getgtmLayerData("cms"));?>;
+		dataLayer.push(cms_layer_data);
+	</script>
+<?php endif; ?>
+
+<?php $login = $block->isCustomerLoggedIn(); ?>
+<?php if ($login) : ?>
+	<script type="text/javascript">
+		requirejs(['jquery'], function($){
+				tatva_customer_data = <?php echo $block->getCustomerLayerData();?>;
+				customerId = tatva_customer_data.customerId;
+				if (typeof customerId !== "undefined") {
+					dataLayer.push({						
+						'customerId':tatva_customer_data.customerId,
+						'customerEmail': tatva_customer_data.customerEmail,
+						'registrationDate': tatva_customer_data.registrationDate,
+						'customerName': tatva_customer_data.customerName,
+						'visitorLoginState': "Logged In"
+					});
+				}
+		});
+	</script>
+<?php endif; ?>

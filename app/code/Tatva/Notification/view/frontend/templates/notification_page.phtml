@@ -1,0 +1,116 @@
+<?php
+$helper = $this->helper('Tatva\Notification\Helper\Data');
+// $todayNotifications = $helper->todayCollection();
+$pageNumber=1;
+$earlierNotifications = $helper->earlierCollection($pageNumber);
+
+?>
+<section class="notification-wrapper">
+	<div class="notifctn_container">
+		<div class="all_notfctn_content">
+			<h2 class="all_notheading">All Notifications 
+				<span class="totl_notifiction" id="totalCount"><?= $helper->totalCount();?></span>
+			</h2>			
+			<?php if($earlierNotifications->count()){?>
+			<div class="earlier_notification">
+				<ul  class="earlier_notinction_conten">
+					<!-- <h3 class="all_notheading">Earlier</h3> -->
+					<?php
+			       	foreach ($earlierNotifications as $value) {
+			       		$imageUrl=$this->getViewFileUrl('Tatva_Notification::'.$helper->getImageUrl($value->getType()));
+			       	?>
+			       		<li>
+			       			<div>
+				       			<span class="icons"><img src="<?php echo $imageUrl;?>"></span>
+				       			<span class="notifctn_text">
+				       				<?php echo $value->getContent();?>
+				       				<span class="notifctn_time"><?php echo $helper->getDateDifference($value->getPublisheAt()); ?></span>
+								</span>
+								<?php if($helper->isLoggedIn()){?>
+								<a class="trash_item" id="delete-notification" title="Delete"
+									notification-id="<?php echo $value->getNotificationId();?>"
+									customer-id="<?php echo $helper->customerId();?>">
+									<i class="fa fa-trash-o" aria-hidden="true"></i>
+								</a>	
+								<?php } ?>
+							</div>
+			       		</li>
+				    <?php
+				       	}
+					?>
+				</ul>
+			</div>
+		<?php } ?>
+		</div>
+		<?php if($earlierNotifications->count()){?>
+		<div class="load_more">
+			<button class="btn boder-btn load-more-btn" title="Load More" id="load-more-data"
+			page-number="<?php echo $pageNumber;?>">
+				Load More 
+				<i class="fa fa-arrow-down" aria-hidden="true"></i>
+			</button>
+			<div class="lds-roller" style="display: none;"><div></div><div></div><div></div><div>
+		</div>
+		<?php } ?>
+	</div>
+</section>
+<script type="text/javascript">
+require(['jquery',
+], function ($) {	
+    $(document).ready(function () {
+    	var onload_page_number = <?= $pageNumber;?>;
+    	var lastPageNumber=<?= $earlierNotifications->getLastPageNumber();?>;
+    	if(onload_page_number == lastPageNumber){
+    		$('#load-more-data').remove();
+    	}
+    	$(document).on('click', '#delete-notification', function () { 
+    		var target = $(this);   		    		
+    		var notificationId = target.attr("notification-id");
+    		var customerId = target.attr("customer-id");    		
+    		$.ajax({
+                url: <?php  echo "'".$block->getUrl("notification/index/deletenotification")."'"; ?>,
+                method: "POST",
+                data: {notificationId: notificationId,customerId:customerId},
+                dataType: "json",
+                showLoader: true,
+                success: function (data)
+                {
+                    var totalCount=$('#totalCount').text();
+                    totalCount=totalCount-1;
+                    $('.totl_notifiction').text(totalCount);
+                    $('.notifctn_count').text(totalCount);
+                    target.closest( "li" ).remove();
+                }
+            });
+    	});
+
+        $(document).on('click', '#load-more-data', function () {
+        	$('#load-more-data').hide();
+        	$('.lds-roller').show();  	
+            var page_number = $(this).attr("page-number");   
+            $.ajax({
+                url: <?php  echo "'".$block->getUrl("notification/index/earliercollection")."'"; ?>,
+                method: "POST",
+                data: {page_number: page_number},
+                dataType: "json",
+                success: function (data)
+                {
+        			$('.lds-roller').hide();
+                    if (data.output != '')
+                    {
+                        $('.earlier_notinction_conten').append(data.output);
+                    	$('#load-more-data').show();
+                    	$('#load-more-data').attr("page-number",data.pageNumber); 
+                    } else
+                    {                    	                       
+                        $('#load-more-data').remove();
+                    }
+                    if(lastPageNumber == data.pageNumber){
+                    	$('#load-more-data').remove();
+                    }
+                }
+            });
+        });
+    });
+});
+</script>

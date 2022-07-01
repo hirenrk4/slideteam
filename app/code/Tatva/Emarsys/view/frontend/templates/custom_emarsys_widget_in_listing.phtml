@@ -1,0 +1,90 @@
+<?php  $catname = $block->getRegistry()->registry('current_category')->getName(); ?>
+
+<script type="text/html" id="listing-tmpl<?php echo 1;?>">
+  <![CDATA[
+  {{ if (SC.page.products.length) { }}
+  <amfpc name="tatva_emarsys_themes_widget_<?php echo 1;?>">
+    <div class="recommended-title-top">
+      <h4> Recommended <?php echo $catname; ?> Products For You</h4>
+    </div>
+    <div class="products-grid-outer">
+      <ul class="products-grid products-grid--max-5-col pro-image category-list clearfix">
+        {{ for (var i=0; i < SC.page.products.length; i++) { }}
+        {{ var p = SC.page.products[i];
+         var remaining = p.c_number_of_slides-3;
+         var count_total_images = p.c_number_of_slides;
+         first_thumbnail = second_thumbnail = third_thumbnail = fourth_thumbnail = fifth_thumbnail = sixth_thumbnail = "NA";
+         first_thumbnail = p.c_thumbnail_1;
+         second_thumbnail = p.c_thumbnail_2;
+         third_thumbnail = p.c_thumbnail_3;
+         fourth_thumbnail = p.c_thumbnail_4;
+         fifth_thumbnail = p.c_thumbnail_5;
+         sixth_thumbnail = p.c_thumbnail_6;
+     }}
+     <li data-scarabitem="{{= p.id }}" class="item">
+      <a class="product-image image-height" title="{{= p.title }}" href="{{= p.link }}">
+
+        <img class="small_image_hover" rel='imgtip[{{= p.id }}110000]' title ="{{= p.title }}" product_name ="{{= p.title }}" product_url = "{{= p.link }}" remaining = "{{=remaining}}" zoomsrc="{{= first_thumbnail }}" zoomsrc2="{{= second_thumbnail }}" zoomsrc3="{{= third_thumbnail }}" new_remaining = "{{=(count_total_images - 6)}}" total_images ={{= count_total_images}} zoomsrc4="{{= fourth_thumbnail }}" zoomsrc5="{{= fifth_thumbnail }}" zoomsrc6="{{= sixth_thumbnail}}" src="{{= p.image }}">
+        {{  if(p.category && p.category.indexOf('Animated>') !== -1) { }}
+            <span class="badge-label">Animated</span>
+        {{ } }}
+      </a>
+      <div class="product-info name-only">
+        <span class="product-name name-content-trim"><a rel='imgtip[{{= p.id }}110000]' title="{{= p.title }}" href="{{= p.link }}">{{= p.title }}</a></span>
+      </div>							
+      {{ if (p.c_short_description !== null) { }}
+        <p class="description-content-trim">{{= p.c_short_description }}</p>
+      {{ } }}
+    </li>
+    {{ } }}
+  </ul>
+</div>
+</amfpc>
+{{ } }}
+]]>
+</script>
+
+<script type="text/javascript">
+
+ScarabQueue.push(['searchTerm', '<?php echo $catname; ?>']);
+require(['jquery','Emarsysjs','jQdotdot'], function (jQuery){
+  
+  ScarabQueue.push(['recommend',
+  {
+    logic: 'SEARCH',
+    limit: 10,
+    containerId: 'customtopic1',
+    templateId: 'listing-tmpl1',
+    success: function(SC, render)
+    {
+      render(SC);
+      ddimgtooltip.init("*[rel^=imgtip]");
+
+      jQuery('.description-content-trim').show();      
+      jQuery('.product .name a').css('display','inline-block');
+      
+      jQuery('.name-content-trim').dotdotdot(
+      {
+        callback: function (isTruncated) {},
+        ellipsis: "\u2026 ",
+        height: 45,
+        keep: null,
+        tolerance: 0,
+        truncate: "word",
+        watch: "window",
+      });
+
+      jQuery('.description-content-trim').dotdotdot(
+      {
+        callback: function (isTruncated) {},
+        ellipsis: "\u2026 ",
+        height: 120,
+        keep: null,
+        tolerance: 0,
+        truncate: "word",
+        watch: "window",
+      });
+    }
+  }]);
+});
+</script>

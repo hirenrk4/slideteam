@@ -1,0 +1,11 @@
+<?php 
+$url = $block->getBaseUrl();
+$_page = $block->getMetaContent();
+$page_title = strip_tags($_page->getMetaTitle());
+$meta_description = strip_tags($_page->getMetaDescription());
+?>
+<meta property="og:url" content="<?php echo $url.'pitch-deck'; ?>">
+<meta property="og:type" content="article">
+<meta property="og:title" content="<?php echo $page_title; ?>">
+<meta property="og:description" content="<?php echo $meta_description; ?>">
+<meta property="og:image" content="<?php echo $block->getViewFileUrl('Magento_Cms::images/pitch-deck/banner1.png'); ?>">

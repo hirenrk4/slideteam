@@ -1,0 +1,22 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<div class="opc-block-summary" data-bind="blockLoader: isLoading">
+    <div data-bind="i18n: 'Order Summary'" class="title checkout-title"></div>
+    <div class="order-review-wrapper">
+        <table class="data-table table" id="checkout-review-table">
+        	<thead>
+        		<tr>
+        			<th rowspan="1" class="product-name">Product Name</th>
+        			<th colspan="1" class="price">Price</th>
+        		</tr>
+        	</thead>
+        <!-- ko foreach: elems() -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    	</table>
+    </div>
+</div>

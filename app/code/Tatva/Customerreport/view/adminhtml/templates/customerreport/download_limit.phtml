@@ -1,0 +1,14 @@
+<form style="display:none;" id = "download_limit_change" action="<?php echo $this->getUrl("customerreport/customer/chnagelimit/"); ?>"  method="post">
+
+
+</form>
+
+<script type="text/javascript" language="javascript">
+    require(['jquery'], function ($) {
+        $(".limit_submit").click(function () {
+            $(this).siblings(".limit_input:first").attr("value", $(this).siblings(".limit_input:first").val());
+            $("#download_limit_change").html($(this).parent().html());
+            document.getElementById("download_limit_change").submit();
+        });
+    });
+</script>

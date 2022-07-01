@@ -1,0 +1,64 @@
+<div id="related-recs-a4"></div>
+<?php $fullPath = $block->getRequest()->getFullActionName(); ?>
+<?php if($fullPath!="subscription_index_list"):?>
+    <?php if($block->getRegistry()->registry('current_product')):
+        $product_data = $block->getRegistry()->registry('current_product')->getData(); ?>
+    <?php endif; ?>
+
+<script type="text/html" id="related-template">
+<![CDATA[
+{{ if (SC.page.products.length) { }}
+<div class="recommended-product">
+    <div class="recommended-title">
+        <h4>Related Ukraine Crisis</h4>
+    </div>
+    <div class="product-grid-outer recommended-product custom_gallary_product_main_div">
+        <ul class="products-grid products-grid--max-5-col box-up-sell">
+            {{ for (var i=0; i < SC.page.products.length; i++) { }}
+                {{ 
+            var p = SC.page.products[i];
+            var count_total_images = p.c_number_of_slides;
+            var remaining = p.c_number_of_slides-3;
+            first_thumbnail = second_thumbnail = third_thumbnail = fourth_thumbnail = fifth_thumbnail = sixth_thumbnail = "NA";
+            first_thumbnail = p.zoom_image;
+            second_thumbnail = p.c_thumbnail_2;
+            third_thumbnail = p.c_thumbnail_3;
+            thumbimg = p.c_spl_thumbnail;
+         }}
+            <li class="item custom_gallary_product" data-scarabitem="{{= p.id }}">
+                <a class="product-image image-height" title="{{= p.title }}" href="{{=p.link}}">
+                    <img class="small_image_hover lazyload" rel='imgtip[{{= p.id }}10000]' title ="{{= p.title }}" product_name ="{{= p.title }}" product_url = "{{= p.link }}" remaining = "{{=remaining}}" zoomsrc="{{= first_thumbnail }}" zoomsrc2="{{= second_thumbnail }}" zoomsrc3="{{= third_thumbnail }}" src="<?php echo $this->getViewFileUrl('images/89SetHeight.gif'); ?>" alt ="{{= p.title }}"
+                    data-src="{{= thumbimg }}" custompage="1" style="width:70%;height:auto;">
+                    {{  if(p.category && p.category.indexOf('Animated>') !== -1) { }}
+                        <span class="badge-label">Animated</span>
+                    {{ } }}
+                </a>
+                <div class="product-info" rel='imgtip[{{= p.id }}10000]'>
+                    <p class="product-name"><a class="title-content-trim" title="{{= p.title }}" href="{{=p.link}}">{{= p.title }}</a></p>
+                </div>
+            </li>
+        {{ } }}
+        </ul>
+    </div>
+</div>
+{{ } }}
+]]>
+</script>    
+<script type="text/javascript">
+require(['jquery','EmarsysWidgetJs','domReady!'], function (jQuery){
+    ScarabQueue.push(['category','Ukraine Crisis']);
+    ScarabQueue.push(['recommend',
+    {
+        logic: 'CATEGORY_0',
+        containerId: 'related-recs-a4',
+        limit: 15,
+        templateId: "related-template",
+        success: function(SC, render)
+        {
+            render(SC);
+            ddimgtooltip.init("*[rel^=imgtip]");
+        }
+    }]);
+});
+</script>
+<?php endif; ?>

@@ -1,0 +1,194 @@
+@import '../../source/_variablesm2.less';
+@import '../../source/_mixins.less';
+
+.data-table{
+	margin-bottom: 10px;
+	thead{
+		th{
+			background: @slideteam_gray87;
+			font-weight: bold;
+		}
+	}
+	span{
+		&.nobr{
+			white-space: normal;
+		}
+	}
+	th{
+		background: @slideteam_gray22;
+		color: @slideteam_black5;
+		font-weight: 400;
+		white-space: nowrap;
+		vertical-align: top;
+	}
+	th,td{
+		border-bottom: 1px solid @slideteam_gray3;
+		color: @slideteam_black5;
+	}
+	tbody{
+		th{
+			font-weight:bold;
+		}
+		td{
+			border-bottom: 1px solid @slideteam_gray3;		
+		}
+		tr{
+			&.download-row{
+				td{
+					width: 21%;
+				}
+			}
+		}
+	}
+	&.table{
+		&:not(.cart){
+			&:not(.totals){
+				> tbody{
+					> tr{
+						> td{
+							border-bottom: 1px solid @slideteam_gray3;		
+							color: @slideteam_black5;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.table-responsive{
+	overflow-y: hidden;
+	width: 100%;
+}
+/*612 user invitation*/
+.fieldset .field.required {
+	float: left
+}
+
+table.table.data-table tr td:nth-child(3),
+table tr th:nth-child(3) {
+	text-align: right
+}
+
+.actions-toolbar {
+	float: right
+}
+
+.table-responsive.child_subscription table tr th .nobr {
+	padding-right: 30px
+}
+
+.customer_records.control .input-text.form-control {
+	padding: 0 8px 0 130px !important
+}
+
+.customer_subscription .fieldset:last-child {
+	margin-bottom: 0
+}
+
+.customer_records_dynamic .remove input {
+    width: 374px;
+    height: 52px;
+    border-radius: 5px;
+}
+.customer_records.control {
+    margin-bottom: 10px;
+}
+.actions-toolbar .primary .action {
+	margin: 0 10px 0 0
+}
+.remove {
+    margin-top: 15px;
+}
+.remove .remove-field.btn-remove-customer {
+    display: block;
+}
+.customer_records.control .extra-fields-customer {
+    display: block;
+}
+.table-responsive.child_subscription .action.primary, .fieldset .action.primary {
+    height: 46px;
+    line-height: 43px;
+    min-width: 115px;
+
+}
+.fieldset input.btn.btn-success.action.primary {
+    float: right;
+    margin-right: 10px;
+}
+.fieldset span.nobr {
+    float: right;
+}
+.customer_records_dynamic {
+    padding-left: 2px;
+}
+
+@media (max-width:1792px) {
+    .table-responsive.customer_subscription .table.data-table span.nobr{
+        padding-right: 10px;
+    }
+    .table-responsive.customer_subscription tr th:nth-child(2) {
+        width: 85px;
+    }
+}
+
+@media (max-width:1366px) {
+	.actions-toolbar {
+		margin-left: 0 !important
+	}
+}
+
+@media (max-width:1280px) {
+	.data-table thead th {
+		font-size: 13px
+	}
+	.data-table th {
+		white-space: break-spaces
+	}
+}
+
+@media (max-width:1024px) {
+	.table-responsive .action.primary {
+		font-size: 16px;
+		min-width: 115px
+	}
+	.table-responsive.child_subscription table tr th .nobr {
+		padding-right: 35px
+	}
+
+	.st-customer-acc .columns .column.account-wrap .account-inner-wrapper .fieldset {
+		margin-bottom: 0
+	}
+}
+@media (max-width:800px) {
+    .field.required {
+        width: 60% !important;
+    }
+.customer_records_dynamic .remove input {
+    width: 100%;
+    height: 52px;
+    border-radius: 5px;
+}
+.st-customer-acc .columns .column.account-wrap .account-inner-wrapper .fieldset .field .control input {
+    width: 100%;
+}
+}
+@media (max-width:414px) {
+    .field.required {
+        width: 73% !important;
+    }
+.fieldset .field .control input {
+    padding: 0 8px 0 105px;
+}
+.fieldset .field .label {
+    padding: 0 5px;
+}
+.table-responsive .action.primary {
+    font-size: 16px;
+    min-width: 85px;
+    padding: 0 10px;
+}
+.fieldset input.btn.btn-success.action.primary {
+    margin-right: 0px;
+}
+}

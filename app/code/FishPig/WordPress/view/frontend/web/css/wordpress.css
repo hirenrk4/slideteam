@@ -1,0 +1,151 @@
+/**
+ *
+ **/
+img.alignright { float: right; margin: 0 0 1em 1em; }
+img.alignleft { float: left; margin: 0 1em 1em 0; }
+img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.alignright { float: right; }
+.alignleft { float: left; }
+.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+
+ol.post-list, 
+ol.comment-list { list-style: none; padding: 0; margin: 0; }
+
+/* General Post Styles */
+.post-list li:after { content: ' '; clear: both; display: block; }
+.post-list li { /*display: inline-block; width: 48%; vertical-align: top;*/ }
+.post-entry { overflow: hidden; margin: 0 0 20px; }
+.post-image { margin: 0 0 10px; overflow: hidden; }
+.post-image a { display: inline-block; }
+.post-list .post-image { max-height: 300px; }
+.post-meta { clear: both; margin: 0 0 20px; text-align: left; }
+.post-meta .post-meta-item { display: inline-block; margin-right: 10px; }
+.post-readmore { margin-top: 10px; }
+.post-entry iframe { max-width: 100%; }
+
+/* Comments */
+.comment-list-item { margin: 0 0 20px; }
+.comment-list.children { margin-top: 20px; }
+.comment-image { float: left; margin: 0 10px 10px 0; }
+.comment-author { font-weight: bold; display: block; }
+.comment-entry { clear: both; margin: 0 0 20px; }
+
+/* Widgets */
+.block-blog .block-title { margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #c6c6c6; }
+.block-blog .block-title > strong { font-size: 18px; font-weight: 300; }
+.block-blog ul, .block-blog ol { list-style: none; margin: 0; padding: 0; }
+.block-blog-cloud li { display: inline; margin: 0; }
+.block-blog-categories ul.level1 { margin-top: 1rem; }
+
+.shortcode-product {}
+.shortcode-product .products { text-align: left; list-style: none; }
+.shortcode-product .products > li { display: inline-block; width: 24%; text-align: center; }
+
+/* Post List Grid */
+.post-list.grid {}
+.post-list.grid li { display: inline-block; width: 48%; vertical-align: top; margin-right: 1%; }
+#fp-gallery {
+	position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 100;text-align:center;
+}
+
+#fp-gallery .shadow { 
+	position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 101; background: #000 /*url('ajax-loader.gif') no-repeat center 40px*/;
+}
+
+#fp-gallery .inner { 
+	position: relative; z-index: 102; background: #fff; max-width: 95%; margin: 1% auto 0; background: #fff; border: 4px solid #ddd; box-shadow: 4px 4px 4px #666; display: inline-block; min-width: 400px; min-height: 200px;
+}
+
+#fp-gallery .close {
+		display: inline-block; position: absolute; background: #fff url('/static/frontend/Slideteam/default/en_US/FishPig_WordPress/images/lightbox-close.png') no-repeat center center; padding: 2px; border-radius: 50%; cursor: pointer; text-decoration: none; display: inline-block; height: 48px; width: 48px; margin: auto; top: 10px; right: 10px; text-indent: -999999px;
+}
+.wp-caption {
+	margin-bottom: 1.625em;
+	background: none !important;
+	text-align: center;
+	font-style: italic;
+	line-height: 2;
+}
+
+.wp-caption img {
+	border: 1px #eee solid;
+	padding: 6px;
+}
+
+.wp-caption img:hover {
+	outline: 0;
+	border: 1px #ddd solid;
+	transition: all 0.3s;
+	-o-transition: all 0.3s;
+	-ms-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+}
+
+.hero-bkg-animated {
+background: url(../images/addvertise_banner.jpg) repeat 0 0;
+    width: 100%;
+    float: left;
+    box-sizing: border-box;
+    padding: 15px;
+    text-align: center;
+    box-sizing: border-box;
+    -webkit-animation: slide 20s linear infinite;
+    padding-top: 0px;   
+    box-sizing: border-box;
+    padding: 15px;
+    margin-bottom:20px;
+}
+h1.about_toptxt {
+   color: #fff;
+   font-size: 35px;
+   text-shadow: 2px 2px rgba(0,0,0,0.4);
+   line-height: 40px;
+   margin-top: 0px;
+   font-weight: 600;
+   font-family: 'Open Sans', sans-serif !important;    
+}
+
+.hero-bkg-animated h1 {
+  font-family: sans-serif;
+}
+
+@-webkit-keyframes slide {
+    from { background-position: 0 0; }
+    to { background-position: -400px 0; }
+}
+.hero-bkg-animated p {
+    font-size: 19px;
+    font-weight: 400;
+    color: #444;
+	font-family: 'Open Sans', sans-serif !important;
+	margin-top: 7px;
+}
+
+@media screen and (max-width:1400px) {
+
+	h1.about_toptxt {
+
+	    font-size: 23px;
+		line-height: 30px;
+	}
+	.hero-bkg-animated p {
+	    font-size: 15px;
+
+	}
+	.downloadbtn img {
+	    width: 100%;
+	}
+}
+@media screen and (min-width:768px) and (max-width:1023px)
+{
+	.downloadbtn img {
+	    width: 32%;
+	}
+}
+@media screen and (max-width:767px)
+{
+	.downloadbtn img {
+	    width: 80%;
+	}
+}

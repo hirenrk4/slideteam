@@ -1,0 +1,76 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var $block \Magento\Sales\Block\Order\Email\Items\DefaultItems */
+
+/** @var $_item \Magento\Sales\Model\Order\Item */
+$_item = $block->getItem();
+$_order = $_item->getOrder();
+?>
+<tr>
+    <td width="7"></td>
+        <td>
+            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                <tbody>
+                    <tr>
+                        <td height="11"></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 330px;" class="sm-width">
+                                            <table cellpadding="0" cellspacing="0" border="0" width="100%">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="font-family:Verdana,Arial;font-weight:bold;margin:0 0 5px 0;color:#636363;font-style:normal;text-transform:uppercase;line-height:1.4;font-size:14px;float:left;width:100%;display:block">
+                                                            <?=/* @escapeNotVerified */__('SUBSCRIPTION PRODUCT')?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="6"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="color: #333;font-size: 12px;font-weight: 400;font-family: arial;font-style: italic;">
+                                                            <?=/* @escapeNotVerified */__('Subscription Period')?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td height="3"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="color: #333;font-size: 12px;font-weight: 400;font-family: arial;">
+                                                            <?=$block->escapeHtml($_item->getName())?>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td style="color: #333;font-size: 13px;font-weight: 400;font-family: arial;width: 60px;text-align: center;">
+                                            <?=/* @escapeNotVerified */$block->escapeHtml($block->getSku($_item))?>
+                                        </td>
+                                        <td style="color: #333;font-size: 13px;font-weight: 400;font-family: arial;width: 55px;text-align: center;">
+                                        <?=/* @escapeNotVerified */$_item->getQtyOrdered() * 1?>
+                                        </td>
+                                        <td style="color: #333;font-size: 13px;font-weight: 400;font-family: arial;text-align: right;">
+                                            <?=/* @escapeNotVerified */$block->getItemPrice($_item)?>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td height="11"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    <td width="7"></td>
+</tr>

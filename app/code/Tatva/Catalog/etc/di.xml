@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Catalog\Block\Product\ProductList\Toolbar" type="Tatva\Catalog\Block\Category\Toolbar" />
+	<preference for="Magento\Catalog\Model\Layer\Category" type="Tatva\Catalog\Model\Layer" />
+	<preference for="Magento\Catalog\Model\View\Asset\Image" type="Tatva\Catalog\Model\View\Asset\Image" />
+	<preference for="Magento\Catalog\Model\Layer\Category\CollectionFilter" type="Tatva\Catalog\Model\Layer\Category\CollectionFilter" />
+	
+	<type name="Magento\Catalog\Model\Config">
+		<plugin name="Tatva_Catalog::addCustomOptions" type="Tatva\Catalog\Plugin\Model\Config" />
+	</type>
+	<type name="Magento\Catalog\Helper\Product\View">
+        <plugin name="Tatva_Catalog::addCustomMetaData" type="Tatva\Catalog\Plugin\Helper\Product\View" />
+    </type>
+    <type name="Magento\Catalog\Controller\Category\View">
+        <plugin name="Tatva_Catalog::changeCustomLimitData" type="Tatva\Catalog\Plugin\Controller\Category\View" />
+    </type>
+    
+    <!-- <type name="Magento\Catalog\Model\ResourceModel\Category">
+        <plugin name="Tatva_Catalog::addCustomsortingData" type="Tatva\Catalog\Plugin\Model\ResourceModel\Category" />
+    </type> -->
+
+    <preference for="Magento\Catalog\Block\Product\View\Gallery" type="Tatva\Catalog\Block\Product\View\Gallery" />
+	<preference for="Magento\Catalog\Block\Product\View" type="Tatva\Catalog\Block\Product\View" />
+	<preference for="Magento\Catalog\Block\Product\ListProduct" type="Tatva\Catalog\Block\Product\ListProduct" />
+	<preference for="Magento\Catalog\Block\Category\View" type="Tatva\Catalog\Block\Category\View" />
+
+	<preference for="Magento\CatalogUrlRewrite\Observer\CategoryProcessUrlRewriteSavingObserver" type="Tatva\Catalog\Observer\CategoryProcessUrlRewriteSavingObserver" />
+	<preference for="Magento\CatalogUrlRewrite\Observer\UrlRewriteHandler" type="Tatva\Catalog\Observer\UrlRewriteHandler" />
+	<preference for="Magento\Catalog\Model\CategoryLinkManagement" type="Tatva\Catalog\Model\CategoryLinkManagement"/>
+	<type name="Magento\Catalog\Model\ResourceModel\Product\Gallery">
+        <plugin name="external_video_media_resource_backend" type="Magento\ProductVideo\Model\Plugin\ExternalVideoResourceBackend" disabled="true"/>
+    </type>
+    <type name="Magento\Catalog\Model\Product\Attribute\Backend\GroupPrice\AbstractGroupPrice">
+		<plugin name="Tatva_Catalog::removeTirePriceQuery" type="Tatva\Catalog\Plugin\Model\Product\Attribute\Backend\GroupPrice\AbstractGroupPrice" />
+	</type>
+	<type name="Magento\Framework\EntityManager\Operation\ExtensionPool">
+        <arguments>
+            <argument name="extensionActions" xsi:type="array">
+                <item name="Magento\Catalog\Api\Data\ProductInterface" xsi:type="array">
+                    <item name="read" xsi:type="array">
+                        <item name="optionReader" xsi:type="string">Tatva\Catalog\Model\Product\Option\ReadHandler</item>
+                    </item>
+				</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

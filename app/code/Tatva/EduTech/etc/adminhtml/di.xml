@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Catalog\Ui\Component\Listing\Columns\ProductActions">
+        <plugin name="tatva_edutech_log_product_grid_action_add_preview" type="Tatva\EduTech\Plugin\Backend\Catalog\Grid\ProductActions" sortOrder="10" />
+    </type>
+    <type name="Tatva\EduTech\Plugin\Backend\Catalog\Grid\ProductActions">
+        <arguments>
+            <argument name="frontendUrlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+        </arguments>
+    </type>
+    <virtualType name="Magento\Catalog\Ui\DataProvider\Product\Form\Modifier\Pool">
+        <arguments>
+            <argument name="modifiers" xsi:type="array">
+                <item name="edu-tech" xsi:type="array">
+                    <item name="class" xsi:type="string">Tatva\EduTech\Ui\DataProvider\Product\Form\Modifier\Content</item>      
+                    <item name="sortOrder" xsi:type="number">100</item>     
+                </item>
+            </argument>
+        </arguments>
+    </virtualType> 
+    <preference for="Magento\Catalog\Block\Adminhtml\Product\Edit\Button\AddAttribute" 
+    type="Tatva\EduTech\Block\Adminhtml\Product\Edit\Button\AddAttribute" />
+    <preference for="Magento\Catalog\Block\Adminhtml\Product\Helper\Form\Gallery\Content" type="Tatva\EduTech\Block\Adminhtml\Product\Helper\Form\Gallery\Content" />
+</config>

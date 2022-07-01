@@ -1,0 +1,48 @@
+<script type="text/javascript">
+    require(['jquery', 'magnific_popup'], function ($) {
+        $(document).ready(function () {
+
+            $('#left').magnificPopup({
+                items:[
+                    {
+                        src:'#left-popup',
+                    }
+                ],
+                type: 'inline',
+                callbacks: {
+                    open: function () {
+                        // add class to main container
+                        this.contentContainer.addClass('ppt-slide-content');
+                    }
+                },
+            });
+            
+            $('#right').magnificPopup({
+                items:[
+                    {
+                        src:'#right-popup',
+                    }
+                ],
+                type: 'inline',
+                callbacks: {
+                    open: function () {
+                        // add class to main container
+                        this.contentContainer.addClass('ppt-slide-content');
+                    }
+                },
+            })
+
+        });
+    });
+</script>
+<ul class="popup">
+    <li id="left"><?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product_detail_page_left_popup_title')->toHtml(); ?></li>
+    <li><?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product_detail_page_middle_link')->toHtml(); ?></li>
+    <li id="right"><?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product_detail_page_right_popup_title')->toHtml(); ?></li>
+</ul>
+<div id="left-popup" class="mfp-hide white-popup-block">
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product_detail_page_left_popup_content')->toHtml(); ?>
+</div>
+<div id="right-popup" class="mfp-hide white-popup-block">
+    <?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('product_detail_page_right_popup_content')->toHtml(); ?>
+</div>

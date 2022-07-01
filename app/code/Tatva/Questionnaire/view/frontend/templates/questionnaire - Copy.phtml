@@ -1,0 +1,225 @@
+<?php
+$session_var = $this->getCustomerSession()->getData('data');
+$call_flag = null;
+$email = null;
+$phone = null;
+$name = null;
+$do_not_call_me = null;
+$call_me = null;
+$number_of_slides = null;
+$style_option = null;
+$template_or_diagram_details = null;
+$description = null;
+$id = null;
+if ($session_var && is_array($session_var))
+{
+    foreach ($session_var as $form)
+    {
+        $name = $form['name'];
+        $email = $form['email'];
+        $phone = $form['phone'];
+        $call_flag = $form['call_flag'];
+        if ($call_flag == 'Call me')
+        {
+            $call_me = "checked";
+        }
+        if ($call_flag == 'Do Not Call me')
+        {
+            $do_not_call_me = "checked";
+        }
+        $number_of_slides = $form['number_of_slides'];
+        $style_option = $form['style_option'];
+        $template_or_diagram_details = $form['template_or_diagram_details'];
+        $description = $form['description'];
+    }
+}
+if ($call_flag == '')
+{
+    $call_me = "checked";
+}
+$this->getCustomerSession()->unsetData('data');
+?>
+<?php
+if ($this->getCustomerSession()->isLoggedIn())
+{
+    $customerData = $this->getCustomerSession()->getCustomer();
+    $id = $customerData->getId();
+}
+?>
+
+<form  name="questionnaire_form" id="questionnaire_form" action="<?php echo $this->getBaseUrl() . 'questionnaire/index/sendEmail'; ?>" method="POST" enctype="multipart/form-data" autocomplete="off">
+    <div class="std">
+        <div class="product-info-block about-content">
+            <div class="page-title category-title">
+                <h1><?= $block->escapeHtml(__('Custom Design Services FORM')) ?></h1>
+            </div>
+            <p>                
+                <?= $block->escapeHtml(__('Help us understand your requirements better. Fill in this short form, or just email your details to')) ?>
+                <a href="mailto:design@slideteam.net">design@slideteam.net</a>
+                <?= $block->escapeHtml(__(', and let us know if we can call you to ask clarifying questions.')) ?>
+            </p>
+            <div class="user-detail">
+                <ul>
+                    <li>
+                        <label><?= $block->escapeHtml(__('First and Last Name')) ?><em>*</em></label>
+                        <input name="name" value="<?php if ($name) { echo $name; } ?>" type="text" class="input-text" tabindex="1" data-validate='{"required":true}'>
+                    </li>
+                    <li>
+                        <label><?= $block->escapeHtml(__('User ID / Email')) ?><em>*</em></label>
+                        <input name="email" value="<?php if ($email) { echo $email; } ?>" type="text" class="input-text" tabindex="2" data-validate="{required:true, 'validate-email':true}">
+                    </li>
+                    <li>
+                        <label><?= $block->escapeHtml(__('Phone (optional)')) ?></label>
+                        <input name="phone" value="<?php if ($phone) { echo $phone; } ?>" type="text" class="input-text validate-digits" tabindex="3">
+                    </li>
+                    <li>
+                        <label class="blank-label">&nbsp;</label>
+                        <ul class="radio-listing">
+                            <li tabindex="4">
+                                <input type="radio" class="icheck" value="<?= $block->escapeHtml(__('Call me')) ?>" name="call_flag" checked="">
+                                <span><?= $block->escapeHtml(__('Call me')) ?></span>
+                            </li>
+                            <li tabindex="5">
+                                <input type="radio" class="icheck" value="<?= $block->escapeHtml(__('Do not call me')) ?>" name="call_flag">
+                                <span><?= $block->escapeHtml(__('Do not call me')) ?></span>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="user-detail">
+                <h4><?= $block->escapeHtml(__('Fill to the best of your knowledge - no field is mandatory')) ?></h4>
+                <ul>
+                    <li>
+                        <label><?= $block->escapeHtml(__('Number of Slides to be designed')) ?></label>
+                        <input name="number_of_slides" value="<?php if ($number_of_slides) { echo $number_of_slides; } ?>" type="text" class="input-text" tabindex="6">
+                    </li>
+                    <li>
+                        <label><?= $block->escapeHtml(__('Describe Your Style Requirement')) ?> 
+                            <span><?= $block->escapeHtml(__('1. Stylish and Graphical ')) ?>
+                                <em>
+                                    <a href="#" class="tooltips" tabindex="-1">?
+                                        <span>
+                                            <ul class="list">
+                                                <li><?= $block->escapeHtml(__('Consistent 3-5 Colors throughout')) ?></li>
+                                                <li><?= $block->escapeHtml(__('Text in text boxes with shadows/layers etc')) ?></li>
+                                                <li><?= $block->escapeHtml(__('Greater graphical content')) ?></li>
+                                                <li><?= $block->escapeHtml(__('Example Audience - Company Employees, Team Members,Professors and Students, Prospective Customers')) ?></li>
+                                            </ul>
+                                        </span>
+                                    </a>
+                                </em>
+                            </span>
+                            <span><?= $block->escapeHtml(__('2. Elegant and Simple ')) ?>
+                                <em>
+                                    <a href="#" class="tooltips" tabindex="-1">?
+                                        <span>
+                                            <ul class="list">
+                                                <li><?= $block->escapeHtml(__('Consistent 2-3 Colors throughout')) ?></li>
+                                                <li><?= $block->escapeHtml(__('Corporate Style')) ?></li>
+                                                <li><?= $block->escapeHtml(__('Convey ideas graphically but to a degree')) ?></li>
+                                                <li><?= $block->escapeHtml(__('Example Audience - Board of Directors, CEOs, CFOs, Investors, Investment Banking, Highly Business Oriented Audience')) ?></li>
+                                            </ul>
+                                        </span>
+                                    </a>
+                                </em>
+                            </span>
+                            <span><?= $block->escapeHtml(__('3. Informal and Playful ')) ?>
+                                <em>
+                                    <a href="#" class="tooltips" tabindex="-1">?
+                                        <span>
+                                            <ul class="list">
+                                                <li><?= $block->escapeHtml(__('Colorful but consistent themes/shades')) ?></li>
+                                                <li><?= $block->escapeHtml(__('Fancy Graphics - visually appealing')) ?></li>
+                                                <li><?= $block->escapeHtml(__('Example Audience - Community gatherings, Schools, Family gatherings and Parties, Churches and Religious gatherings')) ?></li>
+                                            </ul>
+                                        </span>
+                                    </a>
+                                </em>
+                            </span>
+                            <span><?= $block->escapeHtml(__('4. Combination of the above')) ?> </span>
+                        </label>
+                        <textarea name="style_option" class="input-text" tabindex="7"><?php if ($style_option) { echo $style_option; } ?></textarea>
+                    </li>
+                    <li>
+                        <label><?= $block->escapeHtml(__('URLs or Names of any preferred SlideTeam')) ?> 
+                            <a href=""><u><?= $block->escapeHtml(__('Templates')) ?></u></a> <?= $block->escapeHtml(__('or')) ?> <a href=""><u><?= $block->escapeHtml(__('Diagrams')) ?></u></a><span><a style="color: #393939" href=""><?= $block->escapeHtml(__('Templates are')) ?></a> <?= $block->escapeHtml(__('slide backgrounds')) ?><br><a style="color: #393939" href=""><?= $block->escapeHtml(__('Diagrams are')) ?></a> <?= $block->escapeHtml(__('actual slides')) ?></span>
+                        </label>
+                        <textarea name="template_or_diagram_details" class="input-text" tabindex="8"><?php if ($template_or_diagram_details) { echo $template_or_diagram_details; } ?></textarea>
+                    </li>
+                    <li>
+                        <label><?= $block->escapeHtml(__('Description and Flow')) ?><span><?= $block->escapeHtml(__('Notes to the designer. Be as complete and detailed as you can.')) ?></span></label>
+                        <textarea class="input-text" name="description" tabindex="9"><?php if ($description) { echo $description; } ?></textarea>
+                    </li>
+                    
+					<li>
+						<div class="custom_row">
+							<label><?php $block->escapeHtml(__('Upload Files')) ?> <br> <span><?= $block->escapeHtml(__('Please upload any mockups, presentations, sketches, back of napkin designs etc')) ?><br><?= $block->escapeHtml(__('NOTE: Please use dropbox or yousendit and send us the link if the attachment is greater than')) ?> <strong><?= $block->escapeHtml(__('25 MB')) ?></strong><?= $block->escapeHtml(__(', or mail them separately to design@slideteam.net')) ?></span></label>
+							<div class="custom_textfield">
+				            	<div id="mulitplefileuploader">Upload</div>
+								<div id="status"></div>
+								<input id ="filesToAttach" type ="hidden" name="filesToAttach" />
+								<!--<input id ="uploadedfiles" type ="hidden" name="uploadedfiles" />-->
+							</div>
+						</div>
+					</li>
+                    <li>
+                        <label>&nbsp;</label>
+                        <input type="hidden" name="client_id" value="<?php echo $id; ?>" />
+                       	<button id="finalSubmit" title="Submit" class="action submit primary">
+	                		<span>Submit</span>
+	            		</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+	require(["jquery","jquery-ui-modules/core","jquery-ui-modules/widget","uploadFileJS","domReady!"], function ($) {
+    
+        $(document).ready(function ()
+        {
+            var settings = {
+                url: "<?php echo $block->getUrl('questionnaire/index/save'); ?>",
+                method: "POST",
+                allowedTypes: "pdf, ppt, pptx,doc, docx, jpg, jpeg, png, gif, xlsx, xlsm, xlsb, xls, xltx, xltm, xlt, csv, xlam, xla, ods, zip, txt",
+                maxFileSize: 26214400,
+                fileName: "myfile",
+                multiple: true,
+                onSuccess: function (files, data, xhr)
+                {
+                    var file_data = jQuery.parseJSON(data);                   
+                    $('<input>').attr({
+                        type: 'hidden',
+                        name: file_data.original + "[]",
+                        value: file_data.modified
+                    }).appendTo('form');
+					
+                },
+                onError: function (files, status, errMsg)
+                {                    
+                    $("#status").html(errMsg);
+                }
+            };
+            $("#mulitplefileuploader").uploadFile(settings);
+			var dataForm = $('#questionnaire_form');
+		    var ignore = null;
+
+		    dataForm.mage('validation', {
+		        ignore: ignore ? ':hidden:not(' + ignore + ')' : ':hidden'
+		    }).find('input:text').attr('autocomplete', 'off');
+
+		    $('#finalSubmit').click( function() { //can be replaced with any event
+		        //dataForm.validation('isValid'); //validates form and returns boolean
+				$('.ajax-file-upload > form > input').unwrap();	
+			   
+				if(dataForm.validation('isValid') === false){
+				 	$("#mulitplefileuploader").uploadFile(settings);
+					return false;
+				}
+		    });
+        });	   
+    });	
+</script>

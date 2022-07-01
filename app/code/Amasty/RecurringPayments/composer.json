@@ -1,0 +1,20 @@
+{
+    "name": "amasty/module-recurring-payments-main",
+    "description": "Amasty Subscriptions & Recurring Payments",
+    "require": {
+        "php": "^7.1.0",
+        "amasty/module-recurring-payments-paypal": ">=1.6.2",
+        "amasty/module-recurring-payments-stripe": ">=1.6.3",
+        "amasty/module-recurring-payments-cash-on-delivery": ">=1.6.2",
+        "amasty/base": ">=1.12.5"
+    },
+    "suggest": {
+        "amasty/module-recurring-payments-mftf-2": "Install module-recurring-payments-mftf-2 module to be able to run Recurring Payments MFTF tests for Magento 2.3.5+ version.",
+        "amasty/module-recurring-payments-mftf-3": "Install module-recurring-payments-mftf-3 module to be able to run Recurring Payments MFTF tests for Magento 2.4.0+ version."
+    },
+    "type": "metapackage",
+    "version": "1.6.5",
+    "license": [
+        "Commercial"
+    ]
+}

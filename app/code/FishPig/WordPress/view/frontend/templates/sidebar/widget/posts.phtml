@@ -1,0 +1,81 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php return; ?>
+<?php $posts = $block->getAllPosts();?>
+<?php $frontend_identifies = $block->configData('wordpress/integration/route');?>
+<?php if (count($posts) > 0): ?>
+	<div class="block-posts">
+		<?php if ($title = $this->getTitle()): ?>
+			<h4>Browse by Posts</h4>
+			<div class="tab research-tab clearfix">
+		  		<button id="popular_posts" class="tablinks active tab-btn" onclick="openTabs(event, 'Popular Posts');">Popular Posts</button>
+		  		<button id="recent_posts" class="tablinks tab-btn" onclick="openTabs(event, 'Recent Posts');">Recent Posts</button>
+        	</div>
+		<?php endif; ?>
+		<div class="block-content tabcontent" id="Popular Posts" style="display: block;">
+			<ul id="<?php echo $this->getListId() ?>">
+			<?php foreach($posts as $post): ?>
+				<?php $author = $post->getUser(); ?>
+				<li class="item">
+					<?php if ($featuredImage = $post->getFeaturedImage()):
+                        $sidebar_t_img = $block->getSidebarThumbImage($featuredImage);
+                 	?>  <em><a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $sidebar_t_img; ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"></a></em>
+                	<?php endif;?>
+					<p class="sidebar-post-title custom-content-trim"><a title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" href="<?php echo $post->getPermalink() ?>">
+                 	<?php echo $post->getPostTitle();?></a></p>
+                 	<span><img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/3d-men.png')?>" alt=""> <a href="<?php echo $this->getUrl().$frontend_identifies.'/author/'.str_replace(' ','-',$author->getUserLogin()); ?>"> <?php echo $this->escapeHtml($author->getDisplayName()) ?></a></span>
+				</li>
+			<?php endforeach; ?>
+			</ul>
+		</div>
+		<?php $posts = $this->getPosts(); ?>
+		<?php if (count($posts) > 0): ?>
+			<div class="block-content tabcontent" id="Recent Posts" style="display:none;">
+				<ul id="<?php echo $this->getListId() ?>">
+				<?php foreach($posts as $post): ?>
+				  	<?php $author = $post->getUser(); ?>
+					<li class="item">
+						<?php if ($featuredImage = $post->getFeaturedImage()):					 			
+                        	$sidebar_t_img = $block->getSidebarThumbImage($featuredImage);
+                 		?>  <em><a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"><img src="<?php echo $sidebar_t_img; ?>" alt="<?php echo $this->escapeHtml($post->getPostTitle()) ?>"></a></em>
+                		<?php endif;?>
+                 		<p class="sidebar-post-title custom-content-trim"><a title="<?php echo $this->escapeHtml($post->getPostTitle()) ?>" href="<?php echo $post->getPermalink()  ?>">
+                 		<?php echo $post->getPostTitle();?></a></p>
+                		<span><img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/3d-men.png')?>" alt=""> <a href="<?php echo $this->getUrl().$frontend_identifies.'/author/'.str_replace(' ','-',$author->getUserLogin()); ?>"> <?php echo $this->escapeHtml($author->getDisplayName()) ?></a></span>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+		<?php endif; ?>
+		<script type="text/javascript">
+		    require(['jquery', 'business_research','jQdotdot'], function ($) {
+				
+				function customContentTrim() {
+			        $('.custom-content-trim').dotdotdot({
+			            callback: function (isTruncated) {},
+			            ellipsis: "\u2026 ",
+			            height: 40,
+			            keep: null,
+			            tolerance: 0,
+			            truncate: "word",
+			            watch: "window",
+			        });
+		   		}  
+
+			    $(document).ready(function () {
+			      customContentTrim();
+			    });
+			    
+			    $(document).on('click','.tab-btn',function(){
+			    	customContentTrim();
+			    });
+			    
+			});  
+		</script>  
+	</div>
+<?php endif; ?>

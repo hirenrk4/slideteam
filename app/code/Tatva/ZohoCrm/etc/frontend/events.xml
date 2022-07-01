@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="custom_head_event">
+        <observer name="zoho_customer_log_observer" instance="Tatva\ZohoCrm\Observer\CustomerActivityObserver" shared="false" />
+    </event>
+	<event name="controller_action_predispatch_customer_account_logout">
+    	<observer instance="Tatva\ZohoCrm\Observer\CustomerLogout" name="customer_logout_observer"/>
+    </event>
+</config>

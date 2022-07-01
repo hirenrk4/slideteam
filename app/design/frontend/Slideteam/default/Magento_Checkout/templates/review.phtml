@@ -1,0 +1,46 @@
+<div id="checkout-review-submit">
+   <div class="buttons-set" id="review-buttons-container">
+
+        <div class="review-right">
+            <span class="please-wait" id="review-please-wait" style="display:none;">
+                <img src="<?php echo $this->getViewFileUrl('Magento_Checkout::images/opc-ajax-loader.gif'); ?>" alt="<?= __('Submitting order information...') ?>" title="= __('Submitting order information...') ?>" class="v-middle" /> <?= __('Submitting order information...') ?>
+            </span>
+        </div>
+
+        <div class="review-left">
+            <div class="checkoutcont clearfix">
+                <?php 
+                // echo $this->getLayout()
+                //         ->createBlock('Magento\Cms\Block\Block')
+                //         ->setBlockId('paypal_graphic_steps')
+                //         ->toHtml(); 
+
+                ?>
+                <div class="custom-component-wrapper">
+                    <div id="custom-component" data-bind="scope:'customcomponent'">
+                        <!-- ko template: getTemplate() --><!-- /ko -->
+                        <script type="text/x-magento-init">
+                        {
+                            "#custom-component": {
+                                "Magento_Ui/js/core/app": {
+                                   "components": {
+                                        "customcomponent": {
+                                            "component": "Tatva_Checkout/js/view/summary"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        </script>
+                    </div>
+                    <!-- <div class="opc-custom-edit-cart-div">
+                        <span class="opc-custom-edit-cart-span">
+                            <?= __('Forgot an Item?') ?> <a href="<?php echo $this->getUrl('checkout/cart') ?>"><?= __('Edit Your Cart') ?></a>
+                        </span>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+   </div>
+</div>
+

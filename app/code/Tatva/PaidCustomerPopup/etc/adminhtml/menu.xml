@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Tatva_PaidCustomerPopup::viewData" title="Paid Customer survey data" module="Tatva_PaidCustomerPopup" sortOrder="102" action="paidcustomer/index/index" resource="Tatva_PaidCustomerPopup::viewData" parent="Magento_Customer::customer"/>   
+    </menu>
+</config>

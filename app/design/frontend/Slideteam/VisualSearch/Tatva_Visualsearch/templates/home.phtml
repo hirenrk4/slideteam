@@ -1,0 +1,229 @@
+<?php
+$_media_dir = $this->getMediaPath()."catalog/category/";
+$_media_dir_url = $this->getStoreManager()->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA);
+$categories = $this->getMainCategoryCollection();
+$home_id = $this->getPageIdentifier();
+?>
+
+<div class="container tmpt-finder-wrapper">
+	<div class="page-title category-title page-title-link visual-search clearfix">
+		<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('visual_home_title')->toHtml();?>
+		<?php if(strpos($this->getUrl(''),'business_powerpoint_diagrams/'))
+		{
+			$url = $this->getStoreManager()->getStore(1)->getUrl('how-to-create-an-awesome-powerpoint-presentation-in-3-steps');
+		}?>
+		<div class="visual_home_page_block"><a href="<?php echo $url;?>" target="_new">Create a Presentation in 3 Steps</a></div>
+	</div>
+
+	<?php echo $this->getLayout()->createBlock('Magento\Cms\Block\Block')->setBlockId('shapes_images_block')->toHtml();?>
+	<ul class="sub-categories-block clearfix">
+		<li>Category</li>
+		<li class="sel">Sub Categories</li>
+	</ul>
+
+	<?php if($home_id == 'home') { ?>
+		<?php foreach($categories as $_category): ?>
+			<?php $_file_name = $_category->getImage();
+
+			$cache_dir = $_media_dir . 'cache/';
+			$temp_img_url = "";
+			$temp_img_sub_url = "";
+			if (file_exists($cache_dir . $_file_name)) 
+			{
+				$temp_img =  $_media_dir .'cache/'. $_file_name;
+				$temp_img_url =  $_media_dir_url ."catalog/category/cache/" .$_file_name;
+			} 
+			elseif (file_exists($_media_dir . $_file_name)) 
+			{
+				if (!is_dir($cache_dir)) 
+				{
+					mkdir($cache_dir);
+				}
+
+				if (!file_exists($cache_dir . $_file_name)) 
+				{
+					$_image = $this->getImageFactory()->create($_media_dir . $_file_name);
+					$_image->constrainOnly(true);
+					$_image->keepFrame(true);
+					$_image->keepTransparency(true);
+					$_image->resize(141, 98);
+					$_image->save($cache_dir . $_file_name);
+				}
+				$temp_img =  $cache_dir . $_file_name;
+				$temp_img_url =  $_media_dir_url ."catalog/category/cache/" . $_file_name;
+			}
+			?>
+			<?php
+		//$temp_img_url = $this->getViewFileUrl('Magento_Cms::home-page/templates-img.jpg');
+		//$temp_img_url = $this->getSkinUrl('images/product01.jpg');
+
+			$category_name = $_category->getName();
+			if(strlen($category_name) > 35)
+				$category_name_t = substr($category_name, 0, 35)."...";
+			else
+				$category_name_t =  $category_name;    
+
+			?>
+			<div class="category-col">
+				<div class="currently-trending top-trending-slider clearfix">
+					<div class="trending-slider-wrapper">
+						<div class="col-left-3">
+							<ul>
+								<li class="sel">
+									<lable><?php echo $category_name_t;?></lable>
+									<img class="lazyload img-responsive" src="<?php echo $block->getViewFileUrl('Magento_Theme::images/visualsearch/89.gif'); ?>" data-src="<?php echo $temp_img_url; ?>" />
+									<!-- <img class="img-responsive" src="<?php echo $temp_img_url; ?>" alt="" /> -->
+									<span></span>
+								</li>
+							</ul>
+
+						</div>
+						<div class="owl-carousel owl-theme trending-slider">
+							<?php $ids = $_category->getChildren();
+							$child_categories = $this->getMainChildCategoryCollection($ids);?>
+							<!-- Child Category -->
+							<?php foreach ($child_categories as $childCategory) :?>
+								<?php $_file_name_child = $childCategory->getImage();
+
+								$child_category_name = $childCategory->getName();
+								if(strlen($child_category_name) > 35)
+									$child_category_name_t = substr($child_category_name, 0, 35)."...";
+								else
+									$child_category_name_t = $child_category_name;
+
+								$cache_dir = $_media_dir . 'cache/';
+								if (file_exists($cache_dir . $_file_name_child))
+								{
+									$temp_img_sub =  $_media_dir.'cache/'. $_file_name_child;
+									$temp_img_sub_url =  $_media_dir_url ."catalog/category/cache/" . $_file_name_child;
+								}
+								elseif (file_exists($_media_dir . $_file_name_child))
+								{
+									if (!is_dir($cache_dir))
+									{
+										mkdir($cache_dir);
+									}
+									if (!file_exists($cache_dir . $_file_name_child))
+									{
+										$_image = $this->getImageFactory()->create($_media_dir . $_file_name_child);
+										$_image->constrainOnly(true);
+										$_image->keepFrame(true);
+										$_image->keepTransparency(true);
+										$_image->resize(137, 95);
+										$_image->save($cache_dir . $_file_name_child);
+									}
+									$temp_img_sub =  $cache_dir . $_file_name_child;
+									$temp_img_sub_url =  $_media_dir_url ."catalog/category/cache/" . $_file_name_child;
+								}
+								?>
+								<?php 
+							//$temp_img_sub_url = $this->getViewFileUrl('Magento_Cms::home-page/templates-img.jpg');
+							//$temp_img_sub_url = $this->getSkinUrl('images/product02.jpg');
+								?>
+								<div class="item">
+									<ul>
+										<li>
+											<span>
+												<a href="<?php echo $childCategory->getUrl() ?>">
+													<?php echo $child_category_name_t;?>
+												</a>
+											</span>
+											<a href="<?php echo $childCategory->getUrl() ?>">
+												<img class="lazyload img-responsive"
+												src="<?php echo $block->getViewFileUrl('Magento_Theme::images/visualsearch/89.gif'); ?>"
+												data-src="<?php echo $temp_img_sub_url; ?>" data-effect="fadeIn" alt="" height="auto" width="auto" />
+												<!-- <img class="img-responsive" src="<?php echo $temp_img_sub_url; ?>" alt=""/> -->
+											</a>
+											<div class="custom-dropdown">
+												<?php  $sub_ids = $childCategory->getChildren();
+												$child_sub_categories = $this->getCategoryCollection($sub_ids);
+												$child_sub_categories_array = array();
+												foreach ($child_sub_categories as $sub_categories)
+												{
+													$child_sub_categories_array[]=$sub_categories->getName();
+												}
+												sort($child_sub_categories_array);
+												?>
+												<select data-type='custom-dropdown' id="select" onchange="window.location.href=this.value" title="<?= $block->escapeHtml(__('Number of Components')) ?>">
+													<option value="">--Nodes--</option>
+													<option value="<?php echo $childCategory->getUrl() ?>">All</option>
+													<?php foreach($child_sub_categories_array as $value)
+													{
+														foreach ($child_sub_categories as $sub_categories)
+														{
+															if($sub_categories->getName() == $value)
+															{
+																echo $_selected = ($sub_categories->getId() == $this->getCategoryLayer()->getCurrentCategory()->getId()) ? ' selected="selected"' : '' ?>
+																<option value="<?php echo $sub_categories->getUrl() ?>"<?php echo $_selected ?>><?= $block->escapeHtml(__($sub_categories->getName())) ?>
+															</option>
+														<?php  }
+													}
+												}
+												?>
+											</select>
+										</div>
+									</li>
+								</ul>
+							</div>
+						<?php endforeach; ?>
+						<!-- Child Category -->
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php endforeach; ?>
+<?php } ?>
+</div>
+
+
+<script type="text/javascript">
+	require(['jquery','owl_carausel','dropkick'], function ($)
+	{
+		$("select[data-type='custom-dropdown']").dropkick(
+		{
+			mobile: true
+		});		
+
+		$('.trending-slider').owlCarousel(
+		{
+			nav:true,
+            pagination:false,
+            itemsCustom : false,
+            rewindNav : false,
+            lazyLoad: false,
+            responsiveClass:true,
+            scrollPerPage : true,
+            navText : ["", ""],
+			responsive:{
+				0:{
+					items:1,
+					slideBy:1
+				},
+				375:{
+					items:1,
+					slideBy:1
+				},
+				576:{
+					items:2,
+					slideBy:1
+				},
+				768:{
+					items:4,
+					slideBy:1
+				},
+				1080:{
+					items:5,
+					slideBy:1
+				},
+				1280:{
+					items:6,
+					slideBy:1
+				},
+				1367:{
+					items:7,
+					slideBy:1
+				}
+			}
+		});
+	});
+</script>

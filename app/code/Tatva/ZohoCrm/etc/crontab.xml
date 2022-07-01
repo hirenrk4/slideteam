@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+   <group id="zohocrm_token_cron">
+      <job instance="Tatva\ZohoCrm\Cron\AccessToken" method="execute" name="tatva_zohocrm_token_cron">
+         <schedule>*/50 * * * *</schedule>
+      </job>
+      <job instance="Tatva\ZohoCrm\Cron\ZohoTracking" method="execute" name="tatva_zohocrm_trackingdata_cron">
+         <schedule>*/15 * * * *</schedule>
+      </job>
+      <job instance="Tatva\ZohoCrm\Cron\DeleteZohoTrackingData" method="execute" name="tatva_zohocrm_delete_trackingdata_cron">
+         <schedule>0 2 * * *</schedule>
+      </job>
+   </group>  
+</config>

@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="1column-cms">
+    <head>
+        <title>SlideTeam</title>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Tatva\Limit\Block\Index" name="custom.limit.error" template="Tatva_Limit::403.phtml" />
+        </referenceContainer>
+    </body>    
+</page>

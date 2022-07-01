@@ -1,0 +1,116 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ * @see Tatva_Corerewrite_Block_Catalog_Product_View_Media
+ */
+//$metadesc = $this->getIframeTitle();
+
+?>
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$languagestatus = $_helper->productAttribute($_product, $_product->getLanguagestatus(), 'languagestatus');
+$blockObj= $block->getLayout()->createBlock('\Tatva\Catalog\Block\Product\View');
+?>
+<?php if (count($this->getGalleryImages()) > 0): ?>
+    <?php $_collectionSize = count($this->getGalleryImages()); ?>
+    <?php $_columnCount = 4; ?>
+    <div class="slick-wrapper_upper">
+        <div class="slick-wrapper">
+            <div class="container">
+            <div class="all_slides_inner">
+                <h2>Thumbnails of all the slides</h2>
+                <div class="media_loader"><img src="<?php echo $this->getViewFileUrl('images/loader-2.gif'); ?>" alt="loader"></div>
+                <div id="slick1">
+                <!-- <ul class="products-grid products-grid--max-5-col box-up-sell"> -->
+                    <?php
+                    $i = 0;
+                    $j = 0;
+                    foreach ($this->getGalleryImages() as $_image):
+                        
+                        $imgUrl = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'resume_page_list')->setImageFile($_image->getFile())->getUrl();
+                        ?>
+                        <div class="slide-item">
+                        <li class="all_slides_custom">
+                            <a class="product-image" data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->getGalleryUrl($_image) ?>","windowName":"orderitems","width":1500,"height":700,"top":0,"left":0,"resizable":1,"scrollbars":1}}'  title="<?php echo $_product->getName(); ?>" href="#">
+                                <img class="" data-lazy="<?php echo $_image->getData('small_image_url'); ?>" alt="<?php echo $_product->getName(); ?>" height="auto" width="auto">
+                            </a>
+                        </li>
+                    </div>
+            <?php endforeach; ?>
+                <!-- </ul> -->
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php $img_row = 3; ?>
+<?php if (count($this->getGalleryImages()) <= 4): ?>
+    <?php $img_row = 1; ?>
+<?php elseif(count($this->getGalleryImages()) <= 8 && count($this->getGalleryImages()) >= 5) : ?>
+    <?php $img_row = 2; ?>
+<?php endif; ?>
+<script type="text/javascript">
+    require([
+        'jquery'
+    ],function($){
+        $(document).ready(function(){
+            var imgrow = '<?php echo $img_row; ?>';
+            $(".media_loader").css("display", "none");
+            $("#slick1").css("display", "block");
+            $('#slick1').slick({
+            rows: imgrow,
+            lazyLoad: 'ondemand',
+            dots: false,
+            arrows: true,
+            infinite: false,
+            speed: 600,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                  }
+                },
+                {
+                  breakpoint: 576,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                  }
+                }
+            ]
+            });
+        });
+    });
+</script>

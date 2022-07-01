@@ -1,0 +1,5 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\User\Controller\Adminhtml\Auth\ResetPasswordPost" type="Tatva\KillSession\Controller\Adminhtml\Auth\ResetPasswordPost" />
+    <preference for="Magento\Backend\Controller\Adminhtml\System\Account\Save" type="Tatva\KillSession\Controller\Adminhtml\System\Account\Save" />
+    <preference for="Magento\User\Controller\Adminhtml\User\Save" type="Tatva\KillSession\Controller\Adminhtml\User\Save" />
+</config>

@@ -1,0 +1,48 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/** This changes need to valid applying filters and configuration before search process is started. */
+$productList = $block->getProductListHtml();
+?>
+<div class="product-info-block">
+    <div class="container">
+        <div class="main-wrapper list-detail-consistency clearfix">
+            <div class="page-title category-title">
+                <h1 class="custom-category-title all-products-title "><?php echo "Powerpoint Templates and Google slides for ".$block->getSearchQueryText()."";?></h1>
+                <h2 class="custom-category-title">Save Your Time and attract your audience with our fully editable PPT Templates and Slides.</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<?php if ($block->getResultCount()) : ?>
+    <?= /* @noEscape */ $block->getChildHtml('tagged_product_list_rss_link') ?>
+<div class="search results">
+    <?php if ($messages = $block->getNoteMessages()) : ?>
+    <div class="message notice">
+        <div>
+            <?php foreach ($messages as $message) : ?>
+                <?= /* @noEscape */ $message ?><br />
+            <?php endforeach; ?>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?= /* @noEscape */ $productList ?>
+</div>
+<?php else : ?>
+<div class="container">
+    <div class="message notice">
+        <div>
+            <?= $block->escapeHtml($block->getNoResultText() ? $block->getNoResultText() : __('Your search returned no results.')) ?>
+            <?= /* @noEscape */ $block->getAdditionalHtml() ?>
+            <?php if ($messages = $block->getNoteMessages()) : ?>
+                <?php foreach ($messages as $message) : ?>
+                    <br /><?= /* @noEscape */ $message ?>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

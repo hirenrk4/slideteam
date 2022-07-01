@@ -1,0 +1,21 @@
+<div class="reg-social">
+	<?php 
+	$availableSocials = $block->getAvailableSocials(); 
+	if ($block->canShow() && sizeof($availableSocials)):
+	?>
+	<div class="social-login-authentication-channel account-social-login">
+        <div class="social-block">
+            <?php foreach ($availableSocials as $key => $social): ?>
+                <div class="actions-toolbar social-btn social-btn-actions-toolbar <?= $key ?>-login">
+                    <a class="btn btn-block btn-social btn-<?= $block->getBtnKey($key) ?> social-btn" rel="nofollow"
+                       data-url='<?php echo $social['login_url'] ?>'>
+                        <?php echo __('Sign in with %1', $social['label']) ?>
+                    </a>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+	<?php endif; ?>
+	<p>By signing up you indicate that you have read and agree to SlideTeam <a href="<?php echo $this->getUrl('terms-of-use'); ?>"> Terms of Service </a> and <a href="<?php echo $this->getUrl('privacy-policy'); ?>">Privacy Policy</a>
+    </p>
+</div>

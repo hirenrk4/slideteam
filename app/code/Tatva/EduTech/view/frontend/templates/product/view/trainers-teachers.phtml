@@ -1,0 +1,68 @@
+<?php
+$product = $block->getProduct();
+$trainers_tab = $product->getData('trainers_tab');
+$teachers_tab = $product->getData('teachers_tab');
+if (!(($trainers_tab  == "" || $trainers_tab == null) && ($teachers_tab  == "" || $teachers_tab == null))) :
+?>
+<div class="trainers_teachers">
+    <div class="edu_tab">
+        <?php if ($trainers_tab  != "" || $trainers_tab != null) : ?>
+            <button class="tablinks active" id="defaultOpen">Trainers</button>
+        <?php endif; ?>
+        <?php if ($teachers_tab  != "" || $teachers_tab != null) : ?>
+            <button class="tablinks" id="teacher">Teachers</button>
+        <?php endif; ?>
+    </div>
+    <?php if ($trainers_tab  != "" || $trainers_tab != null) : ?>
+    <div id="London" class="tabcontent">
+        <h3>Why Corporate Trainers love us?</h3>
+            <?php echo $trainers_tab; ?>
+    </div>
+    <?php endif; ?>
+    <?php if ($teachers_tab  != "" || $teachers_tab != null) : ?>
+    <div id="Paris" class="tabcontent">
+        <h3>Why Teachers love us?</h3>
+            <?php echo $teachers_tab; ?>
+    </div>
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+    require(['jquery','domReady!'], function (jQuery){
+        //jQuery( "#defaultOpen" ).addClass( "active" );
+        //jQuery("#London").show();
+
+        jQuery("#defaultOpen").click(function() {
+            jQuery( "#defaultOpen" ).addClass( "active" )
+            jQuery( "#teacher" ).removeClass( "active" )
+            jQuery("#London").show();
+            jQuery("#Paris").hide();
+        });
+     
+        jQuery("#teacher").click(function() {
+            jQuery( "#teacher" ).addClass( "active" )
+            jQuery( "#defaultOpen" ).removeClass( "active" )
+            jQuery("#Paris").show();
+            jQuery("#London").hide();
+        });
+    });
+</script>
+<?php endif; ?>
+
+<!-- <script>
+        function openCity(evt, cityName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(cityName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Get the element with id="defaultOpen" and click on it
+        document.getElementById("defaultOpen").click();
+</script> -->

@@ -1,0 +1,15 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="styles"/>
+    <head>
+		<css src="Tatva_Notification::css/notification.css"/>
+        <link rel="stylesheet" type="text/css" src="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800;900&amp;amp;amp;display=swap" src_type="url" /> 
+	</head>
+    <body>
+    	<referenceContainer name="js">
+         <block class="Magento\Framework\View\Element\Template" template="Tatva_Notification::view/js.phtml" name="notification.view.model.js" />
+      </referenceContainer>
+        <referenceContainer name="content">
+            <uiComponent name="notification_listing"/>
+        </referenceContainer>
+    </body>
+</page>

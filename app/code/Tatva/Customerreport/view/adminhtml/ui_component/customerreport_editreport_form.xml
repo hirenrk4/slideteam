@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">customerreport_editreport_form.customerreport_customer_report_data_source</item>
+            <item name="deps" xsi:type="string">customerreport_editreport_form.customerreport_customer_report_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Subscription Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">customerreport_editreport_form</item>
+        </item>
+        
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+            <item name="navContainerName" xsi:type="string">left</item>
+        </item>
+
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Tatva\Customerreport\Block\Adminhtml\Editreport\BackButton</item>
+            <item name="reset" xsi:type="string">Tatva\Customerreport\Block\Adminhtml\Editreport\ResetButton</item>
+            <item name="save" xsi:type="string">Tatva\Customerreport\Block\Adminhtml\Editreport\SaveButton</item>
+            <!-- <item name="save_and_continue" xsi:type="string">Tatva\Customerreport\Block\Adminhtml\Editreport\SaveAndContinueButton</item> -->
+        </item>
+        <!-- <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+            <item name="navContainerName" xsi:type="string">left</item>
+        </item> -->
+    </argument>
+    <dataSource name="customerreport_customer_report_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Tatva\Customerreport\Model\DataProviderReport</argument>
+            <argument name="name" xsi:type="string">customerreport_customer_report_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">subscription_history_id</argument>
+            <argument name="requestFieldName" xsi:type="string">subscription_history_id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/*/savereport"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="addSubscription" sortOrder="5">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Subscription Information</item>
+                <item name="collapsible" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <field name="customer_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Customer Id</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">customer_id</item>
+                     <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="firstname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">First Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">firstname</item>
+                    <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+         <field name="lastname">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Last Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">lastname</item>
+                     <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="parent_customer_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Parent customer id</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">parent_customer_id</item>
+                     <item name="disabled" xsi:type="boolean">true</item>
+                </item>
+            </argument>
+        </field>
+        <field name="subscription_period">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="array">                    
+                    <item name="monthaly" xsi:type="array">
+                        <item name="value" xsi:type="string">Monthly</item>
+                        <item name="label" xsi:type="string" translate="true">Monthly</item>
+                    </item>
+                    <item name="semi-annual" xsi:type="array">
+                        <item name="value" xsi:type="string">Semi-annual</item>
+                        <item name="label" xsi:type="string" translate="true">Semi-annual</item>
+                    </item>
+                    <item name="annual" xsi:type="array">
+                        <item name="value" xsi:type="string">Annual</item>
+                        <item name="label" xsi:type="string" translate="true">Annual</item>
+                    </item>
+                    <item name="annual-custom" xsi:type="array">
+                        <item name="value" xsi:type="string">Annual with custom design</item>
+                        <item name="label" xsi:type="string" translate="true">Annual with custom design</item>
+                    </item>
+                    <item name="annual-4-user" xsi:type="array">
+                        <item name="value" xsi:type="string">Annual 4 User License</item>
+                        <item name="label" xsi:type="string" translate="true">Annual 4 User License</item>
+                    </item>
+                    <item name="annual-20-user" xsi:type="array">
+                        <item name="value" xsi:type="string">Annual 20 User License</item>
+                        <item name="label" xsi:type="string" translate="true">Annual 20 User License</item>
+                    </item>
+                    <item name="annual-company-wide-unlimited-user" xsi:type="array">
+                        <item name="value" xsi:type="string">Annual Company Wide Unlimited User License</item>
+                        <item name="label" xsi:type="string" translate="true">Annual Company Wide Unlimited User License</item>
+                    </item>
+                    <item name="annual-15-user" xsi:type="array">
+                        <item name="value" xsi:type="string">Annual 15 User Education License</item>
+                        <item name="label" xsi:type="string" translate="true">Annual 15 User Education License</item>
+                    </item>
+                    <item name="annual-institute-wide-unlimited-user" xsi:type="array">
+                        <item name="value" xsi:type="string">Annual UNLIMITED User Institute Wide License</item>
+                        <item name="label" xsi:type="string" translate="true">Annual UNLIMITED User Institute Wide License</item>
+                    </item>
+                </item>
+                <item name="config" xsi:type="array">
+                    <item name="label" xsi:type="string">Subscription Period</item>
+                    <item name="visible" xsi:type="boolean">true</item>
+                    <item name="dataType" xsi:type="string">boolean</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">model</item>
+                </item>
+            </argument>
+        </field>
+        
+        <field name="subscription_title">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Subscription Title</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">subscription_title</item>
+                </item>
+            </argument>
+        </field>
+        <field name="subscription_detail">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Subscription Detail(For internal purpose)</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">subscription_detail</item>
+                </item>
+            </argument>
+        </field>
+
+         <!-- <field name="subscription_period">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Subscription Period</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                   <item name="additionalInfo" xsi:type="string" translate="true">
+                   &lt;div class="admin__field-note"&gt;
+                        Below are available subscription period&lt;br/&gt;
+                        Monthly&lt;br/&gt;
+                        Semi-annual&lt;br/&gt;
+                        Annual&lt;br/&gt;
+                        Annual with custom design&lt;br/&gt;
+                        4 user enterprise license
+                    &lt;/div&gt;                      
+                    </item>
+                    <item name="dataScope" xsi:type="string">subscription_period</item>
+             </item>
+            </argument>
+        </field> -->
+        <field name="from_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Start Date</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">from_date</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                    </item> 
+
+                 </item>
+            </argument>
+        </field>
+         <field name="to_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">End Date</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">to_date</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item> 
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                    </item> 
+                 </item>
+            </argument>
+        </field>
+        <field name="renew_date">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">date</item>
+                    <item name="label" xsi:type="string" translate="true">Renewal Date</item>
+                    <item name="formElement" xsi:type="string">date</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">renew_date</item> 
+                    <item name="options" xsi:type="array">
+                        <item name="dateFormat" xsi:type="string">yyyy-MM-dd</item>
+                    </item> 
+                    <item name="disabled" xsi:type="boolean">true</item>
+                 </item>
+            </argument>
+        </field>
+         <field name="download_limit">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Download Limit</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">download_limit</item>
+                     <item name="notice" xsi:type="string" translate="true">Please provide minus value(i.e., -1) to make download unlimited.</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item> 
+                 </item>
+            </argument>
+        </field>
+        <field name="status_success">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="object">Tatva\Subscription\Ui\Component\Listing\Column\Statusoptions</item>
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Status</item>
+                    <item name="formElement" xsi:type="string">select</item>
+                    <item name="source" xsi:type="string">model</item>
+                    <item name="dataScope" xsi:type="string">status_success</item>
+                    <item name="default" xsi:type="string">Paid</item>
+                </item>
+            </argument>
+        </field>
+</fieldset> 
+</form>

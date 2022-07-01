@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+   	<group id="daily_publish_blogs">
+      	<job instance="Tatva\Notification\Cron\Blog" method="execute" name="tatva_blogpublish_cron">
+      		<schedule>30 12,6 * * *</schedule>
+			</job>
+		</group>
+   	<group id="weekly_notification">
+      	<job instance="Tatva\Notification\Cron\NotifyServices" method="scheduleTemplateFinder" name="tatva_template_finder_cron">
+      		<schedule>30 2 * * 1</schedule>
+      	</job>
+      	<job instance="Tatva\Notification\Cron\NotifyServices" method="schedulePopularProduct" name="tatva_popular_product_cron">
+      		<schedule>30 7 * * 2</schedule>
+      	</job>
+      	<job instance="Tatva\Notification\Cron\NotifyServices" method="scheduleDesignService" name="tatva_design_service_cron">
+      		<schedule>30 8 * * 3</schedule>
+      	</job>
+      	<job instance="Tatva\Notification\Cron\NotifyServices" method="scheduleResearchService" name="tatva_research_service_cron">
+      		<schedule>30 9 * * 4</schedule>
+      	</job>
+      	<job instance="Tatva\Notification\Cron\NotifyServices" method="scheduleEbook" name="tatva_ebook_cron">
+      		<schedule>30 10 * * 5</schedule>
+      	</job>
+   	</group>
+</config>

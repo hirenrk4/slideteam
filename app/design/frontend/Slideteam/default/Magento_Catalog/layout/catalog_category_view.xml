@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <remove src="Emarsys_Emarsys::js/emarsys.js"/>
+        <remove src="Magento_Theme::js/lazyload/lazy.js"/>
+        <remove src="Magento_Theme::js/jquery.dotdotdot.js"/>
+        <remove src="Magento_Theme::js/theme-general.js"/>
+        <remove src="Amasty_Stripe::css/source/mkcss/amstripe.css"/>
+        <script src="Magento_Theme::js/ddimgtooltip.js" />
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+        <css src="Magento_Theme::css/ddimgtooltip.css" media="screen and (min-width: 1024px)"/>
+        <css src="Magento_Theme::css/catalog/freesample/freesample.css" media="all"/>
+        <css src="Magento_Theme::css/catalog/catalog-style.css" media="all" order="300" />
+        <css src="Magento_Theme::css/theme/catalog-tooltip.css" media="screen and (min-width: 1024px)" order="400"/>
+    </head>
+    <body>
+        <attribute name="class" value="wide-product-list"/>
+        <referenceBlock name="category.description" remove="true" />
+        <referenceContainer name="columns.top">
+            <container name="custom.subcategory.wrapper" htmlTag="div" htmlClass="container" after="category.view.container">
+                <block class="Tatva\Catalog\Block\Category\View" name="custom.category.subcategories" template="Magento_Catalog::category/subcategories.phtml" after="-"/>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="category.view.container" htmlTag="div" htmlClass="category-view">
+            <container name="category.inner.container" htmlTag="div" htmlClass="container" before="-">
+                <container name="category.info.block" htmlTag="div" htmlClass="product-info-block">
+                    <container name="category.main.wrapper" htmlTag="div" htmlClass="main-wrapper list-detail-consistency clearfix">
+                        <block class="Tatva\Catalog\Block\Category\Title" name="custom.category.header.title" template="Magento_Catalog::category/title.phtml" before="-"/>
+                    </container>
+                </container>
+            </container>
+        </referenceContainer>
+
+        <!-- <container name="category.sorting" as="category.sorting" htmlTag="div" htmlClass="product_list_sorting">
+            <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_sorting" template="Magento_Catalog::product/list/toolbar/sorter.phtml">
+            </block>
+        </container> -->
+        
+        <referenceContainer name="page.top">
+            <block class="Tatva\Generalconfiguration\Block\GeneralBlock" name="category_banner_left" template="Magento_Catalog::category/category_banner.phtml" after="slideteam-sidenav-wrapper" />
+        </referenceContainer>
+
+       <!--  <referenceContainer name="before.body.end">
+            <block class="Tatva\Emarsys\Block\Emarsys" name="google.slide.emarsys.init" template="Tatva_Emarsys::custom_google_slides_widget_in_listing.phtml" after="-"/>
+        </referenceContainer> -->
+        
+        <referenceBlock name="category.image" remove="true"/>
+        <referenceBlock name ="webextend" remove="true" />
+        <referenceBlock name="authentication-popup" remove ="true" />
+        <move element="category.description" destination="category.main.wrapper"/>
+        <move element="category.sorting" destination="category.main.wrapper"/>
+    </body>
+</page>

@@ -1,0 +1,270 @@
+<?php
+
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var Tatva\Downloable\Block\Product\View\ListView $block */
+$barData = $block->getProgessBarData();
+$_items = $block->getReviewsCollection()->getItems();
+$format = $block->getDateFormat() ?: \IntlDateFormatter::LONG;
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->create('Magento\Customer\Model\Session');
+?>
+<div class="rating_review_container" id="rating_review_container">
+    <div class="reviews-top-part">
+        <div class="reviews-header">
+            <h3>Ratings and Reviews</h3>
+        </div>
+        <div class="review_content">
+            <?php
+            $blockObj = $this->getLayout()->createBlock('Magento\Review\Block\Product\ReviewRenderer')->setProduct($block->getProduct());
+            $url = $block->getReviewsUrl() . '#reviews';
+            $urlForm = $block->getReviewsUrl() . '#review-form';
+            ?>
+            <?php $rating = $blockObj->getRatingSummary(); ?>
+            <div class="product-reviews-summary<?= !$rating ? ' no-rating' : '' ?>" >
+                <div class="rating-summary">
+                    <?php if ($rating) : ?>
+                    <div class="review_content_wrap">
+                        <div>
+                            <label>
+                                <span class="avg_rating"><?php echo round($rating / 20,1) ?></span>
+                            </label>
+                        </div>
+                        <div class="rating-result">
+                            <span style="width:<?= round($blockObj->escapeHtmlAttr($rating),1); ?>%">
+                                <span>
+                                    <span><?= round($blockObj->escapeHtml($rating),1); ?></span>% of <span>100</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="rating-dist">
+                        <ul>
+                        <?php for ($k = 100; $k >= 20; $k -= 20) : ?>
+                        <li>
+                            <span class="mdi-action-grade"></span>
+                            <div class="rating-star">
+                                <label>
+                                    <h6 class="rating-dist-val"><?php echo $k / 20 ?></h6>
+                                </label>
+                            </div>
+                            <div class="w3-light-grey rating-dist-bar">
+                                <div class="w3-grey" style="height:10px;width:<?php echo ($barData['progressbardata'][$k] / $barData['total']) * 100 ?>%"></div>
+                            </div>
+                            <label><?php echo $barData['progressbardata'][$k] ?></label>
+                        </li>
+                        <?php endfor; ?>
+                        </ul>
+                    </div>
+                    <?php else : ?>
+                    <div class="review_content_wrap">
+                        <div>
+                            <label>
+                                <h3 class="pro_avg_rating">0</h3>
+                            </label>
+                        </div>
+                        <div class="rating-result">
+                            <span style="width:0%">
+                                <span>
+                                    <span><?= round($blockObj->escapeHtml($rating),1); ?></span>% of <span>100</span>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="rating-dist">
+                        <ul>   
+                        <?php for ($k = 100; $k >= 20; $k -= 20) : ?>
+                        <li>
+                            <span class="mdi-action-grade"></span>
+                            <div class="rating-star">
+                                <label>
+                                    <h6 class="rating-dist-val"><?php echo $k / 20 ?></h6>
+                                </label>
+                            </div>
+                            <div class="w3-light-grey rating-dist-bar">
+                                <div class="w3-grey" style="height:10px;width:0%"></div>
+                            </div>
+                            <label>0</label>
+                        </li>
+                        <?php endfor; ?>
+                        </ul>
+                    </div>
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php
+echo $this->getLayout()
+    ->createBlock('Magento\Review\Block\Product\Review')
+    ->setTemplate('Tatva_Downloadable::review.phtml')->setName('reviews.tab')
+    ->toHtml();
+?>
+<div class="data item content  relevant_reviews" data-role="content" aria-labelledby="tab-label-reviews" role="tabpanel" aria-hidden="false">
+    <div class="block review-list" id="customer-reviews">
+        <div class="block-title">
+            <b><?= $block->escapeHtml(__('Most Relevant Reviews')) ?><b>
+        </div>
+        <div class="block-content">
+            <div class="toolbar review-toolbar">
+                <?= $block->getChildHtml('toolbar') ?>
+            </div>
+            <?php if (count($_items)) : ?>
+            <ol class="items review-items">
+                <?php foreach ($_items as $_review) : ?>
+                <li class="item review-item">
+                    <?php if (count($_review->getRatingVotes())) : ?>
+                    <div class="review-ratings">
+                        <?php foreach ($_review->getRatingVotes() as $_vote) : ?>
+                        <div class="rating-summary item">
+                            <div class="rating-result" title="<?= $block->escapeHtmlAttr($_vote->getPercent()) ?>%">
+                                
+                                <span style="width:<?= $block->escapeHtmlAttr($_vote->getPercent()) ?>%">
+                                    <span ><?= $block->escapeHtml($_vote->getPercent()) ?>%</span>
+                                </span>
+                            </div>
+                        </div>
+                        <?php endforeach; ?>
+                    <div class="review-detail">
+                        <p class="review-author">
+                            <span class="review-details-label"><?= $block->escapeHtml(__('by')) ?></span>
+                            <strong class="review-details-value"><?= $block->escapeHtml($_review->getNickname()) ?></strong>
+                        </p>
+                        <p class="review-date">
+                            <time class="review-details-value"  datetime="<?= $block->escapeHtmlAttr($block->formatDate($_review->getCreatedAt(), $format)) ?>"><?= $block->escapeHtml($block->formatDate($_review->getCreatedAt(), $format)) ?></time>
+                        </p>
+                    </div>
+                    </div>
+                    <div class="review-content" >
+                        <?= nl2br($block->escapeHtml($_review->getDetail())) ?>
+                    </div>
+                    <?php endif; ?>
+                    
+                </li>
+                <?php endforeach; ?>
+            </ol>
+            <?php else : ?>
+            <div class="product-grid-outer ">
+                <p>No Reviews</p>
+            </div>
+            <?php endif; ?>
+            <div class="toolbar review-toolbar">
+                <?= $block->getChildHtml('toolbar') ?>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div class="w3-border">
+    <div class="w3-grey" style="height:24px;width:20%"></div>
+</div> 
+<script>
+    require([
+        'jquery'
+    ], function($) {
+        // jQuery(document).ready(function() {
+        //     jQuery('.review-form').hide();
+        // });
+        // jQuery('.action.formanchor').on('click', function() {
+        
+        //         jQuery('.review-form').show();
+                jQuery('.review-add .block-content').css('border-top','1px solid #ccc');
+            // } else {
+            //     jQuery('.review-form').hide();
+            // }
+        //})
+    });
+</script>
+<script type="text/javascript">
+    require(['jquery', 'magnific_popup'], function($) {
+        var addthis_product = 'mag-1.0.1';
+        var addthis_config = {
+            pubid: 'unknown',
+            data_track_addressbar: true
+        };
+        $(document).ready(function() {
+            var crossImg = '<?php echo $this->getViewFileUrl('Tatva_Free::images/cancel_round.png'); ?>';
+
+            $(document).on('click', '.login-box', function(e) {
+                $.magnificPopup.close(); // Close existing popup
+
+                // Open new popup
+                $.magnificPopup.open({
+                    mainClass: 'ajaxlogin-main-popup',
+                    items: {
+                        src: '#ajaxlogin-create-window',
+                        type: 'inline'
+                    },
+                    callbacks: {
+                        open: function() {
+                            this.contentContainer.addClass('ajax-register-popup');
+                            $('body').addClass('ajax-popup-open');
+                            var jQuerythis = $(".captcha-wrapper .field");
+                            jQuerythis.find(".input-text").css({"padding-left": jQuerythis.find("> label").innerWidth() + 12});
+                            jQuerythis.find(".input-text").css({"max-width": "100%"});
+                        },
+                        close: function() {
+                            $('body').removeClass('ajax-popup-open');
+                        }
+                    },
+                    closeMarkup: '<a class="roundlink"><img src="' + crossImg + '"class="mfp-close" alt="mfp"></a>',
+                });
+                e.preventDefault();
+            });
+
+            $(document).on('click', '.ajaxlogin-login', function(e) {
+                $.magnificPopup.close(); // Close existing popup
+
+                // Open new popup
+                $.magnificPopup.open({
+                    mainClass: 'ajaxlogin-main-popup',
+                    items: {
+                        src: '#ajaxlogin-login-window',
+                        type: 'inline'
+                    },
+                    callbacks: {
+                        open: function() {
+                            this.contentContainer.addClass('ajax-login-popup');
+                            $('body').addClass('ajax-popup-open');
+                        },
+                        close: function() {
+                            $('body').removeClass('ajax-popup-open');
+                        }
+                    },
+                    closeMarkup: '<a class="roundlink"><img src="' + crossImg + '"class="mfp-close" alt="mfp"></a>',
+                });
+                e.preventDefault();
+            });
+
+            $(document).on('click', '.ajaxlogin-forgot', function(e) {
+                $.magnificPopup.close(); // Close existing popup
+
+                // Open new popup
+                $.magnificPopup.open({
+                    mainClass: 'ajaxlogin-main-popup',
+                    items: {
+                        src: '#ajaxlogin-forgot-window',
+                        type: 'inline'
+                    },
+                    callbacks: {
+                        open: function() {
+                            this.contentContainer.addClass('ajax-forgot-password-popup');
+                            $('body').addClass('ajax-popup-open');
+                        },
+                        close: function() {
+                            $('body').removeClass('ajax-popup-open');
+                        }
+                    },
+                    closeMarkup: '<a class="roundlink"><img src="' + crossImg + '"class="mfp-close" alt="mfp"></a>',
+                });
+                e.preventDefault();
+            });
+        });
+    });
+</script>

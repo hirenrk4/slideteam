@@ -1,0 +1,145 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+// @codingStandardsIgnoreFile
+
+/** @var \Magento\Review\Block\Form $block */
+?>
+<div class="block review-add">
+<div class="block-content">
+<form action="<?= $block->escapeUrl($block->getAction()) ?>" class="review-form" method="post" id="review-form" data-role="product-review-form" data-bind="scope: 'review-form'">
+    <?= $block->getBlockHtml('formkey') ?>
+    <?= $block->getChildHtml('form_fields_before') ?>
+    <fieldset class="review-fieldset" data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+        <?php if ($block->getRatings() && $block->getRatings()->getSize()): ?>
+        <span id="input-message-box"></span>
+        <fieldset class="field required review-field-ratings">
+            <legend class="label"><span><?= $block->escapeHtml(__('Write a review')) ?></span></legend><br/>
+            <div class="control rating-div">
+                <div class="nested" id="product-review-table">
+                    <?php foreach ($block->getRatings() as $_rating): ?>
+                        <div class="field choice review-field-rating">
+                            <label class="label" id="<?= $block->escapeHtml(str_replace(' ', '_', $_rating->getRatingCode())) ?>_rating_label"><span><?= $block->escapeHtml($_rating->getRatingCode()) ?></span></label>
+                            <div class="control review-control-vote">
+                            <?php $options = $_rating->getOptions();?>
+                            <?php $iterator = 1; foreach ($options as $_option): ?>
+                                <input
+                                    type="radio"
+                                    name="ratings[<?= $block->escapeHtmlAttr($_rating->getId()) ?>]"
+                                    id="<?= $block->escapeHtmlAttr(str_replace(' ', '_', $_rating->getRatingCode())) ?>_<?= $block->escapeHtmlAttr($_option->getValue()) ?>"
+                                    value="<?= $block->escapeHtmlAttr($_option->getId()) ?>"
+                                    class="radio"
+                                    data-validate="{ 'rating-required':true}"
+                                    aria-labelledby="<?= $block->escapeHtmlAttr(str_replace(' ', '_', $_rating->getRatingCode())) ?>_rating_label <?= $block->escapeHtmlAttr(str_replace(' ', '_', $_rating->getRatingCode())) ?>_<?= $block->escapeHtmlAttr($_option->getValue()) ?>_label" />
+                                <label
+                                    class="rating-<?= $block->escapeHtmlAttr($iterator) ?>"
+                                    for="<?= $block->escapeHtmlAttr(str_replace(' ', '_', $_rating->getRatingCode())) ?>_<?= $block->escapeHtmlAttr($_option->getValue()) ?>"
+                                    title="<?= $block->escapeHtmlAttr(__('%1 %2', $iterator, $iterator > 1 ? __('stars') : __('star'))) ?>"
+                                    id="<?= $block->escapeHtmlAttr(str_replace(' ', '_', $_rating->getRatingCode())) ?>_<?= $block->escapeHtmlAttr($_option->getValue()) ?>_label">
+                                    <span><?= $block->escapeHtml(__('%1 %2', $iterator, $iterator > 1 ? __('stars') : __('star'))) ?></span>
+                                </label>
+                            <?php $iterator++; ?>
+                            <?php endforeach; ?>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>                
+                <input type="hidden" name="validate_rating" class="validate-rating" value="" />
+            </div>
+        </fieldset>
+    <?php endif ?>
+    <?php 
+        $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+        $customerSession = $objectManager->create('Magento\Customer\Model\Session'); 
+    ?>
+    <?php if (!$customerSession->isLoggedIn()) : ?>
+        <div class="field review-field-nickname required clearfix">
+            <label for="nickname_field" class="label nikcname-label"><span><?= $block->escapeHtml(__('Nickname')) ?></span></label>
+            <div class="control nickname-text">
+                <input type="text" name="nickname" id="nickname_field" class="input-text nickname_field" data-validate="{required:true}" data-bind="value: nickname()" />
+            </div>
+        </div>
+        <div class="field review-field-nickname required clearfix">
+            <label for="nickname_field" class="label nikcname-label email-label"><span><?= $block->escapeHtml(__('Email')) ?></span></label>
+            <div class="control nickname-text cusemail-div">
+                <input type="text" name="cusemail" id="cusemail" class="input-text nickname_field validate-email" data-validate="{required:true}" />
+            </div>
+        </div>
+    <?php endif; ?>
+        <div class="field review-field-text required summary-field clearfix">
+            <label for="summary_field" class="label summary-field-label"><span><?= $block->escapeHtml(__('Summary')) ?></span></label>
+            <div class="control summary-text">
+                <textarea name="detail" id="review_field" cols="5" rows="5"  data-validate="{required:true}" data-bind="value: review().detail" maxlength="2000"></textarea>
+                <div class="allforms-comment-msg"><?php echo __("Max length should be 2000 character."); ?></div>
+            </div>
+        </div>
+        <div class="review-captcha">
+            <?php
+                $blockPath = 'Magento\Captcha\Block\Captcha';
+                $block = $this->getLayout()->createBlock($blockPath);
+                $cap_data = array('form_id' => 'review-form', 'img_width' => '50');
+                $block->setData($cap_data);
+                echo $block->toHtml();
+            ?>
+        </div>
+    </fieldset>
+    <div class="actions-toolbar review-form-actions">
+        <div class="primary actions-primary">
+            <button type="submit" class="action submit primary"><span><?= $block->escapeHtml(__('Submit Review')) ?></span></button>
+        </div>
+    </div>
+</form>
+<script type="text/x-magento-init">
+{
+    "#review-form": {
+        "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+    },
+    "#review-form": {
+        "Magento_Review/js/error-placement": {},
+        "Tatva_Catalog/js/validate-review": {}
+    }
+}
+</script>
+</div>
+</div>
+<script type="text/javascript">  
+require(['jquery','domReady','mage/mage'], function ($,customerData)
+{
+    $(document).ready(function(){
+        $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="spinner-img" height="50" width="50" src="<?= $block->getViewFileUrl('Magento_Cms::images/popup/spinner.gif') ?>" loading="lazy"/>').insertBefore('.captcha-reload');
+
+        $.ajax({
+            type: 'POST',
+            url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+            data:'formId=review-form',
+            success:function(data) {
+                $('.spinner-img').hide();
+                $('#captcha-container-review-form .captcha-img').attr('src',data.imgSrc);
+                $('#captcha-container-review-form .captcha-img').show();
+                return false;                 
+            }
+        });
+
+        // task 1344
+        $("#review_field").on("keyup",function() {
+          var maxLength = $(this).attr("maxlength");
+          if(maxLength == $(this).val().length) {
+            $('#review_field-error').hide();
+            $('.allforms-comment-msg').show();
+          }else{
+            $('.allforms-comment-msg').hide();
+          }
+        });
+        // task 1344 end
+
+        $('#review-form').submit(function() {
+            if ($(this).valid()) {
+                $(this).find("button[type='submit']").prop('disabled',true);
+            }
+        });
+    });
+});
+</script>

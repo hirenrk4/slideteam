@@ -1,0 +1,152 @@
+<?php
+$exclude_categories = $block->getConfigValue("button/seo_config/cat_ids");
+$exclude_categories_array = explode(",", $exclude_categories);
+$currentCategory = $block->getRegistryVar('current_category');
+$catId = $currentCategory->getId();
+$isOpCat = $block->getOnePageCategories();
+$isDocReportCat = $block->getDocumentReportCategories();
+$isletterheadCat = $block->getLetterheadCategories();
+$isUkrainCrisisCat = $block->getUkrainCrisisCategories();
+
+if (!in_array($currentCategory->getId(), $exclude_categories_array) || in_array($currentCategory->getParentCategory()->getId(), $exclude_categories_array)):
+$catId = $currentCategory->getParentCategory()->getId();
+endif;
+
+    $_category = $block->getcategoryById($catId);
+    $_subcategories = $block->getChildrenCategories($_category);
+    $_total_subcategories = count($_subcategories);
+    if($isOpCat == 1)
+    {
+        $_total_subcategories += 1;    
+    }
+    if($isDocReportCat == 1)
+    {
+        $_total_subcategories += 1;
+    }
+    if($isUkrainCrisisCat == 1)
+    {
+        $_total_subcategories += 1;
+    }
+    if($isletterheadCat == 1)
+    {
+        $_total_subcategories += 1;
+    }
+    $_columncount = 4;
+    $j = 1;
+
+    $_columncount = ceil($_total_subcategories / $_columncount);
+    $url = $this->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+    if (!strstr($url,'business_powerpoint_diagrams') and in_array($catId, $exclude_categories_array)):
+        if ($_total_subcategories > 0):
+        ?>
+        <div class="main-wrapper sub-cat-links list-detail-consistency clearfix">
+            <h6>Select your sub category</h6>
+            <div>
+                <?php $i = 1; ?>
+                <?php $h = 1; ?>
+                <?php if ($_total_subcategories > 4): ?>
+
+                    <?php foreach ($_subcategories as $_subcategory): ?>
+                        <?php $sub_category_name = $_subcategory->getName(); ?>
+                        <?php $sub_category_url = $_subcategory->getUrl(); ?>
+                        <?php if ($i % $_columncount == 1) : $start = true;
+                            echo "<ul class='cat-col$j'>";
+                        endif; ?>
+                        <?php if($isOpCat) : ?>
+                            <?php if($i == 1) : ?>
+                                <?php $opCat = $block->getOpCategory(); ?>
+                                <li><a <?php if ($currentCategory->getId() == $opCat->getId()) echo 'class = active'; ?> href="<?php echo $opCat->getUrl(); ?>"><?php echo "All"; ?></a></li>
+                                <?php $i++; ?>
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php else : ?>    
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php endif; ?>
+                        <?php elseif($isDocReportCat): ?>
+                            <?php if($i == 1) : ?>
+                                <?php $docrCat = $block->getDocReportCategory(); ?>
+                                <li><a <?php if ($currentCategory->getId() == $docrCat->getId()) echo 'class = active'; ?> href="<?php echo $docrCat->getUrl(); ?>"><?php echo "All"; ?></a></li>
+                                <?php $i++; ?>
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php else : ?>    
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php endif; ?>
+                        <?php elseif($isUkrainCrisisCat): ?>
+                            <?php if($i == 1) : ?>
+                                <?php $docrCat = $block->getUkrainCrisisCategory(); ?>
+                                <li><a <?php if ($currentCategory->getId() == $docrCat->getId()) echo 'class = active'; ?> href="<?php echo $docrCat->getUrl(); ?>"><?php echo "All"; ?></a></li>
+                                <?php $i++; ?>
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php else : ?>    
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php endif; ?>
+                        <?php elseif($isletterheadCat): ?>
+                            <?php if($i == 1) : ?>
+                                <?php $letheadCat = $block->getLetterheadCategory(); ?>
+                                <li><a <?php if ($currentCategory->getId() == $letheadCat->getId()) echo 'class = active'; ?> href="<?php echo $docrCat->getUrl(); ?>"><?php echo "All"; ?></a></li>
+                                <?php $i++; ?>
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php else : ?>    
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php endif; ?>
+                        <?php else : ?>
+                            <?php if ($i == 1) : ?>                            
+                                <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php else : ?>
+                                <li style="<?php if($h>7) { echo 'display: none;'; } ?>"><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                        <?php $h++; ?>
+                        <?php if ($start && $_columncount > 1 && $i % $_columncount == 0): $start = false;
+                            echo "</ul>";
+                            $j++;
+                            $h=1;
+                        endif; ?>
+                        <?php $i++; ?>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <ul class='cat-col'>
+                        <?php if($isOpCat) : ?>
+                            <?php $opCat = $block->getOpCategory(); ?>
+                            <li><a <?php if ($currentCategory->getId() == $opCat->getId()) echo 'class = active'; ?> href="<?php echo $opCat->getUrl(); ?>"><?php echo "All"; ?></a></li>
+                        <?php endif; ?>
+                        <?php if($isDocReportCat) : ?>
+                            <?php $docrCat = $block->getDocReportCategory(); ?>
+                            <li><a <?php if ($currentCategory->getId() == $docrCat->getId()) echo 'class = active'; ?> href="<?php echo $docrCat->getUrl(); ?>"><?php echo "All"; ?></a></li>
+                        <?php endif; ?>
+                        <?php if($isUkrainCrisisCat) : ?>
+                            <?php $docrCat = $block->getUkrainCrisisCategory(); ?>
+                            <li><a <?php if ($currentCategory->getId() == $docrCat->getId()) echo 'class = active'; ?> href="<?php echo $docrCat->getUrl(); ?>"><?php echo "All"; ?></a></li>
+                        <?php endif; ?>
+                        <?php foreach ($_subcategories as $_subcategory): ?>
+                            <?php $sub_category_name = $_subcategory->getName(); ?>
+                            <?php $sub_category_url = $_subcategory->getUrl(); ?>
+                            <li><a <?php if ($_subcategory->getId() == $currentCategory->getId()) echo 'class = active'; ?> href="<?php echo $sub_category_url ?>"><?php echo $sub_category_name ?></a></li>
+                        <?php endforeach; ?>
+                    </ul>
+            <?php endif; ?>
+            </div>
+        <?php
+        if ($_total_subcategories > 28) {
+            echo "<a class='show-more-link1'>Show More</a>";
+            echo "<a class='show-less-link' style='display:none;'>Show Less</a>";
+        }
+        ?>
+        </div>
+    <?php endif;endif; ?>
+    
+<script type="text/javascript">
+require(['jquery'], function ($) {
+    $(document).ready(function () {
+        $(".show-more-link1").click(function () {
+            $(".cat-col1 li:gt(6),.cat-col2 li:gt(6),.cat-col3 li:gt(6),.cat-col4 li:gt(6)").fadeIn(1000);
+            $(".show-less-link").css('display', 'inline');
+            $(this).hide();
+        });
+        $(".show-less-link").click(function () {
+            $(".show-more-link1").css('display', 'inline');
+            $(".cat-col1 li:gt(6),.cat-col2 li:gt(6),.cat-col3 li:gt(6),.cat-col4 li:gt(6),.show-less-link").fadeOut(100);
+            $(this).hide();
+        });
+    });
+});
+</script>

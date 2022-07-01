@@ -1,0 +1,12 @@
+<?php
+$_description = $this->getProduct()->getDescription();
+$_product = $this->getProduct();
+?>
+<div class="no-display">
+	<input type="hidden" name="product" value="<?php echo $_product->getId() ?>" id="get-Product" />
+	<input type="hidden" name="related_product" id="related-products-field" value="" />
+</div>
+<h1 class="product-gallery-title"><?php echo $this->customProductAttribute($_product, $_product->getName(), 'name') ?></h1>
+<?php if ($_description): ?>
+		<p class="product-gallery-sub-title"><?php echo $this->customProductAttribute($this->getProduct(), $_description, 'description') ?></p>
+<?php endif; ?>

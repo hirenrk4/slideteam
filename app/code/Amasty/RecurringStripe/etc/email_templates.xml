@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="customer_create_stripeaccount_email_template" label="New Stripe Welcome Mail" file="stripe_newaccount.html" type="html" module="Amasty_RecurringStripe" area="frontend"/>
+</config>

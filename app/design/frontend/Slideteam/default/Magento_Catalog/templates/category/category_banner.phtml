@@ -1,0 +1,130 @@
+<?php
+	$finalUrl = "https://www.slideteam.net/search/go?af=cat1%3Acompletedecks&isort=globalpop&lbc=slideteam&method=and&p=Q&ts=custom&uid=959406168&w=*&cnt=300&utm_source=slideteam%20website&utm_medium=sli%20category%20listing%20page&utm_campaign=Complete%20Decks";
+?>
+<?php
+        if(!$block->generalHelper->isMobileDevice()) {
+?>
+<div class="category_left_banner">
+	<a href="<?php echo $finalUrl; ?>" target="_blank">
+		<picture>
+			<source srcset="<?php echo $block->getViewFileUrl('Magento_Catalog::images/category/category_banner_left.webp') ?>" type="image/webp">
+			<img src="<?php echo $this->getViewFileUrl('Magento_Catalog::images/category/category_banner_left.png'); ?>" alt="category-banner" loading="lazy"/>
+		</picture>
+	</a>
+</div>
+<script type="text/javascript">
+require(['jquery'],function($) {
+	$(document).ready(function(){
+
+		if (($(".page-main").height()+$(".breadcrumbs").height()) < ($('.category_left_banner').outerHeight()+$("#left-section").height()))
+		{
+			$(".category_left_banner").hide();
+		}
+
+		setTimeout(function(){
+			
+		var wind_width = $(window).width()+getScrollBarWidth();
+		var add_dyn = 0;
+		var remove_dyn = 0;
+		var toppos = 0;
+		var docHeight = $(document).height();
+		jQuery(".category_left_banner").hide();	
+		$pageHeight = jQuery(document).height();
+		jQuery(".category_left_banner").show();	
+		$('.category_left_banner').css('top',($("#left-section").height() +$("#left-section").offset().top + 10 ) + 'px' );
+		if(wind_width <= 1023 || ($(".page-main").height()+$(".breadcrumbs").height()) < ($('.category_left_banner').outerHeight()+$("#left-section").height()) || jQuery(document).height()  < jQuery("#left-section").height() + jQuery("#left-section").offset().top + jQuery(".category_left_banner").height() + 400)
+		{
+		 	jQuery(".category_left_banner").hide();	
+		}
+
+		// if(wind_width >= 1024 && docHeight <= 1760)
+		// {
+		// 	$(".category_left_banner").hide();
+		// }
+
+		$(window).scroll(function() {
+			var hT = $('.category_left_banner').offset().top;
+			var previousDiv = $("#left-section").offset().top;
+			var hH = $('.category_left_banner').outerHeight();
+			var wH = $(window).height();
+		    var wS = $(this).scrollTop();
+				   
+			var finaldiff = 0;
+			var removediff = 0;
+			var blockheight = 0;
+			finaldiff = hT-wS;
+
+			var footerT = $('.page-footer').offset().top;
+			photoViewportOffsetTop = footerT - $(document).scrollTop();
+
+			
+			toppos = jQuery('#left-section').height() + jQuery('#left-section').offset().top + 15;
+			
+			if(photoViewportOffsetTop < 572 && wind_width >= 1024)
+			{
+				var sub_pos = photoViewportOffsetTop - 572 + 20;
+				$('.category_left_banner').addClass('category_static');
+				$('.category_left_banner').css('top',sub_pos+"px");
+			}
+			else if(previousDiv > 0 && hT < toppos && wind_width >= 1024)
+			{
+				$('.category_left_banner').removeClass('category_static');
+				$('.category_left_banner').css('top',toppos+"px");
+			}
+			else if(finaldiff.toFixed(2) <= 15 && hT >= toppos)
+			{
+				$('.category_left_banner').addClass('category_static');
+				$('.category_left_banner').css('top',"20px");
+			}
+	   	});
+		}, 5000);
+	   	
+	});
+	$(window).resize(function () {
+        var wind_width = $(window).width()+getScrollBarWidth();
+		var docHeight = $(document).height();
+		
+		
+		if(wind_width <= 1023)
+		{
+		 	jQuery(".category_left_banner").hide();	
+		}
+
+		// if(wind_width >= 1024 && docHeight <= 1900)
+		// {
+		// 	$(".category_left_banner").hide();
+		// }
+    });
+
+	$(window).load(function() {
+		var wind_width = $(window).width()+getScrollBarWidth();
+		var docHeight = $(document).height();
+		
+		
+		if(wind_width <= 1023)
+		{
+		 	jQuery(".category_left_banner").hide();	
+		}
+
+		// if(wind_width >= 1024 && docHeight <= 1900)
+		// {
+		// 	$(".category_left_banner").hide();
+		// }
+	})
+	function getScrollBarWidth()
+	   	{
+		 	if(jQuery(document).height() > jQuery(window).height()){
+		  		jQuery('body').append('<div id="fakescrollbar" style="width:50px;height:50px;overflow:hidden;position:absolute;top:-200px;left:-200px;"></div>');
+		  		fakeScrollBar = jQuery('#fakescrollbar');
+		  		fakeScrollBar.append('<div style="height:100px;">&nbsp;</div>');
+		  		var w1 = fakeScrollBar.find('div').innerWidth();
+		  		fakeScrollBar.css('overflow-y', 'scroll');
+			  	var w2 = jQuery('#fakescrollbar').find('div').html('html is required to init new width.').innerWidth();
+			  	fakeScrollBar.remove();
+		  		return (w1-w2);
+		 	}
+		 	return 0;
+		}
+});
+</script>
+<?php } ?>

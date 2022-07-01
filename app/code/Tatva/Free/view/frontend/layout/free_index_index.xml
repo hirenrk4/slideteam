@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="2columns-right">
+    <head>
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+        <css src="Magento_Theme::css/ddimgtooltip.css" media="all"/>
+        <script src="Magento_Theme::js/ddimgtooltip.js"/>
+        <css src="Magento_Cms::css/slick/slick.css" media="all" />
+        <css src="Magento_Cms::css/slick/slick-theme.css" media="all" />
+        <script src="Magento_Theme::js/slick.js" /> 
+        <!-- <css src="Magento_Theme::css/catalog/catalog-style.css" media="all" order="250" />
+        <css src="Magento_Theme::css/catalog/freesample/freesample.css" media="all"/> -->
+        <css src="Magento_Theme::css/theme/catalog-tooltip.css" media="all" order="400"/>
+        <css src="Magento_Theme::css/catalog/freedownload/freedownload.css" media="all"/>
+    </head>
+    <body>
+        <attribute name="class" value="catalog-category-view"/>
+        <attribute name="class" value="wide-product-list"/>
+        <referenceContainer name="sidebar.additional" remove="true"/>
+        <referenceContainer name="content">
+            <block class="Tatva\Free\Block\Customer\Login" ifconfig="customer/ajaxlogin/enable" name="ajaxlogin" template="Tatva_Free::customer/index.phtml">
+                <block class="Magento\Customer\Block\Form\Register" name="customer.form.register.ajax" template="Tatva_Free::customer/register.phtml" />
+                <block class="Mageplaza\SocialLogin\Block\Popup\Social" name="customer.form.social.login.ajax" template="Tatva_Free::customer/social.phtml" />
+            </block> 
+            <block class="Tatva\Free\Block\ListProduct" name="free_product_list" template="Tatva_Free::product/freelist.phtml">
+            </block>    
+        </referenceContainer>
+
+        <referenceContainer name="main.content" htmlTag="main" htmlId="maincontent" htmlClass="page-main">
+            <container name="free.product.wrapper" htmlTag="div" htmlClass="free-product-wrapper container" />
+        </referenceContainer>
+
+        <referenceContainer name="sidebar.main">
+            <block class="Tatva\Emarsys\Block\Emarsys" name="free.product.populate" template="Tatva_Emarsys::free.phtml" />
+        </referenceContainer>
+
+        <move element="columns" destination="free.product.wrapper" after="-" />
+    </body>    
+</page>

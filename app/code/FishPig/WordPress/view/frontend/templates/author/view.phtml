@@ -1,0 +1,74 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $author = $block->getEntity();
+
+$display_social_icons = $author->getMetaValue('social_bio_status');
+//echo "<pre>";print_r(get_class_methods($author));exit;
+$meta_keys = array();
+if($display_social_icons==0)
+{
+if($author->getMetaValue('display_google_plus')){array_push($meta_keys,'google_plus');}
+if($author->getMetaValue('display_facebook')){array_push($meta_keys,'facebook');}
+if($author->getMetaValue('display_twitter')){array_push($meta_keys,'twitter');}
+if($author->getMetaValue('display_linkedin')){array_push($meta_keys,'linkedin');}
+}
+
+
+//$meta_keys = array('facebook','twitter','linkedin','google_plus');
+$social_networks = $author->getUserMeta($author,$meta_keys);
+if($author->getMetaValue('userphoto_thumb_file')):$authorImage = $this->getUrl().'wp/wp-content/uploads/userphoto/' .$author->getMetaValue('userphoto_thumb_file');else : $authorImage = $this->getViewFileUrl('FishPig_WordPress::images/blog/default-user-big.jpg');endif;
+$authorPostsCollection = $block->getPostCollection();
+$authorPostsCollectionData = $authorPostsCollection->getData();
+$current_time = $block->getUserRegistrationDate($author->getUserRegistered());
+$totalPost=$authorPostsCollection->getSize();
+    
+$registration_date = date('M d Y', $current_time);?>
+<div class="post-view other-blogdetail">
+    <div class="author-profile">
+        <div class="author-name clearfix">
+              <div class="img-block"><img alt="" src="<?php echo $authorImage;?>"></div>
+              <div class="author-detail author-profile-detail">
+                <div class="button-column clearfix">
+                 <h3><?php echo $author->getDisplayName();?></h3>
+                 <div class="author-user admin-user-post">
+                   <div class="author-text"><span><?php echo $totalPost;?> posts</span></div>
+                 </div>
+                 <div class="author-user last">
+                  <img alt="" src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/calander-icon.png')?>">
+                  <div class="author-text"><span><?php echo $registration_date;?></span></div>
+                </div>
+                <?php if(is_array($social_networks) && !empty($social_networks)):?>
+                <div class="social-icon clearfix">
+                  <ul>
+                    <?php foreach($social_networks as $key => $val):?>
+                    <?php if($val):?>
+                    <?php switch($key)
+                    {
+                      case "google_plus" : $social_media_url = "https://plus.google.com/";break;
+                      case "facebook" : $social_media_url = "https://facebook.com/";break;
+                      case "twitter" : $social_media_url = "https://twitter.com/";break;
+                      case "linkedin" : $social_media_url = "https://linkedin.com/";break;
+                    }?>
+
+                    <li><a href="<?php echo $social_media_url.$val;?>" target="_new"><img src="<?php echo $this->getViewFileUrl('images/blog/').$key.'.png';?>" alt=""></a></li>
+                    <?php endif;?>
+                    <?php endforeach;?>
+                  </ul>
+                </div>
+                <?php endif;?>
+
+              </div>
+            </div>
+          </div>
+          <?php if ($author->getMetaValue('description')): ?>
+            	<p class="author-description"><?php echo $this->escapeHtml($author->getMetaValue('description')) ?></p>
+            <?php endif; ?>
+    </div>
+</div>
+<?php echo $this->getPostListHtml() ?>

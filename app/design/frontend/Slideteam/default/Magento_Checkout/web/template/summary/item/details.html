@@ -1,0 +1,61 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+
+<!-- ko foreach: getRegion('before_details') -->
+    <!-- ko template: getTemplate() --><!-- /ko -->
+<!-- /ko -->
+<div class="product-item-details">
+
+    <div class="product-item-inner">
+        <div class="product-item-name-block">
+            <strong class="product-item-name" data-bind="text: $parent.name"></strong>
+            <!-- <div class="details-qty">
+                <span class="label"> ko i18n: 'Qty' --><!-- /ko --><!-- </span>
+                <span class="value" data-bind="text: $parent.qty"></span>
+            </div> -->
+        </div>
+        <!-- ko foreach: getRegion('after_details') -->
+            <!-- ko template: getTemplate() --><!-- /ko -->
+        <!-- /ko -->
+    </div>
+
+    <!-- ko if: (JSON.parse($parent.options).length > 1)-->
+    <div class="product options">
+        <span data-role="title" class="toggle"><!-- ko i18n: 'View Details' --><!-- /ko --></span>
+        <div data-role="content" class="content">
+            <strong class="subtitle"><!-- ko i18n: 'Options Details' --><!-- /ko --></strong>
+            <dl class="item-options">
+                <!--ko foreach: JSON.parse($parent.options)-->
+                <!--ko if: (label == 'Start Date' || label == 'Billing Period') -->
+                <dt class="label" data-bind="text: label"></dt>
+                    <!-- ko if: ($data.full_view)-->
+                    <dd class="values" data-bind="html: full_view"></dd>
+                    <!-- /ko -->
+                    <!-- ko ifnot: ($data.full_view)-->
+                    <dd class="values" data-bind="html: value"></dd>
+                    <!-- /ko -->
+                <!-- /ko -->
+                <!-- /ko -->
+            </dl>
+        </div>
+    </div>
+    <!-- /ko -->
+
+    <!-- ko ifnot: (JSON.parse($parent.options).length > 1)-->
+    <div class="product options">
+        <span data-role="title" class="toggle"><!-- ko i18n: 'NOTE' --><!-- /ko --></span>
+        <div data-role="content" class="content">
+            <dl class="item-options">
+                <p style="font-size: 14px;line-height: 10px">1. You will get an email with a PDF link to your Ebook(s). You can download it anytime by opening your email.</p>
+                <p style="font-size: 14px;line-height: 10px">2. You can go back to the Ebook page and you can download your Ebook(s) directly by clicking the download button.</p>
+                <p style="font-size: 14px;line-height: 10px">3. If you have questions or need assistance in completing your order,feel free to contact us at any time.<a href="tel:+14086594170" title="+ 1(408) 659-4170"><b class="ebook-number"> + 1(408) 659-4170</b></a>
+                </p>
+            </dl>
+        </div>
+    </div>
+    <!-- /ko -->
+</div>

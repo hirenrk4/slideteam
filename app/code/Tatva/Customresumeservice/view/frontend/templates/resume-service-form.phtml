@@ -1,0 +1,76 @@
+<section class="resume_form customresume_form<?php echo $this->getData('block_id'); ?>">
+<div class="resume_container">
+<div class="resume_request">
+        <div class="page-title category-title">
+            <h4 class="custom-category-title">Submit Your Resume Request</h4>
+            <span class="blue_underline"></span>
+        </div>
+        <form name="customresumeservice_form" id="customresumeservice_form<?php echo $this->getData('block_id'); ?>" method="POST" action="<?php echo $this->getUrl('customresumeservice/index/sendEmail'); ?>" class="customresumeservice-form" enctype="multipart/form-data" data-mage-init='{"validation":{}}'>
+            <div class="clearfix form-top-block">
+                <div class="col">
+                    <div class="input-box">
+                        <label for="name">Name</label>
+                        <input type="text" class="input-text required-entry form-control" name="name" value="" autocomplete="off" placeholder="Your Name" data-validate="{required:true}">
+                        <div class="error_msg" style="display: none">
+                            <strong>Please enter valid input.</strong>            
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-box">
+                        <label for="email">Email</label>
+                        <input type="text" class="input-text required-entry validate-email form-control" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" value="" autocomplete="off"  data-validate="{required:true, 'validate-email':true}" placeholder="Your e-mail">
+                    </div>
+                    <div class="error_msg" style="display: none">
+                            <strong>Please enter valid input.</strong>            
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-box">
+                        <label for="upload">Upload Old Resume/Doc with Your Work Experience (Optional)</label>
+                        <div class="resumeFieUploader">
+                        <div id="mulitplefileuploader<?php echo $this->getData('block_id'); ?>" class="box file_input">
+
+                            <input type="file" name="file-7[]" class="inputfile inputfile-6" data-multiple-caption="{count} files selected" multiple />
+                            <label for="file-7" class=""><strong class="uploadcol"> Upload</strong><span>Drag & Drop Files</span> 
+                            </label>
+                            <div class="error_msg" style="display: none">
+                                <strong>Please enter valid input.</strong>            
+                            </div>
+                        </div>
+                        </div>
+                        <input id="filesToAttach" type="hidden" name="filesToAttach">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="input-box">
+                        <label for="url">Choose a <a href="<?php echo $this->getBaseUrl().'resume-template/'; ?>" target="_blank">Template</a> from our Collection (Optional)</label>
+                        <input type="text" name="url" placeholder="Paste URL here of any resume templates you like" autocomplete="off">
+                        <div class="error_msg" style="display: none">
+                            <strong>Please enter valid input.</strong>            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix inner-attach">
+                <div class="captcha-wrapper col">
+                    <?php
+                        $blockPath = 'Magento\Captcha\Block\Captcha';
+                        $block = $this->getLayout()->createBlock($blockPath);
+                        $cap_data = array('form_id'=>'resume_service_captcha'.$this->getData('block_id'),'img_width'=>'50');
+                        $block->setData($cap_data);
+                        echo $block->toHtml();
+                    ?>
+                    <?php //echo $block->getChildHtml('form.additional.info'); ?>
+                </div>
+                <input type="hidden" name="blockId" value="<?php echo $this->getData('block_id'); ?>">
+                <div class="col submit_file"> <div class="submit_resume"><input type="submit"></div></div>
+            </div>
+        </form>
+    </div>
+</div>
+</section>
+<script type="text/javascript">
+        require(['jquery','jquery/jquery-ui-1.9.2'], function ($){
+        });
+</script>

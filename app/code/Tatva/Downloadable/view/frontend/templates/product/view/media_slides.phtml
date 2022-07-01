@@ -1,0 +1,73 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ * @see Tatva_Corerewrite_Block_Catalog_Product_View_Media
+ */
+//$metadesc = $this->getIframeTitle();
+
+?>
+<?php
+$languages = array("spanish","german","french","portuguese");
+$_product = $this->getProduct();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+
+$galleryImages = $this->getGalleryImages();
+//$blockObj= $block->getLayout()->createBlock('\Tatva\Catalog\Block\Product\View');
+?>
+<?php if (($_collectionSize = count($galleryImages)) > 0): ?>
+    <div class="product-grid-outer recommended-product">
+    <?php 
+    $languagestatus = $_helper->productAttribute($_product, $_product->getLanguagestatus(), 'languagestatus');
+    if (isset($_GET['lang']) && $languagestatus == 1 && in_array(strtolower($_GET['lang']), $languages)):
+    ?>
+    <?php 
+            $lang_para = $this->getCurrentlangdata();
+            $data = $lang_para[143];
+            $comp = explode("<html>", $data); ?>
+            <h4><?php echo $comp[1]; ?></h4>
+            <p><?php echo $comp[0]; ?></p>
+    <?php else: ?>
+            <h4><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?><?= /* @escapeNotVerfied */__(' with all '); ?><?php echo $_collectionSize; ?><?= /* @escapeNotVerfied */__(' slides:'); ?></h4>
+            <p><?php echo $_product->getResource()->getAttribute('sentence2')->getFrontend()->getValue($_product) ?></p>
+    <?php endif; ?>
+        <ul class="products-grid products-grid--max-5-col box-up-sell">
+            <?php
+            $i = 0;
+            $j = 0;
+            foreach ($galleryImages as $_image):
+                ?>
+                <li class="item">
+                    <a class="product-image" data-mage-init='{"popupWindow": {"windowURL":"<?php echo $this->getGalleryUrl($_image) ?>","windowName":"orderitems","width":1500,"height":700,"top":0,"left":0,"resizable":1,"scrollbars":1}}'  title="<?php echo $_product->getName(); ?>" href="#">
+                        <img class="" src="<?php echo $_image->getData('small_image_url'); ?>" loading="lazy" alt="<?php echo $_product->getName(); ?>" height="auto" width="auto">
+                    </a>
+                </li>
+    <?php endforeach; ?>
+        </ul>
+    </div>
+<?php endif; ?>

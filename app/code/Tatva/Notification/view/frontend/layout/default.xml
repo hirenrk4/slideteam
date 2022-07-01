@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+    	<referenceContainer name="header-panel-wrapper">
+    		<container name="header.notification" label="Notification Wrapper" htmlTag="div" htmlClass="notification_tab_desktop">
+    			<block class="Tatva\Notification\Block\Notification\Index" 
+    				name="header.notification.desktop" template="Tatva_Notification::header_notification.phtml" before="-" cacheable="false"/>
+    		</container>
+    	</referenceContainer>
+    </body>
+</page>

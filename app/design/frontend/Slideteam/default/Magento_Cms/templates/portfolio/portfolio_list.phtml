@@ -1,0 +1,122 @@
+
+<script>
+   /*new script added*/
+    filterSelection("all")
+    function filterSelection(c) {
+      var x, i;
+      x = document.getElementsByClassName("column");
+      if (c == "all") c = "";
+      for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+      }
+    }
+
+    function w3AddClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+      }
+    }
+
+    function w3RemoveClass(element, name) {
+      var i, arr1, arr2;
+      arr1 = element.className.split(" ");
+      arr2 = name.split(" ");
+      for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {
+          arr1.splice(arr1.indexOf(arr2[i]), 1);     
+        }
+      }
+      element.className = arr1.join(" ");
+    }
+
+
+    // Add active class to the current button (highlight it)
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener("click", function(){
+        var current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+      });
+    }
+    /*new script added end*/
+  require(['jquery', 'domReady!'], function ($) {
+    /*$('.cms-wrap').parents().closest('.container').addClass('container1').removeClass('container');*/
+
+    /*load more All*/
+      $('.column.all:gt(5)').hide().last().after();
+      $('.portfolio_button .load_more_btn').click(function () {
+        var a = this;
+        $('.column.all:not(:visible):lt(6)').fadeIn(function () {
+          if ($('.column.all:not(:visible)').length == 0)
+            $(a).remove();
+          });
+        return false;
+      })
+    /* load more end */
+    /*load more business*/
+      $('.column.business:gt(2)').hide().last().after();
+      $('.portfolio_button .load_more_btn').click(function () {
+        var a = this;
+        $('.column.business:not(:visible):lt(3)').fadeIn(function () {
+          if ($('.column.business:not(:visible)').length == 0)
+            $(a).remove();
+          });
+        return false;
+      })
+    /* load more end */
+    /*load more energy*/
+      $('.column.energy:gt(2)').hide().last().after();
+      $('.portfolio_button .load_more_btn').click(function () {
+        var a = this;
+        $('.column.energy:not(:visible):lt(3)').fadeIn(function () {
+          if ($('.column.energy:not(:visible)').length == 0)
+            $(a).remove();
+          });
+        return false;
+      })
+    /* load more end */
+    /*load more marketing*/
+      $('.column.marketing:gt(2)').hide().last().after();
+      $('.portfolio_button .load_more_btn').click(function () {
+        var a = this;
+        $('.column.marketing:not(:visible):lt(3)').fadeIn(function () {
+          if ($('.column.marketing:not(:visible)').length == 0)
+            $(a).remove();
+          });
+        return false;
+      })
+    /* load more end */
+    /*load more technology*/
+      $('.column.technology:gt(2)').hide().last().after();
+      $('.portfolio_button .load_more_btn').click(function () {
+        var a = this;
+        $('.column.technology:not(:visible):lt(3)').fadeIn(function () {
+          if ($('.column.technology:not(:visible)').length == 0)
+            $(a).remove();
+          });
+        return false;
+      })
+      /*technology load more */
+      $('.tab-header .item.title').click(function () { 
+        if ($('.tab-technology').hasClass("active") && $('.column.technology:visible').length <= 2){
+          $('.portfolio_button .load_more_btn').hide();
+        }else{
+          $('.portfolio_button .load_more_btn').show();
+        }
+      })
+      var hash = window.location.hash;
+      if (hash) {
+        history.pushState('', document.title, window.location.pathname);
+        /*setTimeout(function(){ 
+          $('.tab-header .item.title .switch1').trigger("click");
+        }, 3000);*/
+      }
+    /* load more end */
+  });
+</script>

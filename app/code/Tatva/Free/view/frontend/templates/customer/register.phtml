@@ -1,0 +1,79 @@
+<fieldset class="fieldset create info">
+	<div class="fieldtext firstname">
+		<i><img src="<?php echo $this->getViewFileUrl('Magento_Customer::images/customer/user.svg'); ?>" /></i>
+		<div class="control">
+			<input type="text" placeholder="<?php echo __('First Name') ?>" id="firstname" name="firstname" title="<?php echo __('First Name') ?>" class="input-text" data-validate="{required:true,SpecialCharValidation:true}">
+		</div>
+	</div>       
+	<div class="fieldtext lastname">
+		<i><img src="<?php echo $this->getViewFileUrl('Magento_Customer::images/customer/user.svg'); ?>" /></i>
+		<div class="control">
+			<input type="text" placeholder="<?php echo __('Last Name') ?>" id="lastname" name="lastname" title="<?php echo __('Last Name') ?>" class="input-text" data-validate="{required:true,SpecialCharValidation:true}">
+		</div>
+	</div>
+	<div class="fieldtext email">
+		<i><img src="<?php echo $this->getViewFileUrl('Magento_Customer::images/customer/black-envelope.svg'); ?>"/></i>
+		<div class="control">
+			<input type="email" placeholder="<?php echo __('Email Address') ?>" name="email" title="<?php echo __('Email Address') ?>" class="input-text" data-validate="{required:true,'validate-email':true}">
+		</div>
+	</div>
+	<div class="fieldtext password">
+		<i><img src="<?php echo $this->getViewFileUrl('Magento_Customer::images/customer/lock.svg'); ?>"></i>
+		<div class="control">
+			<input type="password" placeholder="<?php echo __('Password') ?>" name="password" id="password"
+                       title="<?= $block->escapeHtmlAttr(__('Password')) ?>"
+                       class="input-text"
+                       data-password-min-length="6"
+                       data-password-min-character-sets="1"
+                       data-validate="{required:true, 'validate-customer-password':true}"
+                       autocomplete="off">
+		</div>
+	</div>
+	<div class="fieldtext confirm-password">
+		<i><img src="<?php echo $this->getViewFileUrl('Magento_Customer::images/customer/lock.svg'); ?>"></i>
+		<div class="control">
+			<input type="password" placeholder="<?php echo __('Confirm Password') ?>" name="password_confirmation" title="<?= $block->escapeHtmlAttr(__('Confirm Password')) ?>" id="password-confirmation" class="input-text" data-validate="{required:true, equalTo:'#password'}" autocomplete="off" data-msg-equalTo="password and confirm password do not match.">
+		</div>
+	</div>
+	<?php if ($block->isNewsletterEnabled()): ?>
+		<div class="fieldtext newsletter">
+			<div class="control">
+				<input type="checkbox" name="is_subscribed" title="<?= $block->escapeHtmlAttr(__('Sign Up for Newsletter')) ?>" value="1" id="is_subscribed"<?php if ($block->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox">
+            </div>
+            <span><?= $block->escapeHtml(__("I'd like to receive email about product updates, personalized recommendations, offers, and PowerPoint and presentation tips and tricks.")) ?></span>
+		</div>
+	<?php endif ?>
+
+	<div class="captcha-wrapper">
+		<?php
+	    	$blockPath = 'Magento\Captcha\Block\Captcha';
+	    	$block = $this->getLayout()->createBlock($blockPath);
+	        $cap_data = array('form_id'=> 'ebook_login_form','img_width'=>'50');
+	        $block->setData($cap_data);
+	        echo $block->toHtml();
+	    ?>
+		<?php //echo $block->getChildHtml('form.additional.info'); ?>
+	</div>	
+	<div class="actions-toolbar">
+		<div class="primary">
+	    	<button type="submit" class="action submit primary" title="<?= $block->escapeHtmlAttr(__('Sign UP')) ?>"><span><?= $block->escapeHtml(__('Sign Up')) ?></span></button>
+	    </div>
+	</div>
+</fieldset>
+<div class="login-btn-block">
+    <p>Already have an account?</p>
+    <button type="button" title="<?=$block->escapeHtmlAttr(__('Log In')) ?>" name="ajaxlogin-login"  class="btn button ajaxlogin-login"><span><?=$block->escapeHtmlAttr(__('Log In')) ?></span>
+    </button>
+</div>
+<script type="text/javascript">
+require(['jquery','jquery/validate','mage/translate'], function ($) {
+    'use strict';
+    $.validator.addMethod(
+        "SpecialCharValidation",
+        function (v) {
+            return $.mage.isEmptyNoTrim(v) || /^[a-zA-Z0-9_]+$/.test(v);
+        },
+        $.mage.__("Special characters not Allowed")
+    );
+})
+</script>

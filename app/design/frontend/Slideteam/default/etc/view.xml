@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+
+<view xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Config/etc/view.xsd">
+    <media>       
+        <images module="Magento_Catalog">
+            <!-- Need to manage all images must be called from one directory -->
+            <image id="category_page_grid" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+
+            <!-- <image id="category_grid_new" type="small_image">
+                <width>330</width>
+                <height>195</height>
+            </image> -->
+            
+            <image id="resume_page_list" type="small_image">
+                <width>298</width>
+                <height>427</height>
+            </image>
+            <!-- <image id="wishlist_thumbnail" type="small_image">
+                <width>260</width>
+                <height>195</height>
+            </image> -->
+            <image id="product_page_image_small" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="slideteam_product_page_thumb_image" type="thumbnail">
+                <width>100</width>
+                <height>72</height>
+            </image>
+            <image id="custom_product_thumb_image" type="thumbnail">
+                <width>80</width>
+                <height>115</height>
+            </image>
+            <image id="product_page_image_medium_no_frame" type="image">
+                <width>1280</width>
+                <height>720</height>
+                <frame>false</frame>
+            </image>
+           <!--  <image id="slideteam_category_ddimghover" type="image">
+                <width>446</width>
+                <height>349</height>
+            </image> -->
+            <!-- <image id="emarsys_slideteam_category_ddimghover" type="image">
+                <width>543</width>
+                <height>403</height>
+            </image> -->
+            <!-- The Hero image -->
+            <!-- <image id="custom_emarsys_product" type="image">
+                <width>560</width>
+                <height>420</height>
+            </image> -->
+            <image id="bundled_product_customization_page" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="cart_cross_sell_products" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="cart_page_product_thumbnail" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="category_page_list" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="customer_account_my_tags_tag_view" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="customer_account_product_review_page" type="image">
+                <width>260</width>
+                <height>195</height>
+            </image>
+            <image id="customer_shared_wishlist" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="gift_messages_checkout_small_image" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="gift_messages_checkout_thumbnail" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="mini_cart_product_thumbnail" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="new_products_content_widget_grid" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="new_products_content_widget_list" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="new_products_images_only_widget" type="small_image">
+                <width>260</width>
+                <height>195</height>
+            </image>
+            <image id="product_base_image" type="image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="product_comparison_list" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="product_page_image_large" type="image"/>
+            <image id="product_page_image_large_no_frame" type="image">
+                <frame>false</frame>
+            </image>
+            <image id="product_page_image_medium" type="image">
+                <width>560</width>
+                <height>315</height>
+            </image>
+            <image id="product_page_main_image" type="image">
+                <width>560</width>
+                <height>315</height>
+            </image>
+            <image id="product_page_main_image_default" type="image">
+                <width>560</width>
+                <height>315</height>
+            </image>
+            <image id="product_page_more_views" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="product_stock_alert_email_product_image" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="product_small_image" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="product_thumbnail_image" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="recently_compared_products_grid_content_widget" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="recently_compared_products_images_names_widget" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="recently_compared_products_images_only_widget" type="thumbnail">
+                <width>230</width>
+                <height>186</height>
+            </image>
+            <image id="recently_compared_products_list_content_widget" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="recently_viewed_products_grid_content_widget" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="recently_viewed_products_images_names_widget" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="recently_viewed_products_images_only_widget" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="recently_viewed_products_list_content_widget" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="related_products_list" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="review_page_product_image" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="rss_thumbnail" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="sendfriend_small_image" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="shared_wishlist_email" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="side_column_widget_product_thumbnail" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="upsell_products_list" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="wishlist_sidebar_block" type="thumbnail">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="wishlist_small_image" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+            <image id="wishlist_thumbnail" type="small_image">
+                <width>330</width>
+                <height>186</height>
+            </image>
+        </images>
+    </media>
+    
+    <vars module="Magento_Catalog">
+
+        <!-- Gallery and magnifier theme settings. Start -->
+        <var name="gallery">
+            <var name="navdir">vertical</var> <!-- Sliding direction of thumbnails (horizontal/vertical) -->
+            <var name="allowfullscreen">false</var> <!-- Turn on/off fullscreen (true/false) -->
+            <var name="navarrows">false</var>
+            <var name="fullscreen">
+                <var name="navdir">vertical</var> <!--Sliding direction of thumbnails in fullscreen(horizontal/vertical)  -->
+            </var>
+        </var>
+
+    </vars>
+</view>

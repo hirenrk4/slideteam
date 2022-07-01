@@ -1,0 +1,1655 @@
+@import '../../source/_variablesm2.less';
+@import '../../source/_mixins.less';
+
+/*Common h1,h2 for this page only*/
+.st-logo-and-branding{
+	h1{font-size: 64px;line-height: 68px;}
+	h2{font-size: 56px;line-height: 60px;}
+	h3{font-size: 45px;line-height: 49px;}
+	h4{font-size: 40px;line-height: 44px;}
+	h5{font-size: 34px;line-height: 38px;}
+	h6{font-size: 24px;line-height: 28px;}
+}
+
+/*cms-branding-page CSS*/
+.banner-brands{
+	position: relative;
+	overflow: hidden;
+	.brands-info{
+		position: absolute;
+		width: 100%;
+    	z-index: 2;
+		&.pd-block{
+			max-width: 1370px;
+			margin: 72px auto;
+			left: 0;
+			right: 0;
+			.logo-left-block{
+				display: inline-block;
+				text-align: center;
+			}
+		}
+	}
+	.logo-left-block{
+		.brand-label{
+		    background: @slideteam_blue17;
+		    display: block;
+		    font-size: 38px;
+		    height: 48px;
+		    letter-spacing: 8px;
+		    text-align: center;
+		    max-width: 320px;
+		    border: 0;
+		    color: @white;
+		    .border-radius(30px);
+		    margin: 0 auto;
+		    line-height: 46px;
+		    font-weight: 600;
+		    &:hover{
+    			background: @slideteam_blue16;
+		    }
+		}
+	}
+	.or-icon{
+		position: absolute;
+		left: -0.4%;
+	    margin: 0 auto;
+	    position: absolute;
+	    right: 0;
+	    top: 95px;
+	    width: 81px;
+	    .mobile-end{
+	    	display: none;
+	    }
+	}
+	.logo-branding-block{
+		float: right;
+	}
+	.banner-brands-dis{
+		text-align: center;
+		max-width: 992px;
+	    margin: 0 auto;
+	    position: absolute;
+	    bottom: -234px;
+	    left: 0;
+	    right: 0;
+	    width: 100%;
+		p{
+			letter-spacing: 0.3px;
+		    background-color: @slideteam_blue18;
+		    font-size: 22px;
+		    font-weight: 400;
+		    margin: 0 0 3px 0;
+		    padding: 6px 10px 10px;
+		    color: @white;
+		    display: inline-block;
+		}
+	}
+	.logo-brands-banner{
+		background: @slideteam_blue1;
+		min-height: 688px;
+	    position: relative;
+	    width: 54%;
+	    &:after{
+	    	border-left: 1px dashed @slideteam_blue1;
+		    position: absolute;
+		    top: 0;
+		    left: 88.9%;
+		    content: "";
+		    height: 118%;
+		    width: 50%;
+		    transform: rotate(14deg);
+		    margin-top: -50px;
+		    z-index: 1;
+	    }
+	    &:before{
+	    	background: @white;
+		    position: absolute;
+		    top: 0;
+		    left: 88%;
+		    content: "";
+		    height: 120%;
+		    width: 50%;
+		    transform: rotate(14deg);
+		    margin-top: -50px;
+	     }
+	}
+}
+.company-brands-logo{
+	background: @slideteam_orange1;
+	position: relative;
+	.company-brands-leftblock{
+	background: url(../../../../Magento_Cms/images/logo_and_brand/arrow-bg-img.png) no-repeat scroll;
+    height: 100%;
+    background-size: 100%;
+    position: absolute;
+    width: 486px;
+    color: @white;
+     float: left;
+	}
+	.company-brands-caption{
+		max-width: 320px;
+		position: relative;
+		top: 40%;
+		.transform(translateY(-50%));
+    	left: 36px;
+		h1{
+			font-weight: 600;
+    		letter-spacing: 1px;
+		}
+		label{
+			color: @white;
+			font-size: 36px;
+		    font-style: italic;
+		    font-weight: 400;
+		    letter-spacing: 0.8px;
+		    line-height: 46px;
+		    padding: 11px 0 0 5px;
+		    em{
+		    	color: @slideteam_orange10;
+		    }
+		}
+	}
+	.company-brands-righttblock{
+		float: right;
+	    width: 50%;
+	    text-align: center;
+	    margin: 50px 190px 0 0;
+	    h3{
+	    	border-bottom: 1px solid @slideteam_orange12;
+		    border-top: 1px solid @slideteam_orange12;
+		    color: @slideteam_gray43;
+		    text-transform: none;
+		    font-style: italic;
+		    padding: 6px 20px;
+		    margin-bottom: 38px;
+		    text-align: center;
+		    font-weight: 400;
+	    }
+	    ul{
+	    	display: inline-block;
+	    	width: 75%;
+	    	li{
+			    float: left;
+			    width: 50%;
+			    text-align: center;
+			    margin: 0;
+			    i{
+			    	display: inline-block;
+   					padding-bottom: 8px;
+			    }
+			    h6{
+			    	color: @white;
+				    font-style: italic;
+				    font-weight: 400;
+				    min-height: 80px;
+				    line-height: 30px;
+				    text-transform: none;
+				    margin: 0 0 15px 0
+			    }
+	    	}
+	    }
+	}
+}
+.sample-logos-block{
+	padding: 40px 0;
+	.sample-logos-title{
+		background:@slideteam_orange13;
+		height: 87px;
+	    padding: 0;
+	    font-size: 63px;
+	    font-weight: 600;
+	    line-height: normal;
+	    color: @white;   
+	    max-width: 912px;
+	    margin: 0 auto;
+	    .skew(-14deg);
+	    span{
+	    	.skew(14deg);
+	    	display: block;
+    		text-align: center;
+	    }
+	}
+	.img-responsive{
+		width: 100%;
+	}
+}
+.brand-guidelines-section{
+	background:@slideteam_gray44;
+	padding: 120px 110px 0;
+	.guidelines-wrapper{
+		max-width: 1440px;
+	    margin: 0 auto;
+	    position: relative;
+	    .box-shadow(-10px 0px 46px -8px rgba(0, 0, 0, 0.5));
+	    .col-6{
+	    	width: 50%;
+	    	float: left;
+	    	box-sizing: border-box;
+	    	padding:  28px 35px 25px;
+	    	text-align: center;
+	    }
+	    .brand-standards-block{
+		  	
+		    background: -moz-linear-gradient(0deg, rgba(237, 237, 238, 1) 0%, rgba(200, 198, 199, 1) 100%);
+		    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(237, 237, 238, 1)), color-stop(100%, rgba(200, 198, 199, 1)));
+		    background: -webkit-linear-gradient(0deg, rgba(237, 237, 238, 1) 0%, rgba(200, 198, 199, 1) 100%);
+		    background: -o-linear-gradient(0deg, rgba(237, 237, 238, 1) 0%, rgba(200, 198, 199, 1) 100%);
+		    background: -ms-linear-gradient(0deg, rgba(237, 237, 238, 1) 0%, rgba(200, 198, 199, 1) 100%);
+		    background: linear-gradient(90deg, rgba(237, 237, 238, 1) 0%, rgba(200, 198, 199, 1) 100%);
+		    .brand-books{
+		    	background: url(../../../../Magento_Cms/images/logo_and_brand/brand-guidelines.png) no-repeat scroll;
+			    width: 455px;
+			    height: 423px;
+			    display: inline-block;
+			    position: relative;
+			    h1{
+			    	color: @white;
+			    	line-height: 72px;
+				    margin: 96px auto 0;
+				    text-align: center;
+				    display: block;
+				    font-weight: 700;
+				    max-width: 375px;
+			    }
+			    span{
+			    	color: @white;
+				    display: block;
+				    font-size: 33px;
+				    font-style: italic;
+				    line-height: 40px;
+				    padding: 5px 40px;
+				    text-align: center;
+				    position: absolute;
+				    bottom: 73px;
+			    }
+		    }
+		    p{
+		    	color: @slideteam_gray45;
+			    font-size: 27px;			    
+			    line-height: 49px;
+			    font-style: italic;
+			    letter-spacing: -0.3px;
+			    padding: 40px 0 0;
+			    text-align: center;
+			    margin: 0px;
+		    }
+	    }
+	    .unique-style-guide{
+		    background: -moz-linear-gradient(0deg, rgba(248, 248, 248, 1) 18%, rgba(247, 247, 247, 1) 19%, rgba(209, 206, 207, 1) 100%);
+		    background: -webkit-gradient(linear, left top, right top, color-stop(18%, rgba(248, 248, 248, 1)), color-stop(19%, rgba(247, 247, 247, 1)), color-stop(100%, rgba(209, 206, 207, 1)));
+		    background: -webkit-linear-gradient(0deg, rgba(248, 248, 248, 1) 18%, rgba(247, 247, 247, 1) 19%, rgba(209, 206, 207, 1) 100%);
+		    background: -o-linear-gradient(0deg, rgba(248, 248, 248, 1) 18%, rgba(247, 247, 247, 1) 19%, rgba(209, 206, 207, 1) 100%);
+		    background: -ms-linear-gradient(0deg, rgba(248, 248, 248, 1) 18%, rgba(247, 247, 247, 1) 19%, rgba(209, 206, 207, 1) 100%);
+		    background: linear-gradient(90deg, rgba(248, 248, 248, 1) 18%, rgba(247, 247, 247, 1) 19%, rgba(209, 206, 207, 1) 100%);
+		    h4{
+		    	border-bottom: 1px solid @slideteam_orange14;
+			    border-top: 1px solid @slideteam_orange14;
+			    color: @slideteam_gray43;
+			    letter-spacing: -0.5px;
+			    line-height: 47px;
+			    margin: 60px 0;
+			    padding: 10px 15px;
+			    text-align: center;
+			    text-transform: none;
+			    position: relative;
+			    font-weight: 400;
+			    &:after{
+					position: absolute;
+				    content: '';
+				    bottom: -5px;
+				    left: 0;
+				    right: 0;
+				    height: 3px;
+				    width: 100%;
+				    display: inline-block;
+				    background: -moz-linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+				    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(242,242,242,1)), color-stop(100%, rgba(207,206,207,1)));
+				    background: -webkit-linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+				    background: -o-linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+				    background: -ms-linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+				    background: linear-gradient(90deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+			    }
+			    &:before{
+			    	position: absolute;
+				    content: '';
+				    top: -5px;
+				    left: 0;
+				    right: 0;
+				    height: 3px;
+				    width: 100%;
+				    display: inline-block;
+				    background: -moz-linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+				    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(242,242,242,1)), color-stop(100%, rgba(207,206,207,1)));
+				    background: -webkit-linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+				    background: -o-linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+				    background: -ms-linear-gradient(0deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+				    background: linear-gradient(90deg, rgba(242,242,242,1) 0%, rgba(207,206,207,1) 100%);
+			    }
+
+		    }
+		    ul{
+		    	margin: 0px;
+		    	display: inline-block;
+		    	li{
+		    		float: left;
+				    width: 50%;
+				    text-align: center;
+				    margin: 0 0 40px;
+				    padding: 0px;
+				    &:nth-child(3),&:last-child{
+						margin-bottom:0px;
+					}			    
+				    i{
+				    	display: inline-block;
+					    padding-bottom: 8px;
+					    min-height: 116px;
+				    }
+				    h6{
+				    	margin: 0px;
+				    	color: @slideteam_gray46;
+				    	font-weight: 600;
+				    	font-size: 27px;
+				    	line-height: 31px;
+				    }
+				}
+
+		    }
+	    }
+	   
+	}
+}
+.brand-guideline-block{
+	background:@slideteam_blue1;
+	padding: 0 67px;
+	position: relative;
+	.left-brand-block{
+		width: 71%;
+	    float: left;
+	    margin-top: 100px;
+	    h1{
+		    line-height: 66px;
+		    color: @white;	
+		    text-transform: uppercase;
+		    position: relative;
+		    margin-bottom: 18px;
+		    font-weight: bold;
+		    &:before{
+		    	content: "";
+			    width: 23px;
+			    height: 100%;
+			    background: @white;
+			    position: absolute;
+			    left: -66px;
+		    }
+		    span{
+		    	margin-top: 5px;
+		    	display: block;
+		    	color: @black;
+		    }
+	    }
+	    p{
+	    	font-size: 24px;
+		    line-height: 28px;
+		    color: @white;
+		    font-style: italic;
+	    }
+	    .guidline-dotted {
+	    	position: relative;
+		    top: -8px;
+		    left: 214px;
+		    width: 78%;
+		    em{
+		    	position: relative;
+			    right: auto;
+			    left: 0;
+			    top: 8px;
+		    }
+		    .horizental-dot-line{
+		    	background: url(../../../../Magento_Cms/images/logo_and_brand/horizental-dot-line.png) no-repeat right bottom;
+			    height: 15px;
+			    width: 100%;
+			    display: inline-block;
+			    top: -4px;
+			    left: 0px;
+		    }
+	    }
+	}
+	.right-brand-block{
+		width: 29%;
+	    float: right;
+	    padding: 25px 0;
+	    text-align: right;
+	    .grouped_elements{
+	    	color: @white;
+		    display: inline-block;
+		    font-size: 14px;
+		    padding-left: 0;
+		    padding-top: 10px;
+		    text-align: center;
+		      &:hover{
+		    	 text-decoration: underline;	
+		    	 color: @white;
+		    }
+		    span{
+		    	display: block;
+		    }
+		    img{
+		    	.box-shadow(-23px -7px 29px -3px rgba(26,113,172, 0.8));
+		    }
+	    }
+	}
+	.extra-item{
+		display: none;
+	}
+}
+.business-stationary-block{	
+	padding: 32px 0;
+    background: @slideteam_gray23;
+    h1{  	  
+	    line-height: 67px;
+	    color: @slideteam_black2;
+	    text-align: center;
+	    text-transform: uppercase;
+	    margin-bottom: 43px;
+	    font-weight: 700;
+    }
+    .bottom-business-block{
+    	max-width: 1246px;
+	    margin: 0 auto;
+	    text-align: center;
+	    .inner-content{
+		    		float: left;
+		    		.business-caption{
+		    			max-width:260px;
+		    			display: inline-block;
+		    			padding: 0 20px 20px 37px;
+		    			position: relative;
+		    			top: -88px;
+		    			text-align: right;
+		    			h5{
+							background: @slideteam_black2;
+						    color: @white;					   
+						    padding: 7px;
+						    text-transform: uppercase;
+						    font-weight: 700;
+						    display: inline-block;
+		    			}
+		    			p{
+		    				font-size: 20px;
+						    line-height: 24px;
+						    color: @slideteam_gray47;
+		    			}
+		    		}
+		    		img{
+		    			.box-shadow(1px 2px 14px @slideteam_gray48);		
+		    		}
+		    		
+		    	}
+	    	.top-business-block {
+	    			margin: 75px 0 0;
+		    	
+		    	.letterhead-content{
+		    		.rotate(-7deg);
+		    		padding-right: 25px;
+		    		
+		    		em{
+		    			display: inline-block;
+		    		}
+		    	}
+		    	.business-content{
+		    		.business-caption{
+		    			top: 20px;
+		    			text-align: left;
+		    			margin-left: 72px;
+		    			.rotate(-3deg);	
+		    			max-width: 281px;	    			
+		    		}
+		    		em{
+		    			display: inline-block;
+		    			img{
+		    				display: block;
+		    			}
+		    			.inner-business-img{
+		    				.rotate(-19deg);
+		    			}
+		    			.inner-business{
+		    				position: relative;
+						    left: 59px;
+						    top: 18px;
+		    			}
+		    		}
+
+		    	}
+	    	}
+	    	.envelope-content{
+	    		max-width: 766px;
+	    		margin:0 auto;
+	    		float: none;
+	    		.business-caption{
+	    			top: -20px;
+	    			max-width: 300px;
+	    			padding-bottom: 0px;
+	    		}
+	    		em{
+	    			display: inline-block;
+	    			vertical-align: top;
+	    		}
+	    	}
+	    
+    }
+}
+.work-slider-block{
+	padding: 0 129px 80px 129px;
+	.title-content{
+		background:@slideteam_blue1;
+		padding: 35px 0 35px 0;
+	    max-width: 740px;
+	    margin: 0px auto;
+	    position: relative;
+	    &:before,&:after{
+	    	content: "";
+			width: 75%;
+			height: 2px;
+			position: absolute;
+			background: @slideteam_white5;
+			right: 0;
+	    }
+	    &:before{	    	   
+			    top: 10px;
+	    };
+	    &:after{
+		    bottom: 9px;
+	    }
+	    h2{
+	    	color: @white;
+		    text-align: center;
+		    position: relative;
+		    font-weight: 700;
+		    margin: 0 0 10px;
+		     &:before,&:after{
+	    	content: "";
+			width: 75%;
+			height: 2px;
+			position: absolute;
+			background: @slideteam_white5;
+			left: 0;
+		    }
+		    &:before{	    	   
+				  bottom: -25px;
+		    };
+		    &:after{
+			    top: -15px;
+		    }
+	    }
+	}
+	.slider-content{
+		position: relative;
+		margin-top: 60px;
+		&:before{
+			content: "";
+		    width: 100%;
+		    position: absolute;
+		    bottom: -48px;
+		    border-bottom: 1px dashed @slideteam_blue1;
+		}
+		.owl-carousel{
+			.owl-prev,.owl-next{
+				position: absolute;top: 50%;
+			}
+			.owl-prev{
+				background: url(../../../../Magento_Cms/images/product-slider-left-arrow.png) no-repeat;
+			    height: 40px;
+			    width: 22px;
+			    left: -40px;
+			}
+			.owl-next{
+				background: url(../../../../Magento_Cms/images/product-slider-right-arrow.png) no-repeat;
+			    height: 40px;
+			    width: 22px;
+			    right: -40px;
+			}
+			.owl-dots{
+				position: absolute;
+			    left: 0;
+			    right: 0px;
+			    bottom: -62px;
+			    text-align: center;
+			    display: block;
+			    margin: 0 auto;
+			    .owl-dot{
+					display: inline-block;
+					padding: 0 14px;
+					background: @white;
+					&.active{
+						span{
+							background: @slideteam_blue1;
+						}
+					}
+					span{
+						background: @white;
+					    border: 2px solid @slideteam_blue1;
+					    border-radius: 100%;
+					    display: block;
+					    height: 16px;
+					    width: 16px;
+
+					}
+			    }
+			}
+		}
+	}
+}
+.pricing-logo-brand{
+	background: @slideteam_blue1;
+    text-align: center;
+    padding: 57px 0 240px;
+    h2{
+    	color: @white;
+	    position: relative;
+	    text-align: center;
+	    font-weight: 600;
+	    margin: 0 0 87px;
+    }
+    .guidelines-wrapper{
+	    max-width: 1440px;
+	    margin: 0 auto;
+	    position: relative;
+	    .pricing-brand-block{
+	    	background: @slideteam_gray48;
+		    display: inline-block;
+		    border-radius: 100%;
+		    width: 336px;
+		    height: 344px;
+		    .box-shadow(1px 4px 7px @slideteam_gray48);
+		    h3{
+		    	color: @white;		   
+			    position: relative;
+			    text-align: center;
+			    font-weight: 600;
+			    padding: 37px 0 6px;
+			    margin:0px;
+			    line-height: 55px;
+		    }
+		    .pricing-brand-block-bottom{
+		    	background-color: @slideteam_gray49;
+			    border-radius: 0 0 210px 217px;
+			    height: 50%;
+			    top: 21px;
+			    position: relative;
+			    label{
+			    	color: @white;
+				    font-size: 30px;
+				    line-height: 51px;
+				    padding: 21px 0 18px;
+				    position: relative;
+				    text-align: center;
+				    display: inline-block;
+					    span{
+					    	color: @slideteam_yellow3;
+						    display: block;
+						    font-size: 37px;
+						    font-weight: 600;
+					    }
+			    }
+			    &:after{
+			    	position: absolute;
+				    top: 0;
+				    left: 0;
+				    border-top: 2px solid @slideteam_yellow4;
+				    content: "";
+				    width: 75%;
+			    }
+			    &.md-block{
+			    	&:after{
+			    		border-color: @slideteam_blue19;
+					    right: 0;
+					    left: 0;
+					    margin: 0 auto;
+			    	}
+			    }
+			    &.last-block{
+			    	&:after{
+			    		border-color: @slideteam_green9;
+					    right: 0;
+					    left: initial;
+			    	}
+			    }
+
+		   	}
+	   		&.center-block {
+	   			margin: 0 -45px;
+	   		}
+	    }
+
+    }
+}
+.logo_design_and_branding{
+	background:@slideteam_orange1;
+	padding: 50px 0 45px;
+    position: relative;
+    &:after{
+    	border-left: 15px solid @slideteam_white6;
+	    border-right: 15px solid @slideteam_white6;
+	    border-top: 15px solid @white;
+	    content: "";
+	    left: 50%;
+	    position: absolute;
+	    top: 0;
+    }
+    .form-title{
+    	color: @white;
+	    margin: 0 0 30px;
+	    text-align: center;
+	    text-transform: none;
+	    font-weight: bold;
+	    font-size: 40px;
+    	line-height: 44px;
+    	display: block;
+    }
+}
+
+/*Modal CSS*/
+.mfp-zoom-out-cur{
+	overflow: hidden;
+}
+.logo-and-brand-wrap{
+	z-index: 99999;
+	&.mfp-bg{
+		opacity: 0.7;
+	}
+	&.mfp-wrap{
+		cursor: progress;
+		.mfp-container{
+			height: initial;
+			top: 46px;
+			&:before{
+				height:0px;
+			}
+		}
+		.mfp-content{
+			.mfp-close{ 
+				position: absolute;
+			    top: -22px;
+			    right: -22px;
+			    width: 36px;
+			    height: 36px;
+			    cursor: pointer;
+			    padding: 0px;
+			    opacity: 1;
+			    background:url(../../../../Magento_Cms/images/popup/fancybox_sprite.png) no-repeat;
+			    &:hover{
+			    	border:none;
+			    }
+			}
+			.mfp-arrow{
+				display: none;
+				width: 36px;
+				height: 34px;
+				opacity: 1;
+				background-image: url(../../../../Magento_Cms/images/popup/fancybox_sprite@2x.png);
+    			background-size: 44px 152px;
+    			margin: 0px;
+    			.scale(1); 
+    			&:hover{
+			    	border:none;
+			    	background-color: transparent;
+			    }
+				&.mfp-arrow-left{
+					background-position: 0 -36px;
+					left: 25px;
+					&:before{
+						border:0;
+					}
+					&:after{
+						border:0;
+					}
+				}
+				&.mfp-arrow-right{
+					background-position: 0 -72px;
+					right: 25px;
+					&:before{
+						border:0;
+					}
+					&:after{
+						border:0;
+					}
+				}
+			}
+			.mfp-figure{
+				margin: 0px;
+				background: @slideteam_white9;
+				.border-radius(4px);
+				padding: 15px;
+				.box-shadow(0 10px 25px rgba(0, 0, 0, 0.5));
+				img{
+					padding: 0px;
+				}
+				.mfp-bottom-bar{
+					position: relative;
+					bottom: -55px;
+					text-align: center;
+					margin-top: -28px;
+					.mfp-counter{
+						position: relative;
+						text-align: center;
+						display: inline-block;
+   						padding: 2px 22px;
+    					background: @slideteam_black13;
+    					.border-radius(15px);
+    					color: @white;
+					    font-weight: bold;
+					    line-height: 24px;
+					    font-size: 14px;
+					}
+				}
+				&:after{
+					box-shadow:none;
+					background: transparent;
+				}
+			}
+
+		}
+	}
+}
+
+/*Media Query*/
+/*Media for popup only*/
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), not all, not all{	
+	.logo-and-brand-wrap{
+		&.mfp-wrap{
+			.mfp-content{
+				.mfp-close{
+					background-image: url(../../../../Magento_Cms/images/popup/fancybox_sprite@2x.png);
+	    			background-size: 44px 152px; 
+				}
+				.mfp-arrow{
+					display: block;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 1921px){
+	.brand-guideline-block{
+		.left-brand-block{
+			.guidline-dotted{
+				width: 85%;
+				.horizental-dot-line{
+					background: url(../../../../Magento_Cms/images/logo_and_brand/horizental-dot-line.png) no-repeat left bottom;
+			    
+				}
+			}
+		}
+	}
+}
+@media(max-width: 1680px){
+	.banner-brands{
+		.or-icon{
+			left:0.5%;
+		}
+	}
+	.company-brands-logo{
+		 .company-brands-righttblock{
+		 		width: 54%;
+    			margin: 50px 145px 0 0;
+		 }
+	}
+	.brand-guideline-block{
+		.left-brand-block{
+			.guidline-dotted{
+				width: 68%;	
+			}
+		}
+	}
+
+}
+@media(max-width: 1440px){
+	.st-logo-and-branding{
+		h3{font-size: 39px;line-height: 43px;}
+	}
+
+	.banner-brands{
+		.or-icon{
+			left:1.1%;
+		}
+	}
+	.brand-guidelines-section{
+		.guidelines-wrapper {
+			max-width: 1400px;
+		}
+	}
+	.pricing-logo-brand {
+		.guidelines-wrapper{
+			max-width: 1200px;		
+		}
+	}
+
+}
+
+@media(max-width: 1366px){	
+	.st-logo-and-branding{
+		h1{font-size: 54px;line-height: 58px;}
+		h4{font-size: 29px;line-height: 34px;}
+	}
+
+	.banner-brands{
+		 .logo-brands-banner{
+		 	&:after
+		 	{
+		 		left:85.2%
+		 	}
+		 	&:before
+		 	{
+		 		left: 84%;
+		 	}
+		 }
+		 .or-icon{
+		 	left: -2.1%
+		 }
+	}  
+	.company-brands-logo{
+		 .company-brands-righttblock{
+		 		width: 54%;
+    			margin: 50px 72px 0 0;
+		 }
+	}
+	.brand-guidelines-section{
+		padding: 75px 60px 0;
+	}
+	.brand-guideline-block{
+		padding: 0 50px;
+		.left-brand-block{
+			h1{
+				&:before{
+					left:-49px;
+				}
+			}
+		}
+	}	
+	
+}
+
+@media(max-width: 1280px){
+	.logo-and-brand-wrap{
+		&.mfp-wrap{
+			.mfp-container{
+				padding: 0 25px;
+			}
+		}
+	}
+}
+@media(max-width: 1199px){
+	.st-logo-and-branding {
+		h1{font-size: 39px;line-height: 44px;}
+		h2{font-size: 45px;line-height: 49px;}
+		h3{font-size: 31px;line-height: 36px;}
+		h5{font-size: 28px;line-height: 32px;}
+		h6{font-size: 19px;line-height: 23px;}
+	}
+
+	.banner-brands{
+		.or-icon{
+			left:-1.2%;
+		}
+	}
+	.company-brands-logo{
+		 .company-brands-righttblock{
+		 		width: 55%;
+    			margin: 50px 24px 0 0;
+		 }
+		 .company-brands-leftblock{
+		 	width: 440px;	 	
+		 }
+		 .company-brands-caption{
+		 		max-width: 305px;
+		 		top: 33%;
+		 		label{
+		 			font-size: 28px;
+		 			line-height: 42px;
+		 			
+		 		}
+		 }
+
+	}
+	.brand-guidelines-section{
+		.guidelines-wrapper {
+			.brand-standards-block{
+				.brand-books{
+					width: 400px;
+					height: 381px;
+					background-size: contain;
+					h1{
+						margin: 70px auto 0;
+						line-height: 58px;
+					}
+					span{
+						font-size: 23px;
+    					line-height: 31px;
+    					bottom: 82px;
+					}
+				}
+			}
+			.unique-style-guide {			
+				ul{
+					li{
+						margin: 0 0 26px;	
+					}
+				}
+			}
+		}
+	}
+	.brand-guideline-block{
+		padding: 0 25px;
+		.left-brand-block{
+			width: 42%;
+			h1{
+				line-height: 46px;
+				span{
+					margin-top: 0px;
+				}
+				&:before{
+					left:-37px;
+				}
+			}
+			.guidline-dotted{
+				left: 30px;
+			}	
+		}
+
+		.right-brand-block{
+			width: 58%;
+		}
+	}
+	.business-stationary-block{
+		.bottom-business-block{		
+			max-width: 986px;
+			overflow: hidden;
+			.inner-content{
+					.business-caption{
+						max-width: 250px;
+						top: -17px;
+					}
+				}
+			.top-business-block{
+				
+				.letterhead-content {
+					.transform-block{
+						width: 180px;
+					}
+				}
+				.business-content {
+					em{
+						width: 100px;
+						vertical-align: top;
+					}
+					.business-caption{
+						top: -47px;
+						max-width: 235px;
+					}
+				}
+			}
+		}
+	}
+	.work-slider-block{
+		.title-content{
+			padding: 25px 0;
+			&:before{
+				top:3px;
+			}
+			h2{
+				&:before{
+					bottom:-18px;
+				}
+			}
+		}
+	} 
+	.pricing-logo-brand{
+		padding: 57px 100px 100px;
+		.guidelines-wrapper{
+			.pricing-brand-block{
+				width: 276px;
+    			height: 270px;
+    			h3{
+    				padding: 27px 0 18px;
+    				line-height: 38px;				
+    			}
+    			.pricing-brand-block-bottom{
+    				top: 14px;
+	    			label{
+	    				font-size: 24px;
+	    				line-height: 28px;
+	    				padding: 28px 0 18px;
+	    				span{
+	    					font-size: 26px;
+	    					margin-top: 5px;
+	    				}	
+	    			}
+	    		}
+			}
+		}
+	}
+	.logo_design_and_branding{
+		.form-title{
+			font-size: 36px;
+			line-height: 40px;
+		}
+	}
+
+}
+
+@media(max-width: 1023px){
+	.banner-brands{
+		.banner-brands-dis{
+			max-width: 870px;
+		}  
+	}
+	.logo-and-brand-wrap{
+		&.mfp-wrap{
+			.mfp-container{
+				top: 10%;
+			}
+		}
+	}
+}
+
+@media(max-width: 991px){
+	.st-logo-and-branding{
+		 h4{font-size: 29px;line-height: 33px;}
+	}
+
+	.banner-brands{
+		background: @slideteam_blue1;
+		padding: 40px;
+		.brands-info{
+			&.pd-block{
+				margin: 0;
+				position: static;
+				.logo-left-block{
+					width: 100%;
+					margin-bottom: 20px;
+					.brand-label{
+						font-size: 24px;
+						    line-height: 28px;
+						    height: 30px;
+					}
+				}
+				.logo-branding-block{
+					width: 100%;
+					text-align: center;
+					background:@white;
+					margin-bottom: 20px;
+				}
+				.banner-brands-dis{
+					position: static;
+					display: inline-block;
+					p{
+						font-size: 18px;
+						line-height: 22px;
+					}
+
+				}
+				.or-icon{
+					position: static;
+					width: 33px;
+					margin:0 auto 20px;
+					.mobile-desk{
+						display: none;
+					}
+					.mobile-end{
+						display: block;
+					}
+				}
+			}
+		}
+		.logo-brands-banner{
+			display: none;
+			width: 100%;
+			height: auto;
+			&:after,&:before{
+				width:0;
+				height: 0;
+				border: none;
+			}
+		}
+	}
+	.company-brands-logo{
+		padding: 30px 15px;
+		.company-brands-leftblock{
+			float: none;
+			background:@slideteam_orange16;
+			width: 100%;
+			position: static;
+			padding: 45px 50px 38px;
+			box-sizing: border-box;
+		}
+		.company-brands-caption{
+			transform: none;
+			max-width: 100%;
+			position: static;
+			h1{
+				margin-bottom: 20px;
+			}
+			label{
+				font-size: 24px;
+   				line-height: 28px;
+			}
+		}
+		.company-brands-righttblock{
+			width: 100%;
+			float: none;
+			ul{
+				width: auto;
+				li{
+					width: 25%;
+				}
+			}
+		}
+	}
+	.sample-logos-block{
+		.sample-logos-title{
+			font-size: 39px;
+		    line-height: 57px;
+		    height: 60px;
+		    max-width: 632px;
+		}
+	}
+	.brand-guidelines-section{
+		padding: 30px 16px 0;
+		.guidelines-wrapper {
+			.col-6{
+				width: 100%;
+				padding: 30px 35px;
+			}
+			.brand-standards-block{
+				p{
+					font-size: 22px;
+				    line-height: 26px;
+				    padding-top: 20px;
+				}
+			}
+			.unique-style-guide{
+				h4{
+					margin: 20px 0 60px;
+				}
+			}
+		}
+	}
+	.brand-guideline-block{
+		padding: 0 15px;
+		.left-brand-block{
+			width: 100%;
+			text-align: center;
+			margin-top: 30px;
+			h1{			
+				&:before{
+					left:-29px;
+				}
+			}
+			.guidline-dotted{
+				display: none;
+			}
+		}
+		.right-brand-block{
+			width: 100%;
+			text-align: center;
+		}
+	}
+	.business-stationary-block{
+		padding-bottom: 20px;
+		.bottom-business-block{	
+			.inner-content{
+					width: 100%;
+					h4{
+						margin: 10px 0;
+					}
+			}	
+			.top-business-block{
+				margin: 60px 0 0;
+
+				.letterhead-content{
+					margin-bottom: 15px;
+				}	
+				.business-content{
+					.business-caption{
+						padding-bottom: 0px;
+					}
+				}		
+			}
+			.envelope-content{
+				.business-caption{
+					top: 0px;
+					h5{
+						margin: 0px;
+					}
+				}
+			}
+		}
+	} 
+	.work-slider-block{
+		padding: 0 15px 80px 15px;
+		.owl-carousel{
+			.owl-nav{
+				display: none;
+			}
+		}
+	}
+	.pricing-logo-brand{
+		h2{
+			margin-bottom: 57px;
+		}
+		padding: 50px 15px 70px;
+		.guidelines-wrapper{
+			.pricing-brand-block{
+				    width: 247px;
+   					height: 247px;
+   					&.center-block{
+   						margin: 0 -18px;
+   					}
+    			.pricing-brand-block-bottom{
+    				top: 6px;	
+	    		}
+			}
+		}
+	}
+	.logo_design_and_branding{
+		    padding: 50px 35px 45px;
+		    .form-title{
+		    	font-size: 32px;
+		    	line-height: 36px;
+		    }
+	}
+
+	/*popup css*/
+	.logo-and-brand-wrap{
+		&.mfp-wrap{
+			.mfp-container{
+				padding: 0 40px;
+			}
+		}
+	}
+}
+
+@media(max-width: 767px){	
+	.st-logo-and-branding{
+		h1{font-size: 24px;line-height: 28px;}
+	  	h2{font-size: 28px;line-height: 32px;}
+		h3{font-size: 26px;line-height: 30px;}
+		h4{font-size: 24px;line-height: 28px;}
+		h5{font-size: 18px;line-height: 22px;}
+		h6{font-size: 18px;line-height: 22px;}
+	} 
+	.banner-brands{
+		padding: 25px 15px;
+	}
+	.company-brands-logo{
+		.company-brands-leftblock{
+			padding: 20px;
+		}
+		.company-brands-caption{
+			label{
+				font-size: 18px;
+    			line-height: 22px;
+			}
+		}
+		.company-brands-righttblock{
+			margin: 30px 24px 0 0;
+			ul{
+				width: auto;
+				li{
+					width: 33.33%;
+				}
+			}
+		}
+	}
+	.sample-logos-block{
+		.sample-logos-title{
+			font-size: 28px;
+		    height: 50px;
+    		line-height: 47px;
+    		max-width: 565px;
+		}
+	}
+	.brand-guideline-block{
+		.left-brand-block{
+			h1{
+				line-height: 30px;	
+			}
+		}
+	}		
+	.brand-guidelines-section{
+		.guidelines-wrapper {
+			.col-6{
+				padding: 30px 15px;
+			}
+			.unique-style-guide {
+				h4{
+					margin: 0px 0 40px;
+					line-height: 30px;
+				}
+				ul{
+					li{
+						h6{
+							font-size: 18px;
+							line-height: 22px;
+						}
+					}
+				}
+			}
+			.brand-standards-block{
+				.brand-books{
+					h1{
+						font-size: 40px;
+						line-height: 66px;
+					}
+				}
+			}
+		}
+	}
+	.business-stationary-block{
+		padding: 30px 15px;
+		.bottom-business-block{	
+			
+			.envelope-content {
+					em{
+						width: 240px;
+					}
+				}		
+		}
+	}
+	.work-slider-block{
+		.slider-content{
+			.owl-carousel{
+				.owl-dots{
+					.owl-dot{
+						padding: 0 5px;
+						span{
+							width: 15px;
+							height: 15px;
+						}
+					}
+				}
+			}
+		}
+	} 
+	.pricing-logo-brand{
+		padding: 30px 15px 30px;
+		h2{
+			margin: 0 0 35px;
+		}
+		.guidelines-wrapper{
+			.pricing-brand-block{
+					display: block;
+					margin: 0 auto 30px;
+   					&.center-block{
+   						margin: 0 auto 30px ;
+   					}
+   					&:last-child{
+   						margin-bottom: 0px;
+   					}
+   					.pricing-brand-block-bottom{
+   						&:after{
+   						width: 100%;
+   						}
+   					}
+   					
+			}
+		}
+	}
+	.logo_design_and_branding{
+		    padding: 28px 15px 30px;
+		     .form-title{
+		    	font-size: 24px;
+		    	line-height: 28px;
+		    	margin-bottom: 15px;
+		    }
+	}
+	.pricing-logo-brand{	
+		.guidelines-wrapper{
+			.pricing-brand-block{
+				.pricing-brand-block-bottom{
+					label{
+						padding: 20px 0 18px;
+					}
+				}
+			}
+		}
+	}
+
+	/*popup css*/
+	.logo-and-brand-wrap{
+		&.mfp-wrap{
+			.mfp-container{
+				top: 22%;
+			}
+		}
+	}
+
+}
+
+@media(max-width: 575px){
+	.st-logo-and-branding{
+		h1{font-size: 22px;line-height: 26px;}
+		h4{font-size: 20px;line-height: 24px;}
+	} 
+
+	.sample-logos-block{
+		.sample-logos-title{
+			font-size: 18px;
+		    height: 45px;
+    		line-height: 43px;
+    		width: 100%;
+    		max-width: 300px;
+		}
+	}
+	.company-brands-logo{
+		.company-brands-righttblock{
+			ul{
+				width: auto;
+				li{
+					width:50%;
+				}
+			}
+		}
+	}
+	.brand-guidelines-section{
+		.guidelines-wrapper {			
+			.brand-standards-block{
+				.brand-books{
+					width: 260px;
+					height: 245px;
+					h1{
+						margin: 42px auto 0;
+						line-height: 38px;
+						font-size: 27px;
+					}
+					span{
+						font-size: 15px;
+    					line-height: 19px;
+    					bottom: 47px;
+					}
+				}
+			}
+			.unique-style-guide {			
+				ul{
+					li{
+						width: 100%;
+						&:last-child,&:nth-child(3){
+							margin: 0 0 26px;
+						}
+					}
+				}
+			}
+			
+		}
+	}
+	.business-stationary-block{
+		padding-bottom: 30px;
+		h1{
+			line-height: 44px;
+			margin-bottom: 15px;
+		}
+		.bottom-business-block{	
+			.inner-content{
+				.business-caption{
+					text-align: center;	
+					max-width: 100%;
+					padding: 20px 0;
+
+					p{
+						text-align: right;
+					}			
+				}
+					
+			}	
+			.top-business-block{
+				margin: 0;
+
+				.letterhead-content{
+					.rotate(0deg);
+					padding-right: 0px;				
+				}	
+				.business-content{
+					em{
+						width: auto;
+						img,.inner-business-img{
+						.rotate(0deg);
+						}
+						.inner-business{
+							position: static;
+							margin-top: 15px;
+						}
+					}
+					.business-caption{
+						.rotate(0deg);
+						margin-left: 0px;
+						position: static;
+						margin-top: 10px;
+						text-align: center;
+						max-width: 100%;
+						p{
+							text-align: left;
+						}	
+					}
+				}		
+			}
+			.envelope-content{
+				.business-caption{
+					top: 0px;
+					h5{
+						margin: 0 0 10px;
+					}
+				}
+			}
+		}
+	} 
+	/*popup css*/
+	.logo-and-brand-wrap{
+		&.mfp-wrap{
+			.mfp-container{
+				padding: 0 25px;
+			}
+		}
+	}
+}

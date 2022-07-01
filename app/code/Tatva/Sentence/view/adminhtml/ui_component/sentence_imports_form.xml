@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">sentence_imports_form.sentence_custom_form_data_source</item>
+            <item name="deps" xsi:type="string">sentence_imports_form.sentence_custom_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Import Sentence using CSV</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">sentence_imports_form</item>
+        </item>
+        
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="string">Tatva\Sentence\Block\Adminhtml\Edit\Imports\BackButton</item>
+            <item name="reset" xsi:type="string">Tatva\Sentence\Block\Adminhtml\Edit\ResetButton</item>
+            <item name="save" xsi:type="string">Tatva\Sentence\Block\Adminhtml\Edit\SaveButton</item>
+        </item>
+        <item name="layout" xsi:type="array">
+            <item name="type" xsi:type="string">tabs</item>
+            <item name="navContainerName" xsi:type="string">left</item>
+        </item>
+    </argument>
+    <dataSource name="sentence_custom_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Tatva\Sentence\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">sentence_custom_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">sentence_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="*/imports/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="Sentence" sortOrder="5">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="label" xsi:type="string">Item information</item>
+                <item name="collapsible" xsi:type="boolean">false</item>
+            </item>
+        </argument>
+        <field name="upload_file">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Select File to Import </item>
+                    <item name="formElement" xsi:type="string">fileUploader</item>
+                    <item name="elementTmpl" xsi:type="string">ui/form/element/uploader/uploader</item>
+                    <item name="source" xsi:type="string">Sentence</item>
+                    <item name="validation" xsi:type="array">
+                        <item name="required-entry" xsi:type="boolean">true</item>
+                    </item>
+                    <item name="uploaderConfig" xsi:type="array">
+                        <item name="url" xsi:type="url" path="*/imports/imports"/>
+                    </item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>

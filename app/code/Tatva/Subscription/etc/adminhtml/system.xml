@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="slideteams_configuration" translate="label" sortOrder="10">
+            <label>SLIDETEAM'S CONFIGURATION</label>
+        </tab>
+        <section id="subscription_options" translate="label" sortOrder="300" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Subscription Config</label>
+            <tab>slideteams_configuration</tab>
+            <resource>Tatva_Subscription::subscription_config</resource>
+            <group id="subscription" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>Subscription Configuration</label>
+                <field id="subscription_product" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Product Id of Subscription</label>
+                    <validate>validate-digits</validate>
+                </field>
+                <field id="subscription_product_inline" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Product Id of Inline Subscription</label>
+                    <validate>validate-digits</validate>
+                </field>
+            </group>
+            <group id="captcha" type="text" sortOrder="20" showInDefault="2" showInWebsite="2" showInStore="1" translate="label">
+	            <label>Captcha Configuration</label>
+	            <field id="captcha_max" translate="label" type="text" sortOrder="3" showInDefault="2" showInWebsite="2" showInStore="1">
+	                <label>Maximum Downloads For Captcha</label>
+	                <validate>validate-digits</validate>
+	            </field>
+           </group>
+           <group id="paypal_order_email" type="text" sortOrder="30" showInDefault="2" showInWebsite="2" showInStore="1" translate="label">
+                <label>Paypal Order Email Configuration</label>
+                <field id="template_id" translate="label" type="select" sortOrder="1" showInDefault="2" showInWebsite="2" showInStore="1">
+                    <label>Email Template Id (Completed Order)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="not_completed_template" translate="label" type="select" sortOrder="1" showInDefault="2" showInWebsite="2" showInStore="1">
+                    <label>Email Template Id (Order Detail Not Exist)</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                </field>
+                <field id="to_email" translate="label" type="text" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Emails for incomplete Paypal Order (To - Comma separated)</label>
+                </field>
+                <field id="cc_email" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Send Emails Cc for incomplete Paypal Order (Cc - Comma seprated)</label>
+                </field>
+           </group>
+        </section>
+      </system>
+</config>

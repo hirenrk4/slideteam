@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:Magento:module:Magento_Email:etc/email_templates.xsd">
+    <!-- <template id="tatva_customresumeservice_email" label="Customresumeservice Email" file="customresumeservice\customresumeservice_email.html" type="html" module="Tatva_Customresumeservice" area="frontend"/> -->
+    <template id="tatva_formbuild_customeremail" label="Landingpage Customer Email" file="formbuild_customeremail.html" type="html" module="Tatva_Formbuild" area="frontend"/>
+</config>

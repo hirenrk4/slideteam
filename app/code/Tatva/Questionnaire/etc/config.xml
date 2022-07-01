@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <tatva>
+            <questionnaire>
+                <email>tatva_questionnaire_email</email> 
+            </questionnaire>
+        </tatva>
+        <contact>
+        	<customemail>
+        		<recipient_email_design>design@slideteam.net</recipient_email_design>
+        		<recipient_email_design_cc1>design@slideteam.net</recipient_email_design_cc1>
+        	</customemail>
+        </contact>
+        <customer>
+            <captcha>
+                <shown_to_logged_in_user>
+                    <questionnaire_captcha>1</questionnaire_captcha>
+                </shown_to_logged_in_user>
+                <always_for>
+                    <questionnaire_captcha>1</questionnaire_captcha>
+                </always_for>
+            </captcha>
+        </customer>
+        <captcha translate="label">
+            <frontend>
+                <areas>
+                    <questionnaire_captcha>
+                        <label>Questionnaire Captcha</label>
+                    </questionnaire_captcha>
+                </areas>
+            </frontend>
+        </captcha>
+    </default>
+</config>

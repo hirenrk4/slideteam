@@ -1,0 +1,39 @@
+<?php
+/**
+ * @category FishPig
+ * @package FishPig_WordPress
+ * @notes This template is used when there post/list.phtml doesn't have a child block called 'renderer'
+ * @notes This happens when post/list.phtml is called in via PHP rather than via the default layout handles
+ */
+?>
+<?php if ($post = $this->getPost()): ?>
+	<?php
+	$blockObj= $block->getLayout()->createBlock('FishPig\WordPress\Block\Sidebar\Widget\Posts');
+  	$author = $post->getUser();
+  	$categories = $post->getParentCategories();
+	?>
+	<?php $frontend_identifies = $blockObj->configData('wordpress/integration/route');?>
+	<div class="blog-one-view clearfix">
+		<div class="blog-post-name">
+	  		<img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/3d-men.png')?>" alt="">
+	   		<a href="<?php echo $this->getUrl().$frontend_identifies.'/author/'.str_replace('.','-',str_replace(' ','-',$author->getUserLogin())); ?>" target="_blank" title="<?php echo $this->escapeHtml($author->getDisplayName()) ?>">
+	   			<?php echo $this->escapeHtml($author->getDisplayName()) ?></a>		
+	   	</div>
+	   	<div class="blog-calender">
+	    	<img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/calander-icon.png')?>" alt="">
+	    	<span><?php echo $post->getPostDate()?></span>
+		</div>
+		<div class="comment-box">
+			<img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/blog/comment-icon.png')?>" alt="">
+		    <span><a href="<?php echo $post->getPermalink() ?>" target="_blank"><?php echo $post->getCommentCount(); ?> <?php if($post->getCommentCount()>1) echo "Comments";else echo "Comment";?></a></span>
+		</div>
+		
+	</div>
+	<div class="resume-blog-one">
+		<?php if ($featuredImage = $post->getFeaturedImage()): ?>
+			<div class="post-image">
+				<a href="<?php echo $post->getUrl() ?>" target="_blank" title="<?php echo $this->escapeHtml($post->getName()) ?>"><img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/resume-blogimg.jpg') ?>" alt="<?php echo $this->escapeHtml($post->getName()) ?>"/></a>
+			</div>	
+		<?php endif; ?>
+	</div>	
+<?php endif; ?>

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+   <group id="customdownload_cron">
+      <job instance="Tatva\Downloadable\Cron\Download" method="execute" name="tatva_download_cron">
+      <schedule>0 1 * * *</schedule>
+      </job>
+   </group>
+   <group id="customreview_cron">
+      <job instance="Tatva\Downloadable\Cron\Review" method="execute" name="tatva_review_cron">
+         <schedule>0 */6 * * *</schedule>
+      </job>
+   </group>
+   <group id="daily_customer_download">
+      <job instance="Tatva\Downloadable\Cron\CustomerDownload" method="execute" name="tatva_more_customer_download">
+         <schedule>0 1 * * *</schedule>
+      </job>
+   </group>
+</config>

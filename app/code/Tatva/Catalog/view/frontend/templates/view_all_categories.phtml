@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="all-categories">
+    <?php
+          $categoryData = $block->getMainCategories();
+          $custom_link_categories = ['Brochures','Resumes'];
+          $custom_link_sub_categories = ['AllResumes'];
+    ?>
+        <div class="categories">
+            <ul class="category-grid">
+                <?php foreach ($categoryData['Allcategories'] as $category): ?>
+                    <?php if ($category->getLevel() == 2): ?>
+                        <?php $categories = $category->getChildrenCategories(); ?>
+                        <?php if (count($categories) > 0): ?>
+                        <li class="category-title">
+                            <?php 
+                                if(in_array( $category->getName() , $custom_link_categories )) {
+                                    $url =  substr($category->getUrl(),0,-5);
+                                    ?>
+                                   <h6> <a href="<?php echo $url ?>"><?php echo __($category->getName()).' :'; ?></a></h6>
+                                    <?php
+                                } else {
+                            ?>
+                            <h6><a href="<?php echo $category->getUrl() ?>"><?php echo __($category->getName()).' :'; ?></a></h6>
+                            <?php }?>
+                        </li>
+                        <?php endif; ?>
+                        <?php $subcategories = $category->getChildrenCategories(); ?>
+                        <?php if (count($subcategories) > 0): ?>
+                            <ul class="subcategory-grid">
+                            <?php foreach ($subcategories as $key => $subcategory):
+                                if(in_array( $subcategory->getName() ,  $custom_link_sub_categories )) {
+                                    $sub_cat_url =  substr($category->getUrl(),0,-5);
+                                ?>
+                                 <li class="subcategories">
+                                    <a href="<?php echo $sub_cat_url ?>">
+                                        <?php echo $subcategory->getName(); ?> 
+                                    </a>
+                                </li>  
+                                <?php } else {?>
+                                <li class="subcategories">
+                                    <a href="<?php echo $subcategory->getUrl() ?>">
+                                        <?php echo $subcategory->getName(); ?> 
+                                    </a>
+                                </li>  
+                            <?php } endforeach; ?>     
+                            </ul>   
+                        <?php endif; ?>     
+                    <?php endif; ?>
+                <?php endforeach; ?>
+                <li class="category-title">
+                    <h6><a href="<?php echo $block->getBaseUrl() ?>all-powerpoint-categories/" title="More Topics">
+                        More Topics
+                    </h6>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

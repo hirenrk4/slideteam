@@ -1,0 +1,1307 @@
+
+
+@media (max-width:1536px) {
+    .container,
+    .main-wrapper {
+        max-width: 1200px
+    }
+}
+
+@media (max-width:1440px) {
+    .container,
+    .main-wrapper {
+        max-width: 1200px
+    }
+}
+
+@media (max-width:1366px) {
+    .container,
+    .main-wrapper {
+        max-width: 1100px
+    }
+}
+
+@media (max-width:1199px) {
+    .container,
+    .main-wrapper {
+        max-width: 970px
+    }
+}
+
+@media (max-width:1023px) {
+    .container,
+    .main-wrapper {
+        max-width: 960px
+    }
+}
+
+@media (max-width:991px) {
+    .container,
+    .main-wrapper {
+        max-width: 100%
+    }
+    .container,
+    .main-wrapper {
+        margin: 0 15px
+    }
+}
+
+@media only screen and (min-width:1720px) {
+    .container_new {
+        max-width: 1700px;
+        margin: 0 auto
+    }
+}
+
+@media only screen and (max-width:1719px) {
+    .container_new {
+        padding: 0 20px
+    }
+}
+
+@media only screen and (max-width:1792px) {
+    .product-info-main {
+        padding-left: 10px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 875px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 875px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 494px !important
+    }
+}
+
+@media only screen and (max-width:1680px) {
+    .edutech_logo img {
+        width: 180px
+    }
+    .edutech_search input {
+        width: 200px
+    }
+    .edutech_nav ul {
+        padding: 0
+    }
+    .edutech_nav li {
+        padding: 0 5px
+    }
+    .social_icn_inner span {
+        font-size: 13px
+    }
+    .edu_tech_inner button {
+        font-size: 13px
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 821px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 821px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 463px !important
+    }
+    #downloadbtn-form .downloadbtn button {
+        min-width: 329px !important;
+        font-size: 19px !important
+    }
+    .product-info-main .download-btnwrapper .favourite {
+        left: 339px !important
+    }
+}
+
+@media only screen and (min-width:1590px) and (max-width:1610px) {
+    .training_set_inner {
+        background: #fff;
+        border-radius: 6px;
+        height: 130px;
+        width: 98%;
+        margin: 0 auto 10px;
+        padding-top: 20px
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 775px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 775px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 437px !important
+    }
+}
+
+@media only screen and (min-width:1536px) and (max-width:1680px) {
+    .custom-downloadable-product .product.media {
+        padding-left: 7px
+    }
+}
+
+@media only screen and (min-width:1400px) and (max-width:1450px) {
+    .why_edudecks_custom {
+        width: 32.7%
+    }
+}
+
+@media (max-width:1536px) {
+    .training_custom {
+        width: 100%
+    }
+    .training_set h5 {
+        font-size: 14px
+    }
+    .training_set_inner {
+        width: 96%;
+        margin: 0 auto 14px
+    }
+    .why_edudecks_custom {
+        height: 200px
+    }
+    .edutech_nav {
+        margin-right: 10px
+    }
+    label.label.nikcname-label,
+    label.label.summary-field-label,
+    .field label#Rating_rating_label,
+    label.label.captcha_review-form {
+        width: 20%
+    }
+    .control.nickname-text,
+    .control.summary-text,
+    .control.review-control-vote,
+    .customer-captcha-wrapper {
+        width: 78%
+    }
+    .control.rating-div .mage-error {
+        padding-left: 20%
+    }
+    .review-fieldset label span {
+        font-size: 15px
+    }
+    fieldset.field.required.review-field-ratings .label span {
+        font-size: 15px;
+        font-weight: 600
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 733px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 733px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 414px !important
+    }
+}
+
+@media (max-width:1440px) {
+    .product-info-main .download-btnwrapper .downloadbtn .get-button {  
+        min-width: 275px;
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 683px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 683px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 385px !important
+    }
+    #downloadbtn-form .downloadbtn button {
+        min-width: 269px !important;
+        font-size: 16px !important
+    }
+    .product-info-main .download-btnwrapper .favourite {
+        left: 279px !important
+    }
+}
+
+@media (max-width:1366px) {
+    .banner_content h1 {
+        font-size: 36px
+    }
+    .banner_content p {
+        font-size: 17px
+    }
+    .banner_button button {
+        width: 180px;
+        font-size: 13px
+    }
+    .resources_custom {
+        width: 90%
+    }
+    .resources_inner {
+        width: 32%
+    }
+    .resources_inner img {
+        width: 80px
+    }
+    .resources_inner h1 {
+        font-size: 40px
+    }
+    .resources_inner h5 {
+        font-size: 13px
+    }
+    .edutech_logo img {
+        width: 160px
+    }
+    .edutech_search {
+        padding-left: 2%
+    }
+    .why_edudecks_custom {
+        height: 220px
+    }
+    .training_set_inner {
+        width: 98%;
+        margin: 0 auto 7px
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 633px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 633px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 357px !important
+    }
+    .product.media.powerpoint_slides_left .main-slider p {
+        font-size: 15px;
+        line-height: 16px
+    }
+    .slick-prev.slick-arrow {
+        height: 95.5%;
+    }
+    .slick-next.slick-arrow {
+        height: 95.5%;
+    }
+}
+
+@media (max-width:1280px) {
+    .edutech_logo img {
+        width: 140px
+    }
+    .edutech_search {
+        padding-left: 1%
+    }
+    .edutech_search input {
+        padding: 0 35px 0 10px
+    }
+    .edutech_nav li {
+        padding: 0 2px
+    }
+    .edu_tech_inner button {
+        padding: 10px
+    }
+    .edutech_nav {
+        margin-right: 20px
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 623px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 623px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 351px !important
+    }
+}
+
+@media only screen and (min-width:1100px) and (max-width:1150px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 528px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 528px !important
+    }
+}
+
+@media only screen and (min-width:993px) and (max-width:1023px) {
+    .training_set h5 {
+        padding: 0 50px !important
+    }
+}
+
+@media only screen and (min-width:1025px) and (max-width:1199px) {
+    #downloadbtn-form .downloadbtn button {
+        padding: 12px 20px 12px 50px !important;
+        font-size: 14px !important;
+        background-position: 16% 50%;
+        background-size: 17px
+    }
+    #downloadbtn-form .downloadbtn button:hover {
+        background-position: 16% 50%;
+        background-size: 17px
+    }
+    .product-info-main .download-btnwrapper .favourite {
+        left: 180px !important
+    }
+}
+
+@media only screen and (min-width:1200px) and (max-width:1280px) {
+    #downloadbtn-form .downloadbtn button {
+        padding: 12px 40px 12px 70px !important
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1280px) {
+    .tabcontent {
+        padding: 6px 5px 6px 10px
+    }
+    .tabcontent_new {
+        padding: 1px 5px 1px 10px
+    }
+    .tabcontent ul li {
+        font-size: 12px
+    }
+    .tabcontent_new ul li {
+        font-size: 12px
+    }
+    .tabcontent_new h3 {
+        margin-bottom: 0;
+        margin-top: 5px
+    }
+    .tabcontent_new ul {
+        margin-bottom: 0
+    }
+    .tabcontent ul {
+        margin-bottom: 0
+    }
+    .powerpoint_slides_inner h1 {
+        font-size: 22px
+    }
+    .trainers_teachers {
+        margin-top: 10px
+    }
+    .tabcontent h3 {
+        margin-bottom: 0
+    }
+    .tabcontent h3 {
+        margin-top: 0
+    }
+    .download_btn button {
+        font-size: 16px !important;
+        padding: 10px 40px !important
+    }
+    .product-img-box.new-slider .owl-next {
+        right: -25px !important
+    }
+    .product-img-box.new-slider .owl-prev {
+        background-size: 25px !important
+    }
+    .product-img-box.new-slider .owl-prev {
+        left: -15px !important
+    }
+    .product-img-box.new-slider .owl-next {
+        background-size: 25px !important
+    }
+}
+
+@media (max-width:1024px) {
+    .product-info-main .download-btnwrapper .downloadbtn .get-button {
+        min-width: 190px;
+    }
+    .product-info-main .download-btnwrapper .favourite {
+        left: 197px !important;
+    }
+    .awards_inner h5 {
+        font-size: 12px
+    }
+    .header_right {
+        display: none !important
+    }
+    .edutech_search {
+        display: none !important
+    }
+    .courses h1 {
+        font-size: 35px
+    }
+    .training h2 {
+        font-size: 35px
+    }
+    .awards h1 {
+        font-size: 35px
+    }
+    .professional h1 {
+        font-size: 35px
+    }
+    .questionary h2 {
+        font-size: 35px
+    }
+    .training_set_inner {
+        width: 99%;
+        margin: 0 auto 6px
+    }
+    .training_custom {
+        width: 100%
+    }
+    .training_set h5 {
+        margin-top: 6px;
+        line-height: 18px;
+        margin-bottom: 0;
+        padding: 0 20px
+    }
+    .why_edudecks_custom h3 {
+        margin-bottom: 10px
+    }
+    .why_edudecks_custom {
+        height: 250px
+    }
+    .why_edudecks_custom {
+        width: 32.5%
+    }
+    .why_edudecks_custom ul li {
+        font-size: 13px
+    }
+    .why_edudecks_custom ol li {
+        font-size: 13px
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 453px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 453px !important
+    }
+    .gallery-container.downloadable-product .silder-item {
+        height: 100px
+    }
+    .downloadable-product .main-slider .item {
+        height: 255px !important
+    }
+    .slick-prev.slick-arrow {
+        height: 94%;
+    }
+    .slick-next.slick-arrow {
+        height: 94%;
+    }
+}
+
+@media (max-width:992px) {
+    .banner_content h1 {
+        font-size: 30px
+    }
+    .banner_content p {
+        font-size: 13px
+    }
+    .banner_button button {
+        width: 150px;
+        font-size: 13px
+    }
+    .container.courses_custom {
+        margin: 0 45px
+    }
+    .training_set {
+        width: 43%;
+        display: inline-block
+    }
+    .awards_inner h5 {
+        font-size: 11px
+    }
+    .award_btm {
+        width: 130px
+    }
+    .bottom.bottom_left>img {
+        width: 160px
+    }
+    .footer_content ul li img {
+        width: 25px
+    }
+    .bottom.bottom_right {
+        width: 100% !important;
+        text-align: center;
+        margin: 20px auto 0px
+    }
+    .news__form {
+        display: inline-block;
+        width: 100%
+    }
+    .bottom.bottom_right input {
+        width: 56%
+    }
+    .footer_content .bottom {
+        width: 32%;
+        display: inline-block
+    }
+    .bottom.bottom_right button {
+        float: none
+    }
+    .why_edudecks_custom {
+        height: 230px
+    }
+    .powerpoint_slides_left {
+        width: 60%
+    }
+    .powerpoint_slides_right {
+        width: 39%;
+        padding-top: 10px
+    }
+    .edutech_logo img {
+        width: 170px
+    }
+    .product-info-bottom {
+        padding: 10px 0 0
+    }
+    .custom-downloadable-product .product-info-main {
+        padding-left: 0
+    }
+    .product-info-main {
+        border-top: none !important;
+        margin-top: 10px !important
+    }
+    .product-info-bottom {
+        padding: 10px 0 0 10px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 735px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 735px !important
+    }
+    .product-info-main .download-btnwrapper {
+        margin-bottom: 25px
+    }
+    .slick-prev.slick-arrow {
+        height: 95%;
+    }
+    .slick-next.slick-arrow {
+        height: 95%;
+    }
+    .product-img-box.new-slider .owl-next {
+        width: 25px !important;
+        background-size: 25px !important;
+    }
+    .product-img-box.new-slider .owl-next {
+        right: -15px !important;
+    }
+    .product-img-box.new-slider .owl-prev {
+        width: 25px !important;
+        background-size: 25px !important;
+    }
+    .product-img-box.new-slider .owl-prev {
+        left: -15px !important;
+    }
+    .slick-slider {
+        width: 94%;
+    }
+}
+
+@media (max-width:850px) {
+    .why_edudecks_custom {
+        width: 32.5%
+    }
+    .why_edudecks_custom img {
+        height: 33px
+    }
+    .why_edudecks_custom h3 {
+        margin-bottom: 0;
+        font-size: 14px
+    }
+    .why_edudecks_custom ul,ol {
+        padding-left: 20px;
+        margin-top: 4px
+    }
+    .why_edudecks_custom ul li {
+        font-size: 13px
+    }
+    .why_edudecks_custom ol li {
+        font-size: 13px
+    }
+    .custom-downloadable-product .product.media {
+        width: 100% !important
+    }
+    .custom-downloadable-product .product-info-main {
+        width: 100% !important
+    }
+    .review_custom {
+        width: 98% !important
+    }
+    label.label.nikcname-label,
+    label.label.summary-field-label,
+    .field label#Rating_rating_label,
+    label.label.captcha_review-form {
+        width: 100%
+    }
+    .control.nickname-text,
+    .control.summary-text,
+    .control.review-control-vote,
+    .customer-captcha-wrapper {
+        width: 100%;
+        margin-top: 10px
+    }
+    label#Rating_rating_label {
+        width: 16% !important
+    }
+    .control.review-control-vote {
+        width: 78%
+    }
+    .control.rating-div .mage-error {
+        padding-left: 0
+    }
+    .control.rating-div {
+        margin-bottom: 20px
+    }
+    .control.captcha-image .captcha-img {
+        display: inline-block
+    }
+    .downloadable-product .main-slider .item {
+        height: 415px !important
+    }
+}
+@media only screen and (min-width:576px) and (max-width:992px) {
+	.container.edutech_header {
+		margin: 0;
+	}
+}
+@media only screen and (min-width:768px) and (max-width:768px) {
+    .product-info-main {
+        border-top: none !important;
+        padding-top: 0 !important
+    }
+    #downloadbtn-form .downloadbtn button {
+        padding: 12px 40px 12px 70px !important;
+        background-position: 23% 50%
+    }
+    #downloadbtn-form .downloadbtn button:hover {
+        background-position: 23% 50%
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 705px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 705px !important
+    }
+}
+
+@media (max-width:767px) {
+    .downloadable-product .main-slider .item {
+        height: 368px !important
+    }
+}
+
+@media (max-width:767px) {
+    .banner_content {
+        width: 100%
+    }
+    .banner_content img {
+        width: 230px
+    }
+    .banner_button button {
+        margin: 10px 3px 20px
+    }
+    .banner_content h1 {
+        margin-top: 0
+    }
+    .banner_button button {
+        width: 135px;
+        font-size: 12px
+    }
+    .awards_custom {
+        padding: 10px 0 0;
+        width: 80%;
+        margin: auto
+    }
+    .awards_inner {
+        width: 49%;
+        margin-bottom: 20px
+    }
+    .awards_inner h5 {
+        margin-top: 0;
+        font-size: 12px !important;
+        margin-bottom: 5px;
+        height: 30px
+    }
+    .award_hr {
+        margin: 0 auto 10px
+    }
+    .award_btm {
+        width: 130px
+    }
+    .professional img {
+        width: 70%
+    }
+    .resources_inner {
+        width: 100%;
+        margin-bottom: 25px
+    }
+    .resources_inner h1 {
+        margin: -5px 0
+    }
+    .resources {
+        padding: 5px 0 0
+    }
+    .why_edudecks_custom {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px
+    }
+    .why_edudecks_custom ul,ol {
+        margin-top: 15px
+    }
+    .powerpoint_slides_left {
+        width: 100%
+    }
+    .powerpoint_slides_right {
+        width: 100%
+    }
+    .powerpoint_slides_inner h1 {
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: 20px;
+        margin-bottom: 10px
+    }
+    .download_btn {
+        text-align: center
+    }
+    .download_btn button {
+        font-size: 18px;
+        padding: 12px 30px
+    }
+    .training h2 {
+        font-size: 26px
+    }
+    .complete_curriculum h2 {
+        font-size: 26px
+    }
+    .all_slides_inner h2 {
+        font-size: 26px
+    }
+    /* .all_slides_custom {
+        width: 49%
+    } */
+
+    .all_slides_inner {
+        margin: 25px 0 15px
+    }
+    .sample_instructor h2 {
+        font-size: 26px
+    }
+    .written_review_inner h3 {
+        font-size: 14px
+    }
+    .written_review_content {
+        padding: 10px
+    }
+    .written_review_content p {
+        font-size: 13px
+    }
+    .written_review_inner {
+        margin-bottom: 15px
+    }
+    .courses h1 {
+        font-size: 28px
+    }
+    .training h2 {
+        font-size: 28px
+    }
+    .awards h1 {
+        font-size: 28px
+    }
+    .professional h1 {
+        font-size: 28px
+    }
+    .questionary h2 {
+        font-size: 28px
+    }
+    .custom-downloadable-product .product.media {
+        width: 100% !important;
+        padding-right: 0;
+    }
+    .custom-downloadable-product .product-info-main {
+        width: 100% !important
+    }
+    .rating_review_inner .toolbar .limiter .dk-select.custom-dropdown .dk-selected {
+        text-align: left
+    }
+    .toolbar.toolbar-products .limiter .dk-select.custom-dropdown .dk-selected {
+        width: auto
+    }
+    .toolbar.toolbar-products .limiter .limiter-options {
+        margin-left: 14px
+    }
+    .product-info-main {
+        padding-left: 0 !important
+    }
+    .toolbar.toolbar-products .limiter .dk-select.custom-dropdown .dk-selected {
+        width: 38px !important
+    }
+    .toolbar.toolbar-products .limiter .limiter-options {
+        margin-left: 8px !important
+    }
+    .actions-toolbar>.primary .action,
+    .actions-toolbar>.secondary .action {
+        width: 90% !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 684px !important;
+    }
+    
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 684px !important;
+    }
+}
+@media (max-width:575px) {
+    .product-info-main .download-btnwrapper .favourite {
+        left: 250px !important;
+    }
+}
+@media (max-width:576px) {
+    .training_set {
+        width: 90%
+    }
+    .awards_inner {
+        width: 100%
+    }
+    .awards_inner h5 {
+        height: auto
+    }
+    .Footer {
+        padding: 20px 0 1px
+    }
+    .footer_content .bottom {
+        width: 100%
+    }
+    .bottom.bottom_left ul {
+        padding-top: 10px
+    }
+    .news__form {
+        display: inline-block;
+        width: 100%
+    }
+    .bottom.bottom_right input {
+        width: 80%
+    }
+    .rating_review_inner h1 {
+        font-size: 16px
+    }
+    .rating_review_inner .write_review {
+        padding: 11px 9px;
+        font-size: 13px;
+        margin-top: -8px
+    }
+    .rating_review_inner .write_review img {
+        top: 2px;
+        padding-right: 4px;
+        width: 16px
+    }
+    .rating_hr {
+        float: left;
+        width: 100%
+    }
+    .rating_review_custom {
+        width: 100%;
+        clear: both
+    }
+    .review_custom {
+        background: #f9fafc;
+        padding: 7px 0 10px 5px
+    }
+    .rating_progress {
+        width: 190px;
+        margin-left: 15px
+    }
+    .search_toggle.sidenav1 input {
+        width: 55% !important
+    }
+    .professional img {
+        width: 90%
+    }
+    .professional h5 {
+        font-size: 17px
+    }
+    .custom-downloadable-product .page-main .container {
+        padding: 0
+    }
+    .reviews-header h3 {
+        font-size: 18px !important
+    }
+    .rating_top {
+        padding-top: 12px
+    }
+    .rating_review div#rating_review_container {
+        width: 100%;
+        padding-left: 0;
+        padding-right: 0
+    }
+    .product-img-box.new-slider .owl-next {
+        right: -14px !important
+    }
+    .data.item.content.relevant_reviews {
+        width: 100% !important
+    }
+    .product-img-box.new-slider .owl-prev {
+        background-size: 25px !important
+    }
+    .product-img-box.new-slider .owl-prev {
+        left: -15px !important
+    }
+    .product-img-box.new-slider .owl-next {
+        background-size: 25px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 383px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 383px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 216px !important
+    }
+    .product.media.powerpoint_slides_left .main-slider p {
+        font-size: 13px;
+        line-height: 16px
+    }
+    .slick-slider {
+        width: 76%;
+    }
+}
+
+@media (min-width:1025px) {
+    .edu_tech_inner_responsive {
+        display: none
+    }
+    .nav_toggle {
+        display: none
+    }
+    .nav_toggle1 {
+        display: none
+    }
+    .edutech_search1 {
+        display: none
+    }
+    .reviews-header h3 {
+        color: #1e292f !important;
+        font-weight: 700 !important;
+        font-size: 26px !important;
+        float: left !important
+    }
+}
+
+@media only screen and (min-width:320px) and (max-width:1024px) {
+    .edu_tech_inner_responsive {
+        background: rgba(4, 100, 197, .95);
+        width: 0;
+        height: 100%;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        overflow-x: hidden;
+        transition: .5s;
+        padding: 0 0 20px;
+        z-index: 999
+    }
+    .edu_tech_inner_responsive div {
+        display: inline-block
+    }
+    .edu_tech_inner_responsive button {
+        background: #f9c00f;
+        border: 1px solid transparent;
+        padding: 10px 35px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all .4s;
+        margin-left: 20px;
+        width: 180px
+    }
+    .edu_tech_inner_responsive button:hover {
+        background: 0 0;
+        border: 1px solid #f9c00f;
+        color: #f9c00f;
+        transition: all .4s
+    }
+    .edu_tech_inner_responsive .edutech_nav li {
+        display: block;
+        padding: 0 10px 15px 20px !important
+    }
+    .edu_tech_inner_responsive .social_icn {
+        padding-left: 20px;
+        top: 0
+    }
+    .edu_tech_inner_responsive .social_icn_inner {
+        height: 35px;
+        margin-bottom: 15px;
+        width: 154px
+    }
+    .edu_tech_inner {
+        float: left
+    }
+    .nav_toggle {
+        font-size: 30px;
+        cursor: pointer;
+        float: right;
+        color: #fff;
+        padding-top: 13px
+    }
+    .edutech_nav ul li a i {
+        position: absolute;
+        right: 20px
+    }
+    .edu_tech_main {
+        height: 70px
+    }
+    .nav_toggle1 {
+        font-size: 30px;
+        cursor: pointer;
+        float: right;
+        color: #fff;
+        padding-top: 13px
+    }
+    .edutech_nav1 a i {
+        position: absolute;
+        right: 20px
+    }
+    .search_toggle.sidenav1 {
+        background: rgba(4, 100, 197, .95);
+        width: 100%;
+        height: 0;
+        position: absolute;
+        z-index: 1;
+        top: 70px;
+        right: 0;
+        overflow-x: hidden;
+        transition: .5s;
+        padding: 0
+    }
+    .nav_toggle1 img {
+        margin-right: 20px
+    }
+    .edutech_search1 a i {
+        color: #fff;
+        position: absolute;
+        right: 22px;
+        top: 15px
+    }
+    .search_toggle.sidenav1 input {
+        width: 65%;
+        height: 40px;
+        border: 1px solid #fff;
+        background-color: transparent;
+        border-radius: 60px;
+        color: #fff !important;
+        font-size: 14px;
+        background-image: url('../images/search.png');
+        background-repeat: no-repeat;
+        background-position: 97% 50%;
+        padding: 0 25px 0 24px;
+        margin-top: 4px;
+        margin-left: 20px;
+        background-size: 16px;
+        cursor: pointer
+    }
+    .edutech_search1 {
+        text-align: center
+    }
+    .edutech_search1 {
+        display: block
+    }
+    .search_toggle.sidenav1 input::placeholder {
+        color: #fff
+    }
+    .search_toggle.sidenav1 input:focus-visible {
+        outline: 1px solid #fff
+    }
+}
+
+@media only screen and (min-width:1024px) and (max-width:1024px) {
+    .review_custom {
+        display: block
+    }
+    .rating-summary.review_inner a.comment_here {
+        display: block;
+        margin-top: 5px
+    }
+    .tabcontent h3 {
+        font-size: 14px
+    }
+    .review_custom {
+        width: 93% !important
+    }
+    #downloadbtn-form .downloadbtn button {
+        min-width: 200px !important
+    }
+    .product-info-main .download-btnwrapper .favourite {
+        left: 197px !important
+    }
+}
+
+@media only screen and (width:1138px) and (height:712px) {
+    .downloadable-product .main-slider .item {
+        height: 298px !important
+    }
+}
+
+@media only screen and (width:1037px) and (height:753px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 463px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 423px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 238px !important
+    }
+}
+
+@media only screen and (min-width:801px) and (max-width:1024px) {
+    #downloadbtn-form .downloadbtn button {
+        padding: 12px 20px 12px 30px !important;
+        background-position: 16% 50%;
+        font-size: 14px !important;
+        background-size: 17px
+    }
+    #downloadbtn-form .downloadbtn button:hover {
+        background-position: 16% 50%;
+        background-size: 17px
+    }
+}
+
+@media only screen and (min-width:1300px) and (max-width:1366px) {
+    #downloadbtn-form .downloadbtn button {
+        padding: 12px 40px 12px 70px !important;
+        background-position: 23% 50%
+    }
+    #downloadbtn-form .downloadbtn button:hover {
+        background-position: 23% 50%
+    }
+    .custom-downloadable-product .product.media {
+        padding-right: 10px
+    }
+}
+
+@media (max-width:413px) {
+    #downloadbtn-form .downloadbtn button {
+        padding: 12px 40px 12px 70px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 343px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 343px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 216px !important
+    }
+}
+
+@media (max-width:360px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 328px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 328px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 185px !important
+    }
+}
+
+@media (width:1080px) and (height:1920px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 490px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 490px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 276px !important
+    }
+}
+
+@media (width:1200px) and (height:1792px),
+(width:640px) and (height:360px),
+(width:1200px) and (height:1920px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 570px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 570px !important
+    }
+}
+
+@media (width:1050px) and (height:1680px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 475px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 475px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 268px !important
+    }
+}
+
+@media (width:900px) and (height:1600px),
+(width:900px) and (height:1440px),
+(width:896px) and (height:414px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 530px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 530px !important
+    }
+    .custom-downloadable-product .product.media {
+        padding-right: 15px
+    }
+    .downloadable-product .main-slider .item {
+        height: 299px !important
+    }
+}
+
+@media (width:864px) and (height:1536px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 510px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 510px !important
+    }
+    .custom-downloadable-product .product.media {
+        padding-right: 15px
+    }
+    .downloadable-product .main-slider .item {
+        height: 288px !important
+    }
+}
+
+@media (width:720px) and (height:1280px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 655px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 655px !important
+    }
+}
+
+@media (width:667px) and (height:375px) {
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider {
+        width: 605px !important
+    }
+    .custom-downloadable-product .product.media .gallery-container .main-slider .product-slider .owl-stage-outer .owl-item {
+        width: 605px !important
+    }
+    .downloadable-product .main-slider .item {
+        height: 341px !important
+    }
+}
+
+@media (width:640px) and (height:360px) {
+    .downloadable-product .main-slider .item {
+        height: 322px !important
+    }
+}
+
+@media (max-width:375px) {
+    .downloadable-product .main-slider .item {
+        height: 193px !important
+    }
+    .slick-prev.slick-arrow {
+        height: 93.5%;
+    }
+    .slick-next.slick-arrow {
+        height: 93.5%;
+    }
+}
+
+@media (max-width:360px) {
+    .downloadable-product .main-slider .item {
+        height: 185px !important
+    }
+}

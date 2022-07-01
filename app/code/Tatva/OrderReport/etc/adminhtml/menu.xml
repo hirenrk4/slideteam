@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>  
+        <add id="Tatva_Supportingextensions::orderreport" title="Export Order Report" module="Tatva_OrderReport" sortOrder="150" parent="Tatva_Supportingextensions::managesubscriber"
+            action="orderreport/orderreport/index/" resource="Tatva_Supportingextensions::orderreport" />
+    </menu>
+</config>

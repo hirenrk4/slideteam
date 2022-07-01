@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceContainer name="header.panel">
+            <container name="header-panel-wrapper" label="Panel Wrapper" htmlTag="div" htmlClass="header_panel_wrapper clearfix">
+                <block class="Magento\Framework\View\Element\Html\Links" name="header.links">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">header links</argument>
+                    </arguments>
+                </block>
+                <block name="header.content" template="Magento_Theme::html/header/header_content.phtml" />
+            </container>
+            <block name="header-menu-list" template="Magento_Theme::html/header/header_menu.phtml" />
+        </referenceContainer>
+        <referenceContainer name="header-wrapper" label="Page Header" htmlTag="div" htmlClass="header content">
+            <block class="Magento\Theme\Block\Html\Header\Logo" name="logo">
+                <arguments>
+                    <argument name="logo_file" xsi:type="string">images/logo.png</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="header.container">
+            <container name="custom.mobile.info" htmlTag="div" htmlClass="custom-mobile-info visible-xs" after="header-wrapper">
+                <block name="custom.header.detail" template="Magento_Theme::html/header/custom_mobile_header.phtml" />
+            </container>
+        </referenceContainer>
+        <!-- Show the canonical links on all page -->
+        <referenceBlock name="head.additional">
+            <block class="Tatva\Theme\Block\Html\Head" name="custom.theme.link" template="Magento_Theme::html/header/general.phtml" />
+        </referenceBlock>
+        <referenceContainer name="footer-container">
+            <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer content">
+                <container name="custom-footer-container" htmlTag="div" htmlClass="container">
+                    <block class="Magento\Cms\Block\Block" name="static_footer_categories">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">static_footer_categories</argument>
+                        </arguments>
+                    </block>
+                    <block class="Magento\Cms\Block\Block" name="we_accept" before="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">we_accept</argument>
+                        </arguments>
+                    </block>
+                </container>
+                <!-- Need to remove application (MAC and Android) -->
+                <!-- <block class="Magento\Cms\Block\Block" name="mobile_app">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">mobile_app</argument>
+                    </arguments>
+                </block> -->
+                <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="Magento_Theme::html/copyright.phtml" />
+                <block class="Tatva\Contacts\Block\Contact" name="slideteam.live.chat" template="Magento_Theme::html/footer/footer.javascript.phtml" />
+                <!-- <block class="Tatva\Theme\Block\Html\Specialcoupon" name="special_couponcode" template="Magento_Theme::html/footer/special_couponcode.phtml" /> -->
+            </container>
+        </referenceContainer>
+        <referenceContainer name="page.top">
+            <container name="slideteam-sidenav-wrapper" htmlTag="div" htmlClass="scroll-nav" htmlId="left-section">
+                <block name="category-links" template="Magento_Theme::html/sidebar.phtml">
+                    <arguments>
+                        <argument name="category-menu" xsi:type="string">Category Links</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceContainer>
+        <referenceContainer name="page.wrapper">
+            <container name="custom.footer.widget.wrap" htmlTag="div" htmlClass="main-wrapper clearfix footer-trustpilot" before="footer">
+                <container name="custom.footer.widget.wrapper" htmlTag="div" htmlClass="trustpilot-product-page-widget" before="footer">
+                    <block class="Tatva\Generalconfiguration\Block\GeneralBlock" name="custom.footer.widget" template="Tatva_Downloadable::product/view/trustpilot-widget.phtml" before="-" />
+                </container>
+                <block class="Magento\Framework\View\Element\Template" name="custom.footer.google.review" template="Magento_Theme::html/google-review.phtml" after="custom.footer.widget.wrapper" />
+            </container>
+        </referenceContainer>
+        <referenceContainer name="page.messages" htmlTag="div" htmlClass="page messages container" />
+        <referenceContainer name="page.main.title" remove="true" />
+        <referenceBlock name="catalog.compare.link" remove="true" />
+        <referenceBlock name="header" remove="true" />
+        <referenceBlock name="store_language" remove="true" />
+        <referenceBlock name="store.menu" remove="true" />
+        <move element="header.panel.wrapper" destination="header-wrapper" />
+        <move element="slideteam.live.chat" destination="before.body.end" after="-" />
+    </body>
+</page>

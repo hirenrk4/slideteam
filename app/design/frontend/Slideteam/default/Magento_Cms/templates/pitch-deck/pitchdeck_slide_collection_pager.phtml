@@ -1,0 +1,143 @@
+<?php
+$_productCollection = $block->getPitchdeckCollection();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$backendModel = $_productCollection->getResource()->getAttribute('media_gallery')->getBackend();
+?>
+<?php
+    if ($block->getMode() == 'grid') {
+        $viewMode = 'grid';
+        $image = 'category_page_grid';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+    } else {
+        $viewMode = 'list';
+        $image = 'category_page_list';
+        $showDescription = true;
+        $templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::FULL_VIEW;
+    }
+    /**
+     * Position for actions regarding image size changing in vde if needed
+     */
+    $pos = $block->getPositioned();
+?>
+<?php foreach ($_productCollection as $_product):?>
+	<?php
+        $productImage = $block->getImage($_product, $image);
+        if ($pos != null) {
+            $position = ' style="left:' . $productImage->getWidth() . 'px;'
+        	. 'top:' . $productImage->getHeight() . 'px;"';
+        }
+    ?>
+    <?php
+                    $backendModel->afterLoad($_product);
+                    $block->addGallery($_product);
+                    $total_images = $_product->getMediaGalleryImages();
+
+                    $productUrl = $this->getBaseUrl().$_product->getUrlKey().'.html';
+
+                    $small_image_str = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->getUrl();    
+                    
+
+                    $count_total_images = count($total_images);
+                    $remaining = count($total_images)-3;
+                    if($remaining == -3)
+                    {
+                        $small_image_biggersize1 = $_product->getImageUrl();
+                    }else{
+                        $id = 0;
+                        $galary_images = array();
+                        $image_url='';           
+                        $is_hero_img_different = 0;
+                        foreach($total_images as $val)
+                        {
+                            $galary_images[] = $this->helper('Magento\Catalog\Helper\Image')->init($_product,'category_page_grid')->setImageFile($val->getFile())->getUrl();
+                            
+                            $id++;
+                            if($id >5){break;}
+                        }
+                        $count = count($galary_images);
+                        
+                        $small_image_biggersize2="";
+                        $small_image_biggersize3="";
+                        $small_image_biggersize4="";
+                        $small_image_biggersize5="";
+                        $small_image_biggersize6="";
+
+                        if($remaining > 3) {
+                            $small_image_biggersize1 =  $galary_images[0];
+                        }else {
+
+                            $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->setImageFile($total_images->getFirstItem()->getFile())->getUrl();
+                            
+                        }
+
+                        $hero_img_str = $galary_images[0];
+                        $hero_img_name = substr($hero_img_str,(int)strrpos($hero_img_str,'/'));
+                        $small_img_name = substr($small_image_str,(int)strrpos($small_image_str,'/')); 
+                        
+                        if($hero_img_name != $small_img_name){
+                            $is_hero_img_different = 1;
+                            if($remaining > 3) {
+                                $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'category_page_grid')->getUrl();
+                                
+                            }else {
+                                $small_image_biggersize1 = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'product_page_image_medium')->getUrl();
+                                
+                            }
+                            if($count > 1){
+                                $small_image_biggersize2 = $galary_images[0];
+                            }
+                            if($count > 2){
+                                $flag = strpos($galary_images[1], $small_img_name);
+                                if($flag !== false){
+                                    $small_image_biggersize3 =  $galary_images[2];    
+                                }
+                                else{
+                                    $small_image_biggersize3 =  $galary_images[1];
+                                }
+                            }
+                            if($count > 3){
+                                $small_image_biggersize4 =  $galary_images[3];
+                            }
+                            if($count > 4){
+                                $small_image_biggersize5 =  $galary_images[4];
+                            }
+                            if($count > 5){
+                                $small_image_biggersize6 =  $galary_images[5];
+                            }
+                        }
+                        else{
+                            if($count > 1){
+                                $small_image_biggersize2 = $galary_images[1];
+                            }
+                            if($count > 2){
+                                $small_image_biggersize3 =  $galary_images[2];
+                            }
+                            if($count > 3){
+                                $small_image_biggersize4 =  $galary_images[3];
+                            }    
+                            if($count > 4){
+                                $small_image_biggersize5 =  $galary_images[4];
+                            }
+                            if($count > 5){
+                                $small_image_biggersize6 =  $galary_images[5];
+                            }
+                        }
+                                
+                    }
+                ?>
+    <div class="all_deck_inner_outer">
+        <div class="all_deck_content">
+            <?php $small_image = $this->helper('Magento\Catalog\Helper\Image')->init($_product, 'category_page_grid')->getUrl(); ?>
+            <a href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>">
+                <!-- <img src="<?php echo $small_image; ?>" alt="<?php echo $_product->getName(); ?>"> -->
+                <?php $productId = $_product->getId(); ?>
+                <?php $image_result = array('key'=>$productId,'total_images'=>$count_total_images, 'remaining'=>$remaining, 'name'=>$_product->getName(),
+                	'id'=>$_product->getId(),'product_url'=>$productUrl,'zoomsrc'=>$small_image_biggersize1,'zoomsrc2'=>$small_image_biggersize2,'zoomsrc3'=>$small_image_biggersize3,'zoomsrc4'=>$small_image_biggersize4,'zoomsrc5'=>$small_image_biggersize5,'zoomsrc6'=>$small_image_biggersize6,'is_new'=>1,'mainsrc'=>$small_image);
+                ?>
+                <?= $productImage->setData('image_result',$image_result)->toHtml() ?>
+                <p><?php echo $_product->getName(); ?></p>
+            </a>
+        </div>
+    </div>
+<?php endforeach; ?>

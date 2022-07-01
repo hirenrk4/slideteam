@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <tatva>
+            <portfolio>
+                <email>tatva_portfolio_email</email> 
+            </portfolio>
+        </tatva>
+        <customer>
+        	<captcha>
+        		<shown_to_logged_in_user>
+        			<portfolio_captcha>1</portfolio_captcha>
+        		</shown_to_logged_in_user>
+        		<always_for>
+					<portfolio_captcha>1</portfolio_captcha>
+				</always_for>
+        	</captcha>
+        </customer>
+        <captcha translate="label">
+			<frontend>
+				<areas>
+					<portfolio_captcha>
+						<label>Portfolio Captcha</label>
+					</portfolio_captcha>
+				</areas>
+			</frontend>
+		</captcha>
+    </default>
+</config>

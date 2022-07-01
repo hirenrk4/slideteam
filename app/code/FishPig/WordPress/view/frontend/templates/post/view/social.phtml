@@ -1,0 +1,24 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+$post = $this->getPost();
+?>
+<div class="blog-social-wrapper">
+	<h4>Liked this blog? Please recommend us</h4>
+	<div class="blog-social">
+		<ul>
+			<li class="blog-social-icons">
+				<a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo $post->getUrl();?>" class="blog-button-icon"><i class="icon icon-facebook"><img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/facebook.png'); ?>" alt="" /></i></a>
+			</li>
+			<li class="blog-social-icons">
+				<a href="https://twitter.com/intent/tweet?url=<?php echo $post->getUrl();?>&text=<?php echo $post->getName();?>" class="blog-button-icon"><i class="icon icon-twitter"><img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/twitter.png'); ?>" alt="" /></i></a>
+			</li>
+			<li class="blog-social-icons">
+				<a href="http://www.linkedin.com/shareArticle?mini=true&url=<?php echo $post->getUrl();?>&source=Slideteam&title=<?php echo $post->getName();?>" class="blog-button-icon"><i class="icon icon-linkedin"><img src="<?php echo $this->getViewFileUrl('FishPig_WordPress::images/linkedin.png'); ?>" alt="" /></i></a>
+			</li>
+		</ul>
+	</div>
+</div>

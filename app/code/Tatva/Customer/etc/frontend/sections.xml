@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Customer:etc/sections.xsd">
+    <!-- Below commented are the default update urls for all sections as there are no node of section but for ajax login we have added our one -->
+    <!-- <action name="customer/account/logout">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="customer/account/loginPost">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="customer/account/createPost">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="customer/account/editPost">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="customer/account">
+        <section name="tatva_customer_data"/>
+    </action> -->
+    <action name="free/ajax/login">
+        <section name="*"/>
+    </action>
+    <action name="free/ajax/register">
+        <section name="*"/>
+    </action>
+    <action name="customer/ajax/login">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/cart/add">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/cart/delete">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/cart/updatePost">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/cart/updateItemOptions">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/cart/couponPost">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/cart/estimatePost">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/cart/estimateUpdatePost">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/onepage/saveOrder">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/sidebar/removeItem">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="checkout/sidebar/updateItemQty">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="rest/*/V1/carts/*/payment-information">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/payment-information">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="rest/*/V1/guest-carts/*/selected-payment-method">
+        <section name="tatva_customer_data"/>
+    </action>
+    <action name="rest/*/V1/carts/*/selected-payment-method">
+        <section name="tatva_customer_data"/>
+    </action>
+</config>

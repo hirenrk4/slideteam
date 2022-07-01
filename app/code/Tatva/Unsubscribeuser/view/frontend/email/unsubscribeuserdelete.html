@@ -1,0 +1,24 @@
+<!--@subject {{trans "%store_name Customer Unsubscribe Request Removed" store_name=$store.getFrontendName()}} @-->
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-info">
+         <td>
+            <h1>{{trans "Hello "}}{{var name}},</h1>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <p><b>{{trans "Subscription Id :  "}}</b>{{var subId}}</p>
+            <p><b>{{trans "Customer Id :  "}}</b>{{var custId}}</p>
+        </td>
+    </tr>
+    <tr>
+    	<td>
+	        <p>{{var message1}}</p>
+	        <p>{{var message2}}</p>
+	    </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

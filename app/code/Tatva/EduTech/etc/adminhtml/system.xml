@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="edu_tech" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Edu Tech Configuration</label>
+            <tab>tatvasoft</tab>
+            <resource>Tatva_Generalconfiguration::button_config</resource>
+            <group id="edu_tech_attributes" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1" translate="label">
+                <label>Edu Tech Atrrubute Default content Configuration</label>
+                <field id="edutop1" type="textarea" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>What is it</label>
+                </field>
+                <field id="edutop2" type="textarea" translate="label" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Who is it for?</label>
+                </field>
+                <field id="edutop3" type="textarea" translate="label" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Why EduDecks?</label>
+                </field>
+                <field id="trainers_tab" type="textarea" translate="label" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Trainers Tab</label>
+                </field>
+                <field id="teachers_tab" type="textarea" translate="label" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Teachers Tab</label>
+                </field>
+                <field id="trainers_teachers_list" type="textarea" translate="label" sortOrder="6" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Trainers Teachers List</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

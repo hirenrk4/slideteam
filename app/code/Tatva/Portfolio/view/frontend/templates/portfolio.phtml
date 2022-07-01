@@ -1,0 +1,132 @@
+<div class="portfolio_main_wrapper portf_form">
+  <div class="container clearfix">  
+    <div class="portfolio_custom_form"> 
+    <h2>Want us to design your next Deck? <br />
+Send us a quick message!</h2>
+    <?php $url = $this->getUrl('portfolio/index/send') ?>
+    <form action="<?php echo $url; ?>" method="post" class="portf_detail_custom" id="portfolio-query" name="portfolio-query">
+    <ul class="form-style-1">
+        <li>
+            <input type="hidden" name="title">
+            <div class="portf_form1 clearfix">
+                <label for="exampleInputEmail1">Name <span class="required">*</span></label>
+                <div class="input-block">
+                    <input type="text" class="input-text required-entry field-divided letters-only" placeholder="Enter your name" name="name">
+                </div>
+            </div>
+            <div class="portf_form1 portf_form2">
+                <label for="exampleInputEmail1">Email <span class="required">*</span></label>
+                <input type="email" name="email" class="field-divided input-text required-entry validate-email" placeholder="Enter your email" />
+            </div>
+        </li>            
+        <li>
+            <label>Your Message <span class="required">*</span></label>
+            <textarea class="form-control required-entry field-long field-textarea" rows="4" name="comments" id="comment" maxlength="2000" placeholder="Enter your message here"></textarea>
+            <div class="allforms-comment-msg"><?php echo __("Max length should be 2000 character."); ?></div>
+        </li>
+        <li class="portf_form_custom">
+            <div class="portf_form1">
+                <?php
+                    $blockPath = 'Magento\Captcha\Block\Captcha';
+                    $block = $this->getLayout()->createBlock($blockPath);
+                    $cap_data = array('form_id'=>'portfolio_captcha','img_width'=>'50');
+                    $block->setData($cap_data);
+                    echo $block->toHtml();
+                ?>
+            </div>
+        </li>
+        <li class="portf_btn_center">
+            <button type="submit" class="submit_portf_btn">SEND</button>
+        </li>
+    </ul>
+    </form>
+    </div>
+  </div>
+</div>
+<script type="text/x-magento-init">
+    {
+    "#portfolio-query":{
+    "validation":{}
+    }
+    }
+</script>
+<script type="text/javascript">
+    var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+  x[slideIndex-1].className += " active";
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  var slidecount = document.getElementsByClassName('slide-count');
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].classList.remove("active");
+    x[i].removeAttribute('data-slide');
+    x[i].style.display = "none";  
+  }
+  x[slideIndex-1].dataset.slide = "slide "+slideIndex+" of "+x.length;
+  x[slideIndex-1].style.display = "block";
+  x[slideIndex-1].className += " active";  
+  //dots[slideIndex-1].className += " w3-red";
+}
+    require(['jquery', 'domReady!'], function ($) {
+        $('.cms-wrap').parents().closest('.container').addClass('container1').removeClass('container');
+        $('body').addClass('portfolio-detail');
+        var $div = $("<div>", {"class": "slide-count"}).text("ss");
+        $(".w3-section").append($div);
+
+        var a = $('.w3-content .mySlides.active').data('slide'); //getter
+        $('.slide-count').text(a);
+        $('#content').click(function(e) {  
+          alert(1);
+        });
+        $(".w3-section .w3-button").click(function () {
+            var current = $('.w3-content .mySlides.active').data('slide');
+            $('.slide-count').text(current);
+        });
+        
+        
+            
+        
+        $("label:contains('Please type captcha here')").remove();
+            $('#portfolio-query').find('input[name*="captcha"]').css('padding-left', '12px');
+            $('#portfolio-query').find('input[name*="captcha"]').attr("placeholder", "Please type Captcha Here");
+
+            $('.captcha-img').remove();
+            $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="spinner-img" height="50" width="50" src="<?= $block->getViewFileUrl('Magento_Cms::images/popup/spinner.gif') ?>"/>').insertBefore('.captcha-reload');
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                data:'formId=portfolio_captcha',
+                success:function(data) {
+                    $('.spinner-img').hide();
+                    $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('.captcha-reload'); 
+                    return false;                 
+                }
+            });
+
+            // task 1344
+            $("#comment").on("keyup",function() {
+              var maxLength = $(this).attr("maxlength");
+              if(maxLength == $(this).val().length) {
+                $('#comment-error').hide();
+                $('.allforms-comment-msg').show();
+              }else{
+                $('.allforms-comment-msg').hide();
+              }
+            });
+            // task 1344 end
+    });
+</script>

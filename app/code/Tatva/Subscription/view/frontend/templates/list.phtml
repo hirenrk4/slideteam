@@ -1,0 +1,444 @@
+<?php
+$helper = $this->helper('Tatva\Subscription\Helper\Data');
+$customerId = $block->getLoginCustomerId();
+$baseurl = $block->getBaseUrl();
+$pricingUrl = $block->getBaseUrl()."pricing/";
+if (!($helper->isLoggedIn())) {
+
+  $this->redirectOnLoginPage();
+}
+?>
+<?php
+$subscription_history = "";
+$subscription_history = $block->getLastPaidSubscriptionhistory();
+
+//$sub_plan = $helper->getSubscriptionPlan($customerId);
+$subscription_plan = "";
+if (is_object($subscription_history)){
+    $subscription_plan = $subscription_history->getSubscriptionPeriod();
+}
+$customer_plan_name = $helper->getCustomerPlanName($customerId);
+$_subscriptions = $block->getCustomerSubscriptions();
+$customerIpnWait = $block->checkCustomerIpnWait();
+$nosubscription = 0;
+$userlimit = 1;
+$remaining_limit = 0;
+
+if (is_object($subscription_history) && $subscription_history !== "Unsubscribed" && $subscription_history->getAdminModified()!=1) 
+{
+    $lastorderData = $block->getLastCustomerOrder();
+        
+    if(isset($lastorderData[0]))
+    {
+        $currentDate = strtotime($block->getCurrentGmtDate());
+        $orderDate = strtotime($lastorderData[0]['created_at']);
+    }
+
+    if(isset($_COOKIE['unsub_disable']) && $_COOKIE['unsub_disable'] == $customerId )
+    {
+        $unsub = $customerId; 
+    }
+    elseif(isset($_COOKIE['customer_delete']) && $_COOKIE['customer_delete'] == $customerId )
+    {
+        $unsub = $customerId; 
+    }
+    else
+    {
+        $unsub = 0;
+    }
+    
+    if(isset($lastorderData[0]) && ($currentDate-$orderDate)/60 >= 30 && !$customerIpnWait && ($lastorderData[0]['status'] == "payment_completed" || $lastorderData[0]['status'] == "complete"))
+    {
+        if($unsub != $customerId) :
+    ?>
+        <div align="right" style="padding-bottom: 10px">
+            <img style="cursor:pointer;"  BORDER="0" src="<?php echo $block->getViewFileUrl("images/btn_unsubscribe_LG.gif") ?>" class="unsubscribed img_unsub_button_click" >
+        </div>
+    <?php endif; ?>
+    <script type="text/javascript">
+        require(['jquery'], function ($)
+        {
+            $(document).ready(function () 
+            {
+                var loginCustomerid = "<?php echo $customerId; ?>";
+                $('#unsubscribeuser-form').submit(function() {
+                    var unsub_cookie = jQuery.cookie('unsub_disable');
+                    if(unsub_cookie != 1)
+                    {
+                        //if (confirm("Are you sure you want to unsubscribe?")) {
+
+                            var expDate = new Date();
+                            expDate.setTime(expDate.getTime() + (30 * 60 * 1000)); 
+                            jQuery.cookie('unsub_disable', loginCustomerid, { expires: expDate});
+                            
+                            // document.getElementById("paypal-unscribe").innerHTML = '<form id="paypal-unscribe-form" action="<?php //echo $block->getUrl('paypalrec/unsubscribe',['subscription_id='.$subscription_history->getId()]); ?>" method="post"><input type="hidden" name="subscription_id" value="<?php //echo $subscription_history->getId(); ?>" /><?// $block->getBlockHtml('formkey') ?></form>';
+                            // document.getElementById("paypal-unscribe-form").submit();
+                        //}            
+                    }
+                });
+                
+            });
+        });
+    </script>
+
+    <div id="unsubscribeuser-popup" class="mfp-with-anim mfp-hide">
+      <div class="modal fade" id="delete_acc" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close btn-cancel">&times;</button>
+              <h4 class="modal-title">Unsubscribe Account</h4>
+            </div>
+            <div class="modal-body delete_content">
+              <h2>Unsubscribe Account Reason</h2>
+              <h3>Warning!! Your account will be unsubscribe after 24 hrs.</h3>
+              <form id="unsubscribeuser-form" action="<?php echo $baseurl.'unsubscribeuser/index/index'; ?>" method="POST"
+                data-hasrequired="<?php /* @escapeNotVerified */ echo __('* Required Fields') ?>"
+                data-mage-init='{"validation":{}}'>
+                <div class="unsubscribe-innercontent delete_innercontent">
+                  <h3 class="slideclose_text">Why would you like to unsubscribe your slideteam account?</h3>
+                  <ul>
+                    <li>
+                      <input class="form-check-input required-entry" type="radio" name="feedback" id="unsubscribeRadios1"
+                        value="option1">
+                      <label class="form-check-label" for="unsubscribeRadios1">
+                        I just wanted to download free products.
+                      </label>
+                    </li>
+                    <li id="more_option2">
+                      <input class="form-check-input required-entry" type="radio" name="feedback" id="unsubscribeRadios2"
+                        value="option2">
+                      <label class="form-check-label" for="unsubscribeRadios2">
+                        I need more industry specific design.
+                      </label>
+                      <div class="divShowHide2" style="display: none;">
+                        <input type="text" name="industry" placeholder="Industry name">
+                      </div>
+                    </li>
+                    <li>
+                      <input class="form-check-input required-entry" type="radio" name="feedback" id="unsubscribeRadios3"
+                        value="option3">
+                      <label class="form-check-label" for="unsubscribeRadios3">
+                        You don't have the designs I am looking for.
+                      </label>
+                    </li>
+                    <li>
+                      <input class="form-check-input required-entry" type="radio" name="feedback" id="unsubscribeRadios4"
+                        value="option4">
+                      <label class="form-check-label" for="unsubscribeRadios4">
+                        Price is too high.
+                      </label>
+                    </li>
+
+                    <li id="more_option">
+                      <input class="form-check-input required-entry" data-validate="{'validate-one-required-by-name':true}"
+                        type="radio" name="feedback" id="unsubscribeRadios5" value="option5">
+                      <label class="form-check-label" for="unsubscribeRadios5">
+                        Others
+                      </label>
+                      <div class="divShowHide" style="display: none;">
+                        <textarea name="comment" placeholder="Any feedback is appreciated"></textarea>
+                      </div>
+                    </li>
+                  </ul>
+                  <div id="feedback-error" generated="true" style="color:#d24031;font-size: 13px;margin-bottom:10px;"></div>
+                </div>
+                <div class="modal-footer">
+
+               <input type="hidden" name="customer_id" value="<?php echo $customerId; ?>">
+               <input type="hidden" name="subscription_id" value="<?php echo $subscription_history->getId(); ?>">
+               <input type="hidden" name="unsubscribe_date" value="<?php echo date('Y-m-d h:i:s'); ?>">
+               <!-- <input type="hidden" name="sort" value=""> -->
+               <input type="hidden" name="status" value="pending">
+               <input type="hidden" name="emmail" value="">
+               <input type="hidden" name="username" value="">
+
+               <button type="button" class="btn btn-default btn-cancel">Cancel</button>          
+               <!-- <button type="button" class="btn btn-default delete_prfile btn-submit" id="delete-final"> Unsubscribe </button> -->
+               
+               <button type="submit" class="btn btn-default btn-submit"> Unsubscribe </button>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script type="text/javascript">
+      require(['jquery', 'magnific_popup', "mage/mage"], function ($) {
+        var dataForm = $('#unsubscribeuser-form');
+        dataForm.mage('validation', {
+          errorPlacement: function (error, element) {
+            error.appendTo('#more_option');
+          }
+        });
+        $(document).ready(function () {
+          $("#more_option").click(function () {
+            console.log('#more_option');
+            $(".divShowHide").addClass("intro");
+          });
+          $("#more_option2").click(function () {
+            $(".divShowHide2").addClass("intro2");
+          });
+          $('li').on("click", function (event) {
+            if ($(this).index() == '4') {
+              $(".divShowHide2").removeClass("intro2");
+            }
+            if ($(this).index() == '1') {
+              $(".divShowHide").removeClass("intro");
+            }
+            if ($(this).index() != '1' && $(this).index() != '4') {
+              $(".divShowHide").removeClass("intro");
+              $(".divShowHide2").removeClass("intro2");
+            }
+          });
+
+          $('.unsubscribed.img_unsub_button_click').click(function () {
+
+            var loginCustomerid = "<?php echo $customerId; ?>";
+            $.ajax({
+              url: "<?php echo $baseurl.'deleteaccount/Index/Generatecoupon' ?>",
+              type: "post",
+              data: {
+                data: loginCustomerid
+              },
+              showLoader: false,
+              cache: false,
+              success: function (response) {
+                console.log('success');
+              }
+            });
+            return false;
+          });
+          $(".unsubscribed.img_unsub_button_click").magnificPopup({
+            modal: true,
+            items: [{
+              src: '#unsubscribeuser-popup',
+            }],
+            type: 'inline',
+            mainClass: 'delete-account-popup',
+            callbacks: {
+              open: function () {
+                var $content = $(this.content);
+                var loginCustomerid = "<?php echo $customerId; ?>";
+                $('body').addClass("account-popup-open");
+
+                /*$content.on('click', '.btn-submit', function()
+                {
+                  modal.style.display = "block";
+                  var radioValue = $("input[name='feedback']:checked").val();
+                  if(radioValue){
+                    var expDate = new Date();
+                    expDate.setTime(expDate.getTime() + (30 * 60 * 1000)); 
+                    jQuery.cookie('customer_delete', loginCustomerid, { expires: expDate});
+                    $(document).off('keydown', keydownHandler);
+                  }
+                });*/
+
+                $content.on('click', '.btn-cancel', function () {
+                  $.magnificPopup.close();
+                  $(document).off('keydown', keydownHandler);
+                });
+
+                var keydownHandler = function (e) {
+                  if (e.keyCode == 13) {
+                    $content.find('.btn-submit').click();
+                    return false;
+                  } else if (e.keyCode == 27) {
+                    $content.find('.btn-cancel').click();
+                    return false;
+                  }
+                };
+                $(document).on('keydown', keydownHandler);
+              },
+              close: function () {
+                $('body').removeClass("account-popup-open");
+                $(".divShowHide").removeClass("intro");
+                $(".divShowHide2").removeClass("intro2");
+              }
+            }
+          });
+        });
+      });
+    </script>
+    <?php
+    }
+    elseif(isset($lastorderData[0]) && ($currentDate-$orderDate)/60 < 30 && ($lastorderData[0]['status'] == "payment_completed" || $lastorderData[0]['status'] == "complete"))
+    {
+    ?>
+        <div align="center" style="padding-bottom: 10px">
+            <p>We are processing your order, Unsubscribe button will display after <?php echo 30 - (floor(($currentDate-$orderDate)/60)); ?> minutes.</p>
+        </div>   
+    <?php
+    }
+}
+
+?>
+<div id="paypal-unscribe" style="display: none;"></div>
+
+<?php
+if($_subscriptions == false)
+{
+    $subscriptions_count = 0;
+}
+else
+{
+    $subscriptions_count = $_subscriptions->getSize();
+    $lastorderData = $block->getLastCustomerOrder();
+
+    if(isset($lastorderData[0]))
+    {
+        $currentDate = strtotime($block->getCurrentGmtDate());
+        $orderDate = strtotime($lastorderData[0]['created_at']);
+        
+        if(($currentDate-$orderDate)/60 > 5 && !$customerIpnWait && ($lastorderData[0]['status'] != "payment_completed" || $lastorderData[0]['status'] != "complete"))
+        {
+            $nosubscription = 1;
+        }
+    } else {
+        $nosubscription = 1;
+    }
+
+}
+
+$is_subscription_valid = array();
+
+if ($subscriptions_count):
+    $previous_subscription = null;
+    $j = 0;
+    foreach ($_subscriptions as $key => $_subscription):
+        if ($j == 0) {
+
+            $subscription_period = $_subscription->getData("subscription_period");
+            $download_limit = $_subscription->getData("download_limit");
+            $admin_modified = $_subscription->getData("admin_modified");
+            $parent_id = $_subscription->getData("parent_customer_id");
+            if ($admin_modified == 1 && !empty($parent_id)){
+                $customer_plan_name = $helper->getCustomerPlanName($parent_id);    
+            }            
+            if ($download_limit <= 40):
+
+                $downloaded = $helper->checkDownloads($_subscription);
+               // $downloaded = $_subscription->checkDownloads($_subscription);
+                $downloaded = $downloaded <= 0 ? "0" : $downloaded;
+
+            else:
+
+                $download_limit = "Unlimited";
+
+            endif;
+            // if (stristr($subscription_period, "annual")) {
+            //     $download_limit = "Unlimited";
+            // }
+            ?>
+            <?php echo $block->getPagerHtml() ?>
+
+            <table id="my-orders-table" class="data-table">
+                <thead> 
+                    <tr class="first last">
+                        <?php if ($admin_modified != 1): ?>    
+                            <th colspan="2">Latest Subscription Details</th>
+                        <?php else: ?>
+                            <th colspan="2">Latest Subscription Details</th>
+                        <?php endif; ?>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="download-row">
+                        <th>Download Limit</th>
+                        <td><?php echo $download_limit; ?></td>
+                    </tr>
+                    <?php if (isset($downloaded)): ?>
+                        <tr class="download-row">
+                            <th>Downloaded</th>
+                            <td><?php echo $downloaded; ?></td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+            <?php
+            //break;
+            $previous_subscription = $_subscription;
+        }
+        if ($j > 0) {
+            $is_subscription_valid[$previous_subscription->getId()] = "1";
+            if ($previous_subscription->getRenewDate() == $_subscription->getRenewDate()) {
+                if ($previous_subscription->getStatus() != $_subscription->getStatus()) {
+                    if ($previous_subscription->getStatus() == "Proccessing") {
+                        $is_subscription_valid[$previous_subscription->getId()] = "0";
+                    } else {
+                        $is_subscription_valid[$_subscription->getId()] = "0";
+                    }
+                } else {
+                    $is_subscription_valid[$previous_subscription->getId()] = "0";
+                }
+            }
+        }
+        $j++;
+    endforeach;
+    ?>
+    <div class="table-responsive">
+        <table class="table data-table" id="my-orders-table">
+            <thead>
+                <tr>
+                    <th><?php echo __('Subscription Period') ?></th>
+                    <th><?php echo __('From Date') ?></th>
+                    <th><?php echo __('To Date') ?></th>
+                    <th><span class="nobr"><?php echo __('Renew Date') ?></span></th>
+                    <th><span class="nobr"><?php echo __('Subscription Status') ?></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $_odd = ''; ?>
+                <?php
+                foreach ($_subscriptions as $_subscription):
+
+                    $current_date = strtotime(date('Y-m-d H:i:s'));
+                    $from_date = $_subscription->getFromDate();
+                    $to_date = $_subscription->getToDate();
+
+                    $f = "";
+                    $t = "";
+
+                    if ($from_date && $to_date) {
+                        $t = $to_date;
+                        $f = $from_date;
+                    }
+
+                    if ($f != "" && $t != "") {
+
+                        $subscriptionTitle = $_subscription->getSubscriptionTitle();
+                        $subscriptionPeriod = $_subscription->getSubscriptionPeriod();
+                        if (!empty($subscriptionTitle)) {
+                            $subscriptionPeriod = $subscriptionTitle;
+                        }
+                        ?>
+
+                        <tr>
+                            <td><?= ($customer_plan_name && $_subscription->getStatusSuccess() == "Paid") ? $customer_plan_name : $subscriptionPeriod; ?></td>
+                            <td><span class="nobr"><?php echo $this->CustomformatDate($f) ?></span></td>
+                            <td><span class="nobr"><?php echo $this->CustomformatDate($t) ?></span></td>
+
+                            <td><span class="nobr"><?php echo ($from_date && $to_date) ? $this->CustomformatDate($_subscription->getRenewDate()) : "" ?></span></td>
+                            <td><span class="nobr"><?php echo $_subscription->getStatusSuccess() ?></span></td>
+
+                        </tr>
+                    <?php } ?>
+
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+    <?php echo $this->getPagerHtml(); ?>
+    
+    <?php elseif($nosubscription == 1):
+    ?>
+    <p><?php echo __('No subscription.'); ?></p>
+    <?php 
+    else:
+    ?>
+    <p><?php echo __('If you have just subscribed, please wait for 5 minutes for your account details to apppear here.'); ?></p>
+<?php endif ?>

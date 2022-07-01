@@ -1,0 +1,22 @@
+<!--@subject {{var customerSubject}}  @-->
+{{template config_path="design/email/header_template"}}
+	<table border='0' cellpadding='4' cellspacing='0' width='100%'>
+		<tbody>
+			<tr>
+				<td align='center' colspan='2' height='30' >{{var customerTitle}}</td>
+			</tr>
+			<tr>
+				<td align='left' width='40%'><b>Name:</b></td>
+				<td width='55%'>{{var name}}</td>
+			</tr>
+			<tr>
+				<td align='left' width='40%'><b>Email ID:</b></td>
+				<td width='55%'>{{var email}}</td>
+			</tr>
+			<tr>
+				<td align='left' width='40%'><b>Url:</b></td>
+				<td width='55%'>{{var url}}</td>
+			</tr>
+		</tbody>
+	</table>
+{{template config_path="design/email/footer_template"}}

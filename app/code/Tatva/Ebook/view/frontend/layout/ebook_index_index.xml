@@ -1,0 +1,25 @@
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<head>
+        <css src="Tatva_Ebook::css/ebook.css"/>
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+        <script src="Magento_Theme::js/dropkick.min.js"/>
+        <css src="Magento_Theme::css/FileUpload/fileUpload.css" media="all"/>
+        <css src="Magento_Theme::css/catalog/ebookLogin.css" media="all"/>
+        <css src="Magento_Theme::css/catalog/freesample/freesample.css" media="all"/>
+        <css src="Magento_Theme::css/cms/pricing/pricing.css" media="all"/>
+        <css src="Magento_Theme::css/magnific-popup/magnific-popup.css" media="all"/>
+    </head>
+  <body>
+    <referenceContainer name="main" label="Main Content Container" htmlTag="div" htmlClass="column main no-leftnav"/>
+    <referenceContainer name="content">
+    	<block class="Tatva\Free\Block\Customer\Login" ifconfig="customer/ajaxlogin/enable" name="ajaxlogin" template="Tatva_Free::customer/index.phtml">
+                <block class="Magento\Customer\Block\Form\Register" name="customer.form.register.ajax" template="Tatva_Free::customer/register.phtml" />
+                <block class="Mageplaza\SocialLogin\Block\Popup\Social" name="customer.form.social.login.ajax" template="Tatva_Free::customer/social.phtml" />
+         </block> 
+      	<block class="Tatva\Ebook\Block\Ebook" name="Ebook" template="Tatva_Ebook::Ebook.phtml" cacheable="false"/>
+        <block class="Magento\Framework\View\Element\Template" name="customeline" template="Tatva_Ebook::Ebook_faq.phtml" after="-"/>
+    </referenceContainer>
+    <referenceContainer name="slideteam-sidenav-wrapper" remove="true" />
+    <referenceBlock name="authentication-popup" remove ="true" />
+  </body>
+</page>

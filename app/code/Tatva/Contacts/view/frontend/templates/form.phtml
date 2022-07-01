@@ -1,0 +1,112 @@
+<?php
+$helper = $this->helper('Tatva\Contacts\Helper\Data');
+$email = null;
+$name = null;
+
+if (is_null($name)) {
+    $name = $this->escapeHtml($helper->getUserName());
+}
+if (is_null($email)) {
+    $email = $this->escapeHtml($helper->getUserEmail());
+}
+?>
+<div id="messages_product_view"></div>
+<h5><?= $block->escapeHtml(__('Contact Us')) ?></h5>
+<p><?php echo $this->getScopeConfig('button/contacts_config/field1'); ?></p>
+
+<div data-id="VV2pbAlYFO" class="livechat_button"><a href="https://www.livechatinc.com/">live chat software</a></div>
+<div class="contactus_demo">
+<button class="btn btn-black btn-white book_demo" title="Schedule a live product demo" data-mage-init='{"popupWindow": {"windowURL":"https://app.greminders.com/t/d42867b4/slideteam","windowName":"orderitems","width":1500,"height":700,"top":0,"left":0,"resizable":1,"scrollbars":1}}'>Schedule a live product demo</button></div>
+<div class="contact-information">
+    <form data-mage-init='{"validation": {}}' action="<?php echo $this->getUrl('contacts/index/send'); ?>" id="contactForm" method="post" class="scaffold-form">
+        <fieldset class="fieldset create info">
+            <ul class="form-list">
+                <li class="fields">
+                    <div class="field">
+                        <label for="name" class="label"><?= $block->escapeHtml(__('Name')) ?></label>
+                        <div class="input-box control">
+                            <input name="name" id="name" title="<?= $block->escapeHtmlAttr(__('Name')) ?>" value="<?php echo $name; ?>" class="input-text form-control" data-validate="{required:true}" type="text" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="email" class="label"><?= $block->escapeHtml(__('Email')) ?></label>
+                        <div class="input-box control">
+                            <input name="email" id="email" title="<?= $block->escapeHtmlAttr(__('Email')) ?>" value="<?php echo $email; ?>" class="input-text form-control" data-validate="{required:true,'validate-email':true}" type="email" />
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="telephone" class="label"><?= $block->escapeHtml(__('Telephone (optional) ')) ?></label>
+                        <div class="input-box control">
+                            <input name="telephone" id="telephone" maxlength="15" title="<?= $block->escapeHtmlAttr(__('Telephone')) ?>" value="" class="input-text form-control maximum-length-15" data-validate="{'no-whitespace':true,'telephoneValidation':true,'validate-length':true}"  type="tel" />
+                            <div class="mage-error" id="tel-error" generated="true"></div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="comment" class="label comment"><?= $block->escapeHtml(__('Comment')) ?></label>
+                        <div class="input-box control">
+                            <textarea name="comment" id="comment" title="<?= $block->escapeHtmlAttr(__('Comment')) ?>" value="" class="input-text form-control" data-validate="{required:true}" cols="5" rows="3" maxlength="2000"></textarea>
+                            <div class="allforms-comment-msg"><?php echo __("Max length should be 2000 character."); ?></div>
+                        </div>
+                    </div>
+
+                </li>
+                <li class="captcha-contact-us">
+                    <?php
+                    $blockPath = 'Magento\Captcha\Block\Captcha';
+                    $block = $this->getLayout()->createBlock($blockPath);
+                    $cap_data = array('form_id' => 'contact_us', 'img_width' => '50');
+                    $block->setData($cap_data);
+                    echo $block->toHtml();
+                    ?>
+                </li>
+                <li>
+                    <div class="button-set">
+                        <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="btn btn-default"><span><span><?php /* @escapeNotVerified */ echo __('Submit') ?></span></span></button>
+                    </div>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+    <div class="contact-address">
+        <h4>Our Address</h4>
+        <div class="address-wrapper">
+            <label>Representative Sales Office</label>
+            <p>1350, Avenue of the Americas,</p>
+            <p>New York , 10019.</p>
+            <p>Ph: <a href="tel:+1-408-659-4170">+1-408-659-4170</a></p>
+        </div>
+        <div class="address-wrapper">  
+            <label>Finance Office</label>
+            <p>7500A BEACH ROAD, #14-302, THE PLAZA,</p>
+            <p>SINGAPORE, 199591.</p>
+        </div>        
+    </div>
+</div>
+<script type="text/javascript">
+    require(['jquery'], function ($){
+        $(document).ready(function(){
+            var telval = jQuery('#telephone').val();
+            jQuery('#telephone').on('keydown',function(){
+                var tellength  = jQuery('#telephone').val().length;
+                if((tellength+1) == 16)
+                {
+                    jQuery('#tel-error').show();
+                    jQuery('#tel-error').html('Allowed only 15 characters');
+                    jQuery('#telephone-error').hide();
+                }
+            })
+
+            // task 1344
+            $("#comment").on("keyup",function() {
+              var maxLength = $(this).attr("maxlength");
+              if(maxLength == $(this).val().length) {
+                $('#comment-error').hide();
+                $('.allforms-comment-msg').show();
+              }else{
+                $('.allforms-comment-msg').hide();
+              }
+            });
+            // task 1344 end
+        });
+    });
+</script>

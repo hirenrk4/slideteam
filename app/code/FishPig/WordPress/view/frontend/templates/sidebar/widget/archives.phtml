@@ -1,0 +1,63 @@
+<?php
+/**
+ * @category    FishPig
+ * @package     FishPig_WordPress
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php return; ?>
+<?php $archives = $this->getArchives(); 
+$blockAuthor= $block->getLayout()->createBlock('FishPig\WordPress\Block\Sidebar\Widget\Author');
+$authors =$blockAuthor->getAuthors();
+$blockObj= $block->getLayout()->createBlock('FishPig\WordPress\Block\Sidebar\Widget\Posts');
+$frontend_identifies = $blockObj->configData('wordpress/integration/route');
+?>
+<?php if (count($archives) > 0): ?>
+	<div class="block-posts-archive block-posts">
+		<?php if ($title = $this->getTitle()): ?>
+			 <h4>Browse by Authors</h4>
+        <div class="tab research-tab clearfix">
+        	<button id="author_posts" class="tablinks-custom active tab-btn" onclick="openTabsForBlog(event, 'Authors','tabcontent-author')">Authors</button>
+        	<button id="archive_posts" class="tablinks-custom tab-btn" onclick="openTabsForBlog(event, 'Archives','tabcontent-author')">Archives</button>
+        </div>
+		<?php endif; ?>
+		<div class="block-content tabcontent-author" id="Archives" style="display: none;" >
+			<ul id="wp-archive-list" class="archive-list">
+			<?php if ($this->getDropdown()): ?>
+				<li class="item">
+					<select name="blog-archive-dropdown" onchange="window.location.href=this.value">
+							<option value="#"><?php echo __('Select Month') ?></option>
+						<?php foreach($archives as $archive): ?>
+							<option value="<?php echo $archive->getUrl() ?>"<?php if ($this->isCurrentArchive($archive)): ?> selected="selected"<?php endif; ?>>
+								<?php echo $this->translateDate($archive->getName()) ?> <?php if ($this->getCount()): ?> (<?php echo $archive->getPostCount() ?>)<?php endif; ?>
+							</option>
+						<?php endforeach; ?>
+					</select>
+				</li>
+			<?php else: ?>
+				<?php foreach($archives as $archive): ?>
+					<li class="item<?php if ($this->isCurrentArchive($archive)): ?> active<?php endif; ?>">
+						<a href="<?php echo $archive->getUrl() ?>" title="<?php echo $archive->getName() ?>"><?php echo $this->translateDate($archive->getName()) ?></a>
+						<?php if ($this->getCount()): ?> (<?php echo $archive->getPostCount() ?>) posts<?php endif; ?>
+					</li>
+				<?php endforeach; ?>
+			<?php endif; ?>
+			</ul>
+		</div>
+		<div class="block-content tabcontent-author" id="Authors" style="display:block;" >
+			<ul id="wp-author-list">
+				<?php foreach($authors as $author): ?>
+					 <?php if($author->getMetaValue('userphoto_thumb_file')):$authorImage =  $this->getUrl().'wp/wp-content/uploads/userphoto/' .$author->getMetaValue('userphoto_thumb_file');else : $authorImage = $this->getViewFileUrl('FishPig_WordPress::images/blog/default-user.jpg');endif;?>
+            <li>
+             <em><a href="<?php echo $this->getUrl().$frontend_identifies.'/author/'.str_replace(' ','-',$author->getUserLogin()); ?>" title="<?php echo $this->escapeHtml($author->getDisplayName()) ?>"><img src="<?php echo $authorImage;?>" alt=""></a></em>
+              <a title="<?php echo $this->escapeHtml($author->getDisplayName()) ?>" href="<?php echo $this->getUrl().$frontend_identifies.'/author/'.str_replace(' ','-',$author->getUserLogin()); ?>" title="<?php echo $this->escapeHtml($author->getDisplayName()) ?>"> <?php echo $this->escapeHtml($author->getDisplayName()) ?></a>
+              <?php echo $author->getPostCount();?> post
+            </li>
+       <?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+<?php endif; ?>
+<script>
+    require(['jquery','business_research']);
+</script> 

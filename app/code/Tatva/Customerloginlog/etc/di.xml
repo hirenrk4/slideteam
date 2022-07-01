@@ -1,0 +1,28 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Tatva\Customerloginlog\Model\ResourceModel\Loginlog\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">customerloginlog</argument>
+            <argument name="eventPrefix" xsi:type="string">customerloginlog_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">customerloginlog_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Customerloginlog\Model\ResourceModel\Loginlog</argument>
+        </arguments>
+    </type>
+
+    <type name="Tatva\Customerloginlog\Model\ResourceModel\Customerloginipcount\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">customerloginipcount</argument>
+            <argument name="eventPrefix" xsi:type="string">customersiplog_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">customersiplog_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Tatva\Customerloginlog\Model\ResourceModel\Customerloginipcount</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="customerloginlog_listing_data_source" xsi:type="string">Tatva\Customerloginlog\Model\ResourceModel\Loginlog\Grid\Collection</item>
+                <item name="customersiplog_listing_data_source" xsi:type="string">Tatva\Customerloginlog\Model\ResourceModel\Customerloginipcount\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

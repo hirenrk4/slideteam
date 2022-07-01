@@ -1,0 +1,1183 @@
+/* ebook css file */
+.ebook-banner-wrapper{
+	background-color: #f3f3f3;
+    background-image: url(../images/left_bannerimg.png);
+    background-repeat: no-repeat;
+    background-size: 59% 100%;
+    border-bottom: 3px solid #1e282f;
+
+    .container{
+    	padding: 0 15px;
+    	max-width: 1330px;
+    }
+
+   	.buy-now-btn{
+   		min-width: 185px;
+	    max-width: 100%;
+	    height: 52px;
+	    font-size: 20px;
+	    position: relative;
+	    transition: all 0.3s;
+	    background: #28a7fb;
+	    color: #ffffff;
+	    border: 2px solid #28a7fb;
+	    padding: 0 10px 0 53px;
+	    border-radius: 27px;
+
+	    &:hover{
+	    	color: #373737;
+    		background: #ffffff;
+
+    		.cart-icon{
+    			.normal-img{
+    				display: none;
+    			}
+    			.hover-img{
+    				display: block;
+    			}
+    		}
+	    }
+
+	    .cart-icon{
+	    	position: absolute;
+		    left: 10px;
+		    width: 40px;
+		    top: 6px;
+
+		    .hover-img{
+		    	display: none;
+		    }
+	    }
+   	}
+
+    .ebook-banner-inner{
+    	position: relative;
+    	display: flex;
+    	justify-content: space-between;    
+
+    	.banner-left-content{
+    		width: 40%;
+    		padding: 57px 20px 80px 0px;
+
+    		.heading-text{
+    			font-size: 26px;
+			    line-height: 30px;
+			    color: #fff;
+			    font-weight: 400;
+			    text-transform: uppercase;
+			    margin: 0 0 17px;
+				    width: 100%;
+					float: left;
+    		}
+
+    		h1{
+    			font-size: 66px;
+			    line-height: 70px;
+			    color: #fff;
+			    font-weight: 600;
+			    text-transform: uppercase;
+			    margin: 0 0 17px;
+			    padding-bottom: 3px;
+			    border-bottom: 4px solid #fff;
+			    display: inline-block;
+			    letter-spacing: 1px;
+    		}
+    		h2{
+    			font-size: 19px;
+			    line-height: 23px;
+			    color: #fff;	
+			    margin: 0 0 16px;
+			    font-weight: 500;	
+			    max-width: 400px;	    
+			}
+
+			.bottom-para{
+				p{
+					position: relative;
+					padding-left: 36px;
+					font-size: 15px;
+					line-height: 19px;
+					color: #fff;
+					margin-bottom: 18px;
+
+					&:last-child{
+						margin-bottom: 0;
+					}
+
+					.thumb-icon{
+						position: absolute;
+						left: 0;
+						top: 0;
+						width: 25px;
+					}
+				}
+			}
+    	}
+    	.banner-middle-content{
+    		position: relative;
+    		width: 30%;
+    		text-align: center;
+
+    		.middle-contentoffer{
+    			position: absolute;
+			    top: 66%;
+			    left: 17%;
+			    padding: 10px;
+			    -moz-transform: translateY(-50%);
+				-o-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				-webkit-transform: translateY(-50%);
+				transform: translateY(-50%);
+
+    			p{
+    				font-size: 19px;
+    				line-height: 24px;
+    				color: #00abdb;
+    				font-weight: 600;
+    				margin-bottom: 4px;    				
+    			}
+
+    			.buy-text{
+    				font-size: 18px;
+    				line-height: 22px;
+    				color: #262625;
+    				margin-bottom: 17px;
+    				
+    				span{
+    					color: #00abdb;
+    				}
+    			}
+    		}
+    	}
+    	.banner-right-content{
+    		display: flex;
+    		align-items: flex-end;
+    		width: 30%;
+    		padding: 47px 0 0 25px;
+    	
+    		.tap-img{    			
+    			img{
+    				display: block;
+    			}
+    		}
+    	}
+    }
+}
+
+.filterbox {
+	.filtercont {
+		.dk-select-options{
+			li {
+			width: 100%;
+			}
+		}
+	}
+}
+
+.buy-now-btn.upper-downloadClick{
+    padding: 0 10px 0 0px;
+}
+
+.book-collection-container{
+	/*padding: 30px 263px;*/
+
+	&.container{
+		max-width: 1330px;
+		padding: 0 15px;
+	}
+
+	.book-collection-top{
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		flex-wrap: wrap;
+		margin-bottom: 25px;
+		margin-top: 15px;
+
+		p{
+			font-size: 20px;
+			line-height: 26px;
+			color: #232323;
+			margin-bottom: 0;
+
+			b{
+				color: #28a6fa;
+			}
+		}
+		.book-collection-text {
+		  margin-left: 100px;
+		}
+		.sort-book-category{
+			margin-left: 10px;
+			label{
+				position: relative;
+			    display: inline-block;
+			    font-size: 22px;
+			    line-height: 38px;
+			    color: #232323;
+			    max-width: 100%;
+			}
+			/*select{
+				border: 1px solid #ccc;
+			    margin: 0;
+			    outline: none;
+			    font-size: 16px;
+			    line-height: 20px;
+			    margin-left: 15px;
+			    padding: 4px 20px 4px 5px;
+			    border-radius: 0px;
+			    width: 260px;
+			    box-shadow: none;
+			    height: 40px;
+			}*/
+		}
+	}
+
+	.book-collection-division{
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -50px;
+
+		*{
+			box-sizing: border-box;
+		}
+		li{
+			width: 33.33%;
+			padding: 0 50px;
+			margin-bottom: 70px;
+			.book-collection-inner{
+				padding: 20px;
+				border: 1px solid #d6d6d6;
+				height: 100%;
+
+				.default-img{
+					width: 272px;
+					height: 360px;
+				}
+
+				.book-name{
+					font-size: 16px;
+				    line-height: 24px;
+				    color: #232323;
+				    margin-bottom: 15px;
+				    height: 70px;
+
+				    .book-name-color {
+						color:#373737;
+					}
+				}
+				
+
+				i{
+					display: block;
+					text-align: center;
+					margin-bottom: 15px;				
+
+					a{
+						display: block;
+					}
+					
+				}
+
+				.book-description{
+					font-size: 13px;
+					line-height: 23px;
+					margin-bottom: 15px;
+					height: 115px;
+				}
+
+				.book-price{
+					display: flex;
+					justify-content: space-between;
+					margin-bottom: 20px;
+					
+					u{
+						color: #28a7fb;
+					}
+
+					span{
+						font-size: 18px;
+						line-height: 22px;
+						color: #28a7fb;
+					}
+
+					.free-preview-link{
+						font-size: 18px;
+						line-height: 22px;
+						color: #28a7fb;
+						/*border-bottom: 1px solid #28a7fb;*/
+						margin-left: 5px;
+						text-decoration: underline;
+
+						&:hover{
+							color: #373737;
+						}
+					}
+
+					.purchased-preview{
+						display: block;
+						width: 100%;
+						text-align: center;
+						margin: 0;
+					}
+				}
+
+				.book-count{
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					margin-bottom: 15px;
+
+					select{
+						border: 1px solid #ccc;
+					    margin: 0;
+					    outline: none;
+					    font-size: 14px;
+					    line-height: 18px;
+					    padding: 4px 20px 4px 5px;
+					    border-radius: 0px;
+					    width: 135px;
+					    box-shadow: none;
+					    height: 30px;
+					}
+
+					.buy-now-btn{
+					    width: 160px;	
+					    height: 40px;				    					    
+					    font-size: 18px;
+					    -webkit-transition: all 0.3s;
+					    -moz-transition: all 0.3s;
+					    -ms-transition: all 0.3s;
+					    transition: all 0.3s;
+					    background: #28a7fb;
+					    color: #ffffff;
+					    border: 2px solid #28a7fb;
+					    padding: 0 10px;
+					    -webkit-border-radius: 30px;
+					    -moz-border-radius: 30px;
+					    -ms-border-radius: 30px;
+					    -o-border-radius: 30px;
+					    border-radius: 30px;
+					    margin-left: 10px;
+
+					    &:hover{
+					    	color: #373737;
+					    	background: #ffffff;
+					    }
+					}
+				}
+
+				.get-link{
+					color: #28a7fb;
+					text-align: center;
+					display: block;
+					font-size: 15px;
+					line-height: 19px;
+					text-decoration: underline;
+
+					&:hover{
+						color: #373737;
+					}
+				}
+			}
+		}
+	}
+}
+
+.ebook-purchase-block{	
+	background: #f8f8f8;
+	padding: 40px 0;
+
+	*{
+		box-sizing: border-box;
+	}
+
+	.container{		
+		padding: 0 15px;
+		max-width: 1330px;
+	}
+
+	.ebook-purchase-inner{
+		display: flex;
+		margin: 0 -15px 45px;
+	}
+
+	.ebook-purchase-left{
+		width: 40%;
+		padding: 0 15px;
+	}
+	.ebook-purchase-right{
+		width: 60%;
+		padding: 0 15px;
+
+		.ebook-purchase-title{
+			font-size: 28px;
+			line-height: 32px;
+		    color: #232323;
+		    font-weight: 700;
+		    margin-bottom: 28px;
+
+		    b{
+		    	color: #28a7fb;
+		    }
+		}
+
+		p{
+			font-size: 15px;
+		    line-height: 32px;
+		    color: #333333;
+		    margin-bottom: 25px;
+		}	
+
+		.download-now-btn{
+			min-width: 325px;
+		    max-width: 100%;
+		    height: 65px;
+		    font-size: 21px;			    
+		    position: relative;			   
+		    transition: all 0.3s;
+		    background: #28a7fb;
+		    color: #ffffff;
+		    border: 2px solid #28a7fb;
+		    padding: 0 10px;
+		   	border-radius: 30px;	 
+
+		   	&:hover{
+		   		color: #373737;
+				background: #ffffff;
+		   	}
+		}
+
+		.buy-now-btn{
+			min-width: 325px;
+		    max-width: 100%;
+		    height: 65px;
+		    font-size: 21px;			    
+		    position: relative;			   
+		    transition: all 0.3s;
+		    background: #28a7fb;
+		    color: #ffffff;
+		    border: 2px solid #28a7fb;
+		    padding: 0 10px 0 73px;
+		   	border-radius: 30px;	    
+
+		    &:hover{
+		    	color: #373737;
+				background: #ffffff;
+				.cart-icon{						
+					.normal-img{
+						display: none;
+					}
+					.hover-img{
+						display: block;
+					}
+				}
+			}	
+
+		    .cart-icon{
+				position: absolute;
+			    left: 13px;
+			    width: 49px;
+			    top: 9px;
+			   
+			    .hover-img{
+			    	display: none;
+			    }			   
+			}    
+		}
+
+	}
+}
+
+/* free-preview Modal */
+.ebook-index-index{	
+	.modal-popup{
+		&.modal-slide{
+			z-index: 9999 !important;
+			.modal-footer{
+				padding: 20px;
+			    text-align: right;
+			    border-top: 1px solid #e5e5e5;
+
+			    button{
+			    	color: #333333;
+				    background-color: #ffffff;
+				    border-color: #cccccc;
+				    border-radius: 0;
+
+				    &:hover{
+				    	color: #333333;
+					    background-color: #e6e6e6;
+					    border-color: #adadad;
+				    }
+			    }
+			}
+			.modal-inner-wrap{
+				width: 600px;
+			}	
+			.modal-header{
+				padding: 20px 40px 0;
+
+				.modal-title{
+					font-size: 20px;
+				    line-height: 30px;
+				    font-weight: 700;
+				    color: #0a0802;
+				    padding: 0;
+				    border-bottom: 0;
+				}
+
+				.action-close{
+					padding: 0;
+				    top: 20px;
+				    right: 10px
+				}
+			}
+			.modal-content{
+				padding: 10px 40px 20px;
+
+				iframe{
+					width: 100%;
+					height: 600px;
+					border: 0;
+				}
+			}
+		}
+	}
+	.modals-overlay {
+		z-index: 9998 !important;
+	}
+}
+
+/* media */
+@media screen and (max-width: 1800px){		
+	.ebook-purchase-block{		
+		.ebook-purchase-right{
+			.ebook-purchase-title{
+				font-size: 26px;
+				line-height: 30px;
+			}
+		} 
+	} 
+}
+@media screen and (max-width: 1600px){
+	.ebook-banner-wrapper {		
+		background-size: 57% 100%;
+		.ebook-banner-inner{
+			.banner-left-content{				
+				h1{
+					font-size: 62px;
+    				line-height: 66px;
+				}
+			}		 	
+		}
+	}
+	
+	.book-collection-container{		
+		.book-collection-top {
+			p{
+				font-size: 20px;
+    			line-height: 24px;
+			}
+
+			.sort-book-category{
+				label{
+					font-size: 20px;
+				}
+			}
+		}	
+
+		.book-collection-division{
+			margin: 0 -40px;
+			li{
+				padding: 0 40px;
+				margin-bottom: 60px;
+			}
+		}	
+	}
+	.ebook-purchase-block{		
+		.ebook-purchase-right{
+			.ebook-purchase-title{
+				font-size: 23px;
+				line-height: 27px;
+				margin-bottom: 20px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1440px){
+	.ebook-banner-wrapper{
+		.ebook-banner-inner{
+		 	.banner-left-content{
+		 		padding: 50px 20px 70px 0;
+
+		 		.heading-text{
+		 			font-size: 24px;
+				    line-height: 28px;
+				    margin-bottom: 12px;
+		 		}
+		 		h1{
+		 			font-size: 58px;
+    				line-height: 62px;
+		 		}
+		 		h2{
+		 			font-size: 17px;
+    				line-height: 21px;
+		 		}
+		 	}
+		 	.banner-middle-content{
+		 	 	.middle-contentoffer{
+		 	 	 	p{
+		 	 	 		font-size: 18px;
+    					line-height: 22px;
+		 	 	 	}
+		 	 	 	.buy-text{
+		 	 	 		font-size: 17px;
+    					line-height: 21px;
+		 	 	 	}
+		 	 	}
+		 	}
+		}
+	}
+	.book-collection-container{
+		.book-collection-top {
+			p{
+				font-size: 18px;
+    			line-height: 22px;
+			}
+
+			.sort-book-category{
+				label{
+					font-size: 18px;
+				}
+				/*select{
+					width: 230px;
+				}*/
+			}
+		}
+
+		.book-collection-division{
+			margin: 0 -20px;
+			li{
+				padding: 0 20px;
+				margin-bottom: 50px;
+			}
+		}	
+	}
+	.ebook-purchase-block{			
+		.ebook-purchase-right{
+			.ebook-purchase-title{
+				font-size: 22px;
+				line-height: 26px;
+				margin-bottom: 15px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1366px){	
+	.ebook-banner-wrapper{
+		background-size: 62% 100%;
+	 	
+	 	.ebook-banner-inner{
+	 	 	.banner-left-content{
+	 	 		width: 45%;
+	 	 	}
+	 	 	.banner-right-content{
+	 	 		width: 25%;
+	 	 	}
+	 	}
+	}
+	
+	.ebook-purchase-block{		
+		.ebook-purchase-right{
+			.ebook-purchase-title{
+				font-size: 20px;
+				line-height: 24px;
+				margin-bottom: 10px;
+			}
+
+			p{
+				line-height: 27px;
+			}
+		}
+	}
+}
+@media screen and (max-width: 1280px){
+	.ebook-banner-wrapper{		
+	 	.ebook-banner-inner{
+	 	 	.banner-left-content{
+	 	 		padding: 45px 20px 60px 0;
+	 	 		.heading-text{
+	 	 			font-size: 22px;
+    				line-height: 26px;
+	 	 		}
+	 	 		h1{
+	 	 			font-size: 56px;
+    				line-height: 60px;
+	 	 		}	 	 		
+	 	 	}	 	 	
+	 	}
+	}
+
+	.book-collection-container{		
+		.book-collection-top {			
+			.sort-book-category{
+				/*select{
+					margin-left: 5px;
+				}*/
+			}
+		}
+
+		.book-collection-division{
+			margin: 0 -15px;
+
+			li{
+				padding: 0 15px;
+				margin-bottom: 35px;
+
+				.book-collection-inner{
+					padding: 15px;
+
+					.book-description{
+						margin-bottom: 12px;
+					}
+
+					.book-price{
+						margin-bottom: 15px;
+						span{
+							font-size: 16px;
+							line-height: 20px;
+						}
+						.free-preview-link{
+							font-size: 16px;
+							line-height: 20px;
+						}
+					}
+
+					.book-count{
+						margin-bottom: 12px;
+						.buy-now-btn{
+							font-size: 16px;
+						}
+					}
+				}
+			}
+		}
+	}	
+}
+
+@media screen and (max-width: 1199px){
+	.ebook-banner-wrapper{
+	 	.ebook-banner-inner{
+	 	 	.banner-left-content{
+	 	 		padding: 40px 20px 50px 0;
+	 	 	 	.heading-text{
+	 	 	 		font-size: 20px;
+    				line-height: 24px;
+	 	 	 	}
+	 	 	 	h1{
+	 	 	 		font-size: 50px;
+    				line-height: 54px;
+	 	 	 	}
+	 	 	}
+	 	 	.banner-right-content{
+	 	 		padding: 40px 0 0 25px;	 	 	 	
+	 	 	}
+	 	 	.banner-middle-content{	 	 		
+		 	 	.middle-contentoffer{
+	 	 	 	 	p{
+	 	 	 	 		font-size: 17px;
+	 	 	 	 		line-height: 21px;
+	 	 	 	 	}
+	 	 	 	 	.buy-text{
+	 	 	 	 		font-size: 16px;
+	 	 	 	 		line-height: 20px;
+	 	 	 	 	}
+	 	 	 	}
+	 	 	}
+	 	}
+	}
+	.book-collection-container{
+		/*padding: 20px 25px 20px 175px;*/
+		.book-collection-top {
+			p{
+				font-size: 14px;
+				line-height: 20px;
+				/*width: 100%;*/
+				margin-bottom: 10px;
+			}
+			.book-collection-text{
+			    margin-left: 1px;
+			    font-size: 13px
+			}
+
+			.sort-book-category{
+				margin-left: 0;
+				label{
+					font-size: 16px;
+				}
+				.filterbox{
+			    	margin-top: 5px;
+			  	}
+			}
+		}
+
+		.book-collection-division {
+			margin: 0 -10px;
+			li{
+				padding: 0 10px;
+				.book-collection-inner{		
+					padding: 12px;			
+				 	.book-price{
+				 		span {
+						    font-size: 15px;
+						    line-height: 19px;
+						}
+				 		.free-preview-link{
+				 			font-size: 15px;
+						    line-height: 19px;
+				 		}
+				 	}
+
+				 	.book-count{
+				 		select{
+				 			width: 100px;
+				 		}
+				 		.buy-now-btn{
+				 			font-size: 15px;
+				 			width: 120px;
+				 		}
+				 	}
+				}
+			} 			
+		}		
+	}
+}
+
+@media screen and(max-width: 1040px){
+	.ebook-banner-wrapper{
+		background-size: 64% 100%;	 	
+	 	.ebook-banner-inner{
+	 		margin: 0;
+
+	 		.banner-left-content{
+	 			padding: 40px 15px 50px 0;
+	 		}
+	 		.banner-right-content{
+	 			padding: 40px 0 0 15px;	 			
+	 		}
+	 		.banner-middle-content{
+	 			.middle-contentoffer{
+	 				left: 17%;
+	 			}
+	 		}
+	 	}
+	}		
+}
+@media screen and (max-width: 1023px){
+	.book-collection-container{
+		/*padding: 20px;*/
+	}
+}
+
+@media screen and (max-width: 991px){
+	.ebook-banner-wrapper{
+		.buy-now-btn{
+	 		min-width: 175px;
+	 		max-width: 100%;
+	 		height: 45px;
+	 		font-size: 16px;
+	 		/*padding: 0 10px 0 45px;*/
+
+	 		.cart-icon{
+	 			width: 35px;
+	 			top: 4px;
+	 			left: 8px;
+	 		}
+	 	}
+	 	.ebook-banner-inner{
+	 	 	.banner-left-content{
+	 	 		padding: 35px 15px 40px 0;
+	 	 		width: 48%;
+
+	 	 		.heading-text{
+	 	 			font-size: 18px;
+	 	 			line-height: 22px;
+	 	 		}
+
+	 	 		h2{
+	 	 			font-size: 16px;
+	 	 			line-height: 20px;
+	 	 		}
+
+	 	 		h3{
+	 	 			font-size: 42px;
+	 	 			line-height: 46px;
+	 	 		}
+	 	 	}
+	 	 	.banner-middle-content{
+	 	 		.middle-contentoffer{
+	 	 			left: 7%;
+
+	 	 			p{
+	 	 				font-size: 16px;
+	 	 				line-height: 20px;
+	 	 			}
+	 	 			.buy-text{
+	 	 				font-size: 15px;
+	 	 				line-height: 19px;
+	 	 			}
+	 	 		}
+	 	 	}
+	 	 	.banner-right-content{
+	 	 		width: 22%;
+	 	 	}
+	 	}
+	}
+	.book-collection-container{
+		.book-collection-division{
+			li{
+				width: 50%;
+			}
+		}
+	}
+	.ebook-purchase-block{
+		.ebook-purchase-right{
+			.buy-now-btn{
+				height: 58px;
+				font-size: 19px;
+				padding-left: 62px;
+
+				.cart-icon{
+					width: 44px;    					
+				}
+			}
+
+			.download-now-btn{
+				height: 58px;
+				font-size: 19px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 767px){
+	.ebook-banner-wrapper{
+		background-image: none;
+		background-color: #1f70bc;
+
+		.ebook-banner-inner{
+			flex-wrap: wrap;
+
+			.banner-left-content{
+				width: 100%;
+				padding: 20px 0;
+				margin-bottom: 10px;				
+
+    			.bottom-para{
+    				p{
+    					padding-left: 30px;
+					    font-size: 14px;
+					    line-height: 18px;
+					    margin-bottom: 13px;
+
+					    .thumb-icon{
+					    	width: 20px;
+					    }
+    				}
+    			}
+			}
+			.banner-middle-content{
+				width: 100%;
+
+				.middle-contentoffer{
+					position: static;
+					transform: none;
+					text-align: left;
+					padding: 0 0 20px;
+
+					p{
+						color: #ffffff;
+					}
+
+					.buy-text{
+						color: #ffffff;
+
+						span{
+							color: #ffffff;
+						}
+					}
+				}
+			}
+			.banner-right-content{
+				display: none;
+			}
+		}
+	}
+	.ebook-purchase-block{
+		.container{
+			/*padding: 0 15px;*/
+		}
+
+		.ebook-purchase-inner{
+			flex-wrap: wrap;
+		}
+
+		.ebook-purchase-left{
+			width: 100%;
+			margin-bottom: 25px;
+		}
+		.ebook-purchase-right{
+			width: 100%;
+
+			.ebook-purchase-title{
+				font-size: 18px;
+				line-height: 22px;
+			}
+
+			p{
+				line-height: 23px;
+			}
+
+			.buy-now-btn{
+				min-width: 280px;
+				font-size: 16px;
+    			padding-left: 47px;
+
+    			.cart-icon{
+    				width: 33px;
+    			}
+			}
+
+			.download-now-btn{
+				min-width: 280px;
+				font-size: 16px;
+			}
+		}
+	}
+
+	/* free-preview modal*/
+	.ebook-index-index{	
+		.modal-popup{
+			&.modal-slide{
+				left: 0;
+				.modal-inner-wrap{
+					height: 100%;
+					max-height: 90%;
+					min-height: 0;
+				    width: 90%;
+				    margin: 50px auto;
+				}
+				.modal-content{
+					padding: 10px 15px 20px;
+				}
+				.modal-header{
+					padding: 20px 40px 0 15px;
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 575px){	
+	.ebook-banner-wrapper{
+	 	.ebook-banner-inner{
+	 	 	.banner-left-content{
+				.heading-text{
+					font-size: 16px;
+    				line-height: 20px;
+				}
+
+				h1{
+				    font-size: 35px;
+    				line-height: 40px;
+    			}
+
+    			h2{
+    				font-size: 15px;
+				    line-height: 19px;
+				    max-width: 100%;
+				    margin-bottom: 12px;
+    			}
+	 	 	}
+	 	}
+	}
+
+	.book-collection-container{
+		/*padding: 20px 15px;*/
+		.book-collection-top{
+			p{
+				font-size: 15px;
+				line-height: 19px;
+			}
+
+			.sort-book-category{
+				label{
+					font-size: 15px;
+				}
+				/*select{
+					font-size: 15px;
+					height: 35px;
+				}*/
+			}
+		}
+		.book-collection-division{
+			li{
+				width: 100%;
+				margin-bottom: 25px;
+			}
+		}
+	}
+}
+
+
+.buy_all_hover {
+    display: none;
+}
+
+.buy-all-btn:hover .buy_all_normal{
+    display: none;
+}
+
+.buy-all-btn:hover .buy_all_hover {
+    display: inline-block;
+}
+
+/*task_1179 css start*/
+.ebook-index-index .modal-popup.modal-slide .modal-content .pdf-content
+{
+	width: 100%;
+	height: 600px;
+	border: 0;
+	text-align: center;
+}
+
+.ebook-index-index .modal-popup.modal-slide .modal-content .pdf-content .pdf-cnt
+{
+    position: relative;
+    top: 45%;
+    left: 0%;
+}
+
+.ebook-index-index .modal-popup.modal-slide .modal-content .pdf-content .pdf-cnt p
+{
+	font-weight: 600;
+	font-size: 13px;
+	min-width: 150px;
+}
+	
+.ebook-index-index .modal-popup.modal-slide .modal-content .pdf-content .pdf-cnt .pdf-btn
+{
+	background: #1979c3;
+	color: #fff;
+	border: 2px solid #1979c3;
+	height: 46px;
+	line-height: 36px;
+	font-weight: 600;
+	font-size: 15px;
+	min-width: 200px;
+	padding: 0px;
+}
+/*task_1179 css end*/

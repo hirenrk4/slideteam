@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">customer_form.customer_form_data_source</item>
+			<item name="deps" xsi:type="string">customer_form.customer_form_data_source</item>
+		</item>
+		<item name="config" xsi:type="array">
+			<item name="dataScope" xsi:type="string">data</item>
+			<item name="namespace" xsi:type="string">customer_form</item>
+		</item>
+		<item name="layout" xsi:type="array">
+			<item name="type" xsi:type="string">tabs</item>
+			<item name="navContainerName" xsi:type="string">left</item>
+		</item>
+	</argument>
+	<!-- <dataSource name="customer_form_data_source">
+		<argument name="dataProvider" xsi:type="configurableObject">
+			<argument name="class" xsi:type="string">Tatva\Sentence\Model\DataProvider</argument>
+			<argument name="name" xsi:type="string">customer_form_data_source</argument>
+			<argument name="primaryFieldName" xsi:type="string">sentence_id</argument>
+			<argument name="requestFieldName" xsi:type="string">id</argument>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="submit_url" xsi:type="url" path="*/imports/save"/>
+				</item>
+			</argument>
+		</argument>
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+	</dataSource> -->
+	<fieldset name="subscription_history" sortOrder="5">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string">Subscription History</item>
+				<item name="collapsible" xsi:type="boolean">false</item>
+			</item>
+		</argument>
+		<insertListing>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="autoRender" xsi:type="boolean">true</item>
+					<item name="ns" xsi:type="string">customer_subscription_listing</item>
+				</item>
+			</argument>
+		</insertListing>
+	</fieldset>
+	<fieldset name="child_subscription_history" sortOrder="6">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string">Child Subscription History</item>
+				<item name="collapsible" xsi:type="boolean">false</item>
+			</item>
+		</argument>
+		<insertListing>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="autoRender" xsi:type="boolean">true</item>
+					<item name="ns" xsi:type="string">child_subscription_listing</item>
+				</item>
+			</argument>
+		</insertListing>
+	</fieldset>
+	<fieldset name="customer_downloads" sortOrder="10">
+		<argument name="data" xsi:type="array">
+			<item name="config" xsi:type="array">
+				<item name="label" xsi:type="string">Customer Downloads</item>
+				<item name="collapsible" xsi:type="boolean">false</item>
+			</item>
+		</argument>
+		<insertListing>
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="autoRender" xsi:type="boolean">true</item>
+					<item name="ns" xsi:type="string">customer_download_listing</item>
+				</item>
+			</argument>
+		</insertListing>
+	</fieldset>
+</form>

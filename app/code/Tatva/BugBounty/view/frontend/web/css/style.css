@@ -1,0 +1,858 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span,
+a,
+div,
+button,
+input,
+label,
+textarea {
+    font-family: open sans
+}
+
+button {
+    cursor: pointer
+}
+
+body {
+    margin: 0
+}
+
+.container,
+.main-wrapper {
+    max-width: 1370px;
+    margin: 0 auto
+}
+
+@media (max-width:1536px) {
+    .container,
+    .main-wrapper {
+        max-width: 1200px
+    }
+}
+
+@media (max-width:1440px) {
+    .container,
+    .main-wrapper {
+        max-width: 1200px
+    }
+}
+
+@media (max-width:1366px) {
+    .container,
+    .main-wrapper {
+        max-width: 1100px
+    }
+}
+
+@media (max-width:1199px) {
+    .container,
+    .main-wrapper {
+        max-width: 970px
+    }
+}
+
+@media (max-width:1023px) {
+    .container,
+    .main-wrapper {
+        max-width: 960px
+    }
+}
+
+@media (max-width:991px) {
+    .container,
+    .main-wrapper {
+        max-width: 100%;
+        margin: 0 15px
+    }
+}
+
+.bug_bounty_main {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center
+}
+
+.bug_bounty_inner {
+    margin-top: 50px
+}
+
+.bug_bounty_inner h1 {
+    font-size: 40px;
+    font-weight: 600
+}
+
+.bug_bounty_inner p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px
+}
+
+.bug_bounty_inner h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 10px
+}
+
+.bug_bounty_table {
+    width: 100%;
+    margin: 0 auto
+}
+
+.bug_bounty_table h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 40px;
+    margin-bottom: 0;
+    text-align: center
+}
+
+.bug_bounty_table table {
+    border-collapse: collapse;
+    width: 70%;
+    text-align: center;
+    margin: 25px auto 40px;
+    box-shadow: 0px 0px 9px 0px #ccc;
+    border-radius: 0
+}
+
+.bug_bounty_table th,
+.bug_bounty_table td {
+    text-align: center;
+    padding: 20px
+}
+
+.bug_bounty_table tr:nth-child(even) {
+    background-color: #eff3f4
+}
+
+.bug_bounty_table th {
+    background-color: #002b38;
+    color: #fff;
+    background-position: 24% 100%;
+    border-radius: 0;
+    font-weight: 600
+}
+
+.bug_bounty_guidelines {
+    width: 100%;
+    margin: 0 auto;
+    padding-bottom: 20px
+}
+
+.guidelines_content p {
+    font-size: 16px;
+    font-weight: 600
+}
+
+.guidelines_content li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    list-style: none;
+    position: relative
+}
+
+.guidelines_content li img {
+    position: absolute;
+    left: -28px;
+    top: 3px
+}
+
+.tasting_targets {
+    width: 100%;
+    margin: 0 auto;
+    background: #f3f4f6;
+    padding-top: 10px;
+    padding-bottom: 15px
+}
+
+.tasting_targets_custom h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center
+}
+
+.tasting_targets_custom p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    text-align: center
+}
+
+.tasting_targets_custom {
+    text-align: center
+}
+
+.tasting_targets_custom ul {
+    text-align: center;
+    padding: 0
+}
+
+.tasting_targets_custom ul p {
+    text-align: left;
+    font-weight: 600;
+    margin-top: 15px
+}
+
+.tasting_targets_custom ul li {
+    list-style: auto;
+    position: relative;
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 5px;
+    color: #333;
+    text-align: left
+}
+
+.tasting_targets_custom li img {
+    position: absolute;
+    left: -28px;
+    top: 4px
+}
+
+.bounty_notes {
+    width: 100%;
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 15px
+}
+
+.bounty_notes_custom p {
+    font-size: 16px;
+    font-weight: 600
+}
+
+.bounty_notes_custom ul li {
+    font-size: 16px;
+    font-weight: 400;
+    list-style: none;
+    position: relative
+}
+
+.bounty_notes_custom ul li img {
+    position: absolute;
+    left: -28px;
+    top: 4px
+}
+
+.bug_report {
+    width: 100%;
+    margin: 0 auto 40px
+}
+
+.bug_report_custom h2 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    text-align: center
+}
+
+.bug_report_custom p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    text-align: center
+}
+
+.bug_report_p {
+    font-weight: 600 !important;
+    margin: 20px 0 25px
+}
+
+.bug_report_custom ul {
+    padding: 0
+}
+
+.bug_report_custom ul li {
+    list-style: none;
+    background: #f3f4f6;
+    padding: 20px 25px;
+    margin-bottom: 10px;
+    font-size: 16px
+}
+
+.bug_reporting_form {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center
+}
+
+.bug_form_custom h2 {
+    text-align: center;
+    font-size: 36px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0
+}
+
+.bug_form_custom p {
+    text-align: center;
+    color: #333;
+    font-size: 18px;
+    margin-top: 10px
+}
+
+.form-style-custom {
+    margin: 10px auto;
+    padding: 0 50px 5px;
+    float: left
+}
+
+.form-style-custom li {
+    padding: 0;
+    display: block;
+    list-style: none;
+    margin: 15px 0 8px;
+    float: left;
+    width: 100%
+}
+
+.portf_form1 {
+    width: 48%;
+    float: left
+}
+
+.form-style-custom label {
+    margin: 0 0 3px;
+    padding: 0 8px;
+    display: block;
+    text-align: left
+}
+
+.form-style-custom .field-divided {
+    width: 100%;
+    border: none;
+    height: 47px;
+    border-radius: 4px;
+    color: #bbb;
+    font-size: 16px;
+    padding: 15px;
+    border: 1px solid #d4d5d7;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    margin-bottom: 5px;
+    text-align: left;
+    position: relative
+}
+
+.portf_form2 {
+    float: right !important
+}
+
+.form-style-custom .field-long {
+    width: 100%;
+    border: none;
+    height: 47px;
+    border-radius: 4px;
+    border: 1px solid #d4d5d7;
+    color: #bbb;
+    font-size: 16px;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    position: relative
+}
+
+.bug_btn_center {
+    text-align: center;
+    margin: 30px 0
+}
+
+.bug_btn_center button {
+    text-align: center;
+    border: none;
+    background: #28a7fb;
+    color: #fff;
+    padding: 13px 70px;
+    border-radius: 40px;
+    font-size: 18px;
+    margin: 20px 0;
+    font-weight: 500;
+    transition: all .3s;
+    border: 2px solid transparent
+}
+
+.bug_btn_center button:hover {
+    transition: all .3s;
+    background: 0 0;
+    border: 2px solid #28a7fb;
+    color: #28a7fb
+}
+
+.portf_form_custom.bounty_form_custom {
+    width: 100%;
+    padding: 0 !important;
+    margin-top: 10px
+}
+
+label.label.captcha_bugbounty_form_captcha {
+    display: none;
+}
+
+.portf_form_custom.bounty_form_custom .control.captcha.col {
+    width: 48%;
+    float: left;
+    margin-bottom: 0
+}
+
+.portf_form_custom.bounty_form_custom .control.captcha.col input {
+    border: 1px solid #d4d5d7;
+    border-radius: 5px;
+    max-width: 230px;
+    width: 100%;
+    height: 47px;
+    font-size: 13px;
+    line-height: 17px;
+    padding: 0 10px;
+    color: #454545;
+    max-width: 100%;
+    position: relative
+}
+
+.portf_form_custom.bounty_form_custom .nested.col {
+    width: 48%;
+    float: right;
+    max-width: 100%
+}
+
+.portf_form_custom.bounty_form_custom .control.captcha-image {
+    margin: 0 auto;
+    position: static
+}
+
+#captcha-container-bugbounty_form_captcha {
+    border: 1px solid #d4d5d7;
+    border-radius: 5px;
+    max-width: 230px;
+    width: 100%;
+    height: 47px;
+    font-size: 13px;
+    line-height: 17px;
+    padding: 0 1px;
+    color: #454545;
+    max-width: 100%;
+    margin-top: 0;
+    position: relative
+}
+.captcha-wrapper .captcha .invalid-captcha {
+    padding-top: 10px;
+    color: #d24031;
+    font-size: 13px;
+    line-height: 17px;
+    margin: 38px 0 0;
+    text-align: left;
+    position: absolute;
+}
+.captcha-wrapper .captcha .invalid-captcha strong {
+    font-weight: 400;
+}
+.portf_form_custom.bounty_form_custom .control.captcha.col input {
+    color: #bbb;
+    font-size: 15px;
+    padding: 15px !important;
+}
+
+.ajax-file-upload-container{
+    padding: 0;
+}
+.form-style-custom label span{
+color: red;
+font-size: 13px;
+}
+
+.portf_form_custom.bounty_form_custom .control.captcha-image .captcha-reload {
+    top: 11px
+}
+
+li.bug_btn_center {
+    margin-top: 0
+}
+
+.portf_form1.bug_form_captcha label {
+    display: inline-block;
+    font-weight: 600;
+    color: #333
+}
+
+.portf_form1.bug_form_captcha label {
+    position: relative;
+    top: -3px
+}
+
+.portf_form1.bug_form_captcha input {
+    margin-top: 12px;
+    width: 20px;
+    height: 20px
+}
+
+.bug_file_attachment {
+    width: 48%
+}
+
+form.bug_bounty_form {
+    box-shadow: 0px 0px 13px 0px #ddd;
+    border-radius: 10px;
+    width: 80%;
+    margin: 0 auto 40px;
+    display: inline-block
+}
+
+form.bug_bounty_form h4 {
+    text-align: center;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 400;
+    background: #002b38;
+    padding: 14px 0;
+    margin: 0;
+    border-radius: 10px 10px 0 0
+}
+
+.bug_file_attachment #mulitplefileuploader {
+    height: 47px;
+    border-radius: 4px;
+    border: 1px solid #d4d5d7;
+    color: #bbb;
+    font-size: 16px;
+    padding: 5px;
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.bug_file_attach .file-error {
+    color: #d24031;
+    font-size: 13px;
+    line-height: 17px;
+    text-align: left;
+    position: absolute;
+    top: 50px
+}
+
+.portf_form_custom.bounty_form_custom .control.captcha-image .captcha-img {
+    border: 1px solid transparent
+}
+
+.bug_file_attach #mulitplefileuploader label {
+    border: 2px solid #28a7fb;
+    padding: 6px 25px;
+    border-radius: 30px;
+    background-color: #28a7fb;
+    transition: 1s;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 10px;
+    text-decoration: none;
+    margin-top: -2px
+}
+
+.ajax-file-upload.file_upload.custom-upload span {
+    position: relative;
+    top: 7px;
+    float: left
+}
+
+.bug_file_attach #mulitplefileuploader label:hover {
+    background-color: #1183ce;
+    border: 2px solid #1183ce
+}
+
+.portf_form1.bug_form_captcha {
+    width: 100%;
+    height: 77px;
+    border-radius: 4px;
+    border: 1px solid #d4d5d7;
+    color: #bbb;
+    font-size: 16px;
+    padding: 15px;
+    box-sizing: border-box;
+    margin-top: 5px;
+    text-align: left
+}
+
+form.bug_bounty_form input:focus-visible,
+form.bug_bounty_form textarea:focus-visible {
+    outline: 1px solid #28a7fb;
+    border: none
+}
+
+.bug_question {
+    width: 100%;
+    margin: 0 auto 0px
+}
+
+.bug_question p {
+    margin-top: 0;
+    font-size: 16px;
+    color: #333
+}
+
+.bug_question p a {
+    color: #28a7fb;
+    text-decoration: none;
+    font-weight: 600
+}
+
+.ajax-file-upload-container .ajax-file-upload-statusbar .ajax-file-upload-filename {
+    color: #000
+}
+
+.bug_file_attach .ajax-file-upload-container .ajax-file-upload-statusbar {
+    margin-bottom: 5px;
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    display: inline-block
+}
+
+.bug_reporting_form .captcha .control .mage-error {
+    color: #d24031;
+    font-size: 13px;
+    line-height: 17px;
+    margin: 0
+}
+
+.bug_reporting_form .mage-error[generated] {
+    color: #d24031;
+    font-size: 13px;
+    line-height: 17px;
+    margin: -5px 0 0;
+    text-align: left;
+    position: absolute
+}
+
+.ajax-file-upload-error:first-child {
+    padding-top: 15px;
+}
+
+.bug_file_attach .ajax-file-upload-error {
+    position: static;
+    left: 0;
+    top: 58px;
+    text-align: left;
+    line-height: 13px;
+    float: left
+}
+
+@media (max-width:1366px) {
+    .bug_bounty_inner img {
+        width: 320px
+    }
+    .tasting_targets_custom>img {
+        width: 320px
+    }
+    .form-style-custom li {
+        margin: 5px 0 8px
+    }
+}
+
+@media (max-width:1280px) {
+    .bug_bounty_main .container,
+    .bug_bounty_table .container,
+    .bug_bounty_guidelines .container,
+    .tasting_targets .container,
+    .bounty_notes .container,
+    .bug_report .container,
+    .bug_reporting_form .container {
+        padding: 0
+    }
+}
+
+@media (max-width:1024px) {
+    .bug_bounty_inner h1 {
+        font-size: 34px
+    }
+    .bug_bounty_inner h2 {
+        margin-top: 20px
+    }
+    .bug_bounty_table h2 {
+        margin-top: 20px
+    }
+    .bug_report_custom h2 {
+        margin-top: 0
+    }
+    .guidelines_content ul {
+        padding-left: 15px
+    }
+    .bounty_notes_custom ul {
+        padding-left: 15px
+    }
+    .tasting_targets_custom ul {
+        padding-left: 15px
+    }
+}
+
+@media only screen and (min-width:1024px) and (max-width:1024px) {
+    .ajax-file-upload-container .ajax-file-upload-statusbar .ajax-file-upload-progress {
+        max-width: 250px;
+        width: 74% !important
+    }
+    .guidelines_content ul {
+        padding-left: 25px
+    }
+    .bounty_notes_custom ul {
+        padding-left: 25px
+    }
+    .tasting_targets_custom ul {
+        padding-left: 25px
+    }
+}
+
+@media (max-width:800px) {
+    .bug_bounty_main .container {
+        padding: 15px
+    }
+    form.bug_bounty_form {
+        width: 95%
+    }
+    .bounty_notes_custom ul {
+        padding-left: 25px
+    }
+    .guidelines_content ul {
+        padding-left: 25px
+    }
+    .bug_bounty_inner h2 {
+        font-size: 28px
+    }
+    .bug_bounty_table h2 {
+        font-size: 28px;
+        margin-top: 15px;
+        margin-bottom: -5px
+    }
+    .bug_report_custom h2 {
+        font-size: 28px;
+        margin-top: -5px
+    }
+    .tasting_targets_custom h2 {
+        font-size: 28px;
+        margin-top: 10px
+    }
+    .bug_bounty_table th,
+    .bug_bounty_table td {
+        padding: 12px
+    }
+    .bug_form_custom h2 {
+        font-size: 28px
+    }
+    .bug_report {
+        margin: 0 auto 20px
+    }
+    .bug_form_custom p {
+        font-size: 14px;
+        margin-top: 5px
+    }
+    form.bug_bounty_form h4 {
+        font-size: 16px;
+        padding: 10px 0
+    }
+    li.portf_form_custom.bounty_form_custom {
+        background-position: 100% 50%
+    }
+    .bug_btn_center button {
+        padding: 10px 40px;
+        font-size: 16px
+    }
+    form.bug_bounty_form {
+        margin: 0 auto 20px
+    }
+    .bug_file_attachment {
+        width: 100%
+    }
+    li.portf_form_custom.bounty_form_custom {
+        width: 100%
+    }
+}
+
+@media (max-width:576px) {
+    form.bug_bounty_form {
+        width: 100%
+    }
+    .form-style-custom {
+        margin: 10px auto;
+        padding: 0 20px 5px;
+        float: left
+    }
+    .portf_form1 {
+        width: 100%
+    }
+    .bug_file_attachment {
+        width: 100%
+    }
+    li.portf_form_custom.bounty_form_custom {
+        width: 100%
+    }
+    .portf_form1.portf_form2 {
+        margin-top: 15px
+    }
+    .bug_file_attach .ajax-file-upload-container .ajax-file-upload-statusbar .ajax-file-upload-progress {
+        display: inline-block
+    }
+}
+
+@media (max-width:430px) {
+    ul {
+        padding-left: 25px
+    }
+    .bug_bounty_inner {
+        margin-top: 20px
+    }
+    .bug_bounty_inner h1 {
+        font-size: 25px
+    }
+    .bug_bounty_inner img {
+        width: 240px
+    }
+    .tasting_targets_custom>img {
+        width: 240px
+    }
+    .bug_report_custom ul li {
+        padding: 12px 15px
+    }
+    .bug_bounty_inner h2 {
+        font-size: 24px
+    }
+    .bug_bounty_table h2 {
+        font-size: 24px
+    }
+    .bug_report_custom h2 {
+        font-size: 24px
+    }
+    .tasting_targets_custom h2 {
+        font-size: 24px
+    }
+    .bug_form_custom h2 {
+        font-size: 24px
+    }
+    .portf_form_custom.bounty_form_custom .control.captcha.col {
+        width: 100%;
+        float: left;
+        margin-bottom: 35px
+    }
+    .portf_form_custom.bounty_form_custom .nested.col {
+        width: 100%;
+        float: right;
+        max-width: 100%
+    }
+    #captcha-container-bugbounty_form_captcha {
+        padding: 0
+    }
+}
+
+@media (max-width:375px) {
+    .bug_file_attach .ajax-file-upload-container .ajax-file-upload-statusbar .ajax-file-upload-progress {
+        display: inline-block;
+        margin-right: 3px
+    }
+    .form-style-custom {
+        padding: 0 10px 5px
+    }
+}

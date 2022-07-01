@@ -1,0 +1,43 @@
+<?php 
+$getConfiguration = $block->getConfiguration();
+?>
+
+<div class="testimonial-section">
+	<div class="main-wrapper">
+		<h2><?= $block->escapeHtml(__('What Our Clients Say')) ?></h2>
+		<div class="testimonial owl-carousel">
+			<?php $testimonialCollection = $this->getTestimonialList();?>
+			<?php $count = 0; ?>
+			<?php foreach ($testimonialCollection as $data): ?>
+				<?php if ($count++ >= $getConfiguration->getNoOfTestimonial()) break;?>
+				<div class="item">
+					<div class="testimonial-text">                       
+						<?php echo $data->getTestimonial();?>
+					</div>
+					<div class="sep"></div>
+					<strong><?php echo $data->getCompany();?></strong>
+					<span><?php echo $data->getFirstName()." ". $data->getLastName();?>, <?php echo $data->getDesignation();?></span>
+				</div>
+			<?php endforeach; ?>
+		</div>
+		<div class="button-blk">
+			<a href="<?php echo $this->getUrl('testimonial');?>" class="btn boder-btn" title="View all testimonial">View all Testimonials</a>
+			<a href="<?php echo $this->getUrl('questionnaire');?>" class="btn-default btn submit-design-req" title="Get started">Get started</a>
+		</div>
+	</div>
+</div>
+
+
+<script type="text/javascript">
+	require(['jquery'], function ($)
+	{
+		$(window).load(function() 
+		{
+			$('.owl-carousel').owlCarousel(
+			{
+				nav:true,
+			})
+		});
+	})
+
+</script>

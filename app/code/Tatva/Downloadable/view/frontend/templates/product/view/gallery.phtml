@@ -1,0 +1,202 @@
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('Magento\Catalog\Helper\Output');
+$product_name = $_helper->productAttribute($_product, $_product->getName(), 'name');
+?>
+<?php $gallaryImages = json_decode($block->getGalleryImagesJson());$i=0; ?>
+<div class="product-img-box new-slider">
+  <div class="gallery-container downloadable-product">
+    <div class="main-slider clearfix">
+      <div class="slider product-slider init-slider">
+          <div class="item">
+            <a href="<?php echo $gallaryImages[0]->full; ?>" data-fancybox="images">
+              <img  <?php if($i != 0) : echo "class='lazyload' data-src='".$gallaryImages[0]->img."' src='".$this->getViewFileUrl('images/89.gif', array('_sucure' => true))."'"; else : echo "src='".$gallaryImages[0]->img."'"; endif; ?> title="<?php echo $product_name.' Slide'.sprintf("%02d", $i) ?>"  loading="lazy" alt="<?php echo $product_name.' Slide'.sprintf("%02d", $i) ?>"  />
+              <?php $i++; ?>
+            </a>
+          </div>
+      </div>
+      <div class="owl-carousel slider product-slider original-slider">
+        <?php $j=1; ?>
+        <?php foreach ($gallaryImages as $_image): ?>
+          <div class="item">
+            <a href="<?php echo $_image->full; ?>" data-fancybox="images">
+              <img  <?php if($i != 0) : echo "class='lazyload' data-src='".$_image->img."' src='".$this->getViewFileUrl('images/89.gif', array('_sucure' => true))."'"; else : echo "src='".$_image->img."'"; endif; ?> title="<?php echo $product_name.' Slide'.sprintf("%02d", $j) ?>" loading="lazy" alt="<?php echo $product_name.' Slide'.sprintf("%02d", $j) ?>"  />
+              <?php $i++; ?>
+              <?php $j++; ?>
+            </a>
+          </div>
+        <?php endforeach; ?>
+      </div>
+      <?php
+        //if(!$block->generalHelper->isMobileDevice()) {
+      ?>
+        <div class="silder-item init-thumbnail">
+          <div class="custom-scroll" >
+            <ul class="clearfix" style="overflow: hidden;">
+              <?php $j=1 ;?>
+              <?php foreach ($gallaryImages as $_image): ?>
+                <li>
+                  <a href="#" title="<?php echo str_replace('_',' ',$_image->caption) ?>">
+                  <img class="lazyload"
+                 data-src="<?php echo $_image->thumb; ?>"
+                 src="<?php echo $this->getViewFileUrl('images/89.gif', array('_sucure' => true)); ?>" 
+                 title ="<?php echo $product_name.' Slide'.sprintf("%02d", $j) ?>" loading="lazy" alt="<?php echo $product_name.' Slide'.sprintf("%02d", $j) ?>"  />
+                 <?php $j++; ?>
+                 </a>
+               </li>
+             <?php endforeach; ?>  
+            </ul>
+          </div>
+        </div>
+      <?php //} ?>
+   </div>
+   <div class="slide-detail-wrapper">
+    <div class="slide-detail">Slide 1 of <?php echo count($gallaryImages) ?></div>
+  </div>
+</div>
+
+<input id="input" type="hidden" value="<?php echo count($gallaryImages) ?>" />
+</div>
+<script>
+
+  require(['jquery','mousewheel','customScrollbar','owl_carausel','domReady'], function (jQuery) {
+
+      image = '<?php echo count($gallaryImages);?>';
+      //Cusotm Scroll
+      function horzScroll(){
+          var scrollW = 0;
+          jQuery('.custom-scroll ul li').each(function(){
+            var $thisW = jQuery(this).outerWidth(true);   
+            scrollW = scrollW + $thisW;
+          });
+          jQuery(".custom-scroll ul").width(scrollW);
+      };
+
+      function custScroll(){
+          jQuery(".custom-scroll").mCustomScrollbar('destroy');
+          
+          if (jQuery(window).width() <= 1199){
+            jQuery('.custom-scroll').mCustomScrollbar({
+              axis:"x",
+              advanced:{updateOnContentResize:true}
+            });
+          }else{
+            jQuery('.custom-scroll').mCustomScrollbar({
+              axis:"x",
+              advanced:{updateOnContentResize:true}
+            });
+          }
+      }
+      //jQuery('.product-slider').css('display','block');
+
+      jQuery("a[href='#']").click(function(e) {
+        e.preventDefault();
+      });
+
+      jQuery(window).scroll(function(e) {
+        if(jQuery(window).scrollTop() > 0)
+          jQuery(".wrapper").addClass('small-header');
+        else
+          jQuery(".wrapper").removeClass('small-header');
+      });
+
+      jQuery("[placeholder]").each(function () {
+        jQuery(this).attr("data-placeholder", this.placeholder);
+
+        jQuery(this).bind("focus", function () {
+          this.placeholder = '';
+        });
+        jQuery(this).bind("blur", function () {
+          this.placeholder = jQuery(this).attr("data-placeholder");
+        });
+      });
+
+      setTimeout(function(){
+        jQuery("img").css({opacity:1});
+      },1000);
+
+      var owl = jQuery('.product-slider');
+      var amountHeaderImages = owl.find('img').length;
+
+      jQuery(owl).owlCarousel({
+        loop: (amountHeaderImages > 1),
+        items:1, 
+        nav: (amountHeaderImages > 1),       
+        pagination:false,
+        Rewindnav : true,
+        navRewind : true,                
+        navText:["",""],
+        onInitialized: showSlider
+      });
+      function showSlider(e) {
+          jQuery(".init-slider").hide();
+          jQuery(".original-slider").show();
+          jQuery(".silder-item").removeClass("init-thumbnail");
+      }
+
+      jQuery('.product-slider').on('changed.owl.carousel',function(event) {
+          //current will now return current slide #
+          var current = (event.item.index + 1) - event.relatedTarget._clones.length / 2;
+          var allItems = event.item.count;
+
+          if (current > allItems || current == 0) {
+            //current = allItems - (current % allItems);
+            current = 1;
+          }
+          if(event.item.index == 1){
+            current = allItems;
+          }
+          jQuery('.slide-detail').html("Slide "+ current  + ' of '+ allItems);
+        });
+
+      jQuery('.silder-item a').click(function(){
+        var $this = jQuery(this).closest('li').index();
+        console.log($this);
+        owl.trigger('to.owl.carousel', [$this]);
+        /* task 1471 : add trigger for original slider*/
+        jQuery('.product-slider.original-slider').trigger('to.owl.carousel', [$this]);
+        /* task 1471 end */
+      });
+
+      // horzScroll();
+      custScroll();
+      jQuery(window).resize(function(){
+        // horzScroll();
+        custScroll();
+      });
+
+      jQuery('.custom-scroll').mCustomScrollbar({
+        axis:"x",
+        advanced:{updateOnContentResize:true}
+      });
+
+      jQuery().fancybox(
+      {
+        selector : '.product-slider.original-slider .owl-item:not(.cloned) a',
+        backFocus: false,
+        loop: true,
+        hash   : false,
+        thumbs : 
+        {
+          autoStart : false
+        },
+        buttons : [
+        'zoom',
+        'thumbs',
+        'close'
+        ],
+        baseTpl: '<div class="fancybox-container" role="dialog" tabindex="-1">' +
+        '<div class="fancybox-bg"></div>' +
+        '<div class="fancybox-inner">' +
+        '<div class="fancybox-toolbar">{{buttons}}</div>' +
+        '<div class="fancybox-navigation">{{arrows}}</div>' +
+        '<div class="fancybox-stage"></div>' +
+        '<div class="fancybox-caption"><div class="fancybox-caption__body"></div></div>' +
+        "</div>",
+        caption : function(instance, item) 
+        {
+          return '<div class="fancybox-infobar">Slide <span data-fancybox-index></span> of <span data-fancybox-count></span></div>';
+        }
+      });
+    });
+  </script>

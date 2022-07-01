@@ -1,0 +1,17 @@
+<?php
+	$_product = $this->getProduct(); 
+	$googleLink = $_product->getData('google_slide_link');
+	$identifier = trim($this->getRequest()->getOriginalPathInfo(), '/');
+						
+?>
+<?php if(strpos($identifier, 'google-slides') !== false): ?>
+<div class="google-slide-outer-wrapper recommended-product">
+	<div class="google-slides-container">
+		<h4>View in Google Slides</h4>
+		<iframe src="<?php if(isset($googleLink)): echo $googleLink; endif; ?>"></iframe>
+	</div>
+	<div class="google-slide-btn">
+		<a target="_blank" href="<?php if(isset($googleLink)): echo $googleLink; endif; ?>">Open in Google Slides</a>
+	</div>
+</div>
+<?php endif; ?>

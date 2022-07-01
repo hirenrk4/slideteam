@@ -1,0 +1,50 @@
+/* Testimonial widget */
+.testimonials.widget ul, .testimonials.widget li { list-style: none; padding: 0; margin: 0; }
+.testimonials.widget {text-align: center;  width: 49%; display: inline-block;  background: #fff; border: 1px solid #dadada; padding-bottom: 0; min-height: 340px; position: relative;}
+.testimonials.widget li { text-align: left; width: 75%; margin: 0 auto;}
+.testimonials.widget li .testimonialPhoto{ display: inline-block; width: 40%; max-width: 40%; }
+.testimonials.widget li .testimonialHead { display: inline-block; max-width: 50%; vertical-align: top; margin-top: 15px; color: #000;}
+.testimonials.widget li .testimonialHead h4 { margin-bottom: 5px; }
+.testimonials.widget li .testimonialHead span { font-size: 12px; }
+.testimonials.widget li .testimonialText { font-style: italic;}
+.testimonials.widget a.testimonialAll { float: right; position: absolute; bottom: 15px; right: 20px;}
+.testimonials.widget .owl-carousel .owl-item img { max-width:110px; margin: 0 auto; border: 1px solid #eee; border-radius: 100%;}
+.testimonials.widget .owl-carousel.owl-testimonials .owl-nav button.owl-prev { position: absolute!important; top: 30%!important; left:0!important;}
+.testimonials.widget .owl-carousel.owl-testimonials .owl-nav button.owl-next { position: absolute!important; top: 30%!important; right:0!important;} 
+.owl-carousel .owl-nav button.owl-next, .owl-carousel .owl-nav button.owl-prev, .owl-carousel button.owl-dot { width: 40px; font-size: 36px;}
+.testimonials.widget .noImg .testimonialPhoto a{border: 1px solid #eee; background: #eee; font-size: 24px; color: #5b5b5b; text-align: center; display: block; max-width: 110px; line-height: 110px; border-radius: 100%; margin: 0 auto;}
+.testimonials.widget .noImg .testimonialPhoto a:hover { text-decoration: none;}
+/* Testimonial list */
+.list-testimonials, .list-testimonials li { list-style: none;}
+.list-testimonials { padding: 0; }
+.list-testimonials li { border-bottom: 1px dashed #ccc; padding: 10px 0; display: inline-block; width: 100%; }
+.list-testimonials li.no-image .right{ width: 100%;}
+.list-testimonials h4 { margin-bottom: 0; }
+.list-testimonials span { font-size: 12px; }
+.list-testimonials .testimonialText { margin: 10px auto;}
+.list-testimonials .testimonialPhoto img{ max-width: 92%; border-radius: 100%; border: 1px solid #eee; }
+.list-testimonials .noImg .testimonialPhoto a{border: 1px solid #eee; background: #eee; font-size: 24px; color: #5b5b5b; text-align: center; display: block; line-height: 125px; border-radius: 100%}
+.list-testimonials .noImg .testimonialPhoto a:hover { text-decoration: none;}
+.list-testimonials .left { width: 12%; float: left;}
+.list-testimonials .right { width: 86%; float: right;}
+.testimonialDetail .testimonialPhoto img { max-height: 300px; }
+.testimonialDetail h4 { margin-bottom: 0;}
+.testimonialDetail span { font-size: 12px;}
+.testimonialDetail p { margin: 10px auto;}
+.list-testimonials .toolbar-amount { margin-right: 10px;}
+.testimonial-testimonial-index .pages { display: inline-block; margin-left: 10px;}
+/* Testimonial grid */
+.grid-testimonials, .list-testimonials li { list-style: none;}
+.grid-testimonials { padding: 0; display: inline-block; }
+.grid-testimonials li { border: 1px solid #eee; padding: 10px; margin: 0 3px; display: inline-block; width: 47%; min-height: 177px;  }
+.grid-testimonials li.no-image .right{ width: 100%;}
+.grid-testimonials h4 { margin-bottom: 0;}
+.grid-testimonials span { font-size: 12px; }
+.grid-testimonials .testimonialText { margin: 10px auto;}
+.grid-testimonials .testimonialPhoto { width: 100%; padding: 5px;}
+.grid-testimonials .testimonialPhoto img{ max-width: 100%; border-radius: 100%; border: 1px solid #eee; }
+.grid-testimonials .noImg .testimonialPhoto a{ border: 1px solid #eee; background: #eee; font-size: 24px; color: #5b5b5b; text-align: center; display: block; line-height: 103px; border-radius: 100%}
+.grid-testimonials .noImg .testimonialPhoto a:hover { text-decoration: none;}
+.grid-testimonials .left { width: 20%; float: left;}
+.grid-testimonials .right { width: 74%; float: right;}
+.grid-testimonials .toolbar-amount { margin-right: 10px;}

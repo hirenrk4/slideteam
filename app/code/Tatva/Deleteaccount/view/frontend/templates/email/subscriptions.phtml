@@ -1,0 +1,35 @@
+<?php
+
+$counter = 1;
+$subscriptions = $block->getItems();
+$subscriptions_count = count($subscriptions);
+
+?>
+
+<?php if($subscriptions_count > 0): ?>
+    <table class='tbl customer_tbl' style='border: 1px solid black;' >
+        <tr>
+            <th style='padding: 15px;text-align: center;'>#</th>
+            <th style='padding: 15px;text-align: center;'>Subscription Type</th>
+            <th style='padding: 15px;text-align: center;'>Paid Amount</th>
+            <th style='padding: 15px;text-align: center;'>Payment Method</th>
+            <th style='padding: 15px;text-align: center;'>Subscription Start Date</th>
+            <th style='padding: 15px;text-align: center;'>Subscription End Date</th>
+            <th style='padding: 15px;text-align: center;'>Downloads</th>
+        </tr>
+        <?php foreach($subscriptions as $subscription): ?>
+            <tr>
+                <td style='padding: 15px;text-align: center;'><?php echo $counter; ?></td>
+                <td style='padding: 15px;text-align: center;'><?php echo $subscription['subscription_period'] ?></td>
+                <td style='padding: 15px;text-align: center;'><?php echo $subscription['amount'] ?></td>
+                <td style='padding: 15px;text-align: center;'><?php echo $subscription['payment_method'] ?></td>
+                <td style='padding: 15px;text-align: center;'><?php echo date("d/m/Y", strtotime($subscription['from_date'])) ?></td>
+                <td style='padding: 15px;text-align: center;'><?php echo date("d/m/Y", strtotime($subscription['to_date'])) ?></td>
+                <td style='padding: 15px;text-align: center;'><?php echo $subscription['downloads'] ?></td>
+            </tr>
+            <?php $counter++; ?>
+        <?php endforeach; ?>
+    </table>
+<?php elseif($subscriptions_count == 0): ?>
+        <h3 class='no-subscription'>There are no Subscriptions.</h3>
+<?php endif; ?>

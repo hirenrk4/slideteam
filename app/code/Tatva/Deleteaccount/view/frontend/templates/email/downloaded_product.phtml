@@ -1,0 +1,25 @@
+<?php
+
+$counter = 1;
+$downloaded_product = $block->getItems();
+$downloaded_product_count = count($downloaded_product);
+
+?>
+
+<?php if($downloaded_product_count > 0): ?>
+    <table class='tbl customer_tbl' style='border: 1px solid black;' >
+        <tr>
+            <th style='padding: 15px;text-align: center;'>#</th>
+            <th style='padding: 15px;text-align: center;'>Product Name</th>
+        </tr>
+        <?php foreach($downloaded_product as $dp): ?>
+            <tr>
+                <td style='padding: 15px;text-align: center;'><?php echo $counter; ?></td>
+                <td style='padding: 15px;'><a href="<?php echo $dp['url'] ?>"><?php echo $dp['name'] ?></a></td>
+            </tr>
+            <?php $counter++; ?>
+        <?php endforeach; ?>
+    </table>
+<?php elseif($downloaded_product_count == 0): ?>
+        <h3 class='no-subscription'>There are no Downloads.</h3>
+<?php endif; ?>

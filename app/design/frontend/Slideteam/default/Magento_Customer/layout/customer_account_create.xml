@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Theme::css/customer/customer-style.css" media="all" order="200"/>
+        <css src="Magento_Theme::css/dropkick.css" media="all"/>
+    </head>
+    <body>
+        <referenceContainer name="slideteam-sidenav-wrapper" remove="true" />
+        <referenceContainer name="content">
+            <container name="slideteam_register_container" htmlTag="div" htmlClass="container">
+                <container name="custom_register_wrapper" htmlTag="div" htmlClass="clearfix account-block">
+                    <block class="Magento\Cms\Block\Block" name="why_customers_love_us" after="-">
+                        <arguments>
+                            <argument name="block_id" xsi:type="string">why_customers_love_us</argument>
+                        </arguments>
+                    </block>
+                </container>
+            </container>
+        </referenceContainer>
+
+        <referenceBlock name="customer_form_register">
+            <container name="customer.form.instruction">
+                <block class="Magento\Theme\Block\Html\Title" name="custom.page.title" template="Magento_Theme::html/title.phtml">
+                    <action method="setPageTitle">
+                        <argument translate="true" name="title" xsi:type="string">Create an Account</argument>
+                    </action>
+                </block>
+
+                <block class="Magento\Cms\Block\Block" name="customer_checklist">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">customer_checklist</argument>
+                    </arguments>
+                </block>
+            </container>
+        </referenceBlock>
+
+        <move element="customer_form_register" destination="custom_register_wrapper" before="-" />
+        <move element="require-cookie" destination="custom_register_wrapper" />
+
+        <referenceContainer name="page.messages" htmlTag="div" htmlClass="page messages" />
+        <move element="page.messages" destination="custom.page.title" />
+    </body>
+</page>

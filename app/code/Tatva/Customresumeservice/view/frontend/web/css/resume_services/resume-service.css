@@ -1,0 +1,780 @@
+body {
+    font-family: open sans, sans-serif
+}
+
+.resume_container {
+    max-width: 1370px;
+    margin: 0 auto;
+}
+section.resume_form.customresume_form1, section.resume_form.customresume_form2 {
+    width: 100%;
+    float: left;
+    background: #28a7fb;
+}
+
+
+
+
+.captcha-wrapper .captcha .control input {
+    padding-left: 12px !important
+}
+.container,
+.main-wrapper {
+    max-width: 1370px;
+    margin: 0 auto
+}
+div#name-error,
+div#email-error {
+    padding-left: 35px
+}
+h4.custom-category-title {
+    font-size: 45px;
+    line-height: 30px;
+    color: #333;
+    margin: 0
+}
+.ajax-file-upload-error {
+    width: 100%;
+    float: left;
+    margin-top: 40px !important;
+    line-height: 17px;
+    text-align: left;
+    font-size: 13px !important
+}
+div.mage-error {
+    text-align: center !important;
+    float: left !important
+}
+.ajax-file-upload-container {
+    width: 100%;
+    float: left
+}
+/*.ajax-file-upload-container.custom-file-error {
+    padding-top: 90px !important
+}*/
+.clearfix.inner-attach {
+    width: 100%;
+    float: left
+}
+.resme_conent {
+    width: 100%;
+    float: left;
+    margin-top: 25px
+}
+.page-title.category-title p {
+    color: #28a7fb;
+    font-size: 24px;
+    margin: 0;
+    margin-top: 20px;
+    font-weight: 600
+}
+.cokie_cutter img {
+    width: 100%;
+    position: relative
+}
+.cokie_cutter {
+    position: relative
+}
+.ajax-file-upload-container {
+    float: left;
+    text-align: left;
+    line-height: 1.42
+}
+p.cokie_para {
+    position: absolute;
+    top: 0;
+    left: 0;
+    top: 50%;
+    left: 22%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 22px;
+    width: 442px;
+    line-height: 25px;
+    border-left: 1px solid #fff;
+    padding-left: 20px
+}
+.perfect_resume {
+    width: 100%;
+    float: left;
+    margin-top: 40px;
+    text-align: center
+}
+.padng_lr {
+    width: 45%;
+    margin: 0 auto;
+    display: inline-block;
+    text-align: center;
+    margin-top: 33px
+}
+.right_rsumeupload.padng_lr {
+    float: right
+}
+.padng_lr h2 {
+    color: #555;
+    margin-top: 0;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 32px
+}
+.left_rsumeupload.padng_lr {
+    border-right: 3px dotted #8ed1fd
+}
+.resume_request {
+    width: 100%;
+    float: left;
+    margin-top: 40px;
+    background: #28a7fb;
+    padding: 40px 0
+}
+.resume_request h4.custom-category-title {
+    text-align: center
+}
+.form-top-block .col {
+    display: inline-block;
+    width: 50%;
+    line-height: 30px;
+    margin-bottom: 10px;
+    float: left;
+    min-height: 85px
+}
+.captcha-wrapper .captcha .control input.mage-error {
+    color: #454545;
+    width: 100%;
+    float: left;
+    max-width: 100%
+}
+.resume_request ul {
+    padding-left: 0;
+    list-style: none;
+    margin-top: 30px
+}
+.customresumeservice-form .form-top-block input {
+    padding: 8px;
+    line-height: 22px;
+    width: 340px;
+    height: 50px;
+    border-radius: 4px;
+    border: 1px solid #a7a6a6;
+    float: left;
+    font-size: 12px;
+    color: #555
+}
+.customresumeservice-form .form-top-block label {
+    font-size: 23px;
+    color: #fff;
+    padding-right: 20px;
+    width: 283px;
+    float: left;
+    text-align: right
+}
+.customresumeservice-form a {
+    color: #104f79
+}
+.customresumeservice-form .form-top-block input#img[type=file] {
+    background: #fff;
+    height: 70px
+}
+.inputfile {
+    width: .1px;
+    height: .1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1
+}
+.inputfile+label {
+    font-size: 18px !important;
+    font-weight: 600
+}
+.inputfile+label {
+    cursor: pointer
+}
+.resumeFieUploader {
+    display: flex;
+    flex-direction: column;
+    float: left;
+}
+.resume_request ul li .file_input label {
+    font-size: 23px;
+    color: #555;
+    padding-right: 20px;
+    width: 283px;
+    float: left;
+    text-align: right;
+    margin-top: 22px
+}
+.file_input {   
+    width: 353px;
+    float: left; 
+}
+.file_input .input-text {
+    background: #fff;
+    height: 86px;   
+    border-radius: 4px;
+    border: 1px solid #a7a6a6;
+}
+.ajax-file-upload-container {
+    width: 353px
+}
+.ajax-file-upload.file_upload.custom-upload label:before {
+    content: "Upload";
+    background: #28a7fb;
+    color: #fff;
+    font-size: 17px;
+    padding: 13px 20px;
+    border-radius: 4px;
+    line-height: 29px;
+    margin-right: 10px;
+    font-weight: 600
+}
+.ajax-file-upload.file_upload.custom-upload span {
+    color: #555;
+    padding-right: 20px;
+    text-align: right;
+    font-size: 17px;
+    font-weight: 600
+}
+.captcha-wrapper {
+    margin-top: 12px
+}
+.captcha-wrapper .nested {
+    display: inline-block;
+    margin-left: 12px
+}
+.captcha-wrapper .nested {
+    display: inline-block;
+    margin-left: 12px
+}
+.ajax-file-upload.file_upload.custom-upload {
+    margin-top: 25px;
+    padding-left: 20px
+}
+.captcha-wrapper label {
+    font-size: 23px;
+    color: #fff;
+    padding-right: 20px;
+    width: 283px;
+    float: left;
+    text-align: right
+}
+.submit_resume {
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin-top: 40px
+}
+.customresumeservice-form input[type=submit] {
+    float: none;
+    display: inline;
+    text-align: center;
+    background: #1c262d;
+    border: 0;
+    width: 150px;
+    padding: 9px 13px;
+    line-height: 32px;
+    height: auto;
+    border-radius: 25px;
+    font-size: 20px;
+    color: #fff;
+    cursor: pointer
+}
+.resume_request ul li.submit_resume {
+    width: 100%;
+    float: left;
+    text-align: center;
+    margin-top: 30px
+}
+.unique_layout {
+    width: 100%;
+    float: left
+}
+.left_uniqimg.width_sept {
+    width: 50%;
+    float: left
+}
+.rht_uniqimg.width_sept h2 {
+    font-size: 50px;
+    color: #555;
+    margin-top: 0;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    font-weight: 700
+}
+span.blue_color {
+    color: #28a7fb;
+    border-bottom: 3px solid
+}
+.rht_uniqimg.width_sept {
+    float: right;
+    width: 44%;
+    margin-top: 50px
+}
+.rht_uniqimg.width_sept p {
+    color: #555;
+    font-size: 20px;
+    line-height: 30px
+}
+.rht_uniqimg.width_sept ul {
+    padding-left: 0;
+    list-style: none;
+    width: 100%;
+    float: left
+}
+.rht_uniqimg.width_sept ul li {
+    display: block;
+    margin-bottom: 15px;
+    float: left;
+    width: 100%;
+    line-height: 30px
+}
+.rht_uniqimg.width_sept ul li img {
+    display: inline;
+    float: left
+}
+.rht_uniqimg.width_sept ul li span.text {
+    display: inline;
+    float: left;
+    line-height: 45px;
+    font-size: 22px;
+    padding-left: 20px;
+    color: #555;
+    font-weight: 600
+}
+.form-top-block a {
+    color: #104f79;
+    text-decoration: underline
+}
+.unique_layout.colo_branding .rht_uniqimg.width_sept {
+    float: left;
+    width: 50%
+}
+span.green_color {
+    color: #01aa93;
+    border-bottom: 3px solid
+}
+.pricing_block {
+    width: 100%;
+    float: left
+}
+.pricing_block {
+    width: 100%;
+    float: left;
+    text-align: center
+}
+.pricing_contnt {
+    width: 50%;
+    margin: 0 auto
+}
+.price_prresume {
+    background: #1c262d;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    height: 120px;
+    box-shadow: 0px 3px 10px -2px rgba(0, 0, 0, .8)
+}
+.price_prresume h3 {
+    font-size: 50px;
+    line-height: 60px;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 0;
+    padding-top: 30px;
+    vertical-align: middle
+}
+.price_format {
+    background: #f2f2f2;
+    z-index: 2
+}
+.price_format p {
+    margin: 0;
+    padding: 30px 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #555;
+    line-height: 28px
+}
+.pricing_block .resume_request {
+    margin-top: 0
+}
+.pricing_contnt h2 {
+    color: #28a7fb;
+    font-size: 40px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    font-weight: 700
+}
+.price_prresume h3 span {
+    font-size: 25px
+}
+.control.captcha-image {
+    margin-top: 5px !important
+}
+.control.captcha {
+    display: inline-block;
+    float: left
+}
+.captcha-wrapper .nested {
+    display: inline;
+    margin-left: 12px;
+    float: left
+}
+.customresumeservice-form {
+    width: 100%;
+    float: left;
+    margin-top: 50px
+}
+.mage-error {
+    width: 100%;
+    float: left;
+    font-weight: 600 !important
+}
+div#name-error,
+div#email-error {
+    text-align: center
+}
+.captcha-wrapper .captcha .control .mage-error {
+    text-align: left !important
+}
+@media (max-width: 1680px) {
+    div#name-error,
+    div#email-error {
+        padding-left: 10px
+    }
+    .design-service-default .container,
+    .design-service-default .main-wrapper {
+        padding: 0 85px !important
+    }
+    .customresumeservice-form .form-top-block input {
+        width: 310px;
+        font-size: 13px
+    }
+    .customresumeservice-form .form-top-block label,
+    .captcha-wrapper label {
+        width: 254px
+    }
+    .file_input,
+    .ajax-file-upload-container {
+        width: 304px
+    }
+    .customresumeservice-form .form-top-block label {
+        font-size: 22px
+    }
+    .ajax-file-upload-error {
+        width: 100%;
+        float: left;
+        line-height: 15px
+    }
+    .ajax-file-upload.file_upload.custom-upload span {
+        font-size: 12px
+    }
+}
+@media (max-width: 1440px) {
+    div#name-error,
+    div#email-error {
+        padding-left: 45px
+    }
+h4.custom-category-title {
+   
+    line-height: normal;
+}
+h4.custom-category-title {
+    padding-left: 0px;
+}
+
+
+.rht_uniqimg.width_sept ul li span.text {
+
+    font-size: 19px;
+    padding-left: 10px;
+  
+}
+
+
+
+}
+@media (max-width: 1366px) {
+    .design-service-default .container,
+    .design-service-default .main-wrapper {
+        padding: 0 60px !important
+    }
+    .design-service-default .container,
+    .design-service-default .main-wrapper {
+        max-width: 100%
+    }
+    h4.custom-category-title {
+        font-size: 42px
+    }
+    .left_uniqimg.width_sept img {
+        width: 100%
+    }
+    .customresumeservice-form .form-top-block label,
+    .captcha-wrapper label {
+        font-size: 20px
+    }
+    .rht_uniqimg.width_sept h2 {
+        font-size: 40px
+    }
+    .rht_uniqimg.width_sept ul li span.text {
+        font-size: 20px
+    }
+}
+@media (max-width: 1280px) {
+
+.ajax-file-upload.file_upload.custom-upload label {
+    
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    
+}  
+
+
+	h4.custom-category-title {
+		font-size: 40px
+	}
+	.ajax-file-upload.file_upload.custom-upload label {
+		text-align: left
+	}
+	.ajax-file-upload.file_upload.custom-upload span {
+		font-size: 12px
+	}
+	.rht_uniqimg.width_sept ul li span.text {
+		font-size: 17px
+	}
+	.customresumeservice-form .form-top-block input {
+		width: 283px;
+		font-size: 13px
+	}
+	.file_input,
+	.ajax-file-upload-container {
+		width: 310px;
+	}
+	.inputfile+label {
+		font-size: 14px !important;
+		font-weight: 600;
+		width: 100%;
+		float: left;
+		text-align: left !important;
+		padding-left: 9px
+	}
+	.ajax-file-upload-error {
+		font-size: 11px !important;
+		margin-top: 38px !important
+	}
+	div#name-error,
+	div#email-error {
+		padding-left: 57px
+	}
+.customresumeservice-form .form-top-block label, .captcha-wrapper label {
+    width: 285px;
+}
+
+
+
+}
+@media (max-width: 1080px) {
+    div#name-error,
+    div#email-error {
+        padding-left: 0
+    }
+    .captcha-wrapper .captcha .control div.mage-error {
+        text-align: center !important
+    }
+    .page-title.category-title p {
+        font-size: 22px;
+        margin-top: 7px
+    }
+    h4.custom-category-title {
+        font-size: 33px
+    }
+    p.cokie_para {
+        position: absolute;
+        top: 0;
+        left: 0;
+        top: 50%;
+        left: 27%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        color: #fff;
+        font-size: 17px;
+        width: 333px;
+        line-height: 25px;
+        border-left: 1px solid #fff;
+        padding-left: 20px
+    }
+    .form-top-block .col {
+        display: inline-block;
+        width: 100%;
+        line-height: 30px;
+        margin-bottom: 10px;
+        float: left
+    }
+    .customresumeservice-form .form-top-block input {
+        width: 380px;
+        font-size: 13px
+    }
+    .file_input,
+    .ajax-file-upload-container {
+        width: 395px
+    }
+    .left_uniqimg.width_sept {
+        width: 100%;
+        float: left
+    }
+    .rht_uniqimg.width_sept {
+        float: left;
+        width: 100%;
+        margin-top: 30px
+    }
+    .pricing_contnt {
+        width: 60%;
+        margin: 0 auto
+    }
+    .left_uniqimg.width_sept img {
+        width: auto
+    }
+    .unique_layout.colo_branding .rht_uniqimg.width_sept {
+        float: left;
+        width: 100%
+    }
+    .customresumeservice-form .form-top-block label {
+        text-align: left
+    }
+    .captcha-wrapper label {
+        text-align: left
+    }
+    .ajax-file-upload-container {
+        float: left;
+        text-align: center
+    }
+}
+
+@media (max-width: 1024px) {
+
+.customresumeservice-form {
+ 
+    padding: 0px 10px;
+    box-sizing: border-box;
+}
+
+}
+
+
+
+@media (max-width: 800px) {
+    .left_rsumeupload.padng_lr {
+        border-right: 0
+    }
+    .padng_lr {
+        width: 100%;
+        margin: 0 auto;
+        display: inline-block;
+        text-align: center;
+        margin-top: 33px
+    }
+    .customresumeservice-form .form-top-block input {
+        width: 100%;
+        font-size: 13px
+    }
+    .customresumeservice-form .form-top-block label {
+        font-size: 20px
+    }
+    .customresumeservice-form .form-top-block label br {
+        display: none
+    }
+    .file_input,
+    .ajax-file-upload-container {
+        width: 100%
+    }
+    .design-service-default .container,
+    .design-service-default .main-wrapper {
+        padding: 0 20px !important;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box !important
+    }
+    .left_uniqimg.width_sept img {
+        width: 100%
+    }
+    .customresumeservice-form .form-top-block input,
+    .captcha-wrapper .captcha .control input {
+        width: 100%;
+        font-size: 13px;
+        float: left;
+        box-sizing: border-box;
+        height: 43px
+    }
+    form {
+        width: 100%;
+        float: left
+    }
+    .resume_request ul {
+        padding-left: 0;
+        list-style: none;
+        margin-top: 30px;
+        width: 100%;
+        float: left
+    }
+    .pricing_contnt {
+        width: 98%;
+        margin: 0 auto
+    }
+    .rht_uniqimg.width_sept ul li span.text {
+        padding-left: 10px;
+        font-size: 16px
+    }
+    p.cokie_para {
+        position: unset;
+        transform: unset;
+        color: #555;
+        font-size: 18px;
+        width: 100%;
+        line-height: 25px;
+        padding-left: 0
+    }
+    .right_rsumeupload.padng_lr img {
+        width: 100%
+    }
+    .captcha-wrapper .captcha .control input {
+        max-width: 100% !important;
+        float: left
+    }
+    .ajax-file-upload-container {
+        float: left;
+        text-align: left;
+        padding-right: 30px
+    }
+}
+@media (max-width: 480px) {
+    h4.custom-category-title {
+        font-size: 30px;
+        line-height: 35px
+    }
+    .page-title.category-title p {
+        font-size: 15px;
+        margin-top: 7px;
+        line-height: 19px
+    }
+    .padng_lr h2 {
+        color: #555;
+        margin-top: 0;
+        font-size: 16px
+    }
+    .rht_uniqimg.width_sept h2 {
+        font-size: 27px
+    }
+    .rht_uniqimg.width_sept p {
+        color: #555;
+        font-size: 17px;
+        line-height: 23px
+    }
+    .rht_uniqimg.width_sept ul li span.text {
+        padding-left: 0;
+        font-size: 15px;
+        width: 80%;
+        float: left;
+        line-height: 20px;
+        padding-top: 10px
+    }
+}

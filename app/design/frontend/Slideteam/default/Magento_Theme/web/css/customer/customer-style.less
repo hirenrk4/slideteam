@@ -1,0 +1,1306 @@
+@import '../source/_variablesm2.less';
+@import '../source/_mixins.less';
+
+/*@keyframes "rotation" {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes "rotation" {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@-moz-keyframes "rotation" {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@-ms-keyframes "rotation" {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+@-o-keyframes "rotation" {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}*/
+
+@-ms-keyframes rotation { 
+    from { 
+        -ms-transform: rotate(0deg); 
+    } to { 
+        -ms-transform: rotate(359deg); 
+    }
+}
+@-moz-keyframes rotation { 
+    from { 
+        -moz-transform: rotate(0deg); 
+    } to { 
+        -moz-transform: rotate(359deg); 
+    }
+}
+@-webkit-keyframes rotation { 
+    from { 
+        -webkit-transform: rotate(0deg); 
+    } to { 
+        -webkit-transform: rotate(359deg); 
+    }
+}
+@-o-keyframes rotation {
+  from {
+    -o-transform: rotate(0deg);
+  }
+  to {
+    -o-transform: rotate(359deg);
+  }
+}
+@keyframes rotation { 
+    from { 
+        transform: rotate(0deg); 
+    } to { 
+        transform: rotate(359deg); 
+    }
+}
+
+a{
+    &.action{
+        &.primary{
+            &:extend(.action.primary);
+        }
+    }
+}
+
+/***register page***/
+.account-block{
+    .page-title{
+        h3{
+            letter-spacing: 0.4px;
+            color: @slideteam_black3;
+            font-weight: 600;
+            margin: 0 0 10px;
+        }
+    }
+    padding: 50px 0;
+    .form{
+        &.create{
+            &.account{
+                min-width: inherit;
+                width: 74.5%;
+                padding: 15px 15px 0 40px;
+                float: left;
+                box-sizing: border-box;
+                .actions-toolbar{
+                    margin-left: 0;
+                    margin-bottom: 20px;
+                    .primary{
+                        .action{
+                            &.primary{
+                                 &:active,&:focus{
+                                    background:@slideteam_blue1;
+                                    border-color: @slideteam_blue1;
+                                    color: @white;
+                                }
+                            }
+                        }
+                    }
+                }
+                .fieldset{
+                    .legend{
+                        margin-left: 0;
+                        margin-bottom: 25px;
+                        border: 0;
+                        letter-spacing: 0.4px;
+                        color: @slideteam_black3;
+                        font-size: 28px;
+                        font-weight: 600;
+                        text-transform: none;
+                    }
+                    .customer-name-wrapper,.customer-password-wrapper{
+                        .field{
+                            float: left;
+                            width: 50%;
+                            padding-right: 20px;
+                            box-sizing: border-box;
+                            &:last-child{
+                                padding-right: 0;
+                            }
+                        }
+                    }
+                    .customer-captcha-wrapper{
+                        > .captcha,.nested{
+                            float: left;
+                            width: 50%;
+                            padding-right: 20px;
+                            box-sizing: border-box;
+                        }
+                        .nested{
+                            padding-right: 0;
+                            .field{
+                                border: 1px solid @slideteam_gray3;
+                                .border-radius(5px);
+                                width: 50%;
+                                margin-bottom: 0;
+
+                                &.refreshing{
+                                    .control{
+                                        .captcha-reload{
+                                            animation: rotation 1.5s infinite linear;
+                                            -webkit-animation: rotation 1.5s infinite linear;
+                                            -moz-animation: rotation 1.5s infinite linear;
+                                            -ms-animation: rotation 1.5s infinite linear;
+                                            -o-animation: rotation 1.5s infinite linear;
+                                        }
+                                    }
+                                }
+
+                                .control{
+                                    margin-top: 0;
+                                    .captcha-img{
+                                        height: 50px;
+                                        width:  100%;
+                                        margin: 0;
+                                        padding: 2px;
+                                        box-sizing: border-box;
+                                    }
+                                    .captcha-reload{
+                                        position: absolute;
+                                        right: 8px;
+                                        top: 12px;
+                                        cursor: pointer;
+                                    }
+                                }
+                                &.captcha{
+                                    margin-bottom: 0;
+                                }
+                            }
+                        }
+                    }
+                    .field{
+                        &.captcha{
+                            margin-bottom: 20px;
+                        } 
+                    }
+                    .icheckbox-box{
+                        .custom-newsletter-box{
+                            position: relative;
+                            padding-left: 25px;
+                            margin-bottom: 12px;
+                        }
+                        .icheckbox{
+                            border: 1px solid @slideteam_gray120;
+                            border-radius: 1px;
+                            width: 15px;
+                            height: 15px;
+                            cursor: pointer;
+                            position: absolute;
+                            left: 0;
+                            top:2px;
+                            &.checked{
+                                background: url(../../../Magento_Customer/images/customer/check-icon.png) no-repeat 1px 1px;
+                                border-radius: 1px;
+                                text-align: center;
+                                width: 15px;
+                                height: 15px;
+                                line-height: 25px;
+                            }
+                        }
+                        .newsletter_register{
+                            font-size: 12px;
+                            line-height: 16px;
+                            color: @slideteam_gray2;
+                            font-weight: 400;
+                        }
+                        p{
+                            font-size: 14px;
+                            line-height: 21px;
+                        }
+                    }
+                }
+                .form-instructions{
+                    margin: 25px 0;
+                    .cx-checklist {
+                        padding: 0;
+                        margin: 0;
+                        list-style: none;
+                        li{
+                            display: inline-block;
+                            margin-right: 15px;
+                            margin-bottom: 10px;
+                            font-size: 16px;
+                            color: @slideteam_black3;
+                            .cx-check{
+                                background: url(../../../Magento_Customer/images/customer/right_sign.png) no-repeat;
+                                display: inline-block;
+                                width: 18px;
+                                height: 14px;
+                                margin-right: 4px;
+                                vertical-align: baseline;
+                                background-size: cover;
+                            }
+                        }
+                    }
+                }
+                .account-social-login{
+                    margin-bottom: 22px;
+                    .social-block{
+                        .social-btn{
+                            margin-bottom: 0px;
+                            .btn-social{
+                                font-size: 12px;
+                            }
+                            &.google-login{
+                                margin-left: 4px;
+                            }
+                        }
+                    }
+                }
+                .cx-or-text{
+                    font-size: 14px;
+                    line-height: 18px;
+                    margin-bottom: 22px;
+                }
+            }   
+        }
+    }
+    .create-account-block-right{
+        width: 24%; 
+        float: right;
+        background: @gray87;
+        padding: 30px 24px 20px 30px;
+        box-sizing: border-box;
+        h5{
+            color: @slideteam_black6;
+            font-weight: 600;
+            text-transform: none;
+            border-bottom: 1px solid @slideteam_gray4;
+            letter-spacing: -0.2px;
+            margin-left: -3px;
+            padding-bottom: 27px;
+            margin-bottom: 25px;
+            margin-top: 0;
+        }
+        ul{
+            margin-bottom: 0;
+            li{
+                font-size: 15px;
+                color: @slideteam_gray5;
+                position: relative;
+                font-weight: 600;
+                line-height: 23px;
+                border-bottom: 1px solid @slideteam_gray6;
+                padding: 0 0 12px 50px;
+                margin-bottom: 13px;
+                i{
+                    position: absolute;
+                    top: 3px;
+                    left: 0;
+                }
+                &:last-child{
+                    border: 0;
+                    padding-bottom: 0;
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+    /*For error or success msg*/
+    .page{
+        &.messages{
+            padding: 0px;
+        }
+    }
+}
+.customer-account-create {
+    .page-main {
+        .container {
+            max-width: 100%;
+        }
+    }
+    .account-block {
+        .form.create.account {
+            padding-left: 0;
+        }
+    }
+}
+
+/*** login page***/
+.login-container{
+    &.container{
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    .block{
+        border:3px solid @slideteam_blue6;
+        padding: 47px 70px 38px;
+        min-height: 515px;
+        .border-radius(3px);
+        display: inline-block;
+        width: 49.5%;
+        float: left;
+        box-sizing: border-box;
+        margin-bottom: 0;
+        .block-title{
+            border-bottom: none;
+            margin-bottom: 7px;
+            padding-bottom: 0;
+            strong{
+                font-size: 26px;
+                color:@slideteam_black3;
+                font-weight: 600;
+                text-transform: none;
+                margin-bottom: 7px;
+                line-height: 1.2;
+            }
+        }
+        .block-content{
+            p{
+                font-size: 14px;
+                line-height: 19px;
+                color: @slideteam_gray88;
+                padding: 0 30px 10px 3px;
+            }
+            .register-inner{
+                .account-social-login{
+                    .social-block{
+                        text-align: center;
+                        .social-btn{
+                            .btn-social{
+                                font-size: 12px;
+                            }
+                            &.google-login{
+                                margin-left: 4px;
+                            }
+                        }
+                    }
+                }
+                h4{
+                    margin: 10px 0 10px 0;
+                    position: relative;
+                    text-align: center;
+                    span{
+                        color: @slideteam_gray60;
+                        font-size: 24px;
+                        font-weight: 600;
+                        line-height: 28px;
+                        display: inline-block;
+                        padding: 0 12px;
+                        position: relative;
+                        z-index: 9;
+                        background: @white;
+                    }
+                    &:after{
+                        background-color: @slideteam_gray95;
+                        display: inline-block;
+                        height: 1px;
+                        position: absolute;
+                        top: 18px;
+                        left: 0;
+                        content: "";
+                        width: 100%;
+                    }
+                }
+                p{
+                    font-size: 13px;
+                    line-height: 19px;
+                    color: @slideteam_gray88;
+                    padding: 0;
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+            }
+        }
+        &.block-customer-login{
+            float: left;
+            margin-left: 12px;
+            form{
+                .fieldset{
+                    >.field{
+                        margin-bottom: 16px;
+                        &.required{
+                            > label{
+                                &:after{
+                                    display:none;
+                                    content: '';
+                                }
+                            }
+                        }
+                        p{
+                            margin-top: 0;
+                            padding:0;
+                            line-height: 1.5;
+                        }
+                        &.password{
+                            margin-bottom: 8px;
+                        }
+                    }
+                    .actions-toolbar{
+                        margin-left: 0;
+                        .secondary{
+                            text-align: right;
+                            a{
+                                &.action{  
+                                    margin-top: 0;
+                                    font-size: 12px;
+                                    color: @slideteam_red6;
+                                    transition: all 0.3s;
+                                    &:hover{
+                                        color:@slideteam_blue1;
+                                    }
+                                    
+                                }  
+                            }
+                        }
+                    }
+                }
+            }
+            .primary{
+                margin-top: 8px;
+            }
+        }
+        &.block-new-customer{
+            .primary{
+                .action{
+                    &.primary{
+                        min-width: 54%;
+                        &:active,&:focus{
+                            background:@slideteam_blue1;
+                            border-color: @slideteam_blue1;
+                            color: @white;
+                        }
+                    }
+                        
+                }
+            } 
+        }
+    }
+    .primary{
+        width: 100%;
+        text-align: left;
+        .action{
+            &.primary{
+                border: 2px solid transparent;
+                .border-radius(30px);
+                text-align: center;
+                min-width: 38%;
+                transition: all 0.3s;
+                &:hover{
+                    border-color:@slideteam_blue1;
+                }
+                &:active,&:focus{
+                    background:@slideteam_blue1;
+                    border-color: @slideteam_blue1;
+                    color: @white;
+                }
+            }
+        }
+    }
+    .fieldset{
+        &:after{
+            margin:0;
+        }
+    }
+} 
+
+/*Css for error msg*/
+.container{
+    &.login-error{
+        position: relative;
+        top: 40px;
+    }   
+}
+
+/*Forgot Password page CSS*/
+.forgotpwd-wrapper{
+    padding: 50px 188px 50px;
+    h3{
+        font-weight: 600;
+        color: @slideteam_black5;
+        margin:0 0 18px;
+        text-transform: uppercase;
+    }
+    .form{
+        &.forget{
+            .fieldset{
+                max-width: 410px;
+                width: 100%;
+                margin-bottom: 25px;
+                h4{
+                    margin: 0 0 12px;
+                    font-weight: 400;
+                    color: @slideteam_black5;
+                    text-transform: uppercase;
+                }  
+                .field{
+                    &.note{
+                        font-size: 14px;
+                        line-height: 21px;
+                        color: @slideteam_gray88;
+                        margin: 0 0 10px;
+                    }
+                    label{
+                        top:22px;
+                    }
+                }
+                p{
+                    &.required{
+                        margin: 0 0 5px;
+                        float: right;
+                        font-size: 12px;
+                        line-height: 16px;
+                        color: @slideteam_red6;
+                    }
+                }
+            }
+            .buttons-set{
+                max-width: 410px;
+                width: 100%;
+                .back-link{
+                    color: @slideteam_blue1;
+                    margin-right: 7px;
+                    &:hover{
+                        text-decoration:underline;
+                    }
+                }
+                .action{
+                    &.primary{
+                        &:focus,&:active{
+                            background: @slideteam_blue1;
+                            border:1px solid @slideteam_blue1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    /*For error or success msg*/
+    .page{
+        &.messages{
+            padding: 0px;
+        }
+    }
+}
+
+/*Reset Password page CSS*/
+.resetpwd-wrapper{
+    padding: 50px 188px 50px;
+    h3{
+        font-weight: 600;
+        color: @slideteam_black5;
+        margin: 0 0 18px;
+        text-transform: uppercase;
+    }
+    form{
+        &.resetpwd{
+            .fieldset{
+                max-width: 410px;
+                width: 100%;
+
+                p{
+                    &.required{
+                        margin: 0 0 5px;
+                        text-align: right;
+                        font-size: 12px;
+                        line-height: 16px;
+                        color: @slideteam_red6;
+                    }
+                }
+            }
+            .actions-toolbar{
+                max-width: 410px;
+                width: 100%;
+                margin-left: 0 !important;
+
+                .action{
+                    &.primary{
+                        width: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.customer-account-create.page-layout-1column .main-wrapper.clearfix.footer-trustpilot {
+    margin-top: 0px;
+}
+
+.customer-account-create.page-layout-1column .clearfix.account-block {
+    padding-bottom: 0px;
+}
+
+@media (max-width: 1680px){
+    .customer-account-create .page-main .container {
+        padding: 0 30px;
+    }
+    /*login page */
+    .login-container{
+        .block{
+            width: 49%;
+        }
+    }
+}
+@media(max-width: 1440px){
+    .customer-account-create .page-main .container {
+        padding: 0 20px;
+    }
+    /**login page**/
+}
+
+@media(max-width: 1280px){
+    .login-container{
+        &.container{
+            padding-left: unset;
+            padding-right: unset;
+        }
+    }
+    .container{
+        &.login-error{
+             padding-left: unset;
+            padding-right: unset;
+        }
+    }
+    .field.contact_number {
+        margin-left: 14px;
+    }
+    div#dk0-combobox, div#dk0-country-isd-code {
+        font-size: 13px;
+    }
+}
+
+@media(max-width: 1199px){
+    .account-block {
+        .create-account-block-right{
+            padding: 20px;
+            ul{
+                li{
+                    padding-left: 40px;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+
+    .login-container{
+        .block{
+            padding: 47px 65px 38px;
+        }
+    }
+}
+
+@media (max-width: 1080px){
+  .field.contact_number {
+      margin-left: 14px;
+  }
+  div#dk0-combobox, div#dk0-country-isd-code {
+      font-size: 12px;
+  }
+}
+
+@media(max-width: 1023px){
+    .account-block{
+        .form{
+            &.create{
+                &.account{
+                    padding: 7px 10px;
+                    .fieldset{
+                        .customer-captcha-wrapper{
+                            >.captcha{
+                                padding-right: 0; 
+                                width: 100%;
+                                margin-bottom: 20px;
+                            }
+                        }
+                    }
+                    .form-instructions{
+                        .cx-checklist{
+                            li{
+                                font-size: 16px;
+                                line-height: 24px;
+                            }
+                        }
+                    }
+                    .account-social-login{
+                        .social-block{
+                            .social-btn{
+                                .btn-social{
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                    }
+                    .cx-or-text{
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+    .login-container{
+        .block{
+            .block-title{
+                strong{
+                    font-size: 22px;
+                }
+            }
+        }
+    }
+
+    /*Forgot Password page css*/
+    .forgotpwd-wrapper{   
+        padding: 30px 15px 50px;
+        max-width: 100%;
+    }
+
+    /*Forgot Password page css*/
+    .resetpwd-wrapper{
+        padding: 30px 15px 50px;
+        max-width: 100%;
+    }
+    .customer-account-create .page-main .container {
+        padding: 0 15px;
+    }
+    .custom-mobile-info .category-toggle {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@media(max-width: 991px){
+    .account-block { 
+        .create-account-block-right
+        {
+            display: none;
+        }
+        .form{
+            &.create{
+                &.account{
+                    width: 100%;
+                    .fieldset{
+                        .legend{
+                            font-size: 20px;
+                            line-height: 28px;
+                            margin-bottom: 0;
+                        }
+                    }
+                    .form-instructions{
+                        margin-top: 10px;
+                        .cx-checklist{
+                            li{
+                                font-size: 16px;
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .container{
+        &.login-error{
+            padding: 0 15px;
+            top:15px;
+        }
+    }
+    /*** login page ***/
+    .login-container{
+        &.container{
+            padding:30px 15px;
+            .block{
+                min-height: auto;
+                float: none;
+                width: 100%;
+                padding: 35px 75px 40px;
+                margin-top: 0;
+                margin-bottom:20px;
+                &.block-customer-login{
+                   margin-left: unset;
+                   float: none;
+               }
+           }
+           .action{
+               &.primary{
+                min-width: 50%;
+                width: auto;
+                }
+            }
+        }
+        .block{
+            .block-content{
+                .register-inner{
+                    .account-social-login{
+                        margin: 15px 0;
+                        .social-block{
+                            .social-btn{
+                                .btn-social{
+                                    font-size: 13px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .column{
+        &.main{
+            .block{
+                &:last-child{
+                    margin-bottom: 0;
+                }
+            }
+        } 
+    }
+}
+
+
+
+@media(max-width: 767px){
+    .account-block { 
+        .form{
+            &.create{
+                &.account{
+                    padding: 0;
+                    .fieldset{
+                        .customer-captcha-wrapper{
+                            .nested{
+                                .field{
+                                    width: 258px;
+                                }
+                            }
+                        }
+                        .customer-name-wrapper{
+                            .field{
+                                padding-right: 0; 
+                                width: 100%;
+                            }
+                        }
+                        .customer-password-wrapper{
+                            .field{
+                                padding-right: 0; 
+                                width: 100%;  
+                            }
+                        }
+                    }
+                    .form-instructions{
+                        .cx-checklist{
+                            li{
+                                .cx-check{
+                                    width: 15px;
+                                    height: 11px;
+                                }
+                                font-size: 14px;
+                                line-height: 18px;
+                                width: 100%;
+                            }
+                        }
+                    }
+                    .account-social-login{
+                        margin-bottom: 15px;
+                        .social-block{
+                            flex-direction: column;
+                            .social-btn{
+                                &.facebook-login{
+                                    margin-bottom: 25px;
+                                }
+                                &.google-login{
+                                    margin-left: 0px;
+                                }
+
+                            }
+                        }
+                    }
+                    .cx-or-text{
+                        text-align: left;
+                        margin-bottom: 15px;
+                    }
+                }
+            } 
+        }
+        .action{
+            &.primary{
+                height: 35px;
+                line-height: 30px;
+                width: auto;
+                min-width: 175px;
+            }
+        }
+    }
+    .login-container{
+        &.container{
+            .block{
+                padding:20px;
+            }
+        }
+        .action{
+            &.primary{
+                width: auto;
+                height: 35px;
+                line-height: 30px;
+                font-size: 15px;
+            }
+        }
+    }
+    .actions-toolbar {
+        >.primary{
+            text-align:left;
+        }
+    }
+
+    /*Forgot password css*/
+    .forgotpwd-wrapper{
+        .form{
+            &.forget{
+                .buttons-set{
+                    .action{
+                        &.primary{
+                            height: 35px;
+                            font-size: 15px;
+                            line-height: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*Reset password css*/
+    .resetpwd-wrapper{
+        .form{
+            &.resetpwd{
+                .action{
+                    &.primary{
+                        height: 35px;
+                        font-size: 15px;
+                        line-height: 25px;
+
+                    }
+                }
+            }
+        }        
+    }
+    div#dk0-combobox, div#dk0-country-isd-code {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 575px){
+    .account-block{
+         padding: 35px 0;
+    }
+    .fieldset{
+        .field {
+            .control{
+                input{
+                    height: 35px; 
+                    line-height: 35px;
+                    font-size: 12px;
+                }
+            }
+            .label{
+                height: 33px; 
+                line-height: 33px; 
+                font-size: 13px; 
+                padding: 0 8px;
+            }
+            &:not(.choice) {
+                .label {
+                    padding: 0 8px;
+                }
+            }
+        }
+    }
+    .login-container{
+        .block{
+            padding:20px 25px 30px;
+            .block-content{
+                p{
+                    margin-bottom: 0;
+                }
+                .register-inner{
+                    .account-social-login{
+                        .social-block{
+                            flex-direction: column;
+                            align-items: center;
+                            .social-btn{
+                                &.facebook-login{
+                                    margin-bottom: 15px;
+                                }
+                                &.google-login{
+                                    margin-left: 0;
+                                    .btn-google{
+                                        width: 180px;
+                                        box-sizing: border-box;
+                                        text-align: center;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    h4{
+                        span{
+                            font-size: 15px;
+                            line-height: 22px;
+                        }
+                        &:after{
+                            top: 13px;
+                        }
+                    }
+                }
+            }
+            &.block-new-customer{
+                .actions-toolbar{
+                    margin-top: 10px;
+                }
+            }
+            .block-title{
+                strong{
+                    font-size: 16px;
+                }
+            }
+            &.block-customer-login{
+                .fieldset{
+                    .field{
+                        label{
+                            font-size: 12px;
+                        }
+                    }
+                }           
+            } 
+        }
+    }
+
+    /*Forgot password css*/
+    .forgotpwd-wrapper{
+        .form{
+            &.forget{
+                .fieldset{
+                    .field{
+                        label{
+                            height: 33px;
+                            line-height: 33px;
+                            font-size: 12px;
+                            padding: 0 8px;
+                        }
+                    }
+                }
+                .buttons-set{
+                    .back-link{
+                        display: none;
+                    }
+                    .action{
+                        &.primary{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /*Reset password css*/
+    .resetpwd-wrapper{
+        .form{
+            &.resetpwd{
+                .action{
+                    &.primary{
+                        width: 100%;
+                    }
+                }
+            }
+        }        
+    }
+} 
+
+@media(min-width: 1440px){
+    .page-main {
+        min-height: 820px;
+    }
+}
+
+/*797 - Signup page AB test*/
+.field.contact_number {
+    float: left;
+    width: 49%;
+    box-sizing: border-box;
+}
+.dk-select-open-down .dk-select-options,.dk-select-open-up .dk-select-options{
+    max-height: 18.5em;
+}
+li#dk0-SG {
+    border-bottom: 1px solid silver;
+    padding-bottom: 5px;
+}
+#dk0-country-isd-code .dk-selected:after {
+    top: 0;
+    height: 100%;
+    border-left: 0px;
+    margin: 0 1.5em 0 0;
+}
+#dk0-country-isd-code .dk-selected:before, #dk0-country-isd-code .dk-select-open-down .dk-selected:before {
+    border-width: 6px 6px 0;  
+    margin: -0.125em 1.5em 0 0;
+}
+.custom-optional-text-wrapper {
+    width: 100%;
+    float: left;
+margin-bottom: 9px;
+}
+
+span.custom-optional-text {
+    font-size: 13px;
+    color: #000;
+    font-weight: 600;
+}
+control.icheckbox-box {
+    width: 100%;
+    float: left;
+}
+select.phonecode-dropdown {
+    height:52px;
+    line-height: 52px;
+}
+div#dk0-combobox {
+    border: 1px solid silver;
+    border-radius: 5px;
+    width: 100%;
+    height: 52px;
+    line-height: 52px;
+}
+div#dk0-country-isd-code {
+    width: 95%;
+}
+.custom-contact-detail {
+    width: 26%;
+    float: left;
+}
+.control.icheckbox-box {
+    width: 100%;
+    float: left;
+}
+@media (max-width: 1920px) {
+    div#dk0-country-isd-code {
+        width: 94%;
+    }
+}
+@media (max-width: 1600px) {
+    div#dk0-country-isd-code {
+        width: 92%;
+    }
+}
+@media (max-width: 1280px) {
+    div#dk0-country-isd-code {
+        width: 96%;
+    }
+}
+@media (max-width: 1024px) {
+    .custom-contact-detail {
+        width: 33%;  
+    }
+}
+
+
+@media (max-width: 1023px) {
+    .custom-contact-detail {
+        width: 35%;
+    }
+    .field.contact_number {
+        float: left;
+        width: 50%;
+    }
+    div#dk0-country-isd-code {
+        width: 97%;
+    }
+}
+
+@media (max-width: 674px) {
+    .field.contact_number {
+        float: left;
+        width: 100%;
+        margin-top: 10px;
+    }
+    .custom-contact-detail, div#dk0-combobox, div#dk0-country-isd-code {
+        width: 100%;
+    }
+    .field.contact_number {
+        margin-left: 0px;
+    }
+}
+
+@media (max-width: 575px) {
+    div#dk0-combobox, div#dk0-country-isd-code {
+        height: 33px;
+        line-height: 33px;
+    }
+}
+/*End of 797*/
+/*start of 1137*/
+@media (min-width: 992px) {
+    .customer-account-login .login-container.container {
+        display: flex;
+    }
+}
+/*start of 1137*/
+
+/*Customer Login Popup*/
+.mfp-bg{
+    &.login-attempt{
+        background: #121d24;
+        opacity: 0.5;
+    }
+}
+.mfp-wrap{
+    &.login-attempt{
+        
+        .mfp-content{
+            width: auto;    
+            height: auto;
+            padding: 15px 20px;
+            background: #f9f9f9;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            border-radius: 4px;
+            
+            .login-attempt-popup{
+                padding: 10px 0 21px 0;
+                text-align: center;
+                
+                p{
+                    color: #444444;
+                    margin: 0 0 15px;
+                }
+
+                .btn{
+                    border-radius: 0px;
+                    height: 40px;
+                    line-height: 38px;
+                    min-width: 75px;
+                    transition: all 0.3s;
+                    &:hover{
+                        color:#373737;
+                    }
+                }
+
+                .mfp-close{
+                    font-size: 0px;
+                }
+            }
+        }
+    }
+}

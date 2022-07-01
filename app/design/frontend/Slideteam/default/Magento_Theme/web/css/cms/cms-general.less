@@ -1,0 +1,1614 @@
+@import '../source/_variablesm2.less';
+@import '../source/_mixins.less';
+
+/*CSs for Cotainer using body class*/
+.page-layout-1column-cms{
+	.container{
+		padding: 0 188px;
+	}
+	.container{
+		&.custom-no-routes{
+			padding-top: 35px;
+		}
+	}
+
+	/*css for error or success msg*/
+	.page{
+		&.messages{
+			> div{
+				padding: 0 15px;
+			}
+		}
+	}
+}
+a{
+	color:@slideteam_blue1;
+	&:active,&:focus,&:visited{
+			color:@slideteam_blue1;
+	}
+}
+p , li{
+	a{
+	color:@slideteam_blue1;
+		&:hover{
+			color:@slideteam_blue1;
+			text-decoration:underline;
+		}
+		&:active,&:focus,&:visited{
+			color:@slideteam_blue1;
+		}
+	}
+}
+.cms-wrap{
+	padding: 0 15px 50px;
+	h3{
+		color: @slideteam_gray12;
+		font-weight: 700;
+		margin: 0 0 10px;
+	}
+	p{
+		font-size: 14px;
+		line-height: 21px;
+		a{
+			&:visited{
+				color:@slideteam_blue1;
+			}
+		}
+	}
+	.about-map-img{
+		padding: 15px 0;
+		text-align: center;
+	}
+	.custom-decimal{
+		font-size: 20px;
+		line-height: 24px;
+		color: @slideteam_black5;
+		list-style-type: none;
+    	counter-reset: item;
+    	padding-left: 25px;
+    	&.level-1{
+    		padding-left: 0;
+    	}
+		li{
+			font-size: 20px;
+			line-height: 26px;
+			display: table;
+    		counter-increment: item;
+    		&:before{
+    			content: counters(item, ".") ". ";
+			    display: table-cell;
+			    padding-right: 10px;	
+			    font-size: 18px;
+    		}
+			h6{
+				font-weight: 400;
+				color: @slideteam_black5;
+				margin: 0 0 12px;
+			}
+			ol{
+				list-style-type: none;
+    			counter-reset: item;
+				li{
+					font-size: 14px;
+					line-height: 21px;
+					margin-bottom: 15px;
+					&:before{
+						font-size:16px;
+						content: counters(item, ".") " ";
+					}
+					p{
+						margin: 0px;
+						&.index-title{
+							margin-bottom: 12px;
+						}
+					}
+					h6{
+						font-size: 18px;
+						line-height: 24px;
+						text-transform: uppercase;
+					}
+					.level-2{
+						font-size: 16px;
+						line-height: 24px;
+						padding-left: 0;
+						li{
+							&:before{
+								font-size:14px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.collection-info{
+		li{
+			font-size: 14px;
+			line-height: 21px;
+			color: @slideteam_black5;
+			margin-left: 20px;
+			margin-bottom: 5px;
+			list-style: inside;
+		}
+	}
+
+	.fieldset{
+		padding-top: 20px;
+		h4{
+			color: @slideteam_black5;
+			text-transform: uppercase;
+			font-weight: 400;
+			margin-top: 0;
+			margin-bottom: 15px;
+		}
+		.form-list{
+			margin-bottom: 0;
+			.fields{
+				margin-bottom: 0;
+				.field{
+					margin-bottom: 0;
+					label{
+						font-size: 20px;
+						color: @slideteam_black5;
+						padding-bottom: 10px;
+						display: block;
+					}
+					.input-box{
+						color: @slideteam_black5;
+					}
+					p{
+						margin: 12px 0;
+						color: @slideteam_black5;
+						font-size: 14px;
+						line-height: 18px;
+					}
+				}
+			}
+		}
+		&.privacy-policy{
+			.legend{
+				font-size: 24px;
+				line-height: 28px;
+				font-weight: 400;
+				color: @slideteam_black5;
+				text-transform: uppercase;
+				display: block;
+				width: 100%;
+				margin: 0 0 15px;
+			}
+			.form-list{
+				display: inline-block;
+				.fields{
+					.field{
+						label{
+							display: inline-block;
+						}
+						p{
+							margin: 0 0 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+	.product-info-block{
+		margin-bottom: 50px;
+	}
+	.stepbg-block{
+		background: url(../../../Magento_Cms/images/footer-link/how_it_works/step-bg.jpg) no-repeat center top;
+		padding: 15% 0 3%;
+		text-align: center;
+		background-size: cover;
+		.step-links{
+			background: @white;
+			border: 1px solid @slideteam_gray35;
+			padding: 10px;
+			width: auto;
+			display: inline-block;
+			margin: 0 auto 35px;
+			.box-shadow(inset 0 0 7px @slideteam_gray35);
+			.border-radius(5px);
+			li{
+				position: relative;
+				padding: 3px 10px;
+				margin: 0 5px 0 20px;
+				display: inline-block;
+				&:first-child{
+					margin-left: 0;
+				}
+				&:last-child{
+					&:after{
+						display: none;
+					}
+				}
+				&:after{
+					position: absolute;
+					content: "";
+					top: 39%;
+					left: 88%;
+					background: @slideteam_gray36;
+					height: 3px;
+					width: 50%;
+					top: 53px;
+				}
+				a{
+					display: block;
+				}
+				span{
+					color: @slideteam_gray12;
+					font-size: 18px;
+					line-height: 22px;
+					font-weight: 600;
+				}
+			}
+		}
+		p{
+			padding: 0 75px;
+			font-weight: 600;
+			color: @slideteam_gray16;
+		}
+	}
+
+	.whyusemain-block{
+		border: 1px solid @slideteam_gray37;
+		text-align: center;
+		background: @slideteam_gray38;
+		border-top: 0;
+		margin: 50px 0;
+		h4{
+			text-align: left;
+			color: @white;
+			font-weight: 600;
+			letter-spacing: 0.4px;
+			margin-top: 0;
+			margin-bottom: 0;
+			padding: 18px 17px;
+			text-transform: none;
+			background: @slideteam_blue9;
+		}
+		img{
+			display: block;
+			padding: 20px;
+			margin: 0 auto;
+		}
+	}
+
+	.pricing-block-services{
+		display: flex;
+		margin: 0 -30px;
+		.slide-price{
+			float: left;
+			width: 33.3333%;
+			padding: 0 30px;
+			box-sizing: border-box;
+			.slide-price-inner{
+				background:@slideteam_gray38;
+				border: 1px solid @slideteam_gray37;
+				height: 100%;
+			}
+			h4{
+				color: @white;
+				text-transform: none;
+				padding: 18px 17px;
+				letter-spacing: 0.4px;
+				margin-top: 0;
+				margin-bottom: 0;
+				font-weight: 600;
+			}
+			.slider-price-info{
+				position: relative;
+				min-height: inherit;
+				padding: 15px 15px 0;
+				background: @slideteam_gray38;
+				border-top: 0;
+				ul{
+					li{
+						position: relative;
+						font-size: 14px;
+						line-height: 20px;
+						padding-left: 15px;
+						&:after{
+							position: absolute;
+							content: "";
+							width: 5px;
+							height: 5px;
+							line-height: 5px;
+							border-radius: 100%;
+							background: @slideteam_gray16;
+							left: 0;
+							top: 9px;
+						}
+					}
+				}
+				p{
+					float: left;
+					width: 70%;
+					font-size: 14px;
+					line-height: 22px;
+					color:@slideteam_gray16;
+				}
+				.work-img{
+					float: left;
+					width: 30%;
+				}
+			}
+			&.slide-price01{
+				h4{
+					background: @slideteam_green1;
+				}
+			}
+			&.slide-price02{
+				h4{
+					background: @slideteam_blue9;
+				}
+			}
+			&.slide-price03{
+				h4{
+					background: @slideteam_brown1;
+				}
+			}
+		}
+	}
+}
+
+/*Css of cms-  enable-cookies page*/
+.cookies-wrap{
+	.error-message{
+		color: @black;
+		border-left: 5px solid @slideteam_orange25;
+		background :@slideteam_orange24;
+		font-size: 15px;
+		line-height: 19px;
+		padding: 9px 10px 9px 20px;
+		position: relative;
+		margin-bottom: 10px;
+		&:before{
+			content: '';
+			position: absolute;
+			width: 0;
+			height: 0;
+			display: block;
+			border-top: 6px solid @transparent;
+			border-bottom: 6px solid @transparent;
+			border-left: 6px solid @slideteam_orange25;
+			border-right: none;
+			left: 0;
+			top: 50%;
+			margin-top: -6px;
+		}
+		.message{
+			font-size: 14px;
+			line-height: 18px;
+		}
+	}
+	h4{
+		color: @slideteam_gray12;
+	    margin: 0 0 18px;
+	    font-weight: 600;
+	    text-transform: uppercase;
+	}
+	p{
+		margin:0 0 15px;
+	}
+	h5{
+		&.subtitle{
+			color: @slideteam_black5;
+			text-transform: uppercase;
+			font-weight: normal;
+			margin:0 0 15px;
+		}
+	}
+	.ul-list-bullet{
+		margin: 0  0 20px;
+		padding-left: 23px;
+		li{
+			position: relative;
+			padding: 0 0 0 17px;
+			font-size: 15px;
+			line-height: 21px;
+			&:before{
+				content: "";
+				position: absolute;
+				width: 5px;
+				height: 5px;
+				background-color:  @black;
+				.border-radius(50%);
+				top: 8px;
+				left: 0;
+			}
+		}
+	}
+	label{
+		&.ol-title{
+			display: block;
+			font-size: 18px;
+			line-height: 22px;
+			text-transform: uppercase;
+			color: @slideteam_black5;
+			margin-bottom: 10px;
+		}
+	}
+	.cookies-list{
+		padding-left: 29px;
+		margin-bottom: 20px;
+		li{
+			font-size: 15px;
+			line-height: 21px;
+			p{
+				font-size: 15px;
+			}
+		}
+	}
+}
+
+/*Css of cms- office-timeline-templates-partnership page*/
+.office-timeline{
+	h3{
+		margin: 0 0 30px;
+	}
+	h4{
+		color: @slideteam_black23;
+		font-weight: 600;
+		margin: 0 0 15px;
+	}
+	p{
+    	margin: 0 0 15px;
+	}
+	.timelineimg{
+		margin: 0 0 20px;
+	    padding: 25px 30px;
+	    background: @slideteam_gray22;
+	    display: table;
+	    width: 100%;
+	    box-sizing: border-box;
+	    .timeline-col{
+	    	width: 33.33%;
+	    	display: table-cell;
+	    	vertical-align: middle;
+	    	box-sizing: border-box;
+	    	a{
+	    		display: inline-block;
+	    	}
+	    	&.plus_icon{
+	    		text-align: center;
+	    	}
+	    	&.officetimeline_logo{
+	    		text-align: right;
+	    	}
+	    }
+	}
+	.timeline-offer-block{
+		margin-bottom: 30px;
+		.boxbuttons{
+			padding: 10px 0;
+			.btn{
+				height: 42px;
+			    line-height: 37px;
+			    font-size: 18px;    
+    			min-width: 112px;
+    			.transition(all 0.3s);
+			    &:hover{
+			    	color:@slideteam_gray8;
+			    	.transition(all 0.3s);
+			    }
+			    &:first-child{
+			    	margin-right: 15px;
+			    }
+			}
+		}
+	}
+	.timeline-content-block{
+		.timeline-content-inner{
+			padding-top: 25px;
+			display: table;
+			width: 100%;
+			.content-col{
+				width: 30.7%;
+				display: table-cell;
+				vertical-align: top;
+				&.arrow-block{
+					text-align: center;
+					vertical-align: middle;
+				}
+				.blockimage{
+					margin-bottom: 20px;
+				    padding: 10px ;
+				    text-align: center;
+				    .box-shadow(0px 0px 2px @slideteam_gray27);
+				}
+			}
+		}
+		.morelinks{
+			a{
+				&:hover{
+					text-decoration:underline;
+					color: @slideteam_blue1;
+				}
+			}
+		}
+	}
+}
+
+/*Css of cms- awesome ppt steps page*/
+.awesome-ppt-steps{
+	h3{
+	    font-weight: 600;
+	    margin-bottom: 0 0 10px;
+	}
+	.awesome-powerpoint-step{
+		margin-bottom: 30px;
+	    padding-bottom: 25px;
+	    border-bottom: 1px solid @slideteam_gray30;
+		label{
+			background: @slideteam_blue1;
+		    color: @white;
+		    display: block;
+		    font-size: 24px;    
+		    line-height: 28px;
+		    font-weight: 600;
+		    letter-spacing: 0.4px;
+		    margin-bottom: 25px;
+		    padding: 12px 15px;
+		    position: relative;
+		    max-width:  350px;
+		    width: 100%;
+		    box-sizing: border-box;
+		    span{
+		    	color: @slideteam_blue1;
+			    position: relative;
+			    display: inline-block;
+			    text-align: center;
+			    padding-right: 15px;
+			    padding-left: 7px;
+			    font-size: 20px;
+			    line-height: 24px;
+			    top: -2px;
+		    }
+		    &:before{
+		    	position: absolute;
+			    top: 13px;
+			    left: 15px;
+			    content: "";
+			    border-radius: 50%;
+			    width: 25px;
+			    height: 25px;
+			    background: @white;
+		    }
+		    &:after{
+		    	position: absolute;
+			    top: 0;
+			    right: -25px;
+			    content: "";
+			    border-top: 26px solid transparent;
+			    border-bottom: 26px solid transparent;
+			    border-left: 26px solid @slideteam_blue1;
+		    }
+
+		}
+		&.optional{
+			label{
+				&:before{
+					display: none;
+				}
+			}
+		}
+		p{
+			font-size: 14px;
+			line-height: 25px;
+			color: @slideteam_gray16;
+			margin:0 0 15px;
+			strong{
+				font-size: 16px;
+				font-weight: 600;
+			}
+		}
+		ul{
+			margin: 0px;
+			li{
+				width: 20%;
+				float: left;
+				padding: 0 15px;
+				margin: 0 0  30px;
+				box-sizing: border-box;
+				a{
+					.box-shadow(-10px 10px 5px rgba(0, 0, 0, 0.3));
+    				display: inline-block;
+					text-align: center;
+					img{
+						border: 1px solid @slideteam_gray87;
+						float: left;
+					}
+				}
+			}
+		}
+		ol{
+			padding: 0 0 0 15px;
+			li{
+				font-size: 14px;	
+			    line-height: 20px;
+			    color: @slideteam_gray16;
+			    margin-bottom: 10px;
+			}
+		}
+		.toggle-show{
+		    color: @slideteam_gray16;
+		    padding: 0 0 0 15px;
+		    position: relative;
+		    display: block;
+		    i{
+		    	position: absolute;
+		    	left: 0;
+		    	top: 0px;
+		    	display: inline-block;
+		    	.minus-img{
+		    		display: none;
+		    	}
+		    }
+		    &:hover{
+		    	color: @slideteam_blue1;
+		    	text-decoration: none;
+		    }
+		    &.minus-icon{
+		    	i{
+		    		.plus-img{
+			    		display: none;
+			    	}
+			    	.minus-img{
+			    		display: inline-block;
+			    	}
+		    	}
+		    }
+		}
+		.toggle-hide{
+			display: none;
+		    background: @slideteam_gray86;
+		    padding: 15px;
+		    font-size: 14px;
+		    line-height: 22px;
+		    margin-top: 15px;
+		    margin-bottom: 25px;
+		    color: @slideteam_black5;
+		    ul{
+		    	display: inline-block;
+		    	li{
+		    		color: @slideteam_gray16;
+				    background: url(../../../Magento_Cms/images/create_powerpoint_presentation/pricepoint.jpg) no-repeat left 8px;
+				    display: block;
+				    width: 100%;
+				    padding: 0 0 8px 15px;
+				    margin: 0px;
+				    text-align: left;
+		    	}
+		    }
+		    .triangle-col{
+		    	margin-bottom: 20px;
+		    	.col-sm-3{
+		    		width: 25%;
+				    float: left;
+				    margin-right: 20px;
+				    box-sizing: border-box;
+				    p{
+				    	strong{
+				    		font-size: 14px;
+				    	}
+				    }
+
+		    	}
+		    	.col-sm-9{
+		    		width: 60%;
+				    float: left;
+				    box-sizing: border-box;
+		    	}
+		    }
+		}
+		.template-outer{
+			margin-bottom: 15px;
+			.template-finder{	
+				float: left;
+			    width: 25%;
+			    margin: 15px 30px 15px 0;
+			    font-size: 20px;
+			    line-height: 24px;
+			    box-sizing: border-box;
+			}
+		    .template-img{
+		    	float: left;
+			    margin: 0px;
+			    width: 45%;
+			    border: 1px solid @slideteam_gray87;
+			    padding: 15px;
+			    box-sizing: border-box;
+		    }
+		}
+		.template-img{
+			margin: 25px 0;
+		}
+	}
+	/*.you-tube-video{
+		embed{
+			height: 360px;
+		}
+	}*/
+}
+/* Css of cms- awesome ppt modal css*/
+.mf-powerpoint-presentation{
+	&.mfp-bg{
+		z-index: 99999;
+	}
+	&.mfp-wrap{
+		z-index: 99999;
+		cursor: pointer;
+		.mfp-content{
+			.mfp-close{
+				opacity: 1;
+				font-weight: 400;
+				cursor: pointer;
+				&:hover{
+					border:none;
+					background: none;
+					color: @white;
+				}
+			}
+			.mfp-arrow{
+				opacity: 1;
+				&:hover{
+					background:none;
+					border: none;
+				}
+				&.mfp-arrow-left{
+					left: -78px;
+					&:before{
+						border-right:27px solid @slideteam_blue1;
+						opacity: 1;
+					}
+					&:after{
+						border-right: 17px solid @slideteam_blue1;
+						opacity: 1;
+					}
+				}
+				&.mfp-arrow-right{
+					right: -78px;
+					&:before{
+						border-left:27px solid @slideteam_blue1;
+						opacity: 1;
+
+					}
+					&:after{
+						border-left:17px solid @slideteam_blue1;
+						opacity: 1;
+					}
+				}
+			}
+			.mfp-counter{
+				display: none;
+			}
+		}
+	}
+}
+
+/*Css of 404 error page*/
+.custom-no-routes{
+	.cms-wrap{
+		dl{
+			color: @slideteam_black5;
+			dd{
+				ul{
+					margin-left: 29px;
+					li{
+						margin: 0px;
+					}
+				}
+			}
+		}
+		p{
+			font-size: 14px;
+			line-height: 18px;
+			margin: 0  0 15px;
+		}
+	}
+}
+
+/*Css of Contact Us page*/
+.contact-us-wrapper{
+	h5{
+		margin: 10px 0 15px;
+		color: @slideteam_gray12;
+	}
+	p{
+		font-size: 13px;
+		line-height: 20px;
+		margin-bottom: 20px;
+	}
+	.livechat_button{
+		a{
+			display: inline-block;
+		}
+	}
+	.contact-information{
+		.scaffold-form{
+			.fieldset{
+				padding:0px;
+				.form-list{
+					.field{
+						margin: 17px 0;
+						.input-box{
+							input{
+								max-width: 374px;
+	    						width: 100%;
+							}
+							textarea{
+								height: 400px;
+								max-width: 800px;
+								width: 100%;
+								.border-radius(5px);
+								color: @gray27;
+								padding: 5px;
+								overflow-y: auto;
+								resize:none;
+								&:focus{
+									box-shadow:none;
+									border: 1px solid @slideteam_blue1;
+								}
+							}
+						}
+						label{
+							font-size: 13px;
+							line-height: 49px;
+							color: @slideteam_gray2;
+							padding-bottom: 0px;
+							&.comment{
+								height: 398px;
+								line-height:  398px;
+							}
+						}
+					}
+					.button-set{
+						margin:15px 0 0 ;
+						.btn{
+							min-width: 175px;
+							font-size: 14px;
+							line-height: 22px;
+							font-weight: normal;
+							height: 40px;
+							&:hover{
+								color:@slideteam_gray8;
+							}
+						}
+					}
+				}
+			}
+		}
+		.contact-address{
+			margin-top: 35px;
+			h4{
+				font-weight: normal;
+				text-transform: uppercase;
+				margin:0 0 10px;
+				color: @slideteam_black5;
+			}
+			label{
+				display: block;
+			    color: @slideteam_black5;
+			    font-size: 20px;
+			    line-height: 24px;
+			    margin: 0 0 10px;
+			}
+			p{
+				margin: 0px;
+				font-size: 14px;
+				line-height: 21px;
+			}
+		}
+	}
+}
+.contact-address{
+	.address-wrapper{
+		width: 30%;
+		display:inline-block;
+		vertical-align:top;
+	}
+}
+.contact-information {
+	width: 100%;
+	float: left;
+}
+
+.cms-wrap.contact-us-wrapper .livechat_button {
+	display: inline-block;
+	float: left;
+}
+.contactus_demo {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+	margin-top: 15px;
+}
+@media(max-width: 800px) {
+	.contact-address{
+		.address-wrapper{
+			width: 100%;
+			float: left;
+			margin-bottom:30px;
+		}
+	}
+}
+/*css of how its work page*/
+.how-it-works-grid{
+	.catalog-category-view{
+		.products{
+			&.wrapper{
+				padding-left: 0;
+				.product-items{
+					margin: 0;
+				}
+			}
+		}
+	}
+	.recommended-title-top{
+		h4{
+			color: @slideteam_blue1;
+			text-transform: uppercase;
+			margin: 0 0 15px;
+		}
+	}
+	.get-button{
+		height: 42px;
+	   	min-width: 103px;
+	    font-size: 18px;
+	    line-height: 22px;
+	    &:hover{
+	    	color:@slideteam_gray8;
+	    }
+	    &:active,&:focus{
+	    	background-color: @white;
+	    	color:@slideteam_gray8;
+	    }
+	}
+}
+
+/*Media Queries*/
+@media(max-width: 1680px){
+	.cms-wrap{
+		.stepbg-block{
+			padding: 18% 0 3%;
+		}
+	} 
+	.page-layout-1column-cms{
+		.container{
+			padding: 0 100px 0 188px;
+		}
+	}
+
+	/*Css of cms- office-timeline-templates-partnership page*/
+	.office-timeline{
+		.timeline-content-block{
+			.timeline-content-inner{
+				.content-col{
+					width: 31.5%;
+				}
+			}
+		}
+	}
+
+	/*Css of cms- awesome ppt steps page*/
+	.awesome-ppt-steps{
+		.awesome-powerpoint-step{
+			p{
+				line-height: 21px;
+			}
+		}
+	}
+}
+
+@media (max-width: 1440px){
+
+	/*Css of cms- office-timeline-templates-partnership page*/
+	.office-timeline{
+		.timeline-offer-block{
+			.boxbuttons{
+				.btn{
+					&:first-child{
+						margin-right:0px;
+					}
+				}
+			}
+		}
+		.timeline-content-block{
+			.timeline-content-inner{
+				.content-col{
+					width: 32%;
+				}
+			}
+		}
+	}
+
+	/*css of how its work page*/
+	.how-it-works-grid{
+		.catalog-category-view{
+			.products{
+				&.wrapper{
+					max-width: 100%;
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 1366px){
+	.cms-wrap{
+		.pricing-block-services{
+			margin: 0 -15px;
+			.slide-price{
+				padding: 0 15px;
+			}
+		}
+	} 
+	.page-layout-1column-cms{
+		.container{
+			padding: 0 50px 0 165px;
+		}
+	}
+
+	/*Css of cms- awesome ppt steps page*/
+	.awesome-ppt-steps{
+		.awesome-powerpoint-step{
+			p{
+				line-height: 17px;
+			}
+			ul{
+				li{
+					padding: 0 15px 0 6px;
+				}
+			}
+			.template-outer{
+				.template-finder{
+					width: 35%;
+				}
+			}
+		}
+	}
+
+	/*404 error page css*/
+	.custom-no-routes{
+		.cms-wrap{
+			dl{
+				dd{
+					ul{
+						margin-left: 10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 1360px){
+	.cms-wrap{
+		.stepbg-block{
+			padding: 19% 0 3%;
+		}
+	} 
+}
+
+@media(max-width: 1199px){
+	.cms-wrap{
+		.custom-decimal{
+			li{
+				font-size: 17px;
+				line-height: 21px;
+				ol{
+					li{
+						h6{
+							font-size: 16px;
+							line-height: 22px;
+						}
+					}
+				}
+			}
+		} 
+		.fieldset{
+			.form-list{
+				.fields{
+					.field{
+						label{
+							font-size: 17px;
+						}
+					}
+				}
+			}
+		}
+		.stepbg-block{
+			padding: 22% 0 3%;
+		}
+		.pricing-block-services{
+			margin: 0 -15px;
+			.slide-price{
+				padding: 0 15px;
+			}
+		}
+	}
+	/*Css of cms- office-timeline-templates-partnership page*/
+	.office-timeline{
+		.timeline-content-block{
+			.timeline-content-inner{
+				.content-col{
+					width: 31.5%;
+				}
+			}
+		}
+	} 	
+
+	/*Css of contact us page*/
+	.contact-us-wrapper{
+		.contact-information{
+			.contact-address{
+				label{
+					font-size: 17px;
+					line-height: 21px;
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 1023px){
+	.cms-wrap{
+		padding: 0 0 50px;
+		.fieldset{
+			padding-top: 15px;
+			h4{
+				margin-bottom: 10px;
+			}
+			.form-list{
+				.fields{
+					.field{
+						label{
+							padding-bottom: 8px;
+						}
+					}
+				}
+			}
+			&.privacy-policy{
+				.legend{
+					font-size: 22px;
+					line-height: 26px;
+				}
+			}
+		}
+		.stepbg-block{
+			padding: 27% 0 3%;
+		}
+		.pricing-block-services{
+			.slide-price{
+				.slide-price-inner{	
+					height: auto;
+				}
+				.slider-price-info{
+					p{
+						width: 100%;
+					}
+					.work-img{
+						width: 100%;
+						text-align: center;
+						float: none;
+						display: inline-block;
+					}
+				}
+			}
+		}
+		.collection-info{
+			li{
+				margin-left: 6px;
+			}
+		}
+	}
+	.page-layout-1column-cms{
+		.container{
+			padding: 0 15px;
+			max-width: 100%;
+		}
+
+		/*css for error or success msg*/
+		.page{
+			&.messages{
+				> div{
+					padding: 0px;
+				}
+			}
+		}
+	}
+	.page-footer{
+		.container{
+			max-width: 960px;
+		}
+	}
+
+	/*Css of cms-   enable-cookies page*/
+	.cookies-wrap{
+		.error-message{
+			&:before{
+				left:-1px;
+			}
+		}
+	}
+
+	/*Css of cms- office-timeline-templates-partnership page*/
+	.office-timeline{
+		.timeline-content-block{
+			.timeline-content-inner{
+				.content-col{
+					width: 33.33%;
+				}
+			}
+		}
+	} 	
+
+	/*Css of cms- awesome ppt steps page*/
+	.awesome-ppt-steps{
+		.awesome-powerpoint-step{
+			label{
+				font-size: 22px;
+			}
+			p{
+				line-height: 21px;
+			}
+			ul{
+				li{
+					width: 33.33%;
+				}
+			}
+			.toggle-hide{
+				.triangle-col{
+					.col-sm-3{
+						width: 30%;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+@media (max-width: 991px){
+
+	/*Css of cms-  enable-cookies page*/
+	.cookies-wrap{
+		.ul-list-bullet{
+			padding-left: 3px;
+		}
+	}
+
+	/*Css of cms- awesome ppt steps page -modal css*/
+	.mf-powerpoint-presentation{
+		&.mfp-wrap{
+			.mfp-content{
+				.mfp-arrow{
+					.transform(scale(1));
+					&.mfp-arrow-right{
+						right: -10px;
+					}
+					&.mfp-arrow-left{
+						left: -10px;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 767px){
+	.cms-wrap{
+		.product-info-block{
+			margin-bottom: 35px;
+		}
+		.custom-decimal{
+			padding-left: 15px;
+			li{
+				ol{
+					padding-left: 15px;
+				}
+			}
+		}
+		.collection-info{
+			li{
+				font-size: 14px;
+				line-height: 22px;
+			}
+		}
+		.fieldset{
+			h4{
+				margin-bottom: 8px;
+			}
+			.form-list{
+				.fields{
+					.field{
+						label{
+							font-size: 16px;
+						}
+					}
+				}
+			}
+		} 
+		.stepbg-block{
+			background-size: 100%;
+			padding: 18% 0 3%;
+			.step-links{
+				margin: 0 auto 25px;
+				li{
+					width: 42%;
+					display: inline-block;
+					margin: 0;
+					&:after{
+						display: none;
+					}
+					img{
+						margin: 0 auto;
+					}
+					span{
+						font-size: 16px;
+						line-height: 24px;
+					}
+				}
+			}
+		}
+		.whyusemain-block{
+			margin: 30px 0;
+			img{
+				width: 100%;
+				padding: 15px;
+				box-sizing: border-box;
+			}
+		}
+		.pricing-block-services{
+			display: block;
+			.slide-price{
+				float: none;
+				width: 364px;
+				margin: 0 auto 25px;
+				&:last-child{
+					margin-bottom: 0;
+				}
+				.slider-price-info{
+					ul{
+						li{
+							font-size: 14px;
+							line-height: 20px;
+						}
+					}
+				}
+			}
+		}
+	} 
+
+	.page-layout-1column-cms{
+		.page-main{
+			padding-top: 0;
+		}
+		.container{
+			&.custom-no-routes{
+				padding-top: 25px;
+			}
+		}
+	} 
+
+	/*Css of cms- awesome ppt steps page*/
+	.awesome-ppt-steps{
+		.awesome-powerpoint-step{
+			.template-outer{
+				.template-finder{
+					width: 100%;
+					margin:15px 0;
+				}
+				.template-img{
+					width: 100%;
+				}
+			}
+			.toggle-hide{
+				.triangle-col{
+					.col-sm-3{
+						width: 30%;
+					}
+				}
+			}
+		}
+	}
+
+	/*Css of cms- awesome ppt steps page -modal css*/
+	.mf-powerpoint-presentation{
+		&.mfp-wrap{
+			.mfp-container{
+				padding: 0 25px;
+			}
+		}
+	}
+}
+
+@media(max-width: 575px){
+	.cms-wrap{
+		.stepbg-block{
+			p{
+				padding: 0 15px;
+			}
+		}
+		.pricing-block-services{
+			.slide-price{
+				width: 100%;				
+			}
+		}
+	} 
+
+	/*Css of cms- office-timeline-templates-partnership page*/
+	.office-timeline{
+		.timelineimg{
+		 	.timeline-col{
+		 		width: 100%;
+		 		text-align: center;
+		 		display: block;
+		 		&.officetimeline_logo{
+		 			text-align: center;
+		 		}
+		 		&.plus_icon{
+		 			margin: 20px 0;
+		 		}
+		 	}
+		}
+		.timeline-offer-block{
+			.boxbuttons{
+				.btn{
+					display: block;
+					width: 100%;
+					height: 48px;
+					line-height: 38px;
+    				padding: 0 30px;
+					&:first-child{
+						margin-bottom:20px;
+					}
+				}
+			}
+		}
+		.timeline-content-block{
+			.timeline-content-inner{
+			 	.content-col{
+			 		width: 100%;
+			 		display: block;
+			 		&.arrow-block{
+			 			margin-bottom: 10px;
+			 		}
+			 	}
+			}
+		}
+	}
+
+	/*Css of cms- awesome ppt steps page*/
+	.awesome-ppt-steps{
+		.awesome-powerpoint-step{
+			label{
+				font-size: 16px;
+				max-width: 250px;
+				span{
+					font-size: 16px;
+					padding-left: 8px;
+					padding-right: 9px;
+					top: 0px;
+				}
+			}
+			ul{
+				li{
+					width: 50%;
+					padding: 0 12px;
+					margin-bottom: 30px;
+				}
+			}
+			.template-outer{
+				.template-finder{
+					font-size: 17px;
+					line-height: 22px;
+				}
+			}
+			.toggle-hide{
+				.triangle-col{
+					.col-sm-3{
+						width: 100%;
+						margin: 0px;
+					}
+					.col-sm-9{
+						width: 100%;
+					}
+				}
+			}
+		}
+	}
+
+	/*Css of contact us page*/
+	.contact-us-wrapper{
+		.contact-information{
+			.scaffold-form{
+				.fieldset{
+					.form-list{
+						.field{
+							.input-box{
+								input{
+									height: 35px;
+								}
+								textarea{
+									height: 250px;
+								}
+							}
+							label{
+								font-size: 12px;
+								padding: 0 10px;
+								height: 33px;
+								line-height: 33px;
+								&.comment{
+									height: 248px;
+    								line-height: 248px;
+								}
+							}
+						}
+						.button-set{
+							.btn{
+								width: 100%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	/*css of how its work page*/
+	.how-it-works-grid{		
+		.get-button{
+			height: 58px;
+			width: 100%;
+			margin-top: 15px;
+		}
+		.catalog-category-view{
+			.item{
+				&.product{
+					&.product-item{
+						padding: 0 15px 0 0;
+						&:nth-child(even){
+							padding: 0 0 0 15px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(max-width: 374px){
+	.cms-wrap{
+		.stepbg-block{
+			.step-links{
+				li{
+					width: 40%;
+				}
+			}
+		}
+	}
+
+	.awesome-ppt-steps{
+		.awesome-powerpoint-step{
+			ul{
+				li{
+					width: 100%;
+					text-align: center;
+					padding: 0px;
+				}
+			}
+		}
+	}
+
+	/*Css of cms- awesome ppt steps page -modal css*/
+	.mf-powerpoint-presentation{
+		&.mfp-wrap{
+			.mfp-container{
+				padding: 0 20px;
+			}
+		}
+	}
+
+}

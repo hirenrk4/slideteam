@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>	
+    	<css src="Magento_Theme::css/FileUpload/fileUpload.css" order="101"/>
+    	<css src="Tatva_BugBounty::css/style.css" media="all" order="102"/>
+	</head>
+	<body>
+		<referenceContainer name="page.top">	
+			<referenceBlock name="breadcrumbs" remove="true"/>
+		</referenceContainer>
+		<referenceContainer name="page.messages" remove="true"/>
+		<referenceContainer name="slideteam-sidenav-wrapper" remove="true" />
+		<referenceContainer name="custom.footer.widget.wrap" remove="true" />
+	</body>
+</page>

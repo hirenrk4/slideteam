@@ -1,0 +1,151 @@
+@import '../source/_variablesm2.less';
+@import '../source/_mixins.less';
+
+/*Common Conainer CSS*/
+.container{
+	&.testim-container{
+		padding: 0 188px;
+	}
+}
+
+.testimonial-title{
+    background: @slideteam_gray31;
+    padding: 15px 0 20px;
+    h4{
+    	color: @slideteam_gray12;
+	    font-weight: 600;
+	    margin: 0 0 15px 0;
+    }
+    .btn{
+    	height: 39px;
+    	line-height: 35px;
+    	display: inline-block;
+    	padding: 0 21px;
+    	&:hover{
+    		color:@slideteam_black4;
+    		background: transparent;
+    	} 	
+    }
+    
+}
+.list-testimonials-wrapper{
+	.list-testimonials 
+	{
+		margin: 0px;
+		li{
+			padding: 0 0 20px;
+			margin: 0 0 30px;
+			border-bottom: 1px solid @slideteam_gray76;
+			.testimonialText{
+					font-size: 14px;
+					line-height: 22px;
+					color: @slideteam_black5;
+					margin: 0px;
+			} 
+			span{
+					color: #28a7fb;
+				    display: block;
+				    font-size: 16px;
+				    line-height: 20px;
+				    font-style: italic;
+				    font-weight: 400;
+				    text-align: right;
+				    &.author-desg{
+						margin-top: 10px;
+					}
+					&.author-name{
+						 font-weight: 700;
+					}
+			}
+		}
+	}
+	.btn{
+			display: inline-block;
+			font-size: 26px;
+		    border-radius: 50px;
+		    padding: 0px 95px;
+		    height: 73px;
+		    line-height: 68px;
+		    font-weight: 600;
+		    margin: 10px 0 30px;
+		    &:hover{
+		    	color:@slideteam_black4;
+		   		background: transparent;
+		    }
+
+	}
+}
+/*Pager CSS*/
+.testim-pager{
+	.container{
+		padding: 0 188px;
+		.toolbar-wrapper{
+			.toolbar-amount{
+				padding-left: 0px;
+			}
+		}
+	}
+}
+
+/*Media Query*/
+@media(max-width: 1440px){
+	.container{
+		&.testim-container{
+			padding: 0 35px 0 188px;
+		}
+	}
+	.testim-pager{
+		.container{
+			padding: 0 35px 0 188px;
+		}
+
+	}
+}
+@media(max-width: 1023px){
+	.container{
+		&.testim-container{
+			padding: 0 15PX;
+		}
+	}
+	.testim-pager{
+		.container{
+			padding: 0 15px;
+		}
+	}
+}
+@media(max-width: 767px){
+	.testim-pager{
+		.container{
+			.toolbar-wrapper{
+				.toolbar-amount{
+					width: 100%;
+					text-align: center;
+					display: block;
+					&:before{
+						display:none;
+					}
+				}
+			}
+		}
+	}
+}
+@media(max-width: 575px){
+	.testimonial-title{
+		.btn{
+			width: 100%;
+			box-sizing: border-box;
+			text-align: center;
+		}
+	}
+	.list-testimonials-wrapper{
+		.btn{
+			font-size: 18px;
+		    height: 60px;
+		    line-height: 58px;
+		    width: 100%;
+		    text-align: center;
+		    box-sizing: border-box;
+		}
+	}
+	
+}

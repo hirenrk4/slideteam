@@ -1,0 +1,130 @@
+<?php
+$helper = $this->helper('Tatva\Contract\Helper\Data');
+
+$objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+$customerSession = $objectManager->get('Magento\Customer\Model\Session');
+$session_var = $customerSession->getData('hd_params');
+
+$email = null;
+$name = null;
+$comment = null;
+// var_dump($session_var);
+// exit('<br/ > in '.__FILE__.' line no '.__LINE__);
+if ($session_var && is_array($session_var)) {
+    foreach ($session_var as $form) {
+        $name = $form['name'];
+        $email = $form['email'];
+        $comment = $form['comment'];
+    }
+}
+
+if (is_null($name)) {
+    $name = $this->escapeHtml($helper->getUserName());
+}
+if (is_null($email)) {
+    $email = $this->escapeHtml($helper->getUserEmail());
+}
+?>
+
+<div class="contract-contact-block contract-service design-services-main">
+    <h2><?php /* @escapeNotVerified */ echo __('Contact Us To Get Started') ?></h2>
+    <?php $url = $this->getUrl('contract/index/send') ?>
+    <div class="main-wrapper">
+        <form data-mage-init='{"validation": {}}' action="<?php echo $url; ?>" id="contract-form" name="contractForm" method="post">
+            <div class="contact-form-block clearfix">
+                <div class="field col">
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php /* @escapeNotVerified */ echo __('Name') ?>" value="<?php echo $name; ?>" class="input-text form-control" data-validate="{required:true}"  type="text" placeholder="Name" />
+                    </div>
+                </div>
+                <div class="field col">
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php /* @escapeNotVerified */ echo __('Email') ?>" value="<?php echo $email; ?>" class="input-text form-control" data-validate="{required:true, 'validate-email':true}" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="Email" />
+                    </div>
+                </div>
+                <div class="field col last">
+                    <div class="input-box">
+                        <input name="telephone" id="telephone" maxlength="15" title="<?php /* @escapeNotVerified */ echo __('Telephone') ?>" value="" class="input-text form-control maximum-length-15" data-validate="{'no-whitespace':true,'telephoneValidation':true,'validate-length':true}" type="tel" placeholder="Telephone (Optional)" />
+                        <div class="mage-error" id="tel-error" generated="true"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php /* @escapeNotVerified */ echo __('Comment') ?>" class="input-text form-control" data-validate="{required:true}" placeholder="Your message" cols="30" rows="5"  maxlength="2000"><?php if ($comment) {
+        echo $comment;
+    } ?></textarea>
+    <div class="allforms-comment-msg"><?php echo __("Max length should be 2000 character."); ?></div>
+                </div>
+            </div>
+            <div class="captcha-wrapper">
+                <?php
+                    $blockPath = 'Magento\Captcha\Block\Captcha';
+                    $block = $this->getLayout()->createBlock($blockPath);
+                    $cap_data = array('form_id'=>'hire_a_designer_captcha','img_width'=>'50');
+                    $block->setData($cap_data);
+                    echo $block->toHtml();
+                ?>
+            </div>
+            <div class="text-center">
+                <button type="submit" title="<?php /* @escapeNotVerified */ echo __('Submit') ?>" class="btn btn-default btn-orange"><span><span><?php /* @escapeNotVerified */ echo __('Submit') ?></span></span></button>
+                <!--<button class="btn btn-default btn-orange" title="Submit" type="button">Submit</button>-->
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'hire_a_designer'
+    ],function($){
+        $(document).ready(function(){
+            $("label:contains('Please type captcha here')").remove();
+            $('#contract-form').find('input[name*="captcha"]').attr("placeholder", "Please type Captcha Here");
+            $('#contract-form').find('input[name*="captcha"]').css('padding-left', '12px');
+
+
+            $('.captcha-img').remove();
+            $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="spinner-img" height="50" width="50" src="<?= $block->getViewFileUrl('Magento_Cms::images/popup/spinner.gif') ?>"/>').insertBefore('.captcha-reload');
+            $.ajax({
+                type: 'POST',
+                url: '<?php echo $block->getUrl('captcha/refresh');?>',  
+                data:'formId=hire_a_designer_captcha',
+                success:function(data) {
+                    $('.spinner-img').hide();
+                    $('<img alt="<?= $block->escapeHtmlAttr(__('Please type captcha here')) ?>" class="captcha-img" height="<?= /* @noEscape */ (float) $block->getImgHeight() ?>" src="'+ data.imgSrc +'"/>').insertBefore('.captcha-reload'); 
+                    $(':input','#contract-form')
+                        .not(':button, :submit, :reset, :hidden')
+                        .val('')
+                        .removeAttr('checked')
+                        .removeAttr('selected');
+                    return false;                 
+                }
+            });
+            var telval = jQuery('#telephone').val();
+            jQuery('#telephone').on('keydown',function(){
+                var tellength  = jQuery('#telephone').val().length;
+                if((tellength+1) == 16)
+                {
+                    jQuery('#tel-error').show();
+                    jQuery('#tel-error').html('Allowed only 15 characters');
+                    jQuery('#telephone-error').hide();
+                }
+            });
+
+            // task 1344
+            $("#comment").on("keyup",function() {
+              var maxLength = $(this).attr("maxlength");
+              if(maxLength == $(this).val().length) {
+                $('#comment-error').hide();
+                $('.allforms-comment-msg').show();
+              }else{
+                $('.allforms-comment-msg').hide();
+              }
+            });
+            // task 1344 end
+            
+        });
+    });
+</script>
+

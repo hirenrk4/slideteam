@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+  <type name="Magento\Framework\App\RouterList">
+      <arguments>
+          <argument name="routerList" xsi:type="array">
+              <item name="customrouter" xsi:type="array">
+                  <item name="class" xsi:type="string">Tatva\Tag\Controller\CustomRouter</item>
+                  <item name="disable" xsi:type="boolean">false</item>
+                  <item name="sortOrder" xsi:type="string">63</item>
+              </item>
+          </argument>
+      </arguments>
+  </type>
+  <!-- 1545 tag elastic search -->
+  <preference for="Magento\Elasticsearch\SearchAdapter\Query\Builder\Match" type="Tatva\Tag\SearchAdapter\Query\Builder\Match" />
+  <type name="Magento\Framework\App\RouterList">
+      <arguments>
+          <argument name="routerList" xsi:type="array">
+              <item name="elasticsearchrouter" xsi:type="array">
+                  <item name="class" xsi:type="string">Tatva\Tag\Controller\ElasticsearchRouter</item>
+                  <item name="disable" xsi:type="boolean">false</item>
+                  <item name="sortOrder" xsi:type="string">64</item>
+              </item>
+          </argument>
+      </arguments>
+  </type>
+  <preference for="Magento\CatalogSearch\Block\Result" type="Tatva\Tag\Block\CatalogSearch\Result" />
+  <!-- 1545 tag elastic search end -->
+</config>
